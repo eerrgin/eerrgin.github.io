@@ -1,95 +1,100 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-&nbsp;&nbsp;<meta charset="UTF-8">
-&nbsp;&nbsp;<meta name="viewport" content="width=device-width, initial-scale=1.0">
-&nbsp;&nbsp;<title>eerrgin • Digital Builder</title>
-&nbsp;&nbsp;<script src="https://cdn.tailwindcss.com"></script>
-&nbsp;&nbsp;<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-&nbsp;&nbsp;<style>
-&nbsp;&nbsp;&nbsp;&nbsp;body { font-family: 'Inter', system-ui, sans-serif; }
-&nbsp;&nbsp;&nbsp;&nbsp;.hero { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); }
-&nbsp;&nbsp;&nbsp;&nbsp;.glow { text-shadow: 0 0 30px rgba(103, 232, 249, 0.5); }
-&nbsp;&nbsp;</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eerrgin • Digital Builder</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .hero { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); }
+    .glow { text-shadow: 0 0 30px rgba(103, 232, 249, 0.5); }
+  </style>
 </head>
 <body class="bg-black text-white">
-&nbsp;&nbsp;<!-- HERO -->
-&nbsp;&nbsp;<section class="hero min-h-screen flex items-center">
-&nbsp;&nbsp;&nbsp;&nbsp;<div class="max-w-6xl mx-auto px-6 text-center">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/eerrgin.png" alt="eerrgin" class="w-40 h-40 mx-auto rounded-3xl border-4 border-cyan-400 shadow-2xl mb-8">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h1 class="text-7xl font-bold tracking-tighter glow">eerrgin</h1>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="text-4xl text-cyan-400 mt-3">App Program Developer • Yapay Zeka Geliştirici • AI Explorer</p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="max-w-xl mx-auto mt-6 text-xl text-gray-400">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bazı geceler kod yazıyorum. Yapay zeka ile oynuyorum, ilginç fikirlerimi hayata geçiriyorum.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Merak ettiğim her şeyi deniyorum ve çalıştırıyorum.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="mt-12 flex justify-center gap-6">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="px-10 py-5 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-2xl text-lg flex items-center gap-3">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-fire"></i> Projelerimi Gör
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="px-10 py-5 border-2 border-white hover:bg-white hover:text-black font-bold rounded-2xl text-lg">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;İletişime Geç
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;</section>
-&nbsp;&nbsp;<!-- ABOUT -->
-&nbsp;&nbsp;<section class="py-24 bg-zinc-950">
-&nbsp;&nbsp;&nbsp;&nbsp;<div class="max-w-4xl mx-auto px-6 text-center">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h2 class="text-5xl font-bold mb-8">Who Am I</h2>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="text-2xl text-gray-300 leading-relaxed">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kod ve yapay zeka benim için bir tutku. Gündüz normal hayatıma devam ediyorum,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geceleri ise aklıma gelen fikirleri kodluyor, test ediyor ve geliştiriyorum.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bu benim hobim ve en sevdiğim şey.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;</section>
-&nbsp;&nbsp;<!-- PROJECTS -->
-&nbsp;&nbsp;<section class="py-24">
-&nbsp;&nbsp;&nbsp;&nbsp;<div class="max-w-6xl mx-auto px-6">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h2 class="text-5xl font-bold text-center mb-16">Selected Projects</h2>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="grid md:grid-cols-3 gap-8">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="bg-zinc-900 border border-zinc-700 hover:border-cyan-400 rounded-3xl overflow-hidden transition-all">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="h-56 bg-gradient-to-br from-violet-600 to-fuchsia-500 flex items-center justify-center text-7xl">🧠</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="p-8">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3 class="text-2xl font-bold">Autonomous AI Experiments</h3>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="text-gray-400 mt-3">Kendi kendine çalışan yapay zeka denemelerim.</p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="text-cyan-400 text-sm mt-6">• Gece Projesi</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="bg-zinc-900 border border-zinc-700 hover:border-cyan-400 rounded-3xl overflow-hidden transition-all">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="h-56 bg-gradient-to-br from-rose-600 to-orange-500 flex items-center justify-center text-7xl">⚡</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="p-8">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3 class="text-2xl font-bold">Lightning Portfolio Engine</h3>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="text-gray-400 mt-3">Hızlı karizmatik site oluşturucu.</p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="text-cyan-400 text-sm mt-6">• Kişisel Hobi</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="bg-zinc-900 border border-zinc-700 hover:border-cyan-400 rounded-3xl overflow-hidden transition-all">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="h-56 bg-gradient-to-br from-emerald-600 to-teal-500 flex items-center justify-center text-7xl">🌌</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="p-8">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3 class="text-2xl font-bold">AI Playground</h3>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="text-gray-400 mt-3">Fikirlerimi test ettiğim yapay zeka laboratuvarı.</p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="text-cyan-400 text-sm mt-6">• Merak Projeleri</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;</section>
-&nbsp;&nbsp;<!-- TECH -->
-&nbsp;&nbsp;<section class="py-24 bg-zinc-950">
-&nbsp;&nbsp;&nbsp;&nbsp;<div class="max-w-6xl mx-auto px-6 text-center">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h2 class="text-5xl font-bold mb-12">Weapons of Choice</h2>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="flex flex-wrap justify-center gap-4 text-xl">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="bg-zinc-900 px-8 py-5 rounded-2xl">Next.js</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="bg-zinc-900 px-8 py-5 rounded-2xl">Python</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="bg-zinc-900 px-8 py-5 rounded-2xl">Tailwind</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="bg-zinc-900 px-8 py-5 rounded-2xl">Grok API</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="bg-zinc-900 px-8 py-5 rounded-2xl">AI Agents</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;&nbsp;&nbsp;</div>
-&nbsp;&nbsp;</section>
-&nbsp;&nbsp;<footer class="py-12 text-center text-gray-500 border-t border-zinc-900">
-&nbsp;&nbsp;&nbsp;&nbsp;© 2026 eerrgin • Late night coder
-&nbsp;&nbsp;</footer>
+  <!-- HERO -->
+  <section class="hero min-h-screen flex items-center">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <img src="https://github.com/eerrgin.png" alt="eerrgin" class="w-40 h-40 mx-auto rounded-3xl border-4 border-cyan-400 shadow-2xl mb-8">
+      <h1 class="text-7xl font-bold tracking-tighter glow">eerrgin</h1>
+      <p class="text-4xl text-cyan-400 mt-3">App Program Developer • Yapay Zeka Geliştirici • AI Explorer</p>
+      <p class="max-w-xl mx-auto mt-6 text-xl text-gray-400">
+        Bazı geceler kod yazıyorum. Yapay zeka ile oynuyorum, ilginç fikirlerimi hayata geçiriyorum. 
+        Merak ettiğim her şeyi deniyorum ve çalıştırıyorum.
+      </p>
+      <div class="mt-12 flex justify-center gap-6">
+        <a href="#" class="px-10 py-5 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-2xl text-lg flex items-center gap-3">
+          <i class="fa-solid fa-fire"></i> Projelerimi Gör
+        </a>
+        <a href="#" class="px-10 py-5 border-2 border-white hover:bg-white hover:text-black font-bold rounded-2xl text-lg">
+          İletişime Geç
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="py-24 bg-zinc-950">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-5xl font-bold mb-8">Who Am I</h2>
+      <p class="text-2xl text-gray-300 leading-relaxed">
+        Kod ve yapay zeka benim için bir tutku. Gündüz normal hayatıma devam ediyorum, 
+        geceleri ise aklıma gelen fikirleri kodluyor, test ediyor ve geliştiriyorum. 
+        Bu benim hobim ve en sevdiğim şey.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-16">Selected Projects</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-zinc-900 border border-zinc-700 hover:border-cyan-400 rounded-3xl overflow-hidden transition-all">
+          <div class="h-56 bg-gradient-to-br from-violet-600 to-fuchsia-500 flex items-center justify-center text-7xl">🧠</div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold">Autonomous AI Experiments</h3>
+            <p class="text-gray-400 mt-3">Kendi kendine çalışan yapay zeka denemelerim.</p>
+            <div class="text-cyan-400 text-sm mt-6">• Gece Projesi</div>
+          </div>
+        </div>
+        <div class="bg-zinc-900 border border-zinc-700 hover:border-cyan-400 rounded-3xl overflow-hidden transition-all">
+          <div class="h-56 bg-gradient-to-br from-rose-600 to-orange-500 flex items-center justify-center text-7xl">⚡</div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold">Lightning Portfolio Engine</h3>
+            <p class="text-gray-400 mt-3">Hızlı karizmatik site oluşturucu.</p>
+            <div class="text-cyan-400 text-sm mt-6">• Kişisel Hobi</div>
+          </div>
+        </div>
+        <div class="bg-zinc-900 border border-zinc-700 hover:border-cyan-400 rounded-3xl overflow-hidden transition-all">
+          <div class="h-56 bg-gradient-to-br from-emerald-600 to-teal-500 flex items-center justify-center text-7xl">🌌</div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold">AI Playground</h3>
+            <p class="text-gray-400 mt-3">Fikirlerimi test ettiğim yapay zeka laboratuvarı.</p>
+            <div class="text-cyan-400 text-sm mt-6">• Merak Projeleri</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH -->
+  <section class="py-24 bg-zinc-950">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-5xl font-bold mb-12">Weapons of Choice</h2>
+      <div class="flex flex-wrap justify-center gap-4 text-xl">
+        <div class="bg-zinc-900 px-8 py-5 rounded-2xl">Next.js</div>
+        <div class="bg-zinc-900 px-8 py-5 rounded-2xl">Python</div>
+        <div class="bg-zinc-900 px-8 py-5 rounded-2xl">Tailwind</div>
+        <div class="bg-zinc-900 px-8 py-5 rounded-2xl">Grok API</div>
+        <div class="bg-zinc-900 px-8 py-5 rounded-2xl">AI Agents</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-12 text-center text-gray-500 border-t border-zinc-900">
+    © 2026 eerrgin • Late night coder
+  </footer>
 </body>
 </html>
