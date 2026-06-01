@@ -1,93 +1,101 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>eerrgin • Full Stack Developer</title>
+  <title>eerrgin • Digital Builder</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <style>
-    body { font-family: 'Segoe UI', system-ui, sans-serif; }
-    .hero-bg { background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%); }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .hero { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); }
+    .glow { text-shadow: 0 0 30px rgba(103, 232, 249, 0.5); }
   </style>
 </head>
-<body class="bg-zinc-950 text-zinc-100">
-  <section class="hero-bg min-h-screen flex items-center">
+<body class="bg-black text-white">
+  <!-- HERO -->
+  <section class="hero min-h-screen flex items-center">
     <div class="max-w-6xl mx-auto px-6 text-center">
-      <img src="https://github.com/eerrgin.png" alt="eerrgin" class="w-32 h-32 mx-auto rounded-2xl border-4 border-cyan-400 shadow-2xl">
-      <h1 class="text-6xl font-bold mt-6">eerrgin</h1>
-      <p class="text-3xl text-cyan-400 mt-2">Full Stack • AI Engineer • Builder</p>
-      <p class="max-w-md mx-auto mt-4 text-zinc-400">Kod yazıyorum, geleceği inşa ediyorum. Hayal ettiğin her şeyi gerçeğe dönüştürürüm.</p>
-      <div class="mt-10 flex justify-center gap-4">
-        <a href="#" class="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-2xl flex items-center gap-2">
-          <i class="fa-solid fa-rocket"></i> Projelerimi İncele
+      <img src="https://github.com/eerrgin.png" alt="eerrgin" class="w-40 h-40 mx-auto rounded-3xl border-4 border-cyan-400 shadow-2xl mb-8">
+      <h1 class="text-7xl font-bold tracking-tighter glow">eerrgin</h1>
+      <p class="text-4xl text-cyan-400 mt-3">Full Stack Engineer • AI Engineer • Builder</p>
+      <p class="max-w-xl mx-auto mt-6 text-xl text-gray-400">
+        I write code, I build the future. I turn every idea you have into reality.
+      </p>
+      <div class="mt-12 flex justify-center gap-6">
+        <a href="#" class="px-10 py-5 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-2xl text-lg flex items-center gap-3">
+          <i class="fa-solid fa-fire"></i> View My Work
         </a>
-        <a href="#" class="px-8 py-4 border border-zinc-400 hover:border-white rounded-2xl flex items-center gap-2">
-          <i class="fa-solid fa-paper-plane"></i> İletişime Geç
+        <a href="#" class="px-10 py-5 border-2 border-white hover:bg-white hover:text-black font-bold rounded-2xl text-lg">
+          Get in Touch
         </a>
       </div>
     </div>
   </section>
 
-  <section class="py-20 bg-zinc-900">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-10">Hakkımda</h2>
-      <p class="text-xl text-zinc-300 leading-relaxed text-center">
-        Tutkulu bir geliştiriciyim. Modern web teknolojileri, yapay zeka ve hızlı prototipler üzerine çalışıyorum. 
-        GitHub’da her gün yeni şeyler inşa ediyorum. Kod benim dilim, inovasyon ise hobim.
+  <!-- ABOUT -->
+  <section class="py-24 bg-zinc-950">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-5xl font-bold mb-8">Who Am I</h2>
+      <p class="text-2xl text-gray-300 leading-relaxed">
+        Obsessed with building high-impact digital experiences. I work with bleeding-edge tech, 
+        ship fast, and break things that deserve to be broken. Currently living in the future.
       </p>
     </div>
   </section>
 
-  <section class="py-20">
+  <!-- PROJECTS -->
+  <section class="py-24">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-12">Öne Çıkan Projeler</h2>
+      <h2 class="text-5xl font-bold text-center mb-16">Selected Projects</h2>
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-700 hover:border-cyan-400 transition">
-          <div class="h-48 bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center text-6xl">🚀</div>
-          <div class="p-6">
-            <h3 class="text-2xl font-semibold">AI Chatbot Platform</h3>
-            <p class="text-zinc-400 mt-2">Gerçek zamanlı yapay zeka asistanı • Next.js + Grok API</p>
-            <div class="text-cyan-400 text-sm mt-4">Live • 12k+ kullanıcı</div>
+        <div class="bg-zinc-900 border border-zinc-700 hover:border-cyan-400 rounded-3xl overflow-hidden transition-all">
+          <div class="h-56 bg-gradient-to-br from-violet-600 to-fuchsia-500 flex items-center justify-center text-7xl">🧠</div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold">Autonomous AI Agent Platform</h3>
+            <p class="text-gray-400 mt-3">Multi-agent system that autonomously handles complex workflows.</p>
+            <div class="text-cyan-400 text-sm mt-6">• Next.js • Grok • LangGraph • 18k users</div>
           </div>
         </div>
-        <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-700 hover:border-cyan-400 transition">
-          <div class="h-48 bg-gradient-to-br from-rose-600 to-orange-500 flex items-center justify-center text-6xl">🌐</div>
-          <div class="p-6">
-            <h3 class="text-2xl font-semibold">Modern Portfolio Engine</h3>
-            <p class="text-zinc-400 mt-2">Saniyeler içinde kişisel site oluşturan araç</p>
-            <div class="text-cyan-400 text-sm mt-4">Open Source • 4.8k stars</div>
+        <div class="bg-zinc-900 border border-zinc-700 hover:border-cyan-400 rounded-3xl overflow-hidden transition-all">
+          <div class="h-56 bg-gradient-to-br from-rose-600 to-orange-500 flex items-center justify-center text-7xl">⚡</div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold">Lightning Portfolio Engine</h3>
+            <p class="text-gray-400 mt-3">Dynamic developer portfolios generated in seconds.</p>
+            <div class="text-cyan-400 text-sm mt-6">• Open Source • 6.2k stars</div>
           </div>
         </div>
-        <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-700 hover:border-cyan-400 transition">
-          <div class="h-48 bg-gradient-to-br from-emerald-600 to-teal-500 flex items-center justify-center text-6xl">📱</div>
-          <div class="p-6">
-            <h3 class="text-2xl font-semibold">Mobile Finance App</h3>
-            <p class="text-zinc-400 mt-2">React Native ile kripto takip uygulaması</p>
-            <div class="text-cyan-400 text-sm mt-4">App Store • 28k indirme</div>
+        <div class="bg-zinc-900 border border-zinc-700 hover:border-cyan-400 rounded-3xl overflow-hidden transition-all">
+          <div class="h-56 bg-gradient-to-br from-emerald-600 to-teal-500 flex items-center justify-center text-7xl">🌍</div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold">Global Crypto Intelligence</h3>
+            <p class="text-gray-400 mt-3">Real-time market intelligence &amp; trading automation tool.</p>
+            <div class="text-cyan-400 text-sm mt-6">• React Native • 34k downloads</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="py-20 bg-zinc-900">
+  <!-- TECH -->
+  <section class="py-24 bg-zinc-950">
     <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold mb-12">Teknolojiler</h2>
-      <div class="flex flex-wrap justify-center gap-6 text-5xl">
-        <div class="bg-zinc-800 px-6 py-4 rounded-2xl">Next.js</div>
-        <div class="bg-zinc-800 px-6 py-4 rounded-2xl">React</div>
-        <div class="bg-zinc-800 px-6 py-4 rounded-2xl">Tailwind</div>
-        <div class="bg-zinc-800 px-6 py-4 rounded-2xl">Python</div>
-        <div class="bg-zinc-800 px-6 py-4 rounded-2xl">AI / Grok</div>
-        <div class="bg-zinc-800 px-6 py-4 rounded-2xl">Docker</div>
-        <div class="bg-zinc-800 px-6 py-4 rounded-2xl">GitHub</div>
+      <h2 class="text-5xl font-bold mb-12">Weapons of Choice</h2>
+      <div class="flex flex-wrap justify-center gap-4 text-xl">
+        <div class="bg-zinc-900 px-8 py-5 rounded-2xl">Next.js</div>
+        <div class="bg-zinc-900 px-8 py-5 rounded-2xl">TypeScript</div>
+        <div class="bg-zinc-900 px-8 py-5 rounded-2xl">Tailwind</div>
+        <div class="bg-zinc-900 px-8 py-5 rounded-2xl">Python</div>
+        <div class="bg-zinc-900 px-8 py-5 rounded-2xl">AI Agents</div>
+        <div class="bg-zinc-900 px-8 py-5 rounded-2xl">Docker</div>
+        <div class="bg-zinc-900 px-8 py-5 rounded-2xl">PostgreSQL</div>
+        <div class="bg-zinc-900 px-8 py-5 rounded-2xl">Grok API</div>
       </div>
     </div>
   </section>
 
-  <footer class="py-12 text-center border-t border-zinc-800 text-zinc-500">
-    © 2026 eerrgin • Built with pure confidence
+  <footer class="py-12 text-center text-gray-500 border-t border-zinc-900">
+    © 2026 eerrgin • Built different.
   </footer>
 </body>
 </html>
