@@ -11,7 +11,21 @@
     .glow { text-shadow: 0 0 30px rgba(103, 232, 249, 0.5); }
   </style>
 </head>
-<body class="bg-black text-white">
+<body class="bg-black text-white relative">
+
+  <!-- FLOATING SOCIAL MEDIA ICONS -->
+  <div class="fixed bottom-8 right-8 flex flex-col gap-4 z-50">
+    <a href="https://instagram.com/eerrgin" target="_blank" rel="noopener noreferrer" 
+       class="w-12 h-12 bg-zinc-900/80 backdrop-blur-md border border-zinc-700 rounded-full flex items-center justify-center text-gray-400 hover:text-pink-500 hover:border-pink-500 hover:scale-110 transition-all shadow-2xl">
+      <i class="fa-brands fa-instagram text-xl"></i>
+    </a>
+    <a href="https://facebook.com/eerrgin" target="_blank" rel="noopener noreferrer" 
+       class="w-12 h-12 bg-zinc-900/80 backdrop-blur-md border border-zinc-700 rounded-full flex items-center justify-center text-gray-400 hover:text-blue-500 hover:border-blue-500 hover:scale-110 transition-all shadow-2xl">
+      <i class="fa-brands fa-facebook-f text-xl"></i>
+    </a>
+  </div>
+
+  <!-- HERO -->
   <section class="hero min-h-screen flex items-center">
     <div class="max-w-6xl mx-auto px-6 text-center">
       <img src="https://github.com/eerrgin.png" alt="eerrgin" class="w-40 h-40 mx-auto rounded-3xl border-4 border-cyan-400 shadow-2xl mb-8">
@@ -23,24 +37,28 @@
       </p>
       
       <div class="mt-12 flex flex-wrap justify-center gap-6">
+        <!-- My Projects → GitHub -->
         <a href="https://github.com/eerrgin" target="_blank" rel="noopener noreferrer"
            class="px-10 py-5 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-2xl text-lg flex items-center gap-3 transition-all">
           <i class="fa-solid fa-fire"></i> My Projects
         </a>
        
+        <!-- XDA Profile -->
         <a href="https://xdaforums.com/m/catsnovel.12522279/" target="_blank" rel="noopener noreferrer"
            class="px-10 py-5 bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-black font-bold rounded-2xl text-lg flex items-center gap-3 transition-all shadow-[0_0_20px_rgba(249,115,22,0.4)] hover:shadow-[0_0_30px_rgba(249,115,22,0.7)] hover:-translate-y-1">
           <i class="fa-solid fa-mobile-screen-button"></i> XDA
         </a>
 
-        <a href="https://www.facebook.com/eerrgin" target="_blank" rel="noopener noreferrer"
+        <!-- Contact Me → Email -->
+        <a href="mailto:erginkaplan22@gmail.com"
            class="px-10 py-5 border-2 border-white hover:bg-white hover:text-black font-bold rounded-2xl text-lg flex items-center gap-3 transition-all">
-          <i class="fa-brands ergin kaplan"></i> Contact Me
+          <i class="fa-solid fa-envelope"></i> Contact Me
         </a>
       </div>
     </div>
   </section>
 
+  <!-- ABOUT -->
   <section class="py-24 bg-zinc-950">
     <div class="max-w-4xl mx-auto px-6 text-center">
       <h2 class="text-5xl font-bold mb-8">Who Am I</h2>
@@ -51,6 +69,7 @@
     </div>
   </section>
 
+  <!-- PROJECTS -->
   <section class="py-24">
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-5xl font-bold text-center mb-16">Selected Projects</h2>
