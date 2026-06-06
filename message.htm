@@ -3,56 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eerrgin.github.io</title>
+    <title>Contact - eerrgin</title>
     <style>
-        /* Genel Sayfa Tasarımı */
-        body { font-family: Arial, sans-serif; background-color: #f4f4f4; text-align: center; padding-top: 50px; }
-        .message-container { display: inline-flex; align-items: flex-end; margin-top: 20px; }
-        
-        #open-msg-btn { padding: 10px 20px; background-color: #333; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
-        #open-msg-btn:hover { background-color: #555; }
-        
-        #secret-login-dot { cursor: pointer; color: #ccc; font-size: 10px; margin-left: 3px; opacity: 0.2; user-select: none; }
-        
-        /* Açılır Pencere (Modal) */
-        .custom-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); }
-        .modal-content { background-color: #fefefe; margin: 10% auto; padding: 20px; border-radius: 8px; width: 90%; max-width: 400px; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
-        .modal-content input, .modal-content textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        
-        #send-btn { width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
-        #send-btn:hover { background-color: #218838; }
-        
-        .close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
-        .close-btn:hover { color: black; }
-        
-        .msg-item { background: #eee; padding: 10px; margin-bottom: 10px; border-radius: 4px; font-size: 14px; }
-        .msg-item strong { color: #333; }
+        /* Modern ve Zengin Arka Plan */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Mesaj Kartı Tasarımı */
+        .contact-card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+        }
+
+        .contact-card h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Gizli Admin Noktası */
+        #secret-login-dot {
+            cursor: pointer;
+            color: #ccc;
+            font-size: 14px;
+            opacity: 0.1;
+            user-select: none;
+        }
+
+        /* Şık Girdi Alanları */
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            background-color: #f9f9f9;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+            background-color: white;
+        }
+
+        /* Gönder Butonu */
+        #send-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #2b2b2b;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #send-btn:hover {
+            background-color: #4CAF50;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        /* Admin Gelen Kutusu (Açılır Pencere) */
+        .admin-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .admin-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            text-align: left;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .close-btn:hover { color: red; }
+
+        .msg-item {
+            background: #f8f9fa;
+            border-left: 4px solid #2b2b2b;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .msg-item strong { color: #2b2b2b; display: block; margin-bottom: 5px;}
+        .msg-date { font-size: 11px; color: #999; margin-bottom: 8px; display: block; }
     </style>
 </head>
 <body>
 
-    <h1>Welcome to eerrgin</h1>
-    <p>This is a personal webpage.</p>
-    
-    <div class="message-container">
-        <button id="open-msg-btn">Send a Message</button>
-        <span id="secret-login-dot">.</span>
+    <div class="contact-card">
+        <h2>Contact Me <span id="secret-login-dot">.</span></h2>
+        <input type="text" id="sender-name" placeholder="Your Name" required>
+        <textarea id="sender-msg" rows="5" placeholder="Write your message here..." required></textarea>
+        <button id="send-btn">Send Message</button>
+        <a href="index.html" style="display: block; margin-top: 15px; color: #888; text-decoration: none; font-size: 13px;">← Back to Home</a>
     </div>
 
-    <div id="msg-modal" class="custom-modal">
-        <div class="modal-content">
-            <span class="close-btn" id="close-msg">&times;</span>
-            <h2>Leave a Message</h2>
-            <input type="text" id="sender-name" placeholder="Your Name" required>
-            <textarea id="sender-msg" rows="5" placeholder="Write your message here..." required></textarea>
-            <button id="send-btn">Send</button>
-        </div>
-    </div>
-
-    <div id="admin-modal" class="custom-modal">
-        <div class="modal-content">
+    <div id="admin-modal" class="admin-modal">
+        <div class="admin-content">
             <span class="close-btn" id="close-admin">&times;</span>
-            <h2>Inbox (Admin)</h2>
+            <h2 style="margin-top: 0;">Inbox (Admin)</h2>
             <div id="message-list">
                 <p style="color: #666; font-size: 14px;">Loading messages...</p>
             </div>
@@ -63,7 +152,6 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
 
-        // Senin Anahtarların
         const firebaseConfig = {
             apiKey: "AIzaSyAWhFIvkzjW17aeJT7LQkQtATE6AKtGDGE",
             authDomain: "eerrgin-site.firebaseapp.com",
@@ -73,104 +161,4 @@
             appId: "1:588154027449:web:fc95ce4cffc35f351b8a68"
         };
 
-        // Firebase'i Başlat
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        // Arayüz Elementleri
-        const msgModal = document.getElementById("msg-modal");
-        const adminModal = document.getElementById("admin-modal");
-        const openMsgBtn = document.getElementById("open-msg-btn");
-        const secretDot = document.getElementById("secret-login-dot");
-        const closeMsg = document.getElementById("close-msg");
-        const closeAdmin = document.getElementById("close-admin");
-        const sendBtn = document.getElementById("send-btn");
-        const messageList = document.getElementById("message-list");
-
-        // Modalları Aç/Kapat
-        openMsgBtn.onclick = () => msgModal.style.display = "block";
-        closeMsg.onclick = () => msgModal.style.display = "none";
-        closeAdmin.onclick = () => adminModal.style.display = "none";
-        window.onclick = (e) => {
-            if (e.target == msgModal) msgModal.style.display = "none";
-            if (e.target == adminModal) adminModal.style.display = "none";
-        };
-
-        // Mesaj Gönderme İşlemi (Ziyaretçi)
-        sendBtn.onclick = async () => {
-            const name = document.getElementById("sender-name").value;
-            const msg = document.getElementById("sender-msg").value;
-            
-            if(!name || !msg) {
-                alert("Please fill all fields.");
-                return;
-            }
-            
-            sendBtn.innerText = "Sending...";
-            
-            try {
-                // Veritabanına Yazma
-                await addDoc(collection(db, "messages"), {
-                    name: name,
-                    message: msg,
-                    timestamp: serverTimestamp()
-                });
-                
-                sendBtn.innerText = "Sent!";
-                sendBtn.style.backgroundColor = "#17a2b8";
-                
-                setTimeout(() => {
-                    msgModal.style.display = "none";
-                    sendBtn.innerText = "Send";
-                    sendBtn.style.backgroundColor = "#28a745";
-                    document.getElementById("sender-name").value = "";
-                    document.getElementById("sender-msg").value = "";
-                }, 1500);
-                
-            } catch (error) {
-                console.error("Error:", error);
-                alert("Veritabanı bağlantı hatası! Lütfen Firebase panelinden Firestore'u etkinleştirin.");
-                sendBtn.innerText = "Send";
-            }
-        };
-
-        // Mesajları Okuma İşlemi (Patron Girişi)
-        secretDot.onclick = async () => {
-            let pass = prompt("Access Code:");
-            if (pass === "1845") {
-                adminModal.style.display = "block";
-                messageList.innerHTML = '<p style="color: #666;">Fetching messages...</p>';
-                
-                try {
-                    // Mesajları Çek (Tarihe göre sıralı)
-                    const q = query(collection(db, "messages"), orderBy("timestamp", "desc"));
-                    const querySnapshot = await getDocs(q);
-                    
-                    messageList.innerHTML = ""; // Listeyi temizle
-                    
-                    if(querySnapshot.empty) {
-                        messageList.innerHTML = '<p>No messages found.</p>';
-                        return;
-                    }
-
-                    querySnapshot.forEach((doc) => {
-                        const data = doc.data();
-                        messageList.innerHTML += `
-                            <div class="msg-item">
-                                <strong>${data.name}:</strong><br>
-                                ${data.message}
-                            </div>
-                        `;
-                    });
-                } catch (error) {
-                    console.error("Error fetching:", error);
-                    messageList.innerHTML = '<p style="color: red;">Error fetching messages. Did you create the Firestore Database in Test Mode?</p>';
-                }
-                
-            } else if (pass !== null) {
-                alert("Access Denied.");
-            }
-        };
-    </script>
-</body>
-</html>
+        const app = initializeApp(firebaseConfig
