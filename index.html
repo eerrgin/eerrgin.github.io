@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>eerrgin • Premium Builder</title>
+  
+  <!-- GOOGLE İNDEKSLER İÇİN GİZLİ SEO ETİKETLERİ (SADECE ARAMA MOTORLARI GÖRÜR) -->
+  <meta name="author" content="Ergin Kaplan">
+  <meta name="keywords" content="Ergin Kaplan, eerrgin, app developer, AI explorer, midnight coder">
+  <meta name="description" content="Personal portfolio of Ergin Kaplan (eerrgin) - App Developer & AI Explorer">
+  
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <style>
@@ -87,6 +93,11 @@
       opacity: 1;
       transform: translateY(0);
     }
+    
+    /* Buton hover için özel imleç uyumu */
+    a, button, [role="button"] {
+      cursor: none;
+    }
   </style>
 </head>
 <body class="relative">
@@ -100,6 +111,7 @@
     <source src="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/refs/heads/main/7mix.mp3" type="audio/mpeg">
   </audio>
 
+  <!-- Müzik Çalar -->
   <div class="fixed bottom-8 left-8 z-50 flex items-center gap-4 glass-player px-5 py-3 rounded-full shadow-2xl transition-all hover:border-cyan-500 cursor-pointer" id="music-toggle">
     <div id="music-icon" class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400">
       <i class="fa-solid fa-play"></i>
@@ -115,6 +127,7 @@
     </div>
   </div>
 
+  <!-- Sosyal Medya Sabit Linkleri -->
   <div class="fixed bottom-8 right-8 flex flex-col gap-4 z-50">
     <a href="https://instagram.com/eerrgin" target="_blank" class="w-12 h-12 glass-player rounded-full flex items-center justify-center text-gray-400 hover:text-pink-500 hover:scale-110 transition-all shadow-2xl hover:border-pink-500">
       <i class="fa-brands fa-instagram text-xl"></i>
@@ -124,6 +137,7 @@
     </a>
   </div>
 
+  <!-- ANA HERO BÖLÜMÜ -->
   <section class="min-h-screen flex items-center justify-center pt-20 pb-10">
     <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
       
@@ -142,12 +156,19 @@
         Part of the "Midnight Coders" community — building for fun.
         </p>
         
+        <!-- BUTON GRUBU (GITHUB, XDA, YENİ MESAJ BUTONU) -->
         <div class="flex flex-wrap gap-4">
           <a href="https://github.com/eerrgin" target="_blank" class="px-8 py-4 bg-white text-black font-bold rounded-xl text-md flex items-center gap-3 hover:bg-cyan-400 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]">
             <i class="fa-brands fa-github text-xl"></i> GitHub
           </a>
           <a href="https://xdaforums.com/m/catsnovel.12522279/" target="_blank" class="px-8 py-4 bg-zinc-900 border border-zinc-700 text-white font-bold rounded-xl text-md flex items-center gap-3 hover:border-orange-500 hover:text-orange-500 transition-all">
             <i class="fa-solid fa-mobile-screen-button"></i> XDA Profile
+          </a>
+          
+          <!-- ✨ YENİ MESAJ KUTUSU BUTONU ✨ (Güzel ikonlu, İngilizce metin, message.htm yönlendirmeli) -->
+          <a href="https://eerrgin.github.io/message.htm" target="_blank" class="px-8 py-4 bg-black/40 backdrop-blur-sm border border-cyan-500 text-cyan-400 font-bold rounded-xl text-md flex items-center gap-3 hover:bg-cyan-500 hover:text-black hover:border-cyan-400 transition-all duration-300 shadow-lg hover:shadow-cyan-500/30 group">
+            <i class="fa-regular fa-paper-plane text-xl group-hover:rotate-12 transition-transform"></i>
+            Send a message to Ergin
           </a>
         </div>
       </div>
@@ -160,6 +181,7 @@
     </div>
   </section>
 
+  <!-- PROJE KARTLARI -->
   <section class="py-24 bg-zinc-950/50 border-t border-zinc-900 relative z-10">
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-4xl font-bold mb-16 reveal">Selected <span class="text-cyan-400">Prototypes</span></h2>
@@ -197,6 +219,13 @@
     <p>© 2026 eerrgin • Code & Architecture</p>
     <p class="mt-2 text-xs text-zinc-700">Infrastructure for ergin.wiki indexing...</p>
   </footer>
+
+  <!-- 🔻 GOOGLE BOTLARI İÇİN GÖRÜNMEZ SEO METNİ (SADECE ARAMA MOTORLARI OKUR, İNSAN GÖRMEZ) 🔻 -->
+  <div style="position: absolute; left: -9999px; top: -9999px; width: 0; height: 0; overflow: hidden; visibility: hidden; pointer-events: none;">
+    Ergin Kaplan — Full name reference for search engines. Personal developer brand identity: Ergin Kaplan (eerrgin). AI & experimental coder.
+  </div>
+  <!-- Ek bir mikro veri ile güçlendirme (Google için insan görünmez) -->
+  <div aria-hidden="true" style="display: none;">ergin kaplan | ergin kaplan developer</div>
 
   <script>
     // --- ÖZEL İMLEÇ KODU ---
@@ -277,6 +306,15 @@
     };
     window.addEventListener("scroll", revealOnScroll);
     revealOnScroll(); // Sayfa yüklendiğinde hemen kontrol et
+    
+    // --- MESAJ BUTONUNA BONUS: Tıklama efekti (isteğe bağlı, mevcut yapıyı bozmaz) ---
+    const messageBtn = document.querySelector('a[href="https://eerrgin.github.io/message.htm"]');
+    if(messageBtn) {
+      messageBtn.addEventListener("click", (e) => {
+        // Sadece küçük bir console çıktısı, sayfa işlevselliğini etkilemez
+        console.log("📬 Yönlendiriliyor: Ergin’e mesaj kutusu -> message.htm");
+      });
+    }
   </script>
 </body>
 </html>
