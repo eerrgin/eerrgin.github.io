@@ -3,148 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - eerrgin</title>
+    <title>Contact - Ergin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Modern ve Zengin Arka Plan */
+        :root {
+            --primary: #6366f1;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-sub: #64748b;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
             margin: 0;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            color: var(--text-main);
         }
 
-        /* Mesaj Kartı Tasarımı */
         .contact-card {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: var(--card-bg);
+            padding: 48px;
+            border-radius: 20px;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             text-align: center;
-            position: relative;
+            border: 1px solid #e2e8f0;
         }
 
-        .contact-card h2 {
-            margin-top: 0;
-            color: #333;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
+        .header h2 { font-size: 28px; margin: 0; letter-spacing: -0.5px; }
+        .header p { color: var(--text-sub); margin-top: 8px; margin-bottom: 32px; font-size: 15px; }
 
         /* Gizli Admin Noktası */
-        #secret-login-dot {
-            cursor: pointer;
-            color: #ccc;
-            font-size: 14px;
-            opacity: 0.1;
-            user-select: none;
-        }
+        #secret-login-dot { cursor: pointer; color: #cbd5e1; font-size: 10px; opacity: 0.5; user-select: none; }
 
-        /* Şık Girdi Alanları */
         input, textarea {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 2px solid #eee;
-            border-radius: 8px;
+            padding: 14px 16px;
+            margin-bottom: 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
             box-sizing: border-box;
-            font-size: 14px;
-            transition: border-color 0.3s;
-            background-color: #f9f9f9;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            background: #fcfcfc;
         }
 
         input:focus, textarea:focus {
             outline: none;
-            border-color: #4CAF50;
-            background-color: white;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
         }
 
-        /* Gönder Butonu */
         #send-btn {
             width: 100%;
             padding: 14px;
-            background-color: #2b2b2b;
+            background-color: var(--primary);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 16px;
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
-            transition: 0.3s;
+            transition: transform 0.1s, background 0.2s;
         }
 
-        #send-btn:hover {
-            background-color: #4CAF50;
-            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
-        }
+        #send-btn:hover { background-color: #4f46e5; }
+        #send-btn:active { transform: scale(0.98); }
 
-        /* Admin Gelen Kutusu (Açılır Pencere) */
-        .admin-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
+        .back-link { display: block; margin-top: 24px; color: var(--text-sub); text-decoration: none; font-size: 13px; font-weight: 500; }
+        .back-link:hover { color: var(--text-main); }
 
-        .admin-content {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 500px;
-            max-height: 80vh;
-            overflow-y: auto;
-            text-align: left;
-            position: relative;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #888;
-        }
-
-        .close-btn:hover { color: red; }
-
-        .msg-item {
-            background: #f8f9fa;
-            border-left: 4px solid #2b2b2b;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        .msg-item strong { color: #2b2b2b; display: block; margin-bottom: 5px;}
-        .msg-date { font-size: 11px; color: #999; margin-bottom: 8px; display: block; }
+        /* Admin Gelen Kutusu (Modal) */
+        .admin-modal { display: none; position: fixed; top:0; left:0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 1000; justify-content: center; align-items: center; }
+        .admin-content { background: white; padding: 40px; border-radius: 16px; width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto; text-align: left; position: relative; }
+        .close-btn { position: absolute; top: 20px; right: 20px; font-size: 20px; cursor: pointer; color: #94a3b8; }
+        
+        .msg-item { border-bottom: 1px solid #f1f5f9; padding: 16px 0; }
+        .msg-item strong { display: block; color: var(--text-main); margin-bottom: 4px; }
+        .msg-date { font-size: 11px; color: #94a3b8; margin-bottom: 8px; display: block; }
     </style>
 </head>
 <body>
 
     <div class="contact-card">
-        <h2>Contact Me <span id="secret-login-dot">.</span></h2>
-        <input type="text" id="sender-name" placeholder="Your Name" required>
-        <textarea id="sender-msg" rows="5" placeholder="Write your message here..." required></textarea>
+        <div class="header">
+            <h2>Contact Me <span id="secret-login-dot">.</span></h2>
+            <p>Send a message to Ergin</p>
+        </div>
+        <input type="text" id="sender-name" placeholder="Name" required>
+        <textarea id="sender-msg" rows="4" placeholder="Your message..." required></textarea>
         <button id="send-btn">Send Message</button>
-        <a href="index.html" style="display: block; margin-top: 15px; color: #888; text-decoration: none; font-size: 13px;">← Back to Home</a>
+        <a href="index.html" class="back-link">← Back to Home</a>
     </div>
 
     <div id="admin-modal" class="admin-modal">
         <div class="admin-content">
-            <span class="close-btn" id="close-admin">&times;</span>
-            <h2 style="margin-top: 0;">Inbox (Admin)</h2>
-            <div id="message-list">
-                <p style="color: #666; font-size: 14px;">Loading messages...</p>
-            </div>
+            <span class="close-btn" id="close-admin">✕</span>
+            <h2 style="margin-top: 0; font-size: 20px;">Inbox (Admin)</h2>
+            <div id="message-list"><p style="color: #666;">Loading...</p></div>
         </div>
     </div>
 
@@ -166,83 +128,32 @@
 
         const adminModal = document.getElementById("admin-modal");
         const secretDot = document.getElementById("secret-login-dot");
-        const closeAdmin = document.getElementById("close-admin");
         const sendBtn = document.getElementById("send-btn");
-        const messageList = document.getElementById("message-list");
 
-        // Admin panelini kapat
-        closeAdmin.onclick = () => adminModal.style.display = "none";
-        window.onclick = (e) => { if (e.target == adminModal) adminModal.style.display = "none"; };
-
-        // Ziyaretçi Mesaj Gönderme
+        document.getElementById("close-admin").onclick = () => adminModal.style.display = "none";
+        
         sendBtn.onclick = async () => {
             const name = document.getElementById("sender-name").value;
             const msg = document.getElementById("sender-msg").value;
-            
-            if(!name || !msg) { alert("Please fill all fields."); return; }
+            if(!name || !msg) return alert("Please fill all fields.");
             
             sendBtn.innerText = "Sending...";
-            
             try {
-                await addDoc(collection(db, "messages"), {
-                    name: name,
-                    message: msg,
-                    timestamp: serverTimestamp()
-                });
-                
-                sendBtn.innerText = "Message Sent!";
-                sendBtn.style.backgroundColor = "#4CAF50";
-                
-                setTimeout(() => {
-                    sendBtn.innerText = "Send Message";
-                    sendBtn.style.backgroundColor = "#2b2b2b";
-                    document.getElementById("sender-name").value = "";
-                    document.getElementById("sender-msg").value = "";
-                }, 2000);
-                
-            } catch (error) {
-                console.error("Error:", error);
-                alert("Veritabanı hatası! Lütfen Firebase Test Modunun açık olduğundan emin olun.");
-                sendBtn.innerText = "Send Message";
-            }
+                await addDoc(collection(db, "messages"), { name, message: msg, timestamp: serverTimestamp() });
+                sendBtn.innerText = "Sent Successfully";
+                setTimeout(() => { sendBtn.innerText = "Send Message"; document.getElementById("sender-name").value = ""; document.getElementById("sender-msg").value = ""; }, 2000);
+            } catch (e) { alert("Error!"); sendBtn.innerText = "Send Message"; }
         };
 
-        // Mesajları Okuma İşlemi (1845)
         secretDot.onclick = async () => {
-            let pass = prompt("Access Code:");
-            if (pass === "1845") {
+            if (prompt("Access Code:") === "1845") {
                 adminModal.style.display = "flex";
-                messageList.innerHTML = '<p style="color: #666;">Fetching messages...</p>';
-                
-                try {
-                    const q = query(collection(db, "messages"), orderBy("timestamp", "desc"));
-                    const querySnapshot = await getDocs(q);
-                    
-                    messageList.innerHTML = ""; 
-                    
-                    if(querySnapshot.empty) {
-                        messageList.innerHTML = '<p>No messages found.</p>';
-                        return;
-                    }
-
-                    querySnapshot.forEach((doc) => {
-                        const data = doc.data();
-                        const date = data.timestamp ? data.timestamp.toDate().toLocaleString('tr-TR') : "Just now";
-                        
-                        messageList.innerHTML += `
-                            <div class="msg-item">
-                                <strong>${data.name}</strong>
-                                <span class="msg-date">${date}</span>
-                                ${data.message}
-                            </div>
-                        `;
-                    });
-                } catch (error) {
-                    console.error("Error fetching:", error);
-                    messageList.innerHTML = '<p style="color: red;">Error fetching messages.</p>';
-                }
-            } else if (pass !== null) {
-                alert("Access Denied.");
+                const snap = await getDocs(query(collection(db, "messages"), orderBy("timestamp", "desc")));
+                document.getElementById("message-list").innerHTML = snap.empty ? "No messages." : "";
+                snap.forEach((doc) => {
+                    const d = doc.data();
+                    document.getElementById("message-list").innerHTML += `<div class="msg-item"><strong>${d.name}</strong><span class="msg-date">${d.timestamp ? d.timestamp.toDate().toLocaleString('tr-TR') : ""}</span>${d.message}</div>`;
+                });
             }
         };
     </script>
