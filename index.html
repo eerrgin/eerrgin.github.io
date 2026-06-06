@@ -3,280 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>eerrgin • Premium Builder</title>
+  <!-- SEO & İndeksleme -->
+  <title>eerrgin • Premium Builder | Ergin Kaplan</title>
+  <meta name="description" content="App Developer & AI Explorer. Personal portfolio of Ergin Kaplan.">
+  <meta name="author" content="Ergin Kaplan">
+  
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap');
     
-    body { 
-      font-family: 'Space Grotesk', sans-serif; 
-      background-color: #050505;
-      color: #ffffff;
-      cursor: none; /* Özel imleç için varsayılanı kapat */
-      overflow-x: hidden;
-    }
+    body { font-family: 'Space Grotesk', sans-serif; background-color: #050505; color: #ffffff; cursor: none; overflow-x: hidden; }
+    .bg-grid { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 50px 50px; z-index: -1; pointer-events: none; }
+    
+    /* Özel İmleç */
+    .cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999; pointer-events: none; }
+    .cursor-dot { width: 8px; height: 8px; background-color: #22d3ee; }
+    .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(34, 211, 238, 0.5); transition: width 0.2s, height 0.2s; }
 
-    /* Siber Arka Plan Izgarası */
-    .bg-grid {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background-image: 
-        linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    /* Özel Fare İmleci */
-    .cursor-dot, .cursor-outline {
-      position: fixed;
-      top: 0; left: 0;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      z-index: 9999;
-      pointer-events: none;
-    }
-    .cursor-dot {
-      width: 8px; height: 8px;
-      background-color: #22d3ee;
-    }
-    .cursor-outline {
-      width: 40px; height: 40px;
-      border: 1px solid rgba(34, 211, 238, 0.5);
-      transition: width 0.2s, height 0.2s;
-    }
-
-    /* Dinamik Parlama Efekti */
-    .glow-img {
-      position: relative;
-    }
-    .glow-img::before {
-      content: '';
-      position: absolute;
-      inset: -5px;
-      background: linear-gradient(45deg, #22d3ee, #a855f7, #22d3ee);
-      border-radius: 24px;
-      filter: blur(20px);
-      opacity: 0.5;
-      z-index: -1;
-      animation: pulse 3s linear infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 0.5; }
-      50% { opacity: 0.8; }
-    }
-
-    /* Glassmorphism Müzik Çalar */
-    .glass-player {
-      background: rgba(20, 20, 20, 0.6);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    /* Scroll Animasyonları */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease-out;
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* Admin Modal */
+    .admin-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; justify-content: center; align-items: center; }
+    .admin-content { background: #111; padding: 30px; border-radius: 12px; width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto; text-align: left; border: 1px solid #333; }
+    .msg-item { background: #1a1a1a; padding: 15px; margin-bottom: 10px; border-radius: 8px; font-size: 14px; border-left: 3px solid #22d3ee; }
   </style>
 </head>
 <body class="relative">
 
   <div class="bg-grid"></div>
-
   <div class="cursor-dot" id="cursor-dot"></div>
   <div class="cursor-outline" id="cursor-outline"></div>
 
-  <audio id="bg-music" loop>
-    <source src="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/refs/heads/main/7mix.mp3" type="audio/mpeg">
-  </audio>
-
-  <div class="fixed bottom-8 left-8 z-50 flex items-center gap-4 glass-player px-5 py-3 rounded-full shadow-2xl transition-all hover:border-cyan-500 cursor-pointer" id="music-toggle">
-    <div id="music-icon" class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400">
-      <i class="fa-solid fa-play"></i>
-    </div>
-    <div class="flex flex-col">
-      <span class="text-xs text-gray-400 font-semibold tracking-wider uppercase">BGM Track</span>
-      <span class="text-sm font-bold text-white">7mix.mp3</span>
-    </div>
-    <div id="equalizer" class="hidden gap-1 ml-2">
-      <div class="w-1 bg-cyan-400 h-2 animate-bounce"></div>
-      <div class="w-1 bg-cyan-400 h-4 animate-bounce" style="animation-delay: 0.1s;"></div>
-      <div class="w-1 bg-cyan-400 h-3 animate-bounce" style="animation-delay: 0.2s;"></div>
-    </div>
-  </div>
-
-  <div class="fixed bottom-8 right-8 flex flex-col gap-4 z-50">
-    <a href="https://instagram.com/eerrgin" target="_blank" class="w-12 h-12 glass-player rounded-full flex items-center justify-center text-gray-400 hover:text-pink-500 hover:scale-110 transition-all shadow-2xl hover:border-pink-500">
-      <i class="fa-brands fa-instagram text-xl"></i>
+  <!-- Üst Navigasyon -->
+  <nav class="fixed top-0 w-full p-6 flex justify-between items-center z-50">
+    <div class="text-xl font-bold tracking-tighter">eerrgin<span class="text-cyan-400">.</span></div>
+    <a href="contact.html" class="px-6 py-2 bg-zinc-900/80 border border-zinc-700 hover:border-cyan-500 hover:bg-cyan-950/20 text-white font-semibold rounded-full transition-all duration-300 shadow-lg backdrop-blur-md flex items-center gap-2">
+      <i class="fa-solid fa-envelope text-sm"></i> Message Ergin
     </a>
-    <a href="https://facebook.com/eerrgin" target="_blank" class="w-12 h-12 glass-player rounded-full flex items-center justify-center text-gray-400 hover:text-blue-500 hover:scale-110 transition-all shadow-2xl hover:border-blue-500">
-      <i class="fa-brands fa-facebook-f text-xl"></i>
-    </a>
-  </div>
+  </nav>
 
-  <section class="min-h-screen flex items-center justify-center pt-20 pb-10">
+  <!-- Ana İçerik -->
+  <section class="min-h-screen flex items-center justify-center pt-20">
     <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-      
-      <div class="text-left reveal">
-        <div class="inline-block px-4 py-1 rounded-full border border-zinc-800 bg-zinc-900/50 text-cyan-400 text-sm font-bold mb-6 tracking-widest">
-          <i class="fa-solid fa-terminal mr-2"></i> SYSTEM ONLINE
-        </div>
-        <h1 class="text-6xl md:text-8xl font-bold tracking-tighter mb-4">
-          eerrgin<span class="text-cyan-400">.</span>
-        </h1>
-        <p class="text-2xl text-gray-300 font-light mb-6">
-          App Developer & AI Explorer
-        </p>
-        <p class="text-lg text-gray-500 leading-relaxed mb-10 max-w-lg">
-          Some nights I code. I bring random ideas to life, tinker with AI, and experiment with everything that interests me.
-        Part of the "Midnight Coders" community — building for fun.
-        </p>
-        
-        <div class="flex flex-wrap gap-4">
-          <a href="https://github.com/eerrgin" target="_blank" class="px-8 py-4 bg-white text-black font-bold rounded-xl text-md flex items-center gap-3 hover:bg-cyan-400 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-            <i class="fa-brands fa-github text-xl"></i> GitHub
-          </a>
-          <a href="https://xdaforums.com/m/catsnovel.12522279/" target="_blank" class="px-8 py-4 bg-zinc-900 border border-zinc-700 text-white font-bold rounded-xl text-md flex items-center gap-3 hover:border-orange-500 hover:text-orange-500 transition-all">
-            <i class="fa-solid fa-mobile-screen-button"></i> XDA Profile
-          </a>
+      <div class="text-left">
+        <h1 class="text-6xl md:text-8xl font-bold tracking-tighter mb-4">eerrgin<span class="text-cyan-400">.</span></h1>
+        <p class="text-2xl text-gray-300 font-light mb-6">App Developer & AI Explorer</p>
+        <p class="text-lg text-gray-500 mb-10">Tinkering with AI and web architectures.</p>
+        <div class="flex gap-4">
+           <a href="https://github.com/eerrgin" target="_blank" class="px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-cyan-400 transition-all">GitHub</a>
         </div>
       </div>
-
-      <div class="reveal flex justify-center md:justify-end">
-        <div class="glow-img w-64 h-64 md:w-80 md:h-80 transition-transform duration-500 hover:scale-105">
-          <img src="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/refs/heads/main/12.jpg" alt="eerrgin" class="w-full h-full object-cover rounded-2xl border border-zinc-800 shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
-        </div>
+      <div class="flex justify-center">
+        <img src="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/refs/heads/main/12.jpg" class="w-64 h-64 md:w-80 md:h-80 object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-700">
       </div>
     </div>
   </section>
 
-  <section class="py-24 bg-zinc-950/50 border-t border-zinc-900 relative z-10">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold mb-16 reveal">Selected <span class="text-cyan-400">Prototypes</span></h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        
-        <div class="glass-player p-8 rounded-2xl hover:-translate-y-2 transition-all duration-300 group reveal">
-          <div class="w-14 h-14 rounded-full bg-violet-500/20 flex items-center justify-center text-violet-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-brain"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3">Autonomous Agents</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Designing self-correcting AI workflows and task automation engines.</p>
-        </div>
-
-        <div class="glass-player p-8 rounded-2xl hover:-translate-y-2 transition-all duration-300 group reveal" style="transition-delay: 100ms;">
-          <div class="w-14 h-14 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-bolt"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3">Rapid Engine</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">High-performance deployment scripts for modern web architectures.</p>
-        </div>
-
-        <div class="glass-player p-8 rounded-2xl hover:-translate-y-2 transition-all duration-300 group reveal" style="transition-delay: 200ms;">
-          <div class="w-14 h-14 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-flask"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3">Experimental Lab</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Sandbox environments for prototyping unreleased technologies.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
+  <!-- Footer ve Şifreli Admin Girişi -->
   <footer class="py-12 text-center text-gray-600 text-sm">
-    <p>© 2026 eerrgin • Code & Architecture</p>
-    <p class="mt-2 text-xs text-zinc-700">Infrastructure for ergin.wiki indexing...</p>
+    <p>© <span id="admin-trigger" class="cursor-pointer hover:text-white transition-colors duration-300">2026</span> eerrgin • Code & Architecture</p>
   </footer>
 
-  <script>
-    // --- ÖZEL İMLEÇ KODU ---
-    const dot = document.getElementById("cursor-dot");
-    const outline = document.getElementById("cursor-outline");
+  <!-- Admin Paneli (Gizli) -->
+  <div id="admin-modal" class="admin-modal">
+    <div class="admin-content">
+      <h2 class="text-xl font-bold mb-4">Admin Inbox</h2>
+      <div id="message-list"><p>Loading...</p></div>
+      <button onclick="document.getElementById('admin-modal').style.display='none'" class="mt-4 px-4 py-2 bg-red-900/20 text-red-400 rounded">Close</button>
+    </div>
+  </div>
 
-    window.addEventListener("mousemove", (e) => {
-      const posX = e.clientX;
-      const posY = e.clientY;
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+    import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
 
-      dot.style.left = `${posX}px`;
-      dot.style.top = `${posY}px`;
+    const firebaseConfig = { apiKey: "AIzaSyAWhFIvkzjW17aeJT7LQkQtATE6AKtGDGE", authDomain: "eerrgin-site.firebaseapp.com", projectId: "eerrgin-site", storageBucket: "eerrgin-site.firebasestorage.app", messagingSenderId: "588154027449", appId: "1:588154027449:web:fc95ce4cffc35f351b8a68" };
+    const db = getFirestore(initializeApp(firebaseConfig));
 
-      // Outline için pürüzsüz takip
-      outline.animate({
-        left: `${posX}px`,
-        top: `${posY}px`
-      }, { duration: 500, fill: "forwards" });
-    });
-
-    // --- MÜZİK KONTROLÜ (İlk Etkileşimde Çalar, Butonla Durdurulur) ---
-    const music = document.getElementById("bg-music");
-    const musicToggle = document.getElementById("music-toggle");
-    const musicIcon = document.getElementById("music-icon");
-    const equalizer = document.getElementById("equalizer");
-    let isPlaying = false;
-
-    // Herhangi bir yere tıklandığında müzik başlasın (Browser kısıtlamasını aşmak için)
-    document.body.addEventListener('click', function initAudio() {
-        if(!isPlaying) {
-            music.volume = 0.5; // Sesi %50'de başlat
-            music.play().then(() => {
-                isPlaying = true;
-                updateAudioUI(true);
-            }).catch(e => console.log("Otomatik çalma engellendi, manuel başlatma bekleniyor."));
-        }
-        document.body.removeEventListener('click', initAudio); // Sadece ilk tıklamada çalışır
-    }, { once: true });
-
-    // Butondan manuel aç/kapat kontrolü
-    musicToggle.addEventListener("click", (e) => {
-      e.stopPropagation(); // Body click event'ini tetiklememesi için
-      if (isPlaying) {
-        music.pause();
-        isPlaying = false;
-        updateAudioUI(false);
-      } else {
-        music.play();
-        isPlaying = true;
-        updateAudioUI(true);
+    // Admin Giriş Tetikleyici
+    document.getElementById("admin-trigger").onclick = async () => {
+      if (prompt("Access Code:") === "1845") {
+        document.getElementById("admin-modal").style.display = "flex";
+        const snap = await getDocs(query(collection(db, "messages"), orderBy("timestamp", "desc")));
+        const list = document.getElementById("message-list");
+        list.innerHTML = snap.empty ? "No messages." : "";
+        snap.forEach((doc) => {
+          const d = doc.data();
+          list.innerHTML += `<div class="msg-item"><strong>${d.name}</strong><small class="text-gray-500 block">${d.timestamp?.toDate().toLocaleString() || ""}</small>${d.message}</div>`;
+        });
       }
-    });
-
-    function updateAudioUI(playing) {
-        if(playing) {
-            musicIcon.innerHTML = '<i class="fa-solid fa-pause"></i>';
-            equalizer.classList.remove("hidden");
-            equalizer.classList.add("flex");
-        } else {
-            musicIcon.innerHTML = '<i class="fa-solid fa-play"></i>';
-            equalizer.classList.add("hidden");
-            equalizer.classList.remove("flex");
-        }
-    }
-
-    // --- SCROLL ANİMASYONLARI ---
-    const reveals = document.querySelectorAll(".reveal");
-    const revealOnScroll = () => {
-      const windowHeight = window.innerHeight;
-      const elementVisible = 100;
-      
-      reveals.forEach((reveal) => {
-        const elementTop = reveal.getBoundingClientRect().top;
-        if (elementTop < windowHeight - elementVisible) {
-          reveal.classList.add("active");
-        }
-      });
     };
-    window.addEventListener("scroll", revealOnScroll);
-    revealOnScroll(); // Sayfa yüklendiğinde hemen kontrol et
+
+    // İmleç ve diğer animasyon kodların buraya eklenecek...
   </script>
 </body>
 </html>
