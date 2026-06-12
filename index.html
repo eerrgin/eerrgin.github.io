@@ -33,13 +33,47 @@
     
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #010101;
+      background-color: #030303;
       color: #f0f0f0;
       cursor: none;
       overflow-x: hidden;
+      transition: filter 0.1s ease-out;
     }
 
-    /* Mobilde cursor'u default yap ama efekt tamamen kaybolmasın (dot ve outline gizlensin) */
+    /* PREMİUM NOISE & SCANLINE EFEKTİ */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.04;
+      z-index: 9998;
+      pointer-events: none;
+    }
+    .scanlines {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1));
+      background-size: 100% 4px;
+      z-index: 9997;
+      pointer-events: none;
+      opacity: 0.3;
+    }
+
+    /* GLITCH (SARSINTI) EFEKTİ */
+    .glitch-active {
+      animation: cyber-glitch 0.2s cubic-bezier(.25, .46, .45, .94) both;
+      filter: contrast(130%) hue-rotate(10deg) saturate(150%);
+    }
+    @keyframes cyber-glitch {
+      0% { transform: translate(0) }
+      20% { transform: translate(-4px, 2px) skewX(1deg) }
+      40% { transform: translate(4px, -2px) skewX(-1deg) }
+      60% { transform: translate(-2px, -2px) }
+      80% { transform: translate(2px, 4px) }
+      100% { transform: translate(0) }
+    }
+
     @media (max-width: 768px) {
       body, a, button, [role="button"] { cursor: auto; }
       .cursor-dot, .cursor-outline { display: none; }
@@ -47,13 +81,10 @@
 
     .bg-grid {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      top: 0; left: 0; width: 100vw; height: 100vh;
       background-image: 
-        linear-gradient(to right, rgba(34, 211, 238, 0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(34, 211, 238, 0.05) 1px, transparent 1px);
+        linear-gradient(to right, rgba(34, 211, 238, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
       background-size: 60px 60px;
       z-index: -2;
       pointer-events: none;
@@ -61,101 +92,94 @@
 
     .spotlight {
       position: fixed;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(34, 211, 238, 0.08) 0%, transparent 50%);
+      width: 100%; height: 100%;
+      background: radial-gradient(circle 600px at var(--x, 50%) var(--y, 50%), rgba(34, 211, 238, 0.07), transparent 80%);
       pointer-events: none;
       z-index: -1;
-      transition: background 0.05s ease;
+      transition: background 0.1s ease;
     }
 
-    /* Cursor stilleri daha belirgin */
     .cursor-dot, .cursor-outline {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       transform: translate(-50%, -50%);
       border-radius: 50%;
       z-index: 9999;
       pointer-events: none;
-      transition: width 0.2s, height 0.2s, background 0.2s;
+      transition: width 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.2s;
     }
     .cursor-dot {
-      width: 8px;
-      height: 8px;
-      background-color: #22d3ee;
-      box-shadow: 0 0 10px #22d3ee;
+      width: 6px; height: 6px;
+      background-color: #00f0ff;
+      box-shadow: 0 0 12px #00f0ff, 0 0 20px #00f0ff;
     }
     .cursor-outline {
-      width: 44px;
-      height: 44px;
-      border: 2px solid rgba(34, 211, 238, 0.8);
-      transition: all 0.15s ease;
+      width: 40px; height: 40px;
+      border: 1px solid rgba(0, 240, 255, 0.5);
     }
     a:hover ~ .cursor-outline, button:hover ~ .cursor-outline, .cursor-hover {
-      width: 64px;
-      height: 64px;
-      background: rgba(34, 211, 238, 0.15);
-      border-color: #22d3ee;
-      backdrop-filter: blur(3px);
+      width: 70px; height: 70px;
+      background: rgba(0, 240, 255, 0.1);
+      border-color: #00f0ff;
+      backdrop-filter: blur(2px);
     }
 
     .glass-premium {
-      background: rgba(12, 12, 20, 0.55);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(34, 211, 238, 0.2);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      background: rgba(10, 10, 15, 0.6);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
     }
+    
     .glass-card {
-      background: rgba(18, 18, 28, 0.65);
+      background: linear-gradient(145deg, rgba(18, 18, 28, 0.7), rgba(10, 10, 15, 0.9));
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.05);
-      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border: 1px solid rgba(255,255,255,0.03);
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: border-color 0.4s ease, box-shadow 0.4s ease; /* Tilt için transform transition kaldırıldı */
     }
     .glass-card:hover {
-      border-color: #22d3ee;
-      box-shadow: 0 20px 35px -15px rgba(34, 211, 238, 0.3);
-      transform: translateY(-6px);
+      border-color: rgba(34, 211, 238, 0.5);
+      box-shadow: 0 20px 40px -10px rgba(0, 240, 255, 0.2);
+    }
+    /* Kart içi elemanlara derinlik */
+    .glass-card > * {
+      transform: translateZ(30px);
     }
 
-    /* Resim efekt: başlangıçta tamamen siyah-beyaz, hover/touch'da renkli */
     .profile-img {
-      filter: grayscale(100%);
-      transition: filter 0.5s ease, transform 0.5s ease;
+      filter: grayscale(100%) contrast(110%);
+      transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .profile-img:hover {
-      filter: grayscale(0%);
+      filter: grayscale(0%) contrast(105%) saturate(120%);
     }
-    /* Mobilde touch için de renkli olsun */
     @media (hover: none) and (pointer: coarse) {
-      .profile-img:active {
-        filter: grayscale(0%);
-      }
+      .profile-img:active { filter: grayscale(0%); }
     }
 
-    .glow-img {
-      position: relative;
-    }
+    .glow-img { position: relative; }
     .glow-img::before {
       content: '';
       position: absolute;
-      inset: -8px;
-      background: linear-gradient(125deg, #22d3ee, #a855f7, #22d3ee);
-      border-radius: 32px;
-      filter: blur(28px);
-      opacity: 0.5;
+      inset: -10px;
+      background: linear-gradient(135deg, #00f0ff, #7000ff, #00f0ff);
+      border-radius: 35px;
+      filter: blur(35px);
+      opacity: 0.4;
       z-index: -1;
-      animation: pulseGlow 3s infinite alternate;
+      animation: pulseGlow 4s ease-in-out infinite alternate;
     }
     @keyframes pulseGlow {
-      0% { opacity: 0.3; filter: blur(20px); }
-      100% { opacity: 0.7; filter: blur(32px); }
+      0% { opacity: 0.2; filter: blur(25px); transform: scale(0.98); }
+      100% { opacity: 0.6; filter: blur(40px); transform: scale(1.02); }
     }
 
     .reveal {
       opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s cubic-bezier(0.2, 0.7, 0.3, 1);
+      transform: translateY(30px);
+      transition: all 0.9s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
     .reveal.active {
       opacity: 1;
@@ -163,279 +187,281 @@
     }
 
     .neon-text {
-      text-shadow: 0 0 5px #22d3ee, 0 0 10px rgba(34,211,238,0.5);
+      text-shadow: 0 0 10px rgba(0, 240, 255, 0.7), 0 0 20px rgba(0, 240, 255, 0.4);
     }
 
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #0a0a0a;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #22d3ee;
-      border-radius: 10px;
-    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #050505; }
+    ::-webkit-scrollbar-thumb { background: #00f0ff; border-radius: 10px; }
 
     .typed-cursor {
       display: inline-block;
       width: 2px;
-      background-color: #22d3ee;
+      background-color: #00f0ff;
       margin-left: 4px;
+      box-shadow: 0 0 8px #00f0ff;
       animation: blink 0.8s infinite;
     }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
     #particle-canvas {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       pointer-events: none;
       z-index: -1;
-      opacity: 0.4;
+      opacity: 0.3;
     }
   </style>
 </head>
 <body>
 
+  <div class="scanlines"></div>
   <canvas id="particle-canvas"></canvas>
   <div class="bg-grid"></div>
   <div class="spotlight" id="spotlight"></div>
   <div class="cursor-dot" id="cursor-dot"></div>
   <div class="cursor-outline" id="cursor-outline"></div>
 
-  <!-- MÜZİK -->
   <audio id="bg-music" loop preload="auto">
     <source src="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/refs/heads/main/7mix.mp3" type="audio/mpeg">
   </audio>
 
-  <div class="fixed bottom-6 left-6 z-50 flex items-center gap-4 glass-premium px-5 py-3 rounded-full shadow-2xl music-player cursor-pointer transition-all" id="music-toggle">
-    <div id="music-icon" class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 text-lg">
-      <i class="fa-solid fa-play"></i>
+  <div class="fixed bottom-6 left-6 z-50 flex items-center gap-4 glass-premium px-5 py-3 rounded-full hover:border-cyan-500/50 transition-all cursor-pointer" id="music-toggle">
+    <div id="music-icon" class="w-10 h-10 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-lg shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+      <i class="fa-solid fa-play ml-1"></i>
     </div>
     <div class="flex flex-col">
-      <span class="text-[11px] text-gray-400 font-semibold tracking-wider uppercase">Ambient</span>
+      <span class="text-[10px] text-cyan-500/70 font-bold tracking-widest uppercase">Ambient Matrix</span>
       <span class="text-sm font-bold text-white tracking-tight">7mix.mp3</span>
     </div>
-    <div class="hidden md:flex items-center gap-2 ml-2">
-      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.4" class="w-20 h-1 bg-gray-600 rounded-lg appearance-none cursor-pointer" style="accent-color: #22d3ee;">
-      <i class="fa-solid fa-volume-low text-gray-400 text-xs"></i>
+    <div class="hidden md:flex items-center gap-2 ml-3">
+      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.4" class="w-16 h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer" style="accent-color: #00f0ff;">
     </div>
-    <div id="equalizer" class="hidden gap-[2px] ml-2">
-      <div class="w-1 bg-cyan-400 h-2 animate-bounce"></div>
-      <div class="w-1 bg-cyan-400 h-3 animate-bounce" style="animation-delay: 0.1s;"></div>
-      <div class="w-1 bg-cyan-400 h-2 animate-bounce" style="animation-delay: 0.2s;"></div>
+    <div id="equalizer" class="hidden gap-[3px] ml-2 items-end h-4">
+      <div class="w-[3px] bg-[#00f0ff] h-2 animate-[bounce_0.8s_infinite] shadow-[0_0_5px_#00f0ff]"></div>
+      <div class="w-[3px] bg-[#00f0ff] h-4 animate-[bounce_0.8s_infinite_0.1s] shadow-[0_0_5px_#00f0ff]"></div>
+      <div class="w-[3px] bg-[#00f0ff] h-2 animate-[bounce_0.8s_infinite_0.2s] shadow-[0_0_5px_#00f0ff]"></div>
     </div>
   </div>
 
-  <!-- Sağ alt sosyal medya + forum linki eklendi -->
   <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
-    <div class="glass-premium rounded-full px-3 py-1 text-xs flex items-center gap-2">
+    <div class="glass-premium rounded-full px-3 py-1.5 text-[10px] flex items-center gap-2 border-green-500/20">
       <span class="relative flex h-2 w-2">
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500 box-shadow-[0_0_8px_#22c55e]"></span>
       </span>
-      <span class="text-gray-300 font-mono">ONLINE</span>
+      <span class="text-gray-300 font-mono tracking-widest">SYS.ONLINE</span>
     </div>
-    <a href="https://instagram.com/eerrgin" target="_blank" class="w-12 h-12 glass-premium rounded-full flex items-center justify-center text-gray-300 hover:text-pink-500 hover:scale-110 transition-all duration-300 hover:border-pink-500">
-      <i class="fa-brands fa-instagram text-xl"></i>
+    <a href="https://instagram.com/eerrgin" target="_blank" class="w-12 h-12 glass-premium rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-gradient-to-tr hover:from-purple-600 hover:to-pink-500 transition-all duration-300">
+      <i class="fa-brands fa-instagram text-lg"></i>
     </a>
-    <a href="https://facebook.com/eerrgin" target="_blank" class="w-12 h-12 glass-premium rounded-full flex items-center justify-center text-gray-300 hover:text-blue-500 hover:scale-110 transition-all duration-300 hover:border-blue-500">
-      <i class="fa-brands fa-facebook-f text-xl"></i>
+    <a href="https://facebook.com/eerrgin" target="_blank" class="w-12 h-12 glass-premium rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300">
+      <i class="fa-brands fa-facebook-f text-lg"></i>
     </a>
-    <!-- YENİ: Bilişim forum linki -->
-    <a href="https://www.dev.to" target="_blank" class="w-12 h-12 glass-premium rounded-full flex items-center justify-center text-gray-300 hover:text-cyan-400 hover:scale-110 transition-all duration-300 hover:border-cyan-400" title="Developer Topluluğu">
-      <i class="fa-solid fa-users text-xl"></i>
+    <a href="https://www.dev.to" target="_blank" class="w-12 h-12 glass-premium rounded-full flex items-center justify-center text-gray-400 hover:text-black hover:bg-[#00f0ff] hover:shadow-[0_0_20px_#00f0ff] transition-all duration-300" title="Developer Topluluğu">
+      <i class="fa-solid fa-terminal text-lg"></i>
     </a>
   </div>
 
-  <!-- Hero Bölümü -->
   <section class="min-h-screen flex items-center justify-center pt-24 pb-16">
     <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
       <div class="text-left reveal order-2 lg:order-1">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-800 bg-cyan-950/30 text-cyan-300 text-xs font-mono font-bold mb-8 tracking-wider backdrop-blur-sm">
-          <i class="fa-solid fa-microchip"></i> <span>SYSTEM_READY // v2.0</span>
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/20 text-cyan-400 text-[10px] font-mono font-bold mb-8 tracking-widest backdrop-blur-sm shadow-[0_0_15px_rgba(0,240,255,0.1)]">
+          <i class="fa-solid fa-microchip animate-pulse"></i> <span>SYSTEM_READY // v2.0 // KERNEL_ACTIVE</span>
         </div>
-        <h1 class="text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-4 leading-[1.1]">
-          eerrgin<span class="text-cyan-400 neon-text">.</span>
+        <h1 class="text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-4 leading-[1]">
+          eerrgin<span class="text-[#00f0ff] neon-text">.</span>
         </h1>
-        <div class="text-2xl md:text-3xl text-gray-300 font-light mb-4 h-14">
+        <div class="text-2xl md:text-3xl text-gray-300 font-light mb-6 h-14">
           <span id="typed-text"></span><span class="typed-cursor"></span>
         </div>
-        <!-- Buraya "yapay zeka kurcalıyorum" yazısını ekledim, mevcut metinler silinmedi -->
-        <p class="text-base md:text-lg text-gray-400 leading-relaxed mb-4 max-w-lg">
-            Architect of autonomous systems, rapid engines, and experimental labs.
+        <p class="text-base md:text-lg text-gray-400 leading-relaxed mb-4 max-w-lg font-light">
+          Architect of autonomous systems, rapid engines, and experimental labs.
         </p>
-        <p class="text-base md:text-lg text-cyan-300/80 leading-relaxed mb-8 max-w-lg italic">
-          <i class="fa-regular fa-message"></i> “Ergin Kaplan here. Some nights I code. I bring random ideas to life, tinker with AI, and experiment with everything that interests me.”
+        <p class="text-sm md:text-base text-[#00f0ff]/80 leading-relaxed mb-10 max-w-lg italic border-l-2 border-[#00f0ff]/50 pl-4 py-1">
+          "Ergin Kaplan here. Some nights I code. I bring random ideas to life, tinker with AI, and experiment with everything that interests me."
         </p>
         
         <div class="flex flex-wrap gap-5">
-          <a href="https://github.com/eerrgin" target="_blank" class="px-8 py-4 bg-white text-black font-bold rounded-xl text-md flex items-center gap-3 hover:bg-cyan-400 transition-all duration-300 shadow-[0_0_25px_rgba(255,255,255,0.2)] hover:shadow-cyan-500/30">
-            <i class="fa-brands fa-github text-xl"></i> GitHub
+          <a href="https://github.com/eerrgin" target="_blank" class="px-8 py-4 bg-white text-black font-black rounded-xl text-sm tracking-wide uppercase flex items-center gap-3 hover:bg-[#00f0ff] hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] transition-all duration-300">
+            <i class="fa-brands fa-github text-xl"></i> Init_GitHub
           </a>
-          <a href="https://eerrgin.github.io/message.htm" target="_blank" class="px-8 py-4 bg-black/50 backdrop-blur-md border border-cyan-500 text-cyan-400 font-bold rounded-xl text-md flex items-center gap-3 hover:bg-cyan-500 hover:text-black hover:border-transparent transition-all duration-300">
-            <i class="fa-regular fa-paper-plane text-xl"></i> Send Message
+          <a href="https://eerrgin.github.io/message.htm" target="_blank" class="px-8 py-4 bg-transparent backdrop-blur-md border border-[#00f0ff]/50 text-[#00f0ff] font-bold rounded-xl text-sm tracking-wide uppercase flex items-center gap-3 hover:bg-[#00f0ff] hover:text-black hover:border-transparent hover:shadow-[0_0_30px_rgba(0,240,255,0.3)] transition-all duration-300">
+            <i class="fa-solid fa-satellite-dish text-xl"></i> Ping_Me
           </a>
         </div>
 
-        <div class="flex gap-8 mt-12 pt-6 border-t border-white/10">
+        <div class="flex gap-10 mt-14 pt-8 border-t border-white/5">
           <div>
-            <div class="text-2xl font-black text-cyan-400 stat-number" id="visit-counter">+247</div>
-            <div class="text-xs text-gray-500 uppercase tracking-wider">Projects explored</div>
+            <div class="text-3xl font-black text-[#00f0ff] stat-number" id="visit-counter">+247</div>
+            <div class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Explored Nodes</div>
           </div>
           <div>
-            <div class="text-2xl font-black text-cyan-400" id="live-clock">--:-- --</div>
-            <div class="text-xs text-gray-500 uppercase tracking-wider">Local time</div>
+            <div class="text-3xl font-black text-white" id="live-clock">--:-- --</div>
+            <div class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Local Cycle</div>
           </div>
           <div>
-            <div class="text-2xl font-black text-cyan-400">∞</div>
-            <div class="text-xs text-gray-500 uppercase tracking-wider">Creative bounds</div>
+            <div class="text-3xl font-black text-purple-400">∞</div>
+            <div class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Limits</div>
           </div>
         </div>
       </div>
 
-      <!-- Resim: başlangıçta siyah-beyaz, hover/touch renkli -->
       <div class="reveal flex justify-center lg:justify-end order-1 lg:order-2">
-        <div class="glow-img w-72 h-72 md:w-96 md:h-96 transition-all duration-500 hover:scale-[1.02]">
-          <img src="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/refs/heads/main/12.jpg" alt="Ergin Kaplan" class="profile-img w-full h-full object-cover rounded-3xl border-2 border-white/10 shadow-2xl">
+        <div class="glow-img w-72 h-72 md:w-[420px] md:h-[420px] transition-all duration-700 hover:scale-[1.03]">
+          <img src="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/refs/heads/main/12.jpg" alt="Ergin Kaplan" class="profile-img w-full h-full object-cover rounded-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Premium Yetenekler Bölümü -->
   <section class="py-28 relative z-10">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16 reveal">
-        <span class="text-cyan-400 text-sm font-mono tracking-widest bg-cyan-950/30 px-4 py-1 rounded-full">CORE MODULES</span>
-        <h2 class="text-4xl md:text-5xl font-bold mt-4">Engineering <span class="text-cyan-400">Excellence</span></h2>
-        <div class="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto mt-4"></div>
+      <div class="text-center mb-20 reveal">
+        <span class="text-[#00f0ff] text-[10px] font-mono tracking-[0.2em] bg-[#00f0ff]/10 border border-[#00f0ff]/20 px-4 py-1.5 rounded-full shadow-[0_0_10px_rgba(0,240,255,0.1)]">CORE ARCHITECTURE</span>
+        <h2 class="text-5xl md:text-6xl font-black mt-6 tracking-tight">Engineering <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-purple-500">Excellence</span></h2>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="glass-card p-8 rounded-2xl group reveal">
-          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-purple-600/20 flex items-center justify-center text-cyan-400 text-3xl mb-6 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-microchip"></i>
+        <div class="glass-card p-8 rounded-3xl group reveal tilt-card">
+          <div class="w-14 h-14 rounded-2xl bg-[#00f0ff]/10 border border-[#00f0ff]/20 flex items-center justify-center text-[#00f0ff] text-2xl mb-6 shadow-[0_0_15px_rgba(0,240,255,0.1)] group-hover:bg-[#00f0ff] group-hover:text-black transition-all duration-300">
+            <i class="fa-solid fa-network-wired"></i>
           </div>
           <h3 class="text-2xl font-bold mb-3 tracking-tight">Autonomous Agents</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Self-evolving AI pipelines, multi-agent orchestration, and swarm intelligence.</p>
-          <div class="mt-5 flex gap-2 text-xs text-cyan-400/70">
-            <span class="border border-cyan-800 rounded-full px-3 py-1">LLM Mesh</span>
-            <span class="border border-cyan-800 rounded-full px-3 py-1">ReAct</span>
+          <p class="text-gray-400 text-sm leading-relaxed font-light">Self-evolving AI pipelines, multi-agent orchestration, and swarm intelligence algorithms.</p>
+          <div class="mt-6 flex gap-2 text-[10px] text-[#00f0ff]/80 font-mono uppercase">
+            <span class="bg-[#00f0ff]/5 px-3 py-1 rounded-md border border-[#00f0ff]/20">LLM_Mesh</span>
+            <span class="bg-[#00f0ff]/5 px-3 py-1 rounded-md border border-[#00f0ff]/20">ReAct</span>
           </div>
         </div>
-        <div class="glass-card p-8 rounded-2xl group reveal">
-          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500/20 to-amber-600/20 flex items-center justify-center text-orange-400 text-3xl mb-6 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-bolt"></i>
+        <div class="glass-card p-8 rounded-3xl group reveal tilt-card">
+          <div class="w-14 h-14 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 text-2xl mb-6 shadow-[0_0_15px_rgba(249,115,22,0.1)] group-hover:bg-orange-500 group-hover:text-black transition-all duration-300">
+            <i class="fa-solid fa-gauge-high"></i>
           </div>
           <h3 class="text-2xl font-bold mb-3 tracking-tight">Rapid Engine</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">High-performance real-time simulation, low-latency processing, and scalability.</p>
-          <div class="mt-5 flex gap-2 text-xs text-orange-400/70">
-            <span class="border border-orange-800 rounded-full px-3 py-1">Sub-ms</span>
-            <span class="border border-orange-800 rounded-full px-3 py-1">WebAssembly</span>
+          <p class="text-gray-400 text-sm leading-relaxed font-light">High-performance real-time simulation, ultra low-latency processing, and infinite scalability.</p>
+          <div class="mt-6 flex gap-2 text-[10px] text-orange-400/80 font-mono uppercase">
+            <span class="bg-orange-500/5 px-3 py-1 rounded-md border border-orange-500/20">Sub-ms</span>
+            <span class="bg-orange-500/5 px-3 py-1 rounded-md border border-orange-500/20">WASM</span>
           </div>
         </div>
-        <div class="glass-card p-8 rounded-2xl group reveal">
-          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-600/20 flex items-center justify-center text-emerald-400 text-3xl mb-6 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-flask"></i>
+        <div class="glass-card p-8 rounded-3xl group reveal tilt-card">
+          <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-2xl mb-6 shadow-[0_0_15px_rgba(168,85,247,0.1)] group-hover:bg-purple-500 group-hover:text-black transition-all duration-300">
+            <i class="fa-solid fa-vial-virus"></i>
           </div>
           <h3 class="text-2xl font-bold mb-3 tracking-tight">Experimental Lab</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Sandboxed R&D for zero-day research, fuzzing, and novel protocol analysis.</p>
-          <div class="mt-5 flex gap-2 text-xs text-emerald-400/70">
-            <span class="border border-emerald-800 rounded-full px-3 py-1">Sandbox</span>
-            <span class="border border-emerald-800 rounded-full px-3 py-1">Fuzzing</span>
+          <p class="text-gray-400 text-sm leading-relaxed font-light">Sandboxed R&D for zero-day research, complex fuzzing, and novel protocol analysis.</p>
+          <div class="mt-6 flex gap-2 text-[10px] text-purple-400/80 font-mono uppercase">
+            <span class="bg-purple-500/5 px-3 py-1 rounded-md border border-purple-500/20">Sandbox</span>
+            <span class="bg-purple-500/5 px-3 py-1 rounded-md border border-purple-500/20">Fuzzing</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Teknoloji Yığını -->
-  <section class="py-20 bg-black/40 border-y border-white/5">
+  <section class="py-24 bg-gradient-to-b from-transparent via-[#00f0ff]/5 to-transparent border-y border-white/5">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="reveal text-center mb-12">
-        <h3 class="text-3xl font-bold">Toolstack & <span class="text-cyan-400">Infrastructure</span></h3>
-        <p class="text-gray-500 mt-2">Enterprise-grade environment</p>
+      <div class="reveal text-center mb-14">
+        <h3 class="text-4xl font-black">Toolstack & <span class="text-[#00f0ff]">Infrastructure</span></h3>
+        <p class="text-gray-500 mt-3 font-mono text-xs tracking-widest uppercase">Enterprise-grade deployment environment</p>
       </div>
-      <div class="flex flex-wrap justify-center gap-6 reveal">
-        <div class="glass-premium px-6 py-3 rounded-full text-sm font-mono"><i class="fa-brands fa-python text-cyan-400 mr-2"></i> Python 3.12</div>
-        <div class="glass-premium px-6 py-3 rounded-full text-sm font-mono"><i class="fa-brands fa-js text-yellow-400 mr-2"></i> TypeScript</div>
-        <div class="glass-premium px-6 py-3 rounded-full text-sm font-mono"><i class="fa-solid fa-database text-blue-400 mr-2"></i> Postgres / Redis</div>
-        <div class="glass-premium px-6 py-3 rounded-full text-sm font-mono"><i class="fa-brands fa-docker text-blue-300 mr-2"></i> Docker / K8s</div>
-        <div class="glass-premium px-6 py-3 rounded-full text-sm font-mono"><i class="fa-solid fa-cloud text-purple-400 mr-2"></i> Cloud Native</div>
+      <div class="flex flex-wrap justify-center gap-4 reveal">
+        <div class="glass-premium px-6 py-3 rounded-xl text-sm font-mono hover:scale-105 hover:border-[#00f0ff]/50 transition-all cursor-default"><i class="fa-brands fa-python text-[#00f0ff] mr-2"></i> Python 3.12</div>
+        <div class="glass-premium px-6 py-3 rounded-xl text-sm font-mono hover:scale-105 hover:border-yellow-400/50 transition-all cursor-default"><i class="fa-brands fa-js text-yellow-400 mr-2"></i> TypeScript</div>
+        <div class="glass-premium px-6 py-3 rounded-xl text-sm font-mono hover:scale-105 hover:border-blue-400/50 transition-all cursor-default"><i class="fa-solid fa-database text-blue-400 mr-2"></i> Postgres / Redis</div>
+        <div class="glass-premium px-6 py-3 rounded-xl text-sm font-mono hover:scale-105 hover:border-blue-300/50 transition-all cursor-default"><i class="fa-brands fa-docker text-blue-300 mr-2"></i> Docker / K8s</div>
+        <div class="glass-premium px-6 py-3 rounded-xl text-sm font-mono hover:scale-105 hover:border-purple-400/50 transition-all cursor-default"><i class="fa-solid fa-cloud text-purple-400 mr-2"></i> Cloud Native</div>
       </div>
     </div>
   </section>
 
-  <!-- YENİ: Aktif Topluluk ve Forum Bağlantısı Bölümü (karizma) -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto text-center reveal">
-      <div class="glass-premium p-8 rounded-2xl inline-block w-full">
-        <i class="fa-solid fa-users-between fa-3x text-cyan-400 mb-4"></i>
-        <h3 class="text-2xl font-bold mb-2">Developer Community</h3>
-        <p class="text-gray-400 mb-4">Serbest yazılım geliştiricileri, açık kaynak tutkunları ve bilişim meraklıları ile bir aradayım.</p>
-        <a href="https://www.dev.to" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 border border-cyan-400 px-6 py-2 rounded-full hover:bg-cyan-400 hover:text-black transition-all">
-          Topluluğa Katıl <i class="fa-solid fa-arrow-right"></i>
+  <section class="py-20">
+    <div class="max-w-3xl mx-auto text-center reveal">
+      <div class="glass-card p-12 rounded-[2rem] inline-block w-full relative overflow-hidden group">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-[#00f0ff]/10 blur-[50px] rounded-full"></div>
+        
+        <i class="fa-solid fa-terminal fa-3x text-[#00f0ff] mb-6 relative z-10 group-hover:rotate-12 transition-transform duration-500"></i>
+        <h3 class="text-3xl font-black mb-3 relative z-10">Dev Community</h3>
+        <p class="text-gray-400 mb-8 font-light relative z-10">Serbest yazılım geliştiricileri, açık kaynak tutkunları ve bilişim meraklıları ile kodun derinliklerinde bir aradayım.</p>
+        <a href="https://www.dev.to" target="_blank" class="relative z-10 inline-flex items-center gap-3 text-black bg-[#00f0ff] font-bold px-8 py-3.5 rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">
+          Sisteme Bağlan <i class="fa-solid fa-arrow-right-to-bracket"></i>
         </a>
-        <p class="text-xs text-gray-600 mt-4">dev.to • global tech forum</p>
+        <p class="text-[10px] text-gray-600 mt-6 font-mono uppercase tracking-widest relative z-10">dev.to • global tech node</p>
       </div>
     </div>
   </section>
 
-  <footer class="py-12 text-center text-gray-500 text-sm border-t border-white/5">
-    <p>© 2026 Ergin Kaplan • Secured Architecture • <span id="year"></span></p>
+  <footer class="py-10 text-center text-gray-600 text-xs font-mono uppercase tracking-widest border-t border-white/5 bg-black/50">
+    <p>© <span id="year"></span> Ergin Kaplan // Secured Architecture // End of Line.</p>
   </footer>
 
   <script>
     (function() {
-      // ========== CURSOR (düzeltildi, her zaman çalışır) ==========
+      // ========== CURSOR ==========
       const dot = document.getElementById("cursor-dot");
       const outline = document.getElementById("cursor-outline");
       const spotlight = document.getElementById("spotlight");
       
       function moveCursor(e) {
         let x = e.clientX, y = e.clientY;
-        if (dot) {
-          dot.style.left = x + "px";
-          dot.style.top = y + "px";
-        }
-        if (outline) {
-          outline.style.left = x + "px";
-          outline.style.top = y + "px";
-        }
-        if (spotlight) {
-          spotlight.style.setProperty('--x', x + 'px');
-          spotlight.style.setProperty('--y', y + 'px');
-        }
+        if (dot) { dot.style.left = x + "px"; dot.style.top = y + "px"; }
+        if (outline) { outline.style.left = x + "px"; outline.style.top = y + "px"; }
+        if (spotlight) { spotlight.style.setProperty('--x', x + 'px'); spotlight.style.setProperty('--y', y + 'px'); }
       }
       
-      // Eğer masaüstü ise cursor'ları göster
       if (window.innerWidth > 768) {
         window.addEventListener("mousemove", moveCursor);
-        document.querySelectorAll("a, button, .glass-card").forEach(el => {
+        document.querySelectorAll("a, button, .glass-card, .glass-premium").forEach(el => {
           el.addEventListener("mouseenter", () => outline.classList.add("cursor-hover"));
           el.addEventListener("mouseleave", () => outline.classList.remove("cursor-hover"));
         });
       } else {
-        // mobilde cursor elementlerini gizle
         if(dot) dot.style.display = "none";
         if(outline) outline.style.display = "none";
       }
 
-      // ========== RESİM DOKUNMA RENKLİ (ekstra dokunmatik desteği) ==========
+      // ========== 3D TILT EFEKTİ (YENİ PREMIUM) ==========
+      if (window.innerWidth > 768) {
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        tiltCards.forEach(card => {
+          card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left; 
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -10; // Max 10 derece eğim
+            const rotateY = ((x - centerX) / centerX) * 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+          });
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            card.style.transition = `transform 0.5s ease`;
+          });
+          card.addEventListener('mouseenter', () => {
+            card.style.transition = `none`; // Fare üzerindeyken gecikme olmaması için
+          });
+        });
+      }
+
+      // ========== RANDOM GLITCH / SARSINTI EFEKTİ (YENİ PREMIUM) ==========
+      setInterval(() => {
+        // %25 ihtimalle tetiklenir (ortalama 12-15 saniyede bir sarsıntı)
+        if(Math.random() > 0.75) {
+          document.body.classList.add('glitch-active');
+          setTimeout(() => {
+            document.body.classList.remove('glitch-active');
+          }, 200); // 200ms lik ani bir şok efekti
+        }
+      }, 4000); // Her 4 saniyede bir kontrol et
+
+      // ========== RESİM DOKUNMA ==========
       const profileImg = document.querySelector(".profile-img");
       if(profileImg && window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
-        profileImg.addEventListener("touchstart", function() {
-          this.style.filter = "grayscale(0%)";
-        });
-        profileImg.addEventListener("touchend", function() {
-          setTimeout(() => { this.style.filter = "grayscale(100%)"; }, 500);
-        });
+        profileImg.addEventListener("touchstart", function() { this.style.filter = "grayscale(0%) contrast(105%) saturate(120%)"; });
+        profileImg.addEventListener("touchend", function() { setTimeout(() => { this.style.filter = "grayscale(100%) contrast(110%)"; }, 500); });
       }
 
       // ========== PARÇACIKLAR ==========
@@ -443,22 +469,19 @@
       const ctx = canvas.getContext("2d");
       let width, height, particles = [];
       function resizeCanvas() {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        canvas.width = width;
-        canvas.height = height;
+        width = window.innerWidth; height = window.innerHeight;
+        canvas.width = width; canvas.height = height;
         initParticles();
       }
       function initParticles() {
         particles = [];
-        let count = Math.min(120, Math.floor(width * height / 8000));
+        let count = Math.min(100, Math.floor(width * height / 9000));
         for(let i=0; i<count; i++) {
           particles.push({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            radius: Math.random() * 1.8 + 0.6,
-            alpha: Math.random() * 0.4 + 0.1,
-            speedX: (Math.random() - 0.5) * 0.2,
+            x: Math.random() * width, y: Math.random() * height,
+            radius: Math.random() * 1.5 + 0.5,
+            alpha: Math.random() * 0.5 + 0.1,
+            speedX: (Math.random() - 0.5) * 0.15,
             speedY: (Math.random() - 0.5) * 0.1
           });
         }
@@ -466,24 +489,18 @@
       function drawParticles() {
         if(!ctx) return;
         ctx.clearRect(0, 0, width, height);
-        ctx.fillStyle = "#22d3ee";
+        ctx.fillStyle = "#00f0ff";
         for(let p of particles) {
           ctx.globalAlpha = p.alpha;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-          ctx.fill();
-          p.x += p.speedX;
-          p.y += p.speedY;
-          if(p.x < 0) p.x = width;
-          if(p.x > width) p.x = 0;
-          if(p.y < 0) p.y = height;
-          if(p.y > height) p.y = 0;
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.fill();
+          p.x += p.speedX; p.y += p.speedY;
+          if(p.x < 0) p.x = width; if(p.x > width) p.x = 0;
+          if(p.y < 0) p.y = height; if(p.y > height) p.y = 0;
         }
         requestAnimationFrame(drawParticles);
       }
-      window.addEventListener("resize", () => { resizeCanvas(); });
-      resizeCanvas();
-      drawParticles();
+      window.addEventListener("resize", resizeCanvas);
+      resizeCanvas(); drawParticles();
 
       // ========== TYPED YAZI ==========
       const titles = ["App Developer & AI Explorer", "Systems Architect", "Autonomous Agent Creator", "Digital Alchemist"];
@@ -494,19 +511,13 @@
         if(isDeleting) {
           typedSpan.innerText = current.substring(0, charIdx-1);
           charIdx--;
-          if(charIdx === 0) {
-            isDeleting = false;
-            idx = (idx+1) % titles.length;
-          }
+          if(charIdx === 0) { isDeleting = false; idx = (idx+1) % titles.length; }
         } else {
           typedSpan.innerText = current.substring(0, charIdx+1);
           charIdx++;
-          if(charIdx === current.length) {
-            isDeleting = true;
-            setTimeout(() => {}, 1500);
-          }
+          if(charIdx === current.length) { isDeleting = true; setTimeout(() => {}, 2000); }
         }
-        setTimeout(typeEffect, isDeleting ? 80 : 120);
+        setTimeout(typeEffect, isDeleting ? 50 : 100);
       }
       typeEffect();
 
@@ -517,11 +528,13 @@
       const equalizerDiv = document.getElementById("equalizer");
       const volumeSlider = document.getElementById("volume-slider");
       let isPlaying = false;
+      
       function updateAudioUI(playing) {
-        musicIconDiv.innerHTML = playing ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play"></i>';
+        musicIconDiv.innerHTML = playing ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play ml-1"></i>';
         if(playing) equalizerDiv.classList.replace("hidden","flex");
         else equalizerDiv.classList.replace("flex","hidden");
       }
+      
       document.body.addEventListener("click", function initAudio() {
         if(!isPlaying) {
           music.volume = 0.4;
@@ -536,23 +549,21 @@
         else { music.play().then(()=>{ isPlaying = true; updateAudioUI(true); }).catch(()=>{}); }
       });
       if(volumeSlider) {
+        volumeSlider.addEventListener("click", (e) => e.stopPropagation());
         volumeSlider.addEventListener("input", (e) => { music.volume = parseFloat(e.target.value); });
       }
       
       // ========== SAYAÇ VE SAAT ==========
-      let visitCount = localStorage.getItem("site_visits_premium");
+      let visitCount = localStorage.getItem("sys_visits_v2");
       visitCount = visitCount ? parseInt(visitCount) + 1 : 247;
-      localStorage.setItem("site_visits_premium", visitCount);
+      localStorage.setItem("sys_visits_v2", visitCount);
       document.getElementById("visit-counter").innerText = "+" + visitCount;
       
       function updateClock() {
         const now = new Date();
-        const hours = now.getHours().toString().padStart(2,'0');
-        const minutes = now.getMinutes().toString().padStart(2,'0');
-        document.getElementById("live-clock").innerHTML = `${hours}:${minutes}`;
+        document.getElementById("live-clock").innerHTML = `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')} <span class="text-xs text-gray-500 animate-pulse">${now.getSeconds().toString().padStart(2,'0')}</span>`;
       }
-      updateClock();
-      setInterval(updateClock, 1000);
+      updateClock(); setInterval(updateClock, 1000);
       document.getElementById("year").innerText = new Date().getFullYear();
 
       // ========== SCROLL REVEAL ==========
@@ -563,7 +574,7 @@
         });
       }
       window.addEventListener("scroll", revealOnScroll);
-      revealOnScroll();
+      revealOnScroll(); // init
     })();
   </script>
 </body>
