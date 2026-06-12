@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
@@ -116,7 +116,6 @@
     .typed-cursor { display: inline-block; width: 2px; background-color: #00f0ff; margin-left: 4px; box-shadow: 0 0 8px #00f0ff; animation: blink 0.8s infinite; }
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
     #particle-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; opacity: 0.4; }
-    /* yeni eklenenler */
     .navbar { transition: background 0.3s ease, padding 0.3s ease; }
     .navbar.scrolled { background: rgba(5,5,10,0.85); backdrop-filter: blur(20px); padding-top: 0.5rem; padding-bottom: 0.5rem; }
     .hamburger-line { transition: all 0.3s ease; }
@@ -150,11 +149,11 @@
   <nav class="navbar fixed top-0 left-0 w-full z-50 px-6 py-5 flex items-center justify-between transition-all duration-300" id="navbar">
     <a href="#" class="text-2xl font-black tracking-tighter text-white neon-text">eerrgin<span class="text-[#00f0ff]">.</span></a>
     <div class="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-widest text-gray-300">
-      <a href="#home" class="hover:text-[#00f0ff] transition">Ana Sayfa</a>
+      <a href="#home" class="hover:text-[#00f0ff] transition">Home</a>
       <a href="#lab" class="hover:text-[#00f0ff] transition">Lab</a>
-      <a href="#projects" class="hover:text-[#00f0ff] transition">Projeler</a>
-      <a href="#team" class="hover:text-[#00f0ff] transition">Takım</a>
-      <a href="#contact" class="hover:text-[#00f0ff] transition">İletişim</a>
+      <a href="#projects" class="hover:text-[#00f0ff] transition">Projects</a>
+      <a href="#team" class="hover:text-[#00f0ff] transition">Team</a>
+      <a href="https://eerrgin.github.io/message.htm" class="hover:text-[#00f0ff] transition">Contact</a>
     </div>
     <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none z-50">
       <div class="hamburger-line w-6 h-0.5 bg-white mb-1"></div>
@@ -162,13 +161,13 @@
       <div class="hamburger-line w-6 h-0.5 bg-white"></div>
     </button>
   </nav>
-  <!-- mobil menü -->
+  <!-- mobile menu -->
   <div id="mobile-menu" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-8 text-2xl font-bold uppercase tracking-widest text-gray-300 opacity-0 pointer-events-none transition-opacity duration-300">
-    <a href="#home" class="hover:text-[#00f0ff]">Ana Sayfa</a>
+    <a href="#home" class="hover:text-[#00f0ff]">Home</a>
     <a href="#lab" class="hover:text-[#00f0ff]">Lab</a>
-    <a href="#projects" class="hover:text-[#00f0ff]">Projeler</a>
-    <a href="#team" class="hover:text-[#00f0ff]">Takım</a>
-    <a href="#contact" class="hover:text-[#00f0ff]">İletişim</a>
+    <a href="#projects" class="hover:text-[#00f0ff]">Projects</a>
+    <a href="#team" class="hover:text-[#00f0ff]">Team</a>
+    <a href="https://eerrgin.github.io/message.htm" class="hover:text-[#00f0ff]">Contact</a>
   </div>
 
   <audio id="bg-music" loop preload="auto">
@@ -256,7 +255,7 @@
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-20 reveal">
         <span class="text-[#00f0ff] text-[10px] font-mono tracking-[0.2em] bg-[#00f0ff]/10 border border-[#00f0ff]/20 px-4 py-1.5 rounded-full shadow-[0_0_10px_rgba(0,240,255,0.1)]">CORE ARCHITECTURE</span>
-        <h2 class="text-5xl md:text-6xl font-black mt-6 tracking-tight">Engineering <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-purple-500">Excellence</span></h2>
+        <h2 class="text-5xl md:text-6xl font-black mt-6 tracking-tight">Developer <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-purple-500">Excellence</span></h2>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
         <div class="glass-card p-8 rounded-3xl group reveal tilt-card"><div class="w-14 h-14 rounded-2xl bg-[#00f0ff]/10 border border-[#00f0ff]/20 flex items-center justify-center text-[#00f0ff] text-2xl mb-6 shadow-[0_0_15px_rgba(0,240,255,0.1)] group-hover:bg-[#00f0ff] group-hover:text-black transition-all duration-300"><i class="fa-solid fa-network-wired"></i></div><h3 class="text-2xl font-bold mb-3 tracking-tight">Autonomous Agents</h3><p class="text-gray-400 text-sm leading-relaxed font-light">Self-evolving AI pipelines, multi-agent orchestration, and swarm intelligence algorithms.</p><div class="mt-6 flex gap-2 text-[10px] text-[#00f0ff]/80 font-mono uppercase"><span class="bg-[#00f0ff]/5 px-3 py-1 rounded-md border border-[#00f0ff]/20">LLM_Mesh</span><span class="bg-[#00f0ff]/5 px-3 py-1 rounded-md border border-[#00f0ff]/20">ReAct</span></div></div>
@@ -269,10 +268,10 @@
   <!-- PROJECTS -->
   <section id="projects" class="py-24 bg-gradient-to-b from-transparent via-[#00f0ff]/5 to-transparent border-y border-white/5">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="reveal text-center mb-14"><h3 class="text-4xl font-black">Son <span class="text-[#00f0ff]">Projeler</span></h3><p class="text-gray-500 mt-3 font-mono text-xs tracking-widest uppercase">kodun sınırlarını zorlayan işler</p></div>
+      <div class="reveal text-center mb-14"><h3 class="text-4xl font-black">Latest <span class="text-[#00f0ff]">Projects</span></h3><p class="text-gray-500 mt-3 font-mono text-xs tracking-widest uppercase">pushing the boundaries of code</p></div>
       <div class="grid md:grid-cols-2 gap-8">
-        <a href="#" class="glass-card p-8 rounded-3xl group reveal tilt-card block no-underline"><span class="text-xs text-[#00f0ff] font-mono">01</span><h4 class="text-xl font-bold mt-2">Nöral Arayüz Tasarımı</h4><p class="text-gray-400 text-sm mt-2">Gerçek zamanlı beyin-bilgisayar etkileşimi için düşük gecikmeli sinyal işleme hattı.</p><div class="flex gap-2 mt-4"><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full">Python</span><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full">TensorFlow</span></div></a>
-        <a href="#" class="glass-card p-8 rounded-3xl group reveal tilt-card block no-underline"><span class="text-xs text-purple-400 font-mono">02</span><h4 class="text-xl font-bold mt-2">Otonom Drone Sürüsü</h4><p class="text-gray-400 text-sm mt-2">10+ drone'un eşzamanlı görev planlaması ve çarpışma önleyici koordinasyonu.</p><div class="flex gap-2 mt-4"><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full">C++</span><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full">ROS2</span></div></a>
+        <a href="#" class="glass-card p-8 rounded-3xl group reveal tilt-card block no-underline"><span class="text-xs text-[#00f0ff] font-mono">01</span><h4 class="text-xl font-bold mt-2">Neural Interface Design</h4><p class="text-gray-400 text-sm mt-2">Low‑latency signal processing pipeline for real‑time brain‑computer interaction.</p><div class="flex gap-2 mt-4"><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full">Python</span><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full">TensorFlow</span></div></a>
+        <a href="#" class="glass-card p-8 rounded-3xl group reveal tilt-card block no-underline"><span class="text-xs text-purple-400 font-mono">02</span><h4 class="text-xl font-bold mt-2">Autonomous Drone Swarm</h4><p class="text-gray-400 text-sm mt-2">Simultaneous mission planning and collision avoidance for 10+ drones.</p><div class="flex gap-2 mt-4"><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full">C++</span><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full">ROS2</span></div></a>
       </div>
     </div>
   </section>
@@ -280,24 +279,24 @@
   <!-- TEAM -->
   <section id="team" class="py-28 relative z-10">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-20 reveal"><span class="text-purple-400 text-[10px] font-mono tracking-[0.2em] bg-purple-500/10 border border-purple-500/20 px-4 py-1.5 rounded-full">YAPAY ZEKA EKİBİ</span><h2 class="text-5xl font-black mt-6">Beyin <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-[#00f0ff]">Takımı</span></h2></div>
+      <div class="text-center mb-20 reveal"><span class="text-purple-400 text-[10px] font-mono tracking-[0.2em] bg-purple-500/10 border border-purple-500/20 px-4 py-1.5 rounded-full">AI RESEARCH TEAM</span><h2 class="text-5xl font-black mt-6">The <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-[#00f0ff]">Brains</span></h2></div>
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="glass-card p-8 rounded-3xl text-center reveal tilt-card"><div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-purple-500 to-cyan-400 mb-4 flex items-center justify-center text-3xl font-black text-white">EK</div><h4 class="text-xl font-bold">Ergin Kaplan</h4><p class="text-xs text-[#00f0ff] font-mono mt-1">Lead Architect</p><p class="text-gray-400 text-sm mt-2">Sistem tasarımı ve otonom ajanların beyni.</p></div>
-        <div class="glass-card p-8 rounded-3xl text-center reveal tilt-card"><div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 mb-4 flex items-center justify-center text-3xl font-black text-white">AV</div><h4 class="text-xl font-bold">A. Veli</h4><p class="text-xs text-cyan-400 font-mono mt-1">AI Researcher</p><p class="text-gray-400 text-sm mt-2">Derin öğrenme ve pekiştirmeli öğrenme uzmanı.</p></div>
-        <div class="glass-card p-8 rounded-3xl text-center reveal tilt-card"><div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-pink-500 to-orange-400 mb-4 flex items-center justify-center text-3xl font-black text-white">DY</div><h4 class="text-xl font-bold">D. Yılmaz</h4><p class="text-xs text-pink-400 font-mono mt-1">Full Stack Dev</p><p class="text-gray-400 text-sm mt-2">Ön yüz ve altyapıyı kusursuz birleştirir.</p></div>
+        <div class="glass-card p-8 rounded-3xl text-center reveal tilt-card"><div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-purple-500 to-cyan-400 mb-4 flex items-center justify-center text-3xl font-black text-white">eerrgin</div><h4 class="text-xl font-bold">Ergin Kaplan</h4><p class="text-xs text-[#00f0ff] font-mono mt-1">Research</p><p class="text-gray-400 text-sm mt-2">Autonomous systems & AI exploration.</p></div>
+        <div class="glass-card p-8 rounded-3xl text-center reveal tilt-card"><div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 mb-4 flex items-center justify-center text-3xl font-black text-white">neuralX</div><h4 class="text-xl font-bold">neuralX</h4><p class="text-xs text-cyan-400 font-mono mt-1">Deep Learning</p><p class="text-gray-400 text-sm mt-2">Pioneering novel neural architectures.</p></div>
+        <div class="glass-card p-8 rounded-3xl text-center reveal tilt-card"><div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-pink-500 to-orange-400 mb-4 flex items-center justify-center text-3xl font-black text-white">stackZero</div><h4 class="text-xl font-bold">stackZero</h4><p class="text-xs text-pink-400 font-mono mt-1">Full Stack</p><p class="text-gray-400 text-sm mt-2">Bridging front‑end and infrastructure.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT / COMMUNITY -->
   <section id="contact" class="py-20">
     <div class="max-w-3xl mx-auto text-center reveal">
       <div class="glass-card p-12 rounded-[2rem] inline-block w-full relative overflow-hidden group">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-[#00f0ff]/10 blur-[50px] rounded-full"></div>
         <i class="fa-solid fa-terminal fa-3x text-[#00f0ff] mb-6 relative z-10 group-hover:rotate-12 transition-transform duration-500"></i>
         <h3 class="text-3xl font-black mb-3 relative z-10">Dev Community</h3>
-        <p class="text-gray-400 mb-8 font-light relative z-10">Serbest yazılım geliştiricileri, açık kaynak tutkunları ve bilişim meraklıları ile kodun derinliklerinde bir aradayım.</p>
-        <a href="https://www.dev.to" target="_blank" class="relative z-10 inline-flex items-center gap-3 text-black bg-[#00f0ff] font-bold px-8 py-3.5 rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">Sisteme Bağlan <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+        <p class="text-gray-400 mb-8 font-light relative z-10">I hang out with indie devs, open‑source enthusiasts, and tech explorers deep inside the code.</p>
+        <a href="https://www.dev.to" target="_blank" class="relative z-10 inline-flex items-center gap-3 text-black bg-[#00f0ff] font-bold px-8 py-3.5 rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">Join the System <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
         <p class="text-[10px] text-gray-600 mt-6 font-mono uppercase tracking-widest relative z-10">dev.to • global tech node</p>
       </div>
     </div>
@@ -305,9 +304,9 @@
 
   <footer class="py-10 text-center text-gray-600 text-xs font-mono uppercase tracking-widest border-t border-white/5 bg-black/50">
     <div class="flex flex-wrap justify-center gap-6 mb-4">
-      <a href="#" class="hover:text-white transition">Gizlilik</a>
-      <a href="#" class="hover:text-white transition">Kullanım Koşulları</a>
-      <a href="#" class="hover:text-white transition">Çerez Politikası</a>
+      <a href="#" class="hover:text-white transition">Privacy</a>
+      <a href="#" class="hover:text-white transition">Terms</a>
+      <a href="#" class="hover:text-white transition">Cookies</a>
     </div>
     <p>© <span id="year"></span> Ergin Kaplan // Secured Architecture // End of Line.</p>
   </footer>
@@ -348,7 +347,7 @@
       const navbar = document.getElementById("navbar");
       window.addEventListener("scroll", ()=>{ if(window.scrollY>50) navbar.classList.add("scrolled"); else navbar.classList.remove("scrolled"); });
 
-      // MOBİL MENÜ
+      // MOBILE MENU
       const menuBtn = document.getElementById("menu-btn"), mobileMenu = document.getElementById("mobile-menu");
       menuBtn.addEventListener("click", ()=>{ mobileMenu.classList.toggle("opacity-0"); mobileMenu.classList.toggle("pointer-events-none"); });
       mobileMenu.querySelectorAll("a").forEach(link=>{ link.addEventListener("click", ()=>{ mobileMenu.classList.add("opacity-0","pointer-events-none"); }); });
@@ -389,7 +388,7 @@
       function typeEffect(){ let current=titles[idx]; if(isDeleting){ typedSpan.innerText=current.substring(0,charIdx-1); charIdx--; if(charIdx===0){isDeleting=false;idx=(idx+1)%titles.length;} } else { typedSpan.innerText=current.substring(0,charIdx+1); charIdx++; if(charIdx===current.length){isDeleting=true; setTimeout(()=>{},2000);} } setTimeout(typeEffect, isDeleting?50:100); }
       typeEffect();
 
-      // MÜZİK + GERÇEK FREKANS GÖRSEL
+      // MUSIC + LIVE FREQUENCY VISUAL
       const music = document.getElementById("bg-music"), musicToggle = document.getElementById("music-toggle"), musicIconDiv = document.getElementById("music-icon"), equalizerDiv = document.getElementById("equalizer"), volumeSlider = document.getElementById("volume-slider");
       let isPlaying = false, audioCtx, analyser, freqData;
       const eqBars = document.querySelectorAll(".equalizer-bar");
@@ -400,7 +399,7 @@
       musicToggle.addEventListener("click", (e)=>{ e.stopPropagation(); if(isPlaying){ music.pause(); isPlaying=false; updateAudioUI(false); } else { music.play().then(()=>{ isPlaying=true; updateAudioUI(true); initAudioContext(); updateEqualizer(); }).catch(()=>{}); } });
       if(volumeSlider){ volumeSlider.addEventListener("click", e=>e.stopPropagation()); volumeSlider.addEventListener("input", e=>{ music.volume=parseFloat(e.target.value); }); }
 
-      // SAYAÇ & SAAT
+      // COUNTER & CLOCK
       let visitCount = localStorage.getItem("sys_visits_v2"); visitCount = visitCount ? parseInt(visitCount)+1 : 247; localStorage.setItem("sys_visits_v2", visitCount); document.getElementById("visit-counter").innerText = "+"+visitCount;
       function updateClock(){ const now=new Date(); document.getElementById("live-clock").innerHTML = `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')} <span class="text-xs text-gray-500 animate-pulse">${now.getSeconds().toString().padStart(2,'0')}</span>`; }
       updateClock(); setInterval(updateClock, 1000); document.getElementById("year").innerText = new Date().getFullYear();
