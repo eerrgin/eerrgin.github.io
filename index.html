@@ -183,7 +183,7 @@
       <span class="text-sm font-bold text-white tracking-tight">7mix.mp3</span>
     </div>
     <div class="hidden md:flex items-center gap-2 ml-3">
-      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.4" class="w-16 h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer" style="accent-color: #00f0ff;">
+      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1.0" class="w-16 h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer" style="accent-color: #00f0ff;">
     </div>
     <div id="equalizer" class="hidden gap-[3px] ml-2 items-end h-5">
       <div class="equalizer-bar w-[3px] bg-[#00f0ff] h-2 shadow-[0_0_5px_#00f0ff]"></div>
@@ -386,16 +386,85 @@
       function typeEffect(){ let current=titles[idx]; if(isDeleting){ typedSpan.innerText=current.substring(0,charIdx-1); charIdx--; if(charIdx===0){isDeleting=false;idx=(idx+1)%titles.length;} } else { typedSpan.innerText=current.substring(0,charIdx+1); charIdx++; if(charIdx===current.length){isDeleting=true; setTimeout(()=>{},2000);} } setTimeout(typeEffect, isDeleting?50:100); }
       typeEffect();
 
-      // MUSIC + LIVE FREQUENCY VISUAL
-      const music = document.getElementById("bg-music"), musicToggle = document.getElementById("music-toggle"), musicIconDiv = document.getElementById("music-icon"), equalizerDiv = document.getElementById("equalizer"), volumeSlider = document.getElementById("volume-slider");
+      // MUSIC + LIVE FREQUENCY VISUAL (DÜZELTİLDİ)
+      const music = document.getElementById("bg-music");
+      const musicToggle = document.getElementById("music-toggle");
+      const musicIconDiv = document.getElementById("music-icon");
+      const equalizerDiv = document.getElementById("equalizer");
+      const volumeSlider = document.getElementById("volume-slider");
       let isPlaying = false, audioCtx, analyser, freqData;
       const eqBars = document.querySelectorAll(".equalizer-bar");
-      function updateAudioUI(playing){ musicIconDiv.innerHTML = playing ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play ml-1"></i>'; if(playing) equalizerDiv.classList.replace("hidden","flex"); else equalizerDiv.classList.replace("flex","hidden"); }
-      function initAudioContext(){ if(!audioCtx){ audioCtx = new (window.AudioContext || window.webkitAudioContext)(); analyser = audioCtx.createAnalyser(); analyser.fftSize = 64; const source = audioCtx.createMediaElementSource(music); source.connect(analyser); analyser.connect(audioCtx.destination); freqData = new Uint8Array(analyser.frequencyBinCount); } }
-      function updateEqualizer(){ if(!analyser || !isPlaying) return; analyser.getByteFrequencyData(freqData); const step = Math.floor(freqData.length / eqBars.length); for(let i=0;i<eqBars.length;i++){ let val = freqData[i*step] / 255; eqBars[i].style.height = (val*20+2)+"px"; } requestAnimationFrame(updateEqualizer); }
-      document.body.addEventListener("click", function initAudio(){ if(!isPlaying){ music.volume=0.4; music.play().then(()=>{ isPlaying=true; updateAudioUI(true); initAudioContext(); updateEqualizer(); }).catch(()=>{}); } document.body.removeEventListener("click", initAudio); }, {once:true});
-      musicToggle.addEventListener("click", (e)=>{ e.stopPropagation(); if(isPlaying){ music.pause(); isPlaying=false; updateAudioUI(false); } else { music.play().then(()=>{ isPlaying=true; updateAudioUI(true); initAudioContext(); updateEqualizer(); }).catch(()=>{}); } });
-      if(volumeSlider){ volumeSlider.addEventListener("click", e=>e.stopPropagation()); volumeSlider.addEventListener("input", e=>{ music.volume=parseFloat(e.target.value); }); }
+
+      function updateAudioUI(playing) {
+        musicIconDiv.innerHTML = playing ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play ml-1"></i>';
+        if (playing) equalizerDiv.classList.replace("hidden", "flex");
+        else equalizerDiv.classList.replace("flex", "hidden");
+      }
+
+      function initAudioContext() {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          analyser = audioCtx.createAnalyser();
+          analyser.fftSize = 64;
+          const source = audioCtx.createMediaElementSource(music);
+          source.connect(analyser);
+          analyser.connect(audioCtx.destination);
+          freqData = new Uint8Array(analyser.frequencyBinCount);
+        }
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+      }
+
+      function updateEqualizer() {
+        if (!analyser || !isPlaying) return;
+        analyser.getByteFrequencyData(freqData);
+        const step = Math.floor(freqData.length / eqBars.length);
+        for (let i = 0; i < eqBars.length; i++) {
+          let val = freqData[i * step] / 255;
+          eqBars[i].style.height = (val * 20 + 2) + "px";
+        }
+        requestAnimationFrame(updateEqualizer);
+      }
+
+      function startMusic() {
+        if (isPlaying) return;
+        music.volume = volumeSlider ? parseFloat(volumeSlider.value) : 1.0;
+        music.play().then(() => {
+          isPlaying = true;
+          updateAudioUI(true);
+          initAudioContext();
+          updateEqualizer();
+        }).catch(err => console.log("Playback failed:", err));
+      }
+
+      function stopMusic() {
+        music.pause();
+        isPlaying = false;
+        updateAudioUI(false);
+      }
+
+      // İlk etkileşimde başlatma (body click)
+      document.body.addEventListener("click", function initAudioOnce() {
+        if (!isPlaying) startMusic();
+        document.body.removeEventListener("click", initAudioOnce);
+      }, { once: true });
+
+      // Müzik toggle butonu
+      musicToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (isPlaying) {
+          stopMusic();
+        } else {
+          startMusic();
+        }
+      });
+
+      // Ses seviyesi kontrolü
+      if (volumeSlider) {
+        volumeSlider.addEventListener("click", (e) => e.stopPropagation());
+        volumeSlider.addEventListener("input", (e) => {
+          music.volume = parseFloat(e.target.value);
+        });
+      }
 
       // COUNTER & CLOCK
       let visitCount = localStorage.getItem("sys_visits_v2"); visitCount = visitCount ? parseInt(visitCount)+1 : 247; localStorage.setItem("sys_visits_v2", visitCount); document.getElementById("visit-counter").innerText = "+"+visitCount;
