@@ -1,205 +1,414 @@
-<!DOCTYPE html>
+websitem bu eerrgin.github.io bu sitemi ve kodlarımı incele inandırıcı mükemmel çok zengin v eaşırı kaliteli bir site yapmak istedim ancak elimden bu kadarı geldi fakat inandırıcı olmak istiyorum ve kaliteli kodlarımı incele ne ekleyebiliriz neler uyumsuz neleri değiştirebiliriz vermek istdiğim imaj meraklı bir geliştirici olduğumdur ama burada kendimi istemeden galiba mimar gibi gösterdim yazılarda falan bunları düzelt ve site kodlarımı ayarla müzik resim efekti ve mouse efekti bozmadan bana en harika halini ver yazıları da düzelt söylediğim bağlamda ancak tamamen ingilizce olsun site kodlarım budur
+benzer içerik yapmış ve mükemmel eklemeler yapmış kişilerden ilham al hiçbir sitede görünmemiş gelişmiş şeylerde ekleyebilirsin girenleri etkileyip şaşırtacak kod bu.
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <meta name="google-site-verification" content="zjBnZT7grHTgtPms-86Vg4QJPKHfyQ7qMaZ-iz_SKQE">
-    <title>Ergin Kaplan | eerrgin • Curious Builder</title>
-    <meta name="description" content="Ergin Kaplan (eerrgin) — indie developer tinkering with AI, apps, and wild ideas late into the night.">
-    <meta name="keywords" content="Ergin Kaplan, eerrgin, developer, AI tinkerer, indie hacker, autonomous agents">
-    <meta name="author" content="Ergin Kaplan">
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Ergin Kaplan",
-      "url": "https://eerrgin.github.io",
-      "jobTitle": "Indie Developer & AI Tinkerer",
-      "sameAs": ["https://github.com/eerrgin", "https://xdaforums.com/m/catsnovel.12522279/"]
-    }
-    </script>
-
-    <script defer src="https://umami-production-f4fa.up.railway.app/script.js" data-website-id="16bbb30b-bf80-4649-91ce-21a97ae3a06c"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap');
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #030303;
-            color: #f0f0f0;
-            cursor: none;
-            overflow-x: hidden;
-        }
-        
-        /* Existing backgrounds, scanlines, grid, spotlight, cursor, glass, glitch, particles, etc. — kept and slightly enhanced */
-        body::before {
-            content: "";
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: 0.04; z-index: 9998; pointer-events: none;
-        }
-        
-        .scanlines {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.12) 50%, rgba(0,0,0,0.12));
-            background-size: 100% 4px; z-index: 9997; pointer-events: none; opacity: 0.35;
-        }
-        
-        .bg-grid {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: linear-gradient(to right, rgba(34, 211, 238, 0.04) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(34, 211, 238, 0.04) 1px, transparent 1px);
-            background-size: 50px 50px; z-index: -2; pointer-events: none;
-        }
-        
-        .spotlight {
-            position: fixed; width: 100%; height: 100%;
-            background: radial-gradient(circle 650px at var(--x, 50%) var(--y, 50%), rgba(34, 211, 238, 0.09), transparent 75%);
-            pointer-events: none; z-index: -1;
-        }
-        
-        .cursor-dot, .cursor-outline {
-            position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%;
-            z-index: 9999; pointer-events: none;
-            transition: width 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .cursor-dot { width: 7px; height: 7px; background: #00f0ff; box-shadow: 0 0 15px #00f0ff; }
-        .cursor-outline { width: 42px; height: 42px; border: 1.5px solid rgba(0, 240, 255, 0.6); }
-        
-        .glass-premium, .glass-card {
-            background: rgba(10, 10, 15, 0.65);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,0.06);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.6);
-        }
-        .glass-card:hover { border-color: #22d3ee; box-shadow: 0 25px 50px -10px rgba(0, 240, 255, 0.25); }
-        
-        .neon-text { text-shadow: 0 0 12px #00f0ff, 0 0 25px #00f0ff; }
-        
-        .profile-img {
-            filter: grayscale(90%) contrast(110%);
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        .profile-img:hover, .profile-img.colored {
-            filter: grayscale(0%) saturate(1.3) drop-shadow(0 0 30px #00f0ff);
-        }
-        
-        /* New: Terminal style logs */
-        .terminal-log {
-            font-family: monospace;
-            font-size: 0.8rem;
-            color: #67e8f9;
-            opacity: 0.7;
-        }
-        
-        /* More effects kept/enhanced */
-        @keyframes cyber-glitch { /* your original */ }
-        /* ... (all your other keyframes preserved) */
-    </style>
+&nbsp;&nbsp;<meta charset="UTF-8">
+&nbsp;&nbsp;<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+&nbsp;&nbsp;<meta name="google-site-verification" content="zjBnZT7grHTgtPms-86Vg4QJPKHfyQ7qMaZ-iz_SKQE">
+&nbsp;&nbsp;<title>Ergin Kaplan | eerrgin • Visionary Dev</title>
+&nbsp;&nbsp;<meta name="description" content="Ergin Kaplan (eerrgin) – App Developer, AI Explorer & Systems Architect.">
+&nbsp;&nbsp;<meta name="keywords" content="Ergin Kaplan, eerrgin, developer, AI, autonomous agents, rapid engine">
+&nbsp;&nbsp;<meta name="author" content="Ergin Kaplan">
+&nbsp;&nbsp;<script type="application/ld+json">
+&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;"@context": "https://schema.org",
+&nbsp;&nbsp;&nbsp;&nbsp;"@type": "Person",
+&nbsp;&nbsp;&nbsp;&nbsp;"name": "Ergin Kaplan",
+&nbsp;&nbsp;&nbsp;&nbsp;"url": "https://eerrgin.github.io",
+&nbsp;&nbsp;&nbsp;&nbsp;"jobTitle": "App Developer & AI Explorer",
+&nbsp;&nbsp;&nbsp;&nbsp;"sameAs": ["https://github.com/eerrgin", "https://xdaforums.com/m/catsnovel.12522279/"]
+&nbsp;&nbsp;}
+&nbsp;&nbsp;</script>
+&nbsp;&nbsp;<script defer src="https://umami-production-f4fa.up.railway.app/script.js" data-website-id="16bbb30b-bf80-4649-91ce-21a97ae3a06c"></script>
+&nbsp;&nbsp;<script src="https://cdn.tailwindcss.com"></script>
+&nbsp;&nbsp;<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+&nbsp;&nbsp;<style>
+&nbsp;&nbsp;&nbsp;&nbsp;@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap');
+&nbsp;&nbsp;&nbsp;&nbsp;* { margin: 0; padding: 0; box-sizing: border-box; }
+&nbsp;&nbsp;&nbsp;&nbsp;body {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family: 'Inter', sans-serif;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-color: #030303;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: #f0f0f0;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cursor: none;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;overflow-x: hidden;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transition: filter 0.1s ease-out;
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;body::before {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content: "";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;opacity: 0.04; z-index: 9998; pointer-events: none;
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;.scanlines {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-size: 100% 4px; z-index: 9997; pointer-events: none; opacity: 0.3;
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;.glitch-active {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animation: cyber-glitch 0.2s cubic-bezier(.25, .46, .45, .94) both;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filter: contrast(130%) hue-rotate(10deg) saturate(150%);
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;@keyframes cyber-glitch {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0% { transform: translate(0) } 20% { transform: translate(-4px, 2px) skewX(1deg) }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;40% { transform: translate(4px, -2px) skewX(-1deg) } 60% { transform: translate(-2px, -2px) }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;80% { transform: translate(2px, 4px) } 100% { transform: translate(0) }
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;@media (max-width: 768px) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body, a, button, [role="button"] { cursor: auto; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.cursor-dot, .cursor-outline { display: none; }
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;.bg-grid {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-image: linear-gradient(to right, rgba(34, 211, 238, 0.03) 1px, transparent 1px),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;linear-gradient(to bottom, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-size: 60px 60px; z-index: -2; pointer-events: none;
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;.spotlight {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position: fixed; width: 100%; height: 100%;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background: radial-gradient(circle 600px at var(--x, 50%) var(--y, 50%), rgba(34, 211, 238, 0.07), transparent 80%);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointer-events: none; z-index: -1; transition: background 0.1s ease;
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;.cursor-dot, .cursor-outline {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z-index: 9999; pointer-events: none;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transition: width 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.2s;
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;.cursor-dot { width: 6px; height: 6px; background-color: #00f0ff; box-shadow: 0 0 12px #00f0ff, 0 0 20px #00f0ff; }
+&nbsp;&nbsp;&nbsp;&nbsp;.cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(0, 240, 255, 0.5); }
+&nbsp;&nbsp;&nbsp;&nbsp;a:hover~.cursor-outline, button:hover~.cursor-outline, .cursor-hover {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width: 70px; height: 70px; background: rgba(0, 240, 255, 0.1); border-color: #00f0ff; backdrop-filter: blur(2px);
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;.glass-premium {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background: rgba(10, 10, 15, 0.6); backdrop-filter: blur(16px);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;.glass-card {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background: linear-gradient(145deg, rgba(18, 18, 28, 0.7), rgba(10, 10, 15, 0.9));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.03);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform-style: preserve-3d; will-change: transform;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transition: border-color 0.4s ease, box-shadow 0.4s ease;
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;.glass-card:hover { border-color: rgba(34, 211, 238, 0.5); box-shadow: 0 20px 40px -10px rgba(0, 240, 255, 0.2); }
+&nbsp;&nbsp;&nbsp;&nbsp;.glass-card > * { transform: translateZ(30px); }
+&nbsp;&nbsp;&nbsp;&nbsp;.profile-img {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filter: grayscale(100%) contrast(110%); transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;.profile-img.colored { filter: grayscale(0%) contrast(105%) saturate(120%) drop-shadow(0 0 15px rgba(0,240,255,0.5)); }
+&nbsp;&nbsp;&nbsp;&nbsp;.profile-img:hover { filter: grayscale(0%) contrast(105%) saturate(120%) drop-shadow(0 0 20px rgba(0,240,255,0.7)); }
+&nbsp;&nbsp;&nbsp;&nbsp;@media (hover: none) and (pointer: coarse) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.profile-img:active { filter: grayscale(0%); }
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;.glow-img { position: relative; }
+&nbsp;&nbsp;&nbsp;&nbsp;.glow-img::before {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content: ''; position: absolute; inset: -10px;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background: linear-gradient(135deg, #00f0ff, #7000ff, #00f0ff);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 35px; filter: blur(35px); opacity: 0.4; z-index: -1;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animation: pulseGlow 4s ease-in-out infinite alternate;
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;@keyframes pulseGlow {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0% { opacity: 0.2; filter: blur(25px); transform: scale(0.98); }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100% { opacity: 0.6; filter: blur(40px); transform: scale(1.02); }
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;.reveal { opacity: 0; transform: translateY(30px); transition: all 0.9s cubic-bezier(0.165, 0.84, 0.44, 1); }
+&nbsp;&nbsp;&nbsp;&nbsp;.reveal.active { opacity: 1; transform: translateY(0); }
+&nbsp;&nbsp;&nbsp;&nbsp;.neon-text { text-shadow: 0 0 10px rgba(0, 240, 255, 0.7), 0 0 20px rgba(0, 240, 255, 0.4); }
+&nbsp;&nbsp;&nbsp;&nbsp;::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #050505; }
+&nbsp;&nbsp;&nbsp;&nbsp;::-webkit-scrollbar-thumb { background: #00f0ff; border-radius: 10px; }
+&nbsp;&nbsp;&nbsp;&nbsp;.typed-cursor { display: inline-block; width: 2px; background-color: #00f0ff; margin-left: 4px; box-shadow: 0 0 8px #00f0ff; animation: blink 0.8s infinite; }
+&nbsp;&nbsp;&nbsp;&nbsp;@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+&nbsp;&nbsp;&nbsp;&nbsp;#particle-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; opacity: 0.4; }
+&nbsp;&nbsp;&nbsp;&nbsp;.navbar { transition: background 0.3s ease, padding 0.3s ease; }
+&nbsp;&nbsp;&nbsp;&nbsp;.navbar.scrolled { background: rgba(5,5,10,0.85); backdrop-filter: blur(20px); padding-top: 0.5rem; padding-bottom: 0.5rem; }
+&nbsp;&nbsp;&nbsp;&nbsp;.hamburger-line { transition: all 0.3s ease; }
+&nbsp;&nbsp;&nbsp;&nbsp;.rgb-split:hover { animation: rgbShift 0.6s infinite alternate; }
+&nbsp;&nbsp;&nbsp;&nbsp;@keyframes rgbShift {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0% { filter: drop-shadow(2px 0 cyan) drop-shadow(-2px 0 red); }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;25% { filter: drop-shadow(3px 0 magenta) drop-shadow(-3px 0 lime); }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;50% { filter: drop-shadow(1px 0 yellow) drop-shadow(-1px 0 blue); }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;75% { filter: drop-shadow(4px 0 red) drop-shadow(-4px 0 cyan); }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100% { filter: drop-shadow(2px 0 blue) drop-shadow(-2px 0 magenta); }
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;.img-holo { position: relative; overflow: hidden; }
+&nbsp;&nbsp;&nbsp;&nbsp;.img-holo::after {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background: linear-gradient(90deg, transparent, rgba(0,240,255,0.2), transparent);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transition: left 0.8s ease;
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;.img-holo:hover::after { left: 100%; }
+&nbsp;&nbsp;</style>
 </head>
 <body class="bg-black">
-    <div class="scanlines"></div>
-    <canvas id="particle-canvas"></canvas>
-    <div class="bg-grid"></div>
-    <div class="spotlight" id="spotlight"></div>
-    <div class="cursor-dot" id="cursor-dot"></div>
-    <div class="cursor-outline" id="cursor-outline"></div>
-
-    <!-- NAVBAR (kept + improved) -->
-    <nav class="navbar fixed top-0 left-0 w-full z-50 px-6 py-5 flex items-center justify-between" id="navbar">
-        <a href="#" class="text-3xl font-black tracking-tighter neon-text">eerrgin<span class="text-[#00f0ff]">.</span></a>
-        <!-- nav links... (same as yours, with hover glow) -->
-    </nav>
-
-    <!-- Music Player (kept) -->
-    <audio id="bg-music" loop preload="auto" src="https://github.com/eerrgin/eerrgin.github.io/raw/refs/heads/main/7mix.mp3"></audio>
-    <div class="fixed bottom-4 left-4 z-50 glass-premium px-4 py-3 rounded-3xl flex items-center gap-3 cursor-pointer" id="music-toggle">
-        <!-- your music UI -->
-    </div>
-
-    <!-- HERO -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-20 pb-16 relative">
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-            <div class="space-y-8">
-                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-cyan-500/30 bg-cyan-950/30 text-cyan-400 text-xs font-mono tracking-widest">
-                    <i class="fa-solid fa-microchip animate-pulse"></i> LATE NIGHT MODE // IDEAS FLOWING
-                </div>
-                
-                <h1 class="text-7xl md:text-8xl font-black tracking-tighter leading-none neon-text">
-                    eerrgin<span class="text-[#00f0ff]">.</span>
-                </h1>
-                
-                <div class="text-3xl text-gray-300 font-light min-h-[3.5rem]" id="typed-text"></div>
-                
-                <p class="max-w-md text-gray-400">
-                    Indie developer who stays up too late turning random sparks of curiosity into working demos. 
-                    I tinker with AI agents, build silly (and sometimes useful) apps, and chase whatever feels exciting.
-                </p>
-                
-                <div class="flex flex-wrap gap-4">
-                    <a href="https://github.com/eerrgin" target="_blank" class="px-8 py-4 bg-white text-black font-bold rounded-2xl flex items-center gap-3 hover:scale-105 transition">
-                        <i class="fa-brands fa-github"></i> See my experiments
-                    </a>
-                    <a href="https://eerrgin.github.io/message.htm" class="px-8 py-4 border border-cyan-400 text-cyan-400 font-bold rounded-2xl hover:bg-cyan-400 hover:text-black transition">
-                        Say hi →
-                    </a>
-                </div>
-                
-                <!-- Terminal logs -->
-                <div id="terminal" class="terminal-log bg-black/60 p-4 rounded-xl font-mono text-xs max-w-md h-28 overflow-hidden border border-white/10"></div>
-            </div>
-            
-            <div class="flex justify-center">
-                <div class="glow-img w-80 h-80 md:w-[460px] md:h-[460px]">
-                    <img src="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/refs/heads/main/12.jpg" 
-                         alt="Ergin Kaplan" 
-                         class="profile-img w-full h-full object-cover rounded-3xl border border-white/10 shadow-2xl" 
-                         id="profile-img">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- LAB / SKILLS -->
-    <section id="lab" class="py-28">
-        <!-- Enhanced cards with icons and tags - more playful language -->
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="py-24 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent">
-        <!-- More cards, with fake "live" status or hover video/gif previews if you add them -->
-    </section>
-
-    <!-- FOOTER + scripts -->
-
-    <script>
-        // All your original JS (cursor, particles, music, typed, tilt, etc.) + new additions
-        
-        // Example new terminal logs
-        const logs = [
-            "[22:41] Just made an agent argue with itself... hilarious",
-            "[23:05] WASM build succeeded in 47ms",
-            "[01:12] Brainstorming neural interface again"
-        ];
-        let logIndex = 0;
-        setInterval(() => {
-            document.getElementById('terminal').textContent = logs[logIndex % logs.length];
-            logIndex++;
-        }, 2800);
-        
-        // Click profile for surprise
-        document.getElementById('profile-img').addEventListener('click', () => {
-            // Trigger matrix rain or intense glitch for 2s
-            document.body.style.filter = 'hue-rotate(90deg) contrast(150%)';
-            setTimeout(() => document.body.style.filter = '', 1800);
-        });
-        
-        // Your particle, cursor, music, typed JS here (enhanced versions of yours)
-    </script>
+&nbsp;&nbsp;<div class="scanlines"></div>
+&nbsp;&nbsp;<canvas id="particle-canvas"></canvas>
+&nbsp;&nbsp;<div class="bg-grid"></div>
+&nbsp;&nbsp;<div class="spotlight" id="spotlight"></div>
+&nbsp;&nbsp;<div class="cursor-dot" id="cursor-dot"></div>
+&nbsp;&nbsp;<div class="cursor-outline" id="cursor-outline"></div>
+&nbsp;&nbsp;<!-- NAVBAR -->
+&nbsp;&nbsp;<nav class="navbar fixed top-0 left-0 w-full z-50 px-6 py-5 flex items-center justify-between transition-all duration-300" id="navbar">
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="text-2xl font-black tracking-tighter text-white neon-text">eerrgin<span class="text-[#00f0ff]">.</span></a>
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-widest text-gray-300">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#home" class="hover:text-[#00f0ff] transition">Home</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#lab" class="hover:text-[#00f0ff] transition">Lab</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#projects" class="hover:text-[#00f0ff] transition">Projects</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#team" class="hover:text-[#00f0ff] transition">Team</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://eerrgin.github.io/message.htm" class="hover:text-[#00f0ff] transition">Contact</a>
+&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;&nbsp;&nbsp;<button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none z-50">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="hamburger-line w-6 h-0.5 bg-white mb-1"></div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="hamburger-line w-6 h-0.5 bg-white mb-1"></div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="hamburger-line w-6 h-0.5 bg-white"></div>
+&nbsp;&nbsp;&nbsp;&nbsp;</button>
+&nbsp;&nbsp;</nav>
+&nbsp;&nbsp;<!-- mobile menu -->
+&nbsp;&nbsp;<div id="mobile-menu" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-8 text-2xl font-bold uppercase tracking-widest text-gray-300 opacity-0 pointer-events-none transition-opacity duration-300">
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#home" class="hover:text-[#00f0ff]">Home</a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#lab" class="hover:text-[#00f0ff]">Lab</a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#projects" class="hover:text-[#00f0ff]">Projects</a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#team" class="hover:text-[#00f0ff]">Team</a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://eerrgin.github.io/message.htm" class="hover:text-[#00f0ff]">Contact</a>
+&nbsp;&nbsp;</div>
+&nbsp;&nbsp;<audio id="bg-music" loop preload="auto" src="https://github.com/eerrgin/eerrgin.github.io/raw/refs/heads/main/7mix.mp3"></audio>
+&nbsp;&nbsp;<!-- ultra kompakt müzik player -->
+&nbsp;&nbsp;<div class="fixed bottom-4 left-4 z-50 flex items-center gap-1.5 glass-premium px-2.5 py-2 rounded-full cursor-pointer" id="music-toggle">
+&nbsp;&nbsp;&nbsp;&nbsp;<div id="music-icon" class="w-7 h-7 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-sm">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-play ml-0.5"></i>
+&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1.0" class="w-12 h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer hidden sm:block" style="accent-color: #00f0ff;">
+&nbsp;&nbsp;</div>
+&nbsp;&nbsp;<div class="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="glass-premium rounded-full px-3 py-1.5 text-[10px] flex items-center gap-2 border-green-500/20">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="relative flex h-2 w-2">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="relative inline-flex rounded-full h-2 w-2 bg-green-500 box-shadow-[0_0_8px_#22c55e]"></span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-300 font-mono tracking-widest">SYS.ONLINE</span>
+&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://instagram.com/eerrgin" target="_blank" class="w-12 h-12 glass-premium rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-gradient-to-tr hover:from-purple-600 hover:to-pink-500 transition-all duration-300"><i class="fa-brands fa-instagram text-lg"></i></a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://facebook.com/eerrgin" target="_blank" class="w-12 h-12 glass-premium rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300"><i class="fa-brands fa-facebook-f text-lg"></i></a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.dev.to" target="_blank" class="w-12 h-12 glass-premium rounded-full flex items-center justify-center text-gray-400 hover:text-black hover:bg-[#00f0ff] hover:shadow-[0_0_20px_#00f0ff] transition-all duration-300"><i class="fa-solid fa-terminal text-lg"></i></a>
+&nbsp;&nbsp;</div>
+&nbsp;&nbsp;<!-- HOME -->
+&nbsp;&nbsp;<section id="home" class="min-h-screen flex items-center justify-center pt-24 pb-16">
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="text-left reveal order-2 lg:order-1">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/20 text-cyan-400 text-[10px] font-mono font-bold mb-8 tracking-widest backdrop-blur-sm shadow-[0_0_15px_rgba(0,240,255,0.1)]">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-microchip animate-pulse"></i> <span>SYSTEM_READY // v2.0 // KERNEL_ACTIVE</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h1 class="text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-4 leading-[1]">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;eerrgin<span class="text-[#00f0ff] neon-text">.</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="text-2xl md:text-3xl text-gray-300 font-light mb-6 h-14">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="typed-text"></span><span class="typed-cursor"></span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="text-base md:text-lg text-gray-400 leading-relaxed mb-4 max-w-lg font-light">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Architect of autonomous systems, rapid engines, and experimental labs.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="text-sm md:text-base text-[#00f0ff]/80 leading-relaxed mb-10 max-w-lg italic border-l-2 border-[#00f0ff]/50 pl-4 py-1">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Ergin Kaplan here. Some nights I code. I bring random ideas to life, tinker with AI, and experiment with everything that interests me."
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="flex flex-wrap gap-5">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/eerrgin" target="_blank" class="px-8 py-4 bg-white text-black font-black rounded-xl text-sm tracking-wide uppercase flex items-center gap-3 hover:bg-[#00f0ff] hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] transition-all duration-300">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-brands fa-github text-xl"></i> Init_GitHub
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://eerrgin.github.io/message.htm" target="_blank" class="px-8 py-4 bg-transparent backdrop-blur-md border border-[#00f0ff]/50 text-[#00f0ff] font-bold rounded-xl text-sm tracking-wide uppercase flex items-center gap-3 hover:bg-[#00f0ff] hover:text-black hover:border-transparent hover:shadow-[0_0_30px_rgba(0,240,255,0.3)] transition-all duration-300">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-satellite-dish text-xl"></i> Ping_Me
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="flex gap-10 mt-14 pt-8 border-t border-white/5">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div><div class="text-3xl font-black text-[#00f0ff] stat-number" id="visit-counter">+247</div><div class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Explored Nodes</div></div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div><div class="text-3xl font-black text-white" id="live-clock">--:-- --</div><div class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Local Cycle</div></div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div><div class="text-3xl font-black text-purple-400">∞</div><div class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Limits</div></div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="reveal flex justify-center lg:justify-end order-1 lg:order-2">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="glow-img w-72 h-72 md:w-[420px] md:h-[420px] transition-all duration-700 hover:scale-[1.03] img-holo">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/refs/heads/main/12.jpg" alt="Ergin Kaplan" class="profile-img rgb-split w-full h-full object-cover rounded-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]" id="profile-img">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;</section>
+&nbsp;&nbsp;<!-- LAB -->
+&nbsp;&nbsp;<section id="lab" class="py-28 relative z-10">
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="max-w-7xl mx-auto px-6">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="text-center mb-20 reveal">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-[#00f0ff] text-[10px] font-mono tracking-[0.2em] bg-[#00f0ff]/10 border border-[#00f0ff]/20 px-4 py-1.5 rounded-full shadow-[0_0_10px_rgba(0,240,255,0.1)]">CORE ARCHITECTURE</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h2 class="text-5xl md:text-6xl font-black mt-6 tracking-tight">Developer <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-purple-500">Excellence</span></h2>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="grid md:grid-cols-3 gap-8">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="glass-card p-8 rounded-3xl group reveal tilt-card"><div class="w-14 h-14 rounded-2xl bg-[#00f0ff]/10 border border-[#00f0ff]/20 flex items-center justify-center text-[#00f0ff] text-2xl mb-6 shadow-[0_0_15px_rgba(0,240,255,0.1)] group-hover:bg-[#00f0ff] group-hover:text-black transition-all duration-300"><i class="fa-solid fa-network-wired"></i></div><h3 class="text-2xl font-bold mb-3 tracking-tight">Autonomous Agents</h3><p class="text-gray-400 text-sm leading-relaxed font-light">Self-evolving AI pipelines, multi-agent orchestration, and swarm intelligence algorithms.</p><div class="mt-6 flex gap-2 text-[10px] text-[#00f0ff]/80 font-mono uppercase"><span class="bg-[#00f0ff]/5 px-3 py-1 rounded-md border border-[#00f0ff]/20">LLM_Mesh</span><span class="bg-[#00f0ff]/5 px-3 py-1 rounded-md border border-[#00f0ff]/20">ReAct</span></div></div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="glass-card p-8 rounded-3xl group reveal tilt-card"><div class="w-14 h-14 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 text-2xl mb-6 shadow-[0_0_15px_rgba(249,115,22,0.1)] group-hover:bg-orange-500 group-hover:text-black transition-all duration-300"><i class="fa-solid fa-gauge-high"></i></div><h3 class="text-2xl font-bold mb-3 tracking-tight">Rapid Engine</h3><p class="text-gray-400 text-sm leading-relaxed font-light">High-performance real-time simulation, ultra low-latency processing, and infinite scalability.</p><div class="mt-6 flex gap-2 text-[10px] text-orange-400/80 font-mono uppercase"><span class="bg-orange-500/5 px-3 py-1 rounded-md border border-orange-500/20">Sub-ms</span><span class="bg-orange-500/5 px-3 py-1 rounded-md border border-orange-500/20">WASM</span></div></div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="glass-card p-8 rounded-3xl group reveal tilt-card"><div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-2xl mb-6 shadow-[0_0_15px_rgba(168,85,247,0.1)] group-hover:bg-purple-500 group-hover:text-black transition-all duration-300"><i class="fa-solid fa-vial-virus"></i></div><h3 class="text-2xl font-bold mb-3 tracking-tight">Experimental Lab</h3><p class="text-gray-400 text-sm leading-relaxed font-light">Sandboxed R&D for zero-day research, complex fuzzing, and novel protocol analysis.</p><div class="mt-6 flex gap-2 text-[10px] text-purple-400/80 font-mono uppercase"><span class="bg-purple-500/5 px-3 py-1 rounded-md border border-purple-500/20">Sandbox</span><span class="bg-purple-500/5 px-3 py-1 rounded-md border border-purple-500/20">Fuzzing</span></div></div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;</section>
+&nbsp;&nbsp;<!-- PROJECTS -->
+&nbsp;&nbsp;<section id="projects" class="py-24 bg-gradient-to-b from-transparent via-[#00f0ff]/5 to-transparent border-y border-white/5">
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="max-w-7xl mx-auto px-6">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="reveal text-center mb-14"><h3 class="text-4xl font-black">Latest <span class="text-[#00f0ff]">Projects</span></h3><p class="text-gray-500 mt-3 font-mono text-xs tracking-widest uppercase">pushing the boundaries of code</p></div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="grid md:grid-cols-2 gap-8">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="glass-card p-8 rounded-3xl group reveal tilt-card block no-underline"><span class="text-xs text-[#00f0ff] font-mono">01</span><h4 class="text-xl font-bold mt-2">Neural Interface Design</h4><p class="text-gray-400 text-sm mt-2">Low‑latency signal processing pipeline for real‑time brain‑computer interaction.</p><div class="flex gap-2 mt-4"><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full">Python</span><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full">TensorFlow</span></div></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="glass-card p-8 rounded-3xl group reveal tilt-card block no-underline"><span class="text-xs text-purple-400 font-mono">02</span><h4 class="text-xl font-bold mt-2">Autonomous Drone Swarm</h4><p class="text-gray-400 text-sm mt-2">Simultaneous mission planning and collision avoidance for 10+ drones.</p><div class="flex gap-2 mt-4"><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full">C++</span><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full">ROS2</span></div></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;</section>
+&nbsp;&nbsp;<!-- TEAM -->
+&nbsp;&nbsp;<section id="team" class="py-28 relative z-10">
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="max-w-7xl mx-auto px-6">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="text-center mb-20 reveal"><span class="text-purple-400 text-[10px] font-mono tracking-[0.2em] bg-purple-500/10 border border-purple-500/20 px-4 py-1.5 rounded-full">AI RESEARCH TEAM</span><h2 class="text-5xl font-black mt-6">The <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-[#00f0ff]">Brains</span></h2></div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="grid md:grid-cols-3 gap-8">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="glass-card p-8 rounded-3xl text-center reveal tilt-card"><div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-purple-500 to-cyan-400 mb-4 flex items-center justify-center text-3xl font-black text-white">eerrgin</div><h4 class="text-xl font-bold">Ergin Kaplan</h4><p class="text-xs text-[#00f0ff] font-mono mt-1">Research</p><p class="text-gray-400 text-sm mt-2">Autonomous systems & AI exploration.</p></div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="glass-card p-8 rounded-3xl text-center reveal tilt-card"><div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 mb-4 flex items-center justify-center text-3xl font-black text-white">neuralX</div><h4 class="text-xl font-bold">neuralX</h4><p class="text-xs text-cyan-400 font-mono mt-1">Deep Learning</p><p class="text-gray-400 text-sm mt-2">Pioneering novel neural architectures.</p></div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="glass-card p-8 rounded-3xl text-center reveal tilt-card"><div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-pink-500 to-orange-400 mb-4 flex items-center justify-center text-3xl font-black text-white">stackZero</div><h4 class="text-xl font-bold">stackZero</h4><p class="text-xs text-pink-400 font-mono mt-1">Full Stack</p><p class="text-gray-400 text-sm mt-2">Bridging front‑end and infrastructure.</p></div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;</section>
+&nbsp;&nbsp;<!-- CONTACT / COMMUNITY -->
+&nbsp;&nbsp;<section id="contact" class="py-20">
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="max-w-3xl mx-auto text-center reveal">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="glass-card p-12 rounded-[2rem] inline-block w-full relative overflow-hidden group">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-[#00f0ff]/10 blur-[50px] rounded-full"></div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-terminal fa-3x text-[#00f0ff] mb-6 relative z-10 group-hover:rotate-12 transition-transform duration-500"></i>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3 class="text-3xl font-black mb-3 relative z-10">Dev Community</h3>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="text-gray-400 mb-8 font-light relative z-10">I hang out with indie devs, open‑source enthusiasts, and tech explorers deep inside the code.</p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.dev.to" target="_blank" class="relative z-10 inline-flex items-center gap-3 text-black bg-[#00f0ff] font-bold px-8 py-3.5 rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">Join the System <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p class="text-[10px] text-gray-600 mt-6 font-mono uppercase tracking-widest relative z-10">dev.to • global tech node</p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;</section>
+&nbsp;&nbsp;<footer class="py-10 text-center text-gray-600 text-xs font-mono uppercase tracking-widest border-t border-white/5 bg-black/50">
+&nbsp;&nbsp;&nbsp;&nbsp;<div class="flex flex-wrap justify-center gap-6 mb-4">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="hover:text-white transition">Privacy</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="hover:text-white transition">Terms</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="hover:text-white transition">Cookies</a>
+&nbsp;&nbsp;&nbsp;&nbsp;</div>
+&nbsp;&nbsp;&nbsp;&nbsp;<p>© <span id="year"></span> Ergin Kaplan // Secured Architecture // End of Line.</p>
+&nbsp;&nbsp;</footer>
+&nbsp;&nbsp;<script>
+&nbsp;&nbsp;&nbsp;&nbsp;(function() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// CURSOR
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const dot = document.getElementById("cursor-dot"), outline = document.getElementById("cursor-outline"), spotlight = document.getElementById("spotlight");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function moveCursor(e) { let x = e.clientX, y = e.clientY; if (dot) { dot.style.left = x + "px"; dot.style.top = y + "px"; } if (outline) { outline.style.left = x + "px"; outline.style.top = y + "px"; } if (spotlight) { spotlight.style.setProperty('--x', x + 'px'); spotlight.style.setProperty('--y', y + 'px'); } }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (window.innerWidth > 768) { window.addEventListener("mousemove", moveCursor); document.querySelectorAll("a, button, .glass-card, .glass-premium").forEach(el => { el.addEventListener("mouseenter", () => outline.classList.add("cursor-hover")); el.addEventListener("mouseleave", () => outline.classList.remove("cursor-hover")); }); } else { if(dot) dot.style.display = "none"; if(outline) outline.style.display = "none"; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 3D TILT
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (window.innerWidth > 768) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.querySelectorAll('.tilt-card').forEach(card => {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;card.addEventListener('mousemove', e => { const rect = card.getBoundingClientRect(); const x = e.clientX - rect.left; const y = e.clientY - rect.top; const centerX = rect.width/2; const centerY = rect.height/2; const rotateX = ((y-centerY)/centerY)*-10; const rotateY = ((x-centerX)/centerX)*10; card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02,1.02,1.02)`; });
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;card.addEventListener('mouseleave', () => { card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)`; card.style.transition = `transform 0.5s ease`; });
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;card.addEventListener('mouseenter', () => { card.style.transition = `none`; });
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// RANDOM GLITCH
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setInterval(() => { if(Math.random()>0.75) { document.body.classList.add('glitch-active'); setTimeout(()=>document.body.classList.remove('glitch-active'),200); } }, 4000);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// PROFILE IMG TOGGLE COLOR
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const profileImg = document.getElementById("profile-img");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(profileImg){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;profileImg.addEventListener("click", function(e){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.stopPropagation();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.classList.toggle("colored");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(window.matchMedia("(hover: none) and (pointer: coarse)").matches){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;profileImg.addEventListener("touchstart", function(){ this.style.filter = "grayscale(0%)"; });
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;profileImg.addEventListener("touchend", function(){ if(!this.classList.contains("colored")) this.style.filter = ""; });
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// NAVBAR SCROLL
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const navbar = document.getElementById("navbar");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.addEventListener("scroll", ()=>{ if(window.scrollY>50) navbar.classList.add("scrolled"); else navbar.classList.remove("scrolled"); });
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// MOBILE MENU
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const menuBtn = document.getElementById("menu-btn"), mobileMenu = document.getElementById("mobile-menu");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;menuBtn.addEventListener("click", ()=>{ mobileMenu.classList.toggle("opacity-0"); mobileMenu.classList.toggle("pointer-events-none"); });
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mobileMenu.querySelectorAll("a").forEach(link=>{ link.addEventListener("click", ()=>{ mobileMenu.classList.add("opacity-0","pointer-events-none"); }); });
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// PARTICLES WITH MOUSE INTERACTION
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const canvas = document.getElementById("particle-canvas"), ctx = canvas.getContext("2d");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let width, height, particles = [], mouse = {x:null, y:null, radius: 100};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function resizeCanvas(){ width=window.innerWidth; height=window.innerHeight; canvas.width=width; canvas.height=height; initParticles(); }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function initParticles(){ particles=[]; let count = Math.min(120, Math.floor(width*height/8000)); for(let i=0;i<count;i++){ particles.push({x:Math.random()*width, y:Math.random()*height, radius:Math.random()*1.5+0.5, alpha:Math.random()*0.5+0.1, vx:(Math.random()-0.5)*0.2, vy:(Math.random()-0.5)*0.2}); } }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function drawParticles(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!ctx) return; ctx.clearRect(0,0,width,height);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(let p of particles){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ctx.fillStyle = "#00f0ff"; ctx.globalAlpha = p.alpha;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(mouse.x && mouse.y){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let dx = p.x - mouse.x, dy = p.y - mouse.y, dist = Math.sqrt(dx*dx+dy*dy);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(dist < mouse.radius){ let force = (mouse.radius-dist)/mouse.radius; p.x += dx*force*0.03; p.y += dy*force*0.03; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2); ctx.fill();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p.x += p.vx; p.y += p.vy;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(p.x<0)p.x=width; if(p.x>width)p.x=0; if(p.y<0)p.y=height; if(p.y>height)p.y=0;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(let i=0;i<particles.length;i++){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(let j=i+1;j<particles.length;j++){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y, dist=Math.sqrt(dx*dx+dy*dy);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(dist<80){ ctx.strokeStyle=`rgba(0,240,255,${0.1*(1-dist/80)})`; ctx.lineWidth=0.5; ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y); ctx.stroke(); }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;requestAnimationFrame(drawParticles);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.addEventListener("resize", resizeCanvas);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.addEventListener("mousemove", (e)=>{ mouse.x=e.clientX; mouse.y=e.clientY; });
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.addEventListener("mouseleave", ()=>{ mouse.x=null; mouse.y=null; });
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resizeCanvas(); drawParticles();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// TYPED
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const titles = ["App Developer & AI Explorer", "Systems Architect", "Autonomous Agent Creator", "Digital Alchemist"];
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let idx=0, charIdx=0, isDeleting=false; const typedSpan = document.getElementById("typed-text");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function typeEffect(){ let current=titles[idx]; if(isDeleting){ typedSpan.innerText=current.substring(0,charIdx-1); charIdx--; if(charIdx===0){isDeleting=false;idx=(idx+1)%titles.length;} } else { typedSpan.innerText=current.substring(0,charIdx+1); charIdx++; if(charIdx===current.length){isDeleting=true; setTimeout(()=>{},2000);} } setTimeout(typeEffect, isDeleting?50:100); }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typeEffect();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// MÜZİK SİSTEMİ (her tıklamada başlar, toggle kontrol)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const music = document.getElementById("bg-music");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const musicToggle = document.getElementById("music-toggle");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const musicIconDiv = document.getElementById("music-icon");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const volumeSlider = document.getElementById("volume-slider");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let isPlaying = false;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function updateUI(playing) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;musicIconDiv.innerHTML = playing ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play ml-0.5"></i>';
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function startMusic() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (isPlaying) return;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;music.volume = volumeSlider ? parseFloat(volumeSlider.value) : 1.0;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;music.play().then(() => {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isPlaying = true;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateUI(true);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}).catch(err => {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.warn("Audio play failed:", err);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function stopMusic() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!isPlaying) return;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;music.pause();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isPlaying = false;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateUI(false);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// sayfada herhangi bir yere tıklayınca başlasın (ilk etkileşim)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.body.addEventListener("click", function initOnce() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;startMusic();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.body.removeEventListener("click", initOnce);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}, { once: true });
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// toggle butonu
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;musicToggle.addEventListener("click", (e) => {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.stopPropagation();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (isPlaying) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stopMusic();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;startMusic();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// ses seviyesi
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (volumeSlider) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;volumeSlider.addEventListener("click", (e) => e.stopPropagation());
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;volumeSlider.addEventListener("input", (e) => {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;music.volume = parseFloat(e.target.value);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// COUNTER & CLOCK
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let visitCount = localStorage.getItem("sys_visits_v2"); visitCount = visitCount ? parseInt(visitCount)+1 : 247; localStorage.setItem("sys_visits_v2", visitCount); document.getElementById("visit-counter").innerText = "+"+visitCount;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function updateClock(){ const now=new Date(); document.getElementById("live-clock").innerHTML = `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')} <span class="text-xs text-gray-500 animate-pulse">${now.getSeconds().toString().padStart(2,'0')}</span>`; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateClock(); setInterval(updateClock, 1000); document.getElementById("year").innerText = new Date().getFullYear();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// SCROLL REVEAL
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const reveals = document.querySelectorAll(".reveal");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function revealOnScroll(){ reveals.forEach(r=>{ if(r.getBoundingClientRect().top < window.innerHeight-100) r.classList.add("active"); }); }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.addEventListener("scroll", revealOnScroll); revealOnScroll();
+&nbsp;&nbsp;&nbsp;&nbsp;})();
+&nbsp;&nbsp;</script>
 </body>
 </html>
