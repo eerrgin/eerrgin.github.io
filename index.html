@@ -7,17 +7,6 @@
   <meta name="description" content="Ergin Kaplan (eerrgin) – Curious Developer, AI Explorer & Code Tinkerer.">
   <meta name="keywords" content="Ergin Kaplan, eerrgin, developer, AI, tinkerer, coder">
   <meta name="author" content="Ergin Kaplan">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Ergin Kaplan",
-    "url": "https://eerrgin.github.io",
-    "jobTitle": "Curious Developer & AI Explorer",
-    "sameAs": ["https://github.com/eerrgin", "https://xdaforums.com/m/catsnovel.12522279/"]
-  }
-  </script>
-  <script defer src="https://umami-production-f4fa.up.railway.app/script.js" data-website-id="16bbb30b-bf80-4649-91ce-21a97ae3a06c"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,15 +32,6 @@
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1));
       background-size: 100% 4px; z-index: 9997; pointer-events: none; opacity: 0.3;
-    }
-    .glitch-active {
-      animation: cyber-glitch 0.2s cubic-bezier(.25, .46, .45, .94) both;
-      filter: contrast(130%) hue-rotate(10deg) saturate(150%);
-    }
-    @keyframes cyber-glitch {
-      0% { transform: translate(0) } 20% { transform: translate(-4px, 2px) skewX(1deg) }
-      40% { transform: translate(4px, -2px) skewX(-1deg) } 60% { transform: translate(-2px, -2px) }
-      80% { transform: translate(2px, 4px) } 100% { transform: translate(0) }
     }
     @media (max-width: 768px) {
       body, a, button, [role="button"], input { cursor: auto; }
@@ -101,9 +81,6 @@
     .profile-img:hover { 
       filter: grayscale(0%) contrast(105%) saturate(120%) drop-shadow(0 0 20px rgba(0,240,255,0.7)); 
     }
-    @media (hover: none) and (pointer: coarse) {
-      .profile-img:active { filter: grayscale(0%); }
-    }
     
     .glow-img { position: relative; }
     .glow-img::before {
@@ -135,30 +112,27 @@
       75% { filter: drop-shadow(4px 0 red) drop-shadow(-4px 0 cyan); }
       100% { filter: drop-shadow(2px 0 blue) drop-shadow(-2px 0 magenta); }
     }
-    .img-holo { position: relative; overflow: hidden; }
-    .img-holo::after {
-      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0,240,255,0.2), transparent);
-      transition: left 0.8s ease;
-    }
-    .img-holo:hover::after { left: 100%; }
     
-    /* TERMINAL STYLES ( minimized at bottom ) */
-    .terminal-window { font-family: 'Fira Code', monospace; font-size: 11px; }
-    #terminal-section { transition: transform 0.3s ease, opacity 0.3s ease; transform: translateY(calc(100% - 30px)); opacity: 0.8; z-index: 100; }
-    #terminal-section.expanded { transform: translateY(0); opacity: 1; }
+    /* TERMINAL STYLES (Restored to main section) */
+    .terminal-window { font-family: 'Fira Code', monospace; }
+    .terminal-input:focus { outline: none; }
     
-    /* AI CHAT WIDGET STYLES ( modern floating agent ) */
+    /* AI CHAT WIDGET STYLES */
     #ai-chat-widget { z-index: 9999; }
     #ai-chat-bubble { width: 60px; height: 60px; transition: transform 0.3s ease, background 0.3s ease; }
     #ai-chat-bubble:hover { transform: scale(1.1) rotate(15deg); }
     #ai-chat-window { width: 350px; height: 450px; max-height: calc(100vh - 120px); transition: opacity 0.3s ease, transform 0.3s ease; transform-origin: bottom right; font-size: 13px; }
     #ai-chat-window.hidden { opacity: 0; transform: scale(0.8) translateY(20px); pointer-events: none; }
     #ai-chat-output::-webkit-scrollbar { width: 4px; }
-    .ai-msg, .user-msg { max-width: 80%; padding: 10px 14px; border-radius: 14px; line-height: 1.4; margin-bottom: 8px; }
+    .ai-msg, .user-msg { max-width: 85%; padding: 10px 14px; border-radius: 14px; line-height: 1.5; margin-bottom: 8px; word-wrap: break-word; }
     .ai-msg { background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); align-self: flex-start; color: #f0f0f0; border-top-left-radius: 2px; }
     .user-msg { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.05); align-self: flex-end; color: #fff; border-top-right-radius: 2px; }
     #ai-chat-input:focus { outline: none; }
+    .typing-indicator span { display: inline-block; width: 4px; height: 4px; background-color: #00f0ff; border-radius: 50%; animation: typing 1.4s infinite both; margin: 0 2px; }
+    .typing-indicator span:nth-child(1) { animation-delay: 0s; }
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
   </style>
 </head>
 <body class="bg-black">
@@ -175,6 +149,7 @@
       <a href="#home" class="hover:text-[#00f0ff] transition">Home</a>
       <a href="#lab" class="hover:text-[#00f0ff] transition">Lab</a>
       <a href="#projects" class="hover:text-[#00f0ff] transition">Projects</a>
+      <a href="#terminal" class="hover:text-[#00f0ff] transition">Console</a>
       <a href="#contact" class="hover:text-[#00f0ff] transition">Contact</a>
     </div>
     <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none z-50">
@@ -188,10 +163,11 @@
     <a href="#home" class="hover:text-[#00f0ff]">Home</a>
     <a href="#lab" class="hover:text-[#00f0ff]">Lab</a>
     <a href="#projects" class="hover:text-[#00f0ff]">Projects</a>
+    <a href="#terminal" class="hover:text-[#00f0ff]">Console</a>
     <a href="#contact" class="hover:text-[#00f0ff]">Contact</a>
   </div>
 
-  <!-- SOCIAL ICONS (Moved up to prevent overlap with AI Chat) -->
+  <!-- SOCIAL ICONS -->
   <div class="fixed bottom-[100px] right-6 flex flex-col gap-3 z-40">
     <div class="glass-premium rounded-full px-3 py-1.5 text-[10px] flex items-center gap-2 border-green-500/20">
       <span class="relative flex h-2 w-2">
@@ -205,9 +181,8 @@
     <a href="https://www.dev.to" target="_blank" class="w-12 h-12 glass-premium rounded-full flex items-center justify-center text-gray-400 hover:text-black hover:bg-[#00f0ff] hover:shadow-[0_0_20px_#00f0ff] transition-all duration-300"><i class="fa-solid fa-terminal text-lg"></i></a>
   </div>
 
-  <!-- AI CHAT WIDGET ( Floating on Top Bottom-Right ) -->
+  <!-- AI CHAT WIDGET (LLM Powered) -->
   <div id="ai-chat-widget" class="fixed bottom-6 right-6 flex flex-col items-end gap-4">
-    <!-- Chat Window -->
     <div id="ai-chat-window" class="hidden glass-card rounded-2xl p-1 flex flex-col overflow-hidden shadow-2xl border border-gray-700">
       <div class="bg-gray-800 px-4 py-3 flex items-center justify-between border-b border-gray-700">
         <div class="flex items-center gap-3">
@@ -215,21 +190,20 @@
             <i class="fa-robot fa-solid"></i>
           </div>
           <div>
-            <div class="font-bold text-white">eerrgin.Core</div>
-            <div class="text-[10px] text-green-400 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> ONLINE // POLYGLOT_AI</div>
+            <div class="font-bold text-white">eerrgin.LLM</div>
+            <div class="text-[10px] text-green-400 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> NEURAL_NETWORK_ONLINE</div>
           </div>
         </div>
         <button id="ai-chat-close" class="text-gray-500 hover:text-white transition text-lg px-2">×</button>
       </div>
       <div class="p-5 flex-1 overflow-y-auto flex flex-col gap-2 bg-gray-900/50" id="ai-chat-output">
-        <div class="ai-msg">Hello node explorer. My cognitive layer is fully polyglot. You can talk to me in **ANY language**. I'll understand and respond back. No commands needed, just chat.</div>
+        <div class="ai-msg">I am Ergin's advanced AI engine. I know about coding, geography, science, and the world. Ask me anything in any language. (e.g., "İstanbul nerede?")</div>
       </div>
       <div class="px-5 py-4 flex items-center font-mono text-sm bg-gray-900 border-t border-gray-700">
-        <input type="text" id="ai-chat-input" class="bg-transparent border-none text-gray-100 flex-1 w-full" autocomplete="off" placeholder="Type message (tr, en, ru, de...)">
+        <input type="text" id="ai-chat-input" class="bg-transparent border-none text-gray-100 flex-1 w-full" autocomplete="off" placeholder="Ask anything...">
         <i class="fa-solid fa-paper-plane text-[#00f0ff] cursor-pointer ml-3 opacity-80 hover:opacity-100 transition" id="ai-chat-send"></i>
       </div>
     </div>
-    <!-- Chat Bubble -->
     <div id="ai-chat-bubble" class="rounded-full bg-black border border-cyan-500 shadow-[0_0_20px_rgba(0,240,255,0.4)] flex items-center justify-center cursor-pointer text-[#00f0ff] text-2xl hover:border-[#7000ff] hover:shadow-[0_0_20px_rgba(112,0,255,0.4)]">
       <i class="fa-robot fa-solid"></i>
     </div>
@@ -244,11 +218,12 @@
     <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1.0" class="w-12 h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer hidden sm:block" style="accent-color: #00f0ff;">
   </div>
 
+  <!-- SECTIONS -->
   <section id="home" class="min-h-screen flex items-center justify-center pt-24 pb-16">
     <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
       <div class="text-left reveal order-2 lg:order-1">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/20 text-cyan-400 text-[10px] font-mono font-bold mb-8 tracking-widest backdrop-blur-sm shadow-[0_0_15px_rgba(0,240,255,0.1)]">
-          <i class="fa-solid fa-microchip animate-pulse"></i> <span>SYSTEM_READY // v3.5 // CONVERSATIONAL_LAYER_ACTIVE</span>
+          <i class="fa-solid fa-microchip animate-pulse"></i> <span>SYSTEM_READY // v4.0 // FULL_LLM_INTEGRATION</span>
         </div>
         <h1 class="text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-4 leading-[1]">
           eerrgin<span class="text-[#00f0ff] neon-text">.</span>
@@ -282,7 +257,6 @@
     </div>
   </section>
 
-  <!-- RESTORED LAB SECTION -->
   <section id="lab" class="py-28 relative z-10">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-20 reveal">
@@ -297,7 +271,6 @@
     </div>
   </section>
 
-  <!-- RESTORED PROJECTS SECTION -->
   <section id="projects" class="py-24 bg-gradient-to-b from-transparent via-[#00f0ff]/5 to-transparent border-y border-white/5">
     <div class="max-w-7xl mx-auto px-6">
       <div class="reveal text-center mb-14"><h3 class="text-4xl font-black">Latest <span class="text-[#00f0ff]">Experiments</span></h3><p class="text-gray-500 mt-3 font-mono text-xs tracking-widest uppercase">pushing the boundaries of code</p></div>
@@ -308,7 +281,34 @@
     </div>
   </section>
 
-  <!-- RESTORED CONTACT SECTION -->
+  <!-- TERMINAL RESTORED TO MAIN VIEW -->
+  <section id="terminal" class="py-28 relative z-10">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-12 reveal">
+        <span class="text-purple-400 text-[10px] font-mono tracking-[0.2em] bg-purple-500/10 border border-purple-500/20 px-4 py-1.5 rounded-full">INTERACTIVE CONSOLE</span>
+        <h2 class="text-5xl font-black mt-6">Talk to the <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-[#00f0ff]">System</span></h2>
+      </div>
+      <div class="glass-card rounded-2xl p-1 reveal terminal-window">
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl border border-gray-700">
+          <div class="bg-gray-800 px-4 py-2 flex items-center gap-2 border-b border-gray-700">
+            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+            <div class="ml-4 text-xs text-gray-400 font-mono">guest@eerrgin: ~/system</div>
+          </div>
+          <div class="p-6 h-80 overflow-y-auto font-mono text-sm line-height-1.5" id="term-output">
+            <div class="text-gray-300">Welcome to eerrgin.OS v4.0.</div>
+            <div class="text-gray-300">Type <span class="text-[#00f0ff]">'help'</span> to explore directives. Local system controls are active.</div>
+          </div>
+          <div class="px-6 pb-6 pt-2 flex items-center font-mono text-sm bg-gray-900 border-t border-gray-800 mt-2">
+            <span class="text-green-400 mr-2">guest@eerrgin:~$</span>
+            <input type="text" id="term-input" class="terminal-input bg-transparent border-none text-gray-100 flex-1 w-full" autocomplete="off" placeholder="execute command...">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="contact" class="py-20">
     <div class="max-w-3xl mx-auto text-center reveal">
       <div class="glass-card p-12 rounded-[2rem] inline-block w-full relative overflow-hidden group">
@@ -319,31 +319,6 @@
         <a href="https://www.dev.to" target="_blank" class="relative z-10 inline-flex items-center gap-3 text-black bg-[#00f0ff] font-bold px-8 py-3.5 rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">Join the System <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
         <p class="text-[10px] text-gray-600 mt-6 font-mono uppercase tracking-widest relative z-10">dev.to • global tech node</p>
       </div>
-    </div>
-  </section>
-
-  <!-- MINIMIZED TERMINAL -->
-  <section id="terminal-section" class="fixed bottom-0 left-0 w-full flex items-center justify-center p-6 z-40">
-    <div class="max-w-xl w-full glass-card rounded-xl p-1 terminal-window shadow-xl border border-gray-700">
-        <div class="bg-gray-800 px-4 py-1.5 flex items-center justify-between border-b border-gray-700 cursor-pointer" id="terminal-header">
-            <div class="flex items-center gap-1.5">
-                <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
-                <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
-                <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
-                <div class="ml-2 text-[10px] text-gray-400 font-mono tracking-wider">legacy@eerrgin: ~/system (Minimized)</div>
-            </div>
-            <i class="fa-solid fa-chevron-up text-gray-600" id="terminal-icon"></i>
-        </div>
-        <div class="hidden flex-col bg-gray-900" id="terminal-content">
-            <div class="p-4 h-40 overflow-y-auto text-gray-400 text-[10px] font-mono line-height-1.4" id="term-output">
-                <div class="text-gray-300">Welcome to legacy eerrgin.OS v3.5.</div>
-                <div class="text-gray-300">This terminal is kept for the curious. Commands: whoami, skills, thermal, system.</div>
-            </div>
-            <div class="px-4 pb-4 pt-1 flex items-center font-mono text-[10px] bg-gray-900 border-t border-gray-800">
-                <span class="text-green-400 mr-2">legacy@eerrgin:~$</span>
-                <input type="text" id="term-input" class="terminal-input bg-transparent border-none text-gray-100 flex-1 w-full" autocomplete="off" placeholder="legacy command...">
-            </div>
-        </div>
     </div>
   </section>
 
@@ -358,7 +333,7 @@
 
   <script>
     (function() {
-      // CURSOR 
+      // CURSOR
       const dot = document.getElementById("cursor-dot");
       const outline = document.getElementById("cursor-outline");
       const spotlight = document.getElementById("spotlight");
@@ -392,31 +367,14 @@
             card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)`; 
             card.style.transition = `transform 0.5s ease`; 
           });
-          card.addEventListener('mouseenter', () => { 
-            card.style.transition = `none`; 
-          });
+          card.addEventListener('mouseenter', () => { card.style.transition = `none`; });
         });
       }
 
-      // RANDOM GLITCH
-      setInterval(() => { 
-        if (Math.random() > 0.75) { 
-          document.body.classList.add('glitch-active'); 
-          setTimeout(() => document.body.classList.remove('glitch-active'), 200); 
-        } 
-      }, 4000);
-
-      // PROFILE IMG TOGGLE
+      // PROFILE IMG
       const profileImg = document.getElementById("profile-img");
       if (profileImg) {
-        profileImg.addEventListener("click", function(e) {
-          e.stopPropagation();
-          this.classList.toggle("colored");
-        });
-        if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
-          profileImg.addEventListener("touchstart", function() { this.style.filter = "grayscale(0%)"; });
-          profileImg.addEventListener("touchend", function() { if (!this.classList.contains("colored")) this.style.filter = ""; });
-        }
+        profileImg.addEventListener("click", function(e) { e.stopPropagation(); this.classList.toggle("colored"); });
       }
 
       // NAVBAR
@@ -425,50 +383,29 @@
         if (window.scrollY > 50) navbar.classList.add("scrolled"); 
         else navbar.classList.remove("scrolled"); 
       });
-      
       const menuBtn = document.getElementById("menu-btn");
       const mobileMenu = document.getElementById("mobile-menu");
-      menuBtn.addEventListener("click", () => { 
-        mobileMenu.classList.toggle("opacity-0"); 
-        mobileMenu.classList.toggle("pointer-events-none"); 
-      });
-      mobileMenu.querySelectorAll("a").forEach(link => { 
-        link.addEventListener("click", () => { 
-          mobileMenu.classList.add("opacity-0", "pointer-events-none"); 
-        }); 
-      });
-      
-      // MINIMIZED TERMINAL LOGIC
-      const termSection = document.getElementById("terminal-section");
-      const termHeader = document.getElementById("terminal-header");
-      const termContent = document.getElementById("terminal-content");
-      const termIcon = document.getElementById("terminal-icon");
+      menuBtn.addEventListener("click", () => { mobileMenu.classList.toggle("opacity-0"); mobileMenu.classList.toggle("pointer-events-none"); });
+      mobileMenu.querySelectorAll("a").forEach(link => { link.addEventListener("click", () => { mobileMenu.classList.add("opacity-0", "pointer-events-none"); }); });
 
-      termHeader.addEventListener("click", () => {
-        const isExpanded = termSection.classList.toggle("expanded");
-        termContent.classList.toggle("hidden");
-        termContent.classList.toggle("flex");
-        termIcon.classList.toggle("fa-chevron-up");
-        termIcon.classList.toggle("fa-chevron-down");
-        if (isExpanded) document.getElementById("term-input").focus();
-      });
-
+      // TERMINAL LOGIC (Main Section)
       const termInput = document.getElementById("term-input");
       const termOutput = document.getElementById("term-output");
       termInput.addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
           const rawInput = termInput.value.trim();
           const cmdLine = rawInput.toLowerCase();
-          let res = `<div class="text-[#00f0ff] mt-1">> legacy ${rawInput}</div>`;
+          let res = `<div class="text-[#00f0ff] mt-2">> ${rawInput}</div>`;
           switch(cmdLine) {
-            case "help": res += `<div>Commands: whoami, skills, thermal, system.</div>`; break;
+            case "help": res += `<div>Commands: <span class="text-yellow-400">whoami, skills, thermal, system, clear</span></div>`; break;
             case "whoami": res += `<div>Ergin Kaplan. Tinkerer pulling modern system layers apart.</div>`; break;
             case "skills": res += `<div>Python, Advanced JS, Neural Pipelines, Runtime Fuzzing.</div>`; break;
-            case "system": res += `<div>eerrgin.github.io // legacy.OS // Grid Matrix</div>`; break;
+            case "system": res += `<div>eerrgin.github.io // OS.v4.0 // Grid Matrix</div>`; break;
             case "thermal":
                 const bar = (v) => `[${"#".repeat(Math.floor(v/10))}${"-".repeat(10-Math.floor(v/10))}] ${v}°C`;
-                res += `<div>CPU: ${bar(45)} GPU: ${bar(58)}</div>`; break;
-            default: if (cmdLine) res += `<div class="text-red-400">Not found: ${cmdLine}.</div>`; break;
+                res += `<div>CPU: ${bar(45)}<br>GPU: ${bar(58)}<br><span class="text-green-400">SYSTEM STABLE</span></div>`; break;
+            case "clear": termOutput.innerHTML = ""; termInput.value = ""; return;
+            default: if (cmdLine) res += `<div class="text-red-400">Command not found: ${cmdLine}. Type 'help'.</div>`; break;
           }
           termOutput.innerHTML += res;
           termInput.value = "";
@@ -476,35 +413,14 @@
         }
       });
 
-      // AI CHAT WIDGET LOGIC
+      // ADVANCED LLM AI CHAT WIDGET (Using free Pollinations API)
       const aiVoiceEngine = {
         detectLanguage: (text) => {
           const trPattern = /[çğıöşüİĞÖŞÜ]/i;
           const ruPattern = /[а-яА-Я]/i;
-          const basicTR = /\b(merhaba|selam|nasilsin|kod|sistem|kimsin|teşekkür)\b/i;
-          if (trPattern.test(text) || basicTR.test(text)) return 'tr-TR';
-          if (ruPattern.test(text) || /\b(привет|система|код)\b/i.test(text)) return 'ru-RU';
+          if (trPattern.test(text) || /\b(nerede|kim|nasil|nedir|yap|yaz|merhaba)\b/i.test(text)) return 'tr-TR';
+          if (ruPattern.test(text) || /\b(привет|как|что)\b/i.test(text)) return 'ru-RU';
           return 'en-US'; 
-        },
-        responses: {
-          hello: {
-            'tr-TR': "Selam gezgin! Ben tamamen polyglot (çok dilli) ses modülüyüm. Ergin bu asistanı tarayıcı içi yerel motorlarla her dilde çalışacak şekilde kurdu. Merak ettiğin her şeyi sorabilirsin.",
-            'ru-RU': "Привет исследователь! Мой голосовой модуль полиглот активен. Эргин настроил эту систему на местных браузерных движках для работы на любом языке без внешних ключей. Можешь просто поболтать.",
-            'en-US': "Hello explorer! My polyglot voice module is active. Ergin built this system using native browser engines to work in any language without external keys. You can just chat directly."
-          },
-          identity: {
-            'tr-TR': "Ben Ergin'in dijital zeka katmanıyım. Kod mimarilerini, yapay zeka sınırlarını ve sistemleri test etmeyi seviyorum. Klasik kurumsal bir asistan değilim, sistemin ta kendisiyim.",
-            'en-US': "I am Ergin's digital intelligence layer. I love testing code architectures, AI boundaries, and systems. I'm not a classic corporate assistant, I am the system itself."
-          },
-          skills: {
-            'tr-TR': "Ergin'in odaklandığı alanlar: Python, Gelişmiş JavaScript mimarileri, Sinirsel Ağ Entegrasyonları, Otonom Ajanlar ve Runtime güvenlik testleri.",
-            'en-US': "Ergin's core focus areas: Python, Advanced JavaScript architectures, Neural Network Integrations, Autonomous Agents, and Runtime security testing."
-          },
-          general: {
-            'tr-TR': `Sorgunu aldım: "$QUERY". Tarayıcı içi yapay zeka stabil çalışıyor.`,
-            'ru-RU': `Запрос получен: "$QUERY". Голосовой модуль полиглот работает стабильно.`,
-            'en-US': `Query acknowledged: "$QUERY". Polyglot AI module active and stable.`
-          }
         },
         speak: function(text, lang) {
           if ('speechSynthesis' in window) {
@@ -520,19 +436,27 @@
         }
       };
 
-      function getSmartPolyglotResponse(userInput) {
-        const lower = userInput.toLowerCase();
-        const lang = aiVoiceEngine.detectLanguage(userInput);
-        let respKey = 'general';
-
-        if (/\b(merhaba|selam|hey|hello|hi)\b/i.test(lower)) respKey = 'hello';
-        else if (/\b(kimsin|whoami|identity)\b/i.test(lower)) respKey = 'identity';
-        else if (/\b(skills|yetenekler|neler)\b/i.test(lower)) respKey = 'skills';
-        
-        let finalText = aiVoiceEngine.responses[respKey][lang] || aiVoiceEngine.responses[respKey]['en-US'];
-        if (respKey === 'general') finalText = finalText.replace("$QUERY", userInput);
-        
-        return { text: finalText, lang: lang };
+      async function fetchLLMResponse(userInput) {
+        try {
+            // System prompt makes sure it behaves correctly and concisely
+            const systemPrompt = "You are a highly intelligent, concise AI assistant for Ergin Kaplan's portfolio website. Answer the user's question directly. Do not use markdown formatting. Keep answers short and smart. Answer in the language the user asked in. User query: ";
+            const apiUrl = `https://text.pollinations.ai/prompt/${encodeURIComponent(systemPrompt + userInput)}`;
+            
+            const response = await fetch(apiUrl);
+            if (!response.ok) throw new Error("Network response was not ok");
+            const text = await response.text();
+            
+            // Clean up basic markdown if the LLM spits it out despite instructions
+            const cleanText = text.replace(/[*_`#]/g, ''); 
+            const lang = aiVoiceEngine.detectLanguage(userInput + " " + cleanText);
+            
+            return { text: cleanText, lang: lang };
+        } catch (error) {
+            console.error("AI Fetch Error:", error);
+            const lang = aiVoiceEngine.detectLanguage(userInput);
+            const fallbackMsg = lang === 'tr-TR' ? "Şu an sunucuya bağlanamıyorum. Lütfen tekrar dene." : "I cannot connect to the server right now. Please try again.";
+            return { text: fallbackMsg, lang: lang };
+        }
       }
 
       const aiChatWidget = document.getElementById("ai-chat-widget");
@@ -550,20 +474,30 @@
       aiChatBubble.addEventListener("click", toggleChat);
       aiChatClose.addEventListener("click", toggleChat);
 
-      function handleSendMessage() {
+      async function handleSendMessage() {
         const userInput = aiChatInput.value.trim();
         if (!userInput) return;
+        
+        // Show user message
         aiChatOutput.innerHTML += `<div class="user-msg">${userInput}</div>`;
         aiChatInput.value = "";
         aiChatOutput.scrollTop = aiChatOutput.scrollHeight;
 
-        setTimeout(() => {
-          const response = getSmartPolyglotResponse(userInput);
-          aiChatOutput.innerHTML += `<div class="ai-msg">${response.text}</div>`;
-          aiVoiceEngine.speak(response.text, response.lang);
-          aiChatOutput.scrollTop = aiChatOutput.scrollHeight;
-        }, 300);
+        // Show typing indicator
+        const typingId = 'typing-' + Date.now();
+        aiChatOutput.innerHTML += `<div id="${typingId}" class="ai-msg typing-indicator"><span></span><span></span><span></span></div>`;
+        aiChatOutput.scrollTop = aiChatOutput.scrollHeight;
+
+        // Fetch real AI response
+        const response = await fetchLLMResponse(userInput);
+        
+        // Remove typing indicator & show response
+        document.getElementById(typingId).remove();
+        aiChatOutput.innerHTML += `<div class="ai-msg">${response.text}</div>`;
+        aiVoiceEngine.speak(response.text, response.lang);
+        aiChatOutput.scrollTop = aiChatOutput.scrollHeight;
       }
+      
       aiChatSend.addEventListener("click", handleSendMessage);
       aiChatInput.addEventListener("keypress", (e) => { if (e.key === "Enter") handleSendMessage(); });
 
@@ -625,11 +559,11 @@
           volumeSlider.addEventListener("input", (e) => { if(music) music.volume = parseFloat(e.target.value); });
       }
 
-      // COUNTER, CLOCK & GENERAL
+      // COUNTER & CLOCK
       document.getElementById("year").innerText = new Date().getFullYear();
-      let visitCount = localStorage.getItem("sys_visits_v3"); 
+      let visitCount = localStorage.getItem("sys_visits_v4"); 
       visitCount = visitCount ? parseInt(visitCount) + 1 : 247; 
-      localStorage.setItem("sys_visits_v3", visitCount); 
+      localStorage.setItem("sys_visits_v4", visitCount); 
       const vcEl = document.getElementById("visit-counter");
       if(vcEl) vcEl.innerText = "+" + visitCount;
       
