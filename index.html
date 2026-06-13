@@ -3,7 +3,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="google-site-verification" content="zjBnZT7grHTgtPms-86Vg4QJPKHfyQ7qMaZ-iz_SKQE">
-  <title>Ergin Kaplan | eerrgin • Curious Developer</title>
+  <title>Ergin Kaplan | eerrgin • Curious Developer & AI Tinkerer</title>
   <meta name="description" content="Ergin Kaplan (eerrgin) – Curious Developer, AI Explorer & Code Tinkerer.">
   <meta name="keywords" content="Ergin Kaplan, eerrgin, developer, AI, tinkerer, coder">
   <meta name="author" content="Ergin Kaplan">
@@ -44,15 +44,6 @@
       background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1));
       background-size: 100% 4px; z-index: 9997; pointer-events: none; opacity: 0.3;
     }
-    .glitch-active {
-      animation: cyber-glitch 0.2s cubic-bezier(.25, .46, .45, .94) both;
-      filter: contrast(130%) hue-rotate(10deg) saturate(150%);
-    }
-    @keyframes cyber-glitch {
-      0% { transform: translate(0) } 20% { transform: translate(-4px, 2px) skewX(1deg) }
-      40% { transform: translate(4px, -2px) skewX(-1deg) } 60% { transform: translate(-2px, -2px) }
-      80% { transform: translate(2px, 4px) } 100% { transform: translate(0) }
-    }
     @media (max-width: 768px) {
       body, a, button, [role="button"], input { cursor: auto; }
       .cursor-dot, .cursor-outline { display: none; }
@@ -91,60 +82,41 @@
     .glass-card:hover { border-color: rgba(34, 211, 238, 0.5); box-shadow: 0 20px 40px -10px rgba(0, 240, 255, 0.2); }
     .glass-card > * { transform: translateZ(30px); }
     
-    .profile-img {
-      filter: grayscale(100%) contrast(110%);
-      transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .profile-img.colored { 
-      filter: grayscale(0%) contrast(105%) saturate(120%) drop-shadow(0 0 15px rgba(0,240,255,0.5)); 
-    }
-    .profile-img:hover { 
-      filter: grayscale(0%) contrast(105%) saturate(120%) drop-shadow(0 0 20px rgba(0,240,255,0.7)); 
-    }
-    @media (hover: none) and (pointer: coarse) {
-      .profile-img:active { filter: grayscale(0%); }
-    }
+    .profile-img { filter: grayscale(100%); transition: filter 0.6s, transform 0.6s; }
+    .profile-img:hover { filter: grayscale(0%) drop-shadow(0 0 20px rgba(0,240,255,0.7)); }
     
-    .glow-img { position: relative; }
     .glow-img::before {
       content: ''; position: absolute; inset: -10px;
       background: linear-gradient(135deg, #00f0ff, #7000ff, #00f0ff);
       border-radius: 35px; filter: blur(35px); opacity: 0.4; z-index: -1;
       animation: pulseGlow 4s ease-in-out infinite alternate;
     }
-    @keyframes pulseGlow {
-      0% { opacity: 0.2; filter: blur(25px); transform: scale(0.98); }
-      100% { opacity: 0.6; filter: blur(40px); transform: scale(1.02); }
-    }
+    @keyframes pulseGlow { 0% { opacity: 0.2; transform: scale(0.98); } 100% { opacity: 0.6; transform: scale(1.02); } }
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.9s cubic-bezier(0.165, 0.84, 0.44, 1); }
     .reveal.active { opacity: 1; transform: translateY(0); }
-    .neon-text { text-shadow: 0 0 10px rgba(0, 240, 255, 0.7), 0 0 20px rgba(0, 240, 255, 0.4); }
+    .neon-text { text-shadow: 0 0 10px rgba(0, 240, 255, 0.7); }
     ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #050505; }
     ::-webkit-scrollbar-thumb { background: #00f0ff; border-radius: 10px; }
-    .typed-cursor { display: inline-block; width: 2px; background-color: #00f0ff; margin-left: 4px; box-shadow: 0 0 8px #00f0ff; animation: blink 0.8s infinite; }
+    .typed-cursor { display: inline-block; width: 2px; background-color: #00f0ff; margin-left: 4px; animation: blink 0.8s infinite; }
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
     #particle-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; opacity: 0.4; }
-    .navbar { transition: background 0.3s ease, padding 0.3s ease; }
-    .navbar.scrolled { background: rgba(5,5,10,0.85); backdrop-filter: blur(20px); padding-top: 0.5rem; padding-bottom: 0.5rem; }
-    .hamburger-line { transition: all 0.3s ease; }
-    .rgb-split:hover { animation: rgbShift 0.6s infinite alternate; }
-    @keyframes rgbShift {
-      0% { filter: drop-shadow(2px 0 cyan) drop-shadow(-2px 0 red); }
-      25% { filter: drop-shadow(3px 0 magenta) drop-shadow(-3px 0 lime); }
-      50% { filter: drop-shadow(1px 0 yellow) drop-shadow(-1px 0 blue); }
-      75% { filter: drop-shadow(4px 0 red) drop-shadow(-4px 0 cyan); }
-      100% { filter: drop-shadow(2px 0 blue) drop-shadow(-2px 0 magenta); }
-    }
-    .img-holo { position: relative; overflow: hidden; }
-    .img-holo::after {
-      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0,240,255,0.2), transparent);
-      transition: left 0.8s ease;
-    }
-    .img-holo:hover::after { left: 100%; }
     
-    .terminal-window { font-family: 'Fira Code', monospace; }
-    .terminal-input:focus { outline: none; }
+    /* TERMINAL STYLES ( minimized at bottom ) */
+    .terminal-window { font-family: 'Fira Code', monospace; font-size: 11px; }
+    #terminal-section { transition: transform 0.3s ease, opacity 0.3s ease; transform: translateY(calc(100% - 30px)); opacity: 0.8; z-index: 100; }
+    #terminal-section.expanded { transform: translateY(0); opacity: 1; }
+    
+    /* AI CHAT WIDGET STYLES ( modern floating agent ) */
+    #ai-chat-widget { z-index: 9999; }
+    #ai-chat-bubble { width: 60px; height: 60px; transition: transform 0.3s ease, background 0.3s ease; }
+    #ai-chat-bubble:hover { transform: scale(1.1) rotate(15deg); }
+    #ai-chat-window { width: 350px; height: 450px; max-height: calc(100vh - 120px); transition: opacity 0.3s ease, transform 0.3s ease; transform-origin: bottom right; font-size: 13px; }
+    #ai-chat-window.hidden { opacity: 0; transform: scale(0.8) translateY(20px); pointer-events: none; }
+    #ai-chat-output::-webkit-scrollbar { width: 4px; }
+    .ai-msg, .user-msg { max-width: 80%; padding: 10px 14px; border-radius: 14px; line-height: 1.4; margin-bottom: 8px; }
+    .ai-msg { background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); align-self: flex-start; color: #f0f0f0; border-top-left-radius: 2px; }
+    .user-msg { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.05); align-self: flex-end; color: #fff; border-top-right-radius: 2px; }
+    #ai-chat-input:focus { outline: none; }
   </style>
 </head>
 <body class="bg-black">
@@ -155,57 +127,50 @@
   <div class="cursor-dot" id="cursor-dot"></div>
   <div class="cursor-outline" id="cursor-outline"></div>
 
-  <nav class="navbar fixed top-0 left-0 w-full z-50 px-6 py-5 flex items-center justify-between transition-all duration-300" id="navbar">
+  <nav class="navbar fixed top-0 left-0 w-full z-50 px-6 py-5 flex items-center justify-between glass-premium" id="navbar">
     <a href="#" class="text-2xl font-black tracking-tighter text-white neon-text">eerrgin<span class="text-[#00f0ff]">.</span></a>
     <div class="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-widest text-gray-300">
       <a href="#home" class="hover:text-[#00f0ff] transition">Home</a>
       <a href="#lab" class="hover:text-[#00f0ff] transition">Lab</a>
-      <a href="#projects" class="hover:text-[#00f0ff] transition">Projects</a>
-      <a href="#terminal" class="hover:text-[#00f0ff] transition">Console</a>
+      <a href="#projects" class="hover:text-[#00f0ff] transition">Experiments</a>
       <a href="https://eerrgin.github.io/message.htm" class="hover:text-[#00f0ff] transition">Contact</a>
     </div>
-    <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none z-50">
-      <div class="hamburger-line w-6 h-0.5 bg-white mb-1"></div>
-      <div class="hamburger-line w-6 h-0.5 bg-white mb-1"></div>
-      <div class="hamburger-line w-6 h-0.5 bg-white"></div>
-    </button>
   </nav>
 
-  <div id="mobile-menu" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-8 text-2xl font-bold uppercase tracking-widest text-gray-300 opacity-0 pointer-events-none transition-opacity duration-300">
-    <a href="#home" class="hover:text-[#00f0ff]">Home</a>
-    <a href="#lab" class="hover:text-[#00f0ff]">Lab</a>
-    <a href="#projects" class="hover:text-[#00f0ff]">Projects</a>
-    <a href="#terminal" class="hover:text-[#00f0ff]">Console</a>
-    <a href="https://eerrgin.github.io/message.htm" class="hover:text-[#00f0ff]">Contact</a>
+  <div id="ai-chat-widget" class="fixed bottom-6 right-6 flex flex-col items-end gap-4">
+    <div id="ai-chat-window" class="hidden glass-card rounded-2xl p-1 flex flex-col overflow-hidden shadow-2xl border border-gray-700">
+      <div class="bg-gray-800 px-4 py-3 flex items-center justify-between border-b border-gray-700">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-[#00f0ff]/10 flex items-center justify-center text-[#00f0ff]">
+            <i class="fa-robot fa-solid"></i>
+          </div>
+          <div>
+            <div class="font-bold text-white">eerrgin.Core</div>
+            <div class="text-[10px] text-green-400 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> ONLINE // POLYGLOT_AI</div>
+          </div>
+        </div>
+        <button id="ai-chat-close" class="text-gray-500 hover:text-white transition text-lg px-2">×</button>
+      </div>
+      <div class="p-5 flex-1 overflow-y-auto flex flex-col gap-2 bg-gray-900/50" id="ai-chat-output">
+        <div class="ai-msg">Hello node explorer. My cognitive layer is fully polyglot. You can talk to me in **ANY language**. I'll understand and respond back. No commands needed, just chat.</div>
+      </div>
+      <div class="px-5 py-4 flex items-center font-mono text-sm bg-gray-900 border-t border-gray-700">
+        <input type="text" id="ai-chat-input" class="bg-transparent border-none text-gray-100 flex-1 w-full" autocomplete="off" placeholder="Type message (tr, en, ru, de...)">
+        <i class="fa-solid fa-paper-plane text-[#00f0ff] cursor-pointer ml-3 opacity-80 hover:opacity-100 transition" id="ai-chat-send"></i>
+      </div>
+    </div>
+    <div id="ai-chat-bubble" class="rounded-full bg-black border border-cyan-500 shadow-[0_0_20px_rgba(0,240,255,0.4)] flex items-center justify-center cursor-pointer text-[#00f0ff] text-2xl hover:border-[#7000ff] hover:shadow-[0_0_20px_rgba(112,0,255,0.4)]">
+      <i class="fa-robot fa-solid"></i>
+    </div>
   </div>
 
   <audio id="bg-music" loop preload="auto" src="https://github.com/eerrgin/eerrgin.github.io/raw/refs/heads/main/7mix.mp3"></audio>
-
-  <div class="fixed bottom-4 left-4 z-50 flex items-center gap-1.5 glass-premium px-2.5 py-2 rounded-full cursor-pointer" id="music-toggle">
-    <div id="music-icon" class="w-7 h-7 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-sm">
-      <i class="fa-solid fa-play ml-0.5"></i>
-    </div>
-    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1.0" class="w-12 h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer hidden sm:block" style="accent-color: #00f0ff;">
-  </div>
-
-  <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
-    <div class="glass-premium rounded-full px-3 py-1.5 text-[10px] flex items-center gap-2 border-green-500/20">
-      <span class="relative flex h-2 w-2">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-      </span>
-      <span class="text-gray-300 font-mono tracking-widest">SYS.ONLINE</span>
-    </div>
-    <a href="https://instagram.com/eerrgin" target="_blank" class="w-12 h-12 glass-premium rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-gradient-to-tr hover:from-purple-600 hover:to-pink-500 transition-all duration-300"><i class="fa-brands fa-instagram text-lg"></i></a>
-    <a href="https://facebook.com/eerrgin" target="_blank" class="w-12 h-12 glass-premium rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300"><i class="fa-brands fa-facebook-f text-lg"></i></a>
-    <a href="https://www.dev.to" target="_blank" class="w-12 h-12 glass-premium rounded-full flex items-center justify-center text-gray-400 hover:text-black hover:bg-[#00f0ff] hover:shadow-[0_0_20px_#00f0ff] transition-all duration-300"><i class="fa-solid fa-terminal text-lg"></i></a>
-  </div>
 
   <section id="home" class="min-h-screen flex items-center justify-center pt-24 pb-16">
     <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
       <div class="text-left reveal order-2 lg:order-1">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/20 text-cyan-400 text-[10px] font-mono font-bold mb-8 tracking-widest backdrop-blur-sm shadow-[0_0_15px_rgba(0,240,255,0.1)]">
-          <i class="fa-solid fa-microchip animate-pulse"></i> <span>SYSTEM_READY // v3.0 // MULTILINGUAL_AI_CORES_ACTIVE</span>
+          <i class="fa-solid fa-microchip animate-pulse"></i> <span>SYSTEM_READY // v3.5 // CONVERSATIONAL_LAYER_ACTIVE</span>
         </div>
         <h1 class="text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-4 leading-[1]">
           eerrgin<span class="text-[#00f0ff] neon-text">.</span>
@@ -217,535 +182,245 @@
           Curious developer tinkering with AI, rapid engines, and experimental code boundaries.
         </p>
         <p class="text-sm md:text-base text-[#00f0ff]/80 leading-relaxed mb-10 max-w-lg font-mono border-l-2 border-[#00f0ff]/50 pl-4 py-1">
-          [LOG: 23:42] "Ergin Kaplan here. Some nights I code. I bring random ideas to life, tinker with AI, and experiment with everything that interests me."
+          [LOG] "Ergin Kaplan here. Some nights I code. I bring random ideas to life, tinker with AI, and experiment with everything that interests me."
         </p>
-        <div class="flex flex-wrap gap-5">
-          <a href="https://github.com/eerrgin" target="_blank" class="px-8 py-4 bg-white text-black font-black rounded-xl text-sm tracking-wide uppercase flex items-center gap-3 hover:bg-[#00f0ff] hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] transition-all duration-300">
-            <i class="fa-brands fa-github text-xl"></i> Init_GitHub
-          </a>
-          <a href="https://eerrgin.github.io/message.htm" target="_blank" class="px-8 py-4 bg-transparent backdrop-blur-md border border-[#00f0ff]/50 text-[#00f0ff] font-bold rounded-xl text-sm tracking-wide uppercase flex items-center gap-3 hover:bg-[#00f0ff] hover:text-black hover:border-transparent hover:shadow-[0_0_30px_rgba(0,240,255,0.3)] transition-all duration-300">
-            <i class="fa-solid fa-satellite-dish text-xl"></i> Ping_Me
-          </a>
-        </div>
-        <div class="flex gap-10 mt-14 pt-8 border-t border-white/5">
-          <div><div class="text-3xl font-black text-[#00f0ff] stat-number" id="visit-counter">+247</div><div class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Explored Nodes</div></div>
-          <div><div class="text-3xl font-black text-white" id="live-clock">--:-- --</div><div class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Local Cycle</div></div>
-          <div><div class="text-3xl font-black text-purple-400">∞</div><div class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Limits</div></div>
-        </div>
       </div>
-      <div class="reveal flex justify-center lg:justify-end order-1 lg:order-2">
-        <div class="glow-img w-72 h-72 md:w-[420px] md:h-[420px] transition-all duration-700 hover:scale-[1.03] img-holo">
-          <img src="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/refs/heads/main/12.jpg" alt="Ergin Kaplan" class="profile-img rgb-split w-full h-full object-cover rounded-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]" id="profile-img">
-        </div>
+      <div class="reveal flex justify-center lg:justify-end order-1 lg:order-2 glow-img">
+        <img src="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/refs/heads/main/12.jpg" alt="Ergin Kaplan" class="profile-img rgb-split w-72 h-72 md:w-[420px] md:h-[420px] object-cover rounded-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
       </div>
     </div>
   </section>
 
-  <section id="lab" class="py-28 relative z-10">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-20 reveal">
-        <span class="text-[#00f0ff] text-[10px] font-mono tracking-[0.2em] bg-[#00f0ff]/10 border border-[#00f0ff]/20 px-4 py-1.5 rounded-full shadow-[0_0_10px_rgba(0,240,255,0.1)]">R&D MODULES</span>
-        <h2 class="text-5xl md:text-6xl font-black mt-6 tracking-tight">Experimental <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-purple-500">Sandbox</span></h2>
-      </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="glass-card p-8 rounded-3xl group reveal tilt-card"><div class="w-14 h-14 rounded-2xl bg-[#00f0ff]/10 border border-[#00f0ff]/20 flex items-center justify-center text-[#00f0ff] text-2xl mb-6 shadow-[0_0_15px_rgba(0,240,255,0.1)] group-hover:bg-[#00f0ff] group-hover:text-black transition-all duration-300"><i class="fa-solid fa-network-wired"></i></div><h3 class="text-2xl font-bold mb-3 tracking-tight">Autonomous Agents</h3><p class="text-gray-400 text-sm leading-relaxed font-light">Self-evolving AI pipelines, multi-agent orchestration, and swarm intelligence algorithms.</p><div class="mt-6 flex gap-2 text-[10px] text-[#00f0ff]/80 font-mono uppercase"><span class="bg-[#00f0ff]/5 px-3 py-1 rounded-md border border-[#00f0ff]/20">LLM_Mesh</span><span class="bg-[#00f0ff]/5 px-3 py-1 rounded-md border border-[#00f0ff]/20">ReAct</span></div></div>
-        <div class="glass-card p-8 rounded-3xl group reveal tilt-card"><div class="w-14 h-14 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 text-2xl mb-6 shadow-[0_0_15px_rgba(249,115,22,0.1)] group-hover:bg-orange-500 group-hover:text-black transition-all duration-300"><i class="fa-solid fa-gauge-high"></i></div><h3 class="text-2xl font-bold mb-3 tracking-tight">Rapid Engine</h3><p class="text-gray-400 text-sm leading-relaxed font-light">High-performance real-time simulation, ultra low-latency processing, and infinite scalability.</p><div class="mt-6 flex gap-2 text-[10px] text-orange-400/80 font-mono uppercase"><span class="bg-orange-500/5 px-3 py-1 rounded-md border border-orange-500/20">Sub-ms</span><span class="bg-orange-500/5 px-3 py-1 rounded-md border border-orange-500/20">WASM</span></div></div>
-        <div class="glass-card p-8 rounded-3xl group reveal tilt-card"><div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-2xl mb-6 shadow-[0_0_15px_rgba(168,85,247,0.1)] group-hover:bg-purple-500 group-hover:text-black transition-all duration-300"><i class="fa-solid fa-vial-virus"></i></div><h3 class="text-2xl font-bold mb-3 tracking-tight">Zero-Day Tinkering</h3><p class="text-gray-400 text-sm leading-relaxed font-light">Sandboxed environments for deep protocol analysis, code fuzzing, and breaking stuff to see how it works.</p><div class="mt-6 flex gap-2 text-[10px] text-purple-400/80 font-mono uppercase"><span class="bg-purple-500/5 px-3 py-1 rounded-md border border-purple-500/20">Sandbox</span><span class="bg-purple-500/5 px-3 py-1 rounded-md border border-purple-500/20">Fuzzing</span></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects" class="py-24 bg-gradient-to-b from-transparent via-[#00f0ff]/5 to-transparent border-y border-white/5">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="reveal text-center mb-14"><h3 class="text-4xl font-black">Latest <span class="text-[#00f0ff]">Experiments</span></h3><p class="text-gray-500 mt-3 font-mono text-xs tracking-widest uppercase">pushing the boundaries of code</p></div>
-      <div class="grid md:grid-cols-2 gap-8">
-        <a href="#" class="glass-card p-8 rounded-3xl group reveal tilt-card block no-underline"><span class="text-xs text-[#00f0ff] font-mono">01</span><h4 class="text-xl font-bold mt-2">Neural Interface Design</h4><p class="text-gray-400 text-sm mt-2">Low‑latency signal processing pipeline for real‑time brain‑computer interaction.</p><div class="flex gap-2 mt-4"><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full font-mono">Python</span><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full font-mono">TensorFlow</span></div></a>
-        <a href="#" class="glass-card p-8 rounded-3xl group reveal tilt-card block no-underline"><span class="text-xs text-purple-400 font-mono">02</span><h4 class="text-xl font-bold mt-2">Autonomous Drone Swarm</h4><p class="text-gray-400 text-sm mt-2">Simultaneous mission planning and collision avoidance for 10+ drones.</p><div class="flex gap-2 mt-4"><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full font-mono">C++</span><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full font-mono">ROS2</span></div></a>
-      </div>
-    </div>
-  </section>
-
-  <section id="terminal" class="py-28 relative z-10">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center mb-12 reveal">
-        <span class="text-purple-400 text-[10px] font-mono tracking-[0.2em] bg-purple-500/10 border border-purple-500/20 px-4 py-1.5 rounded-full">INTERACTIVE CONSOLE</span>
-        <h2 class="text-5xl font-black mt-6">Talk to the <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-[#00f0ff]">System</span></h2>
-      </div>
-      <div class="glass-card rounded-2xl p-1 reveal terminal-window">
-        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-2xl border border-gray-700">
-          <div class="bg-gray-800 px-4 py-2 flex items-center gap-2 border-b border-gray-700">
-            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-            <div class="ml-4 text-xs text-gray-400 font-mono">guest@eerrgin: ~/system</div>
-          </div>
-          <div class="p-6 h-80 overflow-y-auto font-mono text-sm" id="term-output" style="line-height: 1.5;">
-            <div class="text-gray-300">Welcome to eerrgin.OS v3.0.</div>
-            <div class="text-gray-300">Type <span class="text-[#00f0ff]">'help'</span> to explore directives. The AI voice subsystem now supports polyglot operations (any language).</div>
-          </div>
-          <div class="px-6 pb-6 pt-2 flex items-center font-mono text-sm bg-gray-900">
-            <span class="text-green-400 mr-2">guest@eerrgin:~$</span>
-            <input type="text" id="term-input" class="terminal-input bg-transparent border-none text-gray-100 flex-1 w-full" autocomplete="off" autofocus>
-          </div>
+  <section id="terminal-section" class="fixed bottom-0 left-0 w-full flex items-center justify-center p-6 z-40">
+    <div class="max-w-xl w-full glass-card rounded-xl p-1 terminal-window shadow-xl border border-gray-700">
+        <div class="bg-gray-800 px-4 py-1.5 flex items-center justify-between border-b border-gray-700 cursor-pointer" id="terminal-header">
+            <div class="flex items-center gap-1.5">
+                <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                <div class="ml-2 text-[10px] text-gray-400 font-mono tracking-wider">legacy@eerrgin: ~/system (Minimized)</div>
+            </div>
+            <i class="fa-solid fa-chevron-up text-gray-600" id="terminal-icon"></i>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="py-20">
-    <div class="max-w-3xl mx-auto text-center reveal">
-      <div class="glass-card p-12 rounded-[2rem] inline-block w-full relative overflow-hidden group">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-[#00f0ff]/10 blur-[50px] rounded-full"></div>
-        <i class="fa-solid fa-terminal fa-3x text-[#00f0ff] mb-6 relative z-10 group-hover:rotate-12 transition-transform duration-500"></i>
-        <h3 class="text-3xl font-black mb-3 relative z-10">Dev Community</h3>
-        <p class="text-gray-400 mb-8 font-light relative z-10">I hang out with indie devs, open‑source enthusiasts, and tech explorers deep inside the code.</p>
-        <a href="https://www.dev.to" target="_blank" class="relative z-10 inline-flex items-center gap-3 text-black bg-[#00f0ff] font-bold px-8 py-3.5 rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">Join the System <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
-        <p class="text-[10px] text-gray-600 mt-6 font-mono uppercase tracking-widest relative z-10">dev.to • global tech node</p>
-      </div>
+        <div class="hidden flex-col bg-gray-900" id="terminal-content">
+            <div class="p-4 h-40 overflow-y-auto text-gray-400 text-[10px] font-mono line-height-1.4" id="term-output">
+                <div class="text-gray-300">Welcome to legacy eerrgin.OS v2.5.</div>
+                <div class="text-gray-300">This terminal is kept for the curious. Commands: whoami, skills, thermal, system.</div>
+            </div>
+            <div class="px-4 pb-4 pt-1 flex items-center font-mono text-[10px] bg-gray-900 border-t border-gray-800">
+                <span class="text-green-400 mr-2">legacy@eerrgin:~$</span>
+                <input type="text" id="term-input" class="terminal-input bg-transparent border-none text-gray-100 flex-1 w-full" autocomplete="off" placeholder="legacy command...">
+            </div>
+        </div>
     </div>
   </section>
 
   <footer class="py-10 text-center text-gray-600 text-xs font-mono uppercase tracking-widest border-t border-white/5 bg-black/50">
-    <div class="flex flex-wrap justify-center gap-6 mb-4">
-      <a href="#" class="hover:text-white transition">Privacy</a>
-      <a href="#" class="hover:text-white transition">Terms</a>
-      <a href="#" class="hover:text-white transition">Cookies</a>
-    </div>
-    <p>© <span id="year"></span> Ergin Kaplan // Curious Dev // End of Line.</p>
+    <p>© <span id="year"></span> Ergin Kaplan // Tinkerer Hub // End of Line.</p>
   </footer>
 
   <script>
     (function() {
-      // CURSOR
+      // CURSOR (Keep original effect)
       const dot = document.getElementById("cursor-dot");
       const outline = document.getElementById("cursor-outline");
       const spotlight = document.getElementById("spotlight");
       
-      function moveCursor(e) { 
-        let x = e.clientX;
-        let y = e.clientY; 
-        if (dot) { 
-          dot.style.left = x + "px"; 
-          dot.style.top = y + "px"; 
-        } 
-        if (outline) { 
-          outline.style.left = x + "px"; 
-          outline.style.top = y + "px"; 
-        } 
-        if (spotlight) { 
-          spotlight.style.setProperty('--x', x + 'px'); 
-          spotlight.style.setProperty('--y', y + 'px'); 
-        } 
-      }
-
       if (window.innerWidth > 768) { 
-        window.addEventListener("mousemove", moveCursor); 
-        document.querySelectorAll("a, button, input, .glass-card, .glass-premium").forEach(el => { 
+        window.addEventListener("mousemove", (e) => {
+            dot.style.left = outline.style.left = e.clientX + "px"; 
+            dot.style.top = outline.style.top = e.clientY + "px";
+            spotlight.style.setProperty('--x', e.clientX + 'px'); 
+            spotlight.style.setProperty('--y', e.clientY + 'px');
+        }); 
+        document.querySelectorAll("a, button, input, .cursor-link").forEach(el => { 
           el.addEventListener("mouseenter", () => outline.classList.add("cursor-hover")); 
           el.addEventListener("mouseleave", () => outline.classList.remove("cursor-hover")); 
         }); 
-      } else { 
-        if (dot) dot.style.display = "none"; 
-        if (outline) outline.style.display = "none"; 
       }
       
-      // 3D TILT
-      if (window.innerWidth > 768) {
-        document.querySelectorAll('.tilt-card').forEach(card => {
-          card.addEventListener('mousemove', e => { 
-            const rect = card.getBoundingClientRect(); 
-            const x = e.clientX - rect.left; 
-            const y = e.clientY - rect.top; 
-            const centerX = rect.width / 2; 
-            const centerY = rect.height / 2; 
-            const rotateX = ((y - centerY) / centerY) * -10; 
-            const rotateY = ((x - centerX) / centerX) * 10; 
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02,1.02,1.02)`; 
-          });
-          card.addEventListener('mouseleave', () => { 
-            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)`; 
-            card.style.transition = `transform 0.5s ease`; 
-          });
-          card.addEventListener('mouseenter', () => { 
-            card.style.transition = `none`; 
-          });
-        });
-      }
-      
-      // RANDOM GLITCH
-      setInterval(() => { 
-        if (Math.random() > 0.75) { 
-          document.body.classList.add('glitch-active'); 
-          setTimeout(() => document.body.classList.remove('glitch-active'), 200); 
-        } 
-      }, 4000);
-      
-      // PROFILE IMG TOGGLE COLOR
-      const profileImg = document.getElementById("profile-img");
-      if (profileImg) {
-        profileImg.addEventListener("click", function(e) {
-          e.stopPropagation();
-          this.classList.toggle("colored");
-        });
-        if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
-          profileImg.addEventListener("touchstart", function() { this.style.filter = "grayscale(0%)"; });
-          profileImg.addEventListener("touchend", function() { if (!this.classList.contains("colored")) this.style.filter = ""; });
-        }
-      }
-      
-      // NAVBAR SCROLL
-      const navbar = document.getElementById("navbar");
-      window.addEventListener("scroll", () => { 
-        if (window.scrollY > 50) navbar.classList.add("scrolled"); 
-        else navbar.classList.remove("scrolled"); 
-      });
-      
-      // MOBILE MENU
-      const menuBtn = document.getElementById("menu-btn");
-      const mobileMenu = document.getElementById("mobile-menu");
-      menuBtn.addEventListener("click", () => { 
-        mobileMenu.classList.toggle("opacity-0"); 
-        mobileMenu.classList.toggle("pointer-events-none"); 
-      });
-      mobileMenu.querySelectorAll("a").forEach(link => { 
-        link.addEventListener("click", () => { 
-          mobileMenu.classList.add("opacity-0", "pointer-events-none"); 
-        }); 
-      });
-      
-      // PARTICLES
-      const canvas = document.getElementById("particle-canvas");
-      const ctx = canvas.getContext("2d");
-      let width, height;
-      let particles = [];
-      let mouse = { x: null, y: null, radius: 100 };
+      // MINIMIZED TERMINAL LOGIC
+      const termSection = document.getElementById("terminal-section");
+      const termHeader = document.getElementById("terminal-header");
+      const termContent = document.getElementById("terminal-content");
+      const termIcon = document.getElementById("terminal-icon");
 
-      function resizeCanvas() { 
-        width = window.innerWidth; 
-        height = window.innerHeight; 
-        canvas.width = width; 
-        canvas.height = height; 
-        initParticles(); 
-      }
-
-      function initParticles() {
-        particles = []; 
-        let count = Math.min(120, Math.floor(width * height / 8000)); 
-        for (let i = 0; i < count; i++) { 
-          particles.push({
-            x: Math.random() * width, 
-            y: Math.random() * height, 
-            radius: Math.random() * 1.5 + 0.5, 
-            alpha: Math.random() * 0.5 + 0.1, 
-            vx: (Math.random() - 0.5) * 0.2, 
-            vy: (Math.random() - 0.5) * 0.2
-          }); 
-        } 
-      }
-
-      function drawParticles() {
-        if (!ctx) return; 
-        ctx.clearRect(0, 0, width, height);
-        
-        for (let p of particles) {
-          ctx.fillStyle = "#00f0ff"; 
-          ctx.globalAlpha = p.alpha;
-          if (mouse.x && mouse.y) {
-            let dx = p.x - mouse.x;
-            let dy = p.y - mouse.y;
-            let dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < mouse.radius) { 
-              let force = (mouse.radius - dist) / mouse.radius; 
-              p.x += dx * force * 0.03; 
-              p.y += dy * force * 0.03; 
-            }
-          }
-          ctx.beginPath(); 
-          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); 
-          ctx.fill();
-          
-          p.x += p.vx; 
-          p.y += p.vy;
-          if (p.x < 0) p.x = width; 
-          if (p.x > width) p.x = 0; 
-          if (p.y < 0) p.y = height; 
-          if (p.y > height) p.y = 0;
-        }
-
-        for (let i = 0; i < particles.length; i++) {
-          for (let j = i + 1; j < particles.length; j++) {
-            let dx = particles[i].x - particles[j].x;
-            let dy = particles[i].y - particles[j].y;
-            let dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 80) { 
-              ctx.strokeStyle = `rgba(0,240,255,${0.1 * (1 - dist / 80)})`; 
-              ctx.lineWidth = 0.5; 
-              ctx.beginPath(); 
-              ctx.moveTo(particles[i].x, particles[i].y); 
-              ctx.lineTo(particles[j].x, particles[j].y); 
-              ctx.stroke(); 
-            }
-          }
-        }
-        requestAnimationFrame(drawParticles);
-      }
-      window.addEventListener("resize", resizeCanvas);
-      window.addEventListener("mousemove", (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
-      window.addEventListener("mouseleave", () => { mouse.x = null; mouse.y = null; });
-      resizeCanvas(); 
-      drawParticles();
-      
-      // TYPED
-      const titles = ["Curious Developer", "AI Tinkerer", "Open Source Explorer", "Code Alchemist"];
-      let idx = 0;
-      let charIdx = 0;
-      let isDeleting = false; 
-      const typedSpan = document.getElementById("typed-text");
-      
-      function typeEffect() { 
-        let current = titles[idx]; 
-        if (isDeleting) { 
-          typedSpan.innerText = current.substring(0, charIdx - 1); 
-          charIdx--; 
-          if (charIdx === 0) { isDeleting = false; idx = (idx + 1) % titles.length; } 
-        } else { 
-          typedSpan.innerText = current.substring(0, charIdx + 1); 
-          charIdx++; 
-          if (charIdx === current.length) { isDeleting = true; setTimeout(() => {}, 2000); } 
-        } 
-        setTimeout(typeEffect, isDeleting ? 50 : 100); 
-      }
-      typeEffect();
-      
-      // MUSIC SYSTEM
-      const music = document.getElementById("bg-music");
-      const musicToggle = document.getElementById("music-toggle");
-      const musicIconDiv = document.getElementById("music-icon");
-      const volumeSlider = document.getElementById("volume-slider");
-      let isPlaying = false;
-
-      function updateUI(playing) {
-        musicIconDiv.innerHTML = playing ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play ml-0.5"></i>';
-      }
-
-      function startMusic() {
-        if (isPlaying) return;
-        music.volume = volumeSlider ? parseFloat(volumeSlider.value) : 1.0;
-        music.play().then(() => {
-          isPlaying = true; 
-          updateUI(true);
-        }).catch(err => console.warn("Audio play failed:", err));
-      }
-
-      function stopMusic() {
-        if (!isPlaying) return;
-        music.pause(); 
-        isPlaying = false; 
-        updateUI(false);
-      }
-
-      document.body.addEventListener("click", function initOnce() {
-        startMusic(); 
-        document.body.removeEventListener("click", initOnce);
-      }, { once: true });
-
-      musicToggle.addEventListener("click", (e) => {
-        e.stopPropagation();
-        if (isPlaying) stopMusic(); else startMusic();
+      termHeader.addEventListener("click", () => {
+        const isExpanded = termSection.classList.toggle("expanded");
+        termContent.classList.toggle("hidden");
+        termContent.classList.toggle("flex");
+        termIcon.classList.toggle("fa-chevron-up");
+        termIcon.classList.toggle("fa-chevron-down");
+        if (isExpanded) document.getElementById("term-input").focus();
       });
 
-      if (volumeSlider) {
-        volumeSlider.addEventListener("click", (e) => e.stopPropagation());
-        volumeSlider.addEventListener("input", (e) => { music.volume = parseFloat(e.target.value); });
-      }
-      
-      // UNIVERSAL MULTILINGUAL TEXT-TO-SPEECH (TTS) ENGINE (100% FREE & ZERO-MAINTENANCE)
-      const aiVoiceEngine = {
-        detectLanguage: function(text) {
-          // Basic pattern matching for quick language routing without external payloads
-          const trPattern = /[çğıöşüİĞÖŞÜ]/i;
-          const ruPattern = /[а-яА-Я]/i;
-          const dePattern = /\b(ich|ist|und|der|die|das|nicht|du)\b/i;
-          const frPattern = /\b(le|la|les|et|est|un|une|pour|dans)\b/i;
-          
-          if (trPattern.test(text) || /\b(merhaba|selam|nasilsin|kod|sistem)\b/i.test(text)) return 'tr-TR';
-          if (ruPattern.test(text) || /\b(привет|как|система|код)\b/i.test(text)) return 'ru-RU';
-          if (dePattern.test(text)) return 'de-DE';
-          if (frPattern.test(text)) return 'fr-FR';
-          return 'en-US'; // Fallback
-        },
-        
-        speak: function(text) {
-          if ('speechSynthesis' in window) {
-            window.speechSynthesis.cancel(); 
-            const utterance = new SpeechSynthesisUtterance(text);
-            const targetLang = this.detectLanguage(text);
-            
-            utterance.lang = targetLang;
-            utterance.pitch = 0.95;
-            utterance.rate = 1.0;
-            
-            // Map the optimal client voice signature based on computed routing language
-            const voices = window.speechSynthesis.getVoices();
-            const matchedVoice = voices.find(v => v.lang.startsWith(targetLang.substring(0,2)) && (v.name.includes("Google") || v.name.includes("Natural")));
-            if (matchedVoice) utterance.voice = matchedVoice;
-            
-            window.speechSynthesis.speak(utterance);
-          }
-        },
-        
-        // Static baseline system responses mapped to detected input queries
-        getSmartResponse: function(cmdInput) {
-          const lower = cmdInput.toLowerCase();
-          
-          // Turkish Handshake Flow
-          if (/\b(merhaba|selam|hey)\b/i.test(lower)) {
-            return "Selam gezgin. Ben eerrgin işletim sisteminin yapay zekâ katmanıyım. Ergin bu modülü harici hiçbir API anahtarı kullanmadan, tamamen tarayıcı yerel motorlarıyla her dilde çalışacak şekilde optimize etti.";
-          }
-          if (/\b(termal|isi|sicaklik)\b/i.test(lower)) {
-            return "Termal simülasyon katmanı devrede. Sistem sıcaklıkları normal limitler dahilinde.";
-          }
-          
-          // Russian Handshake Flow
-          if (/\b(привет|здравствуйте)\b/i.test(lower)) {
-            return "Приветствую исследователь. Я когнитивный слой системы eerrgin. Этот модуль работает на чистых браузерных API, без внешних ключей и затрат.";
-          }
-          
-          // English (Default Dynamic Engine Generative Baseline)
-          if (/\b(hello|hi|hey)\b/i.test(lower)) {
-            return "Hello explorer. I am the cognitive layer of eerrgin OS. Ergin built me using standard native browser APIs. No keys, zero maintenance cost. True engineering.";
-          }
-          if (/\b(tinker|code|hack)\b/i.test(lower)) {
-            return "Tinkering is the art of breaking things intentionally to understand their true architectures. Glad you share the curiosity.";
-          }
-          
-          // Universal generic translation fallback injection
-          if (this.detectLanguage(cmdInput) === 'tr-TR') {
-            return `Sorgu anlaşıldı: "${cmdInput}". Yapay zekâ ses modülü aktif ve stabil çalışıyor. Sınırları zorlamaya devam et.`;
-          } else if (this.detectLanguage(cmdInput) === 'ru-RU') {
-            return `Запрос обработан: "${cmdInput}". Голосовой модуль работает стабильно.`;
-          } else {
-            return `Acknowledge query: "${cmdInput}". The local polyglot voice node answers: Engineering boundaries successfully expanded.`;
-          }
-        }
-      };
-
-      // Ensure system voices fetch asynchronously inside chromium wrappers
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.getVoices();
-        if (window.speechSynthesis.onvoiceschanged !== undefined) {
-          window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
-        }
-      }
-
-      // TERMINAL ENGINE
+      // Old Terminal Executor (Keep for curiosity)
       const termInput = document.getElementById("term-input");
       const termOutput = document.getElementById("term-output");
-      termInput.addEventListener("keypress", function(e) {
+      termInput.addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
-          const rawInput = this.value.trim();
+          const rawInput = termInput.value.trim();
           const cmdLine = rawInput.toLowerCase();
-          const args = cmdLine.split(" ");
-          const primaryCmd = args[0];
-
-          let res = `<div class="text-[#00f0ff] mt-2">> ${rawInput}</div>`;
-          
-          switch(primaryCmd) {
-            case "help": 
-              res += `<div class="text-gray-300 mt-1">Available System Directives:<br>` +
-                     `  <span class="text-yellow-400">whoami</span>       - Query profile payload data.<br>` +
-                     `  <span class="text-yellow-400">skills</span>       - List loaded core proficiencies.<br>` +
-                     `  <span class="text-yellow-400">thermal</span>      - Pull real-time sandbox engine hardware thermals.<br>` +
-                     `  <span class="text-yellow-400">ai [msg]</span>      - Interface with the Polyglot Voice Module (Supports ANY language, e.g., 'ai merhaba', 'ai hello').<br>` +
-                     `  <span class="text-yellow-400">system</span>       - Read environment matrix details.<br>` +
-                     `  <span class="text-yellow-400">contact</span>      - Open direct handshake pipeline channel.<br>` +
-                     `  <span class="text-yellow-400">clear</span>        - Purge terminal output logs.</div>`; 
-              break;
-            case "whoami": 
-              res += `<div class="text-gray-300">Ergin Kaplan. A curious developer pulling modern system layers apart to analyze internal engines. No generic corporate facades here.</div>`; 
-              break;
-            case "skills": 
-              res += `<div class="text-gray-300">Python, Advanced JS, Neural Pipeline Orchestration, Runtime Fuzzing, System Automation Architecture.</div>`; 
-              break;
+          let res = `<div class="text-[#00f0ff] mt-1">> legacy ${rawInput}</div>`;
+          switch(cmdLine) {
+            case "help": res += `<div>Commands: whoami, skills, thermal, system.</div>`; break;
+            case "whoami": res += `<div>Ergin Kaplan. Tinkerer pulling modern system layers apart.</div>`; break;
+            case "skills": res += `<div>Python, Advanced JS, Neural Pipelines, Runtime Fuzzing.</div>`; break;
+            case "system": res += `<div>eerrgin.github.io // legacy.OS.v2.5 // Grid Matrix</div>`; break;
             case "thermal":
-              const c1 = Math.floor(Math.random() * 15) + 42;
-              const c2 = Math.floor(Math.random() * 20) + 55;
-              const bar = (val) => {
-                let blocks = Math.floor(val / 10);
-                return `[${"#".repeat(blocks)}${"-".repeat(10-blocks)}] ${val}°C`;
-              };
-              res += `<div class="text-gray-400 mt-1">Fetching local hardware sandbox performance profiles...<br>` +
-                     `  <span class="text-cyan-400">CPU Core 01:</span> ${bar(c1)} <span class="text-green-400">STABLE</span><br>` +
-                     `  <span class="text-purple-400">GPU Cluster:</span> ${bar(c2)} <span class="text-orange-400">LOAD_ACTIVE</span><br>` +
-                     `  <span class="text-yellow-400">AI Engine:  </span> ${bar(45)} <span class="text-cyan-400">IDLE</span></div>`;
-              
-              // Trigger a contextual multilingual voice alert if thermals are pulled
-              const currentLang = aiVoiceEngine.detectLanguage(rawInput);
-              const alertMsg = currentLang === 'tr-TR' ? "Termal tarama tamamlandı. Tüm sistemler kararlı." : "Thermal scan complete. All cores stable.";
-              aiVoiceEngine.speak(alertMsg);
-              break;
-            case "ai":
-              const aiQuery = rawInput.substring(3).trim(); 
-              if (aiQuery.length > 0) {
-                const speakText = aiVoiceEngine.getSmartResponse(aiQuery);
-                res += `<div class="text-purple-400 mt-1"><i class="fa-solid fa-robot mr-1"></i> [AI Engine]: ${speakText}</div>`;
-                aiVoiceEngine.speak(speakText);
-              } else {
-                res += `<div class="text-gray-500 mt-1">Usage: ai [any message in any language] -> e.g., 'ai merhaba' or 'ai hello'</div>`;
-              }
-              break;
-            case "system":
-              res += `<div class="text-gray-400 mt-1">` +
-                     `  Host: eerrgin.github.io // Architecture: WebContainers x64<br>` +
-                     `  Kernel: MultiLanguage-PolyglotTTS-v3.0 // Status: <span class="text-green-400">NOMINAL</span><br>` +
-                     `  Environment: Production Grid Matrix</div>`;
-              break;
-            case "contact": 
-              res += `<div class="text-gray-300">Signal link available at: <a href="https://eerrgin.github.io/message.htm" class="text-[#00f0ff] underline">Message Node</a></div>`; 
-              break;
-            case "sudo": 
-            case "sudo rm -rf /": 
-              res += `<div class="text-red-500">Access Denied. Sandbox bypass prevention active. This incident will be reported to the root loop.</div>`; 
-              break;
-            case "clear": 
-              termOutput.innerHTML = ""; 
-              this.value = ""; 
-              return;
-            default: 
-              if (cmdLine) res += `<div class="text-red-400">Directive not recognized: '${cmdLine}'. Input 'help' to see valid operations.</div>`; 
-              break;
+                const bar = (v) => `[${"#".repeat(Math.floor(v/10))}${"-".repeat(10-Math.floor(v/10))}] ${v}°C`;
+                res += `<div>CPU: ${bar(45)} GPU: ${bar(58)}</div>`; break;
+            default: if (cmdLine) res += `<div class="text-red-400">Not found: ${cmdLine}.</div>`; break;
           }
           termOutput.innerHTML += res;
-          this.value = "";
+          termInput.value = "";
           termOutput.scrollTop = termOutput.scrollHeight;
         }
       });
 
-      // COUNTER & CLOCK
-      let visitCount = localStorage.getItem("sys_visits_v2"); 
-      visitCount = visitCount ? parseInt(visitCount) + 1 : 247; 
-      localStorage.setItem("sys_visits_v2", visitCount); 
-      document.getElementById("visit-counter").innerText = "+" + visitCount;
-      
-      function updateClock() { 
-        const now = new Date(); 
-        document.getElementById("live-clock").innerHTML = `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')} <span class="text-xs text-gray-500 animate-pulse">${now.getSeconds().toString().padStart(2,'0')}</span>`; 
-      }
-      updateClock(); 
-      setInterval(updateClock, 1000); 
-      document.getElementById("year").innerText = new Date().getFullYear();
-      
-      // SCROLL REVEAL
-      const reveals = document.querySelectorAll(".reveal");
-      function revealOnScroll() { 
-        reveals.forEach(r => { 
-          if (r.getBoundingClientRect().top < window.innerHeight - 100) {
-            r.classList.add("active"); 
+      // AI CHAT WIDGET LOGIC ( Polyglot Conversational Engine )
+      const aiVoiceEngine = {
+        detectLanguage: (text) => {
+          const trPattern = /[çğıöşüİĞÖŞÜ]/i;
+          const ruPattern = /[а-яА-Я]/i;
+          const basicTR = /\b(merhaba|selam|nasilsin|kod|sistem|kimsin|teşekkür)\b/i;
+          if (trPattern.test(text) || basicTR.test(text)) return 'tr-TR';
+          if (ruPattern.test(text) || /\b(привет|система|код)\b/i.test(text)) return 'ru-RU';
+          return 'en-US'; // Default fallback
+        },
+        responses: {
+          hello: {
+            'tr-TR': "Selam gezgin! Tamamen polyglot ses modülüm aktif. Ergin bu sistemi harici bir API anahtarı olmadan, tarayıcı yerel motorlarıyla her dilde çalışacak şekilde kurdu. Doğrudan sohbet edebilirsin.",
+            'ru-RU': "Привет исследователь! Мой голосовой модуль полиглот активен. Эргин настроил эту систему на местных браузерных движках для работы на любом языке без внешних ключей. Можешь просто поболтать.",
+            'en-US': "Hello explorer! My polyglot voice module is active. Ergin built this system using native browser engines to work in any language without external keys. You can just chat directly."
+          },
+          identity: {
+            'tr-TR': "Ben Ergin'in dijital asistan katmanıyım. Kod yazmayı, AI motorlarıyla oynamayı ve modern sistemlerin mimarisini incelemeyi seven meraklı bir geliştiriciyim. Kurumsal bir facade değil, gerçek bir tinkerer'ın AI'ıyım.",
+            'en-US': "I am Ergin's digital assistant layer. I am a curious developer who loves writing code, playing with AI engines, and analyzing modern system architectures. I'm not a corporate facade, but a true tinkerer's AI."
+          },
+          skills: {
+            'tr-TR': "Ergin'in çekirdek yetkinlikleri: Python, Gelişmiş JavaScript (ES Next+), Sinirsel Boru Hattı Orkestrasyonu, Sistem Otomasyonu Mimarisi ve Runtime Fuzzing.",
+            'en-US': "Ergin's core proficiencies: Python, Advanced JavaScript (ES Next+), Neural Pipeline Orchestration, System Automation Architecture, and Runtime Fuzzing."
+          },
+          general: {
+            'tr-TR': `Sorgunu aldım: "$QUERY". Polyglot ses modülüaktif ve kararlı çalışıyor. Sınırları zorlamaya devam et.`,
+            'ru-RU': `Запрос получен: "$QUERY". Голосовой модуль полиглот работает стабильно.`,
+            'en-US': `Query acknowledged: "$QUERY". Polyglot voice module active and stable. Keep tinkering.`
           }
-        }); 
+        },
+        speak: function(text, lang) {
+          if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+            utterance.pitch = 0.95; utterance.rate = 1.0;
+            const voices = window.speechSynthesis.getVoices();
+            // Google/Microsoft Natural voices offer superior polyglot performance
+            const preferredVoice = voices.find(v => v.lang.startsWith(lang.substring(0,2)) && (v.name.includes("Google") || v.name.includes("Natural")));
+            if (preferredVoice) utterance.voice = preferredVoice;
+            window.speechSynthesis.speak(utterance);
+          }
+        }
+      };
+
+      // Polyglot Response Router
+      function getSmartPolyglotResponse(userInput) {
+        const lower = userInput.toLowerCase();
+        const lang = aiVoiceEngine.detectLanguage(userInput);
+        let respKey = 'general';
+
+        if (/\b(merhaba|selam|hey|hello|hi)\b/i.test(lower)) respKey = 'hello';
+        else if (/\b(kimsin|whoami|identity)\b/i.test(lower)) respKey = 'identity';
+        else if (/\b(skills|yetenekler)\b/i.test(lower)) respKey = 'skills';
+        
+        let finalText = aiVoiceEngine.responses[respKey][lang] || aiVoiceEngine.responses[respKey]['en-US'];
+        if (respKey === 'general') finalText = finalText.replace("$QUERY", userInput);
+        
+        return { text: finalText, lang: lang };
       }
-      window.addEventListener("scroll", revealOnScroll); 
-      revealOnScroll();
+
+      const aiChatWidget = document.getElementById("ai-chat-widget");
+      const aiChatBubble = document.getElementById("ai-chat-bubble");
+      const aiChatWindow = document.getElementById("ai-chat-window");
+      const aiChatClose = document.getElementById("ai-chat-close");
+      const aiChatOutput = document.getElementById("ai-chat-output");
+      const aiChatInput = document.getElementById("ai-chat-input");
+      const aiChatSend = document.getElementById("ai-chat-send");
+
+      function toggleChat() {
+        constisHidden = aiChatWindow.classList.toggle("hidden");
+        if (!isHidden) aiChatInput.focus();
+      }
+      aiChatBubble.addEventListener("click", toggleChat);
+      aiChatClose.addEventListener("click", toggleChat);
+
+      function handleSendMessage() {
+        const userInput = aiChatInput.value.trim();
+        if (!userInput) return;
+        aiChatOutput.innerHTML += `<div class="user-msg">${userInput}</div>`;
+        aiChatInput.value = "";
+        aiChatOutput.scrollTop = aiChatOutput.scrollHeight;
+
+        // Process polyglot response after a small delay
+        setTimeout(() => {
+          const response = getSmartPolyglotResponse(userInput);
+          aiChatOutput.innerHTML += `<div class="ai-msg">${response.text}</div>`;
+          aiVoiceEngine.speak(response.text, response.lang);
+          aiChatOutput.scrollTop = aiChatOutput.scrollHeight;
+        }, 300);
+      }
+      aiChatSend.addEventListener("click", handleSendMessage);
+      aiChatInput.addEventListener("keypress", (e) => { if (e.key === "Enter") handleSendMessage(); });
+
+      // Keep particles effect
+      const canvas = document.getElementById("particle-canvas");
+      const ctx = canvas.getContext("2d");
+      let w, h, particles = [];
+      function resizeCanvas() { 
+        w = canvas.width = window.innerWidth; 
+        h = canvas.height = window.innerHeight; 
+        particles = [];
+        const count = Math.min(100, Math.floor(w * h / 10000));
+        for (let i = 0; i < count; i++) particles.push({ x: Math.random()*w, y: Math.random()*h, r: Math.random()*1.5+0.5, a: Math.random()*0.5+0.1, vx:(Math.random()-0.5)*0.2, vy:(Math.random()-0.5)*0.2 });
+      }
+      function drawParticles() {
+        if (!ctx) return; ctx.clearRect(0, 0, w, h); ctx.fillStyle = "#00f0ff";
+        for (let p of particles) {
+          ctx.globalAlpha = p.a; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0) p.x = w; if (p.x > w) p.x = 0; if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
+        }
+        requestAnimationFrame(drawParticles);
+      }
+      window.addEventListener("resize", resizeCanvas); resizeCanvas(); drawParticles();
+
+      // Typing Effect
+      const titles = ["Curious Developer", "AI Explorer", "Code Tinkerer", "System Alchemist"];
+      let idx = 0, charIdx = 0, isDeleting = false; const typedSpan = document.getElementById("typed-text");
+      function typeEffect() { 
+        let current = titles[idx];
+        typedSpan.innerText = isDeleting ? current.substring(0, charIdx - 1) : current.substring(0, charIdx + 1); charIdx = isDeleting ? charIdx-1 : charIdx+1;
+        if (!isDeleting && charIdx === current.length) { isDeleting = true; setTimeout(typeEffect, 2000); return; }
+        if (isDeleting && charIdx === 0) { isDeleting = false; idx = (idx + 1) % titles.length; }
+        setTimeout(typeEffect, isDeleting ? 50 : 100); 
+      }
+      typeEffect();
+
+      // Music (click anywhere to start)
+      const music = document.getElementById("bg-music");
+      const musicIcon = document.getElementById("music-icon");
+      function toggleMusic() { 
+        if (music.paused) { music.volume=1.0; music.play(); musicIcon.innerHTML='<i class="fa-solid fa-pause"></i>';}
+        else { music.pause(); musicIcon.innerHTML='<i class="fa-solid fa-play ml-0.5"></i>';}
+      }
+      document.getElementById("music-toggle").addEventListener("click", (e) => { e.stopPropagation(); toggleMusic(); });
+      document.addEventListener("click", () => { if(music.paused) toggleMusic(); }, { once: true });
+
+      // General site logic
+      document.getElementById("year").innerText = new Date().getFullYear();
+      const reveals = document.querySelectorAll(".reveal");
+      function revealOnScroll() { reveals.forEach(r => { if (r.getBoundingClientRect().top < window.innerHeight - 100) r.classList.add("active"); }); }
+      window.addEventListener("scroll", revealOnScroll); revealOnScroll();
     })();
   </script>
 </body>
