@@ -103,17 +103,8 @@
     #particle-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; opacity: 0.4; }
     .navbar { transition: background 0.3s ease, padding 0.3s ease; }
     .navbar.scrolled { background: rgba(5,5,10,0.85); backdrop-filter: blur(20px); padding-top: 0.5rem; padding-bottom: 0.5rem; }
-    .hamburger-line { transition: all 0.3s ease; }
-    .rgb-split:hover { animation: rgbShift 0.6s infinite alternate; }
-    @keyframes rgbShift {
-      0% { filter: drop-shadow(2px 0 cyan) drop-shadow(-2px 0 red); }
-      25% { filter: drop-shadow(3px 0 magenta) drop-shadow(-3px 0 lime); }
-      50% { filter: drop-shadow(1px 0 yellow) drop-shadow(-1px 0 blue); }
-      75% { filter: drop-shadow(4px 0 red) drop-shadow(-4px 0 cyan); }
-      100% { filter: drop-shadow(2px 0 blue) drop-shadow(-2px 0 magenta); }
-    }
     
-    /* TERMINAL STYLES (Restored to main section) */
+    /* TERMINAL STYLES */
     .terminal-window { font-family: 'Fira Code', monospace; }
     .terminal-input:focus { outline: none; }
     
@@ -149,13 +140,13 @@
       <a href="#home" class="hover:text-[#00f0ff] transition">Home</a>
       <a href="#lab" class="hover:text-[#00f0ff] transition">Lab</a>
       <a href="#projects" class="hover:text-[#00f0ff] transition">Projects</a>
-      <a href="#terminal" class="hover:text-[#00f0ff] transition">Console</a>
+      <a href="#terminal-section" class="hover:text-[#00f0ff] transition">Console</a>
       <a href="#contact" class="hover:text-[#00f0ff] transition">Contact</a>
     </div>
     <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none z-50">
-      <div class="hamburger-line w-6 h-0.5 bg-white mb-1"></div>
-      <div class="hamburger-line w-6 h-0.5 bg-white mb-1"></div>
-      <div class="hamburger-line w-6 h-0.5 bg-white"></div>
+      <div class="w-6 h-0.5 bg-white mb-1"></div>
+      <div class="w-6 h-0.5 bg-white mb-1"></div>
+      <div class="w-6 h-0.5 bg-white"></div>
     </button>
   </nav>
 
@@ -163,7 +154,7 @@
     <a href="#home" class="hover:text-[#00f0ff]">Home</a>
     <a href="#lab" class="hover:text-[#00f0ff]">Lab</a>
     <a href="#projects" class="hover:text-[#00f0ff]">Projects</a>
-    <a href="#terminal" class="hover:text-[#00f0ff]">Console</a>
+    <a href="#terminal-section" class="hover:text-[#00f0ff]">Console</a>
     <a href="#contact" class="hover:text-[#00f0ff]">Contact</a>
   </div>
 
@@ -181,7 +172,7 @@
     <a href="https://www.dev.to" target="_blank" class="w-12 h-12 glass-premium rounded-full flex items-center justify-center text-gray-400 hover:text-black hover:bg-[#00f0ff] hover:shadow-[0_0_20px_#00f0ff] transition-all duration-300"><i class="fa-solid fa-terminal text-lg"></i></a>
   </div>
 
-  <!-- AI CHAT WIDGET (LLM Powered) -->
+  <!-- AI CHAT WIDGET (Fully Unfiltered LLM) -->
   <div id="ai-chat-widget" class="fixed bottom-6 right-6 flex flex-col items-end gap-4">
     <div id="ai-chat-window" class="hidden glass-card rounded-2xl p-1 flex flex-col overflow-hidden shadow-2xl border border-gray-700">
       <div class="bg-gray-800 px-4 py-3 flex items-center justify-between border-b border-gray-700">
@@ -197,10 +188,10 @@
         <button id="ai-chat-close" class="text-gray-500 hover:text-white transition text-lg px-2">×</button>
       </div>
       <div class="p-5 flex-1 overflow-y-auto flex flex-col gap-2 bg-gray-900/50" id="ai-chat-output">
-        <div class="ai-msg">I am Ergin's advanced AI engine. I know about coding, geography, science, and the world. Ask me anything in any language. (e.g., "İstanbul nerede?")</div>
+        <div class="ai-msg">Ağ bağlantısı sağlandı. Ben Ergin'in yapay zekasıyım. Kodlama, tarih, coğrafya dahil her soruna doğrudan cevap veririm. Ne öğrenmek istersin?</div>
       </div>
       <div class="px-5 py-4 flex items-center font-mono text-sm bg-gray-900 border-t border-gray-700">
-        <input type="text" id="ai-chat-input" class="bg-transparent border-none text-gray-100 flex-1 w-full" autocomplete="off" placeholder="Ask anything...">
+        <input type="text" id="ai-chat-input" class="bg-transparent border-none text-gray-100 flex-1 w-full" autocomplete="off" placeholder="Bir şeyler sor (örn: İstanbul nerede?)...">
         <i class="fa-solid fa-paper-plane text-[#00f0ff] cursor-pointer ml-3 opacity-80 hover:opacity-100 transition" id="ai-chat-send"></i>
       </div>
     </div>
@@ -223,7 +214,7 @@
     <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
       <div class="text-left reveal order-2 lg:order-1">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/20 text-cyan-400 text-[10px] font-mono font-bold mb-8 tracking-widest backdrop-blur-sm shadow-[0_0_15px_rgba(0,240,255,0.1)]">
-          <i class="fa-solid fa-microchip animate-pulse"></i> <span>SYSTEM_READY // v4.0 // FULL_LLM_INTEGRATION</span>
+          <i class="fa-solid fa-microchip animate-pulse"></i> <span>SYSTEM_READY // v5.0 // UNFILTERED_LLM_CORE</span>
         </div>
         <h1 class="text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-4 leading-[1]">
           eerrgin<span class="text-[#00f0ff] neon-text">.</span>
@@ -245,11 +236,6 @@
             <i class="fa-solid fa-satellite-dish text-xl"></i> Ping_Me
           </a>
         </div>
-        <div class="flex gap-10 mt-14 pt-8 border-t border-white/5">
-          <div><div class="text-3xl font-black text-[#00f0ff] stat-number" id="visit-counter">+247</div><div class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Explored Nodes</div></div>
-          <div><div class="text-3xl font-black text-white" id="live-clock">--:-- --</div><div class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Local Cycle</div></div>
-          <div><div class="text-3xl font-black text-purple-400">∞</div><div class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Limits</div></div>
-        </div>
       </div>
       <div class="reveal flex justify-center lg:justify-end order-1 lg:order-2 glow-img">
         <img src="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/refs/heads/main/12.jpg" alt="Ergin Kaplan" class="profile-img rgb-split w-72 h-72 md:w-[420px] md:h-[420px] object-cover rounded-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]" id="profile-img">
@@ -264,28 +250,18 @@
         <h2 class="text-5xl md:text-6xl font-black mt-6 tracking-tight">Experimental <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-purple-500">Sandbox</span></h2>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="glass-card p-8 rounded-3xl group reveal tilt-card"><div class="w-14 h-14 rounded-2xl bg-[#00f0ff]/10 border border-[#00f0ff]/20 flex items-center justify-center text-[#00f0ff] text-2xl mb-6 shadow-[0_0_15px_rgba(0,240,255,0.1)] group-hover:bg-[#00f0ff] group-hover:text-black transition-all duration-300"><i class="fa-solid fa-network-wired"></i></div><h3 class="text-2xl font-bold mb-3 tracking-tight">Autonomous Agents</h3><p class="text-gray-400 text-sm leading-relaxed font-light">Self-evolving AI pipelines, multi-agent orchestration, and swarm intelligence algorithms.</p><div class="mt-6 flex gap-2 text-[10px] text-[#00f0ff]/80 font-mono uppercase"><span class="bg-[#00f0ff]/5 px-3 py-1 rounded-md border border-[#00f0ff]/20">LLM_Mesh</span><span class="bg-[#00f0ff]/5 px-3 py-1 rounded-md border border-[#00f0ff]/20">ReAct</span></div></div>
-        <div class="glass-card p-8 rounded-3xl group reveal tilt-card"><div class="w-14 h-14 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 text-2xl mb-6 shadow-[0_0_15px_rgba(249,115,22,0.1)] group-hover:bg-orange-500 group-hover:text-black transition-all duration-300"><i class="fa-solid fa-gauge-high"></i></div><h3 class="text-2xl font-bold mb-3 tracking-tight">Rapid Engine</h3><p class="text-gray-400 text-sm leading-relaxed font-light">High-performance real-time simulation, ultra low-latency processing, and infinite scalability.</p><div class="mt-6 flex gap-2 text-[10px] text-orange-400/80 font-mono uppercase"><span class="bg-orange-500/5 px-3 py-1 rounded-md border border-orange-500/20">Sub-ms</span><span class="bg-orange-500/5 px-3 py-1 rounded-md border border-orange-500/20">WASM</span></div></div>
-        <div class="glass-card p-8 rounded-3xl group reveal tilt-card"><div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-2xl mb-6 shadow-[0_0_15px_rgba(168,85,247,0.1)] group-hover:bg-purple-500 group-hover:text-black transition-all duration-300"><i class="fa-solid fa-vial-virus"></i></div><h3 class="text-2xl font-bold mb-3 tracking-tight">Zero-Day Tinkering</h3><p class="text-gray-400 text-sm leading-relaxed font-light">Sandboxed environments for deep protocol analysis, code fuzzing, and breaking stuff to see how it works.</p><div class="mt-6 flex gap-2 text-[10px] text-purple-400/80 font-mono uppercase"><span class="bg-purple-500/5 px-3 py-1 rounded-md border border-purple-500/20">Sandbox</span><span class="bg-purple-500/5 px-3 py-1 rounded-md border border-purple-500/20">Fuzzing</span></div></div>
+        <div class="glass-card p-8 rounded-3xl group reveal tilt-card"><div class="w-14 h-14 rounded-2xl bg-[#00f0ff]/10 border border-[#00f0ff]/20 flex items-center justify-center text-[#00f0ff] text-2xl mb-6 shadow-[0_0_15px_rgba(0,240,255,0.1)] group-hover:bg-[#00f0ff] group-hover:text-black transition-all duration-300"><i class="fa-solid fa-network-wired"></i></div><h3 class="text-2xl font-bold mb-3 tracking-tight">Autonomous Agents</h3><p class="text-gray-400 text-sm leading-relaxed font-light">Self-evolving AI pipelines, multi-agent orchestration, and swarm intelligence algorithms.</p></div>
+        <div class="glass-card p-8 rounded-3xl group reveal tilt-card"><div class="w-14 h-14 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 text-2xl mb-6 shadow-[0_0_15px_rgba(249,115,22,0.1)] group-hover:bg-orange-500 group-hover:text-black transition-all duration-300"><i class="fa-solid fa-gauge-high"></i></div><h3 class="text-2xl font-bold mb-3 tracking-tight">Rapid Engine</h3><p class="text-gray-400 text-sm leading-relaxed font-light">High-performance real-time simulation, ultra low-latency processing, and infinite scalability.</p></div>
+        <div class="glass-card p-8 rounded-3xl group reveal tilt-card"><div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-2xl mb-6 shadow-[0_0_15px_rgba(168,85,247,0.1)] group-hover:bg-purple-500 group-hover:text-black transition-all duration-300"><i class="fa-solid fa-vial-virus"></i></div><h3 class="text-2xl font-bold mb-3 tracking-tight">Zero-Day Tinkering</h3><p class="text-gray-400 text-sm leading-relaxed font-light">Sandboxed environments for deep protocol analysis, code fuzzing, and breaking stuff to see how it works.</p></div>
       </div>
     </div>
   </section>
 
-  <section id="projects" class="py-24 bg-gradient-to-b from-transparent via-[#00f0ff]/5 to-transparent border-y border-white/5">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="reveal text-center mb-14"><h3 class="text-4xl font-black">Latest <span class="text-[#00f0ff]">Experiments</span></h3><p class="text-gray-500 mt-3 font-mono text-xs tracking-widest uppercase">pushing the boundaries of code</p></div>
-      <div class="grid md:grid-cols-2 gap-8">
-        <a href="#" class="glass-card p-8 rounded-3xl group reveal tilt-card block no-underline"><span class="text-xs text-[#00f0ff] font-mono">01</span><h4 class="text-xl font-bold mt-2">Neural Interface Design</h4><p class="text-gray-400 text-sm mt-2">Low‑latency signal processing pipeline for real‑time brain‑computer interaction.</p><div class="flex gap-2 mt-4"><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full font-mono">Python</span><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full font-mono">TensorFlow</span></div></a>
-        <a href="#" class="glass-card p-8 rounded-3xl group reveal tilt-card block no-underline"><span class="text-xs text-purple-400 font-mono">02</span><h4 class="text-xl font-bold mt-2">Autonomous Drone Swarm</h4><p class="text-gray-400 text-sm mt-2">Simultaneous mission planning and collision avoidance for 10+ drones.</p><div class="flex gap-2 mt-4"><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full font-mono">C++</span><span class="text-[10px] bg-white/5 px-3 py-1 rounded-full font-mono">ROS2</span></div></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- TERMINAL RESTORED TO MAIN VIEW -->
-  <section id="terminal" class="py-28 relative z-10">
+  <!-- RESTORED MAIN TERMINAL -->
+  <section id="terminal-section" class="py-28 relative z-10 border-t border-white/5 bg-gradient-to-b from-transparent via-[#00f0ff]/5 to-transparent">
     <div class="max-w-4xl mx-auto px-6">
       <div class="text-center mb-12 reveal">
-        <span class="text-purple-400 text-[10px] font-mono tracking-[0.2em] bg-purple-500/10 border border-purple-500/20 px-4 py-1.5 rounded-full">INTERACTIVE CONSOLE</span>
+        <span class="text-purple-400 text-[10px] font-mono tracking-[0.2em] bg-purple-500/10 border border-purple-500/20 px-4 py-1.5 rounded-full">CORE ACCESS</span>
         <h2 class="text-5xl font-black mt-6">Talk to the <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-[#00f0ff]">System</span></h2>
       </div>
       <div class="glass-card rounded-2xl p-1 reveal terminal-window">
@@ -296,9 +272,9 @@
             <div class="w-3 h-3 rounded-full bg-green-500"></div>
             <div class="ml-4 text-xs text-gray-400 font-mono">guest@eerrgin: ~/system</div>
           </div>
-          <div class="p-6 h-80 overflow-y-auto font-mono text-sm line-height-1.5" id="term-output">
-            <div class="text-gray-300">Welcome to eerrgin.OS v4.0.</div>
-            <div class="text-gray-300">Type <span class="text-[#00f0ff]">'help'</span> to explore directives. Local system controls are active.</div>
+          <div class="p-6 h-80 overflow-y-auto font-mono text-sm leading-relaxed" id="term-output">
+            <div class="text-gray-300">Welcome to eerrgin.OS v5.0.</div>
+            <div class="text-gray-300">Type <span class="text-[#00f0ff]">'help'</span> to explore directives. The local terminal is active.</div>
           </div>
           <div class="px-6 pb-6 pt-2 flex items-center font-mono text-sm bg-gray-900 border-t border-gray-800 mt-2">
             <span class="text-green-400 mr-2">guest@eerrgin:~$</span>
@@ -317,17 +293,11 @@
         <h3 class="text-3xl font-black mb-3 relative z-10">Dev Community</h3>
         <p class="text-gray-400 mb-8 font-light relative z-10">I hang out with indie devs, open‑source enthusiasts, and tech explorers deep inside the code.</p>
         <a href="https://www.dev.to" target="_blank" class="relative z-10 inline-flex items-center gap-3 text-black bg-[#00f0ff] font-bold px-8 py-3.5 rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">Join the System <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
-        <p class="text-[10px] text-gray-600 mt-6 font-mono uppercase tracking-widest relative z-10">dev.to • global tech node</p>
       </div>
     </div>
   </section>
 
   <footer class="py-10 text-center text-gray-600 text-xs font-mono uppercase tracking-widest border-t border-white/5 bg-black/50">
-    <div class="flex flex-wrap justify-center gap-6 mb-4">
-      <a href="#" class="hover:text-white transition">Privacy</a>
-      <a href="#" class="hover:text-white transition">Terms</a>
-      <a href="#" class="hover:text-white transition">Cookies</a>
-    </div>
     <p>© <span id="year"></span> Ergin Kaplan // Tinkerer Hub // End of Line.</p>
   </footer>
 
@@ -371,13 +341,11 @@
         });
       }
 
-      // PROFILE IMG
       const profileImg = document.getElementById("profile-img");
       if (profileImg) {
         profileImg.addEventListener("click", function(e) { e.stopPropagation(); this.classList.toggle("colored"); });
       }
 
-      // NAVBAR
       const navbar = document.getElementById("navbar");
       window.addEventListener("scroll", () => { 
         if (window.scrollY > 50) navbar.classList.add("scrolled"); 
@@ -400,7 +368,7 @@
             case "help": res += `<div>Commands: <span class="text-yellow-400">whoami, skills, thermal, system, clear</span></div>`; break;
             case "whoami": res += `<div>Ergin Kaplan. Tinkerer pulling modern system layers apart.</div>`; break;
             case "skills": res += `<div>Python, Advanced JS, Neural Pipelines, Runtime Fuzzing.</div>`; break;
-            case "system": res += `<div>eerrgin.github.io // OS.v4.0 // Grid Matrix</div>`; break;
+            case "system": res += `<div>eerrgin.github.io // OS.v5.0 // Grid Matrix</div>`; break;
             case "thermal":
                 const bar = (v) => `[${"#".repeat(Math.floor(v/10))}${"-".repeat(10-Math.floor(v/10))}] ${v}°C`;
                 res += `<div>CPU: ${bar(45)}<br>GPU: ${bar(58)}<br><span class="text-green-400">SYSTEM STABLE</span></div>`; break;
@@ -413,12 +381,12 @@
         }
       });
 
-      // ADVANCED LLM AI CHAT WIDGET (Using free Pollinations API)
+      // ADVANCED LLM AI CHAT WIDGET (Direct POST to Pollinations)
       const aiVoiceEngine = {
         detectLanguage: (text) => {
           const trPattern = /[çğıöşüİĞÖŞÜ]/i;
           const ruPattern = /[а-яА-Я]/i;
-          if (trPattern.test(text) || /\b(nerede|kim|nasil|nedir|yap|yaz|merhaba)\b/i.test(text)) return 'tr-TR';
+          if (trPattern.test(text) || /\b(nerede|kim|nasil|nedir|yap|yaz|merhaba|türkiye)\b/i.test(text)) return 'tr-TR';
           if (ruPattern.test(text) || /\b(привет|как|что)\b/i.test(text)) return 'ru-RU';
           return 'en-US'; 
         },
@@ -438,24 +406,37 @@
 
       async function fetchLLMResponse(userInput) {
         try {
-            // System prompt makes sure it behaves correctly and concisely
-            const systemPrompt = "You are a highly intelligent, concise AI assistant for Ergin Kaplan's portfolio website. Answer the user's question directly. Do not use markdown formatting. Keep answers short and smart. Answer in the language the user asked in. User query: ";
-            const apiUrl = `https://text.pollinations.ai/prompt/${encodeURIComponent(systemPrompt + userInput)}`;
+            // POST request avoids URL length limits and is much more stable
+            const response = await fetch("https://text.pollinations.ai/", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    messages: [
+                        { role: "system", content: "Sen son derece yetenekli, zeki ve her şeyi bilen bir yapay zekasın. Kullanıcıya net, doğrudan ve doğru cevaplar ver. Markdown sembolleri (* veya #) kullanma, düz metin ver. Hangi dilde soru sorulursa o dilde cevap ver." },
+                        { role: "user", content: userInput }
+                    ]
+                })
+            });
             
-            const response = await fetch(apiUrl);
-            if (!response.ok) throw new Error("Network response was not ok");
+            if (!response.ok) throw new Error("HTTP Error");
             const text = await response.text();
-            
-            // Clean up basic markdown if the LLM spits it out despite instructions
             const cleanText = text.replace(/[*_`#]/g, ''); 
             const lang = aiVoiceEngine.detectLanguage(userInput + " " + cleanText);
             
             return { text: cleanText, lang: lang };
         } catch (error) {
-            console.error("AI Fetch Error:", error);
-            const lang = aiVoiceEngine.detectLanguage(userInput);
-            const fallbackMsg = lang === 'tr-TR' ? "Şu an sunucuya bağlanamıyorum. Lütfen tekrar dene." : "I cannot connect to the server right now. Please try again.";
-            return { text: fallbackMsg, lang: lang };
+            console.error("AI Fetch Error (POST failed):", error);
+            // Fallback plan if POST fails
+            try {
+                const res2 = await fetch(`https://text.pollinations.ai/prompt/${encodeURIComponent(userInput)}`);
+                const text2 = await res2.text();
+                const cleanText2 = text2.replace(/[*_`#]/g, '');
+                return { text: cleanText2, lang: aiVoiceEngine.detectLanguage(cleanText2) };
+            } catch (fallbackError) {
+                const lang = aiVoiceEngine.detectLanguage(userInput);
+                const fallbackMsg = lang === 'tr-TR' ? "Şu an sisteme erişemiyorum, bir şeyler ters gitti." : "I cannot connect to the system right now.";
+                return { text: fallbackMsg, lang: lang };
+            }
         }
       }
 
@@ -478,20 +459,16 @@
         const userInput = aiChatInput.value.trim();
         if (!userInput) return;
         
-        // Show user message
         aiChatOutput.innerHTML += `<div class="user-msg">${userInput}</div>`;
         aiChatInput.value = "";
         aiChatOutput.scrollTop = aiChatOutput.scrollHeight;
 
-        // Show typing indicator
         const typingId = 'typing-' + Date.now();
         aiChatOutput.innerHTML += `<div id="${typingId}" class="ai-msg typing-indicator"><span></span><span></span><span></span></div>`;
         aiChatOutput.scrollTop = aiChatOutput.scrollHeight;
 
-        // Fetch real AI response
         const response = await fetchLLMResponse(userInput);
         
-        // Remove typing indicator & show response
         document.getElementById(typingId).remove();
         aiChatOutput.innerHTML += `<div class="ai-msg">${response.text}</div>`;
         aiVoiceEngine.speak(response.text, response.lang);
@@ -559,21 +536,7 @@
           volumeSlider.addEventListener("input", (e) => { if(music) music.volume = parseFloat(e.target.value); });
       }
 
-      // COUNTER & CLOCK
       document.getElementById("year").innerText = new Date().getFullYear();
-      let visitCount = localStorage.getItem("sys_visits_v4"); 
-      visitCount = visitCount ? parseInt(visitCount) + 1 : 247; 
-      localStorage.setItem("sys_visits_v4", visitCount); 
-      const vcEl = document.getElementById("visit-counter");
-      if(vcEl) vcEl.innerText = "+" + visitCount;
-      
-      function updateClock() { 
-        const now = new Date(); 
-        const clkEl = document.getElementById("live-clock");
-        if(clkEl) clkEl.innerHTML = `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')} <span class="text-xs text-gray-500 animate-pulse">${now.getSeconds().toString().padStart(2,'0')}</span>`; 
-      }
-      updateClock(); setInterval(updateClock, 1000); 
-
       const reveals = document.querySelectorAll(".reveal");
       function revealOnScroll() { reveals.forEach(r => { if (r.getBoundingClientRect().top < window.innerHeight - 100) r.classList.add("active"); }); }
       window.addEventListener("scroll", revealOnScroll); revealOnScroll();
