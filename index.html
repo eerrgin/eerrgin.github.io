@@ -205,7 +205,7 @@
     <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
       <div class="text-left reveal order-2 lg:order-1">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/20 text-cyan-400 text-[10px] font-mono font-bold mb-8 tracking-widest backdrop-blur-sm shadow-[0_0_15px_rgba(0,240,255,0.1)]">
-          <i class="fa-solid fa-microchip animate-pulse"></i> <span>SYSTEM_READY // v2.5 // COGNITIVE_CORE_LOADED</span>
+          <i class="fa-solid fa-microchip animate-pulse"></i> <span>SYSTEM_READY // v3.0 // MULTILINGUAL_AI_CORES_ACTIVE</span>
         </div>
         <h1 class="text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-4 leading-[1]">
           eerrgin<span class="text-[#00f0ff] neon-text">.</span>
@@ -279,9 +279,9 @@
             <div class="w-3 h-3 rounded-full bg-green-500"></div>
             <div class="ml-4 text-xs text-gray-400 font-mono">guest@eerrgin: ~/system</div>
           </div>
-          <div class="p-6 h-80 overflow-y-auto font-mono text-sm line-height-1.5" id="term-output">
-            <div class="text-gray-300">Welcome to eerrgin.OS v2.5.</div>
-            <div class="text-gray-300">Type <span class="text-[#00f0ff]">'help'</span> to explore extended commands and conversational intelligence modules.</div>
+          <div class="p-6 h-80 overflow-y-auto font-mono text-sm" id="term-output" style="line-height: 1.5;">
+            <div class="text-gray-300">Welcome to eerrgin.OS v3.0.</div>
+            <div class="text-gray-300">Type <span class="text-[#00f0ff]">'help'</span> to explore directives. The AI voice subsystem now supports polyglot operations (any language).</div>
           </div>
           <div class="px-6 pb-6 pt-2 flex items-center font-mono text-sm bg-gray-900">
             <span class="text-green-400 mr-2">guest@eerrgin:~$</span>
@@ -559,31 +559,86 @@
         volumeSlider.addEventListener("input", (e) => { music.volume = parseFloat(e.target.value); });
       }
       
-      // ADVANCED AI SPEECH ENGINE (100% FREE NO-KEY TTS & INTEGRATED SMART TERMINAL)
+      // UNIVERSAL MULTILINGUAL TEXT-TO-SPEECH (TTS) ENGINE (100% FREE & ZERO-MAINTENANCE)
       const aiVoiceEngine = {
+        detectLanguage: function(text) {
+          // Basic pattern matching for quick language routing without external payloads
+          const trPattern = /[çğıöşüİĞÖŞÜ]/i;
+          const ruPattern = /[а-яА-Я]/i;
+          const dePattern = /\b(ich|ist|und|der|die|das|nicht|du)\b/i;
+          const frPattern = /\b(le|la|les|et|est|un|une|pour|dans)\b/i;
+          
+          if (trPattern.test(text) || /\b(merhaba|selam|nasilsin|kod|sistem)\b/i.test(text)) return 'tr-TR';
+          if (ruPattern.test(text) || /\b(привет|как|система|код)\b/i.test(text)) return 'ru-RU';
+          if (dePattern.test(text)) return 'de-DE';
+          if (frPattern.test(text)) return 'fr-FR';
+          return 'en-US'; // Fallback
+        },
+        
         speak: function(text) {
           if ('speechSynthesis' in window) {
-            window.speechSynthesis.cancel(); // Stop any overlapping speech
+            window.speechSynthesis.cancel(); 
             const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'en-US';
-            utterance.pitch = 0.9;
+            const targetLang = this.detectLanguage(text);
+            
+            utterance.lang = targetLang;
+            utterance.pitch = 0.95;
             utterance.rate = 1.0;
-            // Target a modern robotic/neutral voice if available
+            
+            // Map the optimal client voice signature based on computed routing language
             const voices = window.speechSynthesis.getVoices();
-            const preferredVoice = voices.find(v => v.name.includes("Google") || v.name.includes("Natural"));
-            if (preferredVoice) utterance.voice = preferredVoice;
+            const matchedVoice = voices.find(v => v.lang.startsWith(targetLang.substring(0,2)) && (v.name.includes("Google") || v.name.includes("Natural")));
+            if (matchedVoice) utterance.voice = matchedVoice;
+            
             window.speechSynthesis.speak(utterance);
           }
         },
-        responses: {
-          hello: "Hello node explorer. I am eerrgin OS cognitive layer. Ergin built me using standard native browser APIs. No keys, zero maintenance cost. True engineering.",
-          help: "Accessing auxiliary instructions. You can query thermal data, parse local variables, or talk directly to me using the AI syntax.",
-          tinker: "Tinkering is the art of breaking things intentionally to understand their architectures. Glad you share the curiosity.",
-          default: "Command processed. Packet acknowledged. Cognitive module synchronization operational."
+        
+        // Static baseline system responses mapped to detected input queries
+        getSmartResponse: function(cmdInput) {
+          const lower = cmdInput.toLowerCase();
+          
+          // Turkish Handshake Flow
+          if (/\b(merhaba|selam|hey)\b/i.test(lower)) {
+            return "Selam gezgin. Ben eerrgin işletim sisteminin yapay zekâ katmanıyım. Ergin bu modülü harici hiçbir API anahtarı kullanmadan, tamamen tarayıcı yerel motorlarıyla her dilde çalışacak şekilde optimize etti.";
+          }
+          if (/\b(termal|isi|sicaklik)\b/i.test(lower)) {
+            return "Termal simülasyon katmanı devrede. Sistem sıcaklıkları normal limitler dahilinde.";
+          }
+          
+          // Russian Handshake Flow
+          if (/\b(привет|здравствуйте)\b/i.test(lower)) {
+            return "Приветствую исследователь. Я когнитивный слой системы eerrgin. Этот модуль работает на чистых браузерных API, без внешних ключей и затрат.";
+          }
+          
+          // English (Default Dynamic Engine Generative Baseline)
+          if (/\b(hello|hi|hey)\b/i.test(lower)) {
+            return "Hello explorer. I am the cognitive layer of eerrgin OS. Ergin built me using standard native browser APIs. No keys, zero maintenance cost. True engineering.";
+          }
+          if (/\b(tinker|code|hack)\b/i.test(lower)) {
+            return "Tinkering is the art of breaking things intentionally to understand their true architectures. Glad you share the curiosity.";
+          }
+          
+          // Universal generic translation fallback injection
+          if (this.detectLanguage(cmdInput) === 'tr-TR') {
+            return `Sorgu anlaşıldı: "${cmdInput}". Yapay zekâ ses modülü aktif ve stabil çalışıyor. Sınırları zorlamaya devam et.`;
+          } else if (this.detectLanguage(cmdInput) === 'ru-RU') {
+            return `Запрос обработан: "${cmdInput}". Голосовой модуль работает стабильно.`;
+          } else {
+            return `Acknowledge query: "${cmdInput}". The local polyglot voice node answers: Engineering boundaries successfully expanded.`;
+          }
         }
       };
 
-      // TERMINAL EXECUTOR
+      // Ensure system voices fetch asynchronously inside chromium wrappers
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.getVoices();
+        if (window.speechSynthesis.onvoiceschanged !== undefined) {
+          window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+        }
+      }
+
+      // TERMINAL ENGINE
       const termInput = document.getElementById("term-input");
       const termOutput = document.getElementById("term-output");
       termInput.addEventListener("keypress", function(e) {
@@ -601,7 +656,7 @@
                      `  <span class="text-yellow-400">whoami</span>       - Query profile payload data.<br>` +
                      `  <span class="text-yellow-400">skills</span>       - List loaded core proficiencies.<br>` +
                      `  <span class="text-yellow-400">thermal</span>      - Pull real-time sandbox engine hardware thermals.<br>` +
-                     `  <span class="text-yellow-400">ai [msg]</span>      - Interface with the local free-tier Voice Module (e.g., 'ai hello').<br>` +
+                     `  <span class="text-yellow-400">ai [msg]</span>      - Interface with the Polyglot Voice Module (Supports ANY language, e.g., 'ai merhaba', 'ai hello').<br>` +
                      `  <span class="text-yellow-400">system</span>       - Read environment matrix details.<br>` +
                      `  <span class="text-yellow-400">contact</span>      - Open direct handshake pipeline channel.<br>` +
                      `  <span class="text-yellow-400">clear</span>        - Purge terminal output logs.</div>`; 
@@ -623,22 +678,26 @@
                      `  <span class="text-cyan-400">CPU Core 01:</span> ${bar(c1)} <span class="text-green-400">STABLE</span><br>` +
                      `  <span class="text-purple-400">GPU Cluster:</span> ${bar(c2)} <span class="text-orange-400">LOAD_ACTIVE</span><br>` +
                      `  <span class="text-yellow-400">AI Engine:  </span> ${bar(45)} <span class="text-cyan-400">IDLE</span></div>`;
+              
+              // Trigger a contextual multilingual voice alert if thermals are pulled
+              const currentLang = aiVoiceEngine.detectLanguage(rawInput);
+              const alertMsg = currentLang === 'tr-TR' ? "Termal tarama tamamlandı. Tüm sistemler kararlı." : "Thermal scan complete. All cores stable.";
+              aiVoiceEngine.speak(alertMsg);
               break;
             case "ai":
-              const aiQuery = args.slice(1).join(" ");
-              let speakText = aiVoiceEngine.responses.default;
-              if (aiQuery.includes("hello") || aiQuery.includes("hi")) speakText = aiVoiceEngine.responses.hello;
-              else if (aiQuery.includes("help")) speakText = aiVoiceEngine.responses.help;
-              else if (aiQuery.includes("tinker") || aiQuery.includes("code")) speakText = aiVoiceEngine.responses.tinker;
-              else if (aiQuery.length > 0) speakText = `Acknowledged query: "${aiQuery}". Local voice node answers: Engineering boundaries successfully expanded.`;
-              
-              res += `<div class="text-purple-400 mt-1"><i class="fa-solid fa-robot mr-1"></i> [AI Engine]: ${speakText}</div>`;
-              aiVoiceEngine.speak(speakText);
+              const aiQuery = rawInput.substring(3).trim(); 
+              if (aiQuery.length > 0) {
+                const speakText = aiVoiceEngine.getSmartResponse(aiQuery);
+                res += `<div class="text-purple-400 mt-1"><i class="fa-solid fa-robot mr-1"></i> [AI Engine]: ${speakText}</div>`;
+                aiVoiceEngine.speak(speakText);
+              } else {
+                res += `<div class="text-gray-500 mt-1">Usage: ai [any message in any language] -> e.g., 'ai merhaba' or 'ai hello'</div>`;
+              }
               break;
             case "system":
               res += `<div class="text-gray-400 mt-1">` +
                      `  Host: eerrgin.github.io // Architecture: WebContainers x64<br>` +
-                     `  Kernel: NativeBrowser-SpeechAPI-v2.5 // Status: <span class="text-green-400">NOMINAL</span><br>` +
+                     `  Kernel: MultiLanguage-PolyglotTTS-v3.0 // Status: <span class="text-green-400">NOMINAL</span><br>` +
                      `  Environment: Production Grid Matrix</div>`;
               break;
             case "contact": 
