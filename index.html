@@ -91,7 +91,6 @@
     .glass-card:hover { border-color: rgba(34, 211, 238, 0.5); box-shadow: 0 20px 40px -10px rgba(0, 240, 255, 0.2); }
     .glass-card > * { transform: translateZ(30px); }
     
-    /* Photo Effect CSS (Fixed and clear) */
     .profile-img {
       filter: grayscale(100%) contrast(110%);
       transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -193,7 +192,7 @@
     <div class="glass-premium rounded-full px-3 py-1.5 text-[10px] flex items-center gap-2 border-green-500/20">
       <span class="relative flex h-2 w-2">
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500 box-shadow-[0_0_8px_#22c55e]"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
       </span>
       <span class="text-gray-300 font-mono tracking-widest">SYS.ONLINE</span>
     </div>
@@ -206,7 +205,7 @@
     <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
       <div class="text-left reveal order-2 lg:order-1">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/20 text-cyan-400 text-[10px] font-mono font-bold mb-8 tracking-widest backdrop-blur-sm shadow-[0_0_15px_rgba(0,240,255,0.1)]">
-          <i class="fa-solid fa-microchip animate-pulse"></i> <span>SYSTEM_READY // v2.0 // KERNEL_ACTIVE</span>
+          <i class="fa-solid fa-microchip animate-pulse"></i> <span>SYSTEM_READY // v2.5 // COGNITIVE_CORE_LOADED</span>
         </div>
         <h1 class="text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-4 leading-[1]">
           eerrgin<span class="text-[#00f0ff] neon-text">.</span>
@@ -280,9 +279,9 @@
             <div class="w-3 h-3 rounded-full bg-green-500"></div>
             <div class="ml-4 text-xs text-gray-400 font-mono">guest@eerrgin: ~/system</div>
           </div>
-          <div class="p-6 h-64 overflow-y-auto font-mono text-sm" id="term-output">
-            <div class="text-gray-300">Welcome to eerrgin.OS v2.0.</div>
-            <div class="text-gray-300">Type <span class="text-[#00f0ff]">'help'</span> to see available commands.</div>
+          <div class="p-6 h-80 overflow-y-auto font-mono text-sm line-height-1.5" id="term-output">
+            <div class="text-gray-300">Welcome to eerrgin.OS v2.5.</div>
+            <div class="text-gray-300">Type <span class="text-[#00f0ff]">'help'</span> to explore extended commands and conversational intelligence modules.</div>
           </div>
           <div class="px-6 pb-6 pt-2 flex items-center font-mono text-sm bg-gray-900">
             <span class="text-green-400 mr-2">guest@eerrgin:~$</span>
@@ -560,21 +559,102 @@
         volumeSlider.addEventListener("input", (e) => { music.volume = parseFloat(e.target.value); });
       }
       
-      // TERMINAL
+      // ADVANCED AI SPEECH ENGINE (100% FREE NO-KEY TTS & INTEGRATED SMART TERMINAL)
+      const aiVoiceEngine = {
+        speak: function(text) {
+          if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel(); // Stop any overlapping speech
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.pitch = 0.9;
+            utterance.rate = 1.0;
+            // Target a modern robotic/neutral voice if available
+            const voices = window.speechSynthesis.getVoices();
+            const preferredVoice = voices.find(v => v.name.includes("Google") || v.name.includes("Natural"));
+            if (preferredVoice) utterance.voice = preferredVoice;
+            window.speechSynthesis.speak(utterance);
+          }
+        },
+        responses: {
+          hello: "Hello node explorer. I am eerrgin OS cognitive layer. Ergin built me using standard native browser APIs. No keys, zero maintenance cost. True engineering.",
+          help: "Accessing auxiliary instructions. You can query thermal data, parse local variables, or talk directly to me using the AI syntax.",
+          tinker: "Tinkering is the art of breaking things intentionally to understand their architectures. Glad you share the curiosity.",
+          default: "Command processed. Packet acknowledged. Cognitive module synchronization operational."
+        }
+      };
+
+      // TERMINAL EXECUTOR
       const termInput = document.getElementById("term-input");
       const termOutput = document.getElementById("term-output");
       termInput.addEventListener("keypress", function(e) {
         if (e.key === "Enter") {
-          const cmd = this.value.trim().toLowerCase();
-          let res = `<div class="text-[#00f0ff] mt-2">> ${cmd}</div>`;
-          switch(cmd) {
-            case "help": res += `<div class="text-gray-300">Commands: <span class="text-yellow-400">whoami, skills, contact, clear</span></div>`; break;
-            case "whoami": res += `<div class="text-gray-300">Ergin Kaplan. A curious dev pulling things apart to see how they work.</div>`; break;
-            case "skills": res += `<div class="text-gray-300">Python, JS, AI Pipelines, System Design, Fuzzing, Problem Solving.</div>`; break;
-            case "contact": res += `<div class="text-gray-300">Signal me at: <a href="https://eerrgin.github.io/message.htm" class="text-[#00f0ff] underline">Message Node</a></div>`; break;
-            case "sudo": case "sudo rm -rf /": res += `<div class="text-red-500">Access Denied. This incident will be reported.</div>`; break;
-            case "clear": termOutput.innerHTML = ""; this.value = ""; return;
-            default: if (cmd) res += `<div class="text-red-400">Command not found: ${cmd}. Type 'help'.</div>`; break;
+          const rawInput = this.value.trim();
+          const cmdLine = rawInput.toLowerCase();
+          const args = cmdLine.split(" ");
+          const primaryCmd = args[0];
+
+          let res = `<div class="text-[#00f0ff] mt-2">> ${rawInput}</div>`;
+          
+          switch(primaryCmd) {
+            case "help": 
+              res += `<div class="text-gray-300 mt-1">Available System Directives:<br>` +
+                     `  <span class="text-yellow-400">whoami</span>       - Query profile payload data.<br>` +
+                     `  <span class="text-yellow-400">skills</span>       - List loaded core proficiencies.<br>` +
+                     `  <span class="text-yellow-400">thermal</span>      - Pull real-time sandbox engine hardware thermals.<br>` +
+                     `  <span class="text-yellow-400">ai [msg]</span>      - Interface with the local free-tier Voice Module (e.g., 'ai hello').<br>` +
+                     `  <span class="text-yellow-400">system</span>       - Read environment matrix details.<br>` +
+                     `  <span class="text-yellow-400">contact</span>      - Open direct handshake pipeline channel.<br>` +
+                     `  <span class="text-yellow-400">clear</span>        - Purge terminal output logs.</div>`; 
+              break;
+            case "whoami": 
+              res += `<div class="text-gray-300">Ergin Kaplan. A curious developer pulling modern system layers apart to analyze internal engines. No generic corporate facades here.</div>`; 
+              break;
+            case "skills": 
+              res += `<div class="text-gray-300">Python, Advanced JS, Neural Pipeline Orchestration, Runtime Fuzzing, System Automation Architecture.</div>`; 
+              break;
+            case "thermal":
+              const c1 = Math.floor(Math.random() * 15) + 42;
+              const c2 = Math.floor(Math.random() * 20) + 55;
+              const bar = (val) => {
+                let blocks = Math.floor(val / 10);
+                return `[${"#".repeat(blocks)}${"-".repeat(10-blocks)}] ${val}°C`;
+              };
+              res += `<div class="text-gray-400 mt-1">Fetching local hardware sandbox performance profiles...<br>` +
+                     `  <span class="text-cyan-400">CPU Core 01:</span> ${bar(c1)} <span class="text-green-400">STABLE</span><br>` +
+                     `  <span class="text-purple-400">GPU Cluster:</span> ${bar(c2)} <span class="text-orange-400">LOAD_ACTIVE</span><br>` +
+                     `  <span class="text-yellow-400">AI Engine:  </span> ${bar(45)} <span class="text-cyan-400">IDLE</span></div>`;
+              break;
+            case "ai":
+              const aiQuery = args.slice(1).join(" ");
+              let speakText = aiVoiceEngine.responses.default;
+              if (aiQuery.includes("hello") || aiQuery.includes("hi")) speakText = aiVoiceEngine.responses.hello;
+              else if (aiQuery.includes("help")) speakText = aiVoiceEngine.responses.help;
+              else if (aiQuery.includes("tinker") || aiQuery.includes("code")) speakText = aiVoiceEngine.responses.tinker;
+              else if (aiQuery.length > 0) speakText = `Acknowledged query: "${aiQuery}". Local voice node answers: Engineering boundaries successfully expanded.`;
+              
+              res += `<div class="text-purple-400 mt-1"><i class="fa-solid fa-robot mr-1"></i> [AI Engine]: ${speakText}</div>`;
+              aiVoiceEngine.speak(speakText);
+              break;
+            case "system":
+              res += `<div class="text-gray-400 mt-1">` +
+                     `  Host: eerrgin.github.io // Architecture: WebContainers x64<br>` +
+                     `  Kernel: NativeBrowser-SpeechAPI-v2.5 // Status: <span class="text-green-400">NOMINAL</span><br>` +
+                     `  Environment: Production Grid Matrix</div>`;
+              break;
+            case "contact": 
+              res += `<div class="text-gray-300">Signal link available at: <a href="https://eerrgin.github.io/message.htm" class="text-[#00f0ff] underline">Message Node</a></div>`; 
+              break;
+            case "sudo": 
+            case "sudo rm -rf /": 
+              res += `<div class="text-red-500">Access Denied. Sandbox bypass prevention active. This incident will be reported to the root loop.</div>`; 
+              break;
+            case "clear": 
+              termOutput.innerHTML = ""; 
+              this.value = ""; 
+              return;
+            default: 
+              if (cmdLine) res += `<div class="text-red-400">Directive not recognized: '${cmdLine}'. Input 'help' to see valid operations.</div>`; 
+              break;
           }
           termOutput.innerHTML += res;
           this.value = "";
