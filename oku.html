@@ -35,15 +35,8 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
         import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+        import { firebaseConfig, adminAccessCode } from "./js/firebase-config.js";
 
-        const firebaseConfig = { 
-            apiKey: "AIzaSyAWhFIvkzjW17aeJT7LQkQtATE6AKtGDGE", 
-            authDomain: "eerrgin-site.firebaseapp.com", 
-            projectId: "eerrgin-site", 
-            storageBucket: "eerrgin-site.firebasestorage.app", 
-            messagingSenderId: "588154027449", 
-            appId: "1:588154027449:web:fc95ce4cffc35f351b8a68" 
-        };
         const db = getFirestore(initializeApp(firebaseConfig));
 
         const loginBtn = document.getElementById("login-btn");
@@ -53,7 +46,7 @@
 
         loginBtn.onclick = async () => {
             const pass = document.getElementById("pass-input").value;
-            if (pass === "1845") {
+            if (pass === adminAccessCode) {
                 loginScreen.classList.add("hidden");
                 dashboard.classList.remove("hidden");
                 
