@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#08090f">
-  <meta name="description" content="Ergin Kaplan — eerrgin. Personal space for code, creative experiments, and the web.">
-  <meta name="author" content="Ergin Kaplan">
+  <meta name="description" content="Ergin — eerrgin. Personal space for code, creative experiments, and the web.">
+  <meta name="author" content="Ergin">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://eerrgin.github.io/">
-  <title>Ergin Kaplan — eerrgin</title>
+  <title>Ergin — eerrgin</title>
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Ergin Kaplan — eerrgin">
+  <meta property="og:title" content="Ergin — eerrgin">
   <meta property="og:description" content="A personal space for code, creative experiments, and the web.">
   <meta property="og:url" content="https://eerrgin.github.io/">
   <meta property="og:image" content="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/12.jpg">
-  <meta property="og:image:alt" content="Portrait of Ergin Kaplan">
+  <meta property="og:image:alt" content="Portrait of Ergin">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Ergin Kaplan — eerrgin">
+  <meta name="twitter:title" content="Ergin — eerrgin">
   <meta name="twitter:description" content="A personal space for code, creative experiments, and the web.">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/12.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +27,7 @@
     "@context":"https://schema.org",
     "@type":"Person",
     "@id":"https://eerrgin.github.io/#person",
-    "name":"Ergin Kaplan",
+    "name":"Ergin",
     "alternateName":"eerrgin",
     "url":"https://eerrgin.github.io/",
     "email":"erginkaplan22@gmail.com",
@@ -127,7 +127,7 @@
   <div id="cursor-glow" aria-hidden="true"></div>
   <header class="shell">
     <nav class="nav" aria-label="Main navigation">
-      <a class="brand" href="#home" aria-label="Ergin Kaplan home">eerrgin<span>.</span></a>
+      <a class="brand" href="#home" aria-label="Ergin home">eerrgin<span>.</span></a>
       <div class="nav-right">
         <span class="status"><i></i> Personal space / online</span>
         <a href="#home">Home</a>
@@ -141,7 +141,7 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
         <div class="eyebrow">A little corner of the internet</div>
-        <h1 id="hero-title">Ergin<span>Kaplan.</span></h1>
+        <h1 id="hero-title">Ergin<span>.</span></h1>
         <p class="lead">Curious by nature. Drawn to code, digital experiences, and ideas that deserve to be built. This is my own little space on the web.</p>
         <div class="actions">
           <a class="button primary" href="https://github.com/eerrgin" target="_blank" rel="noopener noreferrer">Explore my GitHub <span>↗</span></a>
@@ -150,13 +150,13 @@
         <div class="signature">DESIGNED TO FEEL A LITTLE DIFFERENT&nbsp; / &nbsp;EERRGIN</div>
       </div>
 
-      <div class="visual" aria-label="Portrait of Ergin Kaplan">
+      <div class="visual" aria-label="Portrait of Ergin">
         <div class="halo" aria-hidden="true"><span class="halo-point"></span></div>
         <div class="portrait-wrap">
           <div class="portrait-inner">
-            <img src="12.jpg" alt="Portrait of Ergin Kaplan" fetchpriority="high" decoding="async">
+            <img src="12.jpg" alt="Portrait of Ergin" fetchpriority="high" decoding="async">
             <div class="portrait-label">
-              <div><strong>Ergin Kaplan</strong><small>eerrgin / independent creator</small></div>
+              <div><strong>Ergin</strong><small>eerrgin / independent creator</small></div>
               <span class="index">01 — ME</span>
             </div>
           </div>
@@ -169,7 +169,7 @@
 
   <footer>
     <div class="shell footer-inner">
-      <span>© <span id="year"></span> Ergin Kaplan · Made with curiosity.</span>
+      <span>© <span id="year"></span> Ergin · Made with curiosity.</span>
       <div class="footer-links">
         <a href="https://github.com/eerrgin" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
         <a href="mailto:erginkaplan22@gmail.com">Email ↗</a>
@@ -193,7 +193,6 @@
       const year = document.getElementById('year');
       if (year) year.textContent = new Date().getFullYear();
 
-      // Try autoplay on arrival. Browsers may block sound until the visitor interacts.
       const audio = document.getElementById('background-music');
       const player = document.getElementById('music-player');
       const toggle = document.getElementById('music-toggle');
@@ -245,7 +244,6 @@
       }, { once: true });
       startMusic();
 
-      // Lightweight ambient stars; no heavy animation library or layout movement.
       const canvas = document.getElementById('stars');
       const ctx = canvas.getContext('2d');
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
