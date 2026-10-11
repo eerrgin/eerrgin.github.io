@@ -1,588 +1,294 @@
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <meta name="google-site-verification" content="zjBnZT7grHTgtPms-86Vg4QJPKHfyQ7qMaZ-iz_SKQE">
-  
-  <!-- DNS PREFETCH / PRECONNECT -->
-  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
-  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090f">
+  <meta name="description" content="Ergin Kaplan — eerrgin. Personal space for code, creative experiments, and the web.">
+  <meta name="author" content="Ergin Kaplan">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://eerrgin.github.io/">
+  <title>Ergin Kaplan — eerrgin</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ergin Kaplan — eerrgin">
+  <meta property="og:description" content="A personal space for code, creative experiments, and the web.">
+  <meta property="og:url" content="https://eerrgin.github.io/">
+  <meta property="og:image" content="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/12.jpg">
+  <meta property="og:image:alt" content="Portrait of Ergin Kaplan">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ergin Kaplan — eerrgin">
+  <meta name="twitter:description" content="A personal space for code, creative experiments, and the web.">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/12.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
-  <!-- AGRESİF SEO META -->
-  <title>Ergin Kaplan | eerrgin • Curious Developer & AI Engineer | Official Site</title>
-  <meta name="description" content="Ergin Kaplan (eerrgin) - Curious Developer, AI Explorer, Code Alchemist. Neural networks, autonomous systems, experimental AI and high-performance engineering. Based in Turkey.">
-  <meta name="keywords" content="Ergin Kaplan, eerrgin, Ergin Kaplan developer, eerrgin AI, AI engineer Turkey, curious developer, neural interface, autonomous agents, code tinkerer, open source developer, Ergin Kaplan yazılım, Ergin Kaplan yapay zeka, eerrgin github, Ergin Kaplan iletişim, Ergin Kaplan contact, Ergin Kaplan blog, Ergin Kaplan projeleri">
-  <meta name="author" content="Ergin Kaplan">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <link rel="canonical" href="https://eerrgin.github.io">
-  
-  <!-- Dublin Core -->
-  <meta name="DC.title" content="Ergin Kaplan | eerrgin - Curious Developer & AI Engineer">
-  <meta name="DC.creator" content="Ergin Kaplan">
-  <meta name="DC.subject" content="Artificial Intelligence, Software Development, Machine Learning">
-  <meta name="DC.description" content="Personal site of Ergin Kaplan - AI Engineer and Curious Developer from Turkey">
-  <meta name="DC.language" content="en">
-  
-  <!-- Coğrafi / Dil Hedefleme -->
-  <meta name="geo.region" content="TR">
-  <meta name="geo.placename" content="Turkey">
-  <meta name="language" content="English, Turkish">
-  <meta http-equiv="content-language" content="en, tr">
-  
-  <meta name="google" content="nositelinkssearchbox">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Ergin Kaplan | eerrgin - Curious Developer & AI Explorer">
-  <meta property="og:description" content="Building the future with code, AI and relentless curiosity. Official personal site.">
-  <meta property="og:type" content="profile">
-  <meta property="og:url" content="https://eerrgin.github.io">
-  <meta property="og:image" content="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/refs/heads/main/12.jpg">
-  <meta property="og:image:alt" content="Ergin Kaplan - eerrgin">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:site_name" content="Ergin Kaplan (eerrgin)">
-  <meta property="og:locale" content="en_US">
-  <meta property="profile:first_name" content="Ergin">
-  <meta property="profile:last_name" content="Kaplan">
-  <meta property="profile:username" content="eerrgin">
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Ergin Kaplan | eerrgin - Curious Developer & AI Explorer">
-  <meta name="twitter:description" content="Building the future with code, AI and relentless curiosity.">
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/refs/heads/main/12.jpg">
-  <meta name="twitter:creator" content="@eerrgin">
-  <meta name="twitter:site" content="@eerrgin">
-  
-  <!-- Apple / Mobil -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="Ergin Kaplan">
-
-  <!-- Schema.org Person -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": "https://eerrgin.github.io/#person",
-    "name": "Ergin Kaplan",
-    "alternateName": ["eerrgin", "Ergin Kaplan Developer", "eerrgin AI"],
-    "url": "https://eerrgin.github.io",
-    "email": "erginkaplan22@gmail.com",
-    "jobTitle": "Curious Developer & AI Engineer",
-    "description": "Independent developer and AI explorer based in Turkey, specializing in autonomous systems, neural networks, and creative coding.",
-    "knowsAbout": [
-      "Artificial Intelligence", "Machine Learning", "Neural Networks", "Autonomous Systems",
-      "High Performance Computing", "Python", "JavaScript", "C++", "Deep Learning", "LLM",
-      "Computer Vision", "Robotics", "ROS2", "TensorFlow", "PyTorch"
-    ],
-    "sameAs": [
-      "https://github.com/eerrgin",
-      "https://instagram.com/eerrgin",
-      "https://facebook.com/eerrgin"
-    ],
-    "image": {
-      "@type": "ImageObject",
-      "url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/refs/heads/main/12.jpg",
-      "width": 1200,
-      "height": 630,
-      "caption": "Ergin Kaplan - eerrgin"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "TR",
-      "addressLocality": "Turkey"
-    },
-    "nationality": "Turkish",
-    "knowsLanguage": ["en", "tr"]
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "@id":"https://eerrgin.github.io/#person",
+    "name":"Ergin Kaplan",
+    "alternateName":"eerrgin",
+    "url":"https://eerrgin.github.io/",
+    "email":"erginkaplan22@gmail.com",
+    "image":"https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/12.jpg",
+    "sameAs":["https://github.com/eerrgin"],
+    "knowsAbout":["Web development","Software development","Creative coding"]
   }
   </script>
-
-  <!-- BreadcrumbList Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://eerrgin.github.io" },
-      { "@type": "ListItem", "position": 2, "name": "About Ergin Kaplan", "item": "https://eerrgin.github.io/#about" },
-      { "@type": "ListItem", "position": 3, "name": "Expertise & Technologies", "item": "https://eerrgin.github.io/#expertise" },
-      { "@type": "ListItem", "position": 4, "name": "Blog & Experiments", "item": "https://eerrgin.github.io/#blog" },
-      { "@type": "ListItem", "position": 5, "name": "Contact", "item": "https://eerrgin.github.io/#contact" }
-    ]
-  }
-  </script>
-
-  <!-- FAQPage Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Who is Ergin Kaplan?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ergin Kaplan (also known as eerrgin) is a curious developer and AI engineer based in Turkey, specializing in autonomous systems, neural networks, and experimental AI."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How can I contact Ergin Kaplan?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You can contact Ergin Kaplan directly via email at erginkaplan22@gmail.com or through his social media profiles on GitHub, Instagram, and Facebook."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What technologies does Ergin Kaplan work with?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ergin Kaplan works with Python, C++, JavaScript, TensorFlow, PyTorch, ROS2, and specializes in autonomous agents, LLM orchestration, and real-time systems."
-        }
-      }
-    ]
-  }
-  </script>
-
-  <!-- WebSite Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": "https://eerrgin.github.io/#website",
-    "name": "Ergin Kaplan | eerrgin",
-    "alternateName": ["eerrgin", "Ergin Kaplan Official", "Ergin Kaplan Developer Site"],
-    "url": "https://eerrgin.github.io",
-    "description": "Personal website of Ergin Kaplan - Curious Developer & AI Engineer",
-    "inLanguage": ["en", "tr"],
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://eerrgin.github.io/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    },
-    "copyrightHolder": {
-      "@type": "Person",
-      "name": "Ergin Kaplan"
-    }
-  }
-  </script>
-
-  <script defer src="https://umami-production-f4fa.up.railway.app/script.js" data-website-id="16bbb30b-bf80-4649-91ce-21a97ae3a06c"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  
   <style>
-    /* Mevcut stillerin tamamı korunuyor */
-    .seo-hidden { 
-      position: absolute; 
-      left: -9999px; 
-      top: auto;
-      width: 1px; 
-      height: 1px; 
-      overflow: hidden;
-      opacity: 0;
-      pointer-events: none;
-      user-select: none;
+    :root {
+      color-scheme: dark;
+      --bg:#08090f; --ink:#f4f5fb; --muted:#a4a9bd;
+      --cyan:#8bf6e7; --violet:#a58bff; --line:rgba(226,232,255,.14);
+      --mono:"DM Mono",monospace; --sans:Manrope,system-ui,sans-serif;
     }
-    
-    /* SEO Footer */
-    .seo-footer-section {
-      border-top: 1px solid rgba(255,255,255,0.04);
-      background: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(9,9,11,0.98) 100%);
-    }
-    .seo-footer-section h4 {
-      color: #a1a1aa;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 0.75rem;
-    }
-    .seo-footer-section p, .seo-footer-section li {
-      color: #52525b;
-      font-size: 0.7rem;
-      line-height: 1.8;
-    }
-    .seo-footer-section a {
-      color: #71717a;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .seo-footer-section a:hover {
-      color: #00f0ff;
-    }
-
-    /* Global Tech Pulse Ticker */
-    #global-tech-pulse {
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-    #ticker-content.fade-out {
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-    #ticker-content.fade-in {
-      opacity: 1;
-      transition: opacity 0.4s ease;
-    }
-    @media (max-width: 640px) {
-      #ticker-content {
-        font-size: 10px;
-      }
-    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;overflow-x:hidden;background:var(--bg);color:var(--ink);font-family:var(--sans)}
+    body:before{content:"";position:fixed;inset:0;z-index:-3;background:
+      radial-gradient(ellipse at 14% 18%,rgba(93,78,192,.23),transparent 38%),
+      radial-gradient(ellipse at 84% 32%,rgba(43,181,171,.15),transparent 35%),
+      linear-gradient(140deg,#08090f 0%,#0c1020 48%,#08090f 100%)}
+    #stars{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none;opacity:.72}
+    .noise{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E")}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .shell{width:min(1200px,calc(100% - 44px));margin:auto}
+    header{position:relative;z-index:5}
+    .nav{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+    .brand{font:500 1rem var(--mono);letter-spacing:-.06em}
+    .brand span{color:var(--cyan)}
+    .nav-right{display:flex;align-items:center;gap:25px;color:#c4c8d8;font-size:.82rem}
+    .nav-right a{transition:color .2s}
+    .nav-right a:hover{color:var(--cyan)}
+    .status{display:flex;align-items:center;gap:9px;font: .68rem var(--mono);letter-spacing:.08em;color:#c0c6d9;text-transform:uppercase}
+    .status i{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 15px var(--cyan);animation:pulse 2.2s infinite}
+    main{min-height:calc(100svh - 140px);display:flex;align-items:center}
+    .hero{display:grid;grid-template-columns:1.04fr .96fr;align-items:center;gap:clamp(30px,6vw,88px);padding:64px 0 84px;width:100%}
+    .eyebrow{display:flex;align-items:center;gap:12px;color:var(--cyan);font: .72rem var(--mono);letter-spacing:.16em;text-transform:uppercase}
+    .eyebrow:before{content:"";height:1px;width:32px;background:var(--cyan)}
+    h1{font-size:clamp(3.6rem,8.5vw,7.6rem);line-height:.88;letter-spacing:-.09em;margin:24px 0 26px;font-weight:800}
+    h1 span{display:block;color:transparent;background:linear-gradient(105deg,#f8f9ff 4%,var(--cyan) 48%,var(--violet) 92%);background-clip:text;-webkit-background-clip:text}
+    .lead{max-width:490px;color:var(--muted);font-size:clamp(1rem,1.5vw,1.12rem);line-height:1.85;margin:0}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .button{min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--line);border-radius:999px;padding:0 19px;font-size:.82rem;font-weight:700;transition:transform .2s,border-color .2s,background .2s}
+    .button:hover{transform:translateY(-3px);border-color:rgba(139,246,231,.65)}
+    .button.primary{background:var(--cyan);color:#07100f;border-color:var(--cyan)}
+    .button.ghost{background:rgba(255,255,255,.035)}
+    .signature{margin-top:35px;color:#707990;font: .68rem var(--mono);letter-spacing:.07em}
+    .visual{position:relative;min-height:550px;display:grid;place-items:center;isolation:isolate}
+    .halo{position:absolute;width:min(100%,520px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(139,246,231,.19);animation:spin 42s linear infinite}
+    .halo:before,.halo:after{content:"";position:absolute;inset:9%;border:1px solid rgba(165,139,255,.19);border-radius:50%}
+    .halo:after{inset:21%;border-color:rgba(139,246,231,.12)}
+    .halo-point{position:absolute;left:17%;top:18%;width:10px;height:10px;background:var(--cyan);border-radius:50%;box-shadow:0 0 24px var(--cyan)}
+    .portrait-wrap{position:relative;width:min(72%,345px);aspect-ratio:4/5;padding:1px;border-radius:180px 180px 28px 28px;background:linear-gradient(150deg,rgba(139,246,231,.9),rgba(165,139,255,.55),rgba(255,255,255,.12));box-shadow:0 35px 100px rgba(0,0,0,.55),0 0 80px rgba(90,110,220,.12);animation:levitate 7s ease-in-out infinite}
+    .portrait-inner{position:absolute;inset:1px;overflow:hidden;border-radius:179px 179px 27px 27px;background:#111522}
+    .portrait-inner:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,9,17,.04) 30%,rgba(6,9,17,.08) 52%,rgba(6,9,17,.9) 100%);pointer-events:none}
+    .portrait-inner img{width:100%;height:100%;object-fit:cover;object-position:center 36%;display:block;filter:saturate(.82) contrast(1.04);transform:scale(1.015);transition:transform .7s,filter .7s}
+    .portrait-wrap:hover .portrait-inner img{transform:scale(1.055);filter:saturate(1.02) contrast(1.04)}
+    .portrait-label{position:absolute;z-index:2;bottom:24px;left:25px;right:25px;display:flex;justify-content:space-between;align-items:end;gap:12px}
+    .portrait-label strong{font-size:1rem;letter-spacing:-.03em}
+    .portrait-label small{display:block;color:#b4bdd1;font: .64rem var(--mono);margin-top:5px}
+    .portrait-label .index{color:var(--cyan);font: .65rem var(--mono);border:1px solid rgba(139,246,231,.32);padding:7px 9px;border-radius:8px}
+    .floating-note{position:absolute;z-index:3;right:0;top:18%;padding:13px 16px;border:1px solid var(--line);border-radius:14px;background:rgba(11,14,25,.78);backdrop-filter:blur(14px);font:.67rem var(--mono);color:#c9cee0;box-shadow:0 12px 40px rgba(0,0,0,.25);animation:drift 6s ease-in-out infinite}
+    .floating-note b{display:block;color:var(--cyan);font-weight:500;margin-bottom:5px}
+    .floating-note.bottom{right:auto;left:0;top:auto;bottom:17%;animation-delay:-2s}
+    footer{border-top:1px solid var(--line);min-height:58px;display:flex;align-items:center}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:18px;color:#7e859c;font:.68rem var(--mono);padding:18px 0}
+    .footer-inner a:hover{color:var(--cyan)}
+    .footer-links{display:flex;gap:20px}
+    .music-player{position:fixed;z-index:20;right:22px;bottom:20px;display:flex;align-items:center;gap:12px;padding:10px 14px 10px 11px;border:1px solid rgba(206,218,255,.18);border-radius:999px;background:rgba(10,13,23,.84);backdrop-filter:blur(18px);box-shadow:0 14px 50px rgba(0,0,0,.35)}
+    .music-toggle{width:34px;height:34px;display:grid;place-items:center;border:1px solid rgba(139,246,231,.28);border-radius:50%;background:rgba(139,246,231,.1);color:var(--cyan);cursor:pointer}
+    .music-toggle:hover{background:rgba(139,246,231,.2)}
+    .bars{display:flex;align-items:center;gap:3px;height:15px}
+    .bars i{display:block;width:2px;height:5px;background:currentColor;border-radius:2px}
+    .music-player.playing .bars i{animation:equalize .75s ease-in-out infinite alternate}
+    .music-player.playing .bars i:nth-child(2){animation-delay:-.45s}
+    .music-player.playing .bars i:nth-child(3){animation-delay:-.2s}
+    .music-text{font: .65rem var(--mono);color:#d7dced;white-space:nowrap}
+    .music-text small{display:block;color:#818aa3;font-size:.57rem;margin-top:3px}
+    .music-hint{position:fixed;z-index:19;right:22px;bottom:88px;max-width:260px;padding:11px 14px;border:1px solid var(--line);border-radius:12px;background:rgba(10,13,23,.92);color:#c9cee0;font-size:.72rem;box-shadow:0 12px 40px rgba(0,0,0,.3);opacity:0;transform:translateY(6px);pointer-events:none;transition:opacity .2s,transform .2s}
+    .music-hint.show{opacity:1;transform:translateY(0)}
+    #cursor-glow{position:fixed;z-index:30;left:0;top:0;width:300px;height:300px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(103,147,255,.075),transparent 68%);transform:translate(-50%,-50%);mix-blend-mode:screen}
+    @keyframes pulse{50%{opacity:.45;box-shadow:0 0 5px var(--cyan)}}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes levitate{0%,100%{transform:translateY(0) rotate(.3deg)}50%{transform:translateY(-12px) rotate(-.3deg)}}
+    @keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+    @keyframes equalize{from{height:4px}to{height:14px}}
+    @media(max-width:850px){.hero{grid-template-columns:1fr;gap:12px;padding-top:65px}.hero-copy{max-width:700px}.visual{min-height:490px}.portrait-wrap{width:min(64%,310px)}.halo{width:min(100%,460px)}.floating-note{right:6%}.floating-note.bottom{left:5%}}
+    @media(max-width:600px){.shell{width:calc(100% - 30px)}.nav{height:68px}.nav-right{gap:15px;font-size:.76rem}.status{display:none}.hero{padding-top:56px;padding-bottom:60px}h1{font-size:clamp(3.55rem,16vw,5.8rem)}.lead{font-size:.98rem}.visual{min-height:405px;margin-top:4px}.portrait-wrap{width:min(66%,270px)}.halo{width:min(100%,360px)}.floating-note{top:14%;right:0;font-size:.59rem;padding:10px 11px}.floating-note.bottom{bottom:12%;left:0}.footer-inner{align-items:flex-start;flex-direction:column;gap:10px}.footer-links{gap:15px}.music-player{right:12px;bottom:12px}.music-hint{right:12px;bottom:78px}#cursor-glow{display:none}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}#stars{display:none}}
   </style>
 </head>
-<body class="bg-black">
-
-  <!-- GİZLİ SEO KATMANI -->
-  <div class="seo-hidden" aria-hidden="true">
-    <h1>Ergin Kaplan Resmi Web Sitesi - eerrgin</h1>
-    <h2>Ergin Kaplan Kimdir? Curious Developer ve Yapay Zeka Mühendisi</h2>
-    <p>Ergin Kaplan, Türkiye'de yaşayan bağımsız bir yazılım geliştirici ve yapay zeka araştırmacısıdır. Ergin Kaplan yapay zeka, otonom sistemler, sinir ağları ve yüksek performanslı yazılım konularında çalışmaktadır.</p>
-    <p>Ergin Kaplan iletişim: erginkaplan22@gmail.com - Ergin Kaplan GitHub: github.com/eerrgin - Ergin Kaplan Instagram: instagram.com/eerrgin</p>
-    <p>Ergin Kaplan projeleri, Ergin Kaplan blog, Ergin Kaplan yapay zeka çalışmaları, Ergin Kaplan otonom ajanlar, Ergin Kaplan derin öğrenme, Ergin Kaplan Python, Ergin Kaplan C++, Ergin Kaplan JavaScript, Ergin Kaplan yazılım geliştirme, Ergin Kaplan kodlama, Ergin Kaplan teknoloji, Ergin Kaplan inovasyon</p>
-    
-    <h2>Ergin Kaplan - Curious Developer & AI Engineer | Official Website</h2>
-    <p>Ergin Kaplan, also known as eerrgin, is an independent developer and AI explorer based in Turkey. Ergin Kaplan specializes in artificial intelligence, autonomous systems, neural networks, and creative coding. Ergin Kaplan contact: erginkaplan22@gmail.com</p>
-    <p>ergin kaplan developer, ergin kaplan ai, ergin kaplan turkey, ergin kaplan github, ergin kaplan contact, ergin kaplan blog, ergin kaplan projects, ergin kaplan artificial intelligence, ergin kaplan machine learning, ergin kaplan deep learning, ergin kaplan python developer, ergin kaplan software engineer, ergin kaplan autonomous agents, ergin kaplan neural networks, ergin kaplan technology, ergin kaplan programming, ergin kaplan coding, ergin kaplan tech blog, ergin kaplan portfolio, ergin kaplan resume, ergin kaplan cv, ergin kaplan hire, ergin kaplan freelance</p>
-    <p>eerrgin developer, eerrgin ai, eerrgin github, eerrgin turkey, eerrgin contact, eerrgin blog, eerrgin projects</p>
-    <p>best AI developer in Turkey Ergin Kaplan, curious developer eerrgin portfolio, autonomous systems engineer Ergin Kaplan, neural network specialist Turkey eerrgin, open source AI developer Ergin Kaplan GitHub, yapay zeka geliştirici Türkiye Ergin Kaplan, otonom sistem uzmanı Ergin Kaplan, yazılım mühendisi Ergin Kaplan iletişim</p>
-    <p>artificial intelligence, machine learning, deep learning, neural networks, autonomous systems, robotics, computer vision, natural language processing, LLM, large language models, generative AI, reinforcement learning, Python, C++, JavaScript, TypeScript, ROS2, TensorFlow, PyTorch, Keras, scikit-learn, OpenCV, Docker, Kubernetes, cloud computing, edge computing, high performance computing, real-time systems, embedded systems, full stack development, web development, API development, open source, code alchemist, technology innovation</p>
-    <span>© 2026 Ergin Kaplan. All rights reserved. Official website of Ergin Kaplan (eerrgin). Last updated: June 2026. Sitemap available. Contact: erginkaplan22@gmail.com. Turkey.</span>
-    <span>Trusted developer. Verified GitHub account. Active since 2020. Open source contributor. AI ethics advocate.</span>
-  </div>
-
-  <!-- DİNAMİK YABANCI HABER TICKER (en üstte sabit) -->
-  <div id="global-tech-pulse" class="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/5 shadow-lg shadow-black/20">
-    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center gap-3">
-      <span class="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.15em] text-[#00f0ff] whitespace-nowrap">
-        <span class="w-1.5 h-1.5 rounded-full bg-[#00f0ff] animate-pulse"></span>
-        Global Tech Pulse
-      </span>
-      <span class="text-white/10 select-none">|</span>
-      <p id="ticker-content" class="text-[11px] sm:text-xs text-gray-300/90 leading-snug line-clamp-1 transition-opacity duration-500 ease-in-out cursor-pointer">
-        <!-- JS ile doldurulacak -->
-      </p>
-    </div>
-  </div>
-
-  <!-- Ana içerik (ticker'ın altında başlasın diye üst padding) -->
-  <div class="pt-10">
-    <!-- MEVCUT SECTIONS: home, about, expertise, blog, updates, contact -->
-    <section id="home" class="min-h-screen ..."> 
-      <!-- Ana kısım aynı -->
-    </section>
-
-    <section id="about" class="py-28 bg-gradient-to-b from-black via-zinc-950 to-black">
-      <div class="max-w-4xl mx-auto px-6">
-        <h2 class="text-5xl font-black text-center mb-12">About Ergin Kaplan</h2>
-        <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed">
-          <p><strong>Ergin Kaplan</strong> is a passionate independent developer and AI tinkerer based in <strong>Turkey</strong>. With a deep curiosity for <strong>artificial intelligence</strong>, <strong>autonomous systems</strong>, and low-level engineering, he constantly pushes the boundaries of what's possible with code.</p>
-          <p>Specializing in building experimental <strong>AI agents</strong>, real-time systems, and creative coding projects. Known across platforms as <strong>eerrgin</strong>, Ergin combines deep technical expertise with relentless curiosity.</p>
-        </div>
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <div id="cursor-glow" aria-hidden="true"></div>
+  <header class="shell">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Ergin Kaplan home">eerrgin<span>.</span></a>
+      <div class="nav-right">
+        <span class="status"><i></i> Personal space / online</span>
+        <a href="#home">Home</a>
+        <a href="https://github.com/eerrgin" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a href="mailto:erginkaplan22@gmail.com">Contact ↗</a>
       </div>
-    </section>
-
-    <section id="expertise" class="py-24">
-      <div class="max-w-7xl mx-auto px-6">
-        <h2 class="text-5xl font-black text-center mb-16">Expertise & Technologies</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div class="glass-card p-6 text-center">Python • TensorFlow • PyTorch</div>
-          <div class="glass-card p-6 text-center">Autonomous Agents • LLM Orchestration</div>
-          <div class="glass-card p-6 text-center">C++ • ROS2 • Real-time Systems</div>
-          <div class="glass-card p-6 text-center">WebContainers • Experimental UI</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="blog" class="py-28 border-y border-white/5">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="flex justify-between items-end mb-12">
-          <h2 class="text-5xl font-black">Latest Experiments & Writings</h2>
-          <a href="#" class="text-[#00f0ff] hover:underline">View all →</a>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8" id="blog-grid">
-          <div class="glass-card p-8 rounded-3xl">
-            <span class="text-xs text-gray-500 blog-date">June 2026</span>
-            <h3 class="text-xl font-bold mt-3">Building Autonomous AI Swarms from Scratch</h3>
-            <p class="text-gray-400 mt-3">Deep dive into multi-agent orchestration without external APIs.</p>
-          </div>
-          <div class="glass-card p-8 rounded-3xl">
-            <span class="text-xs text-gray-500 blog-date">May 2026</span>
-            <h3 class="text-xl font-bold mt-3">Neural Interface Experiments 2026</h3>
-            <p class="text-gray-400 mt-3">Low-latency brain-computer interface prototypes.</p>
-          </div>
-          <div class="glass-card p-8 rounded-3xl">
-            <span class="text-xs text-gray-500 blog-date">April 2026</span>
-            <h3 class="text-xl font-bold mt-3">Zero-Cost Polyglot TTS Engine</h3>
-            <p class="text-gray-400 mt-3">Browser-native multilingual voice system.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="updates" class="py-20 bg-black">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="flex items-center gap-3 mb-12">
-          <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
-          <h2 class="text-4xl font-black">Latest Developer Updates</h2>
-          <span class="text-xs text-gray-600 ml-2" id="dynamic-update-time">Updated: June 2026</span>
-        </div>
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="glass-card p-6 rounded-2xl border-l-2 border-[#00f0ff]/30">
-            <span class="text-[10px] text-[#00f0ff] font-mono uppercase tracking-widest">Repository Update</span>
-            <h4 class="text-lg font-bold mt-2">eerrgin/autonomous-swarms • v2.1.0 released</h4>
-            <p class="text-gray-500 text-sm mt-2">Major refactor of swarm coordination layer with 40% latency improvement.</p>
-            <span class="text-[10px] text-gray-600 mt-3 block">2 days ago • 142 commits this month</span>
-          </div>
-          <div class="glass-card p-6 rounded-2xl border-l-2 border-purple-500/30">
-            <span class="text-[10px] text-purple-400 font-mono uppercase tracking-widest">Research Note</span>
-            <h4 class="text-lg font-bold mt-2">Emergent Behaviors in Decentralized Agent Networks</h4>
-            <p class="text-gray-500 text-sm mt-2">Preliminary findings on spontaneous coordination patterns.</p>
-            <span class="text-[10px] text-gray-600 mt-3 block">5 days ago • Research in progress</span>
-          </div>
-          <div class="glass-card p-6 rounded-2xl border-l-2 border-amber-500/30">
-            <span class="text-[10px] text-amber-400 font-mono uppercase tracking-widest">Open Source</span>
-            <h4 class="text-lg font-bold mt-2">New Release: polyglot-tts v0.9.0-beta</h4>
-            <p class="text-gray-500 text-sm mt-2">12 new languages, zero external APIs. Runs in-browser.</p>
-            <span class="text-[10px] text-gray-600 mt-3 block">1 week ago • 89 stars on GitHub</span>
-          </div>
-          <div class="glass-card p-6 rounded-2xl border-l-2 border-green-500/30">
-            <span class="text-[10px] text-green-400 font-mono uppercase tracking-widest">Milestone</span>
-            <h4 class="text-lg font-bold mt-2">10,000+ Total GitHub Contributions</h4>
-            <p class="text-gray-500 text-sm mt-2">Ergin Kaplan (eerrgin) crosses 10k contributions in 2026.</p>
-            <span class="text-[10px] text-gray-600 mt-3 block">June 2026 • Active streak: 847 days</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT BÖLÜMÜ (doğrudan mail erişimi vurgulandı) -->
-    <section id="contact" class="py-20">
-      <div class="max-w-3xl mx-auto text-center">
-        <div class="glass-card p-12 rounded-[2rem]">
-          <h3 class="text-4xl font-black mb-6">Get in Touch</h3>
-          <a href="mailto:erginkaplan22@gmail.com" class="inline-flex items-center gap-4 bg-[#00f0ff] text-black font-bold px-10 py-5 rounded-2xl text-lg hover:scale-105 transition-all">
-            <i class="fa-solid fa-envelope"></i> erginkaplan22@gmail.com
-          </a>
-          <p class="mt-4 text-gray-400 text-sm">Click the button above to open your email client directly.</p>
-          <p class="mt-2 text-gray-500 text-xs">Or copy: <span class="select-all text-gray-300">erginkaplan22@gmail.com</span></p>
-          <p class="mt-6 text-gray-400">Direct messages and collaboration proposals are welcome. Response within 24 hours.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SEO FOOTER -->
-    <footer class="seo-footer-section py-16">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
-          <div>
-            <h4>About Ergin Kaplan</h4>
-            <p>Ergin Kaplan is an independent <strong>AI engineer</strong> and <strong>curious developer</strong> from Turkey. Building autonomous systems, neural interfaces, and experimental software. Known online as <strong>eerrgin</strong>.</p>
-            <p class="mt-2">📍 Based in Turkey | 🌐 <a href="https://eerrgin.github.io">eerrgin.github.io</a></p>
-          </div>
-          <div>
-            <h4>Expertise</h4>
-            <ul class="space-y-1">
-              <li>• Artificial Intelligence & ML</li>
-              <li>• Autonomous Agents & Swarms</li>
-              <li>• Neural Network Engineering</li>
-              <li>• Python • C++ • JavaScript</li>
-              <li>• ROS2 & Real-time Systems</li>
-              <li>• LLM Orchestration</li>
-              <li>• Computer Vision</li>
-              <li>• High Performance Computing</li>
-            </ul>
-          </div>
-          <div>
-            <h4>Quick Links</h4>
-            <ul class="space-y-1">
-              <li><a href="#home">→ Home</a></li>
-              <li><a href="#about">→ About Ergin Kaplan</a></li>
-              <li><a href="#expertise">→ Expertise & Skills</a></li>
-              <li><a href="#blog">→ Blog & Experiments</a></li>
-              <li><a href="#updates">→ Developer Updates</a></li>
-              <li><a href="#contact">→ Contact Ergin Kaplan</a></li>
-              <li><a href="https://github.com/eerrgin" target="_blank" rel="noopener">→ GitHub Profile</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4>Contact & Connect</h4>
-            <p>📧 <a href="mailto:erginkaplan22@gmail.com">erginkaplan22@gmail.com</a></p>
-            <p>🐙 <a href="https://github.com/eerrgin" target="_blank" rel="noopener">github.com/eerrgin</a></p>
-            <p>📸 <a href="https://instagram.com/eerrgin" target="_blank" rel="noopener">instagram.com/eerrgin</a></p>
-            <p class="mt-4 text-[10px] text-gray-700">
-              Ergin Kaplan developer • eerrgin AI • Turkey AI engineer • autonomous systems specialist
-            </p>
-          </div>
-        </div>
-        <div class="border-t border-white/5 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p class="text-xs text-gray-600">
-            © <span id="current-year">2026</span> Ergin Kaplan (eerrgin). All rights reserved. 
-            <span class="hidden md:inline">| Curious Developer & AI Engineer | Turkey</span>
-          </p>
-          <p class="text-[10px] text-gray-700" id="footer-freshness">
-            Site actively maintained • Last refreshed: <span id="refresh-timestamp">June 2026</span>
-          </p>
-          <p class="text-[10px] text-gray-700 hidden md:block">
-            Sitemap: <a href="/sitemap.xml" class="text-gray-600 hover:text-gray-400">XML</a> • 
-            Robots: <a href="/robots.txt" class="text-gray-600 hover:text-gray-400">TXT</a> • 
-            RSS: <a href="/feed.xml" class="text-gray-600 hover:text-gray-400">Feed</a>
-          </p>
-        </div>
-      </div>
-    </footer>
-  </div><!-- pt-10 kapanış -->
-
-  <!-- GİZLİ SEMANTİK HTML -->
-  <div class="seo-hidden" aria-hidden="true">
-    <article>
-      <h3>Ergin Kaplan: A Curious Developer Pushing AI Boundaries</h3>
-      <p>Ergin Kaplan, widely recognized by his handle <strong>eerrgin</strong>, is a Turkey-based independent developer and artificial intelligence engineer. His work spans autonomous systems, neural network engineering, and experimental human-computer interfaces. For collaboration inquiries, reach out to erginkaplan22@gmail.com.</p>
-    </article>
-    <article>
-      <h3>What Makes Ergin Kaplan Stand Out in AI Development?</h3>
-      <p>Ergin Kaplan combines deep technical expertise in Python, C++, and JavaScript with a unique curiosity-driven approach. His latest projects include autonomous AI swarms, neural interface prototypes, and polyglot text-to-speech engines.</p>
-    </article>
-    <nav>
-      <ul>
-        <li><a href="https://eerrgin.github.io">Ergin Kaplan Home</a></li>
-        <li><a href="https://eerrgin.github.io/#about">About Ergin Kaplan</a></li>
-        <li><a href="https://eerrgin.github.io/#contact">Contact Ergin Kaplan</a></li>
-        <li><a href="https://github.com/eerrgin">Ergin Kaplan GitHub</a></li>
-      </ul>
     </nav>
+  </header>
+
+  <main class="shell" id="home">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow">A little corner of the internet</div>
+        <h1 id="hero-title">Ergin<span>Kaplan.</span></h1>
+        <p class="lead">Curious by nature. Drawn to code, digital experiences, and ideas that deserve to be built. This is my own little space on the web.</p>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/eerrgin" target="_blank" rel="noopener noreferrer">Explore my GitHub <span>↗</span></a>
+          <a class="button ghost" href="mailto:erginkaplan22@gmail.com">Say hello <span>↗</span></a>
+        </div>
+        <div class="signature">DESIGNED TO FEEL A LITTLE DIFFERENT&nbsp; / &nbsp;EERRGIN</div>
+      </div>
+
+      <div class="visual" aria-label="Portrait of Ergin Kaplan">
+        <div class="halo" aria-hidden="true"><span class="halo-point"></span></div>
+        <div class="portrait-wrap">
+          <div class="portrait-inner">
+            <img src="12.jpg" alt="Portrait of Ergin Kaplan" fetchpriority="high" decoding="async">
+            <div class="portrait-label">
+              <div><strong>Ergin Kaplan</strong><small>eerrgin / independent creator</small></div>
+              <span class="index">01 — ME</span>
+            </div>
+          </div>
+        </div>
+        <div class="floating-note"><b>NOW EXPLORING</b>Ideas → code → reality</div>
+        <div class="floating-note bottom"><b>KEEP IT CURIOUS</b>Build. Learn. Repeat.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span>© <span id="year"></span> Ergin Kaplan · Made with curiosity.</span>
+      <div class="footer-links">
+        <a href="https://github.com/eerrgin" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a href="mailto:erginkaplan22@gmail.com">Email ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <audio id="background-music" loop preload="auto" playsinline>
+    <source src="7mix.mp3" type="audio/mpeg">
+  </audio>
+  <div class="music-hint" id="music-hint" role="status">Your browser blocked automatic playback. Tap the music button to start it.</div>
+  <div class="music-player" id="music-player">
+    <button class="music-toggle" id="music-toggle" type="button" aria-label="Play background music" aria-pressed="false">
+      <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
+    <div class="music-text"><span id="music-label">Background music</span><small id="music-subtitle">Trying to start…</small></div>
   </div>
 
   <script>
-    // MEVCUT SCRIPTS KORUNUYOR (particles, cursor vs.)
+    (() => {
+      const year = document.getElementById('year');
+      if (year) year.textContent = new Date().getFullYear();
 
-    // DİNAMİK TAZELİK VE HABER TICKER SCRİPTİ
-    (function() {
-      // Ticker
-      const ticker = document.getElementById('ticker-content');
-      const newsItems = [
-        "AI swarm coordination breakthrough: Ergin Kaplan's latest paper shows 40% latency reduction in decentralized agent networks.",
-        "Open source LLM orchestration tool by eerrgin gains 2.3k stars on GitHub this week.",
-        "Neural interface startup cites Ergin Kaplan's research as foundational for non-invasive BCI development.",
-        "Turkey-based AI engineer Ergin Kaplan releases polyglot-tts v0.9: 12 new languages, zero API dependencies.",
-        "Autonomous systems conference 2026: Ergin Kaplan to keynote on emergent behaviors in unsupervised agent swarms.",
-        "eerrgin's GitHub activity surpasses 10,000 contributions – among top 1% of developers globally.",
-        "New tutorial: Building real-time multi-agent systems with ROS2 and Python, by Ergin Kaplan.",
-        "TechCrunch mentions eerrgin's work on browser-native AI as 'revolutionary for edge computing'.",
-        "Ergin Kaplan's autonomous drone navigation code adopted by 3 university research labs.",
-        "Low-latency neural net inference in C++: Ergin Kaplan open-sources high-performance推理 library.",
-        "Global AI ethics panel invites Ergin Kaplan to contribute guidelines on autonomous decision systems.",
-        "Developer survey 2026: Ergin Kaplan ranked among most influential independent AI engineers.",
-        "eerrgin's 'Code Alchemist' blog series reaches 500k monthly readers.",
-        "New C++ library by Ergin Kaplan enables real-time object detection on $5 microcontrollers.",
-        "Polyglot TTS engine by eerrgin breaks language barriers – now supports 47 languages total.",
-        "Ergin Kaplan warns about centralization risks in AI, advocates for open-source autonomy.",
-        "Curious developer Ergin Kaplan experiments with quantum ML on classical hardware – results promising.",
-        "eerrgin's autonomous swarm project featured in IEEE Spectrum's 'Projects to Watch 2026'."
-      ];
-      let currentIndex = Math.floor(Math.random() * newsItems.length);
-      function updateTicker() {
-        let newIndex;
-        do {
-          newIndex = Math.floor(Math.random() * newsItems.length);
-        } while (newIndex === currentIndex && newsItems.length > 1);
-        currentIndex = newIndex;
-        ticker.classList.add('fade-out');
-        setTimeout(() => {
-          ticker.textContent = newsItems[currentIndex];
-          ticker.classList.remove('fade-out');
-          ticker.classList.add('fade-in');
-          setTimeout(() => ticker.classList.remove('fade-in'), 500);
-        }, 400);
+      // Try autoplay on arrival. Browsers may block sound until the visitor interacts.
+      const audio = document.getElementById('background-music');
+      const player = document.getElementById('music-player');
+      const toggle = document.getElementById('music-toggle');
+      const label = document.getElementById('music-label');
+      const subtitle = document.getElementById('music-subtitle');
+      const hint = document.getElementById('music-hint');
+
+      function setPlaying(playing) {
+        player.classList.toggle('playing', playing);
+        toggle.setAttribute('aria-pressed', String(playing));
+        toggle.setAttribute('aria-label', playing ? 'Pause background music' : 'Play background music');
+        label.textContent = playing ? 'Background music' : 'Background music';
+        subtitle.textContent = playing ? 'Now playing · 7mix' : 'Tap to play';
+        if (playing) hint.classList.remove('show');
       }
-      ticker.textContent = newsItems[currentIndex];
-      ticker.classList.add('fade-in');
-      setTimeout(() => ticker.classList.remove('fade-in'), 500);
-      setInterval(updateTicker, 8000);
-      ticker.addEventListener('click', updateTicker);
-
-      // Sayfa yüklendiğinde sinyal
-      console.log('%c🟢 Ergin Kaplan (eerrgin) • Official Site • Actively Maintained • ' + new Date().toISOString(), 
-                  'color:#00f0ff; font-family:monospace; font-size:14px; padding:8px;');
-      console.log('%c📍 Turkey • AI Engineer • Curious Developer • Autonomous Systems', 
-                  'color:#a78bfa; font-family:monospace;');
-
-      // Dinamik yıl
-      const yearEl = document.getElementById('current-year');
-      if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-      // Footer freshness
-      const refreshEl = document.getElementById('refresh-timestamp');
-      const updateEl = document.getElementById('dynamic-update-time');
-      if (refreshEl || updateEl) {
-        const now = new Date();
-        const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-        const freshString = months[now.getMonth()] + ' ' + now.getFullYear() + ' • ' + 
-                            now.getHours().toString().padStart(2,'0') + ':' + 
-                            now.getMinutes().toString().padStart(2,'0') + ' UTC';
-        if (refreshEl) refreshEl.textContent = freshString;
-        if (updateEl) updateEl.textContent = 'Updated: ' + freshString;
+      async function startMusic() {
+        try {
+          await audio.play();
+          setPlaying(true);
+          return true;
+        } catch (error) {
+          setPlaying(false);
+          subtitle.textContent = 'Tap to start';
+          hint.classList.add('show');
+          return false;
+        }
       }
-
-      // Blog tarihlerini hafif kaydır
-      const blogDates = document.querySelectorAll('.blog-date');
-      if (blogDates.length > 0) {
-        const baseMonths = ['June 2026', 'May 2026', 'April 2026'];
-        const dayOffset = Math.floor(Math.random() * 28) + 1;
-        blogDates.forEach((el, i) => {
-          if (baseMonths[i]) el.textContent = baseMonths[i] + ' • Day ' + (dayOffset + i * 7);
-        });
-      }
-
-      // Gizli SEO katmanına dinamik timestamp
-      const seoLayer = document.querySelector('.seo-hidden');
-      if (seoLayer) {
-        const timeMarker = document.createElement('span');
-        timeMarker.textContent = ' | Page generated: ' + new Date().toISOString() + 
-                                 ' | Site version: 2026.06.' + Math.floor(Math.random() * 30 + 1);
-        seoLayer.appendChild(timeMarker);
-        const microContents = [
-          'Ergin Kaplan actively developing autonomous AI systems in June 2026.',
-          'Latest project: decentralized agent swarms by Ergin Kaplan (eerrgin).',
-          'Ergin Kaplan contributing to open source AI projects on GitHub.',
-          'New neural interface research published by Ergin Kaplan, Turkey-based AI engineer.',
-          'eerrgin reached 10k GitHub contributions milestone in 2026.',
-          'Ergin Kaplan speaking at AI conferences about autonomous systems.',
-          'Curious developer Ergin Kaplan exploring cutting-edge AI technologies.',
-          'Ergin Kaplan hiring collaborators for next-gen AI projects. Contact: erginkaplan22@gmail.com'
-        ];
-        const rotator = document.createElement('p');
-        rotator.textContent = microContents[Math.floor(Math.random() * microContents.length)];
-        rotator.setAttribute('data-seo-rotator', 'true');
-        seoLayer.appendChild(rotator);
-        setInterval(() => {
-          const existingRotator = seoLayer.querySelector('[data-seo-rotator]');
-          if (existingRotator) {
-            existingRotator.textContent = microContents[Math.floor(Math.random() * microContents.length)];
-          }
-          const timeMarkers = seoLayer.querySelectorAll('span');
-          timeMarkers.forEach(s => {
-            if (s.textContent.includes('Page generated')) {
-              s.textContent = ' | Page generated: ' + new Date().toISOString() + 
-                             ' | Site version: 2026.06.' + Math.floor(Math.random() * 30 + 1);
-            }
-          });
-        }, 30000);
-      }
-
-      // Görünürlük değişim sinyali
-      document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'visible') {
-          console.log('%c🔍 Ergin Kaplan site • Crawler re-engagement detected • ' + new Date().toISOString(), 
-                      'color:#22c55e; font-family:monospace;');
+      toggle.addEventListener('click', async () => {
+        if (audio.paused) {
+          await startMusic();
+        } else {
+          audio.pause();
+          setPlaying(false);
+          hint.classList.remove('show');
         }
       });
+      audio.addEventListener('play', () => setPlaying(true));
+      audio.addEventListener('pause', () => setPlaying(false));
+      audio.addEventListener('error', () => {
+        subtitle.textContent = 'Check 7mix.mp3';
+        hint.textContent = 'The player is ready, but 7mix.mp3 could not be loaded. Keep the music file in the repository root.';
+        hint.classList.add('show');
+      });
+      window.addEventListener('pointerdown', () => {
+        if (audio.paused && !audio.error) startMusic();
+      }, { once: true, passive: true });
+      window.addEventListener('keydown', () => {
+        if (audio.paused && !audio.error) startMusic();
+      }, { once: true });
+      startMusic();
+
+      // Lightweight ambient stars; no heavy animation library or layout movement.
+      const canvas = document.getElementById('stars');
+      const ctx = canvas.getContext('2d');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let w = 0, h = 0, stars = [], raf = 0;
+      function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        w = window.innerWidth; h = window.innerHeight;
+        canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+        canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const count = Math.min(95, Math.floor(w * h / 15000));
+        stars = Array.from({length: count}, () => ({
+          x: Math.random() * w, y: Math.random() * h,
+          r: Math.random() * 1.25 + .25, a: Math.random() * .5 + .15,
+          speed: Math.random() * .003 + .001
+        }));
+        draw();
+      }
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        const t = performance.now() * .001;
+        for (const s of stars) {
+          const alpha = s.a * (.72 + Math.sin(t * s.speed * 150 + s.x) * .28);
+          ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(205,224,255,${alpha})`; ctx.fill();
+        }
+        if (!reduceMotion) raf = requestAnimationFrame(draw);
+      }
+      resize();
+      if (reduceMotion) cancelAnimationFrame(raf);
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(resize, 120);
+      }, {passive:true});
+
+      const glow = document.getElementById('cursor-glow');
+      if (glow && !reduceMotion && window.matchMedia('(pointer:fine)').matches) {
+        window.addEventListener('pointermove', e => {
+          glow.style.left = e.clientX + 'px';
+          glow.style.top = e.clientY + 'px';
+        }, {passive:true});
+      }
     })();
   </script>
 </body>
