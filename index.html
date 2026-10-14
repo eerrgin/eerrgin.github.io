@@ -1,293 +1,211 @@
 <!doctype html>
-<html lang="en">
+<html lang="tr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#08090f">
-  <meta name="description" content="Ergin — eerrgin. Personal space for code, creative experiments, and the web.">
-  <meta name="author" content="Ergin">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="https://eerrgin.github.io/">
-  <title>Ergin — eerrgin</title>
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Ergin — eerrgin">
-  <meta property="og:description" content="A personal space for code, creative experiments, and the web.">
-  <meta property="og:url" content="https://eerrgin.github.io/">
-  <meta property="og:image" content="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/12.jpg">
-  <meta property="og:image:alt" content="Portrait of Ergin">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Ergin — eerrgin">
-  <meta name="twitter:description" content="A personal space for code, creative experiments, and the web.">
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/12.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "@id":"https://eerrgin.github.io/#person",
-    "name":"Ergin",
-    "alternateName":"eerrgin",
-    "url":"https://eerrgin.github.io/",
-    "email":"erginkaplan22@gmail.com",
-    "image":"https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/12.jpg",
-    "sameAs":["https://github.com/eerrgin"],
-    "knowsAbout":["Web development","Software development","Creative coding"]
-  }
-  </script>
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg:#08090f; --ink:#f4f5fb; --muted:#a4a9bd;
-      --cyan:#8bf6e7; --violet:#a58bff; --line:rgba(226,232,255,.14);
-      --mono:"DM Mono",monospace; --sans:Manrope,system-ui,sans-serif;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;min-height:100vh;overflow-x:hidden;background:var(--bg);color:var(--ink);font-family:var(--sans)}
-    body:before{content:"";position:fixed;inset:0;z-index:-3;background:
-      radial-gradient(ellipse at 14% 18%,rgba(93,78,192,.23),transparent 38%),
-      radial-gradient(ellipse at 84% 32%,rgba(43,181,171,.15),transparent 35%),
-      linear-gradient(140deg,#08090f 0%,#0c1020 48%,#08090f 100%)}
-    #stars{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none;opacity:.72}
-    .noise{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E")}
-    a{color:inherit;text-decoration:none}
-    button{font:inherit}
-    .shell{width:min(1200px,calc(100% - 44px));margin:auto}
-    header{position:relative;z-index:5}
-    .nav{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
-    .brand{font:500 1rem var(--mono);letter-spacing:-.06em}
-    .brand span{color:var(--cyan)}
-    .nav-right{display:flex;align-items:center;gap:25px;color:#c4c8d8;font-size:.82rem}
-    .nav-right a{transition:color .2s}
-    .nav-right a:hover{color:var(--cyan)}
-    .status{display:flex;align-items:center;gap:9px;font: .68rem var(--mono);letter-spacing:.08em;color:#c0c6d9;text-transform:uppercase}
-    .status i{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 15px var(--cyan);animation:pulse 2.2s infinite}
-    main{min-height:calc(100svh - 140px);display:flex;align-items:center}
-    .hero{display:grid;grid-template-columns:1.04fr .96fr;align-items:center;gap:clamp(30px,6vw,88px);padding:64px 0 84px;width:100%}
-    .eyebrow{display:flex;align-items:center;gap:12px;color:var(--cyan);font: .72rem var(--mono);letter-spacing:.16em;text-transform:uppercase}
-    .eyebrow:before{content:"";height:1px;width:32px;background:var(--cyan)}
-    h1{font-size:clamp(3.6rem,8.5vw,7.6rem);line-height:.88;letter-spacing:-.09em;margin:24px 0 26px;font-weight:800}
-    h1 span{display:block;color:transparent;background:linear-gradient(105deg,#f8f9ff 4%,var(--cyan) 48%,var(--violet) 92%);background-clip:text;-webkit-background-clip:text}
-    .lead{max-width:490px;color:var(--muted);font-size:clamp(1rem,1.5vw,1.12rem);line-height:1.85;margin:0}
-    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-    .button{min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--line);border-radius:999px;padding:0 19px;font-size:.82rem;font-weight:700;transition:transform .2s,border-color .2s,background .2s}
-    .button:hover{transform:translateY(-3px);border-color:rgba(139,246,231,.65)}
-    .button.primary{background:var(--cyan);color:#07100f;border-color:var(--cyan)}
-    .button.ghost{background:rgba(255,255,255,.035)}
-    .signature{margin-top:35px;color:#707990;font: .68rem var(--mono);letter-spacing:.07em}
-    .visual{position:relative;min-height:550px;display:grid;place-items:center;isolation:isolate}
-    .halo{position:absolute;width:min(100%,520px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(139,246,231,.19);animation:spin 42s linear infinite}
-    .halo:before,.halo:after{content:"";position:absolute;inset:9%;border:1px solid rgba(165,139,255,.19);border-radius:50%}
-    .halo:after{inset:21%;border-color:rgba(139,246,231,.12)}
-    .halo-point{position:absolute;left:17%;top:18%;width:10px;height:10px;background:var(--cyan);border-radius:50%;box-shadow:0 0 24px var(--cyan)}
-    .portrait-wrap{position:relative;width:min(72%,345px);aspect-ratio:4/5;padding:1px;border-radius:180px 180px 28px 28px;background:linear-gradient(150deg,rgba(139,246,231,.9),rgba(165,139,255,.55),rgba(255,255,255,.12));box-shadow:0 35px 100px rgba(0,0,0,.55),0 0 80px rgba(90,110,220,.12);animation:levitate 7s ease-in-out infinite}
-    .portrait-inner{position:absolute;inset:1px;overflow:hidden;border-radius:179px 179px 27px 27px;background:#111522}
-    .portrait-inner:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,9,17,.04) 30%,rgba(6,9,17,.08) 52%,rgba(6,9,17,.9) 100%);pointer-events:none}
-    .portrait-inner img{width:100%;height:100%;object-fit:cover;object-position:center 36%;display:block;filter:saturate(.82) contrast(1.04);transform:scale(1.015);transition:transform .7s,filter .7s}
-    .portrait-wrap:hover .portrait-inner img{transform:scale(1.055);filter:saturate(1.02) contrast(1.04)}
-    .portrait-label{position:absolute;z-index:2;bottom:24px;left:25px;right:25px;display:flex;justify-content:space-between;align-items:end;gap:12px}
-    .portrait-label strong{font-size:1rem;letter-spacing:-.03em}
-    .portrait-label small{display:block;color:#b4bdd1;font: .64rem var(--mono);margin-top:5px}
-    .portrait-label .index{color:var(--cyan);font: .65rem var(--mono);border:1px solid rgba(139,246,231,.32);padding:7px 9px;border-radius:8px}
-    .floating-note{position:absolute;z-index:3;right:0;top:18%;padding:13px 16px;border:1px solid var(--line);border-radius:14px;background:rgba(11,14,25,.78);backdrop-filter:blur(14px);font:.67rem var(--mono);color:#c9cee0;box-shadow:0 12px 40px rgba(0,0,0,.25);animation:drift 6s ease-in-out infinite}
-    .floating-note b{display:block;color:var(--cyan);font-weight:500;margin-bottom:5px}
-    .floating-note.bottom{right:auto;left:0;top:auto;bottom:17%;animation-delay:-2s}
-    footer{border-top:1px solid var(--line);min-height:58px;display:flex;align-items:center}
-    .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:18px;color:#7e859c;font:.68rem var(--mono);padding:18px 0}
-    .footer-inner a:hover{color:var(--cyan)}
-    .footer-links{display:flex;gap:20px}
-    .music-player{position:fixed;z-index:20;right:22px;bottom:20px;display:flex;align-items:center;gap:12px;padding:10px 14px 10px 11px;border:1px solid rgba(206,218,255,.18);border-radius:999px;background:rgba(10,13,23,.84);backdrop-filter:blur(18px);box-shadow:0 14px 50px rgba(0,0,0,.35)}
-    .music-toggle{width:34px;height:34px;display:grid;place-items:center;border:1px solid rgba(139,246,231,.28);border-radius:50%;background:rgba(139,246,231,.1);color:var(--cyan);cursor:pointer}
-    .music-toggle:hover{background:rgba(139,246,231,.2)}
-    .bars{display:flex;align-items:center;gap:3px;height:15px}
-    .bars i{display:block;width:2px;height:5px;background:currentColor;border-radius:2px}
-    .music-player.playing .bars i{animation:equalize .75s ease-in-out infinite alternate}
-    .music-player.playing .bars i:nth-child(2){animation-delay:-.45s}
-    .music-player.playing .bars i:nth-child(3){animation-delay:-.2s}
-    .music-text{font: .65rem var(--mono);color:#d7dced;white-space:nowrap}
-    .music-text small{display:block;color:#818aa3;font-size:.57rem;margin-top:3px}
-    .music-hint{position:fixed;z-index:19;right:22px;bottom:88px;max-width:260px;padding:11px 14px;border:1px solid var(--line);border-radius:12px;background:rgba(10,13,23,.92);color:#c9cee0;font-size:.72rem;box-shadow:0 12px 40px rgba(0,0,0,.3);opacity:0;transform:translateY(6px);pointer-events:none;transition:opacity .2s,transform .2s}
-    .music-hint.show{opacity:1;transform:translateY(0)}
-    #cursor-glow{position:fixed;z-index:30;left:0;top:0;width:300px;height:300px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(103,147,255,.075),transparent 68%);transform:translate(-50%,-50%);mix-blend-mode:screen}
-    @keyframes pulse{50%{opacity:.45;box-shadow:0 0 5px var(--cyan)}}
-    @keyframes spin{to{transform:rotate(360deg)}}
-    @keyframes levitate{0%,100%{transform:translateY(0) rotate(.3deg)}50%{transform:translateY(-12px) rotate(-.3deg)}}
-    @keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-    @keyframes equalize{from{height:4px}to{height:14px}}
-    @media(max-width:850px){.hero{grid-template-columns:1fr;gap:12px;padding-top:65px}.hero-copy{max-width:700px}.visual{min-height:490px}.portrait-wrap{width:min(64%,310px)}.halo{width:min(100%,460px)}.floating-note{right:6%}.floating-note.bottom{left:5%}}
-    @media(max-width:600px){.shell{width:calc(100% - 30px)}.nav{height:68px}.nav-right{gap:15px;font-size:.76rem}.status{display:none}.hero{padding-top:56px;padding-bottom:60px}h1{font-size:clamp(3.55rem,16vw,5.8rem)}.lead{font-size:.98rem}.visual{min-height:405px;margin-top:4px}.portrait-wrap{width:min(66%,270px)}.halo{width:min(100%,360px)}.floating-note{top:14%;right:0;font-size:.59rem;padding:10px 11px}.floating-note.bottom{bottom:12%;left:0}.footer-inner{align-items:flex-start;flex-direction:column;gap:10px}.footer-links{gap:15px}.music-player{right:12px;bottom:12px}.music-hint{right:12px;bottom:78px}#cursor-glow{display:none}}
-    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}#stars{display:none}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ergin Kaplan</title>
+<meta name="description" content="Ergin Kaplan. İstanbul'da kendi halinde bir bilgisayarcı. Yerel araçlar: VeilCheck, GreySignal, ReconX, local-sqli-lab. Ticari vitrin değil.">
+<meta name="author" content="Ergin Kaplan">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#09090b">
+<link rel="canonical" href="https://eerrgin.github.io/">
+<meta property="og:title" content="Ergin Kaplan">
+<meta property="og:description" content="Ergin Kaplan. İstanbul'da kendi halinde bir bilgisayarcı. Yerel araçlar, izinli bakış.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://eerrgin.github.io/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Sono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="preload" as="image" href="12.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Ergin Kaplan","alternateName":["eerrgin","Ergin"],"url":"https://eerrgin.github.io/","homeLocation":{"@type":"Place","name":"Istanbul","address":{"@type":"PostalAddress","addressLocality":"Istanbul","addressCountry":"TR"}},"sameAs":["https://github.com/eerrgin","https://eerrgin.github.io/","https://on.soundcloud.com/jnqi2v7CnPMivP3HV1"]}
+</script>
 </head>
 <body>
-  <canvas id="stars" aria-hidden="true"></canvas>
-  <div class="noise" aria-hidden="true"></div>
-  <div id="cursor-glow" aria-hidden="true"></div>
-  <header class="shell">
-    <nav class="nav" aria-label="Main navigation">
-      <a class="brand" href="#home" aria-label="Ergin home">eerrgin<span>.</span></a>
-      <div class="nav-right">
-        <span class="status"><i></i> Personal space / online</span>
-        <a href="#home">Home</a>
-        <a href="https://github.com/eerrgin" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-        <a href="mailto:erginkaplan22@gmail.com">Contact ↗</a>
-      </div>
+<a class="skip" href="#ust">içeriğe geç</a>
+<header class="rail">
+  <div class="desk rail-inner">
+    <a class="mark" href="#ust">
+      <span class="mark-plate" aria-hidden="true">e</span>
+      <span class="mark-text">ergin<small>istanbul · tezgahta</small></span>
+    </a>
+    <nav class="rail-links" aria-label="sayfa">
+      <a href="#tezgahtakiler">tezgahtakiler</a>
+      <a href="#dusenler">düşenler</a>
+      <a href="https://github.com/eerrgin" target="_blank" rel="me noreferrer">depo</a>
     </nav>
-  </header>
-
-  <main class="shell" id="home">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <div class="eyebrow">A little corner of the internet</div>
-        <h1 id="hero-title">Ergin<span>.</span></h1>
-        <p class="lead">Curious by nature. Drawn to code, digital experiences, and ideas that deserve to be built. This is my own little space on the web.</p>
-        <div class="actions">
-          <a class="button primary" href="https://github.com/eerrgin" target="_blank" rel="noopener noreferrer">Explore my GitHub <span>↗</span></a>
-          <a class="button ghost" href="mailto:erginkaplan22@gmail.com">Say hello <span>↗</span></a>
-        </div>
-        <div class="signature">DESIGNED TO FEEL A LITTLE DIFFERENT&nbsp; / &nbsp;EERRGIN</div>
-      </div>
-
-      <div class="visual" aria-label="Portrait of Ergin">
-        <div class="halo" aria-hidden="true"><span class="halo-point"></span></div>
-        <div class="portrait-wrap">
-          <div class="portrait-inner">
-            <img src="12.jpg" alt="Portrait of Ergin" fetchpriority="high" decoding="async">
-            <div class="portrait-label">
-              <div><strong>Ergin</strong><small>eerrgin / independent creator</small></div>
-              <span class="index">01 — ME</span>
-            </div>
-          </div>
-        </div>
-        <div class="floating-note"><b>NOW EXPLORING</b>Ideas → code → reality</div>
-        <div class="floating-note bottom"><b>KEEP IT CURIOUS</b>Build. Learn. Repeat.</div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="shell footer-inner">
-      <span>© <span id="year"></span> Ergin · Made with curiosity.</span>
-      <div class="footer-links">
-        <a href="https://github.com/eerrgin" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-        <a href="mailto:erginkaplan22@gmail.com">Email ↗</a>
+    <div class="rail-meta">
+      <span id="weather">istanbul</span>
+      <time id="clock">——</time>
+    </div>
+  </div>
+</header>
+<main id="ust" class="desk">
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="kicker">kendi halinde · bilgisayarcı</p>
+      <h1 class="mast" id="mast">
+        <span class="who">ergin</span>
+        <span class="redact">
+          <span class="redact-kicker">saklı</span>
+          <span class="redact-slot">
+            <span class="redact-word">Kaplan</span>
+            <span class="redact-bar" aria-hidden="true"></span>
+          </span>
+        </span>
+      </h1>
+      <p class="lede">istanbul. satış sayfası değil bu. tezgahta duranlar yerel araç — başkasının sistemine izinsiz uzanmıyor.</p>
+      <p class="aside">pencere arada titrer. sayfa da her girişte aynı durmaz.</p>
+      <div class="actions">
+        <a class="btn raised" href="https://github.com/eerrgin" target="_blank" rel="me noreferrer">depoya bak</a>
+        <a class="btn sunk" href="#tezgahtakiler">tezgahtakiler</a>
       </div>
     </div>
-  </footer>
+    <figure class="win portrait" id="portrait" data-fx="">
+      <i class="screw a" aria-hidden="true"></i>
+      <i class="screw b" aria-hidden="true"></i>
+      <i class="screw c" aria-hidden="true"></i>
+      <i class="screw d" aria-hidden="true"></i>
+      <div class="bezel">
+        <div class="titlebar">
+          <span class="win-file">12.jpg</span>
+          <span class="win-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        </div>
+        <div class="viewport">
+          <img class="base" src="12.jpg" alt="Ergin Kaplan'ın karesi: karanlık bir odada, eski bir ekranın başında duran çizim. Duvarlarda metal afişler.">
+          <img class="ghost" id="ghost" src="12.jpg" alt="" aria-hidden="true">
+          <span class="sweep" aria-hidden="true"></span>
+          <span class="sweep once" aria-hidden="true"></span>
+        </div>
+        <div class="statusbar"><span>yerel kare</span><span>sn-12</span></div>
+      </div>
+    </figure>
+  </section>
 
-  <audio id="background-music" loop preload="auto" playsinline>
-    <source src="7mix.mp3" type="audio/mpeg">
-  </audio>
-  <div class="music-hint" id="music-hint" role="status">Your browser blocked automatic playback. Tap the music button to start it.</div>
-  <div class="music-player" id="music-player">
-    <button class="music-toggle" id="music-toggle" type="button" aria-label="Play background music" aria-pressed="false">
-      <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
-    </button>
-    <div class="music-text"><span id="music-label">Background music</span><small id="music-subtitle">Trying to start…</small></div>
+  <section class="block" id="tezgahtakiler">
+    <header class="sec-head">
+      <span class="idx">01</span>
+      <div>
+        <h2>tezgahta duranlar</h2>
+        <p>işe yarayanlar. geri kalanını depoda bıraktım.</p>
+      </div>
+    </header>
+    <div class="bench">
+      <article class="win tool">
+        <i class="screw a" aria-hidden="true"></i><i class="screw b" aria-hidden="true"></i><i class="screw c" aria-hidden="true"></i><i class="screw d" aria-hidden="true"></i>
+        <div class="bezel">
+          <div class="titlebar"><span class="win-file">veilcheck.py</span><span class="win-path">~/VeilCheck</span></div>
+          <div class="tool-body">
+            <h3>VeilCheck</h3>
+            <p>Bir klasöre bakar. Dosyayı dışarı yollamaz, kodu çalıştırmaz. Kapalı TLS kontrolü, açık unutulmuş debug, anahtar gibi duran dizgiler. Bulduğunu karartır, satır numarasını bırakır. Heuristiktir: hem yanlış bağırır hem kaçırır. Güvenlik belgesi değildir.</p>
+            <div class="tool-foot"><span>python · stdlib · mit</span><a href="https://github.com/eerrgin/VeilCheck" target="_blank" rel="noreferrer">kaynağa git</a></div>
+          </div>
+        </div>
+      </article>
+      <article class="win tool">
+        <i class="screw a" aria-hidden="true"></i><i class="screw b" aria-hidden="true"></i><i class="screw c" aria-hidden="true"></i><i class="screw d" aria-hidden="true"></i>
+        <div class="bezel">
+          <div class="titlebar"><span class="win-file">greysignal.py</span><span class="win-path">~/GreySignal</span></div>
+          <div class="tool-body">
+            <h3>GreySignal</h3>
+            <p>Sıradan bir GET. Yönlendirme kapalı, sayfa gezmez, port denemez, parola denemez. Baktığı şey başlık: HSTS, CSP, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy. Eksik başlık bir sorudur, delik ilanı değil. İzni olmayan yere tutulmaz.</p>
+            <div class="tool-foot"><span>python · tek get · mit</span><a href="https://github.com/eerrgin/GreySignal" target="_blank" rel="noreferrer">kaynağa git</a></div>
+          </div>
+        </div>
+      </article>
+      <article class="win tool">
+        <i class="screw a" aria-hidden="true"></i><i class="screw b" aria-hidden="true"></i><i class="screw c" aria-hidden="true"></i><i class="screw d" aria-hidden="true"></i>
+        <div class="bezel">
+          <div class="titlebar"><span class="win-file">reconx.py</span><span class="win-path">~/ReconX</span></div>
+          <div class="tool-body">
+            <h3>ReconX</h3>
+            <p>İzin varsa port, başlık, sertifika ve DNS. Raporu düz metin ya da JSON bırakır. İzin yoksa bu araç da yok. Uyarı depoda kısa; burada da kısa kalsın.</p>
+            <div class="tool-foot"><span>python · izinli · mit</span><a href="https://github.com/eerrgin/ReconX-Web-Reconnaissance-Toolkit-" target="_blank" rel="noreferrer">kaynağa git</a></div>
+          </div>
+        </div>
+      </article>
+      <article class="win tool">
+        <i class="screw a" aria-hidden="true"></i><i class="screw b" aria-hidden="true"></i><i class="screw c" aria-hidden="true"></i><i class="screw d" aria-hidden="true"></i>
+        <div class="bezel">
+          <div class="titlebar"><span class="win-file">scanner.py</span><span class="win-path">~/local-sqli-lab</span></div>
+          <div class="tool-body">
+            <h3>local-sqli-lab</h3>
+            <p>Ağ yok. Uzak hedef yok. İçerideki SQLite, bilerek bozuk bir örnek sorgu, parametreli hali ve ikisini ayıran küçük bir tarayıcı. Üretime girecek kod değil. Tezgahta duran bir ders.</p>
+            <div class="tool-foot"><span>python · sqlite · mit</span><a href="https://github.com/eerrgin/local-sqli-lab" target="_blank" rel="noreferrer">kaynağa git</a></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="dusenler">
+    <header class="sec-head">
+      <span class="idx">02</span>
+      <div>
+        <h2>düşenler</h2>
+        <p>masaya bırakılmış şeyler. dün burada olan, yarın durmayabilir.</p>
+      </div>
+    </header>
+    <div class="drift">
+      <article class="win clip pending" id="clip" aria-live="polite">
+        <i class="screw a" aria-hidden="true"></i><i class="screw b" aria-hidden="true"></i><i class="screw c" aria-hidden="true"></i><i class="screw d" aria-hidden="true"></i>
+        <div class="bezel">
+          <div class="titlebar">
+            <span class="win-file" id="clipFile">kirpintilar/——</span>
+            <span class="win-dots" aria-hidden="true"><i></i><i></i></span>
+          </div>
+          <div class="clip-body" id="clipBody"><p class="waiting">hat çekiliyor</p></div>
+        </div>
+      </article>
+      <article class="win notes">
+        <i class="screw a" aria-hidden="true"></i><i class="screw b" aria-hidden="true"></i><i class="screw c" aria-hidden="true"></i><i class="screw d" aria-hidden="true"></i>
+        <div class="bezel">
+          <div class="titlebar">
+            <span class="win-file">notlar/celiski.txt</span>
+            <span class="win-dots" aria-hidden="true"><i></i><i></i></span>
+          </div>
+          <p class="waiting" id="noteWait">not iniyor</p>
+          <div class="split" id="split" hidden>
+            <div>
+              <span class="stamp" id="stampA"></span>
+              <p class="slip" id="slipA"></p>
+            </div>
+            <div>
+              <span class="stamp" id="stampB"></span>
+              <p class="slip" id="slipB"></p>
+            </div>
+          </div>
+          <div class="notes-foot">
+            <button type="button" class="btn sunk" id="reroll">masayı değiştir</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+<footer class="colophon">
+  <div class="desk colo-row">
+    <p>ergin · istanbul. hesap makinesi, parçacık imleci ve boş klasörler depoda duruyor. buraya koymadım.</p>
+    <p class="colo-links">
+      <a href="https://github.com/eerrgin" target="_blank" rel="me noreferrer">depo</a>
+      <a href="mailto:erginkaplan22@gmail.com">yaz</a>
+      <a href="https://on.soundcloud.com/jnqi2v7CnPMivP3HV1" target="_blank" rel="noreferrer">karışım</a>
+      <span>© <span id="year"></span></span>
+    </p>
   </div>
-
-  <script>
-    (() => {
-      const year = document.getElementById('year');
-      if (year) year.textContent = new Date().getFullYear();
-
-      const audio = document.getElementById('background-music');
-      const player = document.getElementById('music-player');
-      const toggle = document.getElementById('music-toggle');
-      const label = document.getElementById('music-label');
-      const subtitle = document.getElementById('music-subtitle');
-      const hint = document.getElementById('music-hint');
-
-      function setPlaying(playing) {
-        player.classList.toggle('playing', playing);
-        toggle.setAttribute('aria-pressed', String(playing));
-        toggle.setAttribute('aria-label', playing ? 'Pause background music' : 'Play background music');
-        label.textContent = playing ? 'Background music' : 'Background music';
-        subtitle.textContent = playing ? 'Now playing · 7mix' : 'Tap to play';
-        if (playing) hint.classList.remove('show');
-      }
-      async function startMusic() {
-        try {
-          await audio.play();
-          setPlaying(true);
-          return true;
-        } catch (error) {
-          setPlaying(false);
-          subtitle.textContent = 'Tap to start';
-          hint.classList.add('show');
-          return false;
-        }
-      }
-      toggle.addEventListener('click', async () => {
-        if (audio.paused) {
-          await startMusic();
-        } else {
-          audio.pause();
-          setPlaying(false);
-          hint.classList.remove('show');
-        }
-      });
-      audio.addEventListener('play', () => setPlaying(true));
-      audio.addEventListener('pause', () => setPlaying(false));
-      audio.addEventListener('error', () => {
-        subtitle.textContent = 'Check 7mix.mp3';
-        hint.textContent = 'The player is ready, but 7mix.mp3 could not be loaded. Keep the music file in the repository root.';
-        hint.classList.add('show');
-      });
-      window.addEventListener('pointerdown', () => {
-        if (audio.paused && !audio.error) startMusic();
-      }, { once: true, passive: true });
-      window.addEventListener('keydown', () => {
-        if (audio.paused && !audio.error) startMusic();
-      }, { once: true });
-      startMusic();
-
-      const canvas = document.getElementById('stars');
-      const ctx = canvas.getContext('2d');
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      let w = 0, h = 0, stars = [], raf = 0;
-      function resize() {
-        const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-        w = window.innerWidth; h = window.innerHeight;
-        canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
-        canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        const count = Math.min(95, Math.floor(w * h / 15000));
-        stars = Array.from({length: count}, () => ({
-          x: Math.random() * w, y: Math.random() * h,
-          r: Math.random() * 1.25 + .25, a: Math.random() * .5 + .15,
-          speed: Math.random() * .003 + .001
-        }));
-        draw();
-      }
-      function draw() {
-        ctx.clearRect(0, 0, w, h);
-        const t = performance.now() * .001;
-        for (const s of stars) {
-          const alpha = s.a * (.72 + Math.sin(t * s.speed * 150 + s.x) * .28);
-          ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(205,224,255,${alpha})`; ctx.fill();
-        }
-        if (!reduceMotion) raf = requestAnimationFrame(draw);
-      }
-      resize();
-      if (reduceMotion) cancelAnimationFrame(raf);
-      let resizeTimer;
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(resize, 120);
-      }, {passive:true});
-
-      const glow = document.getElementById('cursor-glow');
-      if (glow && !reduceMotion && window.matchMedia('(pointer:fine)').matches) {
-        window.addEventListener('pointermove', e => {
-          glow.style.left = e.clientX + 'px';
-          glow.style.top = e.clientY + 'px';
-        }, {passive:true});
-      }
-    })();
-  </script>
+</footer>
+<div class="tape" id="tape">
+  <audio id="audio" src="7mix.mp3" loop preload="auto"></audio>
+  <p class="tape-hint" id="tapeHint" hidden>tarayıcı sesi tuttu. bir yere bas.</p>
+  <button type="button" class="tape-btn" id="tapeBtn" aria-pressed="false">
+    <span class="led" id="led" aria-hidden="true"></span>
+    <span class="tape-copy">
+      <span class="tape-kicker">teyp</span>
+      <span class="tape-state" id="tapeState">aç</span>
+    </span>
+  </button>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
