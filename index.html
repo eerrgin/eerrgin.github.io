@@ -72,8 +72,8 @@
           </span>
         </span>
       </h1>
-      <p class="lede">Curious by nature. Drawn to code, digital experiences, and ideas that deserve to be built.</p>
-      <p class="aside">This is my own little space on the web.</p>
+      <p class="lede">Merakla başlar. Kod, dijital deneyimler ve yapılmaya değer fikirlerin peşinde.</p>
+      <p class="aside">Burası, internette kendime ayırdığım küçük bir alan.</p>
       <div class="actions">
         <a class="btn raised" href="https://github.com/eerrgin" target="_blank" rel="me noreferrer">depoya bak</a>
         <a class="btn sunk" href="#denemeler">Denemeler</a>
@@ -169,10 +169,10 @@
         <i class="screw a" aria-hidden="true"></i><i class="screw b" aria-hidden="true"></i><i class="screw c" aria-hidden="true"></i><i class="screw d" aria-hidden="true"></i>
         <div class="bezel">
           <div class="titlebar">
-            <span class="win-file" id="clipFile">kirpintilar/——</span>
+            <span class="win-file" id="clipFile">kirpintilar/icerik</span>
             <span class="win-dots" aria-hidden="true"><i></i><i></i></span>
           </div>
-          <div class="clip-body" id="clipBody"><p class="waiting">hat çekiliyor</p></div>
+          <div class="clip-body" id="clipBody"><p class="waiting">arşivden bir kırıntı bekleniyor</p></div>
         </div>
       </article>
       <article class="win notes">
@@ -182,7 +182,7 @@
             <span class="win-file">notlar/celiski.txt</span>
             <span class="win-dots" aria-hidden="true"><i></i><i></i></span>
           </div>
-          <p class="waiting" id="noteWait">not iniyor</p>
+          <p class="waiting" id="noteWait">notlar hazırlanıyor</p>
           <div class="split" id="split" hidden>
             <div>
               <span class="stamp" id="stampA"></span>
@@ -195,6 +195,7 @@
           </div>
           <div class="notes-foot">
             <button type="button" class="btn sunk" id="reroll">masayı değiştir</button>
+            <span class="stamp" id="archiveCount" aria-live="polite">yerel arşiv</span>
           </div>
         </div>
       </article>
@@ -203,7 +204,7 @@
 </main>
 <footer class="colophon">
   <div class="desk colo-row">
-    <p>ergin · Test içerikli güvenlik katmanları çeşitli kodlar sorgu ve arama tarayıcılar depoda duruyor buraya koymadım.</p>
+    <p>ergin · Deneyler, küçük araçlar ve aklımda kalan kırıntılar. Güvenlik araçları yalnızca izinli ve eğitim amaçlı kullanım içindir.</p>
     <p class="colo-links">
       <a href="https://github.com/eerrgin" target="_blank" rel="me noreferrer">depo</a>
       <a href="mailto:erginkaplan22@gmail.com">yaz</a>
@@ -223,6 +224,232 @@
     </span>
   </button>
 </div>
-<script src="script.js"></script>
+<script>
+(() => {
+  "use strict";
+  const $ = (id) => document.getElementById(id);
+  const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // İçerikler bu dosyanın içinde tutulur; ek JSON veya API gerekmez.
+  // Metinlerin tamamı bu sayfa için özgün olarak yazılmıştır.
+  const clips = [
+    {id:"net-01", category:"internet kültürü", title:"Bağlantısı kırık bir hafıza", text:"İnternetin kaybolan kısmı her zaman silinen sayfalar değildir. Bazen sayfa durur; onu anlamlı kılan bütün bağlantılar ortadan kalkmıştır."},
+    {id:"net-02", category:"internet kültürü", title:"404: hatırlanmıyor", text:"Bir sayfa bulunamadığında yalnızca adres kaybolmaz. Bazen birinin yıllarca biriktirdiği küçük dünya da görünmez olur."},
+    {id:"net-03", category:"internet kültürü", title:"Eski web", text:"Eski internetin güzelliği kusursuz olmasında değildi. Birinin bir şey öğrenip onu hemen dünyaya bırakabilmesindeydi."},
+    {id:"net-04", category:"internet kültürü", title:"Arşiv", text:"Bir şeyi saklamak, onu sonsuza kadar korumak değildir. Dosyanın yanında onu açacak yolu da saklamak gerekir."},
+    {id:"net-05", category:"internet kültürü", title:"Sekmeler", text:"Açık kalan sekmeler bazen yapılacak işleri değil, kapatmaya henüz hazır olmadığımız düşünceleri gösterir."},
+    {id:"net-06", category:"internet kültürü", title:"Çevrimdışı", text:"Bağlantı kesildiğinde her şey durmaz. Bazı şeyler ancak dışarıdan gelen ses azaldığında duyulur."},
+    {id:"net-07", category:"internet kültürü", title:"Dijital enkaz", text:"Kullanılmayan alan adları, unutulmuş forumlar ve kırık resimler: internetin geçmişi bazen müzeden çok bir enkaz alanına benzer."},
+    {id:"net-08", category:"internet kültürü", title:"Bir bağlantı daha", text:"Her bağlantı yeni bir yere açılmaz. Bazen yalnızca aynı soruya başka bir açıdan dönmemizi sağlar."},
+    {id:"tech-01", category:"teknoloji", title:"Log dosyası", text:"Bir sistem olan biteni kaydeder, ama neden olduğunu her zaman açıklamaz. Hafıza da böyledir: olayı saklar, anlamını sonradan kurar."},
+    {id:"tech-02", category:"teknoloji", title:"Yerelde çalışıyor", text:"Bir programın kendi bilgisayarında çalışması iyi bir başlangıçtır. Fakat başka bir ortamda da çalıştığını kanıtlamaz."},
+    {id:"tech-03", category:"teknoloji", title:"Hata mesajı", text:"İyi bir hata mesajı yalnızca neyin bozulduğunu söylemez; bir sonraki adımı da görünür kılar."},
+    {id:"tech-04", category:"teknoloji", title:"Kenar durumu", text:"Kodun karakteri çoğu zaman her şey yolundayken değil, kimsenin düşünmediği koşul ortaya çıktığında belli olur."},
+    {id:"tech-05", category:"teknoloji", title:"Küçük araç", text:"İyi bir araç her şeyi yapmaya çalışmaz. Bir işi anlaşılır, tekrarlanabilir ve güvenilir biçimde yapar."},
+    {id:"tech-06", category:"teknoloji", title:"Yedek", text:"Yedeğin varlığı değil, geri yüklenebildiğinin denenmiş olması güven verir."},
+    {id:"tech-07", category:"teknoloji", title:"Sürüm notu", text:"Değişiklikleri yazmak gelecekteki kendine bırakılmış bir nottur. O kişi kodu yazan kişiyle aynı hafızaya sahip olmayacak."},
+    {id:"tech-08", category:"teknoloji", title:"Sessiz varsayım", text:"En pahalı hata bazen yanlış kod değil, kimsenin yazmaya gerek görmediği bir varsayımdır."},
+    {id:"tech-09", category:"teknoloji", title:"Otomasyon", text:"Otomasyon işi ortadan kaldırmaz; işi tarif etme sorumluluğunu daha görünür hâle getirir."},
+    {id:"tech-10", category:"teknoloji", title:"Güvenlik başlığı", text:"Bir kontrolün eksik olması tek başına saldırı kanıtı değildir. Ama sorulması gereken doğru sorulardan biridir."},
+    {id:"tech-11", category:"teknoloji", title:"Parametre", text:"Girdiyi komutun içine karıştırma. Veriyi veri olarak tutmak, yalnızca düzen değil, güvenlik meselesidir."},
+    {id:"tech-12", category:"teknoloji", title:"Yorum satırı", text:"Kodun neden böyle olduğunu anlat. Ne yaptığını zaten satırlar gösteriyor; asıl kaybolan şey gerekçedir."},
+    {id:"sci-01", category:"bilim", title:"Ölçek", text:"Bir şeyin küçük olması önemsiz olduğu anlamına gelmez. Bazı süreçler ancak çok küçük farklar biriktiğinde görünür olur."},
+    {id:"sci-02", category:"bilim", title:"Işık gecikmesi", text:"Gökyüzüne bakarken yalnızca uzak yerlere bakmayız; ışığın yola çıktığı zamana da bakarız."},
+    {id:"sci-03", category:"bilim", title:"Harita ve arazi", text:"Model, dünyayı anlamak için kurulur. Modelin kendisini dünya sanmaya başladığımızda yanılırız."},
+    {id:"sci-04", category:"bilim", title:"Ölçüm", text:"Ölçmek, gerçeği bütünüyle yakalamak değildir. Hangi kısmı görebildiğimizi açıkça belirtmektir."},
+    {id:"sci-05", category:"bilim", title:"Belirsizlik", text:"Belirsizlik bilgisizliğin başka adı değildir. Bazen ne bildiğimizi dürüstçe tarif etmenin tek yoludur."},
+    {id:"sci-06", category:"bilim", title:"Gürültü", text:"Gürültü her zaman anlamsız değildir. Bazen aradığımız sinyal, onu bastırmaya çalışırken kaybettiğimiz ayrıntıdır."},
+    {id:"sci-07", category:"bilim", title:"Zaman", text:"Saat aynı aralığı ölçebilir; ama beklemekle merak etmek o aralığı aynı şekilde yaşatmaz."},
+    {id:"sci-08", category:"bilim", title:"Gözlem", text:"Bir şeyi gözlemlemek, ona hiçbir şekilde dokunmadan bakmak demek değildir. Önce neyi gözlem saydığımızı seçeriz."},
+    {id:"phil-01", category:"felsefe", title:"Boşluk", text:"Boş bir ekran, boş bir alan değildir. Henüz seçilmemiş ihtimaller vardır; ama ihtimal, gerçekleşmiş olay sayılmaz."},
+    {id:"phil-02", category:"felsefe", title:"Hafıza", text:"Hatırlamak geçmişi aynen geri getirmek değil, bugünden ona yeniden bakmaktır."},
+    {id:"phil-03", category:"felsefe", title:"Karar", text:"Karar vermemek de bir seçimdir; yalnızca sonucunun sorumluluğu daha kolay görünmez olur."},
+    {id:"phil-04", category:"felsefe", title:"Sessizlik", text:"Sessizlik her zaman cevap değildir. Bazen sorunun henüz doğru kurulmadığını gösterir."},
+    {id:"phil-05", category:"felsefe", title:"Kimlik", text:"İnsan kendini tek bir cümleyle anlatmak ister. Yaşadıkça o cümlenin kenarlarına yeni notlar düşer."},
+    {id:"phil-06", category:"felsefe", title:"Kontrol", text:"Her şeyi kontrol etmeye çalışmak, hangi şeylerin kontrolümüzde olmadığını da sürekli hatırlatır."},
+    {id:"phil-07", category:"felsefe", title:"Alışkanlık", text:"Bir şeyin tanıdık gelmesi, onun doğru olduğu anlamına gelmez. Bazen yalnızca çok tekrar edilmiştir."},
+    {id:"phil-08", category:"felsefe", title:"Son nokta", text:"Bir düşünceyi bitirmek, onu sonsuza dek çözmek değildir. Bazen yalnızca şimdilik bırakmayı bilmektir."},
+    {id:"lit-01", category:"mini deneme", title:"Gece vardiyası", text:"Şehir uyurken ekranın ışığı masaya düşüyor. Bir dosya açılıyor, kapanıyor. Dışarıda hiçbir şey değişmemiş gibi; içerideyse küçük bir karar verilmiş."},
+    {id:"lit-02", category:"mini deneme", title:"Son kayıt", text:"Klasörün adı 'son' idi. İçinde 'son2', 'son-gerçek' ve 'bu-sefer-son' vardı. İnsan bazen bitiremediği şeyi dosya adına taşır."},
+    {id:"lit-03", category:"mini deneme", title:"Bir pencere", text:"Camda kendi yansımasını gördü; arkasında çalışan ekranla üst üste binmişti. Bir an için hangisinin görüntü, hangisinin kaynak olduğunu ayırt edemedi."},
+    {id:"lit-04", category:"mini deneme", title:"Bekleyen işlem", text:"İşlem tamamlanmadı. İptal de edilmedi. Ekranın köşesinde dönen küçük işaret, bazen bütün bir günün özeti olabiliyordu."},
+    {id:"lit-05", category:"mini deneme", title:"Kayıp dosya", text:"Aradığı dosyayı bulamadı. Sonra ne yazdığını hatırladı ve yeniden yazdı. Kaybolan şey dosya değil, onu ilk kez yazdığı andı."},
+    {id:"lit-06", category:"mini deneme", title:"Masa", text:"Masada yalnızca bir kablo, yarım bardak su ve açık bir not vardı. Dağınıklık gibi görünüyordu. Oysa her şey bir sonraki adımın yerini biliyordu."},
+    {id:"lit-07", category:"mini deneme", title:"Eski cihaz", text:"Açılmayan bilgisayarı atmadı. İçinde önemli bir şey olduğu için değil; bir zamanlar onunla bir şey öğrenmiş olduğu için."},
+    {id:"lit-08", category:"mini deneme", title:"Güncelleme", text:"Yeni sürüm kuruldu. Her şey daha hızlıydı. Yalnızca neden başladığını hatırlaması biraz daha uzun sürdü."},
+    {id:"web-01", category:"açık bilgi", title:"Açık lisans", text:"İnternette erişilebilen her metin serbestçe kopyalanamaz. Paylaşmadan önce lisansı, atıf şartını ve varsa kullanım kısıtlarını kontrol et."},
+    {id:"web-02", category:"açık bilgi", title:"Kamu malı", text:"Bir eserin kamu malı olması, her ülkede ve her sürümünde aynı koşulların geçerli olduğu anlamına gelmeyebilir. Çeviri ve görseller ayrı haklara sahip olabilir."},
+    {id:"web-03", category:"açık bilgi", title:"Kaynak göstermek", text:"Kaynak göstermek yalnızca bir bağlantı bırakmak değildir. Okuyanın iddiayı kontrol edebilmesini sağlayacak kadar bilgi vermektir."},
+    {id:"web-04", category:"açık bilgi", title:"Açık kaynak", text:"Açık kaynak, kodu görebilmekten fazlasıdır. Lisansın verdiği hakları ve getirdiği yükümlülükleri anlamak gerekir."},
+    {id:"web-05", category:"açık bilgi", title:"Dijital iz", text:"Bir paylaşımı silmek, daha önce kopyalanmış bütün örnekleri silmez. İnternette yayınlamadan önce kalıcılık ihtimalini düşün."},
+    {id:"web-06", category:"açık bilgi", title:"Bilgi ve iddia", text:"Etkileyici bir cümle, doğru bir bilgiyle aynı şey değildir. Gerçek iddiaları mümkün olduğunda güvenilir kaynaklarla doğrula."},
+    {id:"web-07", category:"açık bilgi", title:"Küçük kaynakça", text:"Bir fikri nereden öğrendiğini kaydetmek, düşüncenin değerini azaltmaz. Onun izini sürülebilir kılar."},
+    {id:"web-08", category:"açık bilgi", title:"Kopya değil, iz", text:"Bir metni paylaşmak istiyorsan lisansını kontrol et. Uygun değilse kendi cümlelerinle özetle ve asıl kaynağa yönlendir."}
+  ];
+
+  const slips = [
+    ["ilk pakete inanma.", "bazen ilk paket tek dürüst olandır."],
+    ["log yalan söylemez.", "log, onu yazan kadar dürüsttür."],
+    ["eksik başlık deliktir.", "eksik başlık sadece bir sorudur."],
+    ["yerelde çalışıyorsa bitti.", "yerelde çalışması hiçbir şeyi kanıtlamaz."],
+    ["gizlediğin şey sızar.", "açıkta bıraktığın şey de kaybolur."],
+    ["otomasyon tembelliktir.", "elle yapmak da tembellik; yalnızca daha yavaş."],
+    ["okumadan çalıştırma.", "okuyarak da kandırılırsın; sadece daha geç."],
+    ["araç az olsun.", "araç yoksa her şeyi baştan yazarsın."],
+    ["sessiz kod temiz koddur.", "sessiz kod, bağırması gereken yerde susandır."],
+    ["yorum satırı yalandır.", "yorumsuz kod da bir tür kibirdir."],
+    ["test varsa güvendesin.", "test, senin aklına gelen hatayı arar."],
+    ["versiyon numarası ciddiyet.", "versiyon numarası da bir cümledir; çoğu boş."],
+    ["kopyalamak öğrenmektir.", "açıklayamadığın kopya henüz sende değildir."],
+    ["acele iz bırakır.", "iz de bir veridir; silindi sanılan yerde durur."],
+    ["uzun parola yeter.", "repoya yapışmış uzun parola kısadır."],
+    ["ölçülmeyen şey yok olur.", "yok olmaz; sadece sen görmezsin."],
+    ["her şeyin bir cevabı var.", "bazı cevaplar soruyu yanlış kurduğunu gösterir."],
+    ["hafıza kayıt tutar.", "hafıza kayıtları her açışta yeniden yorumlar."],
+    ["internet unutmaz.", "internet bazen yalnızca kırık bir bağlantıyı saklar."],
+    ["hız her şeydir.", "hız, yanlış yere gidiyorsan yalnızca kaybı artırır."],
+    ["daha çok veri daha çok bilgi.", "veri, bağlam olmadan yalnızca yığındır."],
+    ["her şeyi otomatikleştir.", "önce ne yaptığını anladığından emin ol."],
+    ["güven, kontrol demektir.", "güven bazen kontrolün sınırını bilmektir."],
+    ["boş ekran hiçbir şey değildir.", "boş ekran henüz karar verilmemiş bir alandır."],
+    ["kaynak vermek yeterlidir.", "kaynağın doğru ve lisansın uygun olması da gerekir."],
+    ["açık internette buldum.", "erişilebilir olması yeniden yayımlama izni değildir."],
+    ["bir kere test ettim.", "bir test, yalnızca denediği durumu anlatır."],
+    ["eski kod işe yaramaz.", "eski kod bazen neden başladığını hatırlatır."],
+    ["sadelik kolaydır.", "sadelik çoğu zaman fazlalığı ayıklama emeğidir."],
+    ["bitti diyebilirsin.", "bazen yalnızca şimdilik durduğunu söylemek daha doğrudur."]
+  ];
+
+  const year = $("year");
+  if (year) year.textContent = String(new Date().getFullYear());
+
+  const clockEl = $("clock");
+  const tick = () => {
+    if (!clockEl) return;
+    clockEl.textContent = new Intl.DateTimeFormat("tr-TR", {
+      timeZone: "Europe/Istanbul", hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23"
+    }).format(new Date());
+  };
+  tick();
+  window.setInterval(tick, 1000);
+
+  const weatherNames = {0:"açık",1:"açık",2:"parçalı",3:"kapalı",45:"sis",48:"sis",51:"çisenti",53:"çisenti",55:"çisenti",61:"yağmur",63:"yağmur",65:"sağanak",71:"kar",73:"kar",75:"kar",80:"sağanak",81:"sağanak",82:"sağanak",95:"gök gürültüsü"};
+  fetch("https://api.open-meteo.com/v1/forecast?latitude=41.0082&longitude=28.9784&current=temperature_2m,weather_code&timezone=Europe%2FIstanbul")
+    .then(r => { if (!r.ok) throw new Error("weather"); return r.json(); })
+    .then(data => {
+      if (!data || !data.current || typeof data.current.temperature_2m !== "number") return;
+      const weather = $("weather");
+      if (weather) weather.textContent = `${Math.round(data.current.temperature_2m)}° ${weatherNames[data.current.weather_code] || "istanbul"}`;
+    }).catch(() => {});
+
+  if (!reduceMotion) {
+    const frame = $("portrait"), ghost = $("ghost"), mast = $("mast");
+    if (frame && ghost) {
+      const glitch = () => {
+        const roll = Math.random();
+        const kind = roll < .28 ? "jitter" : roll < .48 ? "shear" : roll < .7 ? "slice" : roll < .86 ? "scan" : "rgb";
+        frame.dataset.fx = kind;
+        if (kind === "slice") {
+          const y = 8 + Math.random() * 72, h = 7 + Math.random() * 18, dir = Math.random() > .5 ? 1 : -1;
+          ghost.style.clipPath = `inset(${y}% 0 ${Math.max(0, 100-y-h)}% 0)`;
+          ghost.style.transform = `translateX(${dir * (10 + Math.random()*14)}px)`;
+          ghost.style.opacity = "1";
+        } else if (kind === "rgb") {
+          ghost.style.clipPath = "inset(0)";
+          ghost.style.transform = `translate(${Math.random() > .5 ? 6 : -6}px, 0)`;
+          ghost.style.opacity = ".85";
+        } else {
+          ghost.style.opacity = "0"; ghost.style.transform = "none"; ghost.style.clipPath = "none";
+        }
+        window.setTimeout(() => { if (frame.dataset.fx === kind) frame.dataset.fx = ""; ghost.style.opacity = "0"; }, kind === "scan" ? 520 : 190);
+        window.setTimeout(glitch, 2400 + Math.random()*5600);
+      };
+      window.setTimeout(glitch, 900);
+    }
+    if (mast) {
+      const nameTick = () => {
+        mast.dataset.fx = Math.random() > .45 ? "jitter" : "shift";
+        window.setTimeout(() => { mast.dataset.fx = ""; }, 170);
+        window.setTimeout(nameTick, 4200 + Math.random()*7000);
+      };
+      window.setTimeout(nameTick, 1800);
+    }
+  }
+
+  // Ses yalnızca kullanıcı teyp düğmesine bastığında başlar.
+  const audio = $("audio"), tapeBtn = $("tapeBtn"), tapeState = $("tapeState"), tapeHint = $("tapeHint"), led = $("led");
+  if (audio && tapeBtn) {
+    audio.volume = .55;
+    const paintTape = (on, blocked = false) => {
+      tapeBtn.setAttribute("aria-pressed", on ? "true" : "false");
+      if (led) led.classList.toggle("hot", on);
+      if (tapeState) tapeState.textContent = on ? "kapat" : "aç";
+      if (tapeHint) tapeHint.hidden = !(blocked && !on);
+    };
+    tapeBtn.addEventListener("click", () => {
+      if (audio.paused) audio.play().then(() => paintTape(true)).catch(() => paintTape(false, true));
+      else { audio.pause(); paintTape(false); }
+    });
+    audio.addEventListener("ended", () => paintTape(false));
+  }
+
+  const recent = [];
+  try {
+    const saved = JSON.parse(sessionStorage.getItem("eerrgin-recent-clips") || "[]");
+    if (Array.isArray(saved)) recent.push(...saved.filter(x => typeof x === "string").slice(-15));
+  } catch (_) {}
+  const pick = (items, exclude = []) => {
+    let pool = items.filter(item => !exclude.includes(item.id));
+    if (!pool.length) pool = items;
+    return pool[Math.floor(Math.random() * pool.length)];
+  };
+  const renderClip = (card) => {
+    const clip = $("clip"), body = $("clipBody"), file = $("clipFile");
+    if (!clip || !body || !file) return;
+    clip.classList.remove("pending");
+    file.textContent = `kirpintilar/${card.category.replaceAll(" ", "-")}.txt`;
+    body.replaceChildren();
+    const title = document.createElement("h3"); title.className = "clip-title"; title.textContent = card.title; body.append(title);
+    const text = document.createElement("p"); text.className = "clip-text"; text.textContent = card.text; body.append(text);
+    const foot = document.createElement("div"); foot.className = "clip-foot";
+    const meta = document.createElement("span"); meta.textContent = `${card.category} · özgün metin`; foot.append(meta);
+    const links = document.createElement("span"); links.className = "clip-links";
+    const label = document.createElement("span"); label.textContent = "yerel arşiv"; links.append(label);
+    foot.append(links); body.append(foot);
+  };
+  const clockPair = () => {
+    const now = new Date();
+    const fmt = new Intl.DateTimeFormat("tr-TR", {timeZone:"Europe/Istanbul", hour:"2-digit", minute:"2-digit", hourCycle:"h23"});
+    const a = fmt.format(now);
+    const bDate = new Date(now.getTime() - (3 + Math.floor(Math.random()*58))*60000);
+    return [a, fmt.format(bDate)];
+  };
+  const showNotes = () => {
+    const pair = pick(slips, []), times = clockPair();
+    const date = new Intl.DateTimeFormat("tr-TR", {timeZone:"Europe/Istanbul", day:"2-digit", month:"short"}).format(new Date());
+    const wait = $("noteWait"), split = $("split");
+    if (wait) wait.hidden = true;
+    if (split) split.hidden = false;
+    if ($("stampA")) $("stampA").textContent = `${date} · ${times[0]}`;
+    if ($("stampB")) $("stampB").textContent = `${date} · ${times[1]}`;
+    if ($("slipA")) $("slipA").textContent = pair[0];
+    if ($("slipB")) $("slipB").textContent = pair[1];
+  };
+  const reroll = () => {
+    const card = pick(clips, recent);
+    if (!card) return;
+    recent.push(card.id);
+    while (recent.length > 15) recent.shift();
+    try { sessionStorage.setItem("eerrgin-recent-clips", JSON.stringify(recent)); } catch (_) {}
+    renderClip(card);
+    showNotes();
+    const count = $("archiveCount");
+    if (count) count.textContent = `${clips.length} kırıntı · ${new Set(clips.map(x => x.category)).size} başlık`;
+  };
+  const rerollBtn = $("reroll");
+  if (rerollBtn) rerollBtn.addEventListener("click", reroll);
+  reroll();
+})();
+</script>
 </body>
 </html>
