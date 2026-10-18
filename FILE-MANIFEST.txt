@@ -1,0 +1,30 @@
+GREYFIELD FM / PACKAGE MANIFEST
+
+index.html
+style.css
+script.js
+sw.js
+manifest.webmanifest
+llms.txt
+README-TR.md
+LEGAL-AND-DEPLOY.md
+LICENSE-CODE.txt
+robots.txt
+sitemap.xml
+assets/favicon.svg
+assets/signal-art.svg
+assets/fallback-01.svg
+assets/fallback-02.svg
+assets/fallback-03.svg
+
+Not included: 7mix.mp3 and all pre-existing personal images/videos. The website can use those if they remain in the repo root, while SVG fallbacks keep the downloaded package visually complete.
+
+
+Vite public mirror (also included):
+public/sw.js
+public/manifest.webmanifest
+public/README-TR.md
+public/llms.txt
+public/robots.txt
+public/sitemap.xml
+public/assets/*
