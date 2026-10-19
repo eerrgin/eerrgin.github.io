@@ -75,6 +75,11 @@ fileInput.addEventListener("change", () => {
     preview.src = url;
     preview.hidden = false;
   };
+  image.onerror = () => {
+    image = null;
+    preview.hidden = true;
+    renderGuesses([], "Bu dosya okunamadı. Başka bir fotoğraf dene.");
+  };
   image.src = url;
 });
 
@@ -149,7 +154,12 @@ function noise(ctx) {
 }
 function startRadio(kind) {
   stopRadio();
-  const ctx = new AudioContext();
+  const AudioCtx = window.AudioContext || window.webkitAudioContext;
+  if (!AudioCtx) {
+    document.querySelector("#air").textContent = "SES DESTEKLENMİYOR";
+    return false;
+  }
+  const ctx = new AudioCtx();
   audio = ctx;
   const master = ctx.createGain();
   master.gain.value = 0.35;
@@ -176,6 +186,7 @@ function startRadio(kind) {
     osc.start();
   }
   document.querySelector("#air").textContent = "YAYINDA";
+  return true;
 }
 document.querySelectorAll(".station").forEach((button) => {
   button.addEventListener("click", () => {
@@ -193,7 +204,7 @@ document.querySelector("#play").addEventListener("click", () => {
     return;
   }
   const current = document.querySelector(".station.on");
-  startRadio(current.dataset.kind);
+  if (startRadio(current.dataset.kind) === false) return;
   document.querySelector("#play").textContent = "Yayını kes";
 });
 
@@ -204,7 +215,9 @@ document.querySelector("#tape").addEventListener("change", () => {
   stopRadio();
   document.querySelector("#play").textContent = "Yayını başlat";
   tape.src = URL.createObjectURL(file);
-  tape.play();
+  tape.play().catch(() => {
+    document.querySelector("#tape-name").textContent = `${file.name} (tarayıcı oynatmayı engelledi, tekrar dene)`;
+  });
   document.querySelector("#tape-name").textContent = file.name;
 });
 
@@ -234,11 +247,14 @@ tick();
 setInterval(tick, 1000);
 
 const dialog = document.querySelector("#cmd");
-document.querySelector("#open-cmd").addEventListener("click", () => dialog.showModal());
+const openCmd = () => {
+  if (typeof dialog.showModal === "function" && !dialog.open) dialog.showModal();
+};
+document.querySelector("#open-cmd").addEventListener("click", openCmd);
 document.addEventListener("keydown", (event) => {
   if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
     event.preventDefault();
-    dialog.showModal();
+    openCmd();
   }
 });
 dialog.addEventListener("click", (event) => {
@@ -251,6 +267,83 @@ document.querySelector("#cmd-filter").addEventListener("input", (event) => {
   });
 });
 
+
+/* ---- İstanbul hava durumu (Open-Meteo, anahtar gerekmez) ---- */
+const WMO = {
+  0: ["☀️", "Açık"], 1: ["🌤️", "Çoğunlukla açık"], 2: ["⛅", "Parçalı bulutlu"], 3: ["☁️", "Kapalı"],
+  45: ["🌫️", "Sisli"], 48: ["🌫️", "Kırağılı sis"],
+  51: ["🌦️", "Hafif çiseleme"], 53: ["🌦️", "Çiseleme"], 55: ["🌧️", "Yoğun çiseleme"],
+  56: ["🌧️", "Dondurucu çiseleme"], 57: ["🌧️", "Dondurucu çiseleme"],
+  61: ["🌧️", "Hafif yağmur"], 63: ["🌧️", "Yağmur"], 65: ["🌧️", "Şiddetli yağmur"],
+  66: ["🌧️", "Dondurucu yağmur"], 67: ["🌧️", "Dondurucu yağmur"],
+  71: ["🌨️", "Hafif kar"], 73: ["🌨️", "Kar"], 75: ["❄️", "Yoğun kar"], 77: ["🌨️", "Kar taneleri"],
+  80: ["🌦️", "Hafif sağanak"], 81: ["🌧️", "Sağanak"], 82: ["⛈️", "Şiddetli sağanak"],
+  85: ["🌨️", "Kar sağanağı"], 86: ["❄️", "Yoğun kar sağanağı"],
+  95: ["⛈️", "Gök gürültülü fırtına"], 96: ["⛈️", "Dolulu fırtına"], 99: ["⛈️", "Şiddetli dolulu fırtına"],
+};
+const wmo = (code) => WMO[code] || ["🌡️", "Bilinmiyor"];
+const WEATHER_URL =
+  "https://api.open-meteo.com/v1/forecast?latitude=41.0082&longitude=28.9784" +
+  "&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m" +
+  "&daily=weather_code,temperature_2m_max,temperature_2m_min" +
+  "&timezone=Europe%2FIstanbul&forecast_days=4&wind_speed_unit=kmh";
+
+function setText(id, text) {
+  const node = document.getElementById(id);
+  if (node) node.textContent = text;
+}
+
+function showWeatherError() {
+  setText("w-icon", "·");
+  setText("w-temp", "--");
+  setText("w-desc", "Hava durumu şu an alınamadı");
+  setText("w-feel", "Bağlantını kontrol edip sayfayı yenile.");
+}
+
+async function loadWeather() {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 8000);
+  try {
+    const res = await fetch(WEATHER_URL, { signal: controller.signal });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const cur = data.current;
+    const day = data.daily;
+    if (!cur || !day) throw new Error("beklenmeyen yanıt");
+    const [icon, label] = wmo(cur.weather_code);
+    setText("w-icon", icon);
+    setText("w-temp", Math.round(cur.temperature_2m));
+    setText("w-desc", label);
+    setText("w-feel", `Hissedilen ${Math.round(cur.apparent_temperature)}°C`);
+    setText("w-hum", `%${Math.round(cur.relative_humidity_2m)}`);
+    setText("w-wind", `${Math.round(cur.wind_speed_10m)} km/sa`);
+    setText("w-range", `${Math.round(day.temperature_2m_min[0])}° / ${Math.round(day.temperature_2m_max[0])}°`);
+    const list = document.getElementById("w-days");
+    if (list) {
+      list.replaceChildren();
+      for (let i = 1; i < day.time.length; i += 1) {
+        const li = document.createElement("li");
+        const name = document.createElement("strong");
+        name.textContent = new Intl.DateTimeFormat("tr-TR", { weekday: "short", timeZone: "Europe/Istanbul" }).format(
+          new Date(`${day.time[i]}T12:00:00+03:00`),
+        );
+        const ico = document.createElement("span");
+        ico.textContent = wmo(day.weather_code[i])[0];
+        ico.setAttribute("aria-hidden", "true");
+        li.append(name, ico, `${Math.round(day.temperature_2m_min[i])}° / ${Math.round(day.temperature_2m_max[i])}°`);
+        li.title = wmo(day.weather_code[i])[1];
+        list.append(li);
+      }
+    }
+    setText("w-time", `· Güncelleme ${new Intl.DateTimeFormat("tr-TR", { timeZone: "Europe/Istanbul", hour: "2-digit", minute: "2-digit", hour12: false }).format(new Date())}`);
+  } catch (error) {
+    showWeatherError();
+  } finally {
+    clearTimeout(timer);
+  }
+}
+loadWeather();
+setInterval(loadWeather, 15 * 60 * 1000);
 
 /* SW cleanup */
 if ("serviceWorker" in navigator) {
