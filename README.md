@@ -1,32 +1,37 @@
 # eerrgin — Gece Vardiyası
 
-Bu paket, `https://eerrgin.github.io/` için yenilenmiş ana sayfa ve kedi görsel modeli deneyini içerir. Tasarım; gece manzarası, retro donanım hissi, sıcak amber ışıklar, yerel ses üretimi ve küçük bir dijital arşiv etrafında kuruldu.
+`https://eerrgin.github.io/` adresinde yayınlanan kişisel site. Düz HTML, CSS ve JavaScript; derleme adımı yok.
 
-## Paket içeriği
+## Sayfada neler var
 
-- `index.html` — yeni ana sayfa, proje bağlantıları ve içerik bölümleri
-- `style.css` — masaüstü, tablet ve mobil tasarım
-- `script.js` — saat, hava, GitHub depo radarı, Hacker News başlıkları, Wikipedia maddesi, arşiv, komut menüsü, ses motoru ve yerel ses dosyası oynatıcı
-- `cat-ai.js` — tarayıcıda çalışan görsel sınıflandırma deneyi ve açıklanabilir özellik eşleştirmesi
+- **Hava durumu şeridi** — sayfanın en üstünde, İstanbul için anlık durum ve 3 günlük tahmin ([Open-Meteo](https://open-meteo.com/), anahtar gerekmez). Yanıt gelmezse şerit hata mesajı gösterir, sayfa çalışmaya devam eder.
+- **İstanbul arşivi** — Galata Kulesi, Eminönü, Samatya, Ayasofya, Süleymaniye ve Kız Kulesi kartları. Görseller `assets/istanbul/` altındaki bu site için çizilmiş SVG siluetlerdir.
+- **Atölye, kedi laboratuvarı, Greyfield FM, arşiv** — projeler, tarayıcıda çalışan özellik karşılaştırma, Web Audio ile üretilen ses ve kısa notlar.
 
-## Depoya yerleştirme
+## Dosya düzeni
 
-1. ZIP'i bilgisayarında aç.
-2. Depodaki mevcut dosyaları silmeden, ZIP içindeki `index.html`, `style.css`, `script.js` ve `cat-ai.js` dosyalarını deponun kök dizinine kopyala.
-3. GitHub'da bu dört dosyayı yükle veya var olanlarla değiştir ve commit et.
-4. GitHub Pages güncellemesinin ardından `https://eerrgin.github.io/` adresini yenile. Önbellekte eski sürüm görünürse sert yenileme yap (`Ctrl+F5`).
+| Yol | Görev |
+| --- | --- |
+| `index.html`, `style.css`, `script.js` | Ana sayfa |
+| `photos/`, `fonts/`, `assets/` | Görseller, yazı tipleri, SVG'ler |
+| `ergin-lab/` | Mini web deneyleri (ayrı alt sayfalar) |
+| `404.html` | Bulunamayan adresler için sayfa |
+| `scripts/check.mjs` | Bağlantı, çapa, JSON/JS/SVG ve temel HTML kontrolü |
+| `.github/workflows/ci.yml` | Her push ve pull request'te kontrolü çalıştırır |
+| `public/`, `vite.config.js`, `package.json` | Eski Vite kalıntısı; yayın bunlara bağlı değil |
+| `cat-ai.js` | Ana sayfaya şu an bağlı değil (tarayıcıda görsel sınıflandırma denemesi) |
 
-**Önemli:** Bu ZIP tüm GitHub deponun aynası değildir; güncellenen ana sayfa dosyalarını ve yeni AI modülünü içerir. `message.html`, `oku.html`, `llms.txt`, `veil.sig`, ses/görsel arşivleri ve diğer destek dosyalarını depodan silme. Bunlar ayrı sayfalar veya arşiv için kullanılmaya devam edebilir.
+## Yerelde çalıştırma ve kontrol
 
-## Kedi görsel modeli hakkında
+```bash
+node scripts/check.mjs      # ya da: npm run check
+python3 -m http.server 8000 # http://localhost:8000
+```
 
-Fotoğraf analizi, Hugging Face Transformers.js ve `Xenova/clip-vit-base-patch32` modeliyle tarayıcıda yapılır. İlk kullanımda kod ve model dosyaları CDN/Hugging Face üzerinden indirilir; bağlantı ve cihaza göre bir süre beklemek gerekebilir. Seçtiğin fotoğraf analiz API'sine gönderilmez; çıkarım tarayıcıda yapılır. Model yüklenemezse uygulama bunu bildirir. `Özelliklerle` modu ise görsel yapay zekâ değildir: seçilen tüy, yüz, desen ve vücut özelliklerini basit kurallarla karşılaştırır.
+## Yayın
 
-Bu deney ırkı kesin olarak belirlemez. Özellikle melez kedilerde ve benzer görünümlü ırklarda tahminler yanlış olabilir; ekrandaki puanlar kalibre edilmiş olasılık değildir.
+GitHub Pages `main` dalının kökünden yayınlanır (Settings → Pages → Deploy from a branch → `main` / root). `main`'e gönderilen her değişiklik yayına çıkar; CI yalnızca hataları önceden yakalar.
 
-## Çalışma notları
+## Gizlilik
 
-- Ses odası, Web Audio API ile anlık ses katmanları üretir. Otomatik çalma yoktur; ses kullanıcı düğmeye basınca başlar.
-- Yerel ses dosyası yalnızca açık tarayıcı sekmesinde oynatılır; dosya yüklenmez.
-- GitHub, Open-Meteo, Hacker News ve Wikipedia alanları ek ağ isteği yapar. Yanıt alamadıklarında sayfanın ana bölümleri ve sabit proje bağlantıları çalışmayı sürdürür.
-- Site ziyaretçi takibi veya reklam kodu eklemez.
+Analitik, reklam ve takip kodu yok. Hava durumu şeridi Open-Meteo'ya, kedi ve ses bölümleri yalnızca tarayıcıya yerel çalışır. Ayrıntı: `LEGAL-AND-DEPLOY.md`, `llms.txt`.

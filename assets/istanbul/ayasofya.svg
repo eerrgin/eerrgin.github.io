@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Ayasofya silueti">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#201a26"/>
+      <stop offset="1" stop-color="#8a4a2e"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b2a3a"/>
+      <stop offset="1" stop-color="#0a1119"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#sky)"/>
+  <circle cx="100" cy="90" r="46" fill="#e23a2f" opacity=".85"/>
+  <circle cx="100" cy="90" r="74" fill="#e23a2f" opacity=".12"/>
+<path d="M0 330 L0 300 Q120 255 250 290 T520 285 T800 300 L800 330Z" fill="#0d0a08"/>
+  <g fill="#1d1510">
+    <rect x="250" y="220" width="300" height="110"/>
+    <path d="M300 220 Q400 90 500 220Z" fill="#241a14"/>
+    <path d="M250 220 Q285 170 320 220Z"/><path d="M480 220 Q515 170 550 220Z"/>
+    <rect x="160" y="130" width="14" height="200"/><path d="M156 130 L167 96 L178 130Z"/>
+    <rect x="626" y="130" width="14" height="200"/><path d="M622 130 L633 96 L644 130Z"/>
+    <rect x="200" y="200" width="60" height="130"/><rect x="540" y="200" width="60" height="130"/>
+  </g>
+  <path d="M400 112 V92" stroke="#d9c8b2" stroke-width="3"/>
+  <g fill="#d9c8b2" opacity=".6"><rect x="300" y="250" width="12" height="26"/><rect x="340" y="250" width="12" height="26"/><rect x="388" y="250" width="12" height="26"/><rect x="436" y="250" width="12" height="26"/><rect x="480" y="250" width="12" height="26"/></g>
+  <rect y="330" width="800" height="120" fill="url(#sea)"/>
+  <g stroke="#f4ebe3" stroke-opacity=".12" stroke-width="2"><path d="M40 360h120M220 385h160M460 365h140M640 392h110M90 410h100M330 420h150"/></g>
+</svg>
