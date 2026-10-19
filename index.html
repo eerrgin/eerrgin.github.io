@@ -2,237 +2,195 @@
 <html lang="tr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#0a0b0d">
-  <meta name="description" content="Ergin Kaplan / eerrgin — bağımsız sistem deneyleri, yerel araçlar, dijital kırıntılar ve kendi frekansını üreten retro radyo.">
-  <meta name="author" content="Ergin Kaplan">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <link rel="canonical" href="https://eerrgin.github.io/">
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <link rel="manifest" href="/manifest.webmanifest">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="alternate" type="text/plain" title="Site notları" href="/llms.txt">
-  <title>ERGİN KAPLAN // GREYFIELD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1014">
+  <meta name="description" content="Ergin Kaplan'ın gece açık kalan dijital atölyesi: bağımsız yazılım, küçük güvenlik araçları, yapay zekâ deneyleri ve üretilen sesler.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="eerrgin — Gece Vardiyası">
+  <meta property="og:description" content="Kod, sinyal ve biraz gece gürültüsü. Bağımsız bir dijital atölye.">
+  <meta property="og:url" content="https://eerrgin.github.io/">
+  <title>eerrgin — Gece Vardiyası</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"Person",
     "name":"Ergin Kaplan",
-    "alternateName":["eerrgin","Ergin"],
+    "alternateName":"eerrgin",
     "url":"https://eerrgin.github.io/",
     "sameAs":["https://github.com/eerrgin"],
-    "jobTitle":"Independent Systems Experimenter",
-    "homeLocation":{"@type":"Place","name":"Istanbul, Türkiye"},
-    "knowsAbout":["local-first software","defensive security","JavaScript","open web","digital autonomy","retro audio synthesis"]
+    "knowsAbout":["AI experiments","independent software","Python","web audio","defensive security tooling"]
   }
   </script>
 </head>
 <body>
-  <a class="skip-link" href="#main">içeriğe geç</a>
+  <a class="skip-link" href="#main">İçeriğe geç</a>
   <div class="read-progress" id="readProgress" aria-hidden="true"></div>
-  <div class="cursor-aura" id="cursorAura" aria-hidden="true"></div>
-
+  <div class="grain" aria-hidden="true"></div>
   <header class="topbar">
-    <a class="brand" href="#top" aria-label="Ergin ana sayfa">
-      <span class="brand-glyph" aria-hidden="true">e.</span>
-      <span class="brand-text">eerrgin<span>independent / istanbul</span></span>
+    <a class="brand" href="#top" aria-label="eerrgin ana sayfa">
+      <span class="brand-mark">e<span>.</span></span>
+      <span class="brand-copy">eerrgin<small>gece vardiyası / istanbul</small></span>
     </a>
-    <nav class="desktop-nav" aria-label="Ana gezinme">
-      <a href="#work">tezgâh</a>
-      <a href="#signals">sinyal</a>
-      <a href="#radio">frekans</a>
-      <a href="#archive">arşiv</a>
+    <button class="mobile-menu" id="mobileMenu" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Menüyü aç">☰</button>
+    <nav class="main-nav" id="mainNav" aria-label="Ana menü">
+      <a href="#atolye">Atölye</a>
+      <a href="#ai-lab">AI laboratuvarı</a>
+      <a href="#radyo">Frekans</a>
+      <a href="#sinyal">Dış sinyal</a>
+      <a href="#arsiv">Arşiv</a>
     </nav>
-    <div class="top-meta">
-      <span class="live-led" aria-hidden="true"></span>
-      <span id="weather" class="weather-readout">İSTANBUL / …</span>
-      <time id="clock" aria-label="İstanbul saati">--:--:--</time>
-      <button id="openCommand" class="icon-button command-trigger" type="button" aria-label="Komut paletini aç (Ctrl veya Command + K)"><span>⌘</span><kbd>K</kbd></button>
-    </div>
+    <div class="top-status"><span class="status-dot"></span><span id="clock">--:--:--</span><span class="status-sep">/</span><span>IST</span><button class="icon-button" id="commandOpen" type="button" aria-label="Komut menüsünü aç (Ctrl+K)">⌘K</button></div>
   </header>
 
   <main id="main">
-    <section class="hero section-wrap" id="top">
+    <section class="hero section-wrap" id="top" aria-labelledby="heroTitle">
       <div class="hero-copy">
-        <p class="eyebrow"><span>FIELD NOTE 001</span><span class="eyebrow-line"></span><span>NO BRAND DEPARTMENT</span></p>
-        <h1>.<span class="surname">ergin<span class="redaction" aria-label="kaplan adının üstünü çizen sansür çizgisi"></span></span></h1>
-        <div class="hero-statement">
-          <span class="statement-mark">//</span>
-          <p>KEEP IT CURIOUS<br><em>Build. Learn. Repeat.</em></p>
-        </div>
-        <p class="hero-note">Curious by nature. Drawn to code, digital experiences, and ideas that deserve to be built.</p>
+        <p class="eyebrow"><span class="eyebrow-rule"></span> BAĞIMSIZ DİJİTAL ATÖLYE <span class="eyebrow-id">NO. 001 / IST</span></p>
+        <h1 id="heroTitle">Bazı fikirler<br><em>gece</em> çalışır.</h1>
+        <p class="hero-lede">Kodun bittiği yerde merak başlıyor. Küçük araçlar, yapay zekâ denemeleri, kendi kendine oluşan sesler ve henüz adını koymadığım şeyler.</p>
+        <p class="hero-subline">Burası sunum dosyası değil. Masada açık kalmış bir bilgisayar gibi düşün.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#work"><span>masadakiler</span><span aria-hidden="true">↘</span></a>
-          <button class="button button-quiet" id="heroRadioBtn" type="button"><span>frekansı uyandır</span><span aria-hidden="true">◉</span></button>
+          <a class="button button-primary" href="#atolye">Masaya yaklaş <span>↘</span></a>
+          <a class="button button-quiet" href="#ai-lab">Bir şey dene <span>↗</span></a>
         </div>
-        <div class="hero-footline"><span>IST / TR</span><span>0xB16B00B5_ACTIVE</span><span id="heroDate">--.--.----</span></div>
+        <div class="hero-footline"><span>PYTHON / WEB</span><span>LOCAL EXPERIMENTS</span><span>NO TRACKERS</span></div>
       </div>
-
-      <div class="hero-machine interactive-machine" id="heroMachine">
-        <div class="machine-top"><span><i class="tiny-led"></i> SIGNAL MONITOR / A-17</span><span>LOCAL VIEW</span></div>
-        <div class="machine-screen" id="heroScreen">
-          <div class="screen-grid" aria-hidden="true"></div>
-          <img id="heroArt" src="/assets/signal-art.svg" alt="Karanlık bir masada CRT ekranı, sinyal çizgileri ve şehir ışıkları; özgün vektör çizim." draggable="false">
-          <div class="screen-stamp">GREYFIELD <b>FM</b></div>
-          <div class="screen-coordinates" aria-hidden="true"><span>41°01'N</span><span>28°58'E</span></div>
-          <div class="screen-reticle" aria-hidden="true"></div>
-        </div>
-        <div class="machine-bottom"><span>SYNC <b>LOCAL</b></span><span>NO TRACKERS</span><span class="signal-bars" aria-label="Sinyal görselleştirmesi"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
-        <div class="machine-caption"><span>FIG. 01</span><span>Görüntü, sunucudan bir şey beklemez.</span></div>
+      <div class="hero-scene" aria-label="Gece dağlarının arasından geçen trenin stilize vektör manzarası">
+        <div class="scene-topline"><span>FIELD RECORDING / 04:17 AM</span><span class="scene-rec"><i></i> REC</span></div>
+        <svg class="landscape" viewBox="0 0 720 540" role="img" aria-labelledby="sceneTitle sceneDesc" preserveAspectRatio="xMidYMid slice">
+          <title id="sceneTitle">Gece hattı</title><desc id="sceneDesc">Ay ışığındaki dağların arasından geçen, pencereleri sıcak ışıkla parlayan küçük bir tren.</desc>
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#101c2b"/><stop offset=".58" stop-color="#1d3540"/><stop offset="1" stop-color="#675446"/></linearGradient>
+            <linearGradient id="valley" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#10232b"/><stop offset="1" stop-color="#0b1117"/></linearGradient>
+            <linearGradient id="windowGlow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffdca0"/><stop offset="1" stop-color="#c96c45"/></linearGradient>
+            <filter id="moonBlur"><feGaussianBlur stdDeviation="18"/></filter>
+          </defs>
+          <rect width="720" height="540" fill="url(#sky)"/>
+          <circle cx="514" cy="116" r="62" fill="#e8cda0" opacity=".12" filter="url(#moonBlur)"/>
+          <circle cx="514" cy="116" r="31" fill="#f0d9aa"/>
+          <circle cx="526" cy="107" r="28" fill="#b5ad9c" opacity=".24"/>
+          <g fill="#e9e2d2" opacity=".8"><circle cx="72" cy="69" r="1.5"/><circle cx="149" cy="124" r="1.1"/><circle cx="229" cy="52" r="1.3"/><circle cx="328" cy="98" r="1.1"/><circle cx="399" cy="45" r="1.2"/><circle cx="602" cy="62" r="1.1"/><circle cx="663" cy="155" r="1.6"/><circle cx="574" cy="206" r="1"/><circle cx="92" cy="192" r="1.2"/><circle cx="281" cy="163" r="1.5"/><circle cx="449" cy="213" r="1.1"/></g>
+          <g stroke="#e8d8b8" stroke-width="1" opacity=".38"><path d="M143 85v7m-3.5-3.5h7"/><path d="M361 142v7m-3.5-3.5h7"/><path d="M635 101v7m-3.5-3.5h7"/></g>
+          <path d="M0 322 92 222 140 270 244 154 318 260 404 181 491 279 584 190 720 307V540H0Z" fill="#1d3139"/>
+          <path d="M0 353 107 287 184 322 296 232 376 327 483 269 567 328 652 258 720 311V540H0Z" fill="#14272f"/>
+          <path d="M244 154 228 179 251 174 267 192 276 186 296 232 270 204 255 207 246 193 235 199Z" fill="#a1a5a0" opacity=".36"/>
+          <path d="M404 181 386 207 409 201 424 221 435 218 453 238 430 222 414 224 407 210 394 215Z" fill="#a1a5a0" opacity=".28"/>
+          <path d="M0 386 Q110 320 236 375 T490 369 T720 355V540H0Z" fill="url(#valley)"/>
+          <path d="M-20 437 C135 348 189 465 317 400 S557 385 744 427" fill="none" stroke="#bd8155" stroke-width="2" opacity=".35"/>
+          <path d="M-20 448 C135 359 189 476 317 411 S557 396 744 438" fill="none" stroke="#e3b778" stroke-width="1" opacity=".35"/>
+          <g fill="#071015"><path d="M24 408 46 349 68 408Z"/><path d="M47 427 73 353 99 427Z"/><path d="M83 418 104 363 125 418Z"/><path d="M599 405 624 335 649 405Z"/><path d="M635 426 661 348 687 426Z"/><path d="M664 407 686 348 708 407Z"/></g>
+          <g transform="translate(350 348) rotate(-5)">
+            <path d="M0 49h190l-14 45H11Z" fill="#070b0e" opacity=".65"/>
+            <path d="M10 13h46l17 18h88l13 12v41H10Z" fill="#202e32" stroke="#8b775f" stroke-width="1.5"/>
+            <path d="M16 19h39l10 15H16Z" fill="#c5b39a" opacity=".3"/>
+            <path d="M65 34h92v44H65Z" fill="#26393e" stroke="#8f7861" stroke-width="1.2"/>
+            <path d="M76 41h19v22H76Z M104 41h19v22h-19Z M132 41h14v22h-14Z" fill="url(#windowGlow)"/>
+            <path d="M0 13h24l13-13h36v31H0Z" fill="#334449" stroke="#968064" stroke-width="1.4"/>
+            <rect x="13" y="7" width="26" height="16" fill="url(#windowGlow)"/>
+            <path d="M-5 31h23v16H-5Z" fill="#bd6849"/><circle cx="19" cy="79" r="8" fill="#090d10" stroke="#798080" stroke-width="2"/><circle cx="151" cy="79" r="8" fill="#090d10" stroke="#798080" stroke-width="2"/>
+            <path d="M-9 48h206" stroke="#d2a477" stroke-width="2" opacity=".7"/>
+            <path d="M-3 35 2 31h38v13H-3Z" fill="#d7a16a" opacity=".2"/>
+          </g>
+          <path d="M0 480 Q135 452 240 484 T460 479 T720 464V540H0Z" fill="#080e12"/>
+          <path d="M-30 510 Q180 467 350 502 T750 489" fill="none" stroke="#d09b63" stroke-width="2" opacity=".35"/>
+          <path d="M-30 520 Q180 477 350 512 T750 499" fill="none" stroke="#e7cba1" stroke-width="1" opacity=".22"/>
+          <g fill="#060b0f"><path d="M570 540v-112h-4v-20l-20-11 20-7-13-16h13l4-14 4 14h13l-13 16 20 7-20 11v20h-4v112Z"/><path d="M609 540v-82h-3v-15l-15-8 15-6-9-13h9l3-11 3 11h9l-9 13 15 6-15 8v15h-3v82Z"/></g>
+          <rect x="0" y="0" width="720" height="540" fill="none" stroke="#f0d9aa" stroke-opacity=".15"/>
+        </svg>
+        <div class="scene-overlay"><span>GECE HATTI</span><span>IST → UNKNOWN</span></div>
+        <div class="scene-bottom"><span>Bir yere varmak şart değil.</span><span class="scene-coords">41°00' N / 28°58' E</span></div>
       </div>
     </section>
 
-    <div class="ticker" aria-label="Durum şeridi"><div class="ticker-track"><span>LOCAL FIRST</span><b>✳</b><span>NO TRACKING</span><b>✳</b><span>NO FAKE TERMINAL</span><b>✳</b><span>AUTHORIZED ONLY</span><b>✳</b><span>CODE / SOUND / STATIC</span><b>✳</b><span>LOCAL FIRST</span><b>✳</b><span>NO TRACKING</span><b>✳</b><span>NO FAKE TERMINAL</span><b>✳</b><span>AUTHORIZED ONLY</span><b>✳</b><span>CODE / SOUND / STATIC</span><b>✳</b></div></div>
+    <div class="ticker" aria-label="Atölye konuları"><div class="ticker-track"><span>YAZILIM</span><b>✳</b><span>YAPAY ZEKÂ</span><b>✳</b><span>DİJİTAL ARKEOLOJİ</span><b>✳</b><span>GECE SESLERİ</span><b>✳</b><span>GÜVENLİK ARAÇLARI</span><b>✳</b><span>YAZILIM</span><b>✳</b><span>YAPAY ZEKÂ</span><b>✳</b><span>DİJİTAL ARKEOLOJİ</span><b>✳</b><span>GECE SESLERİ</span><b>✳</b><span>GÜVENLİK ARAÇLARI</span><b>✳</b></div></div>
 
-    <section class="system-row section-wrap" aria-label="Sistem durumu">
-      <div class="system-cell"><span class="cell-label">DURUM</span><b><i class="live-led"></i> AYAKTA</b></div>
-      <div class="system-cell"><span class="cell-label">KONUM</span><b>İSTANBUL / TR</b></div>
-      <div class="system-cell"><span class="cell-label">ÇALIŞMA BİÇİMİ</span><b>YEREL + AÇIK KAYNAK</b></div>
-      <div class="system-cell"><span class="cell-label">İMZA</span><b>0xB16B00B5_ACTIVE</b></div>
+    <section class="section-wrap status-strip" aria-label="Atölye durumu">
+      <div><span class="meta-label">BUGÜNÜN MODU</span><strong><i class="status-dot"></i> merak açık</strong></div>
+      <div><span class="meta-label">ÇALIŞMA ALANI</span><strong>kod / ses / deney</strong></div>
+      <div><span class="meta-label">BAĞLANTI</span><strong>yerel öncelikli</strong></div>
+      <div><span class="meta-label">HAVA</span><strong id="weather">dışarı bakılıyor…</strong></div>
     </section>
 
-    <section class="content-section section-wrap" id="work">
-      <header class="section-heading"><div class="section-number">01 / WORKBENCH</div><div><h2>EV.</h2><p>This is my own little space on the web.</p></div><span class="heading-side-note">DÖRT DOSYA<br>AZ BAHANE</span></header>
+    <section class="content-section section-wrap" id="atolye">
+      <div class="section-heading"><div class="section-index">01 <span>/ WORKBENCH</span></div><div><p class="eyebrow">MASADAKİLER</p><h2>İşler, fikirler,<br><em>izler.</em></h2></div><p class="heading-aside">Bazıları araç. Bazıları deney. Hiçbiri kendini olduğundan büyük göstermiyor.</p></div>
       <div class="project-grid">
-        <article class="project-card project-feature">
-          <div class="card-topline"><span>PY / LOCAL SCAN</span><span class="card-dot"></span></div>
-          <div class="project-icon icon-eye" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M4 24S11 11 24 11s20 13 20 13-7 13-20 13S4 24 4 24Z"/><circle cx="24" cy="24" r="7"/><path d="M24 17v-5m0 24v-5M17 24h-5m24 0h-5"/></svg></div>
-          <h3>VeilCheck</h3><p>Klasörü yerelde tarar. Şüpheli anahtar dizgilerini işaretler; dosyayı dışarı göndermez, kodu çalıştırmaz. Sezgiseldir, güvenlik sertifikası değildir.</p>
-          <div class="card-meta"><span>PYTHON / STDLIB</span><a href="https://github.com/eerrgin/VeilCheck" target="_blank" rel="noopener noreferrer">kaynağı aç ↗</a></div>
-        </article>
-        <article class="project-card">
-          <div class="card-topline"><span>HTTP / READ ONLY</span><span class="card-dot"></span></div>
-          <div class="project-icon icon-wave" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M4 24h7l5-13 8 26 7-21 5 8h8"/><path d="M5 7h38v34H5z"/></svg></div>
-          <h3>GreySignal</h3><p>İzin verilen adrese tek GET isteği gönderip güvenlik başlıklarını kontrol eder. Eksik başlık bir soru işaretidir; tek başına açık kanıtı değil.</p>
-          <div class="card-meta"><span>PYTHON / ONE GET</span><a href="https://github.com/eerrgin/GreySignal" target="_blank" rel="noopener noreferrer">kaynağı aç ↗</a></div>
-        </article>
-        <article class="project-card">
-          <div class="card-topline"><span>RECON / AUTHORIZED</span><span class="card-dot"></span></div>
-          <div class="project-icon icon-cross" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="15"/><circle cx="24" cy="24" r="5"/><path d="M24 2v10M24 36v10M2 24h10M36 24h10"/></svg></div>
-          <h3>ReconX</h3><p>İzinli keşif için port, DNS, sertifika ve başlık bilgilerini raporlar. Yetki yoksa hedef de yok.</p>
-          <div class="card-meta"><span>PYTHON / JSON</span><a href="https://github.com/eerrgin/ReconX-Web-Reconnaissance-Toolkit-" target="_blank" rel="noopener noreferrer">kaynağı aç ↗</a></div>
-        </article>
-        <article class="project-card">
-          <div class="card-topline"><span>SQLITE / OFFLINE LAB</span><span class="card-dot"></span></div>
-          <div class="project-icon icon-db" aria-hidden="true"><svg viewBox="0 0 48 48"><ellipse cx="24" cy="10" rx="15" ry="6"/><path d="M9 10v27c0 3 7 6 15 6s15-3 15-6V10M9 19c0 3 7 6 15 6s15-3 15-6M9 28c0 3 7 6 15 6s15-3 15-6"/></svg></div>
-          <h3>local-sqli-lab</h3><p>Ağ bağlantısız bir SQLite laboratuvarı. Hatalı sorgu ile parametreli sorgu arasındaki farkı gösterir; üretim aracı değildir.</p>
-          <div class="card-meta"><span>SQLITE / EDUCATION</span><a href="https://github.com/eerrgin/local-sqli-lab" target="_blank" rel="noopener noreferrer">kaynağı aç ↗</a></div>
-        </article>
+        <article class="project-card featured"><div class="project-meta"><span>01 / LOCAL SCAN</span><span class="project-spark">✳</span></div><div class="project-art art-veil"><span class="orb"></span><span class="scan-line"></span><span class="art-code">.env<br>••••••<br>debug=true</span></div><h3>VeilCheck</h3><p>Kodun içinde unutulmuş sır işaretlerini arar. Dosyaları dışarı taşımaz; bulduklarını saklamadan, değerleri ifşa etmeden gösterir.</p><div class="project-bottom"><span>PYTHON / STDLIB</span><a href="https://github.com/eerrgin/VeilCheck" target="_blank" rel="noopener noreferrer">Kaynağı gör ↗</a></div></article>
+        <article class="project-card"><div class="project-meta"><span>02 / HEADER STUDY</span><span class="project-spark">✳</span></div><div class="project-art art-signal"><span class="signal-wave"></span><span class="signal-wave wave-two"></span><span class="signal-cross">+</span></div><h3>GreySignal</h3><p>Bir adresin yanıt başlıklarını okur. Güvenlik ayarlarını daha görünür kılar; eksik olanı otomatik olarak açık ilan etmez.</p><div class="project-bottom"><span>HTTP / READ ONLY</span><a href="https://github.com/eerrgin/GreySignal" target="_blank" rel="noopener noreferrer">Kaynağı gör ↗</a></div></article>
+        <article class="project-card"><div class="project-meta"><span>03 / RECON</span><span class="project-spark">✳</span></div><div class="project-art art-recon"><div class="radar-ring"></div><div class="radar-ring ring-two"></div><span class="radar-sweep"></span><i></i></div><h3>ReconX</h3><p>İzinli keşif için ağ ve servis bilgilerini toplar. Dağınık çıktıyı okunur bir rapora dönüştürür.</p><div class="project-bottom"><span>PYTHON / REPORT</span><a href="https://github.com/eerrgin/ReconX-Web-Reconnaissance-Toolkit-" target="_blank" rel="noopener noreferrer">Kaynağı gör ↗</a></div></article>
+        <article class="project-card"><div class="project-meta"><span>04 / OFFLINE LAB</span><span class="project-spark">✳</span></div><div class="project-art art-sql"><span class="sql-bracket">{ }</span><span class="sql-lines"><i></i><i></i><i></i><i></i></span></div><h3>local-sqli-lab</h3><p>SQL enjeksiyonu fikrini ağ bağlantısı olmadan, küçük bir SQLite laboratuvarında anlaşılır kılmak için.</p><div class="project-bottom"><span>SQLITE / EDUCATION</span><a href="https://github.com/eerrgin/local-sqli-lab" target="_blank" rel="noopener noreferrer">Kaynağı gör ↗</a></div></article>
       </div>
-      <div class="repo-radar panel">
-        <div class="panel-heading"><div><span class="mini-label">LIVE QUERY / GITHUB</span><h3>Depoda son kıpırdayanlar.</h3></div><button class="text-button" id="refreshRepos" type="button">yenile ↻</button></div>
-        <p class="quiet-text">Herkese açık depoların güncelleme tarihlerini GitHub API üzerinden okur. Yanıt gelmezse yukarıdaki sabit bağlantılar çalışmaya devam eder.</p>
-        <div id="repoList" class="repo-list" aria-live="polite"><div class="skeleton-line"></div><div class="skeleton-line"></div><div class="skeleton-line"></div></div>
-        <div class="source-note">KAYNAK: <a href="https://api.github.com/users/eerrgin/repos" target="_blank" rel="noopener noreferrer">GitHub public API</a> · 5 dakikalık yerel önbellek</div>
+      <div class="repo-radar panel"><div class="panel-heading"><div><p class="eyebrow">CANLI DEPO RADARI</p><h3>Son hareket edenler.</h3></div><button class="text-button" type="button" id="refreshRepos">Yeniden tara ↻</button></div><p class="quiet-text">GitHub'daki herkese açık depoların güncellenme tarihleri. Servis yanıt vermezse sabit proje bağlantıları yukarıda kalır.</p><div class="repo-list" id="repoList"><div class="skeleton-line"></div><div class="skeleton-line"></div><div class="skeleton-line"></div></div><p class="source-note">KAYNAK / <a href="https://github.com/eerrgin?tab=repositories" target="_blank" rel="noopener noreferrer">github.com/eerrgin</a></p></div>
+    </section>
+
+    <section class="content-section section-wrap ai-section" id="ai-lab">
+      <div class="section-heading"><div class="section-index">02 <span>/ SMALL AI</span></div><div><p class="eyebrow">YENİ DENEY</p><h2>Bir fotoğraf.<br><em>Birkaç ihtimal.</em></h2></div><p class="heading-aside">Küçük bir görsel model. Büyük iddialar yok; sadece bir şeyi birlikte tahmin etmeyi deniyoruz.</p></div>
+      <div class="ai-shell">
+        <div class="ai-intro"><div class="ai-orbit" aria-hidden="true"><span></span><i></i><b></b></div><p class="eyebrow">EXPERIMENT 05 / FELINE VISION</p><h3>Kedi kimliği<br>laboratuvarı</h3><p>Fotoğrafını bırak. Tarayıcıdaki görsel model, görüntüyü olası kedi ırkı tanımlarıyla karşılaştıracak. Sonuç kesin kimlik değil; modelin en yakın bulduğu tahmin.</p><div class="privacy-note"><span class="privacy-icon">◉</span><span><strong>Fotoğrafın cihazında kalır.</strong><small>Görsel sunucuya yüklenmez. Model ilk kullanımda indirilir, sonra tarayıcı önbelleğinden tekrar kullanılabilir.</small></span></div><div class="model-tag"><span class="status-dot"></span> ZERO-SHOT IMAGE MODEL <span class="tag-divider">/</span> LOCAL INFERENCE</div></div>
+        <div class="ai-workspace">
+          <div class="ai-tabs" role="tablist" aria-label="Kedi analiz yöntemi"><button class="ai-tab active" id="photoTab" type="button" role="tab" aria-selected="true" data-mode="photo">01 / Fotoğrafla</button><button class="ai-tab" id="traitsTab" type="button" role="tab" aria-selected="false" data-mode="traits">02 / Özelliklerle</button></div>
+          <div class="ai-panel" id="photoPanel" role="tabpanel" aria-labelledby="photoTab">
+            <label class="upload-zone" id="uploadZone" for="catPhoto"><input type="file" id="catPhoto" accept="image/png,image/jpeg,image/webp,image/avif" hidden><span class="upload-symbol">＋</span><strong>Bir kedi fotoğrafı bırak</strong><small>veya dosya seç · JPG, PNG, WEBP</small><span class="upload-preview-wrap" id="previewWrap" hidden><img id="catPreview" alt="Yüklediğin kedi fotoğrafı önizlemesi"><span id="fileName">fotoğraf seçildi</span></span></label>
+            <div class="ai-buttons"><button class="button button-primary" id="analyzeCat" type="button" disabled>Görüntüyü analiz et <span>↗</span></button><button class="button button-quiet" id="clearCat" type="button">Sıfırla</button></div>
+            <div class="model-progress" id="modelProgress" hidden><div class="progress-copy"><span id="modelStatus">Model hazırlanıyor…</span><span id="modelPercent">—</span></div><div class="progress-track"><i id="modelProgressBar"></i></div></div>
+            <div class="ai-result" id="catResult" aria-live="polite"><span class="result-placeholder">Görüntü geldiğinde tahminler burada belirecek.</span></div>
+            <p class="micro-note">İlk analizde model dosyaları indirilebilir; bağlantı ve cihaza göre beklemek gerekebilir. Bu, kedi ırkları için özel eğitilmiş bir uzman model değildir; tahminleri kesin kimlik sayma. Model yüklenemezse özellik tabanlı yöntemi kullanabilirsin.</p>
+          </div>
+          <div class="ai-panel" id="traitsPanel" role="tabpanel" aria-labelledby="traitsTab" hidden>
+            <p class="traits-intro">Fotoğrafın yoksa birkaç özelliği seç. Bu yol, gerçek görsel model değildir; seçtiklerine göre açıklanabilir bir eşleştirme yapar.</p>
+            <form id="traitsForm" class="traits-form">
+              <label> Tüy uzunluğu <select name="fur"><option value="any">Emin değilim</option><option value="short">Kısa</option><option value="medium">Orta</option><option value="long">Uzun</option><option value="hairless">Tüysüz / çok kısa</option></select></label>
+              <label> Yüz yapısı <select name="face"><option value="any">Emin değilim</option><option value="flat">Basık yüz</option><option value="pointed">İnce / üçgen yüz</option><option value="round">Yuvarlak yüz</option><option value="long">Uzun yüz</option></select></label>
+              <label> Desen <select name="pattern"><option value="any">Emin değilim</option><option value="solid">Tek renk</option><option value="tabby">Tekir çizgileri</option><option value="point">Yüz, kulak, pati ve kuyrukta koyu renk</option><option value="bicolor">İki renk / benekli</option></select></label>
+              <label> Vücut yapısı <select name="build"><option value="any">Emin değilim</option><option value="slender">İnce ve zarif</option><option value="medium">Orta</option><option value="large">Büyük / kemikli</option><option value="compact">Tıknaz / kompakt</option></select></label>
+              <button class="button button-primary traits-submit" type="submit">Olasılıkları karşılaştır <span>↗</span></button>
+            </form>
+            <div class="ai-result" id="traitsResult" aria-live="polite"><span class="result-placeholder">Seçimlerini yaptıktan sonra eşleşmeler burada görünür.</span></div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="content-section signal-section section-wrap optional-section" id="signals">
-      <header class="section-heading"><div class="section-number">02 / OUTSIDE NOISE</div><div><h2>Dışarıdan gelen gürültü.</h2><p>Başlıklar burada görünür; yazılar kendi kaynaklarında kalır.</p></div><span class="heading-side-note">CANLI KAYNAK<br>YUMUŞAK ÖNBELLEK</span></header>
-      <div class="signal-grid">
-        <article class="signal-panel hn-panel">
-          <div class="panel-heading"><div><span class="mini-label">01 / TECH PULSE</span><h3>Hacker News</h3></div><button class="text-button" id="refreshHn" type="button">tekrar tara ↻</button></div>
-          <p class="panel-intro">Teknoloji, bilim ve internetin o anki konuşmaları. Sayfa metinlerini kopyalamaz; başlıktan kaynağa geçersin.</p>
-          <div id="hnList" class="headline-list" aria-live="polite"><div class="skeleton-line"></div><div class="skeleton-line"></div><div class="skeleton-line"></div><div class="skeleton-line"></div></div>
-          <div class="source-note">KAYNAK: <a href="https://news.ycombinator.com/" target="_blank" rel="noopener noreferrer">news.ycombinator.com</a> · <span id="hnUpdated">bağlantı bekleniyor</span></div>
-        </article>
-        <article class="signal-panel wiki-panel">
-          <div class="panel-heading"><div><span class="mini-label">02 / RANDOM ACCESS</span><h3>Ansiklopedik kırıntı</h3></div><button class="text-button" id="refreshWiki" type="button">başka bir şey ↻</button></div>
-          <div class="wiki-terminal"><span class="wiki-index">W / 000</span><span class="wiki-loader" id="wikiLoader" aria-hidden="true">SCAN</span></div>
-          <div id="wikiCard" class="wiki-card" aria-live="polite"><h4>Bir rastgele madde çağrılacak.</h4><p>Kaynak yanıt verince burada başlık ve kısa bir açıklama görünür.</p></div>
-          <div class="source-note">METİN LİSANSI: CC BY-SA · Kaynak ve katkı geçmişi bağlantısı gösterilir. <a href="https://www.wikipedia.org/" target="_blank" rel="noopener noreferrer">Wikipedia</a></div>
-        </article>
-        <article class="signal-panel orbit-panel">
-          <div class="panel-heading"><div><span class="mini-label">03 / OFFICIAL SOURCES</span><h3>Yörüngedeki şirketler</h3></div><span class="quiet-tag">RESMÎ LİNKLER</span></div>
-          <p class="panel-intro">Tesla / xAI / Elon Musk için doğrudan kaynağa git. Başka sitelerden makale kopyalamak veya X gönderilerini izinsiz kazımak yok.</p>
-          <a class="source-link" href="https://ir.tesla.com/press" target="_blank" rel="noopener noreferrer"><span class="source-symbol">T</span><span><b>Tesla Press / Investor Relations</b><small>Şirket duyuruları ve güncellenen basın bültenleri</small></span><span class="external-arrow">↗</span></a>
-          <a class="source-link" href="https://x.ai/news" target="_blank" rel="noopener noreferrer"><span class="source-symbol source-symbol-x">x</span><span><b>xAI / SpaceXSI · News</b><small>Grok ve şirket tarafındaki resmî duyurular</small></span><span class="external-arrow">↗</span></a>
-          <a class="source-link" href="https://x.com/elonmusk" target="_blank" rel="noopener noreferrer"><span class="source-symbol source-symbol-x">𝕏</span><span><b>Elon Musk · X</b><small>Doğrudan hesap · platform koşulları geçerli</small></span><span class="external-arrow">↗</span></a>
-          <div class="legal-nudge"><span aria-hidden="true">↳</span> Resmî kaynakta yayımlanan içerik de otomatik olarak yeniden yayımlama lisansı vermez.</div>
-        </article>
-      </div>
-    </section>
-
-    <section class="content-section radio-section section-wrap" id="radio">
-      <header class="section-heading"><div class="section-number">03 / SOUND LAB</div><div><h2>Frekans odası.</h2><p>Bir MP3 çalmıyor. Ses, bu cihazda o anda üretiliyor.</p></div><span class="heading-side-note">NO SAMPLE<br>NO STREAM RIP</span></header>
+    <section class="content-section section-wrap radio-section" id="radyo">
+      <div class="section-heading"><div class="section-index">03 <span>/ SOUND ROOM</span></div><div><p class="eyebrow">FREKANS ODASI</p><h2>Bir kanal seç.<br><em>Geceyi dinle.</em></h2></div><p class="heading-aside">Hazır şarkı yok. Tarayıcı, seçtiğin atmosfere göre ses katmanları üretir. Her açışında biraz farklı duyulabilir.</p></div>
       <div class="radio-console panel" id="radioConsole">
-        <div class="radio-topline"><span><i class="live-led" id="radioLed"></i> GREYFIELD FM / SYNTH ENGINE</span><span id="radioStatus">STANDBY · USER ACTIVATION REQUIRED</span></div>
-        <div class="radio-main">
-          <div class="radio-display">
-            <div class="radio-display-head"><span>NOW GENERATING</span><span id="radioFrequency">88.8 MHz</span></div>
-            <canvas id="spectrum" width="720" height="240" aria-label="Üretilen sesin frekans görselleştirmesi"></canvas>
-            <div class="radio-now"><span class="on-air"><i></i> <b id="onAirLabel">OFF AIR</b></span><h3 id="trackName">Gece Otobüsü / beklemede</h3><p id="trackMeta">ORIGINAL WEB AUDIO · HER DÖNGÜDE YENİ DİZİLİM</p></div>
-          </div>
-          <div class="radio-controls">
-            <span class="mini-label">KANAL SEÇ</span>
-            <div class="station-buttons" role="group" aria-label="Radyo kanalı"><button type="button" class="station-button active" data-station="night" aria-pressed="true"><span>88.8</span> GECE OTOBÜSÜ</button><button type="button" class="station-button" data-station="vhs" aria-pressed="false"><span>87.9</span> VHS RÜYASI</button><button type="button" class="station-button" data-station="rust" aria-pressed="false"><span>91.3</span> PASLI NEON</button></div>
-            <div class="radio-actions"><button type="button" class="button button-primary" id="radioToggle"><span id="radioToggleText">yayını başlat</span><span aria-hidden="true">▶</span></button><label class="volume-control" for="radioVolume"><span>SES</span><input id="radioVolume" type="range" min="0" max="100" value="45"><output id="radioVolumeOut" for="radioVolume">45%</output></label></div>
-            <p class="micro-copy">Bu bir canlı internet istasyonu değil; özgün, prosedürel ses tasarımıdır. Tarayıcılar sesin başlaması için düğmeye basmanı ister. Sekmeden ayrılınca sesi kapatabilirsin.</p>
-          </div>
-        </div>
-        <div class="radio-footer"><span>GENERATIVE / WEB AUDIO API</span><span>TRACK ID: <b id="trackId">GF-000</b></span><span>NO THIRD-PARTY MUSIC</span></div>
+        <div class="radio-topline"><span><i class="status-dot"></i> GREYFIELD FM / PROCEDURAL AUDIO</span><span id="radioLive">STANDBY</span></div>
+        <div class="radio-main"><div class="radio-display"><div class="radio-display-head"><span>OSCILLATOR ARRAY / A-03</span><span id="frequencyReadout">88.8 MHz</span></div><canvas id="spectrum" width="900" height="240" aria-label="Ses frekansı görselleştirmesi"></canvas><div class="radio-now"><span class="on-air" id="onAir"><i></i> YAYIN BEKLEMEDE</span><h3 id="stationTitle">Gece Otobüsü</h3><p id="stationDesc">uzak motor / yumuşak uğultu / seyrek ışıklar</p></div></div><div class="radio-controls"><p class="eyebrow">FREKANS SEÇ</p><div class="station-buttons"><button type="button" class="station-button active" data-station="night"><span>88.8</span> Gece Otobüsü <b>↗</b></button><button type="button" class="station-button" data-station="vhs"><span>87.9</span> VHS Rüyası <b>↗</b></button><button type="button" class="station-button" data-station="rust"><span>91.3</span> Paslı Neon <b>↗</b></button></div><div class="radio-actions"><button type="button" class="button button-primary" id="radioToggle"><span id="radioToggleLabel">Yayını başlat</span><span id="radioToggleIcon">▶</span></button><label class="volume-control">SEVİYE <input id="radioVolume" type="range" min="0" max="100" value="38"><output id="volumeOut">38%</output></label></div><p class="micro-copy">Ses sadece sen başlattığında çalışır. Sekmeden ayrılınca durdurabilir, istediğin anda kapatabilirsin.</p></div></div>
+        <div class="radio-footer"><span>BU SES ANLIK ÜRETİLİR</span><span>NO SAMPLE / NO STREAM RIP</span><span id="radioSeed">SESSION / 0001</span></div>
       </div>
+      <div class="tape-room"><div class="tape-copy"><p class="eyebrow">KENDİ ARŞİVİN</p><h3>Eski teyp</h3><p>Bilgisayarındaki bir ses dosyasını yalnızca kendi oturumunda dinle. Dosya hiçbir yere yüklenmez.</p><a href="https://soundcloud.com/yukseksadakat/y-ksek-sadakat-katil-makt-l-1" target="_blank" rel="noopener noreferrer">SoundCloud bağlantısı ↗</a></div><div class="tape-player"><div class="tape-reels" id="tapeReels" aria-hidden="true"><span></span><span></span><i></i></div><div class="tape-label"><span>LOCAL MEDIA / OPTIONAL</span><b id="localAudioName">DOSYA BEKLENİYOR</b><small>MP3 · WAV · OGG</small></div><div class="tape-buttons"><label class="button button-quiet file-label" for="localAudio">Ses dosyası seç <span>＋</span></label><input id="localAudio" type="file" accept="audio/*" hidden><audio id="localPlayer" controls preload="none" hidden></audio><button type="button" class="text-button" id="tryArchiveAudio">7mix.mp3 varsa dene ↗</button><button type="button" class="text-button" id="localAudioPlay" disabled>Dinlet ↗</button><button type="button" class="text-button" id="localAudioStop" disabled>Durdur ×</button></div><p class="micro-copy" id="localAudioStatus">Dosya seçilmedi.</p></div></div>
+    </section>
 
-      <div class="tape-room">
-        <div class="tape-copy"><span class="mini-label">LOCAL MEDIA / OPTIONAL</span><h3>Eski teyp.</h3><p>Depoda bulunan kendi ses dosyan varsa burada elle başlatılabilir. Otomatik çalma yok. Telifini doğrulayamadığın parçayı yayımlama.</p><a href="https://soundcloud.com/yukseksadakat/y-ksek-sadakat-katil-makt-l-1" target="_blank" rel="noopener noreferrer">önceki SoundCloud bağlantısı ↗</a></div>
-        <div class="tape-player">
-          <div class="tape-reels" id="tapeReels" aria-hidden="true"><span></span><span></span><i></i></div>
-          <div class="tape-label"><span>ARCHIVE TAPE / 01</span><b id="tapeStatus">DOSYA BEKLENİYOR</b></div>
-          <audio id="legacyAudio" src="7mix.mp3" preload="none" loop></audio>
-          <div class="tape-buttons"><button class="text-button" type="button" id="tapeToggle">yerel dosyayı dene ▶</button><label for="tapeFile" class="text-button file-label">başka dosya seç +</label><input id="tapeFile" type="file" accept="audio/*" hidden></div>
-          <p class="micro-copy" id="tapeHint">7mix.mp3 bulunursa kullanılır; yoksa kendi ses dosyanı seçebilirsin. Seçilen dosya sadece bu oturumda kullanılır.</p>
-        </div>
+    <section class="content-section section-wrap signal-section" id="sinyal">
+      <div class="section-heading"><div class="section-index">04 <span>/ OUTSIDE NOISE</span></div><div><p class="eyebrow">DIŞARIDAN GELEN</p><h2>Ağa düşen<br><em>sinyaller.</em></h2></div><p class="heading-aside">İnternetin başka köşelerinde neler dönüyor? Başlıkları gör, kaynağa kendin git.</p></div>
+      <div class="signal-grid">
+        <article class="signal-panel panel"><div class="panel-heading"><div><p class="eyebrow">TECH PULSE</p><h3>Hacker News</h3></div><button class="icon-button" id="refreshNews" type="button" aria-label="Haberleri yenile">↻</button></div><p class="panel-intro">Teknoloji ve bilim dünyasından canlı başlıklar.</p><div class="headline-list" id="headlineList"><p class="quiet-text">Sinyal aranıyor…</p></div><p class="source-note">KAYNAK / <a href="https://news.ycombinator.com/" target="_blank" rel="noopener noreferrer">news.ycombinator.com</a></p></article>
+        <article class="signal-panel panel wiki-panel"><div class="panel-heading"><div><p class="eyebrow">RANDOM ACCESS</p><h3>Rastgele bilgi</h3></div><span class="quiet-tag">W / 000</span></div><div class="wiki-terminal"><span>KNOWLEDGE CACHE</span><span class="wiki-loader" id="wikiState">IDLE</span></div><div class="wiki-card" id="wikiCard"><h4>Bir şey çağır.</h4><p>Ansiklopediden rastgele bir madde; küçük bir bilgi tüneli.</p><div class="wiki-actions"><button type="button" class="text-button" id="randomWiki">Yeni madde getir ↻</button></div></div><p class="source-note">KAYNAK / <a href="https://www.wikipedia.org/" target="_blank" rel="noopener noreferrer">Wikipedia</a></p></article>
+        <article class="signal-panel panel orbit-panel"><div class="panel-heading"><div><p class="eyebrow">OPEN CHANNELS</p><h3>Kaynak kapıları</h3></div><span class="quiet-tag">DIRECT</span></div><p class="panel-intro">Gürültüyü azaltıp doğrudan asıl kaynağa git.</p><a class="source-link" href="https://arxiv.org/list/cs.AI/recent" target="_blank" rel="noopener noreferrer"><span class="source-symbol">∑</span><span><b>arXiv / AI</b><small>Yeni araştırma ön baskıları</small></span><span class="external-arrow">↗</span></a><a class="source-link" href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer"><span class="source-symbol">⌘</span><span><b>MDN Web Docs</b><small>Web platformunun hafızası</small></span><span class="external-arrow">↗</span></a><a class="source-link" href="https://archive.org/" target="_blank" rel="noopener noreferrer"><span class="source-symbol source-symbol-muted">▤</span><span><b>Internet Archive</b><small>Kaybolmaması gereken şeyler</small></span><span class="external-arrow">↗</span></a><a class="source-link" href="https://github.com/eerrgin" target="_blank" rel="noopener noreferrer"><span class="source-symbol source-symbol-muted">⌥</span><span><b>Kendi depolarım</b><small>Kaynak kod, notlar, denemeler</small></span><span class="external-arrow">↗</span></a></article>
       </div>
     </section>
 
-    <section class="content-section archive-section section-wrap" id="archive">
-      <header class="section-heading"><div class="section-number">04 / STATIC ARCHIVE</div><div><h2>Kırıntılar.</h2><p>Rastgele söz üreticisi değil; yerel arşivden bir masa çekmecesi.</p></div><span class="heading-side-note">LOCAL CACHE<br>NO REMOTE TEXT</span></header>
-      <div class="archive-grid">
-        <article class="snippet-panel panel" id="snippetPanel">
-          <div class="panel-heading"><div><span class="mini-label">KIRPINTILAR / TXT</span><h3 id="snippetCategory">internet kültürü</h3></div><span class="quiet-tag" id="snippetIndex">FRAG-000</span></div>
-          <p class="snippet-title" id="snippetTitle">404: hatırlanmıyor</p>
-          <blockquote id="snippetText">Bazen sayfa durur; onu anlamlı kılan bütün bağlantılar ortadan kalkmıştır.</blockquote>
-          <div class="snippet-bottom"><span id="snippetCounter">YEREL ARŞİV</span><button type="button" class="button button-quiet" id="nextSnippet">masayı değiştir ↻</button></div>
-        </article>
-        <article class="contradiction-panel panel">
-          <div class="panel-heading"><div><span class="mini-label">NOTLAR / ÇELİŞKİ.TXT</span><h3>İki ihtimal.</h3></div><span class="quiet-tag">A/B</span></div>
-          <div class="contradiction-pair"><div><span class="pair-label">A // KOLAY CEVAP</span><p id="slipA">log yalan söylemez.</p></div><div><span class="pair-label">B // KÖTÜ HABER</span><p id="slipB">log, onu yazan kadar dürüsttür.</p></div></div>
-          <div class="snippet-bottom"><span>HAKLI OLANI SEÇMEK ZORUNDA DEĞİLSİN</span><button class="text-button" id="nextContradiction" type="button">yeniden karıştır ↻</button></div>
-        </article>
+    <section class="content-section section-wrap archive-section" id="arsiv">
+      <div class="section-heading"><div class="section-index">05 <span>/ STATIC ARCHIVE</span></div><div><p class="eyebrow">MASANIN ÇEKMECESİ</p><h2>Biraz düşünce,<br><em>biraz parazit.</em></h2></div><p class="heading-aside">Tamamlanmış fikirler değil; bazen bir cümlenin, bazen bir görüntünün izi.</p></div>
+      <div class="archive-grid"><article class="archive-note panel"><div class="archive-card-head"><span>NOT DEFTERİ / TXT</span><span id="fragmentNumber">FRAG-001</span></div><div class="fragment-content" aria-live="polite"><p class="fragment-kicker" id="fragmentCategory">AĞ HAFIZASI</p><h3 id="fragmentTitle">Bir bağlantının hayaleti</h3><blockquote id="fragmentText">Bir sayfa silindiğinde yalnızca metin kaybolmaz. Ona giden yollar, cevaplar ve o sırada kim olduğumuz da biraz bulanıklaşır.</blockquote></div><div class="archive-card-foot"><span>YEREL ARŞİV / 01</span><button type="button" class="text-button" id="nextFragment">Çekmeceyi aç ↻</button></div></article>
+        <article class="archive-visual"><div class="visual-art" id="visualArt"><div class="visual-moon"></div><div class="visual-ridge ridge-back"></div><div class="visual-ridge ridge-front"></div><div class="visual-cabin"><span></span><i></i></div><div class="visual-signal">NO SIGNAL<br><b>STILL HERE</b></div><div class="visual-stars"></div></div><div class="visual-caption"><span>VISUAL MEMORY / 001</span><span>SVG + CSS / GENERATED HERE</span></div><p>Bir resim indirmeden de bir atmosfer kurulabilir. Bu sahne sayfanın içinde çiziliyor; her parçası hafif, hareketi sakin.</p><button type="button" class="text-button" id="changeVisual">Manzarayı değiştir ↻</button></article>
       </div>
-
-      <div class="image-archive panel">
-        <div class="panel-heading"><div><span class="mini-label">VISUAL MEMORY / LOCAL FILES</span><h3>Görsel arşiv.</h3></div><div class="gallery-counter"><span id="galleryCurrent">01</span> / <span id="galleryTotal">07</span></div></div>
-        <div class="gallery-stage" id="galleryStage">
-          <div class="gallery-grid-bg" aria-hidden="true"></div>
-          <img id="archiveImage" src="12.jpg" alt="Yerel arşivden görüntü" draggable="false">
-          <div class="gallery-overlay"><span id="galleryFileName">12.jpg</span><span>ARŞİV / KARE</span></div>
-          <button class="gallery-arrow prev" id="galleryPrev" type="button" aria-label="Önceki görsel">←</button><button class="gallery-arrow next" id="galleryNext" type="button" aria-label="Sonraki görsel">→</button>
-        </div>
-        <div class="gallery-thumbnails" id="galleryThumbnails" aria-label="Görsel seçimi"></div>
-        <p class="micro-copy">Sitedeki eski resim dosyaları varsa buradan açılır. Pakette bulunmayan dosyalar için telifsiz, özgün vektör yedeği kullanılır; dışarıdan görsel çekilmez.</p>
-      </div>
+      <div class="duality panel"><div class="duality-head"><p class="eyebrow">ÇELİŞKİ.TXT</p><span>A / B</span></div><div class="duality-columns"><div><span>A // KOLAY CEVAP</span><p id="thoughtA">Bir sistem, kurallarına uyduğu sürece çalışır.</p></div><div><span>B // TERS IŞIK</span><p id="thoughtB">Bazen arızanın gösterdiği şey, tasarımın gizlediğidir.</p></div></div><div class="duality-foot"><span>İKİSİ AYNI ANDA DOĞRU OLABİLİR.</span><button class="text-button" type="button" id="mixThoughts">Yeniden karıştır ↻</button></div></div>
     </section>
 
-    <section class="content-section contact-section section-wrap" id="contact">
-      <div class="contact-left"><span class="mini-label">05 / EXIT NODE</span><h2>Bir şey<br><em>bırak.</em></h2><p>belkide konuşmaya gerek yok.</p></div>
-      <div class="contact-right"><a class="contact-link" href="https://github.com/eerrgin" target="_blank" rel="noopener noreferrer"><span>01</span><b>GitHub / depo</b><i>↗</i></a><a class="contact-link" href="mailto:erginkaplan22@gmail.com"><span>02</span><b>E-posta</b><i>↗</i></a><a class="contact-link" href="https://soundcloud.com/yukseksadakat/y-ksek-sadakat-katil-makt-l-1" target="_blank" rel="noopener noreferrer"><span>03</span><b>SoundCloud / dış bağlantı</b><i>↗</i></a><button class="contact-link contact-copy" id="copySignal" type="button"><span>04</span><b>Durum imzasını kopyala</b><i>⧉</i></button></div>
+    <section class="contact-section section-wrap" id="contact">
+      <div class="contact-main"><p class="eyebrow">SONRAKİ SİNYAL</p><h2>Bir şey inşa ediyorsan<br><em>masaya bırak.</em></h2><p>Fikir, hata, merak ya da sadece bir selam. Gürültüyü filtrelemeye gerek yok.</p><div class="contact-actions"><a class="button button-primary" href="https://github.com/eerrgin" target="_blank" rel="noopener noreferrer">GitHub'a gel <span>↗</span></a><a class="button button-quiet" href="mailto:erginkaplan22@gmail.com">E-posta gönder <span>↗</span></a><a class="button button-quiet" href="https://soundcloud.com/yukseksadakat/y-ksek-sadakat-katil-makt-l-1" target="_blank" rel="noopener noreferrer">Dinleme arşivi <span>↗</span></a></div></div>
+      <div class="contact-side"><span class="contact-sigil">e<span>.</span></span><p>INDEPENDENT BY DESIGN<br>CURIOUS BY DEFAULT</p><span class="contact-status"><i class="status-dot"></i> CONNECTION OPEN</span></div>
     </section>
   </main>
+  <footer class="site-footer section-wrap"><a href="#top" class="footer-brand">eerrgin<span>.</span></a><p>Bir köşede çalışan küçük şeyler.</p><div class="footer-links"><a href="https://github.com/eerrgin" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><a href="mailto:erginkaplan22@gmail.com">E-POSTA ↗</a><span id="year"></span></div></footer>
 
-  <footer class="footer section-wrap"><div class="footer-main"><a class="brand footer-brand" href="#top"><span class="brand-glyph">e.</span><span class="brand-text">eerrgin<span>no grand finale</span></span></a><p>Deneyler, küçük araçlar ve masada kalan kırıntılar.<br>Güvenlik araçları yalnızca izinli ve eğitim amaçlı kullanılır.</p><div class="footer-stamp">© <span id="year"></span> ERGİN KAPLAN<br>0xB16B00B5_ACTIVE</div></div><div class="footer-bottom"><span>BU SİTEDE ANALİTİK / REKLAM / GİZLİ TAKİP YOK.</span><span><a href="/llms.txt">SITE NOTES</a> · <a href="/README-TR.md">README</a> · WEATHER DATA: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">OPEN-METEO</a></span></div></footer>
-
-  <div class="mobile-quickbar" aria-label="Cep kısayolları"><button type="button" data-jump="#radio">◉ <span>FREKANS</span></button><button type="button" data-jump="#archive">▤ <span>KIRINTI</span></button><button type="button" id="pocketMode">⌁ <span>CEP MODU</span></button><button type="button" id="mobileCommand">⌘ <span>KOMUT</span></button></div>
+  <div class="command-backdrop" id="commandBackdrop" hidden><section class="command-dialog" role="dialog" aria-modal="true" aria-labelledby="commandTitle"><div class="command-heading"><span id="commandTitle">KOMUT MERKEZİ</span><button class="icon-button" type="button" id="commandClose" aria-label="Kapat">×</button></div><label class="command-input-wrap"><span>⌕</span><input id="commandInput" type="text" placeholder="Bir bölüme git veya deney aç…" autocomplete="off"><kbd>ESC</kbd></label><div class="command-results" id="commandResults"><button type="button" data-target="#atolye"><span>01</span> Atölye <kbd>↵</kbd></button><button type="button" data-target="#ai-lab"><span>02</span> AI laboratuvarı <kbd>↵</kbd></button><button type="button" data-target="#radyo"><span>03</span> Frekans odası <kbd>↵</kbd></button><button type="button" data-target="#sinyal"><span>04</span> Dış sinyal <kbd>↵</kbd></button><button type="button" data-target="#arsiv"><span>05</span> Arşiv <kbd>↵</kbd></button></div><p>↑ ↓ gezin · ENTER aç · ESC kapat</p></section></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <dialog class="command-dialog" id="commandDialog" aria-labelledby="commandTitle">
-    <div class="command-window"><div class="command-title"><span id="commandTitle">KOMUT SATIRI / GÜVENLİ KISAYOLLAR</span><button type="button" class="icon-button" id="closeCommand" aria-label="Kapat">×</button></div><label class="command-label" for="commandInput">Komut ara. Gerçek terminal değil; sadece bu sitede gezinti.</label><input id="commandInput" type="search" autocomplete="off" spellcheck="false" placeholder="örn. radyo, github, kırıntı…"><div class="command-results" id="commandResults"></div><div class="command-footer"><span>↑↓ SEÇ</span><span>ENTER ÇALIŞTIR</span><span>ESC KAPAT</span></div></div>
-  </dialog>
-
   <script src="script.js" defer></script>
+  <script type="module" src="cat-ai.js"></script>
 </body>
 </html>
