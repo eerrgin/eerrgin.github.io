@@ -1,41 +1,50 @@
-# eerrgin — Gece Vardiyası
+# eerrgin — Gece Vardiyası (düzeltme paketi)
 
-Ergin Kaplan için gece atölyesi. Eski işler duruyor: VeilCheck, GreySignal, ReconX, local-sqli-lab, Ergin Lab bağlantısı, arşiv notları, Greyfield FM, kedi laboratuvarı.
+Bu zip **depo köküne** açılır. Ara klasör yok.
 
-Siyah / kırmızı / kemik. Gösteriş yok. Cümleler şirket sitesi gibi değil.
+## Mutlaka yap
 
-## Depoya nasıl koyarsın
-
-Bu zip **kök dosyalar** içerir. `eerrgin.github.io` deposunun **köküne** at:
+1. Zip'i bilgisayarda aç.
+2. Şunları `eerrgin.github.io` **köküne** kopyala (üzerine yaz):
 
 ```
 index.html
 style.css
 script.js
+sw.js
 favicon.svg
-photos/
-fonts/
-README-TR.md
+photos/          (klasörün tamamı)
+fonts/           (klasörün tamamı)
 ```
 
-1. Depoyu yedekle (eski `index.html` için dal aç).
-2. Zip’i aç; dosyaları depo köküne koy. `photos/` ve `fonts/` klasörleri bozulmasın.
-3. `ergin-lab/`, `kirpintilar/` ve kişisel klasörleri silme. Sayfa onlara link verebilir.
-4. `7mix.mp3` pakette yok. Yayın hakkın sende değilse depoda tutma. “Eski teyp” ziyaretçinin kendi dosyasını seçmesini bekler. SoundCloud yalnızca dış bağlantı.
+3. Eski bozuk görünüm çoğu zaman **service worker önbelleğinden** geliyor.
+   - `sw.js` bu pakette var: eski cache'i silip kendini kaldırır.
+   - Yükledikten sonra sitede **Ctrl+Shift+R** (Mac: Cmd+Shift+R) yap.
+   - Hâlâ bozuksa tarayıcıda: Geliştirici araçları → Application → Service Workers → Unregister, Cache Storage → Delete.
 
-## Ne var
+4. `ergin-lab/`, `kirpintilar/`, `message.html`, `oku.html` gibi eski klasör/sayfaları **silme**.
 
-| Bölüm | İçerik |
-|--------|--------|
-| Atölye | VeilCheck, GreySignal, ReconX, local-sqli-lab |
-| Laboratuvar | Kedi ırkı yakınlık deneyi (özellik + yerel fotoğraf; sunucuya gitmez) |
-| Frekans | Tarayıcıda üretilen 3 kanal (örnek dosya yok) |
-| Sinyal | HN, Wikipedia, arXiv, MDN, Archive, GitHub kapıları |
-| Arşiv | Not çekmecesi |
-| Kırmızı hat | Ana sayfada olmayan cümleler |
+5. `photos/` ve `fonts/` klasörleri index ile **aynı seviyede** olmalı:
 
-`Ctrl+K` / `⌘K` komut kapısı. Radyo yalnızca düğmeyle başlar. Analitik yok.
+```
+eerrgin.github.io/
+  index.html
+  style.css
+  script.js
+  sw.js
+  favicon.svg
+  photos/
+    gece-hatti.jpg
+    ...
+  fonts/
+    instrument.woff2
+    ...
+  ergin-lab/   (eski, kalsın)
+```
 
-## Not
+Yan klasöre (`public/`, `assets/` vb.) atma. GitHub Pages kök `index.html` dosyasını okur.
 
-Canlı sitede daha zengin bir sürüm (depo radarı, canlı haber vb.) çalışıyorsa onu ayrı tut; bu paket kök için sade ve taşınabilir yedektir.
+## Kontrol
+
+Aç: https://eerrgin.github.io/  
+Arka plan koyu siyah, kırmızı çizgi üstte, fotoğraflar yüklenmeli.
