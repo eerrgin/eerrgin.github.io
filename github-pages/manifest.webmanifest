@@ -1,0 +1,19 @@
+{
+  "name": "eerrgin — Gece Vardiyası",
+  "short_name": "eerrgin",
+  "description": "İstanbul'da gece vardiyası: kırmızı hat, metal, radyo ve yerel laboratuvar.",
+  "lang": "tr-TR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#070103",
+  "theme_color": "#070103",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
