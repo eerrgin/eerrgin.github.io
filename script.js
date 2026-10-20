@@ -13,6 +13,63 @@ const breeds = [
 ];
 
 const choice = { fur: "any", pattern: "any", build: "any", ears: "any" };
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const THEMES = ["gece", "amber", "kemik", "sis"];
+let lastWeather = null;
+
+function pulse(kind) {
+  const tremorOn = document.documentElement.dataset.tremor !== "off";
+  if (!reduceMotion && tremorOn) {
+    document.body.classList.remove("tremor");
+    void document.body.offsetWidth;
+    document.body.classList.add("tremor");
+    window.setTimeout(() => document.body.classList.remove("tremor"), 480);
+  }
+  if (!reduceMotion && tremorOn && typeof navigator.vibrate === "function") {
+    const patterns = {
+      tick: [14],
+      radio: [18, 46, 18, 46, 28],
+      theme: [12, 36, 22, 36, 12],
+      kavra: [10, 28, 10],
+    };
+    try {
+      navigator.vibrate(patterns[kind] || patterns.tick);
+    } catch {
+      /* bazı tarayıcılar titreşimi reddeder */
+    }
+  }
+}
+
+function currentTheme() {
+  return document.documentElement.dataset.theme || "gece";
+}
+
+function setTheme(name) {
+  const wanted = String(name || "").toLocaleLowerCase("tr");
+  const next = THEMES.includes(wanted)
+    ? wanted
+    : THEMES[(THEMES.indexOf(currentTheme()) + 1) % THEMES.length];
+  document.documentElement.dataset.theme = next;
+  try {
+    localStorage.setItem("e.theme", next);
+  } catch {
+    /* depolama kapalıysa tema yine bu oturumda kalır */
+  }
+  pulse("theme");
+  return next;
+}
+
+function setTremor(on) {
+  const next = on ? "on" : "off";
+  document.documentElement.dataset.tremor = next;
+  try {
+    localStorage.setItem("e.tremor", next);
+  } catch {
+    /* yok say */
+  }
+  if (on) pulse("tick");
+  return next;
+}
 
 function rankTraits() {
   const keys = Object.keys(choice).filter((key) => choice[key] !== "any");
@@ -35,6 +92,7 @@ function rankTraits() {
 function renderGuesses(items, line) {
   const root = document.querySelector("#guesses");
   const note = document.querySelector("#lab-note");
+  if (!root || !note) return;
   note.textContent = line;
   root.innerHTML = items
     .map(
@@ -54,7 +112,7 @@ document.querySelectorAll("[data-trait]").forEach((button) => {
   });
 });
 
-document.querySelector("#compare-traits").addEventListener("click", () => {
+document.querySelector("#compare-traits")?.addEventListener("click", () => {
   const items = rankTraits();
   if (!items.length) {
     renderGuesses([], "Bir özellik seç. Hepsi boşsa herkes aynı görünür.");
@@ -66,7 +124,7 @@ document.querySelector("#compare-traits").addEventListener("click", () => {
 const preview = document.querySelector("#preview");
 const fileInput = document.querySelector("#photo");
 let image = null;
-fileInput.addEventListener("change", () => {
+fileInput?.addEventListener("change", () => {
   const file = fileInput.files && fileInput.files[0];
   if (!file) return;
   const url = URL.createObjectURL(file);
@@ -88,7 +146,7 @@ function readPhoto(img) {
   const canvas = document.createElement("canvas");
   canvas.width = size;
   canvas.height = size;
-  const ctx = canvas.getContext("2d");
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
   ctx.drawImage(img, 0, 0, size, size);
   const data = ctx.getImageData(0, 0, size, size).data;
   let white = 0;
@@ -112,7 +170,7 @@ function readPhoto(img) {
   return { white: white / count, orange: orange / count, dark: dark / count, stripe: changes / count };
 }
 
-document.querySelector("#compare-photo").addEventListener("click", () => {
+document.querySelector("#compare-photo")?.addEventListener("click", () => {
   if (!image) {
     renderGuesses([], "Önce bir fotoğraf bırak. Dosya bu tarayıcıdan çıkmaz.");
     return;
@@ -133,13 +191,16 @@ document.querySelector("#compare-photo").addEventListener("click", () => {
 });
 
 let audio = null;
-let timers = [];
+let analyser = null;
+let wave = null;
 function stopRadio() {
-  timers.forEach(clearInterval);
-  timers = [];
   if (audio) audio.close();
   audio = null;
-  document.querySelector("#air").textContent = "BEKLEMEDE";
+  analyser = null;
+  wave = null;
+  document.body.classList.remove("live");
+  const air = document.querySelector("#air");
+  if (air) air.textContent = "BEKLEMEDE";
 }
 function noise(ctx) {
   const length = ctx.sampleRate * 2;
@@ -155,8 +216,9 @@ function noise(ctx) {
 function startRadio(kind) {
   stopRadio();
   const AudioCtx = window.AudioContext || window.webkitAudioContext;
+  const air = document.querySelector("#air");
   if (!AudioCtx) {
-    document.querySelector("#air").textContent = "SES DESTEKLENMİYOR";
+    if (air) air.textContent = "SES DESTEKLENMİYOR";
     return false;
   }
   const ctx = new AudioCtx();
@@ -164,6 +226,12 @@ function startRadio(kind) {
   const master = ctx.createGain();
   master.gain.value = 0.35;
   master.connect(ctx.destination);
+  const tap = ctx.createAnalyser();
+  tap.fftSize = 1024;
+  tap.smoothingTimeConstant = 0.72;
+  master.connect(tap);
+  analyser = tap;
+  wave = new Uint8Array(tap.fftSize);
   const bed = ctx.createBufferSource();
   bed.buffer = noise(ctx);
   bed.loop = true;
@@ -185,7 +253,9 @@ function startRadio(kind) {
     g.connect(master);
     osc.start();
   }
-  document.querySelector("#air").textContent = "YAYINDA";
+  document.body.classList.add("live");
+  if (air) air.textContent = "YAYINDA";
+  pulse("radio");
   return true;
 }
 document.querySelectorAll(".station").forEach((button) => {
@@ -197,19 +267,20 @@ document.querySelectorAll(".station").forEach((button) => {
     if (audio) startRadio(button.dataset.kind);
   });
 });
-document.querySelector("#play").addEventListener("click", () => {
+document.querySelector("#play")?.addEventListener("click", () => {
+  const play = document.querySelector("#play");
   if (audio) {
     stopRadio();
-    document.querySelector("#play").textContent = "Yayını başlat";
+    play.textContent = "Yayını başlat";
     return;
   }
   const current = document.querySelector(".station.on");
   if (startRadio(current.dataset.kind) === false) return;
-  document.querySelector("#play").textContent = "Yayını kes";
+  play.textContent = "Yayını kes";
 });
 
 const tape = new Audio();
-document.querySelector("#tape").addEventListener("change", () => {
+document.querySelector("#tape")?.addEventListener("change", () => {
   const file = document.querySelector("#tape").files[0];
   if (!file) return;
   stopRadio();
@@ -226,16 +297,27 @@ const lines = [
   ["404", "Bulunamaması, orada hiçbir şey olmadığı anlamına gelmez. Bazen yalnızca adres değişmiştir."],
   ["Sekmeler", "Açık kalan sekmeler, bitmemiş düşüncelerin küçük ve parlak mezarlığıdır."],
   ["Sessiz hata", "Ekranda görünmeyen hata bitmiş değildir. Doğru soru henüz sorulmamış olabilir."],
+  ["KAVRA", "Henüz bir vitrin değil. İskelet masada. Model başka odada, kapısı kapalı."],
+  ["Statik", "Gürültü de bir sinyaldir. Sadece henüz kime ait olduğu belli değildir."],
 ];
 let fragment = 0;
-document.querySelector("#next-note").addEventListener("click", () => {
+function nextNote() {
   fragment = (fragment + 1) % lines.length;
-  document.querySelector("#note-title").textContent = lines[fragment][0];
-  document.querySelector("#note-body").textContent = lines[fragment][1];
+  const title = document.querySelector("#note-title");
+  const body = document.querySelector("#note-body");
+  if (title) title.textContent = lines[fragment][0];
+  if (body) body.textContent = lines[fragment][1];
+  return { title: lines[fragment][0], body: lines[fragment][1] };
+}
+document.querySelector("#next-note")?.addEventListener("click", () => {
+  nextNote();
+  pulse("tick");
 });
 
 function tick() {
-  document.querySelector("#clock").textContent = new Intl.DateTimeFormat("tr-TR", {
+  const clock = document.querySelector("#clock");
+  if (!clock) return;
+  clock.textContent = new Intl.DateTimeFormat("tr-TR", {
     timeZone: "Europe/Istanbul",
     hour: "2-digit",
     minute: "2-digit",
@@ -248,40 +330,51 @@ setInterval(tick, 1000);
 
 const dialog = document.querySelector("#cmd");
 const openCmd = () => {
-  if (typeof dialog.showModal === "function" && !dialog.open) dialog.showModal();
+  if (dialog && typeof dialog.showModal === "function" && !dialog.open) dialog.showModal();
 };
-document.querySelector("#open-cmd").addEventListener("click", openCmd);
+document.querySelector("#open-cmd")?.addEventListener("click", openCmd);
 document.addEventListener("keydown", (event) => {
   if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
     event.preventDefault();
     openCmd();
   }
 });
-dialog.addEventListener("click", (event) => {
+dialog?.addEventListener("click", (event) => {
   if (event.target.closest("a")) dialog.close();
 });
-document.querySelector("#cmd-filter").addEventListener("input", (event) => {
+
+let staticArmed = false;
+document.querySelector("#cmd-filter")?.addEventListener("input", (event) => {
   const needle = event.target.value.toLocaleLowerCase("tr");
   dialog.querySelectorAll("a").forEach((link) => {
     link.hidden = needle && !link.textContent.toLocaleLowerCase("tr").includes(needle);
   });
+  if (needle.trim() === "statik" && !staticArmed) {
+    staticArmed = true;
+    burst();
+    const title = document.querySelector("#note-title");
+    const body = document.querySelector("#note-body");
+    if (title && body) {
+      title.textContent = "Statik";
+      body.textContent = "Komut kutusu bir frekans açtı. Sayfa bir an dağıldı, sonra yerine döndü.";
+    }
+  }
+  if (needle.trim() !== "statik") staticArmed = false;
 });
 
-
-/* ---- İstanbul hava durumu (Open-Meteo, anahtar gerekmez) ---- */
 const WMO = {
-  0: ["☀️", "Açık"], 1: ["🌤️", "Çoğunlukla açık"], 2: ["⛅", "Parçalı bulutlu"], 3: ["☁️", "Kapalı"],
-  45: ["🌫️", "Sisli"], 48: ["🌫️", "Kırağılı sis"],
-  51: ["🌦️", "Hafif çiseleme"], 53: ["🌦️", "Çiseleme"], 55: ["🌧️", "Yoğun çiseleme"],
-  56: ["🌧️", "Dondurucu çiseleme"], 57: ["🌧️", "Dondurucu çiseleme"],
-  61: ["🌧️", "Hafif yağmur"], 63: ["🌧️", "Yağmur"], 65: ["🌧️", "Şiddetli yağmur"],
-  66: ["🌧️", "Dondurucu yağmur"], 67: ["🌧️", "Dondurucu yağmur"],
-  71: ["🌨️", "Hafif kar"], 73: ["🌨️", "Kar"], 75: ["❄️", "Yoğun kar"], 77: ["🌨️", "Kar taneleri"],
-  80: ["🌦️", "Hafif sağanak"], 81: ["🌧️", "Sağanak"], 82: ["⛈️", "Şiddetli sağanak"],
-  85: ["🌨️", "Kar sağanağı"], 86: ["❄️", "Yoğun kar sağanağı"],
-  95: ["⛈️", "Gök gürültülü fırtına"], 96: ["⛈️", "Dolulu fırtına"], 99: ["⛈️", "Şiddetli dolulu fırtına"],
+  0: ["AÇIK", "Açık"], 1: ["AÇIK", "Çoğunlukla açık"], 2: ["PARÇA", "Parçalı bulutlu"], 3: ["KAPALI", "Kapalı"],
+  45: ["SİS", "Sisli"], 48: ["SİS", "Kırağılı sis"],
+  51: ["ÇİSE", "Hafif çiseleme"], 53: ["ÇİSE", "Çiseleme"], 55: ["ÇİSE", "Yoğun çiseleme"],
+  56: ["ÇİSE", "Dondurucu çiseleme"], 57: ["ÇİSE", "Dondurucu çiseleme"],
+  61: ["YAĞMUR", "Hafif yağmur"], 63: ["YAĞMUR", "Yağmur"], 65: ["YAĞMUR", "Şiddetli yağmur"],
+  66: ["YAĞMUR", "Dondurucu yağmur"], 67: ["YAĞMUR", "Dondurucu yağmur"],
+  71: ["KAR", "Hafif kar"], 73: ["KAR", "Kar"], 75: ["KAR", "Yoğun kar"], 77: ["KAR", "Kar taneleri"],
+  80: ["SAĞNAK", "Hafif sağanak"], 81: ["SAĞNAK", "Sağanak"], 82: ["SAĞNAK", "Şiddetli sağanak"],
+  85: ["KAR", "Kar sağanağı"], 86: ["KAR", "Yoğun kar sağanağı"],
+  95: ["FIRTINA", "Gök gürültülü fırtına"], 96: ["FIRTINA", "Dolulu fırtına"], 99: ["FIRTINA", "Şiddetli dolulu fırtına"],
 };
-const wmo = (code) => WMO[code] || ["🌡️", "Bilinmiyor"];
+const wmo = (code) => WMO[code] || ["····", "Bilinmiyor"];
 const WEATHER_URL =
   "https://api.open-meteo.com/v1/forecast?latitude=41.0082&longitude=28.9784" +
   "&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m" +
@@ -294,10 +387,10 @@ function setText(id, text) {
 }
 
 function showWeatherError() {
-  setText("w-icon", "·");
+  setText("w-icon", "YOK");
   setText("w-temp", "--");
-  setText("w-desc", "Hava durumu şu an alınamadı");
-  setText("w-feel", "Bağlantını kontrol edip sayfayı yenile.");
+  setText("w-desc", "Hava alınamadı");
+  setText("w-feel", "Yerel bölümler ayakta. Sayfayı yenilemek yeter.");
 }
 
 async function loadWeather() {
@@ -329,14 +422,23 @@ async function loadWeather() {
         );
         const ico = document.createElement("span");
         ico.textContent = wmo(day.weather_code[i])[0];
-        ico.setAttribute("aria-hidden", "true");
-        li.append(name, ico, `${Math.round(day.temperature_2m_min[i])}° / ${Math.round(day.temperature_2m_max[i])}°`);
+        li.append(name, ico, document.createTextNode(`${Math.round(day.temperature_2m_min[i])}° / ${Math.round(day.temperature_2m_max[i])}°`));
         li.title = wmo(day.weather_code[i])[1];
         list.append(li);
       }
     }
-    setText("w-time", `· Güncelleme ${new Intl.DateTimeFormat("tr-TR", { timeZone: "Europe/Istanbul", hour: "2-digit", minute: "2-digit", hour12: false }).format(new Date())}`);
-  } catch (error) {
+    setText("w-time", `· ${new Intl.DateTimeFormat("tr-TR", { timeZone: "Europe/Istanbul", hour: "2-digit", minute: "2-digit", hour12: false }).format(new Date())}`);
+    lastWeather = {
+      temp: Math.round(cur.temperature_2m),
+      feel: Math.round(cur.apparent_temperature),
+      label,
+      code: icon,
+      hum: Math.round(cur.relative_humidity_2m),
+      wind: Math.round(cur.wind_speed_10m),
+      low: Math.round(day.temperature_2m_min[0]),
+      high: Math.round(day.temperature_2m_max[0]),
+    };
+  } catch {
     showWeatherError();
   } finally {
     clearTimeout(timer);
@@ -345,7 +447,6 @@ async function loadWeather() {
 loadWeather();
 setInterval(loadWeather, 15 * 60 * 1000);
 
-/* SW cleanup */
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.getRegistrations().then((regs) => {
     regs.forEach((reg) => reg.unregister());
@@ -354,3 +455,226 @@ if ("serviceWorker" in navigator) {
     caches.keys().then((keys) => keys.forEach((key) => caches.delete(key)));
   }
 }
+
+const frame = document.getElementById("portrait");
+const ghost = document.getElementById("ghost");
+const mast = document.getElementById("mast");
+let clearFx = 0;
+let clearName = 0;
+
+function glitchOnce() {
+  if (!frame || !ghost || reduceMotion) return;
+  const roll = Math.random();
+  const kind = roll < 0.28 ? "jitter" : roll < 0.5 ? "shear" : roll < 0.74 ? "slice" : roll < 0.88 ? "scan" : "rgb";
+  frame.dataset.fx = kind === "slice" ? "rgb" : kind;
+  if (kind === "slice" || kind === "rgb") {
+    const y = 8 + Math.random() * 70;
+    const h = 8 + Math.random() * 16;
+    const dir = Math.random() > 0.5 ? 1 : -1;
+    if (kind === "slice") {
+      ghost.style.clipPath = `inset(${y}% 0 ${Math.max(0, 100 - y - h)}% 0)`;
+      ghost.style.transform = `translateX(${dir * (8 + Math.random() * 10)}px)`;
+    } else {
+      ghost.style.clipPath = "inset(0)";
+      ghost.style.transform = `translate(${dir * 6}px, 0)`;
+    }
+    ghost.style.opacity = "0.9";
+  } else {
+    ghost.style.opacity = "0";
+    ghost.style.transform = "none";
+    ghost.style.clipPath = "none";
+  }
+  window.clearTimeout(clearFx);
+  clearFx = window.setTimeout(() => {
+    frame.dataset.fx = "";
+    ghost.style.opacity = "0";
+  }, kind === "scan" ? 480 : 180);
+}
+
+function burst() {
+  if (reduceMotion) return;
+  glitchOnce();
+  window.setTimeout(glitchOnce, 140);
+  window.setTimeout(glitchOnce, 280);
+  if (mast) {
+    mast.dataset.fx = "shift";
+    window.clearTimeout(clearName);
+    clearName = window.setTimeout(() => {
+      mast.dataset.fx = "";
+    }, 180);
+  }
+}
+
+if (!reduceMotion && frame) {
+  const loop = () => {
+    if (Math.random() > 0.55 && mast) {
+      mast.dataset.fx = Math.random() > 0.5 ? "jitter" : "shift";
+      window.clearTimeout(clearName);
+      clearName = window.setTimeout(() => {
+        mast.dataset.fx = "";
+      }, 160);
+    }
+    glitchOnce();
+    window.setTimeout(loop, 2200 + Math.random() * 2600);
+  };
+  window.setTimeout(loop, 1400);
+}
+
+function paintScope(now) {
+  const canvas = document.getElementById("scope");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const w = canvas.clientWidth || 640;
+  const h = canvas.clientHeight || 72;
+  if (canvas.width !== Math.floor(w * dpr) || canvas.height !== Math.floor(h * dpr)) {
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+  }
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, w, h);
+  ctx.strokeStyle = "rgba(226, 58, 47, 0.22)";
+  ctx.beginPath();
+  ctx.moveTo(0, h / 2);
+  ctx.lineTo(w, h / 2);
+  ctx.stroke();
+  ctx.strokeStyle = "#e23a2f";
+  ctx.lineWidth = 1.25;
+  ctx.beginPath();
+  if (analyser && wave) {
+    analyser.getByteTimeDomainData(wave);
+    for (let i = 0; i < wave.length; i += 2) {
+      const x = (i / (wave.length - 1)) * w;
+      const y = (wave[i] / 255) * h;
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+  } else {
+    const t = now / 1000;
+    for (let x = 0; x <= w; x += 3) {
+      const y = h / 2 + Math.sin(x * 0.035 + t * 1.3) * 3.2 + Math.sin(x * 0.011 - t * 0.55) * 1.6;
+      if (x === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+  }
+  ctx.stroke();
+  if (!reduceMotion) requestAnimationFrame(paintScope);
+}
+requestAnimationFrame(paintScope);
+
+function moonName(date) {
+  const synodic = 29.53058867;
+  const known = Date.UTC(2000, 0, 6, 18, 14);
+  const days = (date.getTime() - known) / 86400000;
+  const age = ((days % synodic) + synodic) % synodic;
+  if (age < 1.5 || age > 28.3) return "yeni ay";
+  if (age < 6.4) return "hilal";
+  if (age < 9.0) return "ilk dördün";
+  if (age < 13.8) return "şişkin ay";
+  if (age < 16.6) return "dolunay";
+  if (age < 21.0) return "şişkin ay";
+  if (age < 23.6) return "son dördün";
+  return "ince ay";
+}
+
+function paintHud() {
+  const depth = document.getElementById("hud-depth");
+  const moon = document.getElementById("hud-moon");
+  const coord = document.getElementById("hud-coord");
+  const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+  const pct = Math.round((window.scrollY / max) * 100);
+  if (depth) depth.textContent = `derinlik ${pct}`;
+  if (moon) moon.textContent = `ay · ${moonName(new Date())}`;
+  if (coord && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    const x = window.__nx ?? 0.5;
+    const y = window.__ny ?? 0.42;
+    const lat = 41.0082 + (0.5 - y) * 0.08;
+    const lon = 28.9784 + (x - 0.5) * 0.12;
+    coord.textContent = `${lat.toFixed(3)}°N ${lon.toFixed(3)}°E`;
+  }
+}
+window.addEventListener("scroll", paintHud, { passive: true });
+window.addEventListener("pointermove", (event) => {
+  window.__nx = event.clientX / Math.max(1, window.innerWidth);
+  window.__ny = event.clientY / Math.max(1, window.innerHeight);
+  paintHud();
+}, { passive: true });
+paintHud();
+
+if (!reduceMotion && "IntersectionObserver" in window) {
+  document.documentElement.classList.add("motion");
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("in");
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+  document.querySelectorAll("section.reveal").forEach((section) => io.observe(section));
+} else {
+  document.querySelectorAll("section.reveal").forEach((section) => section.classList.add("in"));
+}
+
+function tune(kind) {
+  const button = document.querySelector(`.station[data-kind="${kind}"]`);
+  if (!button) return false;
+  document.querySelectorAll(".station").forEach((node) => node.classList.remove("on"));
+  button.classList.add("on");
+  const freq = document.querySelector("#freq");
+  const name = document.querySelector("#sname");
+  if (freq) freq.textContent = button.dataset.freq;
+  if (name) name.textContent = button.dataset.name;
+  if (startRadio(kind) === false) return false;
+  const play = document.querySelector("#play");
+  if (play) play.textContent = "Yayını kes";
+  return true;
+}
+
+window.Gece = {
+  pulse,
+  themes: THEMES,
+  theme: currentTheme,
+  setTheme,
+  tremor() {
+    return document.documentElement.dataset.tremor !== "off";
+  },
+  setTremor,
+  weather() {
+    return lastWeather;
+  },
+  moon() {
+    return moonName(new Date());
+  },
+  clock() {
+    return document.querySelector("#clock")?.textContent || "";
+  },
+  radioOn() {
+    return Boolean(audio);
+  },
+  station() {
+    const button = document.querySelector(".station.on");
+    return button
+      ? { kind: button.dataset.kind, freq: button.dataset.freq, name: button.dataset.name }
+      : null;
+  },
+  tune,
+  halt() {
+    stopRadio();
+    const play = document.querySelector("#play");
+    if (play) play.textContent = "Yayını başlat";
+  },
+  nextNote,
+  note() {
+    return {
+      title: document.querySelector("#note-title")?.textContent || "",
+      body: document.querySelector("#note-body")?.textContent || "",
+    };
+  },
+  go(id) {
+    const node = document.getElementById(id);
+    if (!node) return false;
+    node.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    return true;
+  },
+};
+
