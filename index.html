@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>eerrgin — Gece Vardiyası</title>
   <meta name="description" content="Ergin Kaplan. İstanbul'da gece vardiyası: küçük araçlar, kedi laboratuvarı, tarayıcıda üreyen ses.">
-  <meta name="theme-color" content="#050403">
+  <meta name="theme-color" content="#070103">
+  <meta name="color-scheme" content="dark">
   <meta property="og:type" content="website">
   <meta property="og:title" content="eerrgin — Gece Vardiyası">
   <meta property="og:description" content="İstanbul'da gece vardiyası: küçük araçlar, kedi laboratuvarı, tarayıcıda üreyen ses ve şehrin tarihi köşeleri.">
@@ -14,6 +15,7 @@
   <link rel="canonical" href="https://eerrgin.github.io/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preload" href="fonts/bss-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
   <script>
     try {
@@ -27,6 +29,9 @@
   </script>
 </head>
 <body>
+  <canvas id="rift" aria-hidden="true"></canvas>
+  <div class="lightning" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
   <a class="skip" href="#top">İçeriğe geç</a>
   <header class="top">
     <div class="rule"></div>
@@ -51,7 +56,6 @@
       <button class="ghost" id="open-cmd" type="button" aria-label="Komut menüsünü aç">⌘K</button>
     </div>
   </header>
-
   <aside class="weather" id="hava" aria-label="İstanbul havası" aria-live="polite">
     <div class="wrap weather-in">
       <div class="w-now">
@@ -74,7 +78,6 @@
       <p class="w-src">Open-Meteo · anahtarsız <span id="w-time"></span></p>
     </div>
   </aside>
-
   <main class="wrap" id="top">
     <section class="hero reveal in">
       <div>
@@ -96,8 +99,7 @@
       </figure>
     </section>
     <div class="ticker" aria-hidden="true"><p>YAZILIM ✳ YAPAY ZEKÂ ✳ DİJİTAL ARKEOLOJİ ✳ GECE SESLERİ ✳ GÜVENLİK ARAÇLARI ✳ İSTANBUL ✳ YAZILIM ✳ YAPAY ZEKÂ ✳ DİJİTAL ARKEOLOJİ ✳ GECE SESLERİ ✳ GÜVENLİK ARAÇLARI ✳ İSTANBUL ✳</p></div>
-
-    <section id="istanbul" class="reveal">
+    <section id="istanbul" class="reveal" data-stamp="01">
       <p class="kicker">01 / İSTANBUL ARŞİVİ</p>
       <h2>Şehrin <em>taş hafızası.</em></h2>
       <p class="lede">Galata'dan Eminönü'ne, Samatya'dan Boğaz'a: İstanbul'un yüzyıllık köşelerinden altısı.</p>
@@ -158,8 +160,7 @@
         </article>
       </div>
     </section>
-
-    <section id="atolye" class="reveal">
+    <section id="atolye" class="reveal" data-stamp="02">
       <p class="kicker">02 / WORKBENCH</p>
       <h2>İşler, fikirler, <em>izler.</em></h2>
       <p class="lede">Hiçbiri kendini olduğundan büyük göstermiyor. Araç kendini övmez.</p>
@@ -171,7 +172,6 @@
         <article class="card"><p class="kicker">04 / OFFLINE LAB</p><h3>local-sqli-lab</h3><p>SQL enjeksiyonunu internete çıkmadan, küçük bir SQLite masasında anlatır.</p><p class="meta"><span>SQLITE / EDUCATION</span><a href="https://github.com/eerrgin/local-sqli-lab" rel="noopener">Kaynağı gör ↗</a></p></article>
         <article class="card"><p class="kicker">05 / AI CORE</p><h3>KAVRA</h3><p>Yapay zekâ odaklı geliştirme süreci. Kod tabanı ve mimari çalışmalar açık olarak ilerliyor.</p><p class="meta"><span>PYTHON / AI</span><a href="https://github.com/eerrgin/KAVRA/tree/main" rel="noopener">Kaynağı gör ↗</a></p></article>
       </div>
-
       <div class="trace" id="kavra">
         <p class="kicker">KAVRA · TARAYICI AĞI</p>
         <h3>Nöron burada. Anahtar yok.</h3>
@@ -189,11 +189,9 @@
         <canvas id="kavra-net" height="132" aria-hidden="true"></canvas>
         <p class="meta"><a href="https://github.com/eerrgin/KAVRA/tree/main" rel="noopener">Python kaynağı ↗</a> · aynı mantık, bu deponun içinde, HAT terminalinde de çalışır.</p>
       </div>
-
       <p class="lab-link"><a href="https://eerrgin.github.io/ergin-lab/" rel="noopener">Ergin Lab duruyor ↗</a> — Taskflow, Calc Lab, Skyline, Tempo. Öğrenme parçaları, vitrin değil.</p>
     </section>
-
-    <section id="laboratuvar" class="reveal">
+    <section id="laboratuvar" class="reveal" data-stamp="03">
       <p class="kicker">03 / FELINE LEDGER</p>
       <h2>Kedi kimliği <em>laboratuvarı.</em></h2>
       <p class="lede">Ergin’in yerel deneyi. Fotoğraf cihazından çıkmaz. Sonuç ırk kaşesi değil.</p>
@@ -239,8 +237,7 @@
       <p id="lab-note">Seçim ya da fotoğraf gelince yakınlıklar burada belirir.</p>
       <ol id="guesses"></ol>
     </section>
-
-    <section id="frekans" class="reveal">
+    <section id="frekans" class="reveal" data-stamp="04">
       <p class="kicker">04 / GREYFIELD FM</p>
       <h2>Bir kanal seç. <em>Geceyi dinle.</em></h2>
       <p class="lede">Hazır şarkı yok. Örnek yok. Tarayıcı seçtiğin havayı o an üretir.</p>
@@ -261,8 +258,7 @@
       <p id="tape-name">Dosya seçilmedi.</p>
       <p><a href="https://soundcloud.com/yukseksadakat/y-ksek-sadakat-katil-makt-l-1" rel="noopener">SoundCloud bağlantısı ↗</a></p>
     </section>
-
-    <section id="sinyal" class="reveal">
+    <section id="sinyal" class="reveal" data-stamp="05">
       <p class="kicker">05 / OUTSIDE NOISE</p>
       <h2>Ağa düşen <em>sinyaller.</em></h2>
       <img class="frame" src="photos/yagmur.jpg" alt="Yağmur sonrası boş bir gece sokağı." width="800" height="450" loading="lazy">
@@ -275,8 +271,7 @@
         <a class="card" href="https://github.com/eerrgin" rel="noopener"><h3>Depolar</h3><p>Kaynak, not, deneme.</p></a>
       </div>
     </section>
-
-    <section id="arsiv" class="reveal">
+    <section id="arsiv" class="reveal" data-stamp="06">
       <p class="kicker">06 / STATIC ARCHIVE</p>
       <h2>Masanın <em>çekmecesi.</em></h2>
       <img class="frame" src="photos/otobus.jpg" alt="Yağmurlu camların ardında boş bir otobüs camı." width="800" height="450" loading="lazy">
@@ -286,8 +281,7 @@
         <button class="btn ghost" id="next-note" type="button">Sonraki not ↻</button>
       </div>
     </section>
-
-    <section id="hat" class="reveal">
+    <section id="hat" class="reveal" data-stamp="07">
       <p class="kicker">07 / KIRMIZI HAT</p>
       <h2>Sınırlar.</h2>
       <ul>
@@ -300,7 +294,6 @@
       </ul>
     </section>
   </main>
-
   <footer>
     <div class="wrap">
       <p class="foot-mark">e.</p>
@@ -313,7 +306,6 @@
       <p class="note">İzleme yok. Ses burada üretilir. Dosya burada kalır.</p>
     </div>
   </footer>
-
   <div class="grain" aria-hidden="true"></div>
   <div class="scanline" aria-hidden="true"></div>
   <div class="hud" aria-hidden="true">
@@ -321,7 +313,6 @@
     <span id="hud-moon">ay · —</span>
     <span id="hud-depth">derinlik 0</span>
   </div>
-
   <dialog id="cmd">
     <input id="cmd-filter" type="search" placeholder="Bölüm ara…" autocomplete="off">
     <a href="#istanbul">01 · İstanbul arşivi</a>
@@ -335,7 +326,6 @@
     <a href="#sevk">HAT · gece terminali</a>
     <a href="https://github.com/eerrgin" rel="noopener">GitHub depoları ↗</a>
   </dialog>
-
   <div class="hat" id="sevk" hidden>
     <div class="hat-chrome">
       <p class="hat-mark">HAT</p>
@@ -359,7 +349,7 @@
     </form>
   </div>
   <button class="hat-fab" id="hat-fab" type="button">HAT</button>
-
+  <script src="fx.js" defer></script>
   <script src="script.js" defer></script>
   <script src="kavra.js" defer></script>
   <script src="hat.js" defer></script>
