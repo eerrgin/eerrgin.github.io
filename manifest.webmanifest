@@ -1,16 +1,16 @@
 {
-  "name": "Greyfield FM — Ergin Kaplan",
-  "short_name": "Greyfield FM",
-  "description": "Kişisel dijital atölye, yerel arşiv ve özgün retro ses deneyimi.",
+  "name": "eerrgin — Gece Vardiyası",
+  "short_name": "eerrgin",
+  "description": "İstanbul'da gece vardiyası: kırmızı hat, metal, radyo ve yerel laboratuvar.",
   "lang": "tr-TR",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#050403",
-  "theme_color": "#050403",
+  "background_color": "#070103",
+  "theme_color": "#070103",
   "icons": [
     {
-      "src": "assets/favicon.svg",
+      "src": "favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"

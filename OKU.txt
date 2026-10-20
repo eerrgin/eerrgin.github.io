@@ -1,0 +1,34 @@
+eerrgin — statik site (GitHub Pages)
+=====================================
+
+Derleme yok. Framework yok. Ana dizinde index.html var.
+GitHub Pages bu klasörün İÇİNİ kök sanır.
+
+Nasıl yayınlanır
+----------------
+1. Bu zip'i aç.
+2. İçinde gördüğün dosyaları (index.html dahil) deponun
+   KÖKÜNE kopyala. Bir alt klasöre koyma.
+   https://github.com/eerrgin/eerrgin.github.io
+3. GitHub → Settings → Pages → Branch: main, Folder: / (root).
+4. main'e gönder. Birkaç dakika sonra https://eerrgin.github.io/ açılır.
+
+Kökte durması gerekenler
+------------------------
+index.html
+style.css
+script.js
+kavra.js
+hat.js
+fx.js
+favicon.svg
+manifest.webmanifest
+.nojekyll
+fonts/
+photos/
+
+.nojekyll boş bir dosyadır. Jekyll'in sayfayı bozmasını engeller.
+Silme.
+
+Fotoğraflar senin karelerinin hafif kopyası. Kendi photos/
+klasörünü korumak istersen onu atla; dosya adları aynı.
