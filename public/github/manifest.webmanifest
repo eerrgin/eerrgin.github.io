@@ -1,0 +1,19 @@
+{
+  "name": "Greyfield FM — Ergin Kaplan",
+  "short_name": "Greyfield FM",
+  "description": "Kişisel dijital atölye, yerel arşiv ve özgün retro ses deneyimi.",
+  "lang": "tr-TR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#050403",
+  "theme_color": "#050403",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

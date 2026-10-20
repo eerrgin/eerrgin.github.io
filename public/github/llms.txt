@@ -1,0 +1,34 @@
+# eerrgin / Greyfield FM
+
+Name: Ergin Kaplan (eerrgin)
+Site: https://eerrgin.github.io/
+Location: Istanbul, Türkiye
+Status motif: 0xB16B00B5_ACTIVE
+Axiom: "kod yarına kalır, yanına kalmaz."
+
+## What this site is
+A personal workshop for small software experiments, local-first ideas, retro interfaces, independently generated browser audio, and short notes.
+
+## Main projects
+- VeilCheck: local heuristic scanner for suspicious secret-like patterns in files.
+- GreySignal: read-only HTTP security-header inspection.
+- ReconX: authorized reconnaissance utilities.
+- local-sqli-lab: offline SQLite learning lab.
+
+## Data and privacy
+- No analytics, ad pixels, or tracking scripts are intentionally installed.
+- Live weather, Hacker News, Wikipedia, and public GitHub repository information are fetched from their respective providers; each can fail independently.
+- Greyfield FM generates sound in the browser with Web Audio API and does not stream or bundle third-party songs.
+- KAVRA in the page is a tiny from-scratch network (sigmoid, MSE, backpropagation). Weights stay in localStorage. HAT, the dispatch terminal, calls that same network. No prompt is uploaded.
+- Local media is not uploaded by the page. Selecting a file in the optional tape player uses a browser object URL for the current session.
+
+## External sources
+- GitHub: https://github.com/eerrgin
+- Hacker News API: https://github.com/HackerNews/API
+- Open-Meteo: https://open-meteo.com/
+- Wikipedia: https://www.wikipedia.org/
+- Tesla official blog: https://www.tesla.com/blog
+- xAI news: https://x.ai/news
+- Elon Musk on X: https://x.com/elonmusk
+
+Security tooling is intended for systems the user owns or has explicit permission to assess. Missing headers or heuristic matches are not proof of compromise.
