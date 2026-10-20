@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>eerrgin — Gece Vardiyası</title>
+  <meta name="description" content="Ergin Kaplan. İstanbul'da gece vardiyası: küçük araçlar, kedi laboratuvarı, tarayıcıda üreyen ses.">
+  <meta name="theme-color" content="#070103">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="eerrgin — Gece Vardiyası">
+  <meta property="og:description" content="İstanbul'da gece vardiyası: küçük araçlar, kedi laboratuvarı, tarayıcıda üreyen ses ve şehrin tarihi köşeleri.">
+  <meta property="og:url" content="https://eerrgin.github.io/">
+  <meta property="og:locale" content="tr_TR">
+  <link rel="canonical" href="https://eerrgin.github.io/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preload" href="fonts/bss-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    try {
+      var theme = localStorage.getItem("e.theme");
+      if (theme) document.documentElement.dataset.theme = theme;
+      var tremor = localStorage.getItem("e.tremor");
+      if (tremor) document.documentElement.dataset.tremor = tremor;
+      else if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.dataset.tremor = "off";
+      else document.documentElement.dataset.tremor = "on";
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <canvas id="rift" aria-hidden="true"></canvas>
+  <div class="lightning" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <a class="skip" href="#top">İçeriğe geç</a>
+  <header class="top">
+    <div class="rule"></div>
+    <div class="wrap bar">
+      <a class="mark" href="#top">e.</a>
+      <div class="brand-block">
+        <strong>eerrgin</strong>
+        <span class="kicker">gece vardiyası / istanbul</span>
+      </div>
+      <nav aria-label="Bölümler">
+        <a href="#istanbul">İstanbul</a>
+        <a href="#atolye">Atölye</a>
+        <a href="#kavra">Kavra</a>
+        <a href="#laboratuvar">Laboratuvar</a>
+        <a href="#frekans">Frekans</a>
+        <a href="#sinyal">Sinyal</a>
+        <a href="#arsiv">Arşiv</a>
+        <a href="#hat">Kırmızı hat</a>
+      </nav>
+      <div class="clock"><span id="clock">--:--:--</span><br>IST</div>
+      <button class="ghost" id="open-hat" type="button">HAT</button>
+      <button class="ghost" id="open-cmd" type="button" aria-label="Komut menüsünü aç">⌘K</button>
+    </div>
+  </header>
+  <aside class="weather" id="hava" aria-label="İstanbul havası" aria-live="polite">
+    <div class="wrap weather-in">
+      <div class="w-now">
+        <span class="w-icon" id="w-icon">····</span>
+        <div>
+          <p class="kicker">İSTANBUL · ŞİMDİ</p>
+          <p class="w-temp"><span id="w-temp">--</span><small>°C</small></p>
+        </div>
+        <div class="w-desc">
+          <strong id="w-desc">hat yok</strong>
+          <span id="w-feel">Open-Meteo bekleniyor.</span>
+        </div>
+      </div>
+      <dl class="w-stats">
+        <div><dt>Nem</dt><dd id="w-hum">—</dd></div>
+        <div><dt>Rüzgâr</dt><dd id="w-wind">—</dd></div>
+        <div><dt>Bugün</dt><dd id="w-range">—</dd></div>
+      </dl>
+      <ol class="w-days" id="w-days"></ol>
+      <p class="w-src">Open-Meteo · anahtarsız <span id="w-time"></span></p>
+    </div>
+  </aside>
+  <main class="wrap" id="top">
+    <section class="hero reveal in">
+      <div>
+        <p class="kicker">ATÖLYE NO. 001 · kaplan</p>
+        <h1 id="mast">Bazı <em>fikirler</em> çalışır</h1>
+        <p class="lede" lang="en">Curious by nature. Drawn to code, digital experiences, and ideas that deserve to be built.</p>
+        <div class="row">
+          <a class="btn" href="#atolye">Masaya bak</a>
+          <a class="btn ghost" href="#laboratuvar">Kediye sor</a>
+        </div>
+      </div>
+      <figure class="portrait" id="portrait">
+        <div class="viewport">
+          <img class="base" src="photos/gece-hatti.jpg" alt="Dağların arasından geçen, pencereleri sıcak bir gece treni." width="800" height="450">
+          <img class="ghost" id="ghost" src="photos/gece-hatti.jpg" alt="" aria-hidden="true" width="800" height="450">
+          <span class="sweep" aria-hidden="true"></span>
+        </div>
+        <figcaption><span class="kicker">GECE HATTI</span><br><span class="display cap-title">deney → günlüğü</span><br>Bir yere varmak şart değil. 41°00′N 28°56′E</figcaption>
+      </figure>
+    </section>
+    <div class="ticker" aria-hidden="true"><p>YAZILIM ✳ YAPAY ZEKÂ ✳ DİJİTAL ARKEOLOJİ ✳ GECE SESLERİ ✳ GÜVENLİK ARAÇLARI ✳ İSTANBUL ✳ YAZILIM ✳ YAPAY ZEKÂ ✳ DİJİTAL ARKEOLOJİ ✳ GECE SESLERİ ✳ GÜVENLİK ARAÇLARI ✳ İSTANBUL ✳</p></div>
+    <section id="istanbul" class="reveal" data-stamp="01">
+      <p class="kicker">01 / İSTANBUL ARŞİVİ</p>
+      <h2>Şehrin <em>taş hafızası.</em></h2>
+      <p class="lede">Galata'dan Eminönü'ne, Samatya'dan Boğaz'a: İstanbul'un yüzyıllık köşelerinden altısı.</p>
+      <div class="grid places">
+        <article class="place">
+          <img class="frame" src="photos/galata.jpg" alt="Gün batımında Galata Kulesi." width="800" height="450" loading="lazy">
+          <div class="place-body">
+            <p class="kicker">BEYOĞLU · 1348</p>
+            <h3>Galata Kulesi</h3>
+            <p>Cenevizliler 1348'de Galata surlarının en yüksek noktasına inşa etti. Yaklaşık 67 metrelik taş gövdesi yüzyıllarca yangın gözetleme kulesi olarak da kullanıldı. Bugün tepesindeki seyir terasından Haliç, Tarihî Yarımada ve Boğaz bir arada görünür.</p>
+            <p class="meta"><span>Cenevizlilerden miras</span><a href="https://tr.wikipedia.org/wiki/Galata_Kulesi" rel="noopener">Wikipedia ↗</a></p>
+          </div>
+        </article>
+        <article class="place">
+          <img class="frame" src="photos/eminonu.jpg" alt="Eminönü'nde Yeni Cami ve bir vapur." width="800" height="450" loading="lazy">
+          <div class="place-body">
+            <p class="kicker">FATİH · 1597–1665</p>
+            <h3>Eminönü</h3>
+            <p>Galata Köprüsü'nün Tarihî Yarımada ayağı: vapur iskeleleri, martılar ve simit tezgâhları. Yeni Cami'nin yapımı 1597'de başladı, 1665'te tamamlandı. Külliyenin parçası olan Mısır Çarşısı baharat ve lokum kokusuyla hâlâ işliyor.</p>
+            <p class="meta"><span>Yeni Cami · Mısır Çarşısı</span><a href="https://tr.wikipedia.org/wiki/Emin%C3%B6n%C3%BC" rel="noopener">Wikipedia ↗</a></p>
+          </div>
+        </article>
+        <article class="place">
+          <img class="frame" src="photos/samatya.jpg" alt="Samatya sahilinde eski evler ve sokaklar." width="800" height="450" loading="lazy">
+          <div class="place-body">
+            <p class="kicker">FATİH · MARMARA KIYISI</p>
+            <h3>Samatya</h3>
+            <p>Surların güneyinde, Marmara'ya bakan eski bir mahalle. Yüzyıllardır Rum ve Ermeni cemaatlerinin yaşadığı sokaklarda kiliseler, ahşap evler ve balıkçı meyhaneleri yan yana durur. Turist kalabalığından uzak, yavaş bir İstanbul.</p>
+            <p class="meta"><span>Surp Kevork · sahil · balık</span><a href="https://tr.wikipedia.org/wiki/Samatya" rel="noopener">Wikipedia ↗</a></p>
+          </div>
+        </article>
+        <article class="place">
+          <img class="frame" src="photos/ayasofya.jpg" alt="Ayasofya Camii." width="800" height="450" loading="lazy">
+          <div class="place-body">
+            <p class="kicker">SULTANAHMET · 537</p>
+            <h3>Ayasofya</h3>
+            <p>Bizans İmparatoru Jüstinyanus döneminde 537'de tamamlandı. Yaklaşık bin yıl kilise, sonra yüzyıllar boyunca cami olarak kullanıldı; devasa kubbesi mimarlık tarihinin dönüm noktalarından biri sayılır.</p>
+            <p class="meta"><span>Bizans mimarisi</span><a href="https://tr.wikipedia.org/wiki/Ayasofya" rel="noopener">Wikipedia ↗</a></p>
+          </div>
+        </article>
+        <article class="place">
+          <img class="frame" src="photos/suleymaniye.jpg" alt="Süleymaniye Camii." width="800" height="450" loading="lazy">
+          <div class="place-body">
+            <p class="kicker">FATİH · 1557</p>
+            <h3>Süleymaniye Camii</h3>
+            <p>Mimar Sinan'ın Kanuni Sultan Süleyman için yaptığı külliye 1557'de tamamlandı. Haliç'e hâkim tepesinden şehrin silüetini belirleyen yapılardan biridir; avlusu ve kubbe dengesiyle klasik Osmanlı mimarisinin örneği sayılır.</p>
+            <p class="meta"><span>Mimar Sinan</span><a href="https://tr.wikipedia.org/wiki/S%C3%BCleymaniye_Camii" rel="noopener">Wikipedia ↗</a></p>
+          </div>
+        </article>
+        <article class="place">
+          <img class="frame" src="photos/kiz-kulesi.jpg" alt="Kız Kulesi gece görünümü." width="800" height="450" loading="lazy">
+          <div class="place-body">
+            <p class="kicker">ÜSKÜDAR · BOĞAZ</p>
+            <h3>Kız Kulesi</h3>
+            <p>Üsküdar açığında, Boğaz'ın girişinde küçük bir adacığın üzerinde duran gözetleme kulesi. Kökleri çok eskiye uzanır; bugünkü görünümü 1830'lardaki yenilemeye dayanır. Gün batımında iki yakadan da görülebilir.</p>
+            <p class="meta"><span>Boğaz'ın bekçisi</span><a href="https://tr.wikipedia.org/wiki/K%C4%B1z_Kulesi" rel="noopener">Wikipedia ↗</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section id="atolye" class="reveal" data-stamp="02">
+      <p class="kicker">02 / WORKBENCH</p>
+      <h2>İşler, fikirler, <em>izler.</em></h2>
+      <p class="lede">Hiçbiri kendini olduğundan büyük göstermiyor. Araç kendini övmez.</p>
+      <img class="frame photo" src="photos/masa.jpg" alt="Gece lambasının altında boş bir çalışma masası." width="800" height="533" loading="lazy">
+      <div class="grid projects">
+        <article class="card"><p class="kicker">01 / LOCAL SCAN</p><h3>VeilCheck</h3><p>Kodun içinde unutulmuş sır işaretlerini arar. Dosyayı dışarı taşımaz, değeri ifşa etmez.</p><p class="meta"><span>PYTHON / STDLIB</span><a href="https://github.com/eerrgin/VeilCheck" rel="noopener">Kaynağı gör ↗</a></p></article>
+        <article class="card"><p class="kicker">02 / HEADER STUDY</p><h3>GreySignal</h3><p>Bir adresin yanıt başlıklarını okur. Eksik tabelayı otomatik açık kapı ilan etmez.</p><p class="meta"><span>HTTP / READ ONLY</span><a href="https://github.com/eerrgin/GreySignal" rel="noopener">Kaynağı gör ↗</a></p></article>
+        <article class="card"><p class="kicker">03 / RECON</p><h3>ReconX</h3><p>İzin verilen keşif. Davetiye yoksa kapı da yok. Çıktıyı okunur rapora çevirir.</p><p class="meta"><span>PYTHON / REPORT</span><a href="https://github.com/eerrgin/ReconX-Web-Reconnaissance-Toolkit-" rel="noopener">Kaynağı gör ↗</a></p></article>
+        <article class="card"><p class="kicker">04 / OFFLINE LAB</p><h3>local-sqli-lab</h3><p>SQL enjeksiyonunu internete çıkmadan, küçük bir SQLite masasında anlatır.</p><p class="meta"><span>SQLITE / EDUCATION</span><a href="https://github.com/eerrgin/local-sqli-lab" rel="noopener">Kaynağı gör ↗</a></p></article>
+        <article class="card"><p class="kicker">05 / AI CORE</p><h3>KAVRA</h3><p>Yapay zekâ odaklı geliştirme süreci. Kod tabanı ve mimari çalışmalar açık olarak ilerliyor.</p><p class="meta"><span>PYTHON / AI</span><a href="https://github.com/eerrgin/KAVRA/tree/main" rel="noopener">Kaynağı gör ↗</a></p></article>
+      </div>
+      <div class="trace" id="kavra">
+        <p class="kicker">KAVRA · TARAYICI AĞI</p>
+        <h3>Nöron burada. Anahtar yok.</h3>
+        <p class="note">Python deposundaki ile aynı iskelet: nöron, katman, sigmoid, ileri besleme, MSE, geri yayılım. Ağ bu sekmede doğar. Ağırlık yalnızca bu tarayıcıda kalır. Dışarı model isteği yok.</p>
+        <label class="kicker" for="kavra-in">CÜMLE YA DA SORU</label>
+        <textarea id="kavra-in" rows="3" maxlength="280" placeholder="galata kulesi ne zaman yapıldı"></textarea>
+        <div class="row">
+          <button class="btn" id="kavra-run" type="button">Kavra'ya sor</button>
+          <button class="btn ghost" id="kavra-bone" type="button">İskelet</button>
+          <button class="btn ghost" id="kavra-train" type="button">Bir tur eğit</button>
+          <button class="btn ghost" id="kavra-clear" type="button">Sil</button>
+        </div>
+        <p class="display trace-out" id="kavra-out" aria-live="polite">Ağ hazır olunca burada cevaplar.</p>
+        <p class="meta"><span id="kavra-meta">henüz soru yok</span></p>
+        <canvas id="kavra-net" height="132" aria-hidden="true"></canvas>
+        <p class="meta"><a href="https://github.com/eerrgin/KAVRA/tree/main" rel="noopener">Python kaynağı ↗</a> · aynı mantık, bu deponun içinde, HAT terminalinde de çalışır.</p>
+      </div>
+      <p class="lab-link"><a href="https://eerrgin.github.io/ergin-lab/" rel="noopener">Ergin Lab duruyor ↗</a> — Taskflow, Calc Lab, Skyline, Tempo. Öğrenme parçaları, vitrin değil.</p>
+    </section>
+    <section id="laboratuvar" class="reveal" data-stamp="03">
+      <p class="kicker">03 / FELINE LEDGER</p>
+      <h2>Kedi kimliği <em>laboratuvarı.</em></h2>
+      <p class="lede">Ergin’in yerel deneyi. Fotoğraf cihazından çıkmaz. Sonuç ırk kaşesi değil.</p>
+      <div class="split">
+        <img class="frame photo" src="photos/kedi.jpg" alt="Karanlıkta, kulağında ince kırmızı ışık olan beyaz bir kedi." width="800" height="533" loading="lazy">
+        <div>
+          <fieldset>
+            <legend>TÜY</legend>
+            <div class="chips" role="radiogroup" aria-label="Tüy">
+              <button type="button" role="radio" aria-checked="false" data-trait="fur" data-value="short">Kısa</button>
+              <button type="button" role="radio" aria-checked="false" data-trait="fur" data-value="long">Uzun</button>
+              <button type="button" role="radio" aria-checked="false" data-trait="fur" data-value="hairless">Tüysüz</button>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>DESEN</legend>
+            <div class="chips" role="radiogroup" aria-label="Desen">
+              <button type="button" role="radio" aria-checked="false" data-trait="pattern" data-value="solid">Tek renk</button>
+              <button type="button" role="radio" aria-checked="false" data-trait="pattern" data-value="tabby">Tekir</button>
+              <button type="button" role="radio" aria-checked="false" data-trait="pattern" data-value="point">Uçlar koyu</button>
+              <button type="button" role="radio" aria-checked="false" data-trait="pattern" data-value="bicolor">İki renk</button>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>GÖVDE / KULAK</legend>
+            <div class="chips" role="radiogroup" aria-label="Gövde ve kulak">
+              <button type="button" role="radio" aria-checked="false" data-trait="build" data-value="slender">İnce</button>
+              <button type="button" role="radio" aria-checked="false" data-trait="build" data-value="large">İri</button>
+              <button type="button" role="radio" aria-checked="false" data-trait="build" data-value="compact">Kompakt</button>
+              <button type="button" role="radio" aria-checked="false" data-trait="ears" data-value="fold">Katlı kulak</button>
+              <button type="button" role="radio" aria-checked="false" data-trait="ears" data-value="tuft">Püskül</button>
+            </div>
+          </fieldset>
+          <div class="row">
+            <button class="btn" id="compare-traits" type="button">Özelliklerle karşılaştır</button>
+          </div>
+          <p>Ya da fotoğraf bırak.</p>
+          <input id="photo" type="file" accept="image/*">
+          <img id="preview" alt="Seçilen kedi fotoğrafı." hidden>
+          <div class="row"><button class="btn ghost" id="compare-photo" type="button">Fotoğrafı oku</button></div>
+        </div>
+      </div>
+      <p id="lab-note">Seçim ya da fotoğraf gelince yakınlıklar burada belirir.</p>
+      <ol id="guesses"></ol>
+    </section>
+    <section id="frekans" class="reveal" data-stamp="04">
+      <p class="kicker">04 / GREYFIELD FM</p>
+      <h2>Bir kanal seç. <em>Geceyi dinle.</em></h2>
+      <p class="lede">Hazır şarkı yok. Örnek yok. Tarayıcı seçtiğin havayı o an üretir.</p>
+      <img class="frame" src="photos/radyo.jpg" alt="Karanlık bir masada eski bir analog radyo." width="800" height="450" loading="lazy">
+      <p class="air-row"><i class="led" id="led" aria-hidden="true"></i><span class="kicker" id="air">BEKLEMEDE</span></p>
+      <p class="display" id="freq">88.8</p>
+      <h3 id="sname">Gece Otobüsü</h3>
+      <canvas id="scope" width="640" height="72" aria-hidden="true"></canvas>
+      <div class="row">
+        <button class="station on" type="button" data-kind="bus" data-freq="88.8" data-name="Gece Otobüsü">88.8 Gece Otobüsü</button>
+        <button class="station" type="button" data-kind="vhs" data-freq="87.9" data-name="VHS Rüyası">87.9 VHS Rüyası</button>
+        <button class="station" type="button" data-kind="neon" data-freq="91.3" data-name="Paslı Neon">91.3 Paslı Neon</button>
+      </div>
+      <div class="row"><button class="btn" id="play" type="button">Yayını başlat</button></div>
+      <h3>Eski teyp</h3>
+      <p class="note">Kendi ses dosyan yalnızca bu oturumda çalar. 7mix pakete konmadı. SoundCloud dış bağlantıdır.</p>
+      <input id="tape" type="file" accept="audio/*">
+      <p id="tape-name">Dosya seçilmedi.</p>
+      <p><a href="https://soundcloud.com/yukseksadakat/y-ksek-sadakat-katil-makt-l-1" rel="noopener">SoundCloud bağlantısı ↗</a></p>
+    </section>
+    <section id="sinyal" class="reveal" data-stamp="05">
+      <p class="kicker">05 / OUTSIDE NOISE</p>
+      <h2>Ağa düşen <em>sinyaller.</em></h2>
+      <img class="frame" src="photos/yagmur.jpg" alt="Yağmur sonrası boş bir gece sokağı." width="800" height="450" loading="lazy">
+      <div class="grid two">
+        <a class="card" href="https://news.ycombinator.com/" rel="noopener"><h3>Hacker News</h3><p>Başlığı orada oku. Metni buraya taşımıyorum.</p></a>
+        <a class="card" href="https://tr.wikipedia.org/wiki/Special:Random" rel="noopener"><h3>Rastgele madde</h3><p>Ansiklopediden bir tünel. Özet koşulsuz kopyalanmaz.</p></a>
+        <a class="card" href="https://arxiv.org/list/cs.AI/recent" rel="noopener"><h3>arXiv / AI</h3><p>Yeni araştırma ön baskıları.</p></a>
+        <a class="card" href="https://developer.mozilla.org/" rel="noopener"><h3>MDN</h3><p>Web platformunun hafızası.</p></a>
+        <a class="card" href="https://archive.org/" rel="noopener"><h3>Internet Archive</h3><p>Kaybolmaması gereken şeyler.</p></a>
+        <a class="card" href="https://github.com/eerrgin" rel="noopener"><h3>Depolar</h3><p>Kaynak, not, deneme.</p></a>
+      </div>
+    </section>
+    <section id="arsiv" class="reveal" data-stamp="06">
+      <p class="kicker">06 / STATIC ARCHIVE</p>
+      <h2>Masanın <em>çekmecesi.</em></h2>
+      <img class="frame" src="photos/otobus.jpg" alt="Yağmurlu camların ardında boş bir otobüs camı." width="800" height="450" loading="lazy">
+      <div class="trace">
+        <h3 id="note-title">Bağlantısı kırık bir hafıza</h3>
+        <p id="note-body" class="lede">Bazen sayfa durur; onu anlamlı kılan bağlantılar ortadan kalkmıştır.</p>
+        <button class="btn ghost" id="next-note" type="button">Sonraki not ↻</button>
+      </div>
+    </section>
+    <section id="hat" class="reveal" data-stamp="07">
+      <p class="kicker">07 / KIRMIZI HAT</p>
+      <h2>Sınırlar.</h2>
+      <ul>
+        <li>Bu sayfa izleme kodu taşımaz.</li>
+        <li>Radyo sesi tarayıcıda üretilir; dışarı akmaz.</li>
+        <li>Fotoğraf ve teyp dosyası cihazından çıkmaz.</li>
+        <li>Kavra ağı ve iskelet bu sekmede kalır. Ağırlık tarayıcı hafızasındadır, depoya gitmez.</li>
+        <li>HAT terminali aynı ağı kullanır. Yazdığın cümle bir sunucuya taşınmaz.</li>
+        <li>Hava ve harici bağlantılar başarısız olsa da yerel bölümler ayakta kalır.</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <p class="foot-mark">e.</p>
+      <p>Ergin Kaplan · İstanbul · gece vardiyası</p>
+      <div class="links">
+        <a href="https://github.com/eerrgin" rel="noopener">GitHub</a>
+        <a href="https://github.com/eerrgin/KAVRA" rel="noopener">KAVRA</a>
+        <a href="https://eerrgin.github.io/ergin-lab/" rel="noopener">Ergin Lab</a>
+      </div>
+      <p class="note">İzleme yok. Ses burada üretilir. Dosya burada kalır.</p>
+    </div>
+  </footer>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+  <div class="hud" aria-hidden="true">
+    <span id="hud-coord">41°00′N 28°58′E</span>
+    <span id="hud-moon">ay · —</span>
+    <span id="hud-depth">derinlik 0</span>
+  </div>
+  <dialog id="cmd">
+    <input id="cmd-filter" type="search" placeholder="Bölüm ara…" autocomplete="off">
+    <a href="#istanbul">01 · İstanbul arşivi</a>
+    <a href="#atolye">02 · Atölye / Workbench</a>
+    <a href="#kavra">02b · Kavra ağı</a>
+    <a href="#laboratuvar">03 · Kedi laboratuvarı</a>
+    <a href="#frekans">04 · Greyfield FM</a>
+    <a href="#sinyal">05 · Dış sinyal</a>
+    <a href="#arsiv">06 · Arşiv</a>
+    <a href="#hat">07 · Kırmızı hat</a>
+    <a href="#sevk">HAT · gece terminali</a>
+    <a href="https://github.com/eerrgin" rel="noopener">GitHub depoları ↗</a>
+  </dialog>
+  <div class="hat" id="sevk" hidden>
+    <div class="hat-chrome">
+      <p class="hat-mark">HAT</p>
+      <div class="hat-bands" aria-label="Sayfa bantları">
+        <button type="button" data-go="istanbul" title="İstanbul">01</button>
+        <button type="button" data-go="atolye" title="Atölye">02</button>
+        <button type="button" data-go="kavra" title="Kavra">02b</button>
+        <button type="button" data-go="laboratuvar" title="Kedi">03</button>
+        <button type="button" data-go="frekans" title="Frekans">04</button>
+        <button type="button" data-go="sinyal" title="Sinyal">05</button>
+        <button type="button" data-go="arsiv" title="Arşiv">06</button>
+        <button type="button" data-go="kirmizi" title="Kırmızı hat">07</button>
+      </div>
+      <p class="hat-status" id="hat-status">hat kapalı</p>
+      <button class="ghost" id="hat-close" type="button">kapat</button>
+    </div>
+    <div class="hat-screen" id="hat-screen" role="log" aria-live="polite" aria-relevant="additions"></div>
+    <form class="hat-form" id="hat-form">
+      <label for="hat-in">e.hat</label>
+      <input id="hat-in" type="text" maxlength="280" autocomplete="off" spellcheck="false" enterkeyhint="send" placeholder="yağmur var mı">
+    </form>
+  </div>
+  <button class="hat-fab" id="hat-fab" type="button">HAT</button>
+  <script src="fx.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="kavra.js" defer></script>
+  <script src="hat.js" defer></script>
+</body>
+</html>

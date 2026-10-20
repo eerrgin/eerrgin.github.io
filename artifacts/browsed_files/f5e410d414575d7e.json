@@ -1,0 +1,882 @@
+[
+  {
+    "name": ".gitignore",
+    "path": ".gitignore",
+    "sha": "71979e8ca03333c5ca05604637cc447538bc7ae4",
+    "size": 224,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/.gitignore?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/.gitignore",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/71979e8ca03333c5ca05604637cc447538bc7ae4",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/.gitignore",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/.gitignore?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/71979e8ca03333c5ca05604637cc447538bc7ae4",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/.gitignore"
+    }
+  },
+  {
+    "name": ".nojekyll",
+    "path": ".nojekyll",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/.nojekyll?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/.nojekyll",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/.nojekyll",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/.nojekyll?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/.nojekyll"
+    }
+  },
+  {
+    "name": "12.jpg",
+    "path": "12.jpg",
+    "sha": "7ba0c3c00610ee459a79d0558df1bbfddab5b0a7",
+    "size": 30958,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/12.jpg?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/12.jpg",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/7ba0c3c00610ee459a79d0558df1bbfddab5b0a7",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/12.jpg",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/12.jpg?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/7ba0c3c00610ee459a79d0558df1bbfddab5b0a7",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/12.jpg"
+    }
+  },
+  {
+    "name": "122.jpg",
+    "path": "122.jpg",
+    "sha": "83f64486350245c73ecfb4eb215d75ef1fd6ded6",
+    "size": 36119,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/122.jpg?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/122.jpg",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/83f64486350245c73ecfb4eb215d75ef1fd6ded6",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/122.jpg",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/122.jpg?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/83f64486350245c73ecfb4eb215d75ef1fd6ded6",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/122.jpg"
+    }
+  },
+  {
+    "name": "1232.jpg",
+    "path": "1232.jpg",
+    "sha": "b7db9bf0b4f811e0485314bacc92d046d2b83523",
+    "size": 45179,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/1232.jpg?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/1232.jpg",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/b7db9bf0b4f811e0485314bacc92d046d2b83523",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/1232.jpg",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/1232.jpg?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/b7db9bf0b4f811e0485314bacc92d046d2b83523",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/1232.jpg"
+    }
+  },
+  {
+    "name": "404.html",
+    "path": "404.html",
+    "sha": "7cdc74edfb3de289f7505b532c15ec95d22d097c",
+    "size": 812,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/404.html?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/404.html",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/7cdc74edfb3de289f7505b532c15ec95d22d097c",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/404.html",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/404.html?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/7cdc74edfb3de289f7505b532c15ec95d22d097c",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/404.html"
+    }
+  },
+  {
+    "name": "7mix.mp3",
+    "path": "7mix.mp3",
+    "sha": "a34fb493468f02d2bb94396c5f98bce20f19abf1",
+    "size": 2252799,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/7mix.mp3?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/7mix.mp3",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/a34fb493468f02d2bb94396c5f98bce20f19abf1",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/7mix.mp3",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/7mix.mp3?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/a34fb493468f02d2bb94396c5f98bce20f19abf1",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/7mix.mp3"
+    }
+  },
+  {
+    "name": "FILE-MANIFEST.txt",
+    "path": "FILE-MANIFEST.txt",
+    "sha": "25f25abef1e7f828ab83dc995bfd803a94610bcb",
+    "size": 1026,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/FILE-MANIFEST.txt?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/FILE-MANIFEST.txt",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/25f25abef1e7f828ab83dc995bfd803a94610bcb",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/FILE-MANIFEST.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/FILE-MANIFEST.txt?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/25f25abef1e7f828ab83dc995bfd803a94610bcb",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/FILE-MANIFEST.txt"
+    }
+  },
+  {
+    "name": "LEGAL-AND-DEPLOY.md",
+    "path": "LEGAL-AND-DEPLOY.md",
+    "sha": "cbdc06a7d0234576c12c3938641ef104555f6130",
+    "size": 3483,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/LEGAL-AND-DEPLOY.md?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/LEGAL-AND-DEPLOY.md",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/cbdc06a7d0234576c12c3938641ef104555f6130",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/LEGAL-AND-DEPLOY.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/LEGAL-AND-DEPLOY.md?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/cbdc06a7d0234576c12c3938641ef104555f6130",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/LEGAL-AND-DEPLOY.md"
+    }
+  },
+  {
+    "name": "LICENSE-CODE.txt",
+    "path": "LICENSE-CODE.txt",
+    "sha": "881a8365a7f61f8c04f91bbe80b1a1aeb0a8891a",
+    "size": 1071,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/LICENSE-CODE.txt?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/LICENSE-CODE.txt",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/881a8365a7f61f8c04f91bbe80b1a1aeb0a8891a",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/LICENSE-CODE.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/LICENSE-CODE.txt?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/881a8365a7f61f8c04f91bbe80b1a1aeb0a8891a",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/LICENSE-CODE.txt"
+    }
+  },
+  {
+    "name": "New Bitmap image.bmp",
+    "path": "New Bitmap image.bmp",
+    "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "size": 0,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/New%20Bitmap%20image.bmp?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/New%20Bitmap%20image.bmp",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/New%20Bitmap%20image.bmp",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/New%20Bitmap%20image.bmp?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/New%20Bitmap%20image.bmp"
+    }
+  },
+  {
+    "name": "README-TR.md",
+    "path": "README-TR.md",
+    "sha": "35964a77d9c84636f1392d7fba1ff7e85540d030",
+    "size": 641,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/README-TR.md?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/README-TR.md",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/35964a77d9c84636f1392d7fba1ff7e85540d030",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/README-TR.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/README-TR.md?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/35964a77d9c84636f1392d7fba1ff7e85540d030",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/README-TR.md"
+    }
+  },
+  {
+    "name": "README.md",
+    "path": "README.md",
+    "sha": "f7d182a0afdf9cf4f30a1a7d2ffca20d64721120",
+    "size": 2012,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/README.md?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/README.md",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/f7d182a0afdf9cf4f30a1a7d2ffca20d64721120",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/README.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/README.md?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/f7d182a0afdf9cf4f30a1a7d2ffca20d64721120",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/README.md"
+    }
+  },
+  {
+    "name": "SILINECEK.txt",
+    "path": "SILINECEK.txt",
+    "sha": "f6afdbff600465b5c8542dbae952d92a662df780",
+    "size": 61,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/SILINECEK.txt?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/SILINECEK.txt",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/f6afdbff600465b5c8542dbae952d92a662df780",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/SILINECEK.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/SILINECEK.txt?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/f6afdbff600465b5c8542dbae952d92a662df780",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/SILINECEK.txt"
+    }
+  },
+  {
+    "name": "app",
+    "path": "app",
+    "sha": "4f8fa8f98c5e28dc3e640f45844a885d4e063c16",
+    "size": 0,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/app?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/tree/main/app",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/4f8fa8f98c5e28dc3e640f45844a885d4e063c16",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/app?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/4f8fa8f98c5e28dc3e640f45844a885d4e063c16",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/tree/main/app"
+    }
+  },
+  {
+    "name": "assets",
+    "path": "assets",
+    "sha": "d8afa16d6301f7e91653fef5516f18b86a1fea05",
+    "size": 0,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/assets?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/tree/main/assets",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/d8afa16d6301f7e91653fef5516f18b86a1fea05",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/assets?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/d8afa16d6301f7e91653fef5516f18b86a1fea05",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/tree/main/assets"
+    }
+  },
+  {
+    "name": "cat-ai.js",
+    "path": "cat-ai.js",
+    "sha": "477e274140e5a60b10f54466809bc588509e9d91",
+    "size": 13774,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/cat-ai.js?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/cat-ai.js",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/477e274140e5a60b10f54466809bc588509e9d91",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/cat-ai.js",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/cat-ai.js?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/477e274140e5a60b10f54466809bc588509e9d91",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/cat-ai.js"
+    }
+  },
+  {
+    "name": "components.json",
+    "path": "components.json",
+    "sha": "45921ecdea324a57c73917317f80bcd77a3978d6",
+    "size": 428,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/components.json?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/components.json",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/45921ecdea324a57c73917317f80bcd77a3978d6",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/components.json",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/components.json?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/45921ecdea324a57c73917317f80bcd77a3978d6",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/components.json"
+    }
+  },
+  {
+    "name": "components",
+    "path": "components",
+    "sha": "27de612f372978bed5289fef92fc70e34afd5378",
+    "size": 0,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/components?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/tree/main/components",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/27de612f372978bed5289fef92fc70e34afd5378",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/components?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/27de612f372978bed5289fef92fc70e34afd5378",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/tree/main/components"
+    }
+  },
+  {
+    "name": "contact.png",
+    "path": "contact.png",
+    "sha": "3ff68d80d841cac8b8d252e42a0455de02300fb7",
+    "size": 339345,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/contact.png?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/contact.png",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/3ff68d80d841cac8b8d252e42a0455de02300fb7",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/contact.png",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/contact.png?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/3ff68d80d841cac8b8d252e42a0455de02300fb7",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/contact.png"
+    }
+  },
+  {
+    "name": "ergin-k1791821010771.py",
+    "path": "ergin-k1791821010771.py",
+    "sha": "ec38c9ab853b69c06e630f1abc53af1a7b4f368e",
+    "size": 11750,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/ergin-k1791821010771.py?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/ergin-k1791821010771.py",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/ec38c9ab853b69c06e630f1abc53af1a7b4f368e",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/ergin-k1791821010771.py",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/ergin-k1791821010771.py?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/ec38c9ab853b69c06e630f1abc53af1a7b4f368e",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/ergin-k1791821010771.py"
+    }
+  },
+  {
+    "name": "ergin-lab",
+    "path": "ergin-lab",
+    "sha": "49695df20b50733d4327cbf5cf35197a524a9f20",
+    "size": 0,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/ergin-lab?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/tree/main/ergin-lab",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/49695df20b50733d4327cbf5cf35197a524a9f20",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/ergin-lab?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/49695df20b50733d4327cbf5cf35197a524a9f20",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/tree/main/ergin-lab"
+    }
+  },
+  {
+    "name": "ergin_html_20261012_61f84b.html",
+    "path": "ergin_html_20261012_61f84b.html",
+    "sha": "744a1a11f4235b5f3d8dccec45ce7008c547bccf",
+    "size": 6630,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/ergin_html_20261012_61f84b.html?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/ergin_html_20261012_61f84b.html",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/744a1a11f4235b5f3d8dccec45ce7008c547bccf",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/ergin_html_20261012_61f84b.html",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/ergin_html_20261012_61f84b.html?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/744a1a11f4235b5f3d8dccec45ce7008c547bccf",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/ergin_html_20261012_61f84b.html"
+    }
+  },
+  {
+    "name": "ergin_kaplan_,videos.mp4",
+    "path": "ergin_kaplan_,videos.mp4",
+    "sha": "d9fc63de6a223367fd6ffe9fd671d9c64cb7fef5",
+    "size": 13613146,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/ergin_kaplan_,videos.mp4?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/ergin_kaplan_,videos.mp4",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/d9fc63de6a223367fd6ffe9fd671d9c64cb7fef5",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/ergin_kaplan_%2Cvideos.mp4",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/ergin_kaplan_,videos.mp4?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/d9fc63de6a223367fd6ffe9fd671d9c64cb7fef5",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/ergin_kaplan_,videos.mp4"
+    }
+  },
+  {
+    "name": "favicon.svg",
+    "path": "favicon.svg",
+    "sha": "f5d8c9f762ecffe27c1d1f9babad48a86721568f",
+    "size": 236,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/favicon.svg?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/favicon.svg",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/f5d8c9f762ecffe27c1d1f9babad48a86721568f",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/favicon.svg",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/favicon.svg?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/f5d8c9f762ecffe27c1d1f9babad48a86721568f",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/favicon.svg"
+    }
+  },
+  {
+    "name": "final-hero.png",
+    "path": "final-hero.png",
+    "sha": "ad19d896bd55198fbd389a87ffeef3736e0703ce",
+    "size": 301494,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/final-hero.png?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/final-hero.png",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/ad19d896bd55198fbd389a87ffeef3736e0703ce",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/final-hero.png",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/final-hero.png?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/ad19d896bd55198fbd389a87ffeef3736e0703ce",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/final-hero.png"
+    }
+  },
+  {
+    "name": "fonts",
+    "path": "fonts",
+    "sha": "c49642698c8a39c8fe9dc7ab76c3508ee8ee2f30",
+    "size": 0,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/fonts?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/tree/main/fonts",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/c49642698c8a39c8fe9dc7ab76c3508ee8ee2f30",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/fonts?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/c49642698c8a39c8fe9dc7ab76c3508ee8ee2f30",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/tree/main/fonts"
+    }
+  },
+  {
+    "name": "hero.png",
+    "path": "hero.png",
+    "sha": "8bab84b01beb7faf21984f4da34ffef2c6b91bdc",
+    "size": 285956,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/hero.png?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/hero.png",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/8bab84b01beb7faf21984f4da34ffef2c6b91bdc",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/hero.png",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/hero.png?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/8bab84b01beb7faf21984f4da34ffef2c6b91bdc",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/hero.png"
+    }
+  },
+  {
+    "name": "hud-optical.png",
+    "path": "hud-optical.png",
+    "sha": "19165cce67bb62b6c743d188a8925a81fbe61d86",
+    "size": 665088,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/hud-optical.png?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/hud-optical.png",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/19165cce67bb62b6c743d188a8925a81fbe61d86",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/hud-optical.png",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/hud-optical.png?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/19165cce67bb62b6c743d188a8925a81fbe61d86",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/hud-optical.png"
+    }
+  },
+  {
+    "name": "hud-thermal.png",
+    "path": "hud-thermal.png",
+    "sha": "4b2c7a701f66d94da4273fefe57b89e9e04ea020",
+    "size": 835963,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/hud-thermal.png?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/hud-thermal.png",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/4b2c7a701f66d94da4273fefe57b89e9e04ea020",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/hud-thermal.png",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/hud-thermal.png?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/4b2c7a701f66d94da4273fefe57b89e9e04ea020",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/hud-thermal.png"
+    }
+  },
+  {
+    "name": "index.html",
+    "path": "index.html",
+    "sha": "66bfa09f752223a5aaf650792ac7f5b62198e0ca",
+    "size": 23247,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/index.html?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/index.html",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/66bfa09f752223a5aaf650792ac7f5b62198e0ca",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/index.html",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/index.html?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/66bfa09f752223a5aaf650792ac7f5b62198e0ca",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/index.html"
+    }
+  },
+  {
+    "name": "kirpintilar",
+    "path": "kirpintilar",
+    "sha": "e5ccffd28471f013921dea501d84d62a8f93ec70",
+    "size": 0,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/kirpintilar?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/tree/main/kirpintilar",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/e5ccffd28471f013921dea501d84d62a8f93ec70",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/kirpintilar?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/e5ccffd28471f013921dea501d84d62a8f93ec70",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/tree/main/kirpintilar"
+    }
+  },
+  {
+    "name": "lib",
+    "path": "lib",
+    "sha": "75c67a19fe15016bad8aaf3be0c68f5982dff301",
+    "size": 0,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/lib?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/tree/main/lib",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/75c67a19fe15016bad8aaf3be0c68f5982dff301",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/lib?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/75c67a19fe15016bad8aaf3be0c68f5982dff301",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/tree/main/lib"
+    }
+  },
+  {
+    "name": "llms.txt",
+    "path": "llms.txt",
+    "sha": "10f0c5c25547170d70fd944aef55c05c106e1238",
+    "size": 1588,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/llms.txt?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/llms.txt",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/10f0c5c25547170d70fd944aef55c05c106e1238",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/llms.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/llms.txt?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/10f0c5c25547170d70fd944aef55c05c106e1238",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/llms.txt"
+    }
+  },
+  {
+    "name": "manifest.webmanifest",
+    "path": "manifest.webmanifest",
+    "sha": "8618445f0f6ecc6abba16bcc3ff24643305da99c",
+    "size": 454,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/manifest.webmanifest?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/manifest.webmanifest",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/8618445f0f6ecc6abba16bcc3ff24643305da99c",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/manifest.webmanifest",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/manifest.webmanifest?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/8618445f0f6ecc6abba16bcc3ff24643305da99c",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/manifest.webmanifest"
+    }
+  },
+  {
+    "name": "message.html",
+    "path": "message.html",
+    "sha": "f55e87991acf3f2875626149c13ff876b6e9f5b6",
+    "size": 6611,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/message.html?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/message.html",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/f55e87991acf3f2875626149c13ff876b6e9f5b6",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/message.html",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/message.html?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/f55e87991acf3f2875626149c13ff876b6e9f5b6",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/message.html"
+    }
+  },
+  {
+    "name": "next.config.mjs",
+    "path": "next.config.mjs",
+    "sha": "4cd9948a8a149f8f7338fd7757d5b22303e1fb9f",
+    "size": 181,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/next.config.mjs?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/next.config.mjs",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/4cd9948a8a149f8f7338fd7757d5b22303e1fb9f",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/next.config.mjs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/next.config.mjs?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/4cd9948a8a149f8f7338fd7757d5b22303e1fb9f",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/next.config.mjs"
+    }
+  },
+  {
+    "name": "oku.html",
+    "path": "oku.html",
+    "sha": "9d4a167b2980c89c4685b745267e441d4d8feab7",
+    "size": 12246,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/oku.html?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/oku.html",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/9d4a167b2980c89c4685b745267e441d4d8feab7",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/oku.html",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/oku.html?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/9d4a167b2980c89c4685b745267e441d4d8feab7",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/oku.html"
+    }
+  },
+  {
+    "name": "package.json",
+    "path": "package.json",
+    "sha": "77edfbd61e0d5764d5428f59c3cc449af8bf6e09",
+    "size": 767,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/package.json?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/package.json",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/77edfbd61e0d5764d5428f59c3cc449af8bf6e09",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/package.json",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/package.json?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/77edfbd61e0d5764d5428f59c3cc449af8bf6e09",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/package.json"
+    }
+  },
+  {
+    "name": "photos",
+    "path": "photos",
+    "sha": "1c6bc9559ecbc7cf5ce160ecded8774ed0c350f5",
+    "size": 0,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/photos?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/tree/main/photos",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/1c6bc9559ecbc7cf5ce160ecded8774ed0c350f5",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/photos?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/1c6bc9559ecbc7cf5ce160ecded8774ed0c350f5",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/tree/main/photos"
+    }
+  },
+  {
+    "name": "pnpm-lock.yaml",
+    "path": "pnpm-lock.yaml",
+    "sha": "0c50bf0e1c850175f313d362601524fc469e25b8",
+    "size": 113003,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/pnpm-lock.yaml?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/pnpm-lock.yaml",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/0c50bf0e1c850175f313d362601524fc469e25b8",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/pnpm-lock.yaml",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/pnpm-lock.yaml?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/0c50bf0e1c850175f313d362601524fc469e25b8",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/pnpm-lock.yaml"
+    }
+  },
+  {
+    "name": "pnpm-workspace.yaml",
+    "path": "pnpm-workspace.yaml",
+    "sha": "b5d8774d084909a3f2a1481980fbc383fa2db066",
+    "size": 67,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/pnpm-workspace.yaml?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/pnpm-workspace.yaml",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/b5d8774d084909a3f2a1481980fbc383fa2db066",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/pnpm-workspace.yaml",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/pnpm-workspace.yaml?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/b5d8774d084909a3f2a1481980fbc383fa2db066",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/pnpm-workspace.yaml"
+    }
+  },
+  {
+    "name": "postcss.config.mjs",
+    "path": "postcss.config.mjs",
+    "sha": "a869506ee48c89838ee770863c5d99ba97eeb930",
+    "size": 144,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/postcss.config.mjs?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/postcss.config.mjs",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/a869506ee48c89838ee770863c5d99ba97eeb930",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/postcss.config.mjs",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/postcss.config.mjs?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/a869506ee48c89838ee770863c5d99ba97eeb930",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/postcss.config.mjs"
+    }
+  },
+  {
+    "name": "public",
+    "path": "public",
+    "sha": "044bd87e12bc27e9e88e6b2dfe4c22c0b04afdd7",
+    "size": 0,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/public?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/tree/main/public",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/044bd87e12bc27e9e88e6b2dfe4c22c0b04afdd7",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/public?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/044bd87e12bc27e9e88e6b2dfe4c22c0b04afdd7",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/tree/main/public"
+    }
+  },
+  {
+    "name": "robots.txt",
+    "path": "robots.txt",
+    "sha": "5824c2b476d3cf7d4fe713ce677daccc817065bc",
+    "size": 70,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/robots.txt?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/robots.txt",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/5824c2b476d3cf7d4fe713ce677daccc817065bc",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/robots.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/robots.txt?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/5824c2b476d3cf7d4fe713ce677daccc817065bc",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/robots.txt"
+    }
+  },
+  {
+    "name": "script.js",
+    "path": "script.js",
+    "sha": "ddda82072069a8c985fe21a47e06c341ec97663f",
+    "size": 25193,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/script.js?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/script.js",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/ddda82072069a8c985fe21a47e06c341ec97663f",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/script.js",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/script.js?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/ddda82072069a8c985fe21a47e06c341ec97663f",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/script.js"
+    }
+  },
+  {
+    "name": "scripts",
+    "path": "scripts",
+    "sha": "d45ba3e55f8fadbe8efb401e5ed0437814cbf015",
+    "size": 0,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/scripts?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/tree/main/scripts",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/d45ba3e55f8fadbe8efb401e5ed0437814cbf015",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/scripts?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/trees/d45ba3e55f8fadbe8efb401e5ed0437814cbf015",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/tree/main/scripts"
+    }
+  },
+  {
+    "name": "sitemap.xml",
+    "path": "sitemap.xml",
+    "sha": "8dcdcf77362b6358b7545a5ea7f3f41c70af9e54",
+    "size": 306,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/sitemap.xml?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/sitemap.xml",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/8dcdcf77362b6358b7545a5ea7f3f41c70af9e54",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/sitemap.xml",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/sitemap.xml?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/8dcdcf77362b6358b7545a5ea7f3f41c70af9e54",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/sitemap.xml"
+    }
+  },
+  {
+    "name": "style.css",
+    "path": "style.css",
+    "sha": "4414ac906d9a9c8450164840fb38075a92392ab6",
+    "size": 25046,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/style.css?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/style.css",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/4414ac906d9a9c8450164840fb38075a92392ab6",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/style.css",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/style.css?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/4414ac906d9a9c8450164840fb38075a92392ab6",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/style.css"
+    }
+  },
+  {
+    "name": "sw.js",
+    "path": "sw.js",
+    "sha": "53b6d63676bb413d7f895a95f0aff40d2534bcf2",
+    "size": 611,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/sw.js?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/sw.js",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/53b6d63676bb413d7f895a95f0aff40d2534bcf2",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/sw.js",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/sw.js?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/53b6d63676bb413d7f895a95f0aff40d2534bcf2",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/sw.js"
+    }
+  },
+  {
+    "name": "tsconfig.json",
+    "path": "tsconfig.json",
+    "sha": "d3a3fd16c89990bb94c74f13ee4e3b7f08cf72cb",
+    "size": 647,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/tsconfig.json?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/tsconfig.json",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/d3a3fd16c89990bb94c74f13ee4e3b7f08cf72cb",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/tsconfig.json",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/tsconfig.json?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/d3a3fd16c89990bb94c74f13ee4e3b7f08cf72cb",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/tsconfig.json"
+    }
+  },
+  {
+    "name": "varan-otogar-erginkaplan2003topkapi.jpg",
+    "path": "varan-otogar-erginkaplan2003topkapi.jpg",
+    "sha": "2f30cf9db25bd24aab07841fed1e83d39c45cc56",
+    "size": 40388,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/varan-otogar-erginkaplan2003topkapi.jpg?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/varan-otogar-erginkaplan2003topkapi.jpg",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/2f30cf9db25bd24aab07841fed1e83d39c45cc56",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/varan-otogar-erginkaplan2003topkapi.jpg",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/varan-otogar-erginkaplan2003topkapi.jpg?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/2f30cf9db25bd24aab07841fed1e83d39c45cc56",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/varan-otogar-erginkaplan2003topkapi.jpg"
+    }
+  },
+  {
+    "name": "veil.sig",
+    "path": "veil.sig",
+    "sha": "717f07a91d6af4cc66a4556b930ace2bfa84c56f",
+    "size": 2490,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/veil.sig?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/veil.sig",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/717f07a91d6af4cc66a4556b930ace2bfa84c56f",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/veil.sig",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/veil.sig?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/717f07a91d6af4cc66a4556b930ace2bfa84c56f",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/veil.sig"
+    }
+  },
+  {
+    "name": "vite.config.js",
+    "path": "vite.config.js",
+    "sha": "3c58558337476675a4a3cd5616a5015f0d37185a",
+    "size": 127,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/vite.config.js?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/vite.config.js",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/3c58558337476675a4a3cd5616a5015f0d37185a",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/vite.config.js",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/vite.config.js?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/3c58558337476675a4a3cd5616a5015f0d37185a",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/vite.config.js"
+    }
+  },
+  {
+    "name": "work.png",
+    "path": "work.png",
+    "sha": "ac8fa3b584ed9e6f7dd797b96d031f49a71d3326",
+    "size": 324590,
+    "url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/work.png?ref=main",
+    "html_url": "https://github.com/eerrgin/eerrgin.github.io/blob/main/work.png",
+    "git_url": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/ac8fa3b584ed9e6f7dd797b96d031f49a71d3326",
+    "download_url": "https://raw.githubusercontent.com/eerrgin/eerrgin.github.io/main/work.png",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/eerrgin/eerrgin.github.io/contents/work.png?ref=main",
+      "git": "https://api.github.com/repos/eerrgin/eerrgin.github.io/git/blobs/ac8fa3b584ed9e6f7dd797b96d031f49a71d3326",
+      "html": "https://github.com/eerrgin/eerrgin.github.io/blob/main/work.png"
+    }
+  }
+]
