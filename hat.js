@@ -314,7 +314,11 @@
       line("Bash değil. KAVRA bu sekmede niyeti okur. Ağırlık dışarı çıkmaz.", "dim");
       line("yardım yaz, ya da düz cümle: yağmur var mı", "dim");
     }
-    window.setTimeout(() => input.focus(), 30);
+  if (window.matchMedia(
+  "(hover: hover) and (pointer: fine)"
+).matches) {
+  window.setTimeout(() => input.focus(), 30);
+}
   }
 
   function closeHat() {
