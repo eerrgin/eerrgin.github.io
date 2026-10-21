@@ -938,3 +938,25 @@ html.motion section.reveal.in { animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 
   from { opacity: 0; transform: translateY(22px); }
   to { opacity: 1; transform: translateY(0); }
 }
+/* Tabletlerde daralan içerikleri tek sütuna al */
+@media (min-width: 601px) and (max-width: 720px) {
+  .grid.places,
+  .grid.projects,
+  .grid.two,
+  .split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Sabit üst menünün bölüm başlıklarını kapatmasını önle */
+@media (max-width: 899px) {
+  section {
+    scroll-margin-top: 126px;
+  }
+}
+
+@media (max-width: 600px) {
+  section {
+    scroll-margin-top: 108px;
+  }
+}
