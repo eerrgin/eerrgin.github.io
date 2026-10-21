@@ -318,7 +318,6 @@
   "(hover: hover) and (pointer: fine)"
 ).matches) {
   window.setTimeout(() => input.focus(), 30);
-}
   }
 
   function closeHat() {
