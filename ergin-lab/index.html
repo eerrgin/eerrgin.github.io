@@ -3,96 +3,198 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0a100f">
-<meta name="description" content="Ergin Lab — merak, küçük deneyler ve çalışan prototipler.">
-<title>Ergin Lab — Merakın çalışma masası</title>
+<meta name="theme-color" content="#0e0d0b">
+<meta name="description" content="Ergin Lab — gece tezgâhı. Çizgi, dalga, renk, kaos, oran ve bir kelimeden kurulan kıyı. Hepsi tarayıcıda, ağ isteği olmadan.">
+<title>Ergin Lab — Gece tezgâhı</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e0d0b'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23e8a15a' stroke-width='1.4'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%238fd0c8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,460;0,9..144,560;1,9..144,460&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/lab.css">
 </head>
 <body>
-<div class="noise" aria-hidden="true"></div>
-<header class="topbar">
-  <a class="brand" href="./" aria-label="Ergin Lab ana sayfa"><span class="brand-mark">E<span>·</span></span><span>ERGIN <b>LAB</b><small>PERSONAL EXPERIMENTS / 2026</small></span></a>
-  <nav><a href="#experiments">Deneyler</a><a href="#bench">Çalışma masası</a><a href="#fieldnotes">Not defteri</a></nav>
-  <div class="status"><i></i> SİSTEM ÇALIŞIYOR</div>
+<canvas id="dust" aria-hidden="true"></canvas>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="./" aria-label="Ergin Lab ana sayfa">
+      <span class="mark" aria-hidden="true"></span>
+      <span>ERGIN LAB<small>GECE TEZGAHI · 2026</small></span>
+    </a>
+    <nav class="nav" aria-label="Bölümler">
+      <a href="#katalog">Enstrümanlar</a>
+      <a href="#stage">Tezgâh</a>
+      <a href="#merdiven">Merdiven</a>
+      <a href="#notlar">Notlar</a>
+    </nav>
+    <div class="top-meta">
+      <time id="clock">--:--:-- İST</time>
+      <button type="button" class="ghost-btn" id="motionBtn" aria-pressed="true">Hareket açık</button>
+    </div>
+  </div>
 </header>
-<main>
-<section class="hero">
-  <div class="hero-copy">
-    <div class="eyebrow"><span class="eyebrow-line"></span> MERAK AÇIK · SONUÇLAR BELİRSİZ</div>
-    <h1>Bir şeyleri<br><em>kurcala.</em></h1>
-    <p class="hero-lede">Burası bitmiş ürünler vitrini değil. Küçük soruların çalışan prototiplere, beklenmedik sonuçların yeni sorulara dönüştüğü kişisel bir laboratuvar.</p>
-    <div class="hero-actions"><a class="button primary" href="#experiments">Deneylere gir <span>↘</span></a><a class="text-link" href="#manifesto">Laboratuvarın amacı <span>↗</span></a></div>
-    <div class="hero-meta"><span><b>04</b> AKTİF DENEY</span><span><b>∞</b> SORU</span><span><b>0</b> KESİN CEVAP</span></div>
-  </div>
-  <div class="hero-visual" aria-label="Laboratuvarın stilize edilmiş kontrol paneli">
-    <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="core"><span>?</span></div>
-    <div class="scanline"></div><div class="readout readout-top"><small>LAB / SENSOR 001</small><b id="liveClock">00:00:00</b><span>LOCAL OBSERVATION</span></div>
-    <div class="readout readout-bottom"><span class="pulse"></span><small>MERAK SEVİYESİ</small><b id="curiosity">87.4</b><span>↑ READY TO EXPLORE</span></div>
-    <div class="crosshair crosshair-one">+</div><div class="crosshair crosshair-two">+</div>
-    <div class="visual-label">FIG. 01 <span>UNKNOWN SYSTEM / NOT TO SCALE</span></div>
-  </div>
-</section>
-<div class="ticker"><div>TEST ET <span>✳</span> GÖZLEMLE <span>✳</span> YANIL <span>✳</span> YENİDEN DENE <span>✳</span> TEST ET <span>✳</span> GÖZLEMLE <span>✳</span> YANIL <span>✳</span> YENİDEN DENE <span>✳</span></div></div>
-
-<section class="section" id="experiments">
-  <div class="section-head"><div><div class="eyebrow">01 / DENEY KATALOĞU</div><h2>Kurcalamak için<br><em>bir sebep.</em></h2></div><p>Bir tahmin yap. Düğmeye bas. Sonucun sezgine uyup uymadığına bak.</p></div>
-  <div class="filter-row"><span>GÖSTERİLEN DENEYLER <b id="resultCount">04</b></span><div class="filters"><button class="filter active" data-filter="all">Tümü</button><button class="filter" data-filter="mind">Zihin</button><button class="filter" data-filter="physics">Fizik</button><button class="filter" data-filter="code">Kod</button></div></div>
-  <div class="experiment-grid">
-    <article class="experiment-card featured" data-kind="mind">
-      <div class="card-art art-bias"><div class="bias-circle"></div><div class="bias-line"></div><span class="art-index">EXP / 001</span><span class="art-stamp">PERCEPTION</span></div>
-      <div class="card-content"><div class="card-kicker">ZİHİN · 2 DAKİKA <span>● ETKİLEŞİMLİ</span></div><h3>Gözün sana yalan söylüyor mu?</h3><p>İki çizgiden hangisi daha uzun? Önce tahmin et, sonra ölç. Algının bağlamdan nasıl etkilendiğini keşfet.</p><button class="open-experiment" data-open="illusion">Deneyi başlat <span>↗</span></button></div>
-    </article>
-    <article class="experiment-card" data-kind="physics">
-      <div class="card-art art-pendulum"><div class="pendulum"><i></i><b></b></div><span class="art-index">EXP / 002</span><span class="art-stamp">MOTION STUDY</span></div>
-      <div class="card-content"><div class="card-kicker">FİZİK · 3 DAKİKA <span>● SİMÜLASYON</span></div><h3>Kaosun kıyısında</h3><p>Başlangıç koşulunu çok az değiştir. İki sarkaç yörüngesinin nasıl ayrıştığını gözlemle.</p><button class="open-experiment" data-open="chaos">Deneyi başlat <span>↗</span></button></div>
-    </article>
-    <article class="experiment-card" data-kind="code">
-      <div class="card-art art-random"><canvas id="randomCanvas" aria-label="Rastgele noktalar görselleştirmesi"></canvas><span class="art-index">EXP / 003</span><span class="art-stamp">PROBABILITY</span></div>
-      <div class="card-content"><div class="card-kicker">KOD · 1 DAKİKA <span>● CANLI</span></div><h3>Rastgelelik rastgele görünür mü?</h3><p>Yazı-tura sonuçlarını üret. Kısa serilerde neden “haksızlık” hissi oluştuğunu gör.</p><button class="open-experiment" data-open="random">Deneyi başlat <span>↗</span></button></div>
-    </article>
-    <article class="experiment-card" data-kind="code">
-      <div class="card-art art-network"><div class="network-lines"></div><span class="art-index">EXP / 004</span><span class="art-stamp">NETWORK / LOCAL</span></div>
-      <div class="card-content"><div class="card-kicker">İNTERNET · 2 DAKİKA <span>● ETKİLEŞİMLİ</span></div><h3>Bir tık kaç yere gider?</h3><p>Bir web isteğinin yolculuğunu adım adım izle: tarayıcı, DNS, sunucu, yanıt. Görünmeyen sistemi görünür kıl.</p><button class="open-experiment" data-open="request">Deneyi başlat <span>↗</span></button></div>
-    </article>
-  </div>
-</section>
-
-<section class="bench-section" id="bench">
-  <div class="section-head"><div><div class="eyebrow">02 / AÇIK ÇALIŞMA MASASI</div><h2>Bir parametreyi<br><em>değiştir.</em></h2></div><p>Bu bölümde sonuç, senin seçtiğin değerlere göre anında değişir. Küçük bir deney, gerçek bir merak.</p></div>
-  <div class="bench-grid">
-    <div class="bench-panel">
-      <div class="panel-top"><span><i class="live-dot"></i> SANAL DENEY / 01</span><span>MONTE CARLO</span></div>
-      <h3>Pi sayısını rastgele bulabilir miyiz?</h3>
-      <p class="muted">Bir dairenin içine rastgele noktalar atıyoruz. Dairenin içine düşenlerin oranı, π için yaklaşık bir değer verir.</p>
-      <div class="plot-wrap"><canvas id="piCanvas" width="560" height="280" aria-label="Pi deneyi noktaları"></canvas><div class="plot-legend"><span><i class="dot-inside"></i> DAİRE İÇİ</span><span><i class="dot-outside"></i> DAİRE DIŞI</span></div></div>
-      <div class="metric-row"><div><small>TAHMİNİ π</small><strong id="piEstimate">—</strong></div><div><small>NOKTA SAYISI</small><strong id="piCount">0</strong></div><div><small>GERÇEK π</small><strong>3.14159</strong></div></div>
-      <div class="bench-actions"><button class="button primary" id="addPoints">+ 100 nokta at</button><button class="button secondary" id="resetPi">Sıfırla</button></div>
-      <p class="tiny-note">Not: Az sayıda nokta yanıltıcı olabilir. Daha çok örnek genellikle daha iyi tahmin verir, ama her seferinde kusursuz sonuç garanti değildir.</p>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow"><i></i> 41°00′N · MERAK AÇIK</p>
+      <h1>Ölçülebilir olanın<br><em>hemen kıyısı.</em></h1>
+      <p class="lede">Burası vitrin değil, tezgâh. Çizgin dairelere ayrılır, iki dalga birbirini siler, boyasız bir disk renk uydurur. Hepsi bu sayfada hesaplanır. Dışarı bir istek gitmez.</p>
+      <div class="actions">
+        <a class="btn" href="#stage">Tezgâha otur</a>
+        <a class="btn ghost" href="#notlar">Önce üç not</a>
+      </div>
+      <dl class="facts">
+        <div><dt>Enstrüman</dt><dd>06</dd></div>
+        <div><dt>Ağ isteği</dt><dd>00</dd></div>
+        <div><dt>Dışarı çıkan veri</dt><dd>00</dd></div>
+      </dl>
     </div>
-    <div class="bench-panel terminal-panel">
-      <div class="panel-top"><span><i class="live-dot"></i> TERMINAL / 02</span><span>SIMULATED OUTPUT</span></div>
-      <h3>Hata mesajından korkma.</h3>
-      <p class="muted">Bir sorunun çözümü çoğu zaman doğru soruyu sormakla başlar. Senaryoyu seç, teşhis sürecini çalıştır.</p>
-      <label for="scenario">VAKA SEÇ</label><select id="scenario"><option value="css">Sayfa açılıyor ama tasarım bozuk</option><option value="dns">Alan adı açılmıyor</option><option value="api">API yanıt vermiyor</option><option value="deploy">Yeni sürüm görünmüyor</option></select>
-      <button class="button primary full" id="diagnose">Teşhisi çalıştır <span>↗</span></button>
-      <div class="terminal-output" id="terminalOutput" aria-live="polite"><div class="term-line dim">ergin@lab:~$ ./diagnose --awaiting-input</div><div class="term-line">Bir vaka seç ve teşhisi başlat.</div><span class="cursor">_</span></div>
-      <div class="terminal-foot"><span>LOCAL DEMO</span><span>NO NETWORK REQUESTS</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="manifesto" id="manifesto"><div class="manifesto-symbol">“</div><div><div class="eyebrow">03 / LABORATUVAR PROTOKOLÜ</div><h2>Merak, cevaptan<br><em>daha uzun yaşar.</em></h2><p>Burada her prototipin kusursuz olması gerekmiyor. Ama neyi test ettiği, ne öğrendiği ve nerede yanıldığı açık olmalı. Bir fikri çalıştır, sonucunu gözlemle, sonra fikrini güncelle.</p><div class="protocol"><span><b>01</b> SORU SOR</span><span><b>02</b> TAHMİN ET</span><span><b>03</b> TEST ET</span><span><b>04</b> NOT AL</span></div></div></section>
-
-<section class="section fieldnotes" id="fieldnotes"><div class="section-head"><div><div class="eyebrow">04 / SAHA NOTLARI</div><h2>Kısa notlar,<br><em>uzun meraklar.</em></h2></div><p>Bir deneyin yanında, onu anlamlandıran küçük açıklamalar da olmalı.</p></div>
-<div class="notes-grid"><article class="note"><span>NOTE_001 / ALGI</span><h3>Beyin kamera değildir.</h3><p>Gördüğümüz şey yalnızca gözümüze ulaşan ışık değil; beynin bağlam, beklenti ve geçmiş deneyimle kurduğu yorumdur.</p><div class="note-bottom">OKUMA SÜRESİ 45 SN <span>↗</span></div></article><article class="note"><span>NOTE_002 / OLASILIK</span><h3>Rastgelelik düzenli görünmek zorunda değil.</h3><p>Gerçek rastgele dizilerde art arda aynı sonucun gelmesi mümkündür. “Fazla düzenli” görünen seri bazen daha az rastgele olabilir.</p><div class="note-bottom">OKUMA SÜRESİ 60 SN <span>↗</span></div></article><article class="note"><span>NOTE_003 / DEBUG</span><h3>Belirti, sebep değildir.</h3><p>Bir site açılmıyorsa sorun DNS, ağ, sunucu, uygulama veya tarayıcı önbelleği olabilir. Tek tek doğrulamak, tahmin yürütmekten iyidir.</p><div class="note-bottom">OKUMA SÜRESİ 50 SN <span>↗</span></div></article></div></section>
-</main>
-<footer><a class="brand footer-brand" href="./"><span class="brand-mark">E<span>·</span></span><span>ERGIN <b>LAB</b><small>BU LAB GELİŞMEYE DEVAM EDİYOR.</small></span></a><div class="footer-center">BUILT TO LEARN, NOT TO LOOK FINISHED.</div><a href="../">ANA SİTEYE DÖN ↑</a></footer>
-
-<div class="modal-backdrop" id="experimentModal" hidden>
-  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-head"><span class="eyebrow" id="modalEyebrow">EXPERIMENT / 001</span><button class="modal-close" id="closeModal" aria-label="Kapat">×</button></div>
-    <h2 id="modalTitle">Deney</h2><p class="modal-intro" id="modalIntro"></p><div class="modal-body" id="modalBody"></div><div class="modal-footer"><span>ERGİN LAB · INTERACTIVE STUDY</span><button class="text-link" id="modalDone">Deneyi kapat ×</button></div>
+    <button class="hero-plate" type="button" id="openChaos">
+      <canvas id="heroCanvas" aria-hidden="true"></canvas>
+      <span class="plate-label"><small>FIG. 01 · CANLI</small>ÇİFT SARKAÇ · AÇMAK İÇİN DOKUN</span>
+    </button>
   </section>
-</div>
+
+  <section class="section" id="katalog">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow"><i></i> 01 · KATALOG</p>
+        <h2>Birini seç.<br><em>Gerisi hesap.</em></h2>
+      </div>
+      <p>Kartın üstündeki hareket süs değil, aynı denklemin küçük hali. Asıl ölçü aşağıdaki camda.</p>
+    </div>
+    <div class="grid" id="cards">
+      <button class="card feature" type="button" data-open="iz" aria-pressed="true">
+        <canvas class="mini" data-mini="iz" aria-hidden="true"></canvas>
+        <span class="card-body">
+          <span class="kicker">01 · İZ <b>MATEMATİK</b></span>
+          <h3>Çizgin dairelere ayrılır.</h3>
+          <span class="sum">Parmağını sürükle, bırak. Az daire genel biçimi tutar. Çok daire, titremeyi de.</span>
+        </span>
+      </button>
+      <button class="card" type="button" data-open="tank" aria-pressed="false">
+        <canvas class="mini" data-mini="tank" aria-hidden="true"></canvas>
+        <span class="card-body">
+          <span class="kicker">02 · TANK <b>DALGA</b></span>
+          <h3>Karanlık da bir sonuçtur.</h3>
+          <span class="sum">İki kaynağı sürükle. Aydınlık şerit büyütür, karanlık şerit siler.</span>
+        </span>
+      </button>
+      <button class="card" type="button" data-open="benham" aria-pressed="false">
+        <canvas class="mini" data-mini="benham" aria-hidden="true"></canvas>
+        <span class="card-body">
+          <span class="kicker">03 · BENHAM <b>ALGI</b></span>
+          <h3>Boyasız disk renk uydurur.</h3>
+          <span class="sum">Desende kırmızı yok, mavi yok. Ortadaki noktaya bak. Rengi hız üretir.</span>
+        </span>
+      </button>
+      <button class="card" type="button" data-open="kelebek" aria-pressed="false">
+        <canvas class="mini" data-mini="kelebek" aria-hidden="true"></canvas>
+        <span class="card-body">
+          <span class="kicker">04 · KELEBEK <b>KAOS</b></span>
+          <h3>Toz kadar fark, iki hikâye.</h3>
+          <span class="sum">Aynı sarkaçtan iki tane. Başlangıçları neredeyse özdeş. Sonra yolları ayrılır.</span>
+        </span>
+      </button>
+      <button class="card" type="button" data-open="oran" aria-pressed="false">
+        <canvas class="mini" data-mini="oran" aria-hidden="true"></canvas>
+        <span class="card-body">
+          <span class="kicker">05 · ORAN <b>SES</b></span>
+          <h3>İki frekans bir şekil çizer.</h3>
+          <span class="sum">Eğri, duyduğun oranın resmi. Sade kesir sakin durur, yabancı oran dolanır.</span>
+        </span>
+      </button>
+      <button class="card" type="button" data-open="siluet" aria-pressed="false">
+        <canvas class="mini" data-mini="siluet" aria-hidden="true"></canvas>
+        <span class="card-body">
+          <span class="kicker">06 · SİLUET <b>TOHUM</b></span>
+          <h3>Bir kelime, bir kıyı.</h3>
+          <span class="sum">Hava durumu yok, anahtar yok. Aynı sözcük her seferinde aynı geceyi kurar.</span>
+        </span>
+      </button>
+      <aside class="protocol">
+        <p class="eyebrow"><i></i> PROTOKOL</p>
+        <ol>
+          <li><b>01</b> Soruyu küçült.</li>
+          <li><b>02</b> Cevabı, düğmeden önce söyle.</li>
+          <li><b>03</b> Bir tek parametreyi çevir.</li>
+          <li><b>04</b> Tahmin tutmazsa onu not et. Tutanı da.</li>
+        </ol>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="stage">
+    <div class="stage-head">
+      <div>
+        <p class="eyebrow" id="stageKicker"><i></i> 01 · İZ</p>
+        <h2 id="stageTitle">Çizgin dairelere ayrılır.</h2>
+      </div>
+      <p id="stageLede">Kapalı bir iz, dönen dairelerin toplamıdır. Kaç daire gerektiğini sen seç.</p>
+    </div>
+    <div class="stage-layout">
+      <div class="glass" id="glass">
+        <canvas id="paint" aria-hidden="true"></canvas>
+        <canvas id="ink" aria-hidden="true"></canvas>
+        <p class="veil" id="veil">Basılı tutup çiz. Bırakınca daireler devralır.</p>
+      </div>
+      <aside class="aside" id="aside"></aside>
+    </div>
+  </section>
+
+  <section class="section" id="merdiven">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow"><i></i> 02 · MERDİVEN</p>
+        <h2>Ses yükseliyor.<br><em>Tepe yok.</em></h2>
+      </div>
+      <p>Her perde tırmanır, en üstteki solar, alttan yenisi doğar. Toplam hareket yukarıdır. Hiçbir ses tepeye varmaz.</p>
+    </div>
+    <div class="bench">
+      <div>
+        <p class="lede">Şekil sessizken de yürür. Sesi açarsan aynı yürüyüşü duyarsın. Kulaklık daha net. Ses bu cihazdan çıkmaz.</p>
+      </div>
+      <canvas id="stair" aria-hidden="true"></canvas>
+      <div>
+        <button type="button" class="btn full" id="soundBtn" aria-pressed="false">Sesi aç</button>
+        <label class="field" style="margin-top:12px">
+          <span>HIZ <b id="stairOut">1.0</b></span>
+          <input id="stairRate" type="range" min="0.45" max="1.8" step="0.05" value="1">
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="notlar">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow"><i></i> 03 · NOTLAR</p>
+        <h2>Kısa not,<br><em>uzun şaşkınlık.</em></h2>
+      </div>
+      <p>Üç cümle. Deneyi kapattıktan sonra da dururlar.</p>
+    </div>
+    <div class="notes">
+      <article class="note">
+        <span>NOT · RENK</span>
+        <h3>Boya yokken renk var.</h3>
+        <p>Benham diski yalnızca koyu ve kırık beyazdır. Gördüğün sıcak ya da soğuk, gözün titreşimi renge çevirmesidir. Diski durdur: renk de durur. Herkes aynı tonu görmez.</p>
+      </article>
+      <article class="note">
+        <span>NOT · DALGA</span>
+        <h3>Karanlık bir arıza değil.</h3>
+        <p>İki dalga aynı yere ters fazla gelirse birbirini siler. O şerit, düzeneğin bozulduğu yer değil, doğru çalıştığı yerdir.</p>
+      </article>
+      <article class="note">
+        <span>NOT · KAOS</span>
+        <h3>Toz kadar fark yeter.</h3>
+        <p>İki sarkaç aynı kanunla iner. Birinin açısı bir toz zerresi kadardır. Kısa süre ikisi de tek görünür. Sonra ayrılırlar. Bu karakterdir, hata değil.</p>
+      </article>
+    </div>
+  </section>
+</main>
+<footer class="foot wrap">
+  <a href="https://eerrgin.github.io/">Gece vardiyasına dön</a>
+  <p>Ergin Lab · tarayıcıda hesaplanır · anahtar yok · iz yok</p>
+</footer>
 <script src="assets/lab.js"></script>
-</body></html>
+</body>
+</html>

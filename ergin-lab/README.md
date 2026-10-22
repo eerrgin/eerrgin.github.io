@@ -1,22 +1,26 @@
-# Ergin Lab — Mini Web Deneyleri
+# Ergin Lab — Gece tezgâhı
 
-Küçük web deneylerini tek yerde topladığım kişisel öğrenme deposu. Her deney düz HTML, CSS ve JavaScript ile yazıldı; framework veya kopyalanmış bir şablon gerektirmez.
+Kişisel, çerçevesiz bir gece laboratuvarı. Düz HTML, CSS ve JavaScript. Sunucu yok, API anahtarı yok, dışarı giden istek yok. Ses yalnızca düğmeye basınca bu cihazda üretilir.
 
-## Deneyler
+## Enstrümanlar
 
-- **Taskflow** — görev ekleme, silme, tamamlama, filtreleme ve `localStorage`.
-- **Calc Lab** — dört işlem, yüzde, işaret değiştirme, fare ve klavye girdileri.
-- **Skyline** — OpenWeather Current Weather API, `fetch`, JSON ve hata durumları.
-- **Tempo** — kronometre, duraklat/devam et ve tur kaydı.
+- **İz** — çizdiğin kapalı eğri, Fourier dairelerine ayrılır.
+- **Tank** — iki kaynağın girişim deseni.
+- **Benham** — boyasız dönen disk; renk algının icadıdır.
+- **Kelebek** — çift sarkaç; küçük açı farkı zamanla ayrışır.
+- **Oran** — Lissajous figürü ve kısa dinletme.
+- **Siluet** — bir kelimeden kurulan gece kıyısı (API yok).
+- **Merdiven** — Shepard perdesi.
 
-## Çalıştırma
+## Eski adresler
 
-Ana `index.html` dosyasını aç veya GitHub Pages ile depoyu yayınla. Skyline için OpenWeather API anahtarı gerekir; uygulama anahtarı kaynak koduna yazmaz, yalnızca mevcut sekmenin `sessionStorage` alanında tutar.
+- `taskflow/` → İz
+- `calc-lab/` → Oran
+- `skyline/` → Siluet
+- `tempo/` → Merdiven
 
-## Kendi geliştirme notlarım
+## Kurulum
 
-Bu depoyu bitmiş bir ürün değil, üzerinde deney yaptığım bir öğrenme alanı olarak görüyorum. Sonraki adımlar: Taskflow'a arama ve son tarih eklemek; hesap makinesine işlem geçmişi eklemek; Skyline'da yüklenme durumunu geliştirmek; Tempo'da tur farklarını göstermek.
+Bu klasörün **içeriğini** depodaki `ergin-lab/` altına koy (`index.html` kökte olsun).
 
-## Yayınlama
-
-GitHub'da bu klasörün içeriğini bir depoya yükle. `Settings → Pages → Deploy from a branch → main → /(root)` seç. Yayınlanınca ana sayfa ve alt klasörlerdeki deneyler bağlantılarından açılır.
+Yollar göreli: `assets/lab.css`, `assets/lab.js`.
