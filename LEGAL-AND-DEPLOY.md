@@ -23,7 +23,13 @@ Bu dosya hukuki görüş değildir. Her dosyanın ve bağlantının izin durumun
 - Analitik, reklam, sosyal medya takip kodu ve Google Fonts isteği yoktur.
 - Canlı özellikler harici API'lere istek gönderir; bu kaynakların kendi sunucu logları/koşulları bu sitenin kontrolünde değildir.
 - Web Audio yalnızca kullanıcı başlattığında çalar. Yerel dosya seçimi bir tarayıcı `blob:` adresi kullanır; dosya bu kod tarafından sunucuya yüklenmez.
-- `sw.js` yalnızca site kabuğunu önbelleğe alır. API yanıtları, fotoğraflar ve ses dosyaları Service Worker tarafından kasıtlı olarak önbelleğe alınmaz.
+- `sw.js` eski sürüm önbelleklerini silip kendini kayıttan çıkaran bir uyumluluk temizleyicisidir; çevrimdışı önbellek veya çevrimdışı çalışma vaadi vermez. `script.js` de eski service worker kayıtlarını ve önbellekleri temizler.
+
+## MycelForge yayın yolu
+
+- MycelForge'un kaynak kodu ayrı `eerrgin/mycelforge` deposunda tutulur. `.github/workflows/mycelforge-publish.yml`, bu kaynağı test edip `/mycelforge/` altına statik dosya olarak derler.
+- `mycelforge/index.html` ve `mycelforge/assets/` oluşturulmuş çıktılardır; bunları elle düzenlemek yerine kaynak depoyu düzelt.
+- `.github/workflows/ci.yml` HTML, dosya, çapa, JSON, SVG/XML ve JavaScript kontrollerini çalıştırır.
 
 ## Repoda temizlik
 
