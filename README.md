@@ -5,7 +5,7 @@
 ## Sayfada neler var
 
 - **Hava durumu şeridi** — sayfanın en üstünde, İstanbul için anlık durum ve 3 günlük tahmin ([Open-Meteo](https://open-meteo.com/), anahtar gerekmez). Yanıt gelmezse şerit hata mesajı gösterir, sayfa çalışmaya devam eder.
-- **İstanbul arşivi** — Galata Kulesi, Eminönü, Samatya, Ayasofya, Süleymaniye ve Kız Kulesi kartları. Görseller `assets/istanbul/` altındaki bu site için çizilmiş SVG siluetlerdir.
+- **İstanbul arşivi** — Galata Kulesi, Eminönü, Samatya, Ayasofya, Süleymaniye ve Kız Kulesi kartları. Ana sayfa şu anda görseller için `photos/*.jpg` dosyalarını kullanır; `assets/istanbul/` SVG'leri yardımcı/eski görsel varlıklarıdır.
 - **Atölye, kedi laboratuvarı, Greyfield FM, arşiv** — projeler, tarayıcıda çalışan özellik karşılaştırma, Web Audio ile üretilen ses ve kısa notlar.
 - **MycelForge** — `/mycelforge/` altında yayınlanan miselyum biyomalzeme formül/protokol tarama arayüzü. Kaynak kodu ayrı [MycelForge deposunda](https://github.com/eerrgin/mycelforge); siteye otomatik olarak derlenip kopyalanır.
 
@@ -13,13 +13,14 @@
 
 | Yol | Görev |
 | --- | --- |
-| `index.html`, `style.css`, `script.js` | Ana sayfa |
+| `index.html`, `style.css` | Ana sayfa yapısı ve görünüm |
+| `fx.js`, `script.js`, `kavra.js`, `hat.js` | Arka plan, hava durumu, etkileşimler, tarayıcı ağı ve HAT terminali |
 | `photos/`, `fonts/`, `assets/` | Görseller, yazı tipleri, SVG'ler |
 | `ergin-lab/` | Mini web deneyleri (ayrı alt sayfalar) |
 | `404.html` | Bulunamayan adresler için sayfa |
-| `scripts/check.mjs` | Bağlantı, çapa, JSON/JS/SVG ve temel HTML kontrolü |
+| `scripts/check.mjs` | Yerel bağlantılar, çapalar, CSS varlıkları, JSON/JSONC, JavaScript ve ana sayfa kopyalarının kontrolü |
 | `.github/workflows/ci.yml` | Her push ve pull request'te HTML/bağlantı/JSON/JavaScript kontrolü |
-| `public/`, `vite.config.js`, `package.json` | Eski Vite kalıntısı; yayın bunlara bağlı değil |
+| `public/`, `src/`, `server/`, `vite.config.js` | Tarihsel/yardımcı uygulama dosyaları; ana sayfanın GitHub Pages yayını kök HTML dosyalarından yapılır |
 | `cat-ai.js` | Ana sayfaya şu an bağlı değil (tarayıcıda görsel sınıflandırma denemesi) |
 
 ## Yerelde çalıştırma ve kontrol
