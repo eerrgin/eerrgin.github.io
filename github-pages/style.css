@@ -1010,7 +1010,7 @@ html.motion section.reveal.in { animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 
 .grid.places {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-auto-rows: clamp(36px, 4.35vw, 62px);
+  grid-auto-rows: minmax(clamp(36px, 4.35vw, 62px), auto);
   grid-auto-flow: row;
   gap: clamp(10px, 1.25vw, 18px);
   margin-top: 16px;
@@ -1193,7 +1193,7 @@ html.motion section.reveal.in { animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 
 .kavra-open-hat { flex: 0 0 auto; margin-bottom: 4px; }
 
 @media (min-width: 721px) and (max-width: 899px) {
-  .grid.places { grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: 48px; gap: 12px; }
+  .grid.places { grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: minmax(48px, auto); gap: 12px; }
   .place-galata { grid-column: 1 / span 4; grid-row: 1 / span 4; }
   .place-eminonu { grid-column: 5 / span 2; grid-row: 1 / span 4; }
   .place-samatya { grid-column: 1 / span 3; grid-row: 5 / span 4; }
