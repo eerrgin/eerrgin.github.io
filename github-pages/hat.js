@@ -1,19 +1,19 @@
 /* HAT — gece sevk terminali.
    Bash değil. İlk kelime komutsa doğrudan çalışır.
-   Değilse KAVRA niyeti okur ve aynı yerel ağa sorar. */
+   Değilse Tigerk niyeti okur ve aynı yerel ağa sorar. */
 (function () {
   const root = document.getElementById("sevk");
   const screen = document.getElementById("hat-screen");
   const form = document.getElementById("hat-form");
   const input = document.getElementById("hat-in");
   const status = document.getElementById("hat-status");
-  if (!root || !screen || !form || !input || !window.Kavra || !window.Gece) return;
+  if (!root || !screen || !form || !input || !window.Tigerk || !window.Gece) return;
 
-  const COMMANDS = ["yardım", "help", "hava", "saat", "ay", "radyo", "kedi", "git", "iskelet", "tema", "titreşim", "kavra", "eğit", "ağ", "not", "temiz", "clear", "kapat", "sıfır", "bant"];
+  const COMMANDS = ["yardım", "help", "hava", "saat", "ay", "radyo", "kedi", "git", "iskelet", "tema", "titreşim", "tigerk", "eğit", "ağ", "not", "temiz", "clear", "kapat", "sıfır", "bant"];
   const PLACES = [
     ["istanbul", ["istanbul", "şehir", "sehir", "galata", "eminönü", "eminonu", "samatya", "ayasofya", "süleymaniye", "suleymaniye"]],
     ["atolye", ["atolye", "atölye", "workbench", "proje", "veil", "masa"]],
-    ["kavra", ["kavra", "ağ", "ag", "nöron", "noron"]],
+    ["tigerk", ["tigerk", "ağ", "ag", "nöron", "noron"]],
     ["laboratuvar", ["laboratuvar", "kedi", "lab"]],
     ["frekans", ["frekans", "radyo", "fm", "greyfield"]],
     ["sinyal", ["sinyal", "dışarı", "disari"]],
@@ -37,7 +37,7 @@
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function fold(value) {
-    return window.Kavra.fold(value);
+    return window.Tigerk.fold(value);
   }
 
   function paintStatus() {
@@ -77,10 +77,10 @@
   function helpText() {
     return [
       "HAT bir kabuk değil. Gece sevk masası.",
-      "İlk kelime komutsa o çalışır. Cümle yazarsan KAVRA niyeti okur.",
+      "İlk kelime komutsa o çalışır. Cümle yazarsan Tigerk niyeti okur.",
       "hava · saat · ay · radyo [otobüs|vhs|neon|kes]",
       "kedi · git <bölüm> · not · tema [gece|amber|kemik|sis]",
-      "titreşim [aç|kapa] · iskelet <cümle> · kavra <cümle>",
+      "titreşim [aç|kapa] · iskelet <cümle> · tigerk <cümle>",
       "eğit · ağ · sıfır · bant · temiz · kapat",
       "Kısayol: `  aç/kapa. Oklar geçmiş. Sekme tamamlar.",
     ].join("\n");
@@ -149,9 +149,9 @@
   }
 
   function trainText(hard) {
-    const before = window.Kavra.state().loss;
-    const state = hard ? window.Kavra.reset() : window.Kavra.trainEpochs(8, 0.4);
-    window.Gece.pulse("kavra");
+    const before = window.Tigerk.state().loss;
+    const state = hard ? window.Tigerk.reset() : window.Tigerk.trainEpochs(8, 0.4);
+    window.Gece.pulse("tigerk");
     return hard
       ? `ağ sıfırlandı ve yeniden doğdu. kayıp ${state.loss.toFixed(3)} · tur ${state.epochs}`
       : `geri yayılım. kayıp ${before.toFixed(3)} → ${state.loss.toFixed(3)} · tur ${state.epochs}`;
@@ -167,38 +167,38 @@
       window.Gece.go("laboratuvar");
       return "Kedi laboratuvarı açıldı. Tüy, desen, gövde seç ya da fotoğraf bırak. Dosya cihazdan çıkmaz. Sonuç kaşe değil, yakınlık.";
     }
-    if (intent === "git") return go(placeFrom(text) || "kavra");
+    if (intent === "git") return go(placeFrom(text) || "tigerk");
     if (intent === "iskelet") return `iskelet  ${read.bone}`;
     if (intent === "tema") return themeFrom(text);
     if (intent === "titresim") return tremorFrom(text);
     if (intent === "egit") return trainText(false);
     if (intent === "not") return noteText(true);
-    if (intent === "sor") return window.Kavra.speak ? window.Kavra.speak(text, read) : (read.passage ? `${read.passage.title}\n${read.passage.body}` : "Bu hatta kayıt yok. Uydurmuyorum.");
+    if (intent === "sor") return window.Tigerk.speak ? window.Tigerk.speak(text, read) : (read.passage ? `${read.passage.title}\n${read.passage.body}` : "Bu hatta kayıt yok. Uydurmuyorum.");
     return helpText();
   }
 
   function publish(read, answer) {
-    const out = document.getElementById("kavra-out");
-    const meta = document.getElementById("kavra-meta");
+    const out = document.getElementById("tigerk-out");
+    const meta = document.getElementById("tigerk-meta");
     if (out) out.textContent = answer;
     if (meta && read) {
-      const net = window.Kavra.state();
+      const net = window.Tigerk.state();
       meta.textContent = read.intent
         ? `${read.intent} ${bars(read.conf || 0)}  ${((read.conf || 0) * 100).toFixed(0)}% · iskelet ${read.bone} · ${read.bits.toFixed(2)} bit · kayıp ${net.loss.toFixed(3)}`
         : "henüz soru yok";
     }
-    const canvas = document.getElementById("kavra-net");
-    if (canvas && read) window.Kavra.draw(canvas, read);
+    const canvas = document.getElementById("tigerk-net");
+    if (canvas && read) window.Tigerk.draw(canvas, read);
   }
 
   function runFree(text) {
-    const read = window.Kavra.ask(text);
+    const read = window.Tigerk.ask(text);
     const answer = answerFor(read.intent, text, read);
-    line(`kavra  ${read.intent}  ${bars(read.conf)}  ${Math.round(read.conf * 100)}%`, "dim");
+    line(`tigerk  ${read.intent}  ${bars(read.conf)}  ${Math.round(read.conf * 100)}%`, "dim");
     answer.split("\n").forEach((row, index) => line(row, index === 0 ? "" : "dim"));
     line(`iskelet  ${read.bone}  ·  ${read.dropped} sesli düştü`, "dim");
     publish(read, answer);
-    window.Gece.pulse("kavra");
+    window.Gece.pulse("tigerk");
   }
 
   function soft(value) {
@@ -227,7 +227,7 @@
     if (token === "hava") {
       const answer = weatherText();
       line(answer);
-      publish(window.Kavra.ask(text), answer);
+      publish(window.Tigerk.ask(text), answer);
       return;
     }
     if (token === "saat") {
@@ -243,7 +243,7 @@
       return;
     }
     if (token === "kedi") {
-      line(answerFor("kedi", text, window.Kavra.ask(text)));
+      line(answerFor("kedi", text, window.Tigerk.ask(text)));
       return;
     }
     if (token === "git") {
@@ -251,8 +251,8 @@
       return;
     }
     if (token === "iskelet") {
-      const read = window.Kavra.ask(rest || text);
-      const bone = window.Kavra.skeleton(rest || text);
+      const read = window.Tigerk.ask(rest || text);
+      const bone = window.Tigerk.skeleton(rest || text);
       const answer = rest ? `iskelet  ${bone.text}` : `iskelet  ${read.bone}`;
       line(answer);
       publish({ ...read, bone: bone.text, intent: "iskelet" }, answer);
@@ -266,21 +266,21 @@
       line(tremorFrom(rest || text));
       return;
     }
-    if (token === "kavra") {
+    if (token === "tigerk") {
       runFree(rest || text);
       return;
     }
     if (token === "egit") {
       const answer = trainText(false);
       line(answer);
-      publish(window.Kavra.ask("ağı eğit"), answer);
+      publish(window.Tigerk.ask("ağı eğit"), answer);
       return;
     }
     if (token === "ag") {
-      const state = window.Kavra.state();
-      const answer = `KAVRA ${state.input} giriş · ${state.hidden} gizli · ${state.outputs} niyet · sigmoid · MSE · kayıp ${state.loss.toFixed(3)} · tur ${state.epochs}`;
+      const state = window.Tigerk.state();
+      const answer = `Tigerk ${state.input} giriş · ${state.hidden} gizli · ${state.outputs} niyet · sigmoid · MSE · kayıp ${state.loss.toFixed(3)} · tur ${state.epochs}`;
       line(answer);
-      publish(window.Kavra.ask("kavra nedir"), answer);
+      publish(window.Tigerk.ask("tigerk nedir"), answer);
       return;
     }
     if (token === "not") {
@@ -326,7 +326,7 @@
       line("EL-2945 · Ergin Kaplan / kapalı devre", "ghost");
       line("Bağlantı tanındı, efendim.", "ask");
       line("Ergin ile konuşma kanalı açıldı. Yanıtınızı bekliyorum, efendim.", "ask");
-      line("KAVRA: Bellek bu tarayıcıda. Cevaplarım hâlâ deney aşamasında; bilmediğimi saklamayacağım.", "dim");
+      line("Tigerk: Bellek bu tarayıcıda. Cevaplarım hâlâ deney aşamasında; bilmediğimi saklamayacağım.", "dim");
       line("Komut için yardım yazın. İlk kayıt: hava · saat · tema gece", "dim");
     }
     if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
@@ -353,7 +353,7 @@
       accessStatus.dataset.state = "success";
     }
     if (accessCode) accessCode.value = "";
-    window.Gece.pulse("kavra");
+    window.Gece.pulse("tigerk");
     openHat();
   }
 
@@ -365,15 +365,15 @@
 
   accessForm?.addEventListener("submit", acceptAccessCode);
   document.getElementById("open-hat")?.addEventListener("click", openHat);
-  document.getElementById("open-kavra-hat")?.addEventListener("click", openHat);
+  document.getElementById("open-tigerk-hat")?.addEventListener("click", openHat);
   document.getElementById("hat-fab")?.addEventListener("click", openHat);
 
-  document.querySelectorAll('a[href="#kavra"]').forEach((link) => {
+  document.querySelectorAll('a[href="#tigerk"]').forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
       const commandDialog = document.getElementById("cmd");
       if (commandDialog?.open) commandDialog.close();
-      window.Gece.go("kavra");
+      window.Gece.go("tigerk");
       openHat();
     });
   });
@@ -429,52 +429,52 @@
 
   if (location.hash === "#sevk") openHat();
 
-  document.getElementById("kavra-run")?.addEventListener("click", () => {
-    const value = document.getElementById("kavra-in")?.value.trim();
+  document.getElementById("tigerk-run")?.addEventListener("click", () => {
+    const value = document.getElementById("tigerk-in")?.value.trim();
     if (!value) {
-      publish(window.Kavra.ask(""), "Boş cümle. İskelet de boş.");
+      publish(window.Tigerk.ask(""), "Boş cümle. İskelet de boş.");
       return;
     }
-    const read = window.Kavra.ask(value);
+    const read = window.Tigerk.ask(value);
     const answer = answerFor(read.intent, value, read);
     publish(read, answer);
     if (root.classList.contains("open")) {
       line(`▸ ${value}`, "ask");
       line(answer.split("\n")[0]);
     }
-    window.Gece.pulse("kavra");
+    window.Gece.pulse("tigerk");
   });
-  document.getElementById("kavra-bone")?.addEventListener("click", () => {
-    const value = document.getElementById("kavra-in")?.value.trim() || "";
-    const bone = window.Kavra.skeleton(value);
-    const read = window.Kavra.ask(value || "iskelet");
+  document.getElementById("tigerk-bone")?.addEventListener("click", () => {
+    const value = document.getElementById("tigerk-in")?.value.trim() || "";
+    const bone = window.Tigerk.skeleton(value);
+    const read = window.Tigerk.ask(value || "iskelet");
     const answer = value ? `iskelet  ${bone.text}` : "Boş cümle. İskelet de boş.";
     publish({ ...read, bone: bone.text, intent: "iskelet", dropped: bone.dropped }, answer);
   });
-  document.getElementById("kavra-train")?.addEventListener("click", () => {
+  document.getElementById("tigerk-train")?.addEventListener("click", () => {
     const answer = trainText(false);
-    publish(window.Kavra.ask("ağı eğit"), answer);
+    publish(window.Tigerk.ask("ağı eğit"), answer);
   });
-  document.getElementById("kavra-clear")?.addEventListener("click", () => {
-    const field = document.getElementById("kavra-in");
+  document.getElementById("tigerk-clear")?.addEventListener("click", () => {
+    const field = document.getElementById("tigerk-in");
     if (field) field.value = "";
-    const out = document.getElementById("kavra-out");
+    const out = document.getElementById("tigerk-out");
     if (out) out.textContent = "—";
-    const meta = document.getElementById("kavra-meta");
+    const meta = document.getElementById("tigerk-meta");
     if (meta) meta.textContent = "silindi";
-    window.Kavra.draw(document.getElementById("kavra-net"), null);
+    window.Tigerk.draw(document.getElementById("tigerk-net"), null);
   });
-  document.getElementById("kavra-in")?.addEventListener("keydown", (event) => {
+  document.getElementById("tigerk-in")?.addEventListener("keydown", (event) => {
     if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {
       event.preventDefault();
-      document.getElementById("kavra-run")?.click();
+      document.getElementById("tigerk-run")?.click();
     }
   });
 
   window.Hat = { exec, open: openHat, close: closeHat };
   paintStatus();
   setInterval(paintStatus, 1000);
-  window.Kavra.draw(document.getElementById("kavra-net"), null);
+  window.Tigerk.draw(document.getElementById("tigerk-net"), null);
 
   window.setInterval(() => {
     if (!root.classList.contains("open") || reduced || !window.Gece.tremor()) return;

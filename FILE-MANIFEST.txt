@@ -5,7 +5,7 @@ Ana sayfa (GitHub Pages: main / root)
   style.css                  Renk temaları, hareket, masaüstü/tablet/telefon düzeni
   fx.js                      Kor/yıldırım arka planı
   script.js                  Saat, hava şeridi, kedi karşılaştırma, Greyfield FM, komut menüsü
-  kavra.js                   Tarayıcı içi küçük sinir ağı deneyi
+  tigerk.js                   Tarayıcı içi küçük sinir ağı deneyi
   hat.js                     HAT terminali ve komut tamamlama
   photos/*.jpg, fonts/*.woff2
   favicon.svg, manifest.webmanifest, 404.html

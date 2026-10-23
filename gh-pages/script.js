@@ -87,7 +87,7 @@ function pulse(kind) {
       tick: [14],
       radio: [18, 46, 18, 46, 28],
       theme: [12, 36, 22, 36, 12],
-      kavra: [10, 28, 10],
+      tigerk: [10, 28, 10],
     };
     try {
       navigator.vibrate(patterns[kind] || patterns.tick);
@@ -406,7 +406,7 @@ const lines = [
   ["404", "Bulunamaması, orada hiçbir şey olmadığı anlamına gelmez. Bazen yalnızca adres değişmiştir."],
   ["Sekmeler", "Açık kalan sekmeler, bitmemiş düşüncelerin küçük ve parlak mezarlığıdır."],
   ["Sessiz hata", "Ekranda görünmeyen hata bitmiş değildir. Doğru soru henüz sorulmamış olabilir."],
-  ["KAVRA", "Henüz bir vitrin değil. İskelet masada. Model başka odada, kapısı kapalı."],
+  ["Tigerk", "Henüz bir vitrin değil. İskelet masada. Model başka odada, kapısı kapalı."],
   ["Statik", "Gürültü de bir sinyaldir. Sadece henüz kime ait olduğu belli değildir."],
 ];
 let fragment = 0;

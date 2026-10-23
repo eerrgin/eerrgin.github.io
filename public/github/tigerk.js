@@ -1,4 +1,4 @@
-/* KAVRA — deponun içindeki tarayıcı ağı.
+/* Tigerk — deponun içindeki tarayıcı ağı.
    Python kaynağındakiyle aynı iskelet: nöron, katman, sigmoid, ileri besleme,
    ortalama kare hata, geri yayılım. Ağırlık bu tarayıcıda kalır. */
 (function () {
@@ -6,7 +6,7 @@
     "yardim", "help", "komut", "hava", "yagmur", "derece", "semsiye", "ruzgar", "sicak", "nem",
     "saat", "ay", "dolunay", "radyo", "yayin", "vhs", "neon", "otobus", "kanal", "ses", "cal", "muzik",
     "kedi", "irk", "laboratuvar", "git", "gec", "bolum", "iskelet", "tema", "amber", "kemik",
-    "sis", "titre", "telefon", "kavra", "noron", "egit", "ogren", "not", "arsiv", "galata",
+    "sis", "titre", "telefon", "tigerk", "noron", "egit", "ogren", "not", "arsiv", "galata",
     "ayasofya", "sinan", "samatya", "eminonu", "kule", "veil", "grey", "recon", "site", "nedir",
     "nasil", "nerede", "kim",
   ];
@@ -163,7 +163,7 @@
     ["git", "arşivi aç"],
     ["git", "kırmızı hata git"],
     ["git", "sinyal bölümüne git"],
-    ["git", "kavraya git"],
+    ["git", "Tigerk'e git"],
     ["iskelet", "iskeleti çıkar"],
     ["iskelet", "sesli harfleri düşür"],
     ["iskelet", "bunun iskeletini ver"],
@@ -178,7 +178,7 @@
     ["titresim", "titreşim kapansın"],
     ["sor", "galata kulesi ne zaman yapıldı"],
     ["sor", "ayasofya kim yaptırdı"],
-    ["sor", "kavra nedir"],
+    ["sor", "tigerk nedir"],
     ["sor", "veilcheck ne işe yarar"],
     ["sor", "kız kulesi nerede"],
     ["sor", "süleymaniye camii kim yaptı"],
@@ -189,7 +189,7 @@
     ["egit", "ağı eğit"],
     ["egit", "bir tur eğitim"],
     ["egit", "geri yayılım yap"],
-    ["egit", "kavra öğren"],
+    ["egit", "tigerk öğren"],
     ["ay", "ay hangi evrede"],
     ["ay", "dolunay mı"],
     ["ay", "bu gece ay nasıl"],
@@ -234,9 +234,9 @@
       body: "Üsküdar açığında, Boğaz'ın girişinde küçük bir adacıkta. Bugünkü görünüm 1830'lardaki yenilemeye dayanır. Gün batımında iki yakadan da görünür.",
     },
     {
-      title: "KAVRA",
-      keys: ["kavra", "nöron", "noron", "sigmoid", "katman"],
-      body: "KAVRA, yapay sinir ağını harici kütüphane olmadan anlatan Python projesi. Bu sayfadaki prova aynı parçaları kullanır: nöron, katman, sigmoid, ileri besleme, ortalama kare hata ve geri yayılım. Ağ tarayıcıda eğitilir, ağırlık cihazdan çıkmaz.",
+      title: "Tigerk",
+      keys: ["tigerk", "nöron", "noron", "sigmoid", "katman"],
+      body: "Tigerk, yapay sinir ağını harici kütüphane olmadan anlatan Python projesi. Bu sayfadaki prova aynı parçaları kullanır: nöron, katman, sigmoid, ileri besleme, ortalama kare hata ve geri yayılım. Ağ tarayıcıda eğitilir, ağırlık cihazdan çıkmaz.",
     },
     {
       title: "VeilCheck",
@@ -276,7 +276,7 @@
     {
       title: "Kırmızı hat",
       keys: ["sınır", "sinir", "kırmızı", "kirmizi", "gizlilik"],
-      body: "Sayfa izleme kodu taşımaz. Radyo sesi, fotoğraf, teyp ve Kavra ağırlığı bu cihazda kalır. HAT terminali de aynı kurala bağlıdır.",
+      body: "Sayfa izleme kodu taşımaz. Radyo sesi, fotoğraf, teyp ve Tigerk ağırlığı bu cihazda kalır. HAT terminali de aynı kurala bağlıdır.",
     },
   ];
 
@@ -300,7 +300,7 @@
 
   function persist() {
     try {
-      localStorage.setItem("e.kavra", JSON.stringify({ dump: snapshot(), loss, epochs }));
+      localStorage.setItem("e.tigerk", JSON.stringify({ dump: snapshot(), loss, epochs }));
     } catch {
       /* gizli pencerede hafıza kapalı olabilir */
     }
@@ -308,8 +308,9 @@
 
   function hydrate() {
     try {
-      const raw = localStorage.getItem("e.kavra");
+      const raw = localStorage.getItem("e.tigerk") || localStorage.getItem("e.\u006bavra");
       if (!raw) return false;
+      if (!localStorage.getItem("e.tigerk")) localStorage.setItem("e.tigerk", raw);
       const data = JSON.parse(raw);
       if (!data.dump || data.dump.length !== 2 || data.dump[0][0].w.length !== INPUT) return false;
       restore(data.dump);
@@ -389,7 +390,7 @@
 
   function retrieve(text) {
     const words = soft(text).split(" ").filter((word) => word.length > 2);
-    const aliases = { kule: ["galata", "kız", "kiz"], cami: ["ayasofya", "suleymaniye", "eminonu"], ai: ["kavra"], yapay: ["kavra"] };
+    const aliases = { kule: ["galata", "kız", "kiz"], cami: ["ayasofya", "suleymaniye", "eminonu"], ai: ["tigerk"], yapay: ["tigerk"] };
     const expanded = words.flatMap((word) => [word, ...(aliases[word] || [])]);
     if (!words.length) return null;
     let best = null;
@@ -509,13 +510,13 @@
       return `${hit.passage.title}. ${hit.passage.body}`;
     }
     if (/^(selam|merhaba|hey|naber|nasilsin|nbr)/.test(folded)) {
-      return "Buradayım. Gece vardiyası açık. Sor: Galata, Ayasofya, Süleymaniye, Kız Kulesi, Kavra, VeilCheck, hava, saat. Uydurmam.";
+      return "Buradayım. Gece vardiyası açık. Sor: Galata, Ayasofya, Süleymaniye, Kız Kulesi, Tigerk, VeilCheck, hava, saat. Uydurmam.";
     }
     if (folded.includes("kimsin") || folded.includes("adin ne") || folded.includes("sen kim") || folded.includes("nesin")) {
-      return "KAVRA. Bu sekmede doğan küçük bir ağ. Ergin Kaplan'ın gece masası. Model indirmem, anahtar istemem, boşluğu süslemem.";
+      return "Tigerk. Bu sekmede doğan küçük bir ağ. Ergin Kaplan'ın gece masası. Model indirmem, anahtar istemem, boşluğu süslemem.";
     }
     if (hit.intent === "hava") return "Hava Open-Meteo'dan gelir. Üstteki şerit doluysa sayı oradadır; değilse hat susmuştur, sayfa ayaktadır.";
-    if (hit.intent === "yardim") return "Sor ya da komut yaz. hava, saat, radyo, kedi, galata kulesi, ayasofya, veilcheck, kavra nedir. İlk kelime HAT'ta komutsa o çalışır.";
+    if (hit.intent === "yardim") return "Sor ya da komut yaz. hava, saat, radyo, kedi, galata kulesi, ayasofya, veilcheck, tigerk nedir. İlk kelime HAT'ta komutsa o çalışır.";
     if (hit.passage && hit.passage.weak) {
       return `En yakın kayıt ${hit.passage.title}. ${hit.passage.body} Eşleşme zayıf; kesin diye satmıyorum.`;
     }
@@ -525,8 +526,8 @@
   function paintAnswer(text) {
     const read = ask(text);
     const answer = speak(text, read);
-    const out = document.getElementById("kavra-out");
-    const meta = document.getElementById("kavra-meta");
+    const out = document.getElementById("tigerk-out");
+    const meta = document.getElementById("tigerk-meta");
     if (out) out.textContent = answer;
     if (meta) {
       const net = state();
@@ -535,8 +536,8 @@
       const bars = `${"|".repeat(n)}${".".repeat(8 - n)}`;
       meta.textContent = `${read.intent} ${bars} ${(conf * 100).toFixed(0)}% · iskelet ${read.bone} · ${(read.bits || 0).toFixed(2)} bit · kayıp ${net.loss.toFixed(3)}`;
     }
-    draw(document.getElementById("kavra-net"), read);
-    if (window.Gece && window.Gece.pulse) window.Gece.pulse("kavra");
+    draw(document.getElementById("tigerk-net"), read);
+    if (window.Gece && window.Gece.pulse) window.Gece.pulse("tigerk");
     return { read, answer };
   }
 
@@ -546,7 +547,8 @@
 
   function reset() {
     try {
-      localStorage.removeItem("e.kavra");
+      localStorage.removeItem("e.tigerk");
+      localStorage.removeItem("e.\u006bavra");
     } catch {
       /* yok say */
     }
@@ -556,7 +558,7 @@
     return trainEpochs(48, 0.8);
   }
 
-  window.Kavra = {
+  window.Tigerk = {
     ask,
     classify,
     skeleton,
@@ -573,11 +575,11 @@
   };
 
   function bindAsk() {
-    const run = document.getElementById("kavra-run");
-    const field = document.getElementById("kavra-in");
-    const boneBtn = document.getElementById("kavra-bone");
-    const trainBtn = document.getElementById("kavra-train");
-    const clearBtn = document.getElementById("kavra-clear");
+    const run = document.getElementById("tigerk-run");
+    const field = document.getElementById("tigerk-in");
+    const boneBtn = document.getElementById("tigerk-bone");
+    const trainBtn = document.getElementById("tigerk-train");
+    const clearBtn = document.getElementById("tigerk-clear");
     if (!run || run.dataset.bound) return;
     run.dataset.bound = "1";
     run.addEventListener("click", () => {
@@ -586,23 +588,23 @@
     boneBtn?.addEventListener("click", () => {
       const value = field?.value.trim() || "";
       const bone = skeleton(value);
-      const out = document.getElementById("kavra-out");
+      const out = document.getElementById("tigerk-out");
       if (out) out.textContent = value ? `iskelet  ${bone.text}` : "Boş cümle. İskelet de boş.";
     });
     trainBtn?.addEventListener("click", () => {
       const before = state().loss;
       const next = trainEpochs(8, 0.4);
-      const out = document.getElementById("kavra-out");
+      const out = document.getElementById("tigerk-out");
       if (out) out.textContent = `Geri yayılım bitti. Kayıp ${before.toFixed(3)} → ${next.loss.toFixed(3)}. Tur ${next.epochs}. Ağ bu sekmede kaldı.`;
-      draw(document.getElementById("kavra-net"), ask("ağı eğit"));
+      draw(document.getElementById("tigerk-net"), ask("ağı eğit"));
     });
     clearBtn?.addEventListener("click", () => {
       if (field) field.value = "";
-      const out = document.getElementById("kavra-out");
+      const out = document.getElementById("tigerk-out");
       if (out) out.textContent = "Silindi. Yeni cümle bekliyorum.";
-      const meta = document.getElementById("kavra-meta");
+      const meta = document.getElementById("tigerk-meta");
       if (meta) meta.textContent = "temiz";
-      draw(document.getElementById("kavra-net"), null);
+      draw(document.getElementById("tigerk-net"), null);
     });
     field?.addEventListener("keydown", (event) => {
       if (event.key === "Enter" && (event.metaKey || event.ctrlKey || !event.shiftKey)) {
@@ -612,9 +614,9 @@
         }
       }
     });
-    const waiting = document.getElementById("kavra-out");
+    const waiting = document.getElementById("tigerk-out");
     if (waiting) waiting.textContent = "Ağ ayakta. Soruyu yaz, cevap burada durur.";
-    draw(document.getElementById("kavra-net"), null);
+    draw(document.getElementById("tigerk-net"), null);
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", bindAsk);

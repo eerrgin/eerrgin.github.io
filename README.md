@@ -14,7 +14,7 @@
 | Yol | Görev |
 | --- | --- |
 | `index.html`, `style.css` | Ana sayfa yapısı ve görünüm |
-| `fx.js`, `script.js`, `kavra.js`, `hat.js` | Arka plan, hava durumu, etkileşimler, tarayıcı ağı ve HAT terminali |
+| `fx.js`, `script.js`, `tigerk.js`, `hat.js` | Arka plan, hava durumu, etkileşimler, tarayıcı ağı ve HAT terminali |
 | `photos/`, `fonts/`, `assets/` | Görseller, yazı tipleri, SVG'ler |
 | `ergin-lab/` | Mini web deneyleri (ayrı alt sayfalar) |
 | `404.html` | Bulunamayan adresler için sayfa |

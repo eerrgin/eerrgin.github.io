@@ -14,7 +14,7 @@ A static personal workshop for small software experiments, local-first ideas, re
 - GreySignal: read-only HTTP security-header inspection.
 - ReconX: authorized reconnaissance utilities.
 - local-sqli-lab: offline SQLite learning lab.
-- KAVRA: a small, local browser neural-network experiment. It is not a general-purpose remote AI assistant.
+- Tigerk: a small, local browser neural-network experiment. It is not a general-purpose remote AI assistant.
 - MycelForge: a heuristic screening tool for mycelium biomaterial recipe candidates and experiment protocols. It is published at https://eerrgin.github.io/mycelforge/ and sourced at https://github.com/eerrgin/mycelforge. Predictions are not laboratory measurements, safety guarantees, or certifications.
 
 ## Data and privacy

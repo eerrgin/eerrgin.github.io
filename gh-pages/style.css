@@ -598,7 +598,7 @@ legend { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; colo
 .station { min-height: 46px; padding: 8px 12px; background: transparent; border: 1px solid var(--line); font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; max-width: 100%; }
 .station.on, .station:hover { border-color: var(--red); color: var(--red); background: var(--red-dim); }
 
-#kavra-net { width: 100%; height: 132px; display: block; margin-top: 12px; background: #080204; border: 1px solid var(--line); }
+#tigerk-net { width: 100%; height: 132px; display: block; margin-top: 12px; background: #080204; border: 1px solid var(--line); }
 
 ul { padding-left: 18px; }
 li { margin: 6px 0; color: var(--muted); }
@@ -814,7 +814,7 @@ html.motion section.reveal.in { animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 
 
   #freq { font-size: clamp(68px, 19vw, 100px); }
   #scope { height: 64px; }
-  #kavra-net { height: 112px; }
+  #tigerk-net { height: 112px; }
   #guesses li { padding: 10px 11px; }
   #guesses li strong { font-size: 24px; }
 
@@ -1187,10 +1187,10 @@ html.motion section.reveal.in { animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 
   to { opacity: 1; transform: translateY(0); }
 }
 
-.kavra-heading { display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-.kavra-heading > div { min-width: 0; }
-.kavra-heading h3 em { color: var(--red); font-style: italic; }
-.kavra-open-hat { flex: 0 0 auto; margin-bottom: 4px; }
+.tigerk-heading { display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.tigerk-heading > div { min-width: 0; }
+.tigerk-heading h3 em { color: var(--red); font-style: italic; }
+.tigerk-open-hat { flex: 0 0 auto; margin-bottom: 4px; }
 
 @media (min-width: 721px) and (max-width: 899px) {
   .grid.places { grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: minmax(48px, auto); gap: 12px; }
@@ -1230,8 +1230,8 @@ html.motion section.reveal.in { animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 
   #place-lightbox-image { height: 48dvh; min-height: 220px; }
   .place-lightbox-caption { padding: 20px; }
   .place-lightbox-caption h2 { font-size: 30px; }
-  .kavra-heading { align-items: start; }
-  .kavra-open-hat { width: 100%; justify-content: center; }
+  .tigerk-heading { align-items: start; }
+  .tigerk-open-hat { width: 100%; justify-content: center; }
 }
 @media (prefers-reduced-motion: reduce) {
   .place-story-copy { animation: none; }
@@ -1241,7 +1241,7 @@ html.motion section.reveal.in { animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 
 
 
 
-/* HAT / KAVRA: EL-2945 kapalı devre karşılama katmanı */
+/* HAT / Tigerk: EL-2945 kapalı devre karşılama katmanı */
 .hat.locked .hat-screen,
 .hat.locked .hat-form { display: none; }
 .hat-lockscreen {

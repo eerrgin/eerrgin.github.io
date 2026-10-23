@@ -1,7 +1,7 @@
 SITE DOSYA ENVANTERİ
 
 Ana sayfa
-  index.html, style.css, script.js, kavra.js, hat.js, favicon.svg, manifest.webmanifest, 404.html
+  index.html, style.css, script.js, tigerk.js, hat.js, favicon.svg, manifest.webmanifest, 404.html
   assets/favicon.svg, assets/signal-art.svg, assets/fallback-0{1,2,3}.svg
   assets/istanbul/*.svg   (Galata, Eminönü, Samatya, Ayasofya, Süleymaniye, Kız Kulesi)
   photos/*.jpg, fonts/*.woff2
