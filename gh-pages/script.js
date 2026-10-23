@@ -17,6 +17,63 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 const THEMES = ["gece", "amber", "kemik", "sis"];
 let lastWeather = null;
 
+// İstanbul arşivi: erişilebilir, klavyeyle de kullanılabilen büyük görsel görünümü.
+(() => {
+  const dialog = document.getElementById("place-lightbox");
+  const lightboxImage = document.getElementById("place-lightbox-image");
+  const title = document.getElementById("place-lightbox-title");
+  const kicker = document.getElementById("place-lightbox-kicker");
+  const description = document.getElementById("place-lightbox-description");
+  const closeButton = document.getElementById("place-lightbox-close");
+  if (!dialog || !lightboxImage || !title || !kicker || !description || !closeButton) return;
+
+  let activeTrigger = null;
+
+  function closeLightbox() {
+    if (dialog.open) dialog.close();
+    if (activeTrigger && activeTrigger.isConnected) activeTrigger.focus({ preventScroll: true });
+    activeTrigger = null;
+  }
+
+  document.querySelectorAll("[data-lightbox-open]").forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const card = trigger.closest(".place");
+      const image = trigger.querySelector("img");
+      const heading = card?.querySelector(".place-body h3");
+      const label = card?.querySelector(".place-body > .kicker");
+      const story = card?.querySelector(".place-story-copy > p:not(.meta)");
+      if (!image || !heading) return;
+
+      activeTrigger = trigger;
+      lightboxImage.src = image.currentSrc || image.src;
+      lightboxImage.alt = image.alt || heading.textContent.trim();
+      title.textContent = heading.textContent.trim();
+      kicker.textContent = label?.textContent.trim() || "İSTANBUL ARŞİVİ";
+      description.textContent = story?.textContent.trim() || "Şehrin taş hafızasından bir kayıt.";
+      if (typeof dialog.showModal === "function") {
+        dialog.showModal();
+      } else {
+        dialog.setAttribute("open", "");
+      }
+      closeButton.focus({ preventScroll: true });
+      pulse("tick");
+    });
+  });
+
+  closeButton.addEventListener("click", closeLightbox);
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) closeLightbox();
+  });
+  dialog.addEventListener("close", () => {
+    if (lightboxImage) {
+      lightboxImage.removeAttribute("src");
+      lightboxImage.alt = "";
+    }
+    if (activeTrigger && activeTrigger.isConnected) activeTrigger.focus({ preventScroll: true });
+    activeTrigger = null;
+  });
+})();
+
 function pulse(kind) {
   const tremorOn = document.documentElement.dataset.tremor !== "off";
   if (!reduceMotion && tremorOn) {
