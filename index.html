@@ -433,6 +433,26 @@
       <p class="hat-status" id="hat-status">hat kapalı</p>
       <button class="ghost" id="hat-close" type="button">kapat</button>
     </div>
+    <section class="hat-lockscreen" id="hat-lockscreen" aria-labelledby="hat-lock-title">
+      <p class="kicker">EL-2945 · KAPALI DEVRE / OTURUM 01</p>
+      <p class="hat-lock-glyph" aria-hidden="true">e.</p>
+      <h2 id="hat-lock-title">Ergin'in hattı.</h2>
+      <p class="hat-lock-lede">Bağlantı eski bir imzayı hatırladı. Bu kanal, sahibinin dönüşünü bekliyor.</p>
+      <div class="hat-lock-record">
+        <span>MUHATAP</span><strong>ERGİN KAPLAN</strong>
+        <span>İLK EL SIKIŞMA</span><strong>2945</strong>
+        <span>DURUM</span><strong class="hat-lock-state">YANIT BEKLENİYOR, EFENDİM</strong>
+      </div>
+      <form class="hat-access-form" id="hat-access-form">
+        <label for="hat-access-code">Başlangıç kodu</label>
+        <div class="hat-access-entry">
+          <input id="hat-access-code" name="access-code" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" aria-describedby="hat-access-hint hat-access-status" placeholder="····" required>
+          <button type="submit">HATTI AÇ <span aria-hidden="true">↗</span></button>
+        </div>
+        <p id="hat-access-hint" class="hat-lock-foot">Yerel sahne protokolü · gerçek hesap doğrulaması değildir.</p>
+        <p id="hat-access-status" class="hat-access-status" role="status" aria-live="polite">Kanal, yanıtınızı bekliyor.</p>
+      </form>
+    </section>
     <div class="hat-screen" id="hat-screen" role="log" aria-live="polite" aria-relevant="additions"></div>
     <form class="hat-form" id="hat-form">
       <label for="hat-in">e.hat</label>
