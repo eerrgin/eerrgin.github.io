@@ -29,7 +29,11 @@
   }
   let cursor = history.length;
   let welcomed = false;
+  let unlocked = false;
   let idleAt = Date.now();
+  const accessForm = document.getElementById("hat-access-form");
+  const accessCode = document.getElementById("hat-access-code");
+  const accessStatus = document.getElementById("hat-access-status");
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function fold(value) {
@@ -306,17 +310,51 @@
   function openHat() {
     root.hidden = false;
     root.classList.add("open");
+    root.classList.toggle("locked", !unlocked);
     document.body.classList.add("hat-open");
     paintStatus();
+
+    if (!unlocked) {
+      if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        window.setTimeout(() => accessCode?.focus(), 30);
+      }
+      return;
+    }
+
     if (!welcomed) {
       welcomed = true;
-      line("HAT · gece sevk terminali", "dim");
-      line("Bash değil. KAVRA bu sekmede niyeti okur. Ağırlık dışarı çıkmaz.", "dim");
-      line("yardım yaz, ya da düz cümle: yağmur var mı", "dim");
+      line("EL-2945 · Ergin Kaplan / kapalı devre", "ghost");
+      line("Bağlantı tanındı, efendim.", "ask");
+      line("Ergin ile konuşma kanalı açıldı. Yanıtınızı bekliyorum, efendim.", "ask");
+      line("KAVRA: Bellek bu tarayıcıda. Cevaplarım hâlâ deney aşamasında; bilmediğimi saklamayacağım.", "dim");
+      line("Komut için yardım yazın. İlk kayıt: hava · saat · tema gece", "dim");
     }
     if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
       window.setTimeout(() => input.focus(), 30);
     }
+  }
+
+  function acceptAccessCode(event) {
+    event.preventDefault();
+    const entered = String(accessCode?.value || "").trim();
+    if (entered !== "2945") {
+      if (accessStatus) {
+        accessStatus.textContent = "İmza eşleşmedi. Hat sessizliğini koruyor.";
+        accessStatus.dataset.state = "error";
+      }
+      accessCode?.select();
+      return;
+    }
+
+    unlocked = true;
+    root.classList.remove("locked");
+    if (accessStatus) {
+      accessStatus.textContent = "İmza tanındı. Kanal açılıyor.";
+      accessStatus.dataset.state = "success";
+    }
+    if (accessCode) accessCode.value = "";
+    window.Gece.pulse("kavra");
+    openHat();
   }
 
   function closeHat() {
@@ -325,8 +363,20 @@
     document.body.classList.remove("hat-open");
   }
 
+  accessForm?.addEventListener("submit", acceptAccessCode);
   document.getElementById("open-hat")?.addEventListener("click", openHat);
+  document.getElementById("open-kavra-hat")?.addEventListener("click", openHat);
   document.getElementById("hat-fab")?.addEventListener("click", openHat);
+
+  document.querySelectorAll('a[href="#kavra"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      const commandDialog = document.getElementById("cmd");
+      if (commandDialog?.open) commandDialog.close();
+      window.Gece.go("kavra");
+      openHat();
+    });
+  });
   document.getElementById("hat-close")?.addEventListener("click", closeHat);
   document.querySelectorAll('a[href="#sevk"]').forEach((link) => {
     link.addEventListener("click", (event) => {
