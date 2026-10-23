@@ -1,20 +1,39 @@
 SITE DOSYA ENVANTERİ
 
-Ana sayfa
-  index.html, style.css, script.js, favicon.svg, manifest.webmanifest, 404.html
-  assets/favicon.svg, assets/signal-art.svg, assets/fallback-0{1,2,3}.svg
-  assets/istanbul/*.svg   (Galata, Eminönü, Samatya, Ayasofya, Süleymaniye, Kız Kulesi)
+Ana sayfa (GitHub Pages: main / root)
+  index.html                 Ana sayfa, meta etiketleri ve etkileşim bölümleri
+  style.css                  Renk temaları, hareket, masaüstü/tablet/telefon düzeni
+  fx.js                      Kor/yıldırım arka planı
+  script.js                  Saat, hava şeridi, kedi karşılaştırma, Greyfield FM, komut menüsü
+  kavra.js                   Tarayıcı içi küçük sinir ağı deneyi
+  hat.js                     HAT terminali ve komut tamamlama
   photos/*.jpg, fonts/*.woff2
+  favicon.svg, manifest.webmanifest, 404.html
 
-Alt sayfalar: ergin-lab/, kirpintilar/icerik.json, message.html, oku.html
-Arama/duyuru: robots.txt, sitemap.xml, llms.txt
-Belgeler: README.md, README-TR.md, LEGAL-AND-DEPLOY.md, LICENSE-CODE.txt
-Otomasyon: .github/workflows/ci.yml, .github/dependabot.yml, scripts/check.mjs
+Ek deneyler ve projeler
+  ergin-lab/                 Mini deneyler: Taskflow, Calc Lab, Skyline, Tempo
+  mycelforge/                MycelForge derlenmiş web uygulaması; kaynak ayrı depoda
+  kirpintilar/               Not/icerik verileri
+  message.html, oku.html     Ayrı eski/yardımcı sayfalar
+  assets/                    Yardımcı SVG ve yedek çizimler; ana İstanbul kartları photos/ kullanır
 
-Eski / bağlı olmayan dosyalar (silinmedi, kontrol edilmeli)
-  public/            Vite kalıntısı, yayın bunu kullanmaz
-  cat-ai.js          ana sayfaya bağlı değil
-  12.jpg 122.jpg 1232.jpg varan-otogar-*.jpg contact.png work.png hero.png
-  final-hero.png hud-optical.png hud-thermal.png
+Arama ve belgeler
+  robots.txt, sitemap.xml, llms.txt
+  README.md, README-TR.md, LEGAL-AND-DEPLOY.md, LICENSE-CODE.txt
+
+Otomasyon ve denetim
+  .github/workflows/ci.yml                Her push/PR'de statik site kalite denetimi
+  .github/workflows/mycelforge-publish.yml Kaynak depodan MycelForge'u test edip /mycelforge/ altına derler
+  scripts/check.mjs                       Bağlantı/çapa/CSS/JSONC/JS ve kopya tutarlılığı kontrolü
+  package.json, package-lock.json         Denetim aracı ve yardımcı çalışma ortamı
+
+Korunan eski kopyalar
+  gh-pages/, github-pages/                Ana sayfanın eski adresler için tutulan kopyaları; temel dosyalar ana kaynakla eşit olmalı
+
+Eski / bağlı olmayan dosyalar (kullanımı doğrulamadan silme)
+  cat-ai.js                              Ana sayfaya bağlı olmayan görsel sınıflandırma denemesi
+  public/, src/, server/, Vite yapılandırmaları ve bağımlılıkları
+  12.jpg, 122.jpg, 1232.jpg, varan-otogar-*.jpg, contact.png, work.png
+  final-hero.png, hero.png, hud-optical.png, hud-thermal.png
   ergin-k1791821010771.py, ergin_html_20261012_61f84b.html, veil.sig
-  7mix.mp3, ergin_kaplan_,videos.mp4   (yayın hakkı sahibi doğrulamalı)
+  7mix.mp3, ergin_kaplan_,videos.mp4   Yayın/yeniden kullanım hakkını ayrıca doğrula
