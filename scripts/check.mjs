@@ -1,5 +1,5 @@
-// Bağımlılıksız site kontrolü: kırık yerel bağlantılar, eksik #çapalar,
-// JSON/XML/JS sözdizimi ve temel HTML hataları. Çalıştır: node scripts/check.mjs
+#!/usr/bin/env node
+// Static site checks: local assets, anchors, HTML metadata, JSON/JSONC and JS syntax.
 import { readFileSync, existsSync, readdirSync, statSync } from "node:fs";
 import { join, dirname, resolve, relative } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -7,138 +7,97 @@ import { execFileSync } from "node:child_process";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const skip = new Set([".git", "node_modules", "dist", "dist-pages", ".github", "public"]);
+const templateFiles = new Set(["scripts/install-page.html"]);
 const errors = [];
-const fail = (file, msg) => errors.push(`${file}: ${msg}`);
+const fail = (file, message) => errors.push(file + ": " + message);
 
-function walk(dir, out = []) {
+function walk(dir, output = []) {
   for (const name of readdirSync(dir)) {
     if (skip.has(name)) continue;
     const full = join(dir, name);
-    if (statSync(full).isDirectory()) walk(full, out);
-    else out.push(full);
-  }
-  return out;
-}
-
-const files = walk(root);
-const htmlFiles = files.filter((f) => f.endsWith(".html"));
-const templateFiles = new Set(["scripts/install-page.html"]);
-
-function stripJsonComments(input) {
-  let output = "";
-  let inString = false;
-  let escaped = false;
-  let lineComment = false;
-  let blockComment = false;
-
-  for (let i = 0; i < input.length; i += 1) {
-    const ch = input[i];
-    const next = input[i + 1];
-
-    if (lineComment) {
-      if (ch === "\\n") {
-        lineComment = false;
-        output += "\\n";
-      } else output += " ";
-      continue;
-    }
-    if (blockComment) {
-      if (ch === "*" && next === "/") {
-        output += "  ";
-        i += 1;
-        blockComment = false;
-      } else output += ch === "\\n" ? "\\n" : " ";
-      continue;
-    }
-    if (inString) {
-      output += ch;
-      if (escaped) escaped = false;
-      else if (ch === "\\\\") escaped = true;
-      else if (ch === '"') inString = false;
-      continue;
-    }
-    if (ch === '"') {
-      inString = true;
-      output += ch;
-      continue;
-    }
-    if (ch === "/" && next === "/") {
-      output += "  ";
-      i += 1;
-      lineComment = true;
-      continue;
-    }
-    if (ch === "/" && next === "*") {
-      output += "  ";
-      i += 1;
-      blockComment = true;
-      continue;
-    }
-    output += ch;
+    if (statSync(full).isDirectory()) walk(full, output);
+    else output.push(full);
   }
   return output;
 }
 
-function parseJsonc(input) {
-  const clean = stripJsonComments(input);
-  let output = "";
-  let inString = false;
-  let escaped = false;
-  for (let i = 0; i < clean.length; i += 1) {
-    const ch = clean[i];
-    if (inString) {
-      output += ch;
-      if (escaped) escaped = false;
-      else if (ch === "\\\\") escaped = true;
-      else if (ch === '"') inString = false;
-      continue;
-    }
-    if (ch === '"') {
-      inString = true;
-      output += ch;
-      continue;
-    }
-    if (ch === ",") {
-      let j = i + 1;
-      while (j < clean.length && /\\s/.test(clean[j])) j += 1;
-      if (clean[j] === "}" || clean[j] === "]") continue;
-    }
-    output += ch;
-  }
-  return JSON.parse(output);
+function parseJsonc(source) {
+  // These config files intentionally allow comments. Project values do not use comment tokens in strings.
+  const withoutBlockComments = source.replace(/\/\*[\s\S]*?\*\//g, "");
+  const withoutLineComments = withoutBlockComments.replace(/^\s*\/\/.*$/gm, "");
+  const withoutTrailingCommas = withoutLineComments.replace(/,(\s*[}\]])/g, "$1");
+  return JSON.parse(withoutTrailingCommas);
 }
+
+function checkJavaScript(file) {
+  execFileSync(process.execPath, ["--check", file], { encoding: "utf8", stdio: "pipe" });
+}
+
+const files = walk(root);
+const htmlFiles = files.filter((file) => file.endsWith(".html"));
 
 for (const file of htmlFiles) {
   const rel = relative(root, file);
   const html = readFileSync(file, "utf8");
-  if (!/<!doctype html>/i.test(html)) fail(rel, "<!doctype html> yok");
-  if (!/<html[^>]*\blang=/i.test(html)) fail(rel, "<html lang> yok");
-  if (!/<meta[^>]*name=["']viewport["']/i.test(html)) fail(rel, "viewport meta yok");
-  if (!/<title>[^<]+<\/title>/i.test(html)) fail(rel, "boş ya da eksik <title>");
+  if (!/<!doctype html>/i.test(html)) fail(rel, "DOCTYPE is missing");
+  if (!/<html[^>]*\blang=/i.test(html)) fail(rel, "html lang is missing");
+  if (!/<meta[^>]*name=["']viewport["']/i.test(html)) fail(rel, "viewport meta is missing");
+  if (!/<title>[^<]+<\/title>/i.test(html)) fail(rel, "title is missing or empty");
 
-  const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]));
+  const idMatches = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
+  const ids = new Set(idMatches);
   const seen = new Set();
-  for (const id of [...html.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1])) {
-    if (seen.has(id)) fail(rel, `yinelenen id: ${id}`);
+  for (const id of idMatches) {
+    if (seen.has(id)) fail(rel, "duplicate id: " + id);
     seen.add(id);
   }
 
-  for (const m of html.matchAll(/\b(?:src|href)="([^"]*)"/g)) {
-    const ref = m[1];
-    if (!ref || /^(https?:|mailto:|tel:|data:|javascript:)/.test(ref)) continue;
+  for (const match of html.matchAll(/\b(?:src|href)="([^"]*)"/g)) {
+    const ref = match[1].trim();
+    if (!ref || /^(https?:|mailto:|tel:|data:|javascript:|blob:)/i.test(ref) || ref.startsWith("//")) continue;
     if (ref.startsWith("#")) {
-      if (ref.length > 1 && !ids.has(ref.slice(1))) fail(rel, `çapa bulunamadı: ${ref}`);
+      if (ref.length > 1 && !ids.has(ref.slice(1))) fail(rel, "missing anchor: " + ref);
       continue;
     }
+    // The Grok install document is a platform template, not a standalone page in this repository.
     if (templateFiles.has(rel) && (ref.startsWith("/__grok/") || ref.includes("{{"))) continue;
     if (ref.includes("{{")) continue;
+
     const clean = ref.split("#")[0].split("?")[0];
-    const target = clean.startsWith("/") ? join(root, clean) : resolve(dirname(file), clean);
-    if (!existsSync(target)) fail(rel, `kırık yerel bağlantı: ${ref}`);
+    let decoded = clean;
+    try { decoded = decodeURIComponent(clean); } catch {}
+    const target = decoded.startsWith("/")
+      ? join(root, decoded.replace(/^\/+/, ""))
+      : resolve(dirname(file), decoded);
+    if (!existsSync(target)) fail(rel, "broken local reference: " + ref);
   }
 
-  for (const m of html.matchAll(/<img\b[^>]*>/gi)) {
-    if (!/\balt=/.test(m[0])) fail(rel, `alt metni olmayan görsel: ${m[0].slice(0, 70)}`);
+  for (const match of html.matchAll(/<img\b[^>]*>/gi)) {
+    if (!/\balt\s*=/i.test(match[0])) fail(rel, "image missing alt text");
+  }
+
+  if (rel === "index.html") {
+    for (const scriptName of ["fx.js", "script.js", "kavra.js", "hat.js"]) {
+      if (!html.includes('src="' + scriptName + '"')) {
+        fail(rel, "interaction script is not linked: " + scriptName);
+      }
+    }
+    if (!html.includes("https://eerrgin.github.io/mycelforge/")) {
+      fail(rel, "homepage is missing the MycelForge link");
+    }
+
+    for (const match of html.matchAll(/<(input|textarea|select)\b([^>]*)>/gi)) {
+      const attrs = match[2];
+      const type = (attrs.match(/\btype=["']([^"']+)["']/i) || [])[1] || "";
+      if (/^(hidden|submit|reset|button)$/i.test(type)) continue;
+      const id = (attrs.match(/\bid=["']([^"']+)["']/i) || [])[1];
+      const ariaLabel = /\baria-label\s*=|aria-labelledby\s*=/i.test(attrs);
+      const hasLabel = id && (
+        html.includes('for="' + id + '"') ||
+        html.includes("for='" + id + "'")
+      );
+      if (!ariaLabel && !hasLabel) fail(rel, "form control has no accessible label: " + (id || match[1]));
+    }
   }
 }
 
@@ -150,41 +109,39 @@ for (const file of files) {
       if (file.endsWith("tsconfig.json") || file.endsWith("jsconfig.json")) parseJsonc(source);
       else JSON.parse(source);
     }
-    if (file.endsWith(".js") || file.endsWith(".mjs")) execFileSync(process.execPath, ["--check", file], { stdio: "pipe" });
+
+    if (file.endsWith(".js") || file.endsWith(".mjs")) checkJavaScript(file);
+
     if (file.endsWith(".css")) {
       const css = readFileSync(file, "utf8");
-      for (const m of css.matchAll(/url\\(\\s*(?:"([^"]*)"|'([^']*)'|([^)]*?))\\s*\\)/gi)) {
-        const ref = (m[1] || m[2] || m[3] || "").trim();
-        if (!ref || /^(data:|https?:|blob:|#|var\\()/i.test(ref) || ref.startsWith("//")) continue;
+      for (const match of css.matchAll(/url\(([^)]*)\)/gi)) {
+        const ref = match[1].trim().replace(/^["']|["']$/g, "");
+        if (!ref || /^(data:|https?:|blob:|#|var\()/i.test(ref) || ref.startsWith("//")) continue;
         const target = ref.startsWith("/")
-          ? join(root, ref.replace(/^\\/+/, ""))
+          ? join(root, ref.replace(/^\/+/, ""))
           : resolve(dirname(file), ref);
-        if (!existsSync(target)) fail(relative(root, file), `kırık CSS varlığı: ${ref}`);
+        if (!existsSync(target)) fail(rel, "broken CSS asset: " + ref);
+      }
+      if (rel === "style.css" && !/@media\s*\(max-width:\s*600px\)/i.test(css)) {
+        fail(rel, "phone layout breakpoint is missing");
+      }
+      if (rel === "style.css" && !/@media\s*\(prefers-reduced-motion:\s*reduce\)/i.test(css)) {
+        fail(rel, "reduced-motion support is missing");
       }
     }
+
     if (file.endsWith(".svg") || file.endsWith(".xml")) {
-      const text = readFileSync(file, "utf8");
-      if (!/<(svg|urlset)\b/.test(text)) fail(rel, "geçerli kök öğe yok");
+      const source = readFileSync(file, "utf8");
+      if (!/<(svg|urlset)\b/i.test(source)) fail(rel, "expected SVG/XML root element is missing");
     }
-  } catch (err) {
-    fail(rel, `sözdizimi hatası: ${String(err.message).split("\n")[0]}`);
+  } catch (error) {
+    const detail = String(error?.stderr || error?.message || error).trim().split("\n")[0];
+    fail(rel, "syntax/parse error: " + detail);
   }
 }
 
-// Ana sayfadaki kullanıcı girişleri etiketli olmalı.
-const home = readFileSync(join(root, "index.html"), "utf8");
-for (const match of home.matchAll(/<(input|textarea|select)\\b([^>]*)>/gi)) {
-  const attributes = match[2];
-  const type = (attributes.match(/\\btype=["']([^"']+)["']/i) || [])[1] || "";
-  if (/^(hidden|submit|reset|button)$/i.test(type)) continue;
-  const id = (attributes.match(/\\bid=["']([^"']+)["']/i) || [])[1];
-  const hasAriaName = /\\baria-label\\s*=|aria-labelledby\\s*=/i.test(attributes);
-  const hasLabel = id && new RegExp('<label\\\\b[^>]*\\\\bfor=["\\\\']' + id.replace(/[^a-zA-Z0-9_-]/g, "\\\\if (errors.length) {") + '["\\\\']', "i").test(home);
-  if (!hasAriaName && !hasLabel) fail("index.html", `giriş alanında erişilebilir etiket eksik: ${id || match[1]}`);
-}
-
 if (errors.length) {
-  console.error(`✗ ${errors.length} sorun bulundu:\n` + errors.map((e) => "  - " + e).join("\n"));
+  console.error("✗ " + errors.length + " issue(s) found:\n" + errors.map((error) => "  - " + error).join("\n"));
   process.exit(1);
 }
-console.log(`✓ ${htmlFiles.length} HTML dosyası ve ${files.length} dosya kontrol edildi, sorun yok.`);
+console.log("✓ " + htmlFiles.length + " HTML files and " + files.length + " files checked.");
