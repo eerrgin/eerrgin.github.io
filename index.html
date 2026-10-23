@@ -235,7 +235,7 @@
           <div class="row">
             <button class="btn" id="compare-traits" type="button">Özelliklerle karşılaştır</button>
           </div>
-          <p>Ya da fotoğraf bırak.</p>
+          <label for="photo" class="kicker">Ya da fotoğraf bırak</label>
           <input id="photo" type="file" accept="image/*">
           <img id="preview" alt="Seçilen kedi fotoğrafı." hidden>
           <div class="row"><button class="btn ghost" id="compare-photo" type="button">Fotoğrafı oku</button></div>
@@ -261,6 +261,7 @@
       <div class="row"><button class="btn" id="play" type="button">Yayını başlat</button></div>
       <h3>Eski teyp</h3>
       <p class="note">Kendi ses dosyan yalnızca bu oturumda çalar. 7mix pakete konmadı. SoundCloud dış bağlantıdır.</p>
+      <label for="tape" class="kicker">Cihazından ses dosyası seç</label>
       <input id="tape" type="file" accept="audio/*">
       <p id="tape-name">Dosya seçilmedi.</p>
       <p><a href="https://soundcloud.com/yukseksadakat/y-ksek-sadakat-katil-makt-l-1" rel="noopener">SoundCloud bağlantısı ↗</a></p>
@@ -321,7 +322,7 @@
     <span id="hud-depth">derinlik 0</span>
   </div>
   <dialog id="cmd">
-    <input id="cmd-filter" type="search" placeholder="Bölüm ara…" autocomplete="off">
+    <input id="cmd-filter" type="search" aria-label="Bölüm ara" placeholder="Bölüm ara…" autocomplete="off">
     <a href="#istanbul">01 · İstanbul arşivi</a>
     <a href="#atolye">02 · Atölye / Workbench</a>
     <a href="https://eerrgin.github.io/mycelforge/" rel="noopener">02c · MycelForge biyomalzeme atölyesi ↗</a>
