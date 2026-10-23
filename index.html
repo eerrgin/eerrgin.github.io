@@ -95,6 +95,14 @@
           <a class="btn ghost" href="#laboratuvar">Kedi</a>
           <a class="btn ghost lab-shortcut" href="https://eerrgin.github.io/ergin-lab/" aria-label="Ergin Lab deneylerini aç">Ergin Lab ↗</a>
         </div>
+        <div class="identity-chip">
+          <img src="https://eerrgin.github.io/erginkaplan1.jpg" alt="Ergin Kaplan'ın kişisel fotoğrafı" width="88" height="88" decoding="async" fetchpriority="high">
+          <div class="identity-chip-copy">
+            <span class="kicker">KİŞİSEL ARŞİV / 001</span>
+            <strong>Ergin Kaplan</strong>
+            <span>İstanbul · kod, ses ve gece kayıtları</span>
+          </div>
+        </div>
       </div>
       <figure class="portrait" id="portrait">
         <div class="viewport">
@@ -329,18 +337,50 @@
     <section id="frekans" class="reveal" data-stamp="04">
       <p class="kicker">04 / GREYFIELD FM</p>
       <h2>Bir kanal seç. <em>Geceyi dinle.</em></h2>
-      <p class="lede">Hazır şarkı yok. Örnek yok. Tarayıcı seçtiğin havayı o an üretir.</p>
+      <p class="lede">On ayrı kanal, tek bir gece frekansı. Her ses tarayıcıda canlı sentezlenir; yağmur, orman, kedi mırıltısı, analog rüya ve “Özlemek” durdurulana kadar akmaya devam eder.</p>
       <img class="frame" src="photos/radyo.jpg" alt="Karanlık bir masada eski bir analog radyo." width="800" height="450" loading="lazy">
       <p class="air-row"><i class="led" id="led" aria-hidden="true"></i><span class="kicker" id="air">BEKLEMEDE</span></p>
       <p class="display" id="freq">88.8</p>
       <h3 id="sname">Gece Otobüsü</h3>
       <canvas id="scope" width="640" height="72" aria-hidden="true"></canvas>
-      <div class="row">
-        <button class="station on" type="button" data-kind="bus" data-freq="88.8" data-name="Gece Otobüsü">88.8 Gece Otobüsü</button>
-        <button class="station" type="button" data-kind="vhs" data-freq="87.9" data-name="VHS Rüyası">87.9 VHS Rüyası</button>
-        <button class="station" type="button" data-kind="neon" data-freq="91.3" data-name="Paslı Neon">91.3 Paslı Neon</button>
+      <div class="station-grid" role="group" aria-label="On yerel sentez kanalı">
+        <button class="station on" type="button" data-kind="bus" data-freq="88.8" data-name="Gece Otobüsü" aria-pressed="true">
+          <span class="station-frequency">88.8</span><strong class="station-title">Gece Otobüsü</strong><small class="station-description">Motor uğultusu, uzak yol ve titreşen cam.</small>
+        </button>
+        <button class="station" type="button" data-kind="vhs" data-freq="87.9" data-name="VHS Rüyası" aria-pressed="false">
+          <span class="station-frequency">87.9</span><strong class="station-title">VHS Rüyası</strong><small class="station-description">Manyetik hışırtı, solan neon ve analog dalga.</small>
+        </button>
+        <button class="station" type="button" data-kind="neon" data-freq="91.3" data-name="Paslı Neon" aria-pressed="false">
+          <span class="station-frequency">91.3</span><strong class="station-title">Paslı Neon</strong><small class="station-description">Paslı synth, gece elektriği ve ağır bas.</small>
+        </button>
+        <button class="station" type="button" data-kind="forest" data-freq="93.2" data-name="Gizemli Orman" aria-pressed="false">
+          <span class="station-frequency">93.2</span><strong class="station-title">Gizemli Orman</strong><small class="station-description">Karanlık yapraklar, uzak ve sentetik kuş çağrıları.</small>
+        </button>
+        <button class="station" type="button" data-kind="purr" data-freq="94.6" data-name="Kedi Mırıltısı" aria-pressed="false">
+          <span class="station-frequency">94.6</span><strong class="station-title">Kedi Mırıltısı</strong><small class="station-description">Yumuşak titreşim, mırıltı ve ara sıra ince miyav.</small>
+        </button>
+        <button class="station" type="button" data-kind="rain" data-freq="95.7" data-name="Yağmur Camı" aria-pressed="false">
+          <span class="station-frequency">95.7</span><strong class="station-title">Yağmur Camı</strong><small class="station-description">Camdaki damlalar ve uzak çatılarda yağmur.</small>
+        </button>
+        <button class="station" type="button" data-kind="lighthouse" data-freq="97.1" data-name="Deniz Feneri" aria-pressed="false">
+          <span class="station-frequency">97.1</span><strong class="station-title">Deniz Feneri</strong><small class="station-description">Gelgit gibi yükselen dalga ve yalnız çan.</small>
+        </button>
+        <button class="station" type="button" data-kind="cosmos" data-freq="98.4" data-name="Kozmik Bahçe" aria-pressed="false">
+          <span class="station-frequency">98.4</span><strong class="station-title">Kozmik Bahçe</strong><small class="station-description">Yıldız tozu, yavaş armoniler ve cam çanlar.</small>
+        </button>
+        <button class="station" type="button" data-kind="platform" data-freq="99.6" data-name="Son Peron" aria-pressed="false">
+          <span class="station-frequency">99.6</span><strong class="station-title">Son Peron</strong><small class="station-description">Ray ritmi, boş istasyon ve gece treni.</small>
+        </button>
+        <button class="station" type="button" data-kind="longing" data-freq="101.8" data-name="Özlemek" aria-pressed="false">
+          <span class="station-frequency">101.8</span><strong class="station-title">Özlemek</strong><small class="station-description">Uzak piyano hissi, yumuşak armoni ve geçmeyen bir akşam.</small>
+        </button>
       </div>
-      <div class="row"><button class="btn" id="play" type="button">Yayını başlat</button></div>
+      <div class="row radio-actions">
+        <button class="btn" id="play" type="button" aria-pressed="false">Yayını başlat</button>
+        <button class="btn ghost" id="stop-radio" type="button">Sesi kapat</button>
+      </div>
+      <p class="note" id="radio-help" aria-live="polite">Açılış kanalı 88.8 Gece Otobüsü. Tarayıcı otomatik sesi engellerse ilk dokunuşunda kendiliğinden uyanır.</p>
+      <p class="note">Bütün kanal sesleri Web Audio ile o anda tarayıcıda üretilir. Harici kayıt veya örnek kullanılmaz; her atmosfer durdurulana kadar sürekli evrilir.</p>
       <h3>Eski teyp</h3>
       <p class="note">Kendi ses dosyan yalnızca bu oturumda çalar. 7mix pakete konmadı. SoundCloud dış bağlantıdır.</p>
       <label for="tape" class="kicker">Cihazından ses dosyası seç</label>

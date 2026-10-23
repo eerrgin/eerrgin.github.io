@@ -278,93 +278,473 @@ let analyser = null;
 let wave = null;
 const tape = new Audio();
 let tapeUrl = null;
+let radioTimers = [];
+let autoStartTimer = null;
+let selectedRadio = "bus";
+
+const RADIO_SCENES = {
+  bus: {
+    volume: 0.24,
+    layers: [
+      { color: "brown", filter: "lowpass", freq: 220, gain: 0.20, q: 0.6, pulseHz: 0.08, depth: 0.035 },
+      { color: "brown", filter: "bandpass", freq: 540, gain: 0.022, q: 0.5 }
+    ],
+    tones: [
+      { freq: 46, type: "sine", gain: 0.055, vibrato: 1.4 },
+      { freq: 92, type: "sine", gain: 0.012, vibrato: 1.8 },
+      { freq: 138, type: "triangle", gain: 0.004, vibrato: 1.1 }
+    ]
+  },
+  vhs: {
+    volume: 0.22,
+    layers: [
+      { color: "white", filter: "highpass", freq: 1500, gain: 0.027, q: 0.5 },
+      { color: "brown", filter: "lowpass", freq: 420, gain: 0.055, q: 0.6, pulseHz: 0.13, depth: 0.012 }
+    ],
+    tones: [
+      { freq: 110, type: "sine", gain: 0.018, vibrato: 8 },
+      { freq: 110.7, type: "sine", gain: 0.016, vibrato: 10 },
+      { freq: 220, type: "sine", gain: 0.005, vibrato: 5 }
+    ]
+  },
+  neon: {
+    volume: 0.21,
+    layers: [
+      { color: "brown", filter: "bandpass", freq: 680, gain: 0.055, q: 1.0, pulseHz: 0.17, depth: 0.018 },
+      { color: "white", filter: "highpass", freq: 2200, gain: 0.005, q: 0.7 }
+    ],
+    tones: [
+      { freq: 73, type: "sawtooth", gain: 0.014, vibrato: 3.5 },
+      { freq: 146.8, type: "sine", gain: 0.010, vibrato: 5 },
+      { freq: 220, type: "sine", gain: 0.004, vibrato: 4 }
+    ]
+  },
+  forest: {
+    volume: 0.20,
+    layers: [
+      { color: "brown", filter: "lowpass", freq: 480, gain: 0.085, q: 0.7, pulseHz: 0.06, depth: 0.02 },
+      { color: "white", filter: "highpass", freq: 3400, gain: 0.006, q: 0.5 }
+    ],
+    tones: [
+      { freq: 55, type: "sine", gain: 0.018, vibrato: 2.4 },
+      { freq: 110, type: "sine", gain: 0.007, vibrato: 3.5 }
+    ]
+  },
+  purr: {
+    volume: 0.22,
+    layers: [
+      { color: "brown", filter: "lowpass", freq: 190, gain: 0.105, q: 0.7, pulseHz: 24, depth: 0.026 },
+      { color: "white", filter: "lowpass", freq: 680, gain: 0.009, q: 0.8, pulseHz: 24, depth: 0.002 }
+    ],
+    tones: [
+      { freq: 27, type: "triangle", gain: 0.014, vibrato: 1.2 },
+      { freq: 54, type: "sine", gain: 0.006, vibrato: 1.5 }
+    ]
+  },
+  rain: {
+    volume: 0.20,
+    layers: [
+      { color: "white", filter: "lowpass", freq: 1300, gain: 0.026, q: 0.6 },
+      { color: "brown", filter: "lowpass", freq: 270, gain: 0.052, q: 0.7 },
+      { color: "white", filter: "bandpass", freq: 2400, gain: 0.011, q: 0.5 }
+    ],
+    tones: [
+      { freq: 164.8, type: "sine", gain: 0.005, vibrato: 1.8 }
+    ]
+  },
+  lighthouse: {
+    volume: 0.22,
+    layers: [
+      { color: "brown", filter: "lowpass", freq: 360, gain: 0.10, q: 0.7, pulseHz: 0.075, depth: 0.04 },
+      { color: "white", filter: "lowpass", freq: 720, gain: 0.007, q: 0.6 }
+    ],
+    tones: [
+      { freq: 65.4, type: "sine", gain: 0.022, vibrato: 1.6 },
+      { freq: 130.8, type: "sine", gain: 0.007, vibrato: 2.4 }
+    ],
+    echo: true
+  },
+  cosmos: {
+    volume: 0.18,
+    layers: [
+      { color: "white", filter: "highpass", freq: 2800, gain: 0.008, q: 0.5 },
+      { color: "brown", filter: "bandpass", freq: 1250, gain: 0.025, q: 0.7, pulseHz: 0.045, depth: 0.01 }
+    ],
+    tones: [
+      { freq: 174.61, type: "sine", gain: 0.016, vibrato: 3 },
+      { freq: 261.63, type: "sine", gain: 0.012, vibrato: 4 },
+      { freq: 392, type: "sine", gain: 0.005, vibrato: 3.5 },
+      { freq: 432, type: "sine", gain: 0.004, vibrato: 2 }
+    ],
+    echo: true
+  },
+  platform: {
+    volume: 0.22,
+    layers: [
+      { color: "brown", filter: "lowpass", freq: 185, gain: 0.09, q: 0.7, pulseHz: 1.25, depth: 0.018 },
+      { color: "white", filter: "bandpass", freq: 650, gain: 0.012, q: 0.8 }
+    ],
+    tones: [
+      { freq: 41, type: "sine", gain: 0.030, vibrato: 1.0 },
+      { freq: 82, type: "triangle", gain: 0.008, vibrato: 1.4 }
+    ]
+  },
+  longing: {
+    volume: 0.18,
+    layers: [
+      { color: "brown", filter: "lowpass", freq: 520, gain: 0.030, q: 0.7, pulseHz: 0.055, depth: 0.008 },
+      { color: "white", filter: "lowpass", freq: 1700, gain: 0.003, q: 0.6 }
+    ],
+    tones: [
+      { freq: 174.61, type: "sine", gain: 0.020, vibrato: 1.3 },
+      { freq: 220, type: "sine", gain: 0.016, vibrato: 1.6 },
+      { freq: 261.63, type: "sine", gain: 0.013, vibrato: 1.2 },
+      { freq: 329.63, type: "sine", gain: 0.008, vibrato: 1.8 },
+      { freq: 440, type: "sine", gain: 0.003, vibrato: 2 }
+    ],
+    echo: true
+  }
+};
+
+function syncRadioUI() {
+  const active = audio;
+  const air = document.querySelector("#air");
+  const play = document.querySelector("#play");
+  const help = document.querySelector("#radio-help");
+  const selected = document.querySelector(".station.on");
+  const frequency = selected ? selected.dataset.freq : "88.8";
+  const name = selected ? selected.dataset.name : "Gece Otobüsü";
+  const running = Boolean(active && active.state === "running");
+  const suspended = Boolean(active && active.state === "suspended");
+  if (air) air.textContent = running ? "YAYINDA · " + frequency : suspended ? "İLK DOKUNUŞTA SES" : "SESSİZ";
+  if (play) {
+    play.textContent = running ? "Yayını durdur" : suspended ? "Sesi etkinleştir" : "Yayını başlat";
+    play.setAttribute("aria-pressed", String(running));
+  }
+  if (help) {
+    help.textContent = running
+      ? name + " çalıyor. İstediğin kanalı değiştir veya “Sesi kapat” düğmesine bas."
+      : suspended
+        ? "Tarayıcı otomatik sesi bekletiyor olabilir. Sayfaya bir kez dokununca seçili kanal kendiliğinden uyanır."
+        : "Dinleme kapalı. Bir kanala dokunarak hemen başlatabilir ya da “Yayını başlat” düğmesini kullanabilirsin.";
+  }
+  if (running) document.body.classList.add("live");
+  else document.body.classList.remove("live");
+}
 
 function stopRadio() {
-  if (audio) audio.close();
+  if (autoStartTimer !== null) {
+    window.clearTimeout(autoStartTimer);
+    autoStartTimer = null;
+  }
+  radioTimers.forEach((timer) => window.clearInterval(timer));
+  radioTimers = [];
+  const old = audio;
   audio = null;
   analyser = null;
   wave = null;
+  if (old) {
+    old.onstatechange = null;
+    if (old.state !== "closed") old.close().catch(() => {});
+  }
+  if (tape && !tape.paused) tape.pause();
   document.body.classList.remove("live");
-  const air = document.querySelector("#air");
-  if (air) air.textContent = "BEKLEMEDE";
+  syncRadioUI();
 }
-function noise(ctx) {
-  const length = ctx.sampleRate * 2;
+
+function noise(ctx, color) {
+  const length = ctx.sampleRate * 8;
   const buffer = ctx.createBuffer(1, length, ctx.sampleRate);
   const data = buffer.getChannelData(0);
   let last = 0;
   for (let i = 0; i < length; i += 1) {
-    last = (last + 0.02 * (Math.random() * 2 - 1)) / 1.02;
-    data[i] = last * 3.5;
+    const white = Math.random() * 2 - 1;
+    if (color === "white") {
+      data[i] = white * 0.34;
+    } else {
+      last = (last + 0.025 * white) / 1.025;
+      data[i] = last * 3.3;
+    }
   }
   return buffer;
 }
-function startRadio(kind) {
+
+function addNoiseLayer(ctx, destination, settings) {
+  const source = ctx.createBufferSource();
+  source.buffer = noise(ctx, settings.color || "brown");
+  source.loop = true;
+  const filter = ctx.createBiquadFilter();
+  filter.type = settings.filter || "lowpass";
+  filter.frequency.value = Math.min(settings.freq || 500, ctx.sampleRate * 0.42);
+  filter.Q.value = settings.q || 0.7;
+  const amp = ctx.createGain();
+  amp.gain.value = settings.gain || 0.01;
+  source.connect(filter);
+  filter.connect(amp);
+  amp.connect(destination);
+  source.start();
+  if (settings.pulseHz && settings.depth) {
+    const lfo = ctx.createOscillator();
+    const depth = ctx.createGain();
+    lfo.frequency.value = settings.pulseHz;
+    depth.gain.value = settings.depth;
+    lfo.connect(depth);
+    depth.connect(amp.gain);
+    lfo.start();
+  }
+}
+
+function addDrone(ctx, destination, tone) {
+  const osc = ctx.createOscillator();
+  const amp = ctx.createGain();
+  osc.type = tone.type || "sine";
+  osc.frequency.value = tone.freq;
+  osc.detune.value = tone.detune || 0;
+  amp.gain.value = tone.gain || 0.01;
+  osc.connect(amp);
+  amp.connect(destination);
+  osc.start();
+  if (tone.vibrato) {
+    const lfo = ctx.createOscillator();
+    const depth = ctx.createGain();
+    lfo.frequency.value = 0.035 + Math.random() * 0.08;
+    depth.gain.value = tone.vibrato;
+    lfo.connect(depth);
+    depth.connect(osc.detune);
+    lfo.start();
+  }
+}
+
+function createEcho(ctx, destination) {
+  const delay = ctx.createDelay(2.5);
+  delay.delayTime.value = 0.68;
+  const feedback = ctx.createGain();
+  feedback.gain.value = 0.22;
+  const wet = ctx.createGain();
+  wet.gain.value = 0.16;
+  delay.connect(feedback);
+  feedback.connect(delay);
+  delay.connect(wet);
+  wet.connect(destination);
+  return delay;
+}
+
+function playPing(ctx, destination, echo, frequency, volume, duration, type, slideTo) {
+  if (audio !== ctx || ctx.state === "closed") return;
+  const now = ctx.currentTime;
+  const osc = ctx.createOscillator();
+  const envelope = ctx.createGain();
+  osc.type = type || "sine";
+  osc.frequency.setValueAtTime(frequency, now);
+  if (slideTo && slideTo > 0) {
+    osc.frequency.exponentialRampToValueAtTime(slideTo, now + duration * 0.62);
+  }
+  envelope.gain.setValueAtTime(0.0001, now);
+  envelope.gain.exponentialRampToValueAtTime(Math.max(0.0002, volume), now + 0.025);
+  envelope.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+  osc.connect(envelope);
+  envelope.connect(destination);
+  if (echo) {
+    const send = ctx.createGain();
+    send.gain.value = 0.12;
+    envelope.connect(send);
+    send.connect(echo);
+  }
+  osc.start(now);
+  osc.stop(now + duration + 0.03);
+}
+
+function playMeow(ctx, destination) {
+  if (audio !== ctx || ctx.state !== "running") return;
+  const now = ctx.currentTime;
+  const osc = ctx.createOscillator();
+  const envelope = ctx.createGain();
+  osc.type = "triangle";
+  osc.frequency.setValueAtTime(360 + Math.random() * 70, now);
+  osc.frequency.exponentialRampToValueAtTime(560 + Math.random() * 70, now + 0.16);
+  osc.frequency.exponentialRampToValueAtTime(320 + Math.random() * 60, now + 0.72);
+  envelope.gain.setValueAtTime(0.0001, now);
+  envelope.gain.exponentialRampToValueAtTime(0.012, now + 0.045);
+  envelope.gain.exponentialRampToValueAtTime(0.0001, now + 0.76);
+  osc.connect(envelope);
+  envelope.connect(destination);
+  osc.start(now);
+  osc.stop(now + 0.8);
+}
+
+function loopRadio(ctx, callback, interval) {
+  const timer = window.setInterval(() => {
+    if (audio === ctx && ctx.state === "running") callback();
+  }, interval);
+  radioTimers.push(timer);
+}
+
+function buildScene(ctx, master, kind, echo) {
+  const scene = RADIO_SCENES[kind] || RADIO_SCENES.bus;
+  scene.layers.forEach((layer) => addNoiseLayer(ctx, master, layer));
+  scene.tones.forEach((tone) => addDrone(ctx, master, tone));
+
+  if (kind === "forest") {
+    loopRadio(ctx, () => {
+      if (Math.random() < 0.84) {
+        const start = 1450 + Math.random() * 1500;
+        playPing(ctx, master, echo, start, 0.006 + Math.random() * 0.003, 0.32 + Math.random() * 0.42, "sine", start * (1.12 + Math.random() * 0.45));
+      }
+    }, 2100);
+    loopRadio(ctx, () => {
+      if (Math.random() < 0.45) playPing(ctx, master, echo, 260 + Math.random() * 180, 0.0035, 0.65, "sine", 190 + Math.random() * 100);
+    }, 5100);
+  } else if (kind === "purr") {
+    loopRadio(ctx, () => {
+      if (Math.random() < 0.72) playMeow(ctx, master);
+    }, 6900);
+  } else if (kind === "rain") {
+    loopRadio(ctx, () => {
+      if (Math.random() < 0.68) {
+        const drop = 1000 + Math.random() * 1800;
+        playPing(ctx, master, null, drop, 0.004 + Math.random() * 0.004, 0.10 + Math.random() * 0.09, "sine", 450 + Math.random() * 500);
+      }
+    }, 410);
+  } else if (kind === "lighthouse") {
+    const bells = [392, 523.25, 587.33, 659.25];
+    let note = 0;
+    loopRadio(ctx, () => {
+      playPing(ctx, master, echo, bells[note % bells.length], 0.018, 1.9, "sine");
+      note += 1;
+    }, 4700);
+  } else if (kind === "cosmos") {
+    const bells = [523.25, 659.25, 783.99, 587.33, 880];
+    let note = 0;
+    loopRadio(ctx, () => {
+      if (Math.random() < 0.8) playPing(ctx, master, echo, bells[note % bells.length], 0.010, 2.2, "sine");
+      note += 1;
+    }, 3900);
+  } else if (kind === "platform") {
+    loopRadio(ctx, () => {
+      playPing(ctx, master, null, 72 + Math.random() * 48, 0.010, 0.075, "triangle", 48 + Math.random() * 30);
+      if (Math.random() < 0.38) {
+        window.setTimeout(() => {
+          if (audio === ctx && ctx.state === "running") playPing(ctx, master, null, 90 + Math.random() * 40, 0.007, 0.07, "triangle", 55);
+        }, 115);
+      }
+    }, 720);
+  } else if (kind === "longing") {
+    const notes = [392, 329.63, 293.66, 261.63, 220, 293.66, 329.63, 261.63];
+    let note = 0;
+    loopRadio(ctx, () => {
+      playPing(ctx, master, echo, notes[note % notes.length], 0.010 + Math.random() * 0.004, 2.5, "sine");
+      note += 1;
+    }, 3300);
+  }
+}
+
+function selectRadio(kind, persist) {
+  selectedRadio = RADIO_SCENES[kind] ? kind : "bus";
+  document.querySelectorAll(".station").forEach((button) => {
+    const active = button.dataset.kind === selectedRadio;
+    button.classList.toggle("on", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+  const selected = document.querySelector(".station.on");
+  if (selected) {
+    const frequency = document.querySelector("#freq");
+    const name = document.querySelector("#sname");
+    if (frequency) frequency.textContent = selected.dataset.freq;
+    if (name) name.textContent = selected.dataset.name;
+  }
+  if (persist) {
+    try { localStorage.setItem("e.radio.station", selectedRadio); } catch {}
+  }
+}
+
+function startRadio(kind, options) {
+  const autoStart = Boolean(options && options.autoStart);
   stopRadio();
   tape.pause();
+  selectRadio(kind, true);
   const AudioCtx = window.AudioContext || window.webkitAudioContext;
   const air = document.querySelector("#air");
   if (!AudioCtx) {
     if (air) air.textContent = "SES DESTEKLENMİYOR";
+    const help = document.querySelector("#radio-help");
+    if (help) help.textContent = "Bu tarayıcı Web Audio desteği sunmuyor. Başka bir güncel tarayıcıda tekrar dene.";
     return false;
   }
   const ctx = new AudioCtx();
   audio = ctx;
   const master = ctx.createGain();
-  master.gain.value = 0.35;
-  master.connect(ctx.destination);
+  master.gain.value = RADIO_SCENES[selectedRadio].volume;
   const tap = ctx.createAnalyser();
   tap.fftSize = 1024;
-  tap.smoothingTimeConstant = 0.72;
+  tap.smoothingTimeConstant = 0.78;
   master.connect(tap);
   analyser = tap;
   wave = new Uint8Array(tap.fftSize);
-  const bed = ctx.createBufferSource();
-  bed.buffer = noise(ctx);
-  bed.loop = true;
-  const filter = ctx.createBiquadFilter();
-  filter.type = kind === "vhs" ? "highpass" : kind === "neon" ? "bandpass" : "lowpass";
-  filter.frequency.value = kind === "vhs" ? 1600 : kind === "neon" ? 780 : 220;
-  const gain = ctx.createGain();
-  gain.gain.value = kind === "vhs" ? 0.08 : 0.4;
-  bed.connect(filter);
-  filter.connect(gain);
-  gain.connect(master);
-  bed.start();
-  if (kind !== "vhs") {
-    const osc = ctx.createOscillator();
-    osc.frequency.value = kind === "neon" ? 73 : 48;
-    const g = ctx.createGain();
-    g.gain.value = 0.05;
-    osc.connect(g);
-    g.connect(master);
-    osc.start();
-  }
-  document.body.classList.add("live");
-  if (air) air.textContent = "YAYINDA";
-  pulse("radio");
+  const compressor = ctx.createDynamicsCompressor();
+  compressor.threshold.value = -22;
+  compressor.knee.value = 18;
+  compressor.ratio.value = 3;
+  compressor.attack.value = 0.008;
+  compressor.release.value = 0.22;
+  tap.connect(compressor);
+  compressor.connect(ctx.destination);
+  const echo = RADIO_SCENES[selectedRadio].echo ? createEcho(ctx, master) : null;
+  buildScene(ctx, master, selectedRadio, echo);
+  ctx.onstatechange = () => { if (audio === ctx) syncRadioUI(); };
+  try {
+    const resumed = ctx.resume();
+    if (resumed && typeof resumed.catch === "function") resumed.catch(() => syncRadioUI());
+  } catch {}
+  syncRadioUI();
+  if (!autoStart) pulse("radio");
   return true;
 }
+
 document.querySelectorAll(".station").forEach((button) => {
   button.addEventListener("click", () => {
-    document.querySelectorAll(".station").forEach((node) => node.classList.remove("on"));
-    button.classList.add("on");
-    document.querySelector("#freq").textContent = button.dataset.freq;
-    document.querySelector("#sname").textContent = button.dataset.name;
-    if (audio) startRadio(button.dataset.kind);
+    selectRadio(button.dataset.kind, true);
+    startRadio(button.dataset.kind);
   });
 });
+
 document.querySelector("#play")?.addEventListener("click", () => {
-  const play = document.querySelector("#play");
-  if (audio) {
+  if (audio && audio.state === "running") {
     stopRadio();
-    play.textContent = "Yayını başlat";
     return;
   }
-  const current = document.querySelector(".station.on");
-  if (startRadio(current.dataset.kind) === false) return;
-  play.textContent = "Yayını kes";
+  if (audio && audio.state === "suspended") {
+    const ctx = audio;
+    ctx.resume().then(() => { if (audio === ctx) syncRadioUI(); }).catch(() => syncRadioUI());
+    return;
+  }
+  startRadio(selectedRadio);
 });
+
+document.querySelector("#stop-radio")?.addEventListener("click", () => {
+  stopRadio();
+  tape.pause();
+  try { tape.currentTime = 0; } catch {}
+  const air = document.querySelector("#air");
+  if (air) air.textContent = "SESSİZ";
+});
+
+function unlockRadio() {
+  if (!audio || audio.state !== "suspended") return;
+  const ctx = audio;
+  ctx.resume().then(() => { if (audio === ctx) syncRadioUI(); }).catch(() => syncRadioUI());
+}
+document.addEventListener("pointerdown", unlockRadio, { passive: true });
+document.addEventListener("keydown", unlockRadio);
+
+try {
+  const saved = localStorage.getItem("e.radio.station");
+  if (saved && RADIO_SCENES[saved]) selectedRadio = saved;
+} catch {}
+selectRadio(selectedRadio, false);
+autoStartTimer = window.setTimeout(() => {
+  autoStartTimer = null;
+  if (!audio) startRadio(selectedRadio, { autoStart: true });
+}, 350);
 
 document.querySelector("#tape")?.addEventListener("change", (event) => {
   const picker = event.currentTarget;
@@ -390,6 +770,7 @@ document.querySelector("#tape")?.addEventListener("change", (event) => {
 });
 
 window.addEventListener("pagehide", () => {
+  stopRadio();
   if (imageUrl) {
     URL.revokeObjectURL(imageUrl);
     imageUrl = null;
