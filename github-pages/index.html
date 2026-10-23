@@ -85,8 +85,9 @@
         <h1 id="mast">Bazı <em>fikirler</em> çalışır</h1>
         <p class="lede" lang="en">Curious by nature. Drawn to code, digital experiences, and ideas that deserve to be built.</p>
         <div class="row">
-          <a class="btn" href="#atolye">Masaya bak</a>
-          <a class="btn ghost" href="#laboratuvar">Kediye sor</a>
+          <a class="btn" href="#atolye">DENEMELER</a>
+          <a class="btn ghost" href="#laboratuvar">Kedi</a>
+          <a class="btn ghost lab-shortcut" href="https://eerrgin.github.io/ergin-lab/" aria-label="Ergin Lab deneylerini aç">Ergin Lab ↗</a>
         </div>
       </div>
       <figure class="portrait" id="portrait">
@@ -171,6 +172,12 @@
         <article class="card"><p class="kicker">03 / RECON</p><h3>ReconX</h3><p>İzin verilen keşif. Davetiye yoksa kapı da yok. Çıktıyı okunur rapora çevirir.</p><p class="meta"><span>PYTHON / REPORT</span><a href="https://github.com/eerrgin/ReconX-Web-Reconnaissance-Toolkit-" rel="noopener">Kaynağı gör ↗</a></p></article>
         <article class="card"><p class="kicker">04 / OFFLINE LAB</p><h3>local-sqli-lab</h3><p>SQL enjeksiyonunu internete çıkmadan, küçük bir SQLite masasında anlatır.</p><p class="meta"><span>SQLITE / EDUCATION</span><a href="https://github.com/eerrgin/local-sqli-lab" rel="noopener">Kaynağı gör ↗</a></p></article>
         <article class="card"><p class="kicker">05 / AI CORE</p><h3>KAVRA</h3><p>Yapay zekâ odaklı geliştirme süreci. Kod tabanı ve mimari çalışmalar açık olarak ilerliyor.</p><p class="meta"><span>PYTHON / AI</span><a href="https://github.com/eerrgin/KAVRA/tree/main" rel="noopener">Kaynağı gör ↗</a></p></article>
+        <article class="card mycelforge-card">
+          <p class="kicker">06 / BIOMATERIALS LAB</p>
+          <h3>MycelForge <em>· Miselyum atölyesi</em></h3>
+          <p>Tarımsal atıklardan miselyum biyomalzemeleri için formül adayları ve deney protokolleri üretir. Bilimsel ölçümün yerini almaz, araştırmaya bir başlangıç noktası sunar.</p>
+          <p class="meta"><span>ERGİN LAB / FORMÜL MOTORU</span><a href="https://eerrgin.github.io/mycelforge/" rel="noopener">Canlı atölyeyi aç ↗</a></p>
+        </article>
       </div>
       <div class="trace" id="kavra">
         <p class="kicker">KAVRA · TARAYICI AĞI</p>
@@ -228,7 +235,7 @@
           <div class="row">
             <button class="btn" id="compare-traits" type="button">Özelliklerle karşılaştır</button>
           </div>
-          <p>Ya da fotoğraf bırak.</p>
+          <label for="photo" class="kicker">Ya da fotoğraf bırak</label>
           <input id="photo" type="file" accept="image/*">
           <img id="preview" alt="Seçilen kedi fotoğrafı." hidden>
           <div class="row"><button class="btn ghost" id="compare-photo" type="button">Fotoğrafı oku</button></div>
@@ -254,6 +261,7 @@
       <div class="row"><button class="btn" id="play" type="button">Yayını başlat</button></div>
       <h3>Eski teyp</h3>
       <p class="note">Kendi ses dosyan yalnızca bu oturumda çalar. 7mix pakete konmadı. SoundCloud dış bağlantıdır.</p>
+      <label for="tape" class="kicker">Cihazından ses dosyası seç</label>
       <input id="tape" type="file" accept="audio/*">
       <p id="tape-name">Dosya seçilmedi.</p>
       <p><a href="https://soundcloud.com/yukseksadakat/y-ksek-sadakat-katil-makt-l-1" rel="noopener">SoundCloud bağlantısı ↗</a></p>
@@ -285,12 +293,12 @@
       <p class="kicker">07 / KIRMIZI HAT</p>
       <h2>Sınırlar.</h2>
       <ul>
-        <li>Bu sayfa izleme kodu taşımaz.</li>
-        <li>Radyo sesi tarayıcıda üretilir; dışarı akmaz.</li>
-        <li>Fotoğraf ve teyp dosyası cihazından çıkmaz.</li>
+        <li>Siber güvenlik: kapıyı kilitleyip anahtarı paspasın altına koymaktır.</li>
+        <li>DevOps, hatayı üretimde bulma kültürüdür.</li>
+        <li>AI etik kurulu, kuralları model eğitildikten sonra yazar.</li>
         <li>Kavra ağı ve iskelet bu sekmede kalır. Ağırlık tarayıcı hafızasındadır, depoya gitmez.</li>
         <li>HAT terminali aynı ağı kullanır. Yazdığın cümle bir sunucuya taşınmaz.</li>
-        <li>Hava ve harici bağlantılar başarısız olsa da yerel bölümler ayakta kalır.</li>
+        <li>Algoritma seni tanımıyor; sadece tıklamalarını tanıyor.</li>
       </ul>
     </section>
   </main>
@@ -314,9 +322,10 @@
     <span id="hud-depth">derinlik 0</span>
   </div>
   <dialog id="cmd">
-    <input id="cmd-filter" type="search" placeholder="Bölüm ara…" autocomplete="off">
+    <input id="cmd-filter" type="search" aria-label="Bölüm ara" placeholder="Bölüm ara…" autocomplete="off">
     <a href="#istanbul">01 · İstanbul arşivi</a>
     <a href="#atolye">02 · Atölye / Workbench</a>
+    <a href="https://eerrgin.github.io/mycelforge/" rel="noopener">02c · MycelForge biyomalzeme atölyesi ↗</a>
     <a href="#kavra">02b · Kavra ağı</a>
     <a href="#laboratuvar">03 · Kedi laboratuvarı</a>
     <a href="#frekans">04 · Greyfield FM</a>

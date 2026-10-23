@@ -9,10 +9,10 @@
   const status = document.getElementById("hat-status");
   if (!root || !screen || !form || !input || !window.Kavra || !window.Gece) return;
 
-  const COMMANDS = ["yardım", "hava", "saat", "ay", "radyo", "kedi", "git", "iskelet", "tema", "titreşim", "kavra", "eğit", "ağ", "not", "temiz", "kapat", "sıfır", "bant"];
+  const COMMANDS = ["yardım", "help", "hava", "saat", "ay", "radyo", "kedi", "git", "iskelet", "tema", "titreşim", "kavra", "eğit", "ağ", "not", "temiz", "clear", "kapat", "sıfır", "bant"];
   const PLACES = [
     ["istanbul", ["istanbul", "şehir", "sehir", "galata", "eminönü", "eminonu", "samatya", "ayasofya", "süleymaniye", "suleymaniye"]],
-    ["atolye", ["atolye", "atölye", "atolye", "workbench", "proje", "veil", "masa"]],
+    ["atolye", ["atolye", "atölye", "workbench", "proje", "veil", "masa"]],
     ["kavra", ["kavra", "ağ", "ag", "nöron", "noron"]],
     ["laboratuvar", ["laboratuvar", "kedi", "lab"]],
     ["frekans", ["frekans", "radyo", "fm", "greyfield"]],
@@ -131,7 +131,7 @@
 
   function tremorFrom(text) {
     const folded = fold(text);
-    const off = /kapa|kapat|kapa|sus|off|0/.test(folded);
+    const off = /kapa|kapat|sus|off|0/.test(folded);
     const on = /aç|ac|on|1/.test(folded);
     const next = window.Gece.setTremor(off && !on ? false : on ? true : !window.Gece.tremor());
     return next === "on"
@@ -314,7 +314,9 @@
       line("Bash değil. KAVRA bu sekmede niyeti okur. Ağırlık dışarı çıkmaz.", "dim");
       line("yardım yaz, ya da düz cümle: yağmur var mı", "dim");
     }
-    window.setTimeout(() => input.focus(), 30);
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      window.setTimeout(() => input.focus(), 30);
+    }
   }
 
   function closeHat() {
