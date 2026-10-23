@@ -124,21 +124,47 @@ document.querySelector("#compare-traits")?.addEventListener("click", () => {
 const preview = document.querySelector("#preview");
 const fileInput = document.querySelector("#photo");
 let image = null;
+let imageUrl = null;
+
 fileInput?.addEventListener("change", () => {
   const file = fileInput.files && fileInput.files[0];
+
+  if (imageUrl) URL.revokeObjectURL(imageUrl);
+  imageUrl = null;
+  image = null;
+  if (preview) {
+    preview.hidden = true;
+    preview.removeAttribute("src");
+  }
   if (!file) return;
+
+  if (file.type && !file.type.startsWith("image/")) {
+    renderGuesses([], "Bu dosya bir görsel değil. Bir fotoğraf seç.");
+    return;
+  }
+
   const url = URL.createObjectURL(file);
-  image = new Image();
-  image.onload = () => {
+  imageUrl = url;
+  const nextImage = new Image();
+  image = nextImage;
+
+  nextImage.onload = () => {
+    if (image !== nextImage || imageUrl !== url) return;
     preview.src = url;
     preview.hidden = false;
   };
-  image.onerror = () => {
+  nextImage.onerror = () => {
+    if (image !== nextImage) return;
     image = null;
+    if (imageUrl === url) {
+      URL.revokeObjectURL(url);
+      imageUrl = null;
+    }
+    preview.removeAttribute("src");
     preview.hidden = true;
     renderGuesses([], "Bu dosya okunamadı. Başka bir fotoğraf dene.");
   };
-  image.src = url;
+  nextImage.src = url;
 });
 
 function readPhoto(img) {
@@ -193,6 +219,9 @@ document.querySelector("#compare-photo")?.addEventListener("click", () => {
 let audio = null;
 let analyser = null;
 let wave = null;
+const tape = new Audio();
+let tapeUrl = null;
+
 function stopRadio() {
   if (audio) audio.close();
   audio = null;
@@ -215,6 +244,7 @@ function noise(ctx) {
 }
 function startRadio(kind) {
   stopRadio();
+  tape.pause();
   const AudioCtx = window.AudioContext || window.webkitAudioContext;
   const air = document.querySelector("#air");
   if (!AudioCtx) {
@@ -279,17 +309,39 @@ document.querySelector("#play")?.addEventListener("click", () => {
   play.textContent = "Yayını kes";
 });
 
-const tape = new Audio();
-document.querySelector("#tape")?.addEventListener("change", () => {
-  const file = document.querySelector("#tape").files[0];
+document.querySelector("#tape")?.addEventListener("change", (event) => {
+  const picker = event.currentTarget;
+  const file = picker.files && picker.files[0];
   if (!file) return;
+
+  if (file.type && !file.type.startsWith("audio/")) {
+    document.querySelector("#tape-name").textContent = "Bu dosya ses dosyası değil.";
+    return;
+  }
+
   stopRadio();
+  tape.pause();
+  if (tapeUrl) URL.revokeObjectURL(tapeUrl);
+  tapeUrl = URL.createObjectURL(file);
   document.querySelector("#play").textContent = "Yayını başlat";
-  tape.src = URL.createObjectURL(file);
+  tape.src = tapeUrl;
+  tape.load();
   tape.play().catch(() => {
     document.querySelector("#tape-name").textContent = `${file.name} (tarayıcı oynatmayı engelledi, tekrar dene)`;
   });
   document.querySelector("#tape-name").textContent = file.name;
+});
+
+window.addEventListener("pagehide", () => {
+  if (imageUrl) {
+    URL.revokeObjectURL(imageUrl);
+    imageUrl = null;
+  }
+  tape.pause();
+  if (tapeUrl) {
+    URL.revokeObjectURL(tapeUrl);
+    tapeUrl = null;
+  }
 });
 
 const lines = [
