@@ -1,7 +1,7 @@
 {
   "name": "eerrgin — Gece Vardiyası",
   "short_name": "eerrgin",
-  "description": "İstanbul'da gece vardiyası: kırmızı hat, metal, radyo ve yerel laboratuvar.",
+  "description": "İstanbul gece vardiyası: şehir arşivi, kırmızı hat, tarayıcı deneyleri, Greyfield FM ve MycelForge biyomalzeme atölyesi.",
   "lang": "tr-TR",
   "start_url": "./",
   "scope": "./",
