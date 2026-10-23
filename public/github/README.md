@@ -7,7 +7,7 @@
 - **Hava durumu şeridi** — sayfanın en üstünde, İstanbul için anlık durum ve 3 günlük tahmin ([Open-Meteo](https://open-meteo.com/), anahtar gerekmez). Yanıt gelmezse şerit hata mesajı gösterir, sayfa çalışmaya devam eder.
 - **İstanbul arşivi** — Galata Kulesi, Eminönü, Samatya, Ayasofya, Süleymaniye ve Kız Kulesi. Kartlar `photos/` altındaki görselleri kullanır. `assets/istanbul/` siluetleri duruyor, silinmedi.
 - **Atölye, kedi laboratuvarı, Greyfield FM, arşiv** — projeler, tarayıcıda çalışan özellik karşılaştırma, Web Audio ile üretilen ses ve kısa notlar.
-- **Tigerk** — [Python deposundaki](https://github.com/eerrgin/KAVRA) nöron / katman / sigmoid / geri yayılım iskeletinin tarayıcı provası. Anahtar yok, istek yok. Ağırlık `localStorage` içinde kalır.
+- **Tigerk** — [Python deposundaki](https://github.com/eerrgin/Tigerk) nöron / katman / sigmoid / geri yayılım iskeletinin tarayıcı provası. Anahtar yok, istek yok. Ağırlık `localStorage` içinde kalır.
 - **HAT** — gece sevk terminali. Sağ alttaki düğme ya da başlıktaki HAT. Komut ya da düz Türkçe cümle aynı yerel ağa gider.
 - **Titreşim teması** — `gece`, `amber`, `kemik`, `sis`. Üst çizgi titrer. Telefon izin verirse kısa bir vuruş olur. Kapatmak: terminalde `titreşim kapa`.
 
