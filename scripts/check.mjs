@@ -140,6 +140,30 @@ for (const file of files) {
   }
 }
 
+const mirroredHomepageFiles = [
+  "index.html",
+  "style.css",
+  "script.js",
+  "fx.js",
+  "kavra.js",
+  "hat.js",
+  "manifest.webmanifest",
+  "favicon.svg",
+];
+for (const directory of ["gh-pages", "github-pages"]) {
+  for (const name of mirroredHomepageFiles) {
+    const canonicalPath = join(root, name);
+    const mirrorPath = join(root, directory, name);
+    if (!existsSync(mirrorPath)) {
+      fail(directory + "/" + name, "homepage mirror file is missing");
+      continue;
+    }
+    if (readFileSync(canonicalPath, "utf8") !== readFileSync(mirrorPath, "utf8")) {
+      fail(directory + "/" + name, "homepage mirror differs from the canonical root file");
+    }
+  }
+}
+
 if (errors.length) {
   console.error("✗ " + errors.length + " issue(s) found:\n" + errors.map((error) => "  - " + error).join("\n"));
   process.exit(1);
