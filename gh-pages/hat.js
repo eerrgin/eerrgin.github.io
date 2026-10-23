@@ -360,8 +360,8 @@
       input.value = history[cursor] || "";
     } else if (event.key === "Tab") {
       event.preventDefault();
-      const folded = fold(input.value);
-      const hit = COMMANDS.find((command) => soft(command).startsWith(soft(input.value)) && soft(input.value));
+      const needle = soft(input.value);
+      const hit = needle ? COMMANDS.find((command) => soft(command).startsWith(needle)) : null;
       if (hit) input.value = hit;
     } else if (event.key === "Escape") {
       closeHat();
@@ -380,7 +380,6 @@
   if (location.hash === "#sevk") openHat();
 
   document.getElementById("kavra-run")?.addEventListener("click", () => {
-    if (document.getElementById("kavra-run")?.dataset.bound) return;
     const value = document.getElementById("kavra-in")?.value.trim();
     if (!value) {
       publish(window.Kavra.ask(""), "Boş cümle. İskelet de boş.");
