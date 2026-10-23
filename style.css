@@ -1238,3 +1238,154 @@ html.motion section.reveal.in { animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 
   .place, .place-image-button .frame, .place-photo-open, .story-mark { transition: none !important; }
   .place:hover .place-image-button .frame, .place-image-button:focus-visible .frame { transform: none; }
 }
+
+
+
+/* HAT / KAVRA: EL-2945 kapalı devre karşılama katmanı */
+.hat.locked .hat-screen,
+.hat.locked .hat-form { display: none; }
+.hat-lockscreen {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  flex-direction: column;
+  justify-content: center;
+  overflow: auto;
+  padding: clamp(22px, 5vw, 54px);
+  background:
+    radial-gradient(ellipse at 82% 8%, rgba(255, 35, 26, .09), transparent 38%),
+    linear-gradient(135deg, rgba(255,255,255,.025), transparent 48%),
+    #080204;
+  color: var(--bone);
+}
+.hat:not(.locked) .hat-lockscreen { display: none; }
+.hat-lockscreen::before, .hat-lockscreen::after {
+  position: absolute;
+  pointer-events: none;
+  content: "";
+}
+.hat-lockscreen::before {
+  inset: 14px;
+  border: 1px solid rgba(255, 51, 43, .13);
+}
+.hat-lockscreen::after {
+  width: 34%;
+  height: 1px;
+  top: 14px;
+  left: 14px;
+  background: var(--red);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--red) 40%, transparent);
+}
+.hat-lockscreen > * { position: relative; z-index: 1; }
+.hat-lockscreen > .kicker {
+  margin: 0 0 14px;
+  color: var(--red);
+  font: 10px/1.6 var(--mono);
+  letter-spacing: .2em;
+}
+.hat-lock-glyph {
+  align-self: flex-start;
+  margin: 0 0 12px;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--red);
+  font: clamp(66px, 10vw, 94px)/.76 var(--display);
+  letter-spacing: -.08em;
+  text-shadow: 0 0 28px rgba(255,20,20,.08);
+}
+.hat-lockscreen h2 {
+  max-width: 14ch;
+  margin: 15px 0 10px;
+  color: var(--bone);
+  font: clamp(30px, 5vw, 48px)/1.05 var(--display);
+  letter-spacing: -.035em;
+}
+.hat-lock-lede {
+  max-width: 50ch;
+  margin: 0;
+  color: var(--muted);
+  font: 13px/1.8 var(--mono);
+}
+.hat-lock-record {
+  display: grid;
+  grid-template-columns: minmax(110px, .7fr) minmax(0, 1fr);
+  gap: 10px 18px;
+  max-width: 480px;
+  margin: 25px 0;
+  padding: 17px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.hat-lock-record span {
+  color: var(--dim);
+  font: 9px/1.5 var(--mono);
+  letter-spacing: .13em;
+}
+.hat-lock-record strong {
+  color: var(--bone);
+  font: 10px/1.5 var(--mono);
+  letter-spacing: .1em;
+  overflow-wrap: anywhere;
+}
+.hat-lock-record .hat-lock-state { color: var(--red); }
+.hat-access-form { width: 100%; max-width: 480px; }
+.hat-access-form > label {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--bone);
+  font: 10px/1.5 var(--mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.hat-access-entry { display: flex; gap: 8px; min-width: 0; }
+.hat-access-entry input {
+  width: min(160px, 42%);
+  min-width: 0;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  outline: none;
+  background: #030102;
+  color: var(--bone);
+  font: 20px/1 var(--mono);
+  letter-spacing: .28em;
+}
+.hat-access-entry input:focus-visible { border-color: var(--red); box-shadow: 0 0 0 1px var(--red); }
+.hat-access-entry button {
+  display: inline-flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-width: 0;
+  min-height: 48px;
+  padding: 8px 14px;
+  border: 1px solid var(--red);
+  background: var(--red);
+  color: #190506;
+  font: 11px var(--mono);
+  letter-spacing: .12em;
+}
+.hat-access-entry button span { font-size: 18px; }
+.hat-lock-foot, .hat-access-status {
+  margin: 10px 0 0;
+  color: var(--dim);
+  font: 10px/1.6 var(--mono);
+}
+.hat-access-status { min-height: 1.6em; color: var(--muted); }
+.hat-access-status[data-state="error"] { color: var(--red); }
+.hat-access-status[data-state="success"] { color: #d7c4ac; }
+.hat:not(.locked) .hat-lockscreen { display: none; }
+@media (max-width: 600px) {
+  .hat-lockscreen { padding: 24px 20px calc(22px + env(safe-area-inset-bottom)); }
+  .hat-lockscreen::before { inset: 10px; }
+  .hat-lockscreen h2 { font-size: 34px; }
+  .hat-lock-record { margin: 20px 0; gap: 9px 12px; }
+  .hat-access-entry { flex-wrap: wrap; }
+  .hat-access-entry input { width: 100%; flex: 0 0 100%; }
+  .hat-access-entry button { flex-basis: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hat-lockscreen::after { box-shadow: none; }
+}
