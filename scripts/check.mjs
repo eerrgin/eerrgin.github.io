@@ -77,7 +77,7 @@ for (const file of htmlFiles) {
   }
 
   if (rel === "index.html") {
-    for (const scriptName of ["fx.js", "script.js", "kavra.js", "hat.js"]) {
+    for (const scriptName of ["fx.js", "script.js", "tigerk.js", "hat.js"]) {
       if (!html.includes('src="' + scriptName + '"')) {
         fail(rel, "interaction script is not linked: " + scriptName);
       }
@@ -145,7 +145,7 @@ const mirroredHomepageFiles = [
   "style.css",
   "script.js",
   "fx.js",
-  "kavra.js",
+  "tigerk.js",
   "hat.js",
   "manifest.webmanifest",
   "favicon.svg",
