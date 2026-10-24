@@ -11,7 +11,7 @@
 
   const COMMANDS = ["yardım", "help", "review", "debug", "api", "test", "mimari", "performans", "güvenlik", "deploy", "hava", "saat", "ay", "radyo", "kedi", "git", "iskelet", "tema", "titreşim", "tigerk", "eğit", "ağ", "not", "temiz", "clear", "kapat", "sıfır", "bant"];
   const PLACES = [
-    ["kuslar", ["istanbul", "şehir", "sehir", "galata", "eminönü", "eminonu", "samatya", "ayasofya", "süleymaniye", "suleymaniye", "kuş hattı", "kus hatti"]],
+    ["kuslar", ["kuslar", "kuşlar", "kuş hattı", "kus hatti", "istanbul", "şehir", "sehir", "galata", "eminönü", "eminonu", "samatya", "ayasofya", "süleymaniye", "suleymaniye"]],
     ["atolye", ["atolye", "atölye", "workbench", "proje", "veil", "masa"]],
     ["tigerk", ["tigerk", "ağ", "ag", "nöron", "noron"]],
     ["laboratuvar", ["laboratuvar", "kedi", "lab"]],
