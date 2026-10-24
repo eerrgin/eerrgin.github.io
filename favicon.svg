@@ -1,5 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#070103"/>
-  <path d="M18.2 2.2 8.4 17.2h6.2L11.6 30 24.8 13.4h-6.4L22.6 2.2z" fill="#ff1f1a"/>
-  <path d="M2 29.2h28" stroke="#c9c1b8" stroke-width="1.2"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">eerrgin · Signal Monogram</title>
+  <desc id="desc">A custom lowercase e held inside a broken signal orbit, in ember red and warm ivory on near-black.</desc>
+  <defs>
+    <linearGradient id="ember" x1="9" y1="6" x2="57" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff6a58"/>
+      <stop offset=".48" stop-color="#ff3028"/>
+      <stop offset="1" stop-color="#9e171f"/>
+    </linearGradient>
+    <linearGradient id="ivory" x1="16" y1="14" x2="44" y2="47" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff0df"/>
+      <stop offset="1" stop-color="#c8b4a9"/>
+    </linearGradient>
+    <radialGradient id="aura" cx="0" cy="0" r="1" gradientTransform="matrix(0 31 -31 0 31 31)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d82a2f" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#d82a2f" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="2.1"/>
+    </filter>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="#080407"/>
+  <rect x=".7" y=".7" width="62.6" height="62.6" rx="14.3" fill="url(#aura)" stroke="#5f2830" stroke-opacity=".78" stroke-width="1.2"/>
+  <path d="M32 5.5v5M5.5 32h4M54.5 45.5l3.5 3.5" fill="none" stroke="#c8b4a9" stroke-opacity=".32" stroke-width=".8"/>
+  <path d="M44.1 8.9A25 25 0 1 0 54.8 33" fill="none" stroke="url(#ember)" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M45 9.2 51.5 6.8 50.8 13.4M54.7 33h5.4" fill="none" stroke="url(#ember)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="45" cy="9.1" r="4.2" fill="#ff342d" opacity=".22" filter="url(#softGlow)"/>
+  <circle cx="45" cy="9.1" r="2.2" fill="#ff6757" stroke="#ffe0ce" stroke-opacity=".65" stroke-width=".7"/>
+  <circle cx="59.3" cy="33" r="2.1" fill="#ff342d"/>
+  <path d="M42 25.5C41 18.1 35.7 13.4 28.7 13.4c-8.7 0-14.9 6.3-14.9 15.4 0 9.1 6.2 15.7 15.1 15.7 5.5 0 9.8-2.2 12.6-6.5l-6.1-3.7c-1.6 2.5-3.8 3.8-6.7 3.8-4 0-6.8-2.4-7.6-6.2h21.1c.4-2.2.3-4.3-.2-6.4Z" fill="url(#ivory)"/>
+  <path d="M21.3 26.4h13.2" stroke="url(#ember)" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M17.5 50.5h17" stroke="#c8b4a9" stroke-opacity=".34" stroke-width=".9" stroke-linecap="round"/>
+  <circle cx="39.1" cy="50.5" r="1.5" fill="#ff3a31"/>
 </svg>
