@@ -258,51 +258,159 @@
       <p class="lab-link"><a href="https://eerrgin.github.io/ergin-lab/" rel="noopener">Ergin Lab duruyor ↗</a> — Taskflow, Calc Lab, Skyline, Tempo. Öğrenme parçaları, vitrin değil.</p>
     </section>
     <section id="laboratuvar" class="reveal" data-stamp="03">
-      <p class="kicker">03 / FELINE LEDGER</p>
-      <h2>Kedi kimliği <em>laboratuvarı.</em></h2>
-      <p class="lede">Ergin’in yerel deneyi. Fotoğraf cihazından çıkmaz. Sonuç ırk kaşesi değil.</p>
-      <div class="split">
-        <img class="frame photo" src="photos/kedi.jpg" alt="Karanlıkta, kulağında ince kırmızı ışık olan beyaz bir kedi." width="800" height="533" loading="lazy">
+      <p class="kicker">03 / FELINE FIELD STATION</p>
+      <div class="catlab-heading">
         <div>
-          <fieldset>
-            <legend>TÜY</legend>
-            <div class="chips" role="radiogroup" aria-label="Tüy">
-              <button type="button" role="radio" aria-checked="false" data-trait="fur" data-value="short">Kısa</button>
-              <button type="button" role="radio" aria-checked="false" data-trait="fur" data-value="long">Uzun</button>
-              <button type="button" role="radio" aria-checked="false" data-trait="fur" data-value="hairless">Tüysüz</button>
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend>DESEN</legend>
-            <div class="chips" role="radiogroup" aria-label="Desen">
-              <button type="button" role="radio" aria-checked="false" data-trait="pattern" data-value="solid">Tek renk</button>
-              <button type="button" role="radio" aria-checked="false" data-trait="pattern" data-value="tabby">Tekir</button>
-              <button type="button" role="radio" aria-checked="false" data-trait="pattern" data-value="point">Uçlar koyu</button>
-              <button type="button" role="radio" aria-checked="false" data-trait="pattern" data-value="bicolor">İki renk</button>
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend>GÖVDE / KULAK</legend>
-            <div class="chips" role="radiogroup" aria-label="Gövde ve kulak">
-              <button type="button" role="radio" aria-checked="false" data-trait="build" data-value="slender">İnce</button>
-              <button type="button" role="radio" aria-checked="false" data-trait="build" data-value="large">İri</button>
-              <button type="button" role="radio" aria-checked="false" data-trait="build" data-value="compact">Kompakt</button>
-              <button type="button" role="radio" aria-checked="false" data-trait="ears" data-value="fold">Katlı kulak</button>
-              <button type="button" role="radio" aria-checked="false" data-trait="ears" data-value="tuft">Püskül</button>
-            </div>
-          </fieldset>
-          <div class="row">
-            <button class="btn" id="compare-traits" type="button">Özelliklerle karşılaştır</button>
-          </div>
-          <label for="photo" class="kicker">Ya da fotoğraf bırak</label>
-          <input id="photo" type="file" accept="image/*">
-          <img id="preview" alt="Seçilen kedi fotoğrafı." hidden>
-          <div class="row"><button class="btn ghost" id="compare-photo" type="button">Fotoğrafı oku</button></div>
+          <h2>Her kedinin bir <em>evreni.</em></h2>
+          <p class="lede">Irk tahmini yapan bir sihirli kutu değil. Tüy, görünüş, karakter ve fotoğraf renklerinden kişisel bir kedi dosyası çıkaran küçük bir saha istasyonu.</p>
         </div>
+        <div class="catlab-heading-mark" aria-hidden="true"><span>F</span><i>∿</i><small>LOCAL / 001</small></div>
       </div>
-      <p id="lab-note">Seçim ya da fotoğraf gelince yakınlıklar burada belirir.</p>
-      <ol id="guesses"></ol>
+
+      <div class="catlab-layout" data-coat="tabby">
+        <div class="catlab-workspace">
+          <div class="catlab-photo-stage">
+            <img id="cat-card-photo" src="photos/kedi.jpg" alt="Kedi kimliği laboratuvarının örnek portresi; koyu fonda beyaz bir kedi." width="800" height="533" loading="lazy">
+            <div class="catlab-photo-vignette" aria-hidden="true"></div>
+            <div class="catlab-photo-stamp"><span>FIELD NOTE</span><strong id="cat-card-code">FEL-001</strong></div>
+            <p class="catlab-photo-caption" id="cat-photo-caption">Örnek portre · kendi fotoğrafınla değiştir</p>
+          </div>
+
+          <div class="catlab-controls">
+            <div class="catlab-block-head"><span>01 / KAYIT</span><span>CANLI ÖNİZLEME</span></div>
+            <div class="catlab-form-row">
+              <div class="catlab-field">
+                <label for="cat-name">Kedinin adı / dosya adı</label>
+                <input id="cat-name" type="text" maxlength="32" autocomplete="off" value="Mırmır" placeholder="Mırmır, Gece, Zeytin…">
+              </div>
+              <div class="catlab-field">
+                <label for="cat-stage">Yaşam evresi</label>
+                <select id="cat-stage">
+                  <option value="kitten">Yavru</option>
+                  <option value="young">Genç</option>
+                  <option value="adult" selected>Yetişkin</option>
+                  <option value="senior">Kıdemli kedi</option>
+                  <option value="unknown">Bilinmiyor</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="catlab-block-head"><span>02 / DIŞ GÖRÜNÜŞ</span><span>İŞARETLE</span></div>
+            <fieldset>
+              <legend>01 · TÜY</legend>
+              <div class="chips" role="radiogroup" aria-label="Tüy uzunluğu">
+                <button type="button" role="radio" aria-checked="false" data-trait="fur" data-value="short">Kısa</button>
+                <button type="button" role="radio" aria-checked="false" data-trait="fur" data-value="long">Uzun</button>
+                <button type="button" role="radio" aria-checked="false" data-trait="fur" data-value="hairless">Tüysüz</button>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>02 · DESEN</legend>
+              <div class="chips" role="radiogroup" aria-label="Tüy deseni">
+                <button type="button" role="radio" aria-checked="false" data-trait="pattern" data-value="solid">Tek renk</button>
+                <button type="button" role="radio" aria-checked="false" data-trait="pattern" data-value="tabby">Tekir</button>
+                <button type="button" role="radio" aria-checked="false" data-trait="pattern" data-value="point">Uçlar koyu</button>
+                <button type="button" role="radio" aria-checked="false" data-trait="pattern" data-value="bicolor">İki renk</button>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>03 · GÖVDE</legend>
+              <div class="chips" role="radiogroup" aria-label="Gövde yapısı">
+                <button type="button" role="radio" aria-checked="false" data-trait="build" data-value="slender">İnce</button>
+                <button type="button" role="radio" aria-checked="false" data-trait="build" data-value="large">İri</button>
+                <button type="button" role="radio" aria-checked="false" data-trait="build" data-value="compact">Kompakt</button>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>04 · KULAK</legend>
+              <div class="chips" role="radiogroup" aria-label="Kulak yapısı">
+                <button type="button" role="radio" aria-checked="false" data-trait="ears" data-value="fold">Katlı</button>
+                <button type="button" role="radio" aria-checked="false" data-trait="ears" data-value="tuft">Püsküllü</button>
+              </div>
+            </fieldset>
+
+            <div class="catlab-block-head"><span>03 / KARAKTER</span><span>EVDEKİ HÂLİ</span></div>
+            <fieldset>
+              <legend>05 · GÖZ RENGİ</legend>
+              <div class="chips catlab-small-chips" role="radiogroup" aria-label="Göz rengi">
+                <button type="button" aria-pressed="false" data-cat-eye="amber">Kehribar</button>
+                <button type="button" aria-pressed="false" data-cat-eye="green">Yeşil</button>
+                <button type="button" aria-pressed="false" data-cat-eye="blue">Mavi</button>
+                <button type="button" aria-pressed="false" data-cat-eye="odd">İki farklı</button>
+                <button type="button" aria-pressed="false" data-cat-eye="unknown">Bilinmiyor</button>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>06 · MİZAÇ</legend>
+              <div class="chips catlab-small-chips" role="radiogroup" aria-label="Kedinin mizacı">
+                <button type="button" aria-pressed="false" data-cat-vibe="curious">Meraklı</button>
+                <button type="button" aria-pressed="false" data-cat-vibe="playful">Oyuncu</button>
+                <button type="button" aria-pressed="false" data-cat-vibe="gentle">Yumuşak huylu</button>
+                <button type="button" aria-pressed="false" data-cat-vibe="shy">Çekingen</button>
+                <button type="button" aria-pressed="false" data-cat-vibe="chatty">Sohbetçi</button>
+                <button type="button" aria-pressed="false" data-cat-vibe="independent">Bağımsız</button>
+                <button type="button" aria-pressed="false" data-cat-vibe="chaotic">Gece vardiyası</button>
+              </div>
+            </fieldset>
+
+            <div class="catlab-upload">
+              <div>
+                <label for="photo" class="kicker">04 / PORTREYİ DEĞİŞTİR</label>
+                <p>Fotoğraf bu tarayıcıda işlenir; sunucuya yüklenmez.</p>
+              </div>
+              <input id="photo" type="file" accept="image/*" aria-describedby="cat-photo-help">
+              <small id="cat-photo-help">JPG, PNG veya WebP · en fazla 12 MB</small>
+            </div>
+
+            <div class="catlab-actions">
+              <button class="btn" id="cat-random" type="button">✳ Rastgele kedi yarat</button>
+              <button class="btn ghost" id="compare-traits" type="button">Özellikleri karşılaştır</button>
+              <button class="btn ghost" id="cat-save" type="button">Dosyayı sakla</button>
+              <button class="btn ghost" id="cat-copy" type="button">Kart metnini kopyala</button>
+              <button class="btn ghost" id="cat-download" type="button">Kartı PNG indir</button>
+              <button class="btn ghost" id="cat-clear" type="button">Sıfırla</button>
+            </div>
+            <p class="catlab-privacy">LOCAL FIRST <span>·</span> FOTOĞRAF GÖNDERİLMEZ <span>·</span> IRK / SAĞLIK TANISI DEĞİLDİR</p>
+          </div>
+        </div>
+
+        <aside class="catlab-results" aria-label="Kedi dosyası ve analiz sonuçları">
+          <article class="catlab-dossier" id="cat-dossier" aria-live="polite">
+            <div class="catlab-dossier-top"><span>FELINE IDENTITY RECORD</span><span id="cat-record-status">DRAFT / LIVE</span></div>
+            <div class="catlab-dossier-title">
+              <p class="kicker">KİŞİSEL KEDİ DOSYASI</p>
+              <h3 id="cat-card-name">Mırmır</h3>
+              <p id="cat-card-subtitle">Meraklı · yetişkin · saha kaydı</p>
+            </div>
+            <div class="catlab-tag-row" id="cat-card-tags" aria-label="Kedi özellikleri"></div>
+            <div class="catlab-facts" id="cat-card-facts"></div>
+            <div class="catlab-dossier-bottom"><span id="cat-card-footer">KİMLİK DEĞİL · GÖZLEM</span><span>ERGİN LAB / FELINE DESK</span></div>
+          </article>
+
+          <section class="catlab-tool-panel" aria-labelledby="cat-palette-title">
+            <div class="catlab-panel-heading"><div><p class="kicker">05 / COLOR STUDY</p><h3 id="cat-palette-title">Fotoğrafın renk haritası</h3></div><span class="catlab-panel-no">A—05</span></div>
+            <p class="catlab-panel-copy">Fotoğraftan baskın tonları örnekler. Kedi yüzünü ya da ırkını tanıdığı iddiasında bulunmaz.</p>
+            <button class="btn ghost catlab-small-action" id="compare-photo" type="button">Renk paletini çıkar</button>
+            <div id="cat-palette" class="catlab-palette" aria-label="Örneklenen renkler"></div>
+            <p id="cat-palette-note" class="catlab-muted" aria-live="polite">Bir fotoğraf seçip renk paletini çıkar.</p>
+          </section>
+
+          <section class="catlab-tool-panel" aria-labelledby="cat-match-title">
+            <div class="catlab-panel-heading"><div><p class="kicker">06 / TRAIT OVERLAP</p><h3 id="cat-match-title">Görünüş eşleşmeleri</h3></div><span class="catlab-panel-no">B—06</span></div>
+            <p class="catlab-panel-copy">Yalnızca işaretlediğin görünür özelliklerin örtüşmesini gösterir. Yüzde, ırk olasılığı değildir.</p>
+            <p id="lab-note" aria-live="polite">En az bir görünür özellik işaretle, sonra eşleşmeleri çalıştır.</p>
+            <ol id="guesses"></ol>
+          </section>
+
+          <section class="catlab-tool-panel catlab-saved-panel" aria-labelledby="cat-saved-title">
+            <div class="catlab-panel-heading"><div><p class="kicker">07 / LOCAL ARCHIVE</p><h3 id="cat-saved-title">Kayıt çekmecesi</h3></div><span id="cat-saved-count" class="catlab-panel-no">0 / 6</span></div>
+            <p class="catlab-panel-copy">En fazla altı dosya bu tarayıcının yerel deposunda saklanır.</p>
+            <ul id="cat-saved" class="catlab-saved-list"><li class="catlab-saved-empty">Henüz kayıt yok. Bir kedi dosyası sakla.</li></ul>
+          </section>
+        </aside>
+      </div>
     </section>
+    
     <section id="frekans" class="reveal" data-stamp="04">
       <p class="kicker">04 / GREYFIELD FM</p>
       <h2>Bir kanal seç. <em>Geceyi dinle.</em></h2>

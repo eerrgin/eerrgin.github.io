@@ -135,17 +135,21 @@ function rankTraits() {
   if (!keys.length) return [];
   return breeds
     .map(([name, note, profile]) => {
-      let hit = 0;
-      keys.forEach((key) => {
-        if (profile[key].includes(choice[key])) hit += 1;
-      });
-      const narrow = keys.reduce((sum, key) => sum + (profile[key].includes(choice[key]) ? 1 / profile[key].length : 0), 0);
-      let score = (hit / keys.length) * (0.7 + 0.3 * (hit ? narrow / hit : 0));
-      if (name.startsWith("Kısa")) score *= 0.72;
-      return { name, note, score };
+      const matched = keys.filter((key) => Array.isArray(profile[key]) && profile[key].includes(choice[key]));
+      const score = Math.round((matched.length / keys.length) * 100);
+      const matchedLabels = matched.map((key) => ({ fur: "tüy", pattern: "desen", build: "gövde", ears: "kulak" })[key]);
+      return {
+        name,
+        note,
+        score,
+        evidence: matchedLabels.length
+          ? `${matchedLabels.join(" · ")}: ${matchedLabels.length}/${keys.length} seçili özellik`
+          : `Seçili ${keys.length} özellikten örtüşen yok`,
+      };
     })
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 4);
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score || a.name.localeCompare(b.name, "tr"))
+    .slice(0, 5);
 }
 
 function renderGuesses(items, line) {
@@ -153,64 +157,289 @@ function renderGuesses(items, line) {
   const note = document.querySelector("#lab-note");
   if (!root || !note) return;
   note.textContent = line;
-  root.innerHTML = items
-    .map(
-      (item, index) => `<li><strong>0${index + 1} ${item.name}</strong> <span>${Math.round(item.score * 100)}</span>
-      <div class="score"><span style="width:${Math.round(item.score * 100)}%"></span></div>
-      <p>${item.note}</p></li>`,
-    )
-    .join("");
+  root.replaceChildren();
+  items.forEach((item, index) => {
+    const li = document.createElement("li");
+    const heading = document.createElement("div");
+    heading.className = "catlab-match-line";
+    const name = document.createElement("strong");
+    name.textContent = `${String(index + 1).padStart(2, "0")} / ${item.name}`;
+    const score = document.createElement("span");
+    score.textContent = `${item.score}%`;
+    score.setAttribute("aria-label", `Seçili görünür özelliklerin yüzde ${item.score} kadarı örtüşüyor`);
+    heading.append(name, score);
+    const bar = document.createElement("div");
+    bar.className = "score";
+    bar.setAttribute("role", "img");
+    bar.setAttribute("aria-label", `Özellik örtüşmesi yüzde ${item.score}`);
+    const fill = document.createElement("span");
+    fill.style.width = `${item.score}%`;
+    bar.append(fill);
+    const copy = document.createElement("p");
+    copy.textContent = item.note;
+    const evidence = document.createElement("small");
+    evidence.className = "catlab-match-evidence";
+    evidence.textContent = item.evidence;
+    li.append(heading, bar, copy, evidence);
+    root.append(li);
+  });
+}
+
+const CAT_LABELS = {
+  fur: { short: "Kısa tüy", long: "Uzun tüy", hairless: "Tüysüz" },
+  pattern: { solid: "Tek renk", tabby: "Tekir", point: "Uçları koyu", bicolor: "İki renk" },
+  build: { slender: "İnce gövde", large: "İri gövde", compact: "Kompakt gövde" },
+  ears: { fold: "Katlı kulak", tuft: "Kulak püskülü" },
+};
+const CAT_EYES = { amber: "Kehribar göz", green: "Yeşil göz", blue: "Mavi göz", odd: "İki farklı göz", unknown: "Göz rengi bilinmiyor" };
+const CAT_VIBES = {
+  curious: "Meraklı", playful: "Oyuncu", gentle: "Yumuşak huylu", shy: "Çekingen",
+  chatty: "Sohbetçi", independent: "Bağımsız", chaotic: "Gece vardiyası",
+};
+const CAT_STAGES = { kitten: "Yavru", young: "Genç", adult: "Yetişkin", senior: "Kıdemli kedi", unknown: "Yaşam evresi bilinmiyor" };
+const CAT_NAMES = ["Mırmır", "Zeytin", "Gece", "Tarçın", "Bulut", "Piksel", "Kömür", "Misket", "Lokum", "Fındık", "Luna", "Miso", "Çorap", "Duman"];
+let catEye = "amber";
+let catVibe = "curious";
+let image = null;
+let imageUrl = null;
+
+const catNameInput = document.querySelector("#cat-name");
+const catStageInput = document.querySelector("#cat-stage");
+const catPhotoInput = document.querySelector("#photo");
+const catPhoto = document.querySelector("#cat-card-photo");
+const catPalette = document.querySelector("#cat-palette");
+const catPaletteNote = document.querySelector("#cat-palette-note");
+const catLayout = document.querySelector(".catlab-layout");
+
+function catProfile() {
+  const name = (catNameInput?.value || "").trim().slice(0, 32) || "İsimsiz dost";
+  const stage = catStageInput?.value || "unknown";
+  return { name, stage, eyes: catEye, vibe: catVibe, traits: { ...choice } };
+}
+
+function catProfileText(profile = catProfile()) {
+  const traits = Object.entries(profile.traits)
+    .filter(([, value]) => value !== "any")
+    .map(([key, value]) => CAT_LABELS[key]?.[value])
+    .filter(Boolean);
+  return [
+    `${profile.name} · ERGİN LAB Kedi Dosyası`,
+    `Kayıt: ${makeCatCode(profile)}`,
+    `Yaşam evresi: ${CAT_STAGES[profile.stage] || CAT_STAGES.unknown}`,
+    `Görünüş: ${traits.length ? traits.join(", ") : "Henüz işaretlenmedi"}`,
+    `Göz: ${CAT_EYES[profile.eyes] || CAT_EYES.unknown}`,
+    `Mizaç: ${CAT_VIBES[profile.vibe] || CAT_VIBES.curious}`,
+    "",
+    "Bu dosya gözlem ve eğlence içindir. Irk, soy kütüğü veya sağlık tanısı değildir.",
+    "Fotoğraf analizi yalnızca bu cihazdaki renk örneklemesine dayanır.",
+  ].join("\n");
+}
+
+function makeCatCode(profile = catProfile()) {
+  const raw = `${profile.name}|${profile.stage}|${profile.eyes}|${profile.vibe}|${JSON.stringify(profile.traits)}`;
+  let hash = 0;
+  for (let i = 0; i < raw.length; i += 1) hash = (Math.imul(hash, 31) + raw.charCodeAt(i)) >>> 0;
+  return `FEL-${String((hash % 8999) + 1000)}`;
+}
+
+function addCatBadge(root, label) {
+  const tag = document.createElement("span");
+  tag.className = "catlab-tag";
+  tag.textContent = label;
+  root.append(tag);
+}
+
+function updateCatDossier() {
+  const profile = catProfile();
+  const code = makeCatCode(profile);
+  const name = document.querySelector("#cat-card-name");
+  const subtitle = document.querySelector("#cat-card-subtitle");
+  const codeNode = document.querySelector("#cat-card-code");
+  const footer = document.querySelector("#cat-card-footer");
+  const tags = document.querySelector("#cat-card-tags");
+  const facts = document.querySelector("#cat-card-facts");
+  const status = document.querySelector("#cat-record-status");
+  if (name) name.textContent = profile.name;
+  if (subtitle) subtitle.textContent = `${CAT_VIBES[profile.vibe]} · ${CAT_STAGES[profile.stage]?.toLocaleLowerCase("tr-TR") || "evre bilinmiyor"} · saha kaydı`;
+  if (codeNode) codeNode.textContent = code;
+  if (footer) footer.textContent = `${CAT_EYES[profile.eyes].toLocaleUpperCase("tr-TR")} · GÖZLEM`;
+  if (status) status.textContent = "DRAFT / LIVE";
+  if (catLayout) catLayout.dataset.coat = choice.pattern === "any" ? "tabby" : choice.pattern;
+  if (tags) {
+    tags.replaceChildren();
+    addCatBadge(tags, CAT_EYES[profile.eyes]);
+    addCatBadge(tags, CAT_VIBES[profile.vibe]);
+    Object.entries(choice).forEach(([key, value]) => {
+      if (value !== "any" && CAT_LABELS[key]?.[value]) addCatBadge(tags, CAT_LABELS[key][value]);
+    });
+  }
+  if (facts) {
+    facts.replaceChildren();
+    const entries = [
+      ["YAŞAM EVRESİ", CAT_STAGES[profile.stage] || CAT_STAGES.unknown],
+      ["TÜY", CAT_LABELS.fur[choice.fur] || "Henüz seçilmedi"],
+      ["DESEN", CAT_LABELS.pattern[choice.pattern] || "Henüz seçilmedi"],
+      ["GÖVDE", CAT_LABELS.build[choice.build] || "Henüz seçilmedi"],
+      ["KULAK", CAT_LABELS.ears[choice.ears] || "Henüz seçilmedi"],
+      ["MİZAÇ", CAT_VIBES[profile.vibe]],
+    ];
+    entries.forEach(([label, value]) => {
+      const item = document.createElement("div");
+      item.className = "catlab-fact";
+      const small = document.createElement("span");
+      small.textContent = label;
+      const strong = document.createElement("strong");
+      strong.textContent = value;
+      item.append(small, strong);
+      facts.append(item);
+    });
+  }
+}
+
+function syncCatChoices() {
+  document.querySelectorAll("[data-trait]").forEach((button) => {
+    const checked = choice[button.dataset.trait] === button.dataset.value;
+    button.setAttribute("aria-checked", String(checked));
+  });
+  document.querySelectorAll("[data-cat-eye]").forEach((button) => {
+    button.setAttribute("aria-pressed", String(catEye === button.dataset.catEye));
+  });
+  document.querySelectorAll("[data-cat-vibe]").forEach((button) => {
+    button.setAttribute("aria-pressed", String(catVibe === button.dataset.catVibe));
+  });
 }
 
 document.querySelectorAll("[data-trait]").forEach((button) => {
   button.addEventListener("click", () => {
     const key = button.dataset.trait;
-    choice[key] = button.dataset.value;
-    document.querySelectorAll(`[data-trait="${key}"]`).forEach((node) => node.setAttribute("aria-checked", "false"));
-    button.setAttribute("aria-checked", "true");
+    if (!key || !(key in choice)) return;
+    choice[key] = button.dataset.value || "any";
+    syncCatChoices();
+    updateCatDossier();
   });
 });
+document.querySelectorAll("[data-cat-eye]").forEach((button) => {
+  button.addEventListener("click", () => {
+    catEye = button.dataset.catEye || "unknown";
+    syncCatChoices();
+    updateCatDossier();
+  });
+});
+document.querySelectorAll("[data-cat-vibe]").forEach((button) => {
+  button.addEventListener("click", () => {
+    catVibe = button.dataset.catVibe || "curious";
+    syncCatChoices();
+    updateCatDossier();
+  });
+});
+catNameInput?.addEventListener("input", updateCatDossier);
+catStageInput?.addEventListener("change", updateCatDossier);
 
 document.querySelector("#compare-traits")?.addEventListener("click", () => {
+  const keys = Object.keys(choice).filter((key) => choice[key] !== "any");
   const items = rankTraits();
-  if (!items.length) {
-    renderGuesses([], "Bir özellik seç. Hepsi boşsa herkes aynı görünür.");
+  if (!keys.length) {
+    renderGuesses([], "Önce tüy, desen, gövde veya kulak özelliklerinden en az birini seç.");
     return;
   }
-  renderGuesses(items, "Yakınlık, kimlik değildir. Bu bir veteriner kaşesi değil.");
+  if (!items.length) {
+    renderGuesses([], "Bu kombinasyonda görünür özellik örtüşmesi bulamadım. Ev kedilerinin çeşitliliği zaten eşsiz.");
+    return;
+  }
+  renderGuesses(items, `Karşılaştırma: ${keys.length} görünür özellik. Yüzdeler seçili işaretlerle örtüşmedir, ırk olasılığı değildir.`);
 });
 
-const preview = document.querySelector("#preview");
-const fileInput = document.querySelector("#photo");
-let image = null;
-let imageUrl = null;
+function readCatPhoto(img) {
+  const size = 72;
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+  if (!ctx) throw new Error("Canvas kullanılamıyor.");
+  const scale = Math.max(size / img.naturalWidth, size / img.naturalHeight);
+  const width = img.naturalWidth * scale;
+  const height = img.naturalHeight * scale;
+  ctx.drawImage(img, (size - width) / 2, (size - height) / 2, width, height);
+  const data = ctx.getImageData(0, 0, size, size).data;
+  const bins = new Map();
+  let light = 0;
+  let warm = 0;
+  let pixels = 0;
+  for (let i = 0; i < data.length; i += 4) {
+    const red = data[i], green = data[i + 1], blue = data[i + 2];
+    const key = `${red >> 5},${green >> 5},${blue >> 5}`;
+    let bin = bins.get(key);
+    if (!bin) {
+      bin = { r: 0, g: 0, b: 0, count: 0 };
+      bins.set(key, bin);
+    }
+    bin.r += red; bin.g += green; bin.b += blue; bin.count += 1;
+    const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
+    if (luminance > 182) light += 1;
+    if (red > green + 16 && red > blue + 16) warm += 1;
+    pixels += 1;
+  }
+  const dominant = [...bins.values()]
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 5)
+    .map((bin) => ({
+      hex: "#" + [bin.r, bin.g, bin.b].map((channel) => Math.round(channel / bin.count).toString(16).padStart(2, "0")).join(""),
+      share: Math.round((bin.count / pixels) * 100),
+    }));
+  return { dominant, light: Math.round((light / pixels) * 100), warm: Math.round((warm / pixels) * 100) };
+}
 
-fileInput?.addEventListener("change", () => {
-  const file = fileInput.files && fileInput.files[0];
+function renderCatPalette(result) {
+  if (!catPalette) return;
+  catPalette.replaceChildren();
+  result.dominant.forEach(({ hex, share }) => {
+    const item = document.createElement("div");
+    item.className = "catlab-swatch";
+    item.style.backgroundColor = hex;
+    item.title = `${hex} · örneklenmiş renk`;
+    item.setAttribute("role", "img");
+    item.setAttribute("aria-label", `${hex}, örneklenen piksellerin yaklaşık yüzde ${share}si`);
+    const code = document.createElement("span");
+    code.textContent = hex.toUpperCase();
+    item.append(code);
+    catPalette.append(item);
+  });
+}
 
+catPhotoInput?.addEventListener("change", () => {
+  const file = catPhotoInput.files?.[0];
   if (imageUrl) URL.revokeObjectURL(imageUrl);
   imageUrl = null;
   image = null;
-  if (preview) {
-    preview.hidden = true;
-    preview.removeAttribute("src");
-  }
-  if (!file) return;
-
-  if (file.type && !file.type.startsWith("image/")) {
-    renderGuesses([], "Bu dosya bir görsel değil. Bir fotoğraf seç.");
+  if (!file) {
+    if (catPhoto) catPhoto.src = "photos/kedi.jpg";
+    const caption = document.querySelector("#cat-photo-caption");
+    if (caption) caption.textContent = "Örnek portre · kendi fotoğrafınla değiştir";
     return;
   }
-
+  if (!file.type.startsWith("image/")) {
+    catPaletteNote.textContent = "Bu dosya bir görsel değil. JPG, PNG veya WebP seç.";
+    catPhotoInput.value = "";
+    return;
+  }
+  if (file.size > 12 * 1024 * 1024) {
+    catPaletteNote.textContent = "Dosya 12 MB sınırını aşıyor. Daha küçük bir fotoğraf seç.";
+    catPhotoInput.value = "";
+    return;
+  }
   const url = URL.createObjectURL(file);
   imageUrl = url;
   const nextImage = new Image();
   image = nextImage;
-
   nextImage.onload = () => {
     if (image !== nextImage || imageUrl !== url) return;
-    preview.src = url;
-    preview.hidden = false;
+    if (catPhoto) {
+      catPhoto.src = url;
+      catPhoto.alt = `${file.name || "Seçilen"} adlı yerel kedi fotoğrafı`;
+    }
+    const caption = document.querySelector("#cat-photo-caption");
+    if (caption) caption.textContent = `YEREL PORTRE · ${file.name.slice(0, 48)}`;
+    if (catPaletteNote) catPaletteNote.textContent = "Fotoğraf hazır. Renk haritasını istediğinde çıkarabilirsin.";
   };
   nextImage.onerror = () => {
     if (image !== nextImage) return;
@@ -219,61 +448,237 @@ fileInput?.addEventListener("change", () => {
       URL.revokeObjectURL(url);
       imageUrl = null;
     }
-    preview.removeAttribute("src");
-    preview.hidden = true;
-    renderGuesses([], "Bu dosya okunamadı. Başka bir fotoğraf dene.");
+    catPaletteNote.textContent = "Fotoğraf okunamadı. Başka bir JPG, PNG veya WebP dene.";
   };
   nextImage.src = url;
 });
 
-function readPhoto(img) {
-  const size = 64;
-  const canvas = document.createElement("canvas");
-  canvas.width = size;
-  canvas.height = size;
-  const ctx = canvas.getContext("2d", { willReadFrequently: true });
-  ctx.drawImage(img, 0, 0, size, size);
-  const data = ctx.getImageData(0, 0, size, size).data;
-  let white = 0;
-  let orange = 0;
-  let dark = 0;
-  let changes = 0;
-  let count = 0;
-  let prev = 0;
-  for (let i = 0; i < data.length; i += 4) {
-    const r = data[i];
-    const g = data[i + 1];
-    const b = data[i + 2];
-    const L = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-    count += 1;
-    if (L > 185) white += 1;
-    if (r > g + 18 && r > b + 25) orange += 1;
-    if (L < 50) dark += 1;
-    if (count > 1 && Math.abs(L - prev) > 18) changes += 1;
-    prev = L;
-  }
-  return { white: white / count, orange: orange / count, dark: dark / count, stripe: changes / count };
-}
-
 document.querySelector("#compare-photo")?.addEventListener("click", () => {
   if (!image) {
-    renderGuesses([], "Önce bir fotoğraf bırak. Dosya bu tarayıcıdan çıkmaz.");
+    if (catPaletteNote) catPaletteNote.textContent = "Önce cihazından bir fotoğraf seç. Örnek portre değil, yalnızca seçtiğin fotoğraf incelenir.";
     return;
   }
-  const seen = readPhoto(image);
-  const items = [
-    ["Ankara kedisi", seen.white],
-    ["Van kedisi", seen.white * 0.7 + (1 - seen.white) * 0.25],
-    ["Bengal", seen.stripe * 1.4 + seen.orange],
-    ["Siyam kedisi", seen.dark * 0.5 + (1 - seen.white) * 0.15],
-    ["Russian Blue", (1 - seen.orange) * (1 - seen.stripe)],
-    ["Kısa tüylü ev kedisi", 0.46],
-  ]
-    .map(([name, score]) => ({ name, note: "Fotoğraf okuması kaba: renk ve çizgi. Yüz iddiası yok.", score: Math.max(0, Math.min(1, score)) }))
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 4);
-  renderGuesses(items, `Beyaz %${Math.round(seen.white * 100)} · sıcak %${Math.round(seen.orange * 100)} · çizgi ${seen.stripe > 0.22 ? "var" : "silik"}. Yakınlık, kimlik değildir.`);
+  try {
+    const palette = readCatPhoto(image);
+    renderCatPalette(palette);
+    const tone = palette.light >= 55 ? "açık tonlar baskın" : palette.light <= 22 ? "koyu tonlar baskın" : "açık ve koyu tonlar dengeli";
+    const warmth = palette.warm >= 25 ? "sıcak tonlar belirgin" : "sıcak renk oranı düşük";
+    if (catPaletteNote) catPaletteNote.textContent = `${tone}; ${warmth}. Yaklaşık ${palette.light}% açık piksel, ${palette.warm}% sıcak piksel örneklendi.`;
+  } catch {
+    if (catPaletteNote) catPaletteNote.textContent = "Tarayıcı bu görselin renklerini okuyamadı. Başka bir fotoğraf dene.";
+  }
 });
+
+function getSavedCats() {
+  try {
+    const saved = JSON.parse(localStorage.getItem("e.cat-dossiers.v1") || "[]");
+    return Array.isArray(saved) ? saved.filter((item) => item && typeof item === "object" && typeof item.uid === "string") : [];
+  } catch {
+    return [];
+  }
+}
+
+function renderSavedCats() {
+  const root = document.querySelector("#cat-saved");
+  const count = document.querySelector("#cat-saved-count");
+  if (!root || !count) return;
+  const saved = getSavedCats().slice(0, 6);
+  count.textContent = `${saved.length} / 6`;
+  root.replaceChildren();
+  if (!saved.length) {
+    const empty = document.createElement("li");
+    empty.className = "catlab-saved-empty";
+    empty.textContent = "Henüz kayıt yok. Bir kedi dosyası sakla.";
+    root.append(empty);
+    return;
+  }
+  saved.forEach((item) => {
+    const li = document.createElement("li");
+    li.className = "catlab-saved-item";
+    const load = document.createElement("button");
+    load.type = "button";
+    load.className = "catlab-saved-load";
+    load.dataset.catLoad = item.uid;
+    const strong = document.createElement("strong");
+    strong.textContent = item.profile.name || "İsimsiz dost";
+    const small = document.createElement("small");
+    small.textContent = `${item.code || "FEL-000"} · ${CAT_VIBES[item.profile.vibe] || "Kedi dosyası"}`;
+    load.append(strong, small);
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.className = "catlab-saved-delete";
+    remove.dataset.catDelete = item.uid;
+    remove.setAttribute("aria-label", `${item.profile.name || "Kedi dosyası"} kaydını sil`);
+    remove.textContent = "×";
+    li.append(load, remove);
+    root.append(li);
+  });
+}
+
+function loadCatProfile(profile) {
+  if (!profile || typeof profile !== "object") return;
+  const sourceTraits = profile.traits || {};
+  Object.keys(choice).forEach((key) => {
+    const allowed = breeds.some((breed) => Array.isArray(breed[2][key]) && breed[2][key].includes(sourceTraits[key]));
+    choice[key] = sourceTraits[key] === "any" || allowed ? (sourceTraits[key] || "any") : "any";
+  });
+  catEye = CAT_EYES[profile.eyes] ? profile.eyes : "unknown";
+  catVibe = CAT_VIBES[profile.vibe] ? profile.vibe : "curious";
+  if (catNameInput) catNameInput.value = String(profile.name || "").slice(0, 32);
+  if (catStageInput) catStageInput.value = CAT_STAGES[profile.stage] ? profile.stage : "unknown";
+  syncCatChoices();
+  updateCatDossier();
+}
+
+document.querySelector("#cat-save")?.addEventListener("click", () => {
+  const profile = catProfile();
+  const saved = getSavedCats().filter((item) => item.profile?.name !== profile.name);
+  saved.unshift({ uid: String(Date.now()), code: makeCatCode(profile), profile, text: catProfileText(profile), savedAt: new Date().toISOString() });
+  try {
+    localStorage.setItem("e.cat-dossiers.v1", JSON.stringify(saved.slice(0, 6)));
+    renderSavedCats();
+    const status = document.querySelector("#cat-record-status");
+    if (status) status.textContent = "SAVED / LOCAL";
+  } catch {
+    const note = document.querySelector("#cat-palette-note");
+    if (note) note.textContent = "Tarayıcının yerel deposu kapalı; bu kaydı saklayamadım.";
+  }
+});
+
+document.querySelector("#cat-saved")?.addEventListener("click", (event) => {
+  const target = event.target;
+  if (!(target instanceof Element)) return;
+  const loadId = target.closest("[data-cat-load]")?.getAttribute("data-cat-load");
+  const deleteId = target.closest("[data-cat-delete]")?.getAttribute("data-cat-delete");
+  if (loadId) {
+    const record = getSavedCats().find((item) => item.uid === loadId);
+    if (record) loadCatProfile(record.profile);
+    return;
+  }
+  if (deleteId) {
+    try {
+      localStorage.setItem("e.cat-dossiers.v1", JSON.stringify(getSavedCats().filter((item) => item.uid !== deleteId)));
+      renderSavedCats();
+    } catch {
+      /* Silme yapılamazsa kayıt ekranda tutulur. */
+    }
+  }
+});
+
+document.querySelector("#cat-copy")?.addEventListener("click", async () => {
+  const text = catProfileText();
+  try {
+    await navigator.clipboard.writeText(text);
+    const status = document.querySelector("#cat-record-status");
+    if (status) status.textContent = "COPIED / READY";
+  } catch {
+    if (catPaletteNote) catPaletteNote.textContent = "Kopyalama izni yok. Profil alanlarını yine de ekranda görebilir veya PNG kartını indirebilirsin.";
+  }
+});
+
+document.querySelector("#cat-download")?.addEventListener("click", () => {
+  const profile = catProfile();
+  const canvas = document.createElement("canvas");
+  canvas.width = 1200;
+  canvas.height = 630;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+  ctx.fillStyle = "#100b0b";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#1d1312";
+  ctx.fillRect(32, 32, 1136, 566);
+  ctx.strokeStyle = "#57302b";
+  ctx.lineWidth = 2;
+  ctx.strokeRect(32, 32, 1136, 566);
+  ctx.fillStyle = "#e56c55";
+  ctx.fillRect(32, 32, 8, 566);
+  if (catPhoto?.complete && catPhoto.naturalWidth > 0) {
+    const w = 400, h = 500, x = 80, y = 82;
+    const scale = Math.max(w / catPhoto.naturalWidth, h / catPhoto.naturalHeight);
+    const sw = catPhoto.naturalWidth * scale, sh = catPhoto.naturalHeight * scale;
+    ctx.save();
+    ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+    ctx.drawImage(catPhoto, x + (w - sw) / 2, y + (h - sh) / 2, sw, sh);
+    ctx.restore();
+  }
+  ctx.fillStyle = "#d0b9aa";
+  ctx.font = "18px monospace";
+  ctx.fillText("ERGİN LAB / FELINE IDENTITY RECORD", 530, 112);
+  ctx.fillStyle = "#f5e9df";
+  ctx.font = "bold 56px Georgia, serif";
+  ctx.fillText(profile.name.slice(0, 22), 530, 198);
+  ctx.fillStyle = "#e56c55";
+  ctx.font = "24px monospace";
+  ctx.fillText(makeCatCode(profile), 530, 242);
+  ctx.fillStyle = "#d0b9aa";
+  ctx.font = "23px sans-serif";
+  const lines = [
+    CAT_STAGES[profile.stage] || "Yaşam evresi bilinmiyor",
+    CAT_EYES[profile.eyes] || "Göz rengi bilinmiyor",
+    CAT_VIBES[profile.vibe] || "Mizaç bilinmiyor",
+    ...Object.entries(profile.traits).filter(([, value]) => value !== "any").map(([key, value]) => CAT_LABELS[key]?.[value]).filter(Boolean),
+  ];
+  lines.slice(0, 7).forEach((line, index) => ctx.fillText(line, 530, 300 + index * 38, 570));
+  ctx.fillStyle = "#e56c55";
+  ctx.font = "16px monospace";
+  ctx.fillText("GÖZLEM, SOY KÜTÜĞÜ DEĞİL · FOTOĞRAF CİHAZDA KALIR", 530, 558);
+  canvas.toBlob((blob) => {
+    if (!blob) return;
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${profile.name.toLocaleLowerCase("tr-TR").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "kedi"}-dosyasi.png`;
+    link.click();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1500);
+  }, "image/png");
+});
+
+document.querySelector("#cat-random")?.addEventListener("click", () => {
+  const pick = (items) => items[Math.floor(Math.random() * items.length)];
+  const options = {
+    fur: ["short", "long", "hairless"],
+    pattern: ["solid", "tabby", "point", "bicolor"],
+    build: ["slender", "large", "compact"],
+    ears: ["any", "fold", "tuft"],
+  };
+  Object.keys(choice).forEach((key) => { choice[key] = pick(options[key]); });
+  catEye = pick(Object.keys(CAT_EYES));
+  catVibe = pick(Object.keys(CAT_VIBES));
+  if (catNameInput) catNameInput.value = pick(CAT_NAMES);
+  if (catStageInput) catStageInput.value = pick(Object.keys(CAT_STAGES));
+  syncCatChoices();
+  updateCatDossier();
+  renderGuesses([], "Yeni kedi taslağı hazır. İstersen görünüş eşleşmelerini ayrıca çalıştır.");
+  if (catPaletteNote) catPaletteNote.textContent = "Rastgele kedi oluşturuldu. Fotoğraf paleti için kendi fotoğrafını seç.";
+});
+
+document.querySelector("#cat-clear")?.addEventListener("click", () => {
+  Object.keys(choice).forEach((key) => { choice[key] = "any"; });
+  catEye = "amber";
+  catVibe = "curious";
+  if (catNameInput) catNameInput.value = "";
+  if (catStageInput) catStageInput.value = "unknown";
+  if (catPhotoInput) catPhotoInput.value = "";
+  if (imageUrl) URL.revokeObjectURL(imageUrl);
+  imageUrl = null;
+  image = null;
+  if (catPhoto) {
+    catPhoto.src = "photos/kedi.jpg";
+    catPhoto.alt = "Kedi kimliği laboratuvarının örnek portresi; koyu fonda beyaz bir kedi.";
+  }
+  const caption = document.querySelector("#cat-photo-caption");
+  if (caption) caption.textContent = "Örnek portre · kendi fotoğrafınla değiştir";
+  if (catPalette) catPalette.replaceChildren();
+  if (catPaletteNote) catPaletteNote.textContent = "Bir fotoğraf seçip renk paletini çıkar.";
+  syncCatChoices();
+  updateCatDossier();
+  renderGuesses([], "Temiz bir dosya açıldı. Görünür özellikleri yeniden seçebilirsin.");
+});
+
+syncCatChoices();
+updateCatDossier();
+renderSavedCats();
+window.addEventListener("beforeunload", () => { if (imageUrl) URL.revokeObjectURL(imageUrl); });
 
 let audio = null;
 let analyser = null;
