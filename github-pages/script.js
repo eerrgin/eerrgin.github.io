@@ -1190,20 +1190,24 @@ window.addEventListener("pagehide", () => {
 });
 
 const lines = [
-  ["Bağlantısı kırık bir hafıza", "Bazen sayfa durur; onu anlamlı kılan bağlantılar ortadan kalkmıştır."],
-  ["404", "Bulunamaması, orada hiçbir şey olmadığı anlamına gelmez. Bazen yalnızca adres değişmiştir."],
-  ["Sekmeler", "Açık kalan sekmeler, bitmemiş düşüncelerin küçük ve parlak mezarlığıdır."],
-  ["Sessiz hata", "Ekranda görünmeyen hata bitmiş değildir. Doğru soru henüz sorulmamış olabilir."],
-  ["Tigerk", "Henüz bir vitrin değil. İskelet masada. Model başka odada, kapısı kapalı."],
-  ["Statik", "Gürültü de bir sinyaldir. Sadece henüz kime ait olduğu belli değildir."],
+  ["Geceye kalan", "Bazı sesler birini çağırmaz; yalnızca bir zamanın kapısını aralar. Hatırlamak, geri dönmek zorunda olmak değildir."],
+  ["Eski ışık", "Şehir değişiyor; yine de bazı pencereler içimizde aynı akşamı aydınlatıyor."],
+  ["Bir şarkının arası", "Bazen şarkının kendisini değil, onu ilk duyduğumuz zamanki hâlimizi hatırlarız."],
+  ["Gönderilmeyen", "Her cümlenin bir alıcısı olmak zorunda değil. Bazıları, sessizce yerini bulunca tamamlanır."],
+  ["Kıyı çizgisi", "Bir zamanlar bildiğin yol, artık aynı yere çıkmasa da hafızanın haritasında durur."],
+  ["Kayıt dışı", "Gürültü geçer. Birkaç frekans, hiçbir istasyon açık değilken bile kalır."],
 ];
 let fragment = 0;
 function nextNote() {
   fragment = (fragment + 1) % lines.length;
   const title = document.querySelector("#note-title");
   const body = document.querySelector("#note-body");
+  const counter = document.querySelector("#note-counter");
+  const label = document.querySelector(".archive-note-label");
   if (title) title.textContent = lines[fragment][0];
   if (body) body.textContent = lines[fragment][1];
+  if (counter) counter.textContent = String(fragment + 1).padStart(2, "0") + " / " + String(lines.length).padStart(2, "0");
+  if (label) label.textContent = "NOT / " + String(fragment + 1).padStart(2, "0") + " · KAYIT DIŞI";
   return { title: lines[fragment][0], body: lines[fragment][1] };
 }
 document.querySelector("#next-note")?.addEventListener("click", () => {
