@@ -4,37 +4,261 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#090808">
-<meta name="description" content="Galata, Eminönü, Samatya, Ayasofya, Süleymaniye ve Kız Kulesi. İstanbul'un taş hafızasına fotoğraflarla bakış.">
-<title>Şehrin Taş Hafızası · İstanbul Arşivi</title>
+<meta name="description" content="Ergin'in Samatya defteri: çocukluktan bugüne uzanan bağ, Bizans Psamathia'sı, Osmanlı Sulu Manastır'ı, kiliseler, Cumhuriyet yılları ve gerçek arşiv fotoğrafları.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Samatya: Eski Bağım, Yeni Evim | Ergin'in Semt Defteri">
+<meta property="og:description" content="Çocukluktan kalan bir bağın 2025'te eve dönüşmesi. Samatya'nın tarihi, kiliseleri, kaybolan kıyısı ve kişisel hatıralar.">
+<meta property="og:image" content="https://archives.saltresearch.org/bitstream/123456789/113296/1/AHISTSAMA003.jpg?smfb=1">
+<meta name="twitter:card" content="summary_large_image">
+<title>Samatya: Eski Bağım, Yeni Evim · Ergin'in Semt Defteri</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
 <script>
-try { var theme=localStorage.getItem("e.theme");if(theme)document.documentElement.dataset.theme=theme;var tremor=localStorage.getItem("e.tremor");if(tremor)document.documentElement.dataset.tremor=tremor;else if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.dataset.tremor="off";else document.documentElement.dataset.tremor="on"; } catch(e) {}
+try {
+ const theme=localStorage.getItem("e.theme");
+ if(theme) document.documentElement.dataset.theme=theme;
+ const tremor=localStorage.getItem("e.tremor");
+ if(tremor) document.documentElement.dataset.tremor=tremor;
+ else if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.dataset.tremor="off";
+ else document.documentElement.dataset.tremor="on";
+} catch(e) {}
 </script>
+<style>
+.samatya-hero{grid-template-columns:minmax(0,1fr) minmax(0,.92fr);align-items:center;min-height:0;padding:43px 0 27px;gap:clamp(22px,4vw,58px)}
+.samatya-hero::before{content:"PSAMATHIA";top:57%;font-size:clamp(66px,11vw,148px);opacity:.68}
+.samatya-hero h1{max-width:760px;font-size:clamp(42px,6vw,76px);line-height:.98;letter-spacing:-.04em}
+.samatya-hero h1 em{color:var(--red);font-style:italic;font-weight:400}
+.samatya-hero .lede{max-width:64ch;line-height:1.85}
+.samatya-hero .row{gap:9px;flex-wrap:wrap;margin-top:20px}
+.samatya-cover{margin:0;min-width:0}
+.samatya-cover img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid color-mix(in srgb,var(--red) 55%,var(--line));filter:saturate(.72) contrast(1.06);box-shadow:0 18px 48px #0008}
+.samatya-cover figcaption{margin-top:9px;font-size:11px;line-height:1.65;color:var(--muted)}
+.samatya-cover figcaption a,.photo-credit a{color:var(--bone);text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--red) 50%,transparent);text-underline-offset:3px}
+.samatya-kickerline{display:flex;gap:8px 18px;flex-wrap:wrap;margin-top:18px;padding-top:12px;border-top:1px solid var(--line);color:var(--dim);font:9px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.samatya-section{margin:26px 0 46px;scroll-margin-top:100px}
+.samatya-section .lede{max-width:73ch}
+.samatya-intro-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(250px,.75fr);gap:clamp(16px,3vw,34px);align-items:start;margin-top:18px}
+.samatya-prose{min-width:0}
+.samatya-prose p,.samatya-prose li{color:var(--muted);font-size:15px;line-height:1.9}
+.samatya-prose p{margin:0 0 15px}
+.samatya-pullquote{position:relative;margin:0;padding:clamp(20px,3vw,32px);border:1px solid color-mix(in srgb,var(--red) 38%,var(--line));background:linear-gradient(145deg,color-mix(in srgb,var(--red) 8%,var(--surface)),var(--surface));}
+.samatya-pullquote:before{content:"“";display:block;font:74px/.65 var(--display);color:var(--red);margin:4px 0 18px}
+.samatya-pullquote p{margin:0;color:var(--fg);font:italic clamp(20px,2.6vw,30px)/1.45 var(--display);letter-spacing:-.015em}
+.samatya-pullquote small{display:block;margin-top:18px;color:var(--dim);font:9px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.samatya-timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:20px}
+.samatya-era{position:relative;min-width:0;padding:19px 16px 17px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.035),transparent 60%),var(--surface)}
+.samatya-era:before{content:"";display:block;width:28px;height:2px;background:var(--red);margin-bottom:14px}
+.samatya-era .era-date{display:block;color:var(--red);font:10px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.samatya-era h3{margin:8px 0 10px;font:clamp(22px,2.1vw,29px)/1.08 var(--display);letter-spacing:-.02em}
+.samatya-era p{margin:0;color:var(--muted);font-size:13px;line-height:1.8}
+.samatya-era a{font-size:11px}
+.samatya-image-story{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(18px,3vw,36px);align-items:center;margin-top:20px}
+.samatya-image-story.reverse{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}
+.samatya-image-story.reverse .samatya-image{order:2}
+.samatya-image{margin:0;min-width:0}
+.samatya-image img{display:block;width:100%;max-height:560px;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line);filter:saturate(.76) contrast(1.04);box-shadow:0 14px 36px #0006}
+.samatya-image.tall img{aspect-ratio:3/4;max-height:570px}
+.samatya-image figcaption{font-size:10px;line-height:1.7;color:var(--dim);margin-top:8px}
+.samatya-image-copy{min-width:0}
+.samatya-image-copy p{color:var(--muted);font-size:14px;line-height:1.9;margin:0 0 13px}
+.samatya-image-copy .kicker{margin-bottom:7px}
+.samatya-image-copy h3{font-size:clamp(27px,3.8vw,43px);line-height:1.08;margin:0 0 14px;letter-spacing:-.03em}
+.samatya-image-copy h3 em{color:var(--red);font-weight:400}
+.samatya-fact{margin:17px 0;padding:13px 15px;border-left:2px solid var(--red);background:color-mix(in srgb,var(--surface-2) 76%,transparent);color:var(--muted);font-size:12px;line-height:1.8}
+.samatya-duo-images{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:20px}
+.samatya-duo-images figure{margin:0;min-width:0}
+.samatya-duo-images img{display:block;width:100%;aspect-ratio:5/4;object-fit:cover;border:1px solid var(--line);filter:saturate(.76) contrast(1.04)}
+.samatya-duo-images figcaption{font-size:10px;color:var(--dim);line-height:1.65;margin-top:8px}
+.samatya-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:19px}
+.samatya-note{padding:18px;border:1px solid var(--line);background:var(--surface);min-width:0}
+.samatya-note .note-no{color:var(--red);font:10px var(--mono);letter-spacing:.15em}
+.samatya-note h3{font:clamp(22px,2.2vw,28px)/1.12 var(--display);margin:9px 0}
+.samatya-note p{color:var(--muted);font-size:13px;line-height:1.85;margin:0}
+.samatya-note details{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+.samatya-note summary{cursor:pointer;color:var(--bone);font:10px/1.7 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.samatya-note details p{padding-top:8px}
+.samatya-history-dark{padding:clamp(20px,4vw,38px);border:1px solid color-mix(in srgb,var(--red) 34%,var(--line));background:linear-gradient(135deg,color-mix(in srgb,var(--red) 7%,var(--surface)),var(--surface) 56%);margin-top:20px}
+.samatya-history-dark h3{font:clamp(27px,4vw,42px)/1.1 var(--display);margin:0 0 13px}
+.samatya-history-dark h3 em{color:var(--red);font-weight:400}
+.samatya-history-dark p{color:var(--muted);font-size:14px;line-height:1.9;margin:0 0 13px}
+.samatya-history-dark .note-link{font-size:11px}
+.samatya-sourcebox{margin-top:22px;padding:18px 20px;border-top:1px solid var(--line);background:color-mix(in srgb,var(--surface) 80%,transparent)}
+.samatya-sourcebox h3{margin:0 0 10px;font:25px/1.15 var(--display)}
+.samatya-sourcebox p,.samatya-sourcebox li{font-size:11px;line-height:1.8;color:var(--muted)}
+.samatya-sourcebox ul{padding-left:19px;margin:0}
+.samatya-sourcebox a{color:var(--bone);text-underline-offset:3px}
+.samatya-walk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px;counter-reset:route}
+.samatya-walk article{padding:16px;border:1px solid var(--line);background:var(--surface);counter-increment:route}
+.samatya-walk article:before{content:"0" counter(route);display:block;color:var(--red);font:11px var(--mono);letter-spacing:.12em}
+.samatya-walk h3{font:21px/1.15 var(--display);margin:9px 0}
+.samatya-walk p{font-size:12px;line-height:1.75;color:var(--muted);margin:0}
+.photo-credit{font-size:10px;line-height:1.65;color:var(--dim)}
+.samatya-content-nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.samatya-content-nav a{padding:8px 10px;border:1px solid var(--line);font-size:10px;color:var(--bone)}
+@media(max-width:900px){.samatya-hero{grid-template-columns:minmax(0,1fr);gap:18px}.samatya-cover img{aspect-ratio:16/9;max-height:460px}.samatya-timeline{grid-template-columns:repeat(2,minmax(0,1fr))}.samatya-walk{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.samatya-intro-grid,.samatya-image-story,.samatya-image-story.reverse{grid-template-columns:minmax(0,1fr)}.samatya-image-story.reverse .samatya-image{order:0}.samatya-notes{grid-template-columns:minmax(0,1fr)}.samatya-image img{aspect-ratio:16/10}.samatya-image.tall img{aspect-ratio:4/5;max-height:460px}}
+@media(max-width:520px){.samatya-hero{padding-top:28px}.samatya-hero h1{font-size:clamp(39px,12vw,55px)}.samatya-timeline{grid-template-columns:minmax(0,1fr)}.samatya-walk{grid-template-columns:minmax(0,1fr)}.samatya-duo-images{grid-template-columns:minmax(0,1fr)}.samatya-pullquote p{font-size:23px}.samatya-era{padding:17px}}
+@media(prefers-reduced-motion:reduce){.samatya-cover img,.samatya-image img{scroll-behavior:auto;transition:none}}
+</style>
 </head>
 <body>
 <canvas id="rift" aria-hidden="true"></canvas><div class="lightning" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div>
 <a class="skip" href="#top">İçeriğe geç</a>
 <header class="top"><div class="rule"></div><div class="wrap bar">
-<a class="mark" href="index.html">e.</a><div class="brand-block"><strong>eerrgin</strong><span class="kicker">gece vardiyası / istanbul</span></div>
-<nav aria-label="Bölümler"><a href="index.html">Ana sayfa</a><a href="index.html#kuslar">Kuş Hattı</a><a href="#istanbul" aria-current="page">Taş hafızası</a><a href="index.html#atolye">Atölye</a></nav><div class="clock"><span id="clock">--:--:--</span><br>IST</div>
+<a class="mark" href="index.html">e.</a>
+<div class="brand-block"><strong>eerrgin</strong><span class="kicker">gece vardiyası / istanbul</span></div>
+<nav aria-label="Bölümler">
+<a href="#samatya" aria-current="page">Samatya</a><a href="#zaman">Tarih katmanları</a><a href="#kiliseler">Kilise hafızası</a><a href="#ergin-defteri">Ergin’in defteri</a><a href="#other-stops">Diğer duraklar</a>
+</nav>
+<div class="clock"><span id="clock">--:--:--</span><br>IST</div>
 </div></header>
 <main class="wrap" id="top">
-<section class="hero reveal in archive-hero"><div><p class="kicker">İSTANBUL / FOTOĞRAFLI KENT ARŞİVİ</p><h1>Şehrin <em>taş hafızası.</em></h1><p class="lede">Bir şehri yüksekten değil, iz bıraktığı yerlerden oku. Altı durak, altı katman. Her kareyi büyüt, hikâyesini aç.</p><div class="row"><a class="btn" href="index.html">ANA SAYFAYA DÖN</a><a class="btn ghost" href="index.html#kuslar">KUŞ HATTINI AÇ ↗</a></div></div><figure class="portrait"><div class="viewport"><img class="base" src="photos/galata.jpg" alt="Gün batımında Galata Kulesi." width="800" height="450" fetchpriority="high"></div><figcaption><span class="kicker">İSTANBUL ARŞİVİ</span><br><span class="display cap-title">taş, deniz, zaman</span><br>41°00′N 28°58′E · 6 durak</figcaption></figure></section>
+<section id="samatya" class="hero reveal in samatya-hero">
+<div class="samatya-hero-copy">
+<p class="kicker">ŞEHRİN TAŞ HAFIZASI / 001 · PSAMATHIA → SAMATYA</p>
+<h1>Samatya:<br><em>eski bağım, yeni evim.</em></h1>
+<p class="lede">Çocukluğumda yolumun düştüğü, yıllar boyunca yeniden yeniden uğradığım bir semt… 2025 yılının başında buraya taşındım. Şimdi, bir zamanlar ziyaret ettiğim sokakların arasında yaşayarak bu mahallenin tarihini, sesini ve bende bıraktığı duyguyu anlamaya çalışıyorum.</p>
+<p class="lede">Bu sayfa, bitmiş bir tarih kitabı değil. Kaynaklardan öğrendiklerimle kendi belleğimde taşıdıklarımı yan yana tuttuğum bir kent defteri. Bazı taşların tarihi var; bazı hatıralarınsa yalnızca insanda kalan izi.</p>
+<div class="row"><a class="btn" href="#ergin-defteri">ERGİN’İN SAMATYA DEFTERİ</a><a class="btn ghost" href="#zaman">TARİHİN İÇİNE GİR ↘</a></div>
+<div class="samatya-kickerline"><span>41°00′N · 28°56′E</span><span>FATİH / İSTANBUL</span><span>YERLEŞME: 2025 BAŞI</span></div>
+</div>
+<figure class="samatya-cover">
+<img src="https://archives.saltresearch.org/bitstream/123456789/113296/1/AHISTSAMA003.jpg?smfb=1" alt="SALT Araştırma arşivinde, Marmara Denizi tarafından görülen eski Samatya kıyısı; tekneler ve yamaç boyunca uzanan yapıların görünümü." width="1635" height="1038" fetchpriority="high">
+<figcaption>Deniz tarafından Samatya’nın arşiv görünümü. Kıyının eski hâlini bugünkü sahil yolu ile aynı çizgi sanmamak gerekir: bu fotoğraf, zamanın değiştirdiği bir eşikten bakıyor. <a href="https://commons.wikimedia.org/wiki/File:Samatya,_İstanbul_(12966675513).jpg" target="_blank" rel="noopener">Görsel kaydı ve kullanım notu · SALT Araştırma / SALTOnline ↗</a></figcaption>
+</figure>
+</section>
+
+<section id="ergin-defteri" class="samatya-section reveal in" data-stamp="01">
+<div class="archive-heading"><div><p class="kicker">01 / KİŞİSEL DEFTER</p><h2>Çocukluktan kalan bağ,<br><em>2025’te eve dönüştü.</em></h2></div><p class="archive-stamp"><span>01</span><small>ERGİN’İN DEFTERİ<br>İÇERİDEN BİR BAKIŞ</small></p></div>
+<div class="samatya-intro-grid">
+<div class="samatya-prose">
+<p>Çocukken geldiğim Samatya’yı bugün düşündüğümde, belleğimde tek bir fotoğraf açılmıyor. Daha çok, yıllar sonra yeniden karşılaşılan bir tanıdıklık hissi beliriyor. Bazen insanın bir yere bağı, orada uzun uzun yaşamış olmasından önce başlıyor. Benim Samatya’yla ilişkim de böyle: çocukluğumdan bugüne aralıklarla geri döndüğüm, her gelişimde içimde küçük bir yeri yeniden uyandıran bir semt.</p>
+<p>Yıllar içinde buraya defalarca uğradım. Sonra 2025 yılının başında taşındım. Bir yeri ziyaret etmekle orada yaşamak arasındaki farkı, kapısından her gün geçtiğin sokaklarda öğreniyorsun. Bir ziyaretçinin gözü güzel bir cepheyi yakalar; orada yaşayanın gözü ise aynı kapının mevsimlerle nasıl değiştiğine, sabahın hangi saatte sokağa indiğine, akşamın hangi köşede ağırlaştığına alışıyor.</p>
+<p>Yalnız yaşarken insanın mahallesi bir tür sessiz yol arkadaşı oluyor. Bazen günün bütün konuşmaları bir ekranda bitiyor; dışarı çıktığımda eski bir duvar, kapalı bir avlu, kilise çan kulesinin uzaktan görünen çizgisi düşüncelerime başka bir ritim veriyor. Samatya’nın beni etkileyen tarafı yalnızca eski olması değil. Burada zaman, birbirini silip atmadan üst üste duruyor: bir duvarın dibinde yeni hayat, bir sokak adında eski bir dil, bugünkü bir kahvenin karşısında yıllar önce başka bir amaçla açılmış bir kapı.</p>
+<p>Bir geliştirici olarak alışkanlığım, görünen yüzün arkasındaki yapıyı merak etmek. Bir sistemin tek başına bir ekrandan ibaret olmadığını biliyorum; onu ayakta tutan bağlantılar, kayıtlar, kararlar ve bazen görünmeyen kayıplar var. Samatya’ya da böyle bakıyorum. Her sokak tamamlanmış bir hikâye değil, okunmayı bekleyen bir kayıt gibi. Her şeyi bildiğimi söylemiyorum. Tam tersine, bu sayfayı bilmediklerimi fark etmek ve öğrendiklerime kaynak göstermek için tutuyorum.</p>
+<p>Bu defterin adı bu yüzden “yeni semtim”den biraz daha fazlası. Samatya benim için hem çocukluktan gelen eski bir bağ hem de 2025’in başından beri gündelik hayatımı paylaştığım yeni ev. Onu sahiplenmek, başkalarının hatıralarını kendime mal etmek değil; benden önce burada yaşayanları, iz bırakıp ayrılanları ve bugün kapılarını açanları dikkatle dinlemeyi öğrenmek demek.</p>
+</div>
+<blockquote class="samatya-pullquote"><p>Bir semte taşınmak, yalnızca adres değiştirmek değil; her sabah önünden geçtiğin taşın senden önce neler gördüğünü merak etmeye başlamaktır.</p><small>ERGİN’İN SAMATYA DEFTERİ · KİŞİSEL NOT</small></blockquote>
+</div>
+<div class="samatya-content-nav"><a href="#zaman">Tarih katmanları ↘</a><a href="#kiliseler">Kiliseler ve cemaat hafızası ↘</a><a href="#cumhuriyet">Cumhuriyet yılları ↘</a><a href="#bugun">Bugün için yürüyüş notu ↘</a></div>
+</section>
+
+<section id="zaman" class="samatya-section reveal in" data-stamp="02">
+<div class="archive-heading"><div><p class="kicker">02 / BİR SEMTİN DÖRT ZAMANI</p><h2>Kumdan kıyıya,<br><em>manastırdan mahalleye.</em></h2></div><p class="archive-stamp"><span>4</span><small>ZAMAN KATMANI<br>AYNI COĞRAFYA</small></p></div>
+<p class="lede">Samatya’yı tek bir döneme sabitlemek zor. Bugünkü sokakların altında Bizans’ın kıyı yerleşimi, Osmanlı’nın çok cemaatli zanaat mahallesi, Cumhuriyet’in değişen nüfusu ve kıyıyı yeniden biçimlendiren şehir planlama kararları üst üste duruyor.</p>
+<div class="samatya-timeline">
+<article class="samatya-era"><span class="era-date">ANTİK / BİZANS</span><h3>Psamathia</h3><p>Adı, kumla ilişkilendirilen Yunanca bir köke bağlanır. Samatya’nın eski bir balıkçı yerleşimi ve doğal liman niteliği taşıdığı; kıyısının teknelerle ve küçük ticaretle yaşadığı aktarılır.</p></article>
+<article class="samatya-era"><span class="era-date">1453 SONRASI</span><h3>Sulu Manastır</h3><p>Osmanlı İstanbul’unda Ermeni cemaatinin önemli merkezlerinden biri burada gelişti. 1461’de kurulan Ermeni Patrikhanesi, 1641’e kadar Surp Kevork çevresindeki merkezle anılır.</p></article>
+<article class="samatya-era"><span class="era-date">19. YÜZYIL</span><h3>Zanaat ve kıyı</h3><p>Ahşap evler, bahçeler, balıkçılar, esnaf ve ibadethaneler aynı kentsel dokunun parçalarıydı. Semtin yalnız anıtsal yapılardan değil, geçim yollarından da oluştuğu bu dönemde belirginleşir.</p></article>
+<article class="samatya-era"><span class="era-date">CUMHURİYET / BUGÜN</span><h3>Değişen kıyı</h3><p>20. yüzyılın nüfus kırılmaları ve 1957–1959 arasında yapılan Sirkeci–Florya sahil yolu, Samatya’nın denizle kurduğu eski ilişkiyi dönüştürdü.</p></article>
+</div>
+<div class="samatya-image-story">
+<figure class="samatya-image">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Samatya05.JPG?width=1280" alt="Samatya'da 6 Kasım 2010 tarihinde fotoğraflanmış eski bir sokak." width="1280" height="960" loading="lazy">
+<figcaption>Bir sokağın 2010 tarihli görüntüsü. Fotoğraf: Szoszv, CC BY 3.0. <a href="https://commons.wikimedia.org/wiki/File:Samatya05.JPG" target="_blank" rel="noopener">Görsel kaydı ↗</a> · <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">Lisans ↗</a></figcaption>
+</figure>
+<div class="samatya-image-copy"><p class="kicker">BİZANS / COĞRAFYA</p><h3>İsimde bile <em>kıyının izi var.</em></h3><p>Fatih Belediyesi’nin tarih anlatımında Samatya adı, kumlukla ilişkilendirilir. Burası eski çağlarda denizle iç içe bir yerleşim, balıkçılığın ve kıyı ticaretinin uğradığı bir noktaydı. Şehir surlarının dışında değil, zamanla büyüyen tarihî yarımadanın savunma ve yaşam katmanlarının içinde kaldı.</p><p>Eski Samatya’yı bugünkü sahil yolu kenarından düşünmek yanıltıcı olabilir. Bir zamanlar denizle evler arasındaki ilişki daha yakındı; tekneler kıyıya sokulur, yamaçtaki yerleşime denizden bakılabilirdi. Bugün kıyının hafızasını anlamak için yalnızca bugünkü manzaraya değil, eski fotoğraflara da bakmak gerekiyor.</p><p class="samatya-fact">Araştırma notu: “Psamathia” adı ve eski liman niteliği, semtin tarihine ilişkin kaynaklarda birlikte anılır. Adın kökeni hakkındaki açıklama yerel tarih aktarımıdır; bütün tarihî ayrıntılar tek bir kesin anlatıya indirgenemez.</p><p class="photo-credit"><a href="https://www.fatih.bel.tr/tr/main/pages/tarihte-fatih/41" target="_blank" rel="noopener">Fatih Belediyesi · Tarihte Fatih ↗</a></p></div>
+</div>
+</section>
+
+<section id="kiliseler" class="samatya-section reveal in" data-stamp="03">
+<div class="archive-heading"><div><p class="kicker">03 / TAŞIN İÇİNDEKİ SESLER</p><h2>Samatya’nın kiliseleri:<br><em>hafızanın yaşayan adresleri.</em></h2></div><p class="archive-stamp"><span>03</span><small>İBADET / HAFIZA<br>RUM · ERMENİ</small></p></div>
+<p class="lede">Samatya’yı anlamak, yalnızca güzel cepheleri fotoğraflamak değil. Bu yapılar, cemaatlerin ibadetlerini, eğitim hayatını, dayanışmasını ve yangınlar karşısında yeniden ayağa kalkma çabasını anlatıyor. Birinin kapalı olması, hikâyesinin kapanmış olduğu anlamına gelmiyor.</p>
+<div class="samatya-image-story">
+<figure class="samatya-image">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Surp_Kevork_from_SW.JPG?width=1280" alt="Samatya'daki Surp Kevork Ermeni Kilisesi'nin güneybatıdan, giriş cephesini gösteren görünümü." width="1280" height="1033" loading="lazy">
+<figcaption>Surp Kevork’un güneybatıdan görünümü. Fotoğraf: Stilbes, CC BY-SA 3.0. <a href="https://commons.wikimedia.org/wiki/File:Surp_Kevork_from_SW.JPG" target="_blank" rel="noopener">Görsel kaydı ↗</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">Lisans ↗</a></figcaption>
+</figure>
+<div class="samatya-image-copy"><p class="kicker">SURP KEVORK / SULU MANASTIR</p><h3>Bir manastırın adı, <em>bir mahallenin belleği.</em></h3><p>Surp Kevork Ermeni Kilisesi, Ermeni Patrikhanesi’nin kendi tarihçesinde, Bizans dönemine ait Panagia Peribleptos (Azize Meryem) manastırının bulunduğu alanla ilişkilendirilir. Altındaki ayazma ve büyük sarnıç sebebiyle burası Osmanlı döneminde “Sulu Manastır” adıyla da anılmıştır.</p><p>1453 sonrasında İstanbul’a yerleştirilen Ermenilerin dini hayatında bu merkez büyük önem kazandı. 1461’de Ermeni Patrikliği burada kuruldu; merkez 1641’de Kumkapı’ya taşınana dek Surp Kevork, patriklik kilisesi olarak kullanıldı. Bu bilgi, Samatya’nın yalnız bir mahalle değil, İstanbul Ermenilerinin kurumsal tarihinin de önemli bir durağı olduğunu gösteriyor.</p><p>Yangınlar yapının tarihini defalarca kesintiye uğrattı. Patrikhane kayıtları 1660 yangınından, 1722’de yeniden inşadan, 1782 ve 1866 yangınlarından söz ediyor. Bugünkü taş yapı 19. yüzyıldaki yeniden kurulum döneminin izlerini taşıyor; 2006 restorasyonunun ardından yeniden ibadete açıldı.</p><p class="photo-credit"><a href="https://haybad.org/tr/kilise/surp-kevork-kilisesi-samatya/" target="_blank" rel="noopener">Türkiye Ermenileri Patrikliği · Surp Kevork tarihçesi ↗</a></p></div>
+</div>
+<div class="samatya-duo-images">
+<figure><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Surp_Kevork_from_SE.JPG?width=1100" alt="Surp Kevork Kilisesi'nin güneydoğu yönünden görünümü." width="1100" height="825" loading="lazy"><figcaption>Surp Kevork, başka bir açıdan. Fotoğraf: Stilbes, CC BY-SA 3.0. <a href="https://commons.wikimedia.org/wiki/File:Surp_Kevork_from_SE.JPG" target="_blank" rel="noopener">Kaynak ve lisans ↗</a></figcaption></figure>
+<figure><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Church_of_Saint_Menas_01.jpg?width=1100" alt="Samatya'da Aya Mina olarak da anılan Saint Menas Rum Ortodoks Kilisesi'nin doğu yönünden görünümü." width="1100" height="825" loading="lazy"><figcaption>Aya Mina / Saint Menas Rum Ortodoks Kilisesi. Fotoğraf: Alessandro57, CC BY-SA 3.0. <a href="https://commons.wikimedia.org/wiki/File:Church_of_Saint_Menas_01.jpg" target="_blank" rel="noopener">Kaynak ve lisans ↗</a></figcaption></figure>
+</div>
+<div class="samatya-image-story reverse">
+<figure class="samatya-image tall">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ayios_Nikolaos_Kilisesi,_Samatya,_İstanbul_2026.jpg?width=1100" alt="Samatya'daki Aya Nikola Rum Ortodoks Kilisesi'nin 2025 yılında çekilmiş fotoğrafı." width="1100" height="1467" loading="lazy">
+<figcaption>Aya Nikola Rum Ortodoks Kilisesi. Fotoğraf: vlyalcin, CC BY-SA 4.0. <a href="https://commons.wikimedia.org/wiki/File:Ayios_Nikolaos_Kilisesi,_Samatya,_İstanbul_2026.jpg" target="_blank" rel="noopener">Görsel kaydı ↗</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">Lisans ↗</a></figcaption>
+</figure>
+<div class="samatya-image-copy"><p class="kicker">RUM ORTODOKS HAFIZASI</p><h3>Aynı semtte <em>birden fazla zaman.</em></h3><p>Samatya’nın hafızası tek bir cemaatin ya da tek bir mimari biçimin hikâyesi değil. Aya Mina, Aya Nikola ve eski kaynaklarda anılan Hristos Analipsis gibi Rum Ortodoks ibadet yerleri, bu kıyıda Rum cemaatinin yüzyıllar boyunca kurduğu hayatı hatırlatıyor. İsimler ve yapıların durumları zaman içinde değişse de, ibadethanelerin mahalle coğrafyasındaki yeri kültürel hafızayı okumak için önemli bir anahtar.</p><p>Bu kapılara bakarken kendime şunu hatırlatıyorum: kiliseyi yalnızca mimarisiyle görmek eksik kalır. Bir yapının anlamı, içeride okunan dualar, bayram günleri, cemaatin okulları ve bu eşiği her gün açıp kapatan insanların hayatlarıyla tamamlanır.</p><p>Fatih Belediyesi’nin tarih anlatısı, Bizans döneminde sahile yakın bölgelerde Rumların yaşadığını, Analipsis Kilisesi’nin de bu toplulukla bağlantılı bir ibadet yeri olarak anıldığını kaydeder. Bu sayfada doğrulanmış kurum tarihleriyle sözlü anlatıları birbirine karıştırmamaya çalışıyorum.</p><p class="photo-credit"><a href="https://www.fatih.bel.tr/tr/main/pages/tarihte-fatih/41" target="_blank" rel="noopener">Fatih Belediyesi · Tarihte Fatih ↗</a> · <a href="https://commons.wikimedia.org/wiki/Category:Church_of_Saint_Menas_(Istanbul)" target="_blank" rel="noopener">Saint Menas fotoğraf arşivi ↗</a></p></div>
+</div>
+</section>
+
+<section id="sesler" class="samatya-section reveal in" data-stamp="04">
+<div class="archive-heading"><div><p class="kicker">04 / ARŞİVDEKİ KÜÇÜK HİKÂYELER</p><h2>Bir semtin hafızası,<br><em>ayrıntıda saklı.</em></h2></div><p class="archive-stamp"><span>04</span><small>RİVAYET · ZANAAT<br>GÜNDELİK HAYAT</small></p></div>
+<div class="samatya-notes">
+<article class="samatya-note"><span class="note-no">KAYIT / 001</span><h3>Suyun adını bıraktığı manastır</h3><p>Sulu Manastır adı, Surp Kevork çevresindeki ayazma ve büyük sarnıçla birlikte anılıyor. Bir yapının adı yalnız duvarda yazmıyor; yerin altındaki suya, orada kurulan ritüele ve nesilden nesile taşınan dile de siniyor.</p><details><summary>Kaynağın anlattığı ayrıntı</summary><p>Türkiye Ermenileri Patrikliği’nin tarihçesi, kilisenin Bizans manastırı Panagia Peribleptos’un bulunduğu alanla ilişkisini ve “Sulu Manastır” adını açıkça kaydediyor. Bu nedenle su hikâyesini yalnızca şiirli bir benzetme olarak değil, yerel tarih kaydına dayanan bir ayrıntı olarak okuyorum.</p></details></article>
+<article class="samatya-note"><span class="note-no">KAYIT / 002</span><h3>Mehterin sesi, Samatya’nın zanaatkârı</h3><p>Fatih Belediyesi’nin tarih anlatısında Ermeni zanaatkârlar, Samatya’nın Osmanlı dönemindeki yaşamının önemli parçası olarak geçiyor. Zil yapımıyla anılan Avedis Zilcioğlu’nun Sultan II. Osman tarafından mehter zilleri üretmek üzere görevlendirildiği de aynı kaynakta aktarılıyor.</p><details><summary>Bu hikâyede beni çeken ne?</summary><p>Bir mahallenin tarihini yalnızca saray kararları ve büyük yapılar taşımaz. Bir zanaatkârın eliyle yapılan zil, bir törenin sesine karışır; ses şehirden şehre giderken onu yapan insanın adı da yolculuk eder. Samatya’yı anlamak için işte bu küçük bağlantılar da önemli.</p></details></article>
+<article class="samatya-note"><span class="note-no">KAYIT / 003</span><h3>Cumartesi pazarının ritmi</h3><p>Semtin eski cumartesi pazarının Marmara Caddesi üzerinde kurulduğu, zamanla kuzeye taşındığı Fatih Belediyesi tarafından kaydediliyor. Pazar, bir mahallede yalnızca alışveriş demek değildir: karşılaşmaların, tanıdık seslerin, fiyat pazarlıklarının ve mevsimlerin de takvimidir.</p><details><summary>Bir mahalleyi nasıl okurum?</summary><p>Bir sokak adından, dükkânın tabelasından ya da eski bir pazar yerinden başlarım. Çünkü gündelik hayatın haritası çoğu zaman anıtların resmi haritasından daha çok şey anlatır. Pazar yerini bulmak, geçmişte kimlerin birbiriyle karşılaştığını da düşünmek demek.</p></details></article>
+<article class="samatya-note"><span class="note-no">KAYIT / 004</span><h3>Bir diziyle ulusal belleğe giren meydan</h3><p>1998–2001 yıllarında yayımlanan <em>İkinci Bahar</em>, Samatya’yı Türkiye’nin dört bir yanındaki izleyicilerin belleğine yerleştiren yapımlardan biri oldu. Dizi araştırmaları, Kocamustafapaşa istasyonu yönüne açılan meydanın dış çekimlerde kullanıldığını kaydediyor.</p><details><summary>Kurguyla gerçek yer arasındaki çizgi</summary><p>Benim için ilginç tarafı şu: televizyon bir semte yeni bir kalabalık getirebilir, ama kameradan önce de orada yaşayanlar vardır. Ekranda görünen mahalle hikâyesi, gerçek esnafın ve gerçek sokakların üstüne kuruluydu; kurgu ile yerin kendi hafızasını ayrı ayrı hatırlamak gerekiyor.</p></details></article>
+</div>
+<p class="photo-credit" style="margin-top:13px">Kaynaklar: <a href="https://www.fatih.bel.tr/tr/main/pages/tarihte-fatih/41" target="_blank" rel="noopener">Fatih Belediyesi · Tarihte Fatih ↗</a> · <a href="https://acikerisim.msgsu.edu.tr/xmlui/bitstream/handle/20.500.14124/3598/204434.pdf?isAllowed=y&sequence=1" target="_blank" rel="noopener">Mimar Sinan Güzel Sanatlar Üniversitesi açık arşivi · İkinci Bahar ve mekân ↗</a></p>
+</section>
+
+<section id="cumhuriyet" class="samatya-section reveal in" data-stamp="05">
+<div class="archive-heading"><div><p class="kicker">05 / CUMHURİYET YILLARI</p><h2>Kıyının geri çekilişi,<br><em>mahallenin değişen sesi.</em></h2></div><p class="archive-stamp"><span>05</span><small>1923 → BUGÜN<br>GÖÇ · ŞEHİR · HAFIZA</small></p></div>
+<div class="samatya-image-story">
+<figure class="samatya-image">
+<img src="https://archives.saltresearch.org/bitstream/123456789/113296/1/AHISTSAMA003.jpg?smfb=1" alt="Samatya'nın eski kıyısını deniz tarafından gösteren arşiv fotoğrafı." width="1635" height="1038" loading="lazy">
+<figcaption>SALT Araştırma / SALTOnline. Wikimedia Commons kaydında “bilinen telif kısıtlaması yok” notuyla listelenmiştir. <a href="https://commons.wikimedia.org/wiki/File:Samatya,_İstanbul_(12966675513).jpg" target="_blank" rel="noopener">Arşiv ve kullanım kaydı ↗</a></figcaption>
+</figure>
+<div class="samatya-image-copy"><p class="kicker">DENİZDEN KARAYA</p><h3>Bugünkü yolun altında <em>başka bir kıyı var.</em></h3><p>Bugünkü Sirkeci–Florya sahil yolunu sıradan bir trafik hattı gibi görüp geçmek mümkün. Oysa Fatih Belediyesi’nin tarih anlatısına göre, 1957–1959 arasında yapılan yol ve dolgu çalışmaları Samatya’nın eski liman karakterini büyük ölçüde değiştirdi; deniz, yerleşimden bir adım daha uzağa itildi.</p><p>Eski kıyı fotoğrafına bakınca bu fark daha iyi görülüyor. Kayıklar, denizle neredeyse aynı çizgide duran yapılar ve yamaçta sıklaşan evler… Bugün önümden geçen araçların gürültüsünü bir anlığına aradan çekince, bu semtin ses haritasında denizin ne kadar merkezde olduğunu hayal etmeye çalışıyorum.</p><p>Şehir planlaması bazen yalnızca yeni yol yapmaz. İnsanların suya nasıl ulaştığını, çocukların nerede oynadığını, balıkçıların nerede durduğunu ve mahallelinin kendi kıyısıyla ilişkisini de değiştirir.</p><p class="photo-credit"><a href="https://www.fatih.bel.tr/tr/main/pages/tarihte-fatih/41" target="_blank" rel="noopener">Fatih Belediyesi · kıyı yolu ve dolgu çalışmaları ↗</a></p></div>
+</div>
+<div class="samatya-history-dark">
+<p class="kicker">YAKIN TARİH / HAFIZANIN AĞIR KAYDI</p><h3>6–7 Eylül 1955:<br><em>Samatya’nın da üzerinden geçen karanlık.</em></h3>
+<p>Bu başlığı, semtin yalnızca romantik eski evlerden ibaret olmadığını unutmamak için açıyorum. İstanbul Büyükşehir Belediyesi Şehir Planlama Müdürlüğü’nün tarihsel anlatısı, 6–7 Eylül saldırılarının Kumkapı’dan Samatya’ya ve Yedikule’ye uzandığını; gayrimüslimlerin yaşadığı mahallelerde evlerin, dükkânların ve ibadet yerlerinin hedef alındığını kaydediyor. Bu, tek bir semte sıkıştırılabilecek bir hadise değil; İstanbul’un Rum, Ermeni, Yahudi ve diğer gayrimüslim sakinlerini derinden yaralayan şehir çapındaki bir kırılmaydı.</p>
+<p>1942 Varlık Vergisi gibi ekonomik baskılar ve 1964’teki sınır dışı etmeler de İstanbul’un gayrimüslim hayatını etkiledi. Bunları Samatya’ya özgü tekil olaylar gibi sunmak doğru olmaz; fakat semtin çok kültürlü nüfusunun değişimini anlamak için bu geniş tarihsel çerçeveyi görmezden gelmek de eksik kalır.</p>
+<p>Bir geliştirici olarak geçmişi bir sistem günlüğü gibi okuduğumda, yalnızca görünen sonucu değil, o sonuca götüren kararları da merak ederim. Bu tarih, bir yapının cephesinde görünmeyebilir. Bazen kayıp, artık aynı sokakta duyulmayan dilde; kapanmış bir dükkânda; yalnızca arşiv fotoğrafında kalan bir kapıda saklıdır.</p>
+<p class="note-link"><a href="https://sehirplanlama.ibb.istanbul/beyoglu-senin-calismalari-gecmis/" target="_blank" rel="noopener">İBB Şehir Planlama Müdürlüğü · 6–7 Eylül olaylarının İstanbul’daki izleri ↗</a> · <a href="https://www.cambridge.org/core/journals/journal-of-economic-history/article/abs/wealth-tax-of-1942-and-the-disappearance-of-nonmuslim-enterprises-in-turkey/B05523EDB4D0AC1E4931C0562DE3E652" target="_blank" rel="noopener">Varlık Vergisi üzerine akademik çalışma ↗</a></p>
+</div>
+</section>
+
+<section id="bugun" class="samatya-section reveal in" data-stamp="06">
+<div class="archive-heading"><div><p class="kicker">06 / BUGÜNÜN SAMATYA’SI</p><h2>Bir semti yürüyerek<br><em>okuma denemesi.</em></h2></div><p class="archive-stamp"><span>4</span><small>DURAK / YAVAŞ ROTA<br>GÖZLEM DEFTERİ</small></p></div>
+<p class="lede">Samatya’yı tanımak için bir günde bütün tarihini çözmeye çalışmıyorum. Birkaç durak seçip bakmayı, kapıların önünde biraz oyalanmayı ve bildiklerimle bilmediklerimi ayırmayı daha anlamlı buluyorum.</p>
+<div class="samatya-walk">
+<article><h3>Samatya Meydanı</h3><p>Bir zamanlar gündelik hayatın ve pazarın toplandığı alanı merkeze al. Dizi hafızasıyla gerçek esnaf hayatının aynı yerde nasıl iç içe geçtiğini düşün.</p></article>
+<article><h3>Marmara Caddesi</h3><p>Eski ticaret ve cemaat izlerini, kapı üstlerini ve yapı cephelerini dışarıdan gözlemle. Her kitabeyi hemen çözemiyorsan fotoğrafını ve sorunu not et.</p></article>
+<article><h3>Surp Kevork çevresi</h3><p>Sulu Manastır olarak bilinen bu tarihî alanın hikâyesini Patrikhane kaynağından oku. Ziyaret ve fotoğraf konusunda ibadethanenin kurallarına saygı göster.</p></article>
+<article><h3>Eski kıyının izi</h3><p>Sahil yoluna çıkıp arşiv fotoğrafını yeniden aç. Bugünkü dolgu ve yol çizgisiyle eski deniz hattını zihninde karşılaştır.</p></article>
+</div>
+<div class="samatya-intro-grid">
+<div class="samatya-prose"><p>Mahalleye bakarken kendime sürekli şu soruyu soruyorum: Bir yapı neden ayakta kalır? Yalnızca sağlam taşla değil, kullanımını sürdüren insanlarla. Peki bir yapı ortadan kalktığında ne kaybolur? Duvarla birlikte bazen bir meslek, bir dil, bir komşuluk biçimi ve çocukların hatırlayacağı bir manzara da kaybolur.</p><p>Bu nedenle Samatya’yı sadece güzel fotoğraflar için değil, dikkat etmeyi öğrenmek için de geziyorum. Bir kapı açılmıyorsa, arkasındaki hikâyeyi benim yazmam gerekmiyor. Kaynağını bulabildiğim yerde onu aktarırım; yalnızca rivayet olarak kalanı da rivayet diye işaretlerim. Bilmediğim yerde ise soruyu açık bırakırım.</p></div>
+<blockquote class="samatya-pullquote"><p>Bir mahallenin en kıymetli haritası, üzerinde ne kadar yol çizildiği değil; kimlerin birbirine yol tarif ettiğiyle anlaşılır.</p><small>ERGİN’İN DEFTERİ · BUGÜNE DAİR</small></blockquote>
+</div>
+</section>
+
+<section id="kaynaklar" class="samatya-section reveal in" data-stamp="07">
+<div class="archive-heading"><div><p class="kicker">07 / KAYNAK VE GÖRSEL NOTLARI</p><h2>Hafızaya saygı,<br><em>kaynağa sadakat.</em></h2></div><p class="archive-stamp"><span>↗</span><small>OKUMA LİSTESİ<br>ARAŞTIRMA NOTLARI</small></p></div>
+<p class="lede">Bu sayfadaki kişisel metinler Ergin’in verdiği yaşam bilgileri ve anlatım niyetiyle yazılmıştır. Tarihsel bilgi ile kişisel yorum ve rivayeti ayırmaya çalıştım. Fotoğrafların her birinde kaynak/üretici ve lisans bağlantısı bulunur; görseller kendi sayfalarındaki koşullarla kullanılmalıdır.</p>
+<div class="samatya-sourcebox">
+<h3>Başvurduğum kaynaklar</h3>
+<ul>
+<li><a href="https://www.fatih.bel.tr/tr/main/pages/tarihte-fatih/41" target="_blank" rel="noopener">Fatih Belediyesi · Tarihte Fatih:</a> Samatya’nın adı ve eski liman niteliği, Osmanlı dönemi zanaatları, Analipsis ve diğer dini yapılar, eski pazar ve sahil yolu.</li>
+<li><a href="https://haybad.org/tr/kilise/surp-kevork-kilisesi-samatya/" target="_blank" rel="noopener">Türkiye Ermenileri Patrikliği · Surp Kevork / Sulu Manastır:</a> Panagia Peribleptos ile bağlantı, ayazma ve sarnıç, patriklik dönemi, yangınlar ve yeniden yapım.</li>
+<li><a href="https://sehirplanlama.ibb.istanbul/beyoglu-senin-calismalari-gecmis/" target="_blank" rel="noopener">İBB Şehir Planlama Müdürlüğü:</a> 6–7 Eylül 1955 olaylarının İstanbul’da yayıldığı mahalleler arasında Samatya’nın da anılması.</li>
+<li><a href="https://openaccess.iku.edu.tr/entities/publication/b92fe7bc-b555-4df6-8391-29af0a8aa1ea" target="_blank" rel="noopener">Zeynep Gündoğan · İstanbul Kültür Üniversitesi açık arşivi:</a> Samatya’da tarihî çevrenin korunması üzerine yüksek lisans çalışması (2011).</li>
+<li><a href="https://acikerisim.msgsu.edu.tr/xmlui/bitstream/handle/20.000.14124/3598/204434.pdf?isAllowed=y&sequence=1" target="_blank" rel="noopener">Mimar Sinan Güzel Sanatlar Üniversitesi açık arşivi:</a> İkinci Bahar dizisi, gerçek mekân ve Samatya meydanının dış çekimlerdeki kullanımı.</li>
+<li><a href="https://www.cambridge.org/core/journals/journal-of-economic-history/article/abs/wealth-tax-of-1942-and-the-disappearance-of-nonmuslim-enterprises-in-turkey/B05523EDB4D0AC1E4931C0562DE3E652" target="_blank" rel="noopener">The Journal of Economic History / Cambridge University Press:</a> 1942 Varlık Vergisi’nin İstanbul’daki gayrimüslim işletmeler üzerindeki etkisi üzerine çalışma.</li>
+</ul>
+<p>Bir kaynak ile başka bir kaynak arasında ayrıntı farkı olduğunda, bunu tek bir kesin hikâyeye zorlamamak gerekir. Bu defter de öğrendikçe güncellenmeye açık.</p>
+</div>
+</section>
+
 <section id="istanbul" class="reveal in" data-stamp="01">
       <div class="archive-heading">
         <div>
-          <p class="kicker">01 / TAŞ HAFIZASI · İSTANBUL ARŞİVİ</p>
-          <h2>Şehrin <em>taş hafızası.</em></h2>
+          <p class="kicker">08 / İSTANBUL’UN DİĞER TAŞ KAYITLARI</p>
+          <h2>İstanbul’un <em>öteki izleri.</em></h2>
         </div>
         <p class="archive-stamp" aria-label="Altı şehir durağı">
           <span>06</span>
           <small>YER / KATMAN<br>İSTANBUL · ARŞİV</small>
         </p>
       </div>
-      <p class="lede archive-lede">Bir şehri yüksekten değil, iz bıraktığı yerlerden oku. Her kare bir kapı; açmak için dokun.</p>
+      <p class="lede archive-lede">Samatya’yı bu defterin merkezine aldım. Galata’dan Eminönü’ne, Tarihî Yarımada’dan Boğaz’a uzanan diğer duraklar ise İstanbul’un bitmeyen hafızasına açılan yan kapılar.</p>
       <div class="archive-signal" aria-hidden="true">
-        <span>41°00′N · 28°58′E</span><span>FİZİKSEL HAFIZA / 001—006</span><span>GECE KAYDI AKTİF</span>
+        <span>41°00′N · 28°58′E</span><span>İSTANBUL DEFTERİ / 001—006</span><span>GECE KAYDI AKTİF</span>
       </div>
       <div class="grid places">
         <article class="place place-galata">
@@ -140,7 +364,7 @@ try { var theme=localStorage.getItem("e.theme");if(theme)document.documentElemen
           </div>
         </article>
       </div>
-      <div class="archive-endnote"><span>ARŞİV UCU</span><span>Altı kare. Bir şehir.</span><span>01—06 / İSTANBUL</span></div>
+      <div class="archive-endnote"><span>ARŞİV UCU</span><span>Bir semtten şehre açılan altı kare.</span><span>01—06 / İSTANBUL</span></div>
     </section>
 <dialog class="place-lightbox" id="place-lightbox" aria-labelledby="place-lightbox-title" aria-describedby="place-lightbox-description">
       <div class="place-lightbox-shell">
@@ -154,31 +378,29 @@ try { var theme=localStorage.getItem("e.theme");if(theme)document.documentElemen
       </div>
     </dialog>
 </main>
-<footer class="wrap" style="padding:26px 0 40px;color:var(--muted);font-size:11px"><span>ERGİN KAPLAN · İSTANBUL ARŞİVİ / 001—006</span><span style="float:right"><a href="index.html">Ana sayfa ↗</a></span></footer>
-<script>
-const clockNode=document.getElementById("clock");
-function updateArchiveClock(){if(clockNode)clockNode.textContent=new Intl.DateTimeFormat("tr-TR",{timeZone:"Europe/Istanbul",hour:"2-digit",minute:"2-digit",second:"2-digit"}).format(new Date());}
-updateArchiveClock();setInterval(updateArchiveClock,1000);
-</script>
+<footer class="wrap" style="padding:26px 0 40px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap">
+<span>ERGİN KAPLAN · SAMATYA DEFTERİ / 001—007</span><span><a href="index.html">Ana sayfa ↗</a> · <a href="index.html#kuslar">Kuş Hattı ↗</a></span>
+</footer>
 <script>
 (() => {
- const dialog = document.getElementById("place-lightbox");
- const image = document.getElementById("place-lightbox-image");
- const title = document.getElementById("place-lightbox-title");
- const kicker = document.getElementById("place-lightbox-kicker");
- const description = document.getElementById("place-lightbox-description");
- const close = document.getElementById("place-lightbox-close");
- if (!dialog || !image || !title || !kicker || !description || !close) return;
- document.querySelectorAll("[data-lightbox-open]").forEach((button) => {
-   button.addEventListener("click", () => {
-     const photo = button.querySelector("img");
-     const card = button.closest(".place");
-     if (!photo || !card) return;
-     image.src = photo.currentSrc || photo.src;
-     image.alt = photo.alt || "";
-     title.textContent = card.querySelector("h3")?.textContent?.trim() || "İstanbul arşivi";
-     kicker.textContent = card.querySelector(".place-body > .kicker")?.textContent?.trim() || "İSTANBUL ARŞİVİ";
-     description.textContent = card.querySelector(".place-story-copy > p:not(.meta)")?.textContent?.trim() || "";
+ const node=document.getElementById("clock");
+ const update=()=>{if(node)node.textContent=new Intl.DateTimeFormat("tr-TR",{timeZone:"Europe/Istanbul",hour:"2-digit",minute:"2-digit",second:"2-digit"}).format(new Date());};
+ update();window.setInterval(update,1000);
+ const dialog=document.getElementById("place-lightbox");
+ const image=document.getElementById("place-lightbox-image");
+ const title=document.getElementById("place-lightbox-title");
+ const kicker=document.getElementById("place-lightbox-kicker");
+ const description=document.getElementById("place-lightbox-description");
+ const close=document.getElementById("place-lightbox-close");
+ if(!dialog||!image||!title||!kicker||!description||!close)return;
+ document.querySelectorAll("[data-lightbox-open]").forEach(button=>{
+   button.addEventListener("click",()=>{
+     const photo=button.querySelector("img"),card=button.closest(".place");
+     if(!photo||!card)return;
+     image.src=photo.currentSrc||photo.src;image.alt=photo.alt||"";
+     title.textContent=card.querySelector("h3")?.textContent?.trim()||"İstanbul arşivi";
+     kicker.textContent=card.querySelector(".place-body > .kicker")?.textContent?.trim()||"İSTANBUL ARŞİVİ";
+     description.textContent=card.querySelector(".place-story-copy > p:not(.meta)")?.textContent?.trim()||"";
      dialog.showModal();
    });
  });
@@ -187,4 +409,5 @@ updateArchiveClock();setInterval(updateArchiveClock,1000);
  dialog.addEventListener("click",event=>{if(event.target===dialog)shut();});
 })();
 </script>
-</body></html>
+</body>
+</html>
