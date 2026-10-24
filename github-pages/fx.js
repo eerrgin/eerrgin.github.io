@@ -4,7 +4,7 @@
   if (!canvas) return;
   const ctx = canvas.getContext("2d", { alpha: true });
   if (!ctx) return;
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduce = document.documentElement.dataset.motion !== "on";
   let w = 0;
   let h = 0;
   let dpr = 1;

@@ -13,7 +13,7 @@ const breeds = [
 ];
 
 const choice = { fur: "any", pattern: "any", build: "any", ears: "any" };
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const reduceMotion = document.documentElement.dataset.motion !== "on";
 const THEMES = ["gece", "amber", "kemik", "sis"];
 let lastWeather = null;
 
@@ -118,8 +118,10 @@ function setTheme(name) {
 
 function setTremor(on) {
   const next = on ? "on" : "off";
+  document.documentElement.dataset.motion = next;
   document.documentElement.dataset.tremor = next;
   try {
+    localStorage.setItem("e.motion", next);
     localStorage.setItem("e.tremor", next);
   } catch {
     /* yok say */
@@ -1118,6 +1120,33 @@ function tune(kind) {
   const play = document.querySelector("#play");
   if (play) play.textContent = "Yayını kes";
   return true;
+}
+
+const motionToggle = document.getElementById("motion-toggle");
+if (motionToggle) {
+  const syncMotionButton = () => {
+    const enabled = document.documentElement.dataset.motion === "on";
+    motionToggle.setAttribute("aria-pressed", String(enabled));
+    motionToggle.innerHTML = enabled
+      ? 'HAREKET · AÇIK <span aria-hidden="true">↗</span>'
+      : 'HAREKET · KAPALI <span aria-hidden="true">↗</span>';
+    motionToggle.title = enabled
+      ? "Hareketli arka planı kapat"
+      : "Hareketli arka planı ve atölye çizimini etkinleştir";
+  };
+  syncMotionButton();
+  motionToggle.addEventListener("click", () => {
+    const next = document.documentElement.dataset.motion !== "on" ? "on" : "off";
+    try {
+      localStorage.setItem("e.motion", next);
+      localStorage.setItem("e.tremor", next);
+    } catch {
+      /* Tercih bu oturumda da uygulanır. */
+    }
+    document.documentElement.dataset.motion = next;
+    document.documentElement.dataset.tremor = next;
+    window.location.reload();
+  });
 }
 
 window.Gece = {
