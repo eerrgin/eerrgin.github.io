@@ -200,6 +200,23 @@
     ["not", "arşiv notunu oku"],
     ["not", "notu aç"],
     ["not", "masanın notu"],
+    ["sor", "review this pull request for breaking changes"],
+    ["sor", "kod incelemesinde riskleri sırala"],
+    ["sor", "stack trace üzerinden kök nedeni bul"],
+    ["sor", "race condition nasıl izole edilir"],
+    ["sor", "API sözleşmesini idempotency ve retry açısından değerlendir"],
+    ["sor", "rate limit ve pagination tasarımını incele"],
+    ["sor", "unit integration test stratejisi oluştur"],
+    ["sor", "React state ve hydration sorunu"],
+    ["sor", "CSS layout CLS ve erişilebilirlik incelemesi"],
+    ["sor", "p95 latency ve bellek tüketimini analiz et"],
+    ["sor", "mimari sınırları ve failure mode ları değerlendir"],
+    ["sor", "GitHub Actions deployment rollback stratejisi"],
+    ["sor", "SQL query plan ve index tasarımı"],
+    ["sor", "threat model ve yetkilendirme sınırlarını incele"],
+    ["sor", "backpropagation loss ve overfitting farkı"],
+    ["sor", "bu kod için regresyon testi öner"],
+    ["sor", "git merge conflict ve rebase stratejisi"],
   ];
 
   const CORPUS = [
@@ -413,44 +430,230 @@
     return { title: best.title, body: best.body, score: bestScore };
   }
 
+  function engineeringResponse(text) {
+    const q = soft(text);
+    const reply = (label, answer) => ({ label, answer });
+
+    if (/(^|\s)(kimsin|sen kimsin|adin ne|nesin|tigerk nedir|tigerk ne yapar)(\s|$)/.test(q)) {
+      return reply("AGENT / SESSION", [
+        "Tigerk / Engineering Reasoning Layer",
+        "İstek yönlendirme, yerel bilgi erişimi ve mühendislik playbook'larını ayrı katmanlarda çalıştırır.",
+        "Odak: kod inceleme, hata ayıklama, API sözleşmeleri, test stratejileri, performans ve mimari kararlar.",
+        "İnceleme protokolü: bulgu → etki → doğrulama → en küçük güvenli düzeltme."
+      ].join("\n"));
+    }
+    if (/^(selam|merhaba|hey|naber|nasilsin|nbr)(\s|$)/.test(q)) {
+      return reply("SESSION / READY", "Tigerk çekirdeği hazır. Bir diff, stack trace, API sözleşmesi veya sistem davranışı gönder; analizi risk ve doğrulama adımlarıyla açayım.");
+    }
+    if (/(idempot|retry|retries|rate limit|pagination|webhook|http status|api contract|api sozles|endpoint|rest api|graphql)/.test(q)) {
+      if (/(idempot|retry|retries|at least once|duplicate request|tekrar dene)/.test(q)) {
+        return reply("API CONTRACT / RETRY SEMANTICS", [
+          "İnceleme odağı: tekrar gönderim güvenliği.",
+          "• Mutasyonlarda Idempotency-Key veya doğal bir benzersiz işlem anahtarı tanımla; aynı anahtarın eşzamanlı isteklerde de tek sonuca bağlandığını doğrula.",
+          "• Anahtar + istek özeti + sonuç kaydını atomik tut. Aynı anahtarla farklı payload gelirse sessizce yeni işlem başlatma; açık bir conflict sözleşmesi döndür.",
+          "• Retry politikasını timeout, 429 ve geçici 5xx yanıtlarıyla sınırla; exponential backoff ve jitter kullan, Retry-After başlığını uygula.",
+          "• Test matrisi: aynı isteğin tekrarları, eşzamanlı tekrar, bağlantı kopması sonrası tekrar, anahtar süresi dolması ve kısmi başarısızlık.",
+          "Beklenen çıktı: endpoint sözleşmesi + hata matrisi + tekrar senaryolarını kapsayan kontrat testleri."
+        ].join("\n"));
+      }
+      return reply("API CONTRACT / SEMANTICS", [
+        "Sözleşmeyi üç yüzeyde değerlendir:",
+        "• Girdi: tip, zorunluluk, sınır değer, pagination ve idempotency garantisi.",
+        "• Çıktı: başarı şeması, hata gövdesi, status code, correlation/request ID ve geriye uyumluluk.",
+        "• Çalışma zamanı: timeout bütçesi, retry edilebilir hata sınıfları, rate-limit politikası ve yan etkiler.",
+        "İlk doğrulama: OpenAPI şemasını örnek request/response çiftleriyle karşılaştır; başarısızlıkları kontrat testine bağla.",
+        "Kararı netleştirmek için endpoint ve beklenen davranışı ekle."
+      ].join("\n"));
+    }
+    if (/(race condition|deadlock|concurren|parallel request|eszamanli|yaris durumu|thread safe|lock contention)/.test(q)) {
+      return reply("CONCURRENCY / RACE ANALYSIS", [
+        "Öncelik: paylaşılan durum ve işlem sınırını bulmak.",
+        "1. Yarışa girebilen iki yürütme yolunu ve ortak kaynağı işaretle.",
+        "2. Okuma → karar → yazma aralığının atomik olup olmadığını incele; uygulama kilidi tek başına yeterli değilse veritabanı constraint/transaction seviyesine in.",
+        "3. Tekrarlanabilir testte bariyer veya kontrollü gecikmeyle interleaving üret; rastgele sleep ile doğrulama yapma.",
+        "4. Düzeltmeyi invariant ile tanımla: unique constraint, compare-and-swap, transaction isolation veya doğru kapsamlı mutex.",
+        "5. Aynı yarış sırasını yeniden üreten regresyon testi ekle.",
+        "İhtiyaç duyulan bağlam: runtime, paylaşılan state, ilgili kod yolu ve olay sırası."
+      ].join("\n"));
+    }
+    if (/(security|guvenlik|threat model|auth|oauth|csrf|xss|sqli|sql injection|cors|secret|token leak|yetkilendirme|authorization|permission|rbac|acl|injection)/.test(q)) {
+      return reply("SECURITY / TRUST BOUNDARIES", [
+        "Tehdit modeli üzerinden ilerle:",
+        "• Varlık ve sınır: hangi veri korunuyor, hangi aktör hangi güven sınırını geçiyor?",
+        "• Kimlik doğrulama ≠ yetkilendirme. Her nesne erişiminde sunucu tarafı ownership/permission kontrolünü doğrula.",
+        "• Girdi: SQL parametreleme, output encoding, CSRF/CORS ayrımı ve güvenilmeyen URL/file işleme yolları.",
+        "• Sırlar: log, hata mesajı, client bundle ve CI çıktılarında sızıntı; rotasyon ve minimum ayrıcalık.",
+        "• Kanıt: kötüye kullanım senaryosu + otomatik negatif test + log/alert sinyali.",
+        "Öncelik sırası: sömürülebilirlik × etki × erişim koşulu. Bir kontrolün varlığını değil, bypass yolunu da test et."
+      ].join("\n"));
+    }
+    if (/(code review|pull request|merge request|pr review|review this|review et|kod incele|diff review|refactor review|refactor)/.test(q)) {
+      return reply("CODE REVIEW / CHANGE RISK", [
+        "İnceleme protokolü",
+        "01 · Davranış: değişen invariant, public contract ve geriye uyumluluk.",
+        "02 · Failure path: timeout, retry, boş/bozuk input, cleanup ve kısmi commit.",
+        "03 · State: yarış koşulu, tekrar çağrı, cache invalidation ve tutarlılık.",
+        "04 · Boundary: yetki kontrolü, input validation, secret/log sızıntısı.",
+        "05 · Operasyon: gözlemlenebilirlik, migration, rollback ve deploy sırası.",
+        "06 · Test: yeni davranışın pozitif/negatif/regresyon kanıtı.",
+        "Çıktı formatı: [BLOCKER|MAJOR|MINOR] dosya/satır → etki → yeniden üretim → önerilen en küçük patch.",
+        "Diff'i veya değişen fonksiyonu eklediğinde bulguları bu formatta somutlaştır."
+      ].join("\n"));
+    }
+    if (/(stack trace|stacktrace|debug|debugging|hata ayik|exception|regression|timeout|crash|bug\b|kok neden|root cause|unexpected behavior|beklenmeyen davranis|neden calismiyor|neden bozul)/.test(q)) {
+      return reply("DEBUG / ROOT-CAUSE TRIAGE", [
+        "Önce semptomu değil, ilk yanlış durumu bul.",
+        "1. Beklenen ve gerçek çıktıyı; ortam, sürüm ve tetikleme adımlarıyla sabitle.",
+        "2. Stack trace'te ilk uygulama frame'ini bul; son görünen frame çoğu kez yalnızca hatanın yüzeyidir.",
+        "3. Sınırları ölç: giriş → dönüşüm → dış çağrı → yan etki. Her adımda invariant kontrolü koy.",
+        "4. En küçük yeniden üretimi çıkar; tek değişkenli bir deneyle hipotezi ele.",
+        "5. Düzeltmeyi regresyon testiyle kilitle; log'a sır, token veya kişisel veri basma.",
+        "Gönderilecek bağlam: hata satırı, kısa trace, beklenen/gerçek davranış ve son değişiklik."
+      ].join("\n"));
+    }
+    if (/(unit test|integration test|e2e|end to end|test strategy|test strateji|regression test|coverage|mock|fixture|contract test|test yaz|test suite)/.test(q)) {
+      return reply("TEST STRATEGY / EVIDENCE", [
+        "Test piramidini davranış riskine göre kur:",
+        "• Unit: saf dönüşümler, sınır değerler ve invariant'lar.",
+        "• Integration: veritabanı/queue/cache ile gerçek transaction ve hata davranışı.",
+        "• Contract: consumer-provider şeması, status code ve geriye uyumluluk.",
+        "• E2E: kritik kullanıcı yolunun küçük, deterministik bir smoke kümesi.",
+        "Her hata senaryosunda yalnızca happy path değil: timeout, duplicate request, yetkisiz istek, boş payload ve rollback kontrolü de olmalı.",
+        "Coverage yüzdesi tek başına kanıt değildir; testin başarısız olması gereken değişiklikte gerçekten başarısız olduğunu doğrula."
+      ].join("\n"));
+    }
+    if (/(sql query|query plan|database|veritabani|index|postgres|sqlite|redis|transaction|migration|n\+1|schema design|data model)/.test(q)) {
+      return reply("DATA LAYER / CONSISTENCY", [
+        "Veri katmanı incelemesi:",
+        "• Sorgu planını ve gerçek cardinality'yi oku; index'i yalnızca kolon adına bakarak ekleme.",
+        "• Birlikte güncellenmesi gereken kayıtları tek transaction ve açık isolation beklentisiyle tanımla.",
+        "• Unique/check/foreign-key constraint'lerini uygulama kontrolünün son savunması yap.",
+        "• N+1, gereksiz full scan, aşırı geniş SELECT ve pagination kararlılığını ölç.",
+        "• Migration için expand → migrate → contract sırası; rollback ve çift yazım dönemi için doğrulama ekle.",
+        "Ölçüm: query plan, p95 süre, satır sayısı, lock wait ve connection pool doygunluğu."
+      ].join("\n"));
+    }
+    if (/(css|layout|responsive|react|state management|hydration|accessibility|a11y|keyboard|mobile|dom|flexbox|grid layout|typography|font|component|frontend|front end|render loop|cls\b|lcp\b)/.test(q)) {
+      return reply("FRONTEND / RENDERING CONTRACT", [
+        "Arayüzü üç katmanda incele:",
+        "• Layout: min-width:0, intrinsic sizing, grid/flex kırılımları ve uzun metin taşması.",
+        "• State: tek doğruluk kaynağı, stale closure, hydration farkı ve gereksiz render döngüsü.",
+        "• UX/accessibility: klavye odağı, semantic controls, loading/error/empty state ve reduced-motion tercihi.",
+        "• Performance: görsel boyutları, font preload, layout shift ve ana iş parçacığı işi.",
+        "Doğrulama seti: dar telefon, tablet, 1440px masaüstü; klavye-only gezinme; konsolda hata yok; CLS ve gerçek etkileşim süresi."
+      ].join("\n"));
+    }
+    if (/(performance|performans|latency|throughput|p95|p99|profil|benchmark|memory leak|bellek|cache|caching|optimize|bundle size|cpu bound|io bound|slow query)/.test(q)) {
+      return reply("PERFORMANCE / MEASUREMENT PLAN", [
+        "Optimizasyondan önce bütçe ve darboğazı ölç.",
+        "1. SLI seç: p50/p95 latency, throughput, error rate veya heap growth.",
+        "2. CPU, I/O, network, database ve client rendering maliyetlerini ayrı ölç.",
+        "3. Profildeki en pahalı yolu minimal workload ile yeniden üret.",
+        "4. Cache ekliyorsan invalidation, staleness, stampede ve memory budget'ı tanımla.",
+        "5. Aynı yükte değişiklik öncesi/sonrası ölç; ortalama tek başına kuyruk gecikmesini saklar.",
+        "Çıktı: hipotez, baseline, deney, regresyon eşiği."
+      ].join("\n"));
+    }
+    if (/(architecture|mimari|microservice|monolith|event driven|event-driven|service boundary|sinirlar|boundary design|modular design|moduler mimari|system design|design decision)/.test(q)) {
+      return reply("SYSTEM DESIGN / BOUNDARIES", [
+        "Mimaride önce kutuları değil, değişim ve hata sınırlarını çiz.",
+        "• Sorumluluk: her modülün sahip olduğu state ve invariant.",
+        "• Sözleşme: input/output, error semantics, versioning ve ownership.",
+        "• Failure mode: timeout, retry, partial success, duplicate delivery ve degradation.",
+        "• Operasyon: log/metric/trace, migration, rollout ve rollback.",
+        "• Evrim: modül içi değişikliğin kaç tüketiciyi etkilediği; dağıtık sınırın gerçek bir bağımsızlık sağlayıp sağlamadığı.",
+        "Karar kaydı için seçenek, trade-off, reddedilen alternatif ve geri dönüş maliyetini açık yaz."
+      ].join("\n"));
+    }
+    if (/(github actions|ci\/cd|pipeline|deploy|deployment|rollback|release|docker|container|workflow|build failure|build fail|pages deploy|github pages)/.test(q)) {
+      return reply("DELIVERY PIPELINE / RELEASE SAFETY", [
+        "Dağıtımı dört kapıyla güvenceye al:",
+        "01 · Validate: syntax, links/assets, type/lint ve test.",
+        "02 · Build: tekrarlanabilir dependency çözümü ve artifact hash'i.",
+        "03 · Release: environment/secret ayrımı, minimum izinler ve atomik yayın.",
+        "04 · Verify: health check, hata oranı ve geri dönüş koşulu.",
+        "GitHub Pages gibi statik yayında özellikle relative asset yolları, base path, kırık anchor ve case-sensitive dosya adlarını kontrol et.",
+        "Rollback için son başarılı artifact'i ve deploy commit'ini açıkça kaydet."
+      ].join("\n"));
+    }
+    if (/(backprop|backpropagation|gradient|sigmoid|neural network|sinir agi|embedding|inference|overfit|overfitting|loss function|loss|dataset|tokenization|classifier|model training|training loop|machine learning|makine ogrenmesi)/.test(q)) {
+      return reply("MODEL SYSTEMS / LEARNING LOOP", [
+        "Model hattını veri, optimizasyon ve değerlendirme olarak ayır.",
+        "• Veri: label kalitesi, sınıf dengesi, leakage ve train/eval ayrımı.",
+        "• Optimizasyon: loss tanımı, gradient scale, learning rate, initialization ve deterministik seed.",
+        "• Genelleme: görülmemiş örnekler, confusion matrix, precision/recall ve kalibrasyon.",
+        "• Runtime: inference latency, model/version hash'i, fallback davranışı ve gözlemlenebilirlik.",
+        "Kayıp azalması tek başına doğru davranışın kanıtı değildir. Holdout set ve görev bazlı regresyon örnekleri gerekir."
+      ].join("\n"));
+    }
+    if (/(git diff|git status|merge conflict|cherry.pick|rebase|branch protection|commit history|pull request|github actions)/.test(q)) {
+      return reply("GIT / CHANGE CONTROL", [
+        "Değişikliği önce kapsam, sonra geçmiş üzerinden değerlendir.",
+        "• git diff --check: whitespace ve patch sorunları.",
+        "• git diff --stat + dosya bazlı diff: beklenmeyen kapsam genişlemesi.",
+        "• Rebase/merge sırasında aynı invariant üzerinde çakışan değişiklikleri elle birleştir; yalnızca conflict marker silmek yeterli değil.",
+        "• Testleri birleştirme tabanında tekrar çalıştır ve commit'i doğrulanabilir bir davranış değişikliğiyle eşleştir.",
+        "• Release tag'i ve son bilinen iyi commit'i rollback için sakla."
+      ].join("\n"));
+    }
+    if (/(code|kod|function|fonksiyon|implement|implementation|refactor|review|debug|typescript|python|javascript|algorithm|algoritma)/.test(q)) {
+      return reply("ENGINEERING TRIAGE / REQUEST SHAPING", [
+        "İsteği uygulanabilir bir teknik probleme çeviriyorum.",
+        "Girdi formatı: amaç + mevcut davranış + beklenen davranış + ilgili kod/trace + kısıt.",
+        "Çıktı formatı: en olası nedenler, etkilediği sınır, doğrulama adımı ve en küçük güvenli düzeltme.",
+        "Belirsiz varsayımı açık işaretle; kanıtlanmış bulgu ile hipotezi aynı seviyede sunma."
+      ].join("\n"));
+    }
+    return null;
+  }
+
+  function commandRoute(text) {
+    const q = soft(text);
+    if (/^(help|yardim|komutlar|capabilities)(\s|$)/.test(q)) return { intent: "yardim", label: "SESSION / CAPABILITIES" };
+    if (/^(hava|weather)(\s|$)/.test(q)) return { intent: "hava", label: "WEATHER / LIVE DATA" };
+    if (/^(saat|clock)(\s|$)/.test(q)) return { intent: "saat", label: "CLOCK / EUROPE-ISTANBUL" };
+    if (/^(radyo|radio|muzik|yayin|yayini|greyfield)(\s|$)/.test(q)) return { intent: "radyo", label: "AUDIO / SYNTHESIS" };
+    if (/^(tema|theme)(\s|$)/.test(q)) return { intent: "tema", label: "INTERFACE / THEME" };
+    if (/^(titresim|titre|vibration)(\s|$)/.test(q)) return { intent: "titresim", label: "INTERFACE / MOTION" };
+    if (/^(egit|train)(\s|$)/.test(q)) return { intent: "egit", label: "MODEL / TRAINING LOOP" };
+    if (/^(not|arsiv notu|sonraki not)(\s|$)/.test(q)) return { intent: "not", label: "ARCHIVE / NOTE" };
+    if (/^(iskelet|skeleton)(\s|$)/.test(q)) return { intent: "iskelet", label: "TEXT / NORMALIZATION" };
+    if (/^(kedi|cat)(\s|$)/.test(q)) return { intent: "kedi", label: "LOCAL / IMAGE LAB" };
+    if (/^(ay|moon)(\s|$)/.test(q)) return { intent: "ay", label: "LUNAR / EPHEMERIS" };
+    if (/^(git|go)\s+(kuslar|kus hatti|atolye|workbench|tigerk|laboratuvar|kedi|frekans|radyo|sinyal|arsiv|hat|kirmizi)(\s|$)/.test(q)) return { intent: "git", label: "NAVIGATION / SECTION ROUTER" };
+    return null;
+  }
+
   function ask(text) {
     const clean = String(text || "").trim();
     const bone = skeleton(clean);
     const bits = entropy(clean);
     if (!clean) {
       return {
-        intent: "bos",
-        conf: 0,
-        margin: 0,
-        answer: "Boş cümle. İskelet de boş.",
-        bone: bone.text,
-        dropped: 0,
-        bits: 0,
-        hidden: [],
-        scores: [],
-        passage: null,
+        intent: "bos", conf: 0, margin: 0, answer: "Boş istem.",
+        bone: bone.text, dropped: 0, bits: 0, hidden: [], scores: [],
+        passage: null, topic: "REQUEST / EMPTY",
       };
     }
     const hit = classify(clean);
     const order = hit.scores.map((value, index) => ({ value, index })).sort((a, b) => b.value - a.value);
     const margin = order[0].value - order[1].value;
-    let intent = hit.intent;
+    const specialist = engineeringResponse(clean);
+    const command = commandRoute(clean);
+    let intent = specialist ? "sor" : command ? command.intent : hit.intent;
     const qwords = new Set(["ne", "nasil", "kim", "nerede", "neden", "niye", "mi", "mu", "kac", "hangi", "nedir", "nicin"]);
     const question = soft(clean).split(" ").some((word) => qwords.has(word));
-    if (hit.conf < 0.55 || margin < 0.08) intent = "sor";
-    if (question && (intent === "git" || intent === "not" || intent === "radyo" || intent === "kedi")) intent = "sor";
+    if (!specialist && !command) {
+      if (hit.conf < 0.55 || margin < 0.08) intent = "sor";
+      if (question && (intent === "git" || intent === "not" || intent === "radyo" || intent === "kedi")) intent = "sor";
+    }
     const passage = retrieve(clean);
+    const fallbackLabel = passage && !passage.weak ? passage.title : INTENTS[order[0].index].toUpperCase();
     return {
-      intent,
-      conf: hit.conf,
-      margin,
-      bone: bone.text,
-      dropped: bone.dropped,
-      bits,
-      hidden: hit.hidden,
-      scores: hit.scores,
-      passage,
+      intent, conf: hit.conf, margin, bone: bone.text, dropped: bone.dropped, bits,
+      hidden: hit.hidden, scores: hit.scores, passage,
       label: INTENTS[order[0].index],
+      topic: specialist ? specialist.label : command ? command.label : fallbackLabel,
     };
   }
 
@@ -473,7 +676,7 @@
     const line = getComputedStyle(document.documentElement).getPropertyValue("--line").trim() || "#2a241f";
     ctx.font = "11px Outfit, sans-serif";
     ctx.fillStyle = bone;
-    ctx.fillText(`katman 32 → ${HIDDEN} → ${INTENTS.length}   kayıp ${loss.toFixed(3)}   tur ${epochs}`, 8, 16);
+    ctx.fillText(`katman ${INPUT} → ${HIDDEN} → ${INTENTS.length}   kayıp ${loss.toFixed(3)}   tur ${epochs}`, 8, 16);
     const rows = Math.min(8, hidden.length);
     hidden.slice(0, rows).forEach((value, index) => {
       const y = 28 + index * 12;
@@ -500,27 +703,40 @@
   function speak(text, read) {
     const clean = String(text || "").trim();
     const folded = soft(clean);
-    if (!clean) return "Boş cümle. İskelet de boş.";
+    if (!clean) return "İstem boş. İnceleme için bir hedef veya belirti gir.";
     const hit = read || ask(clean);
+    const specialist = engineeringResponse(clean);
+    if (specialist) return specialist.answer;
+
     if (/(^|\s)(saat|saati)(\s|$)/.test(folded) || folded.includes("saat kac")) {
       const now = new Date().toLocaleTimeString("tr-TR", { timeZone: "Europe/Istanbul", hour12: false });
-      return `İstanbul saati ${now}. Duvar saati yalan söylemez, ben de söylemem.`;
+      return "İstanbul saati " + now + " · Europe/Istanbul.";
     }
     if (hit.passage && !hit.passage.weak) {
-      return `${hit.passage.title}. ${hit.passage.body}`;
+      return hit.passage.title + "\n" + hit.passage.body;
     }
-    if (/^(selam|merhaba|hey|naber|nasilsin|nbr)/.test(folded)) {
-      return "Buradayım. Gece vardiyası açık. Sor: Galata, Ayasofya, Süleymaniye, Kız Kulesi, Tigerk, VeilCheck, hava, saat. Uydurmam.";
+    if (hit.intent === "hava") {
+      return "Hava verisi üstteki İstanbul panelinden gelir. İstek anındaki değer panelde varsa onu kullan; veri akışı yoksa eski bir değeri canlıymış gibi sunma.";
     }
-    if (folded.includes("kimsin") || folded.includes("adin ne") || folded.includes("sen kim") || folded.includes("nesin")) {
-      return "Tigerk. Bu sekmede doğan küçük bir ağ. Ergin Kaplan'ın gece masası. Model indirmem, anahtar istemem, boşluğu süslemem.";
+    if (hit.intent === "yardim") {
+      return [
+        "Tigerk / Engineering Reasoning Layer",
+        "API sözleşmesi · code review · root-cause triage · test stratejisi · performans · güvenlik sınırları · sistem tasarımı.",
+        "Örnek istem: API retry semantiğini idempotency, concurrency ve failure response açısından incele.",
+        "Çıktı: bulgu → etki → doğrulama → düzeltme."
+      ].join("\n");
     }
-    if (hit.intent === "hava") return "Hava Open-Meteo'dan gelir. Üstteki şerit doluysa sayı oradadır; değilse hat susmuştur, sayfa ayaktadır.";
-    if (hit.intent === "yardim") return "Sor ya da komut yaz. hava, saat, radyo, kedi, galata kulesi, ayasofya, veilcheck, tigerk nedir. İlk kelime HAT'ta komutsa o çalışır.";
     if (hit.passage && hit.passage.weak) {
-      return `En yakın kayıt ${hit.passage.title}. ${hit.passage.body} Eşleşme zayıf; kesin diye satmıyorum.`;
+      return "Yakın kayıt: " + hit.passage.title + ". " + hit.passage.body + "\nBu eşleşme sorunun tamamını doğrulamıyor; hedefi veya ilgili kod parçasını daralt.";
     }
-    return "Bu cümlenin kaydı yok. Uydurup boşluk doldurmam. Galata, Eminönü, Samatya, Ayasofya, Süleymaniye, Kız Kulesi, VeilCheck, GreySignal, ReconX, radyo, kedi, saat, hava — bunları sorarsan cevaplarım.";
+    return [
+      "REQUEST TRIAGE / CONTEXT REQUIRED",
+      "İsteği bir inceleme hedefiyle eşleştiremedim. Teknik bağlamı tek bir iz üzerinden daralt:",
+      "• Beklenen davranış ve gerçek çıktı",
+      "• İlgili fonksiyon, diff veya stack trace",
+      "• Runtime / sürüm ve değişmeyen kısıtlar",
+      "Sonuç biçimi: hipotezler, risk sırası, doğrulama deneyi ve minimum düzeltme."
+    ].join("\n");
   }
 
   function paintAnswer(text) {
@@ -534,7 +750,7 @@
       const conf = read.conf || 0;
       const n = Math.max(0, Math.min(8, Math.round(conf * 8)));
       const bars = `${"|".repeat(n)}${".".repeat(8 - n)}`;
-      meta.textContent = `${read.intent} ${bars} ${(conf * 100).toFixed(0)}% · iskelet ${read.bone} · ${(read.bits || 0).toFixed(2)} bit · kayıp ${net.loss.toFixed(3)}`;
+      meta.textContent = `${read.topic || "ENGINEERING TRIAGE"} · LOCAL ROUTER · SESSION ${net.epochs}`;
     }
     draw(document.getElementById("tigerk-net"), read);
     if (window.Gece && window.Gece.pulse) window.Gece.pulse("tigerk");
@@ -615,7 +831,7 @@
       }
     });
     const waiting = document.getElementById("tigerk-out");
-    if (waiting) waiting.textContent = "Ağ ayakta. Soruyu yaz, cevap burada durur.";
+    if (waiting) waiting.textContent = "ENGINEERING SESSION / READY. Bir sözleşme, hata izi veya tasarım kararıyla başla.";
     draw(document.getElementById("tigerk-net"), null);
   }
 

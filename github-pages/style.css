@@ -1665,3 +1665,33 @@ html[data-motion="off"] .workbench-visual::after{display:none}
  html[data-motion="on"] .lightning{animation:flash 13s steps(2,end) infinite;opacity:.24}
  html[data-motion="on"] .grain{animation:grainShift 20s steps(4,end) infinite}
 }
+
+/* HAT / EL-2945: compact local engineering console */
+.hat{left:auto;right:16px;bottom:16px;width:min(540px,calc(100vw - 32px));height:min(470px,64dvh);max-height:calc(100dvh - env(safe-area-inset-top) - 32px);border:1px solid color-mix(in srgb,var(--red) 72%,var(--line));background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 28px 100px #000b,0 0 42px color-mix(in srgb,var(--red) 14%,transparent);border-radius:5px}
+.hat-brand{display:flex;align-items:center;gap:10px;min-width:0;flex:0 1 auto}
+.hat-brand>span{font:8px/1.4 var(--mono);letter-spacing:.1em;color:var(--dim);max-width:124px}
+.hat-chrome{gap:8px;background:linear-gradient(110deg,color-mix(in srgb,var(--red) 9%,transparent),transparent 72%);padding:8px 10px}
+.hat-mark{font-size:24px}
+.hat-screen{background-color:color-mix(in srgb,var(--bg) 84%,transparent);font-size:12px}
+.hat-line{font-size:12px;line-height:1.6;margin-bottom:8px}
+.hat-line.ask{color:var(--bone)}
+.hat-line.ghost{color:var(--red);letter-spacing:.06em}
+.hat-line.dim{color:var(--dim)}
+.hat-form{background:color-mix(in srgb,var(--surface) 92%,transparent)}
+.hat-form input::placeholder{color:var(--dim);opacity:.8}
+#hat-close{min-height:36px;padding:0 9px;font-size:9px}
+@media(max-width:899px) and (min-width:601px){
+ .hat{left:auto;right:14px;bottom:14px;width:min(540px,calc(100vw - 28px));height:min(460px,68dvh);border:1px solid var(--red)}
+}
+@media(max-width:600px){
+ .hat{left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));width:auto;height:min(66dvh,520px);max-height:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 16px);border:1px solid var(--red);border-radius:5px}
+ .hat-brand{gap:6px}
+ .hat-brand>span{font-size:7px;max-width:102px;letter-spacing:.06em}
+ .hat-chrome{gap:5px;padding:6px;min-height:46px}
+ .hat-bands{gap:3px}
+ .hat-bands button{min-width:31px;min-height:36px;font-size:9px}
+ .hat-screen{padding:10px}
+ .hat-line{font-size:12px}
+ .hat-form{padding:7px 9px calc(7px + env(safe-area-inset-bottom))}
+ .hat-fab{min-width:62px;min-height:43px;font-size:19px}
+}

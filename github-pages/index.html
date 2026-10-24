@@ -229,24 +229,24 @@
       <div class="trace" id="tigerk">
         <div class="tigerk-heading">
           <div>
-            <p class="kicker">Tigerk · TARAYICI AĞI / EL-2945</p>
-            <h3>Nöron burada. Hat <em>seni tanıyor.</em></h3>
+            <p class="kicker">Tigerk · ENGINEERING REASONING / EL-2945</p>
+            <h3>Kodun arkasındaki kararı <em>gör.</em></h3>
           </div>
           <button class="btn ghost tigerk-open-hat" id="open-tigerk-hat" type="button">Gizli hattı aç <span aria-hidden="true">↗</span></button>
         </div>
-        <p class="note">Python deposundaki ile aynı iskelet: nöron, katman, sigmoid, ileri besleme, MSE, geri yayılım. Ağ bu sekmede doğar. Ağırlık yalnızca bu tarayıcıda kalır. Dışarı model isteği yok.</p>
-        <label class="kicker" for="tigerk-in">CÜMLE YA DA SORU</label>
-        <textarea id="tigerk-in" rows="3" maxlength="280" placeholder="galata kulesi ne zaman yapıldı"></textarea>
+        <p class="note">İstek önce niyet katmanından geçer; ardından yerel bilgi indeksi ve mühendislik playbook’ları devreye girer. Ağ burada eğitilir, durum bu tarayıcıda kalır. Tasarım kararı, hata izi veya API sözleşmesi ver; analiz hattını başlatalım.</p>
+        <label class="kicker" for="tigerk-in">ENGINEERING PROMPT / İNCELEME BAĞLAMI</label>
+        <textarea id="tigerk-in" rows="4" maxlength="1600" placeholder="API sözleşmesini incele: idempotency, retry politikası ve hata semantiği."></textarea>
         <div class="row">
-          <button class="btn" id="tigerk-run" type="button">Tigerk'e sor</button>
+          <button class="btn" id="tigerk-run" type="button">İsteği çözümle</button>
           <button class="btn ghost" id="tigerk-bone" type="button">İskelet</button>
-          <button class="btn ghost" id="tigerk-train" type="button">Bir tur eğit</button>
-          <button class="btn ghost" id="tigerk-clear" type="button">Sil</button>
+          <button class="btn ghost" id="tigerk-train" type="button">Ağı bir tur eğit</button>
+          <button class="btn ghost" id="tigerk-clear" type="button">Temizle</button>
         </div>
-        <p class="display trace-out" id="tigerk-out" aria-live="polite">Ağ hazır olunca burada cevaplar.</p>
-        <p class="meta"><span id="tigerk-meta">henüz soru yok</span></p>
+        <p class="display trace-out" id="tigerk-out" aria-live="polite">Bir kontrat, hata izi veya tasarım kararı bırak. Tigerk; olası nedenleri, riskleri ve doğrulama adımlarını yapılandırır.</p>
+        <p class="meta"><span id="tigerk-meta">LOCAL ROUTER · READY / CONTEXT WAITING</span></p>
         <canvas id="tigerk-net" height="132" aria-hidden="true"></canvas>
-        <p class="meta"><a href="https://github.com/eerrgin/Tigerk/tree/main" rel="noopener">Python kaynağı ↗</a> · aynı mantık, bu deponun içinde, HAT terminalinde de çalışır.</p>
+        <p class="meta"><a href="https://github.com/eerrgin/Tigerk/tree/main" rel="noopener">Python kaynağı ↗</a> · aynı yönlendirme ve yanıt katmanı, HAT terminalinde de çalışır.</p>
       </div>
       <p class="lab-link"><a href="https://eerrgin.github.io/ergin-lab/" rel="noopener">Ergin Lab duruyor ↗</a> — Taskflow, Calc Lab, Skyline, Tempo. Öğrenme parçaları, vitrin değil.</p>
     </section>
@@ -421,7 +421,7 @@
   </dialog>
   <div class="hat" id="sevk" hidden>
     <div class="hat-chrome">
-      <p class="hat-mark">HAT</p>
+      <div class="hat-brand"><p class="hat-mark">HAT</p><span>LOCAL ENGINEERING CONSOLE / EL-2945</span></div>
       <div class="hat-bands" aria-label="Sayfa bantları">
         <button type="button" data-go="kuslar" title="Kuş Hattı">01</button>
         <button type="button" data-go="atolye" title="Atölye">02</button>
@@ -432,33 +432,14 @@
         <button type="button" data-go="arsiv" title="Arşiv">06</button>
         <button type="button" data-go="kirmizi" title="Kırmızı hat">07</button>
       </div>
-      <p class="hat-status" id="hat-status">hat kapalı</p>
+      <p class="hat-status" id="hat-status">LOCAL SESSION · READY</p>
       <button class="ghost" id="hat-close" type="button">kapat</button>
     </div>
-    <section class="hat-lockscreen" id="hat-lockscreen" aria-labelledby="hat-lock-title">
-      <p class="kicker">EL / KAPALI DEVRE · OTURUM 01</p>
-      <p class="hat-lock-glyph" aria-hidden="true">e.</p>
-      <h2 id="hat-lock-title">Ergin'in hattı.</h2>
-      <p class="hat-lock-lede">Bağlantı eski bir imzayı hatırladı. Bu kanal, sahibinin dönüşünü bekliyor.</p>
-      <div class="hat-lock-record">
-        <span>MUHATAP</span><strong>ERGİN KAPLAN</strong>
-        <span>İLK EL SIKIŞMA</span><strong>4 HANELİ İMZA</strong>
-        <span>DURUM</span><strong class="hat-lock-state">YANIT BEKLENİYOR, EFENDİM</strong>
-      </div>
-      <form class="hat-access-form" id="hat-access-form">
-        <label for="hat-access-code">Başlangıç kodu</label>
-        <div class="hat-access-entry">
-          <input id="hat-access-code" name="access-code" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" aria-describedby="hat-access-hint hat-access-status" placeholder="····" required>
-          <button type="submit">HATTI AÇ <span aria-hidden="true">↗</span></button>
-        </div>
-        <p id="hat-access-hint" class="hat-lock-foot">Yerel sahne protokolü · gerçek hesap doğrulaması değildir.</p>
-        <p id="hat-access-status" class="hat-access-status" role="status" aria-live="polite">Kanal, yanıtınızı bekliyor.</p>
-      </form>
-    </section>
+
     <div class="hat-screen" id="hat-screen" role="log" aria-live="polite" aria-relevant="additions"></div>
     <form class="hat-form" id="hat-form">
       <label for="hat-in">e.hat</label>
-      <input id="hat-in" type="text" maxlength="280" autocomplete="off" spellcheck="false" enterkeyhint="send" placeholder="yağmur var mı">
+      <input id="hat-in" type="text" maxlength="1600" autocomplete="off" spellcheck="false" enterkeyhint="send" placeholder="API retry semantiğini incele…" aria-label="HAT için geliştirici istemi">
     </form>
   </div>
   <button class="hat-fab" id="hat-fab" type="button">HAT</button>

@@ -9,9 +9,9 @@
   const status = document.getElementById("hat-status");
   if (!root || !screen || !form || !input || !window.Tigerk || !window.Gece) return;
 
-  const COMMANDS = ["yardım", "help", "hava", "saat", "ay", "radyo", "kedi", "git", "iskelet", "tema", "titreşim", "tigerk", "eğit", "ağ", "not", "temiz", "clear", "kapat", "sıfır", "bant"];
+  const COMMANDS = ["yardım", "help", "review", "debug", "api", "test", "mimari", "performans", "güvenlik", "deploy", "hava", "saat", "ay", "radyo", "kedi", "git", "iskelet", "tema", "titreşim", "tigerk", "eğit", "ağ", "not", "temiz", "clear", "kapat", "sıfır", "bant"];
   const PLACES = [
-    ["istanbul", ["istanbul", "şehir", "sehir", "galata", "eminönü", "eminonu", "samatya", "ayasofya", "süleymaniye", "suleymaniye"]],
+    ["kuslar", ["istanbul", "şehir", "sehir", "galata", "eminönü", "eminonu", "samatya", "ayasofya", "süleymaniye", "suleymaniye", "kuş hattı", "kus hatti"]],
     ["atolye", ["atolye", "atölye", "workbench", "proje", "veil", "masa"]],
     ["tigerk", ["tigerk", "ağ", "ag", "nöron", "noron"]],
     ["laboratuvar", ["laboratuvar", "kedi", "lab"]],
@@ -29,11 +29,7 @@
   }
   let cursor = history.length;
   let welcomed = false;
-  let unlocked = false;
   let idleAt = Date.now();
-  const accessForm = document.getElementById("hat-access-form");
-  const accessCode = document.getElementById("hat-access-code");
-  const accessStatus = document.getElementById("hat-access-status");
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function fold(value) {
@@ -76,13 +72,14 @@
 
   function helpText() {
     return [
-      "HAT bir kabuk değil. Gece sevk masası.",
-      "İlk kelime komutsa o çalışır. Cümle yazarsan Tigerk niyeti okur.",
-      "hava · saat · ay · radyo [otobüs|vhs|neon|kes]",
-      "kedi · git <bölüm> · not · tema [gece|amber|kemik|sis]",
-      "titreşim [aç|kapa] · iskelet <cümle> · tigerk <cümle>",
-      "eğit · ağ · sıfır · bant · temiz · kapat",
-      "Kısayol: `  aç/kapa. Oklar geçmiş. Sekme tamamlar.",
+      "HAT / LOCAL ENGINEERING CONSOLE · EL-2945",
+      "Serbest istem: API sözleşmesi, code review, root-cause, test planı, performans, güvenlik veya mimari.",
+      "İnceleme formatı: hedef + beklenen/gerçek davranış + ilgili trace/diff + kısıt.",
+      "Çıktı: bulgu → etki → doğrulama → en küçük güvenli düzeltme.",
+      "Örnek: API retry semantiğini idempotency, eşzamanlı tekrar ve 5xx davranışı açısından değerlendir.",
+      "Yerel komutlar: hava · saat · ay · radyo [otobüs|vhs|neon|kes] · tema [gece|amber|kemik|sis]",
+      "git <bölüm> · kedi · iskelet <metin> · tigerk <istem> · eğit · ağ · not · temiz · kapat",
+      "Kısayol: backtick aç/kapa · ↑/↓ geçmiş · Tab komut tamamlama.",
     ].join("\n");
   }
 
@@ -183,9 +180,8 @@
     if (out) out.textContent = answer;
     if (meta && read) {
       const net = window.Tigerk.state();
-      meta.textContent = read.intent
-        ? `${read.intent} ${bars(read.conf || 0)}  ${((read.conf || 0) * 100).toFixed(0)}% · iskelet ${read.bone} · ${read.bits.toFixed(2)} bit · kayıp ${net.loss.toFixed(3)}`
-        : "henüz soru yok";
+      const topic = read.topic || (read.passage && read.passage.title) || "ENGINEERING TRIAGE";
+      meta.textContent = topic + " · LOCAL ROUTER · SESSION " + net.epochs;
     }
     const canvas = document.getElementById("tigerk-net");
     if (canvas && read) window.Tigerk.draw(canvas, read);
@@ -194,9 +190,9 @@
   function runFree(text) {
     const read = window.Tigerk.ask(text);
     const answer = answerFor(read.intent, text, read);
-    line(`tigerk  ${read.intent}  ${bars(read.conf)}  ${Math.round(read.conf * 100)}%`, "dim");
+    const topic = read.topic || (read.passage && read.passage.title) || "ENGINEERING TRIAGE";
+    line("ROUTE / " + topic + " · LOCAL SESSION", "dim");
     answer.split("\n").forEach((row, index) => line(row, index === 0 ? "" : "dim"));
-    line(`iskelet  ${read.bone}  ·  ${read.dropped} sesli düştü`, "dim");
     publish(read, answer);
     window.Gece.pulse("tigerk");
   }
@@ -310,51 +306,19 @@
   function openHat() {
     root.hidden = false;
     root.classList.add("open");
-    root.classList.toggle("locked", !unlocked);
     document.body.classList.add("hat-open");
     paintStatus();
 
-    if (!unlocked) {
-      if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-        window.setTimeout(() => accessCode?.focus(), 30);
-      }
-      return;
-    }
-
     if (!welcomed) {
       welcomed = true;
-      line("EL-2945 · Ergin Kaplan / kapalı devre", "ghost");
-      line("Bağlantı tanındı, efendim.", "ask");
-      line("Ergin ile konuşma kanalı açıldı. Yanıtınızı bekliyorum, efendim.", "ask");
-      line("Tigerk: Bellek bu tarayıcıda. Cevaplarım hâlâ deney aşamasında; bilmediğimi saklamayacağım.", "dim");
-      line("Komut için yardım yazın. İlk kayıt: hava · saat · tema gece", "dim");
+      line("HAT / EL-2945 · LOCAL ENGINEERING CONSOLE", "ghost");
+      line("Tigerk reasoning layer hazır. İsteği bağlamıyla gönder.", "ask");
+      line("Örnek: API retry semantiği · race condition · kod incelemesi · test stratejisi", "dim");
+      line("Çıktı: bulgu → etki → doğrulama → düzeltme.", "dim");
     }
     if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
       window.setTimeout(() => input.focus(), 30);
     }
-  }
-
-  function acceptAccessCode(event) {
-    event.preventDefault();
-    const entered = String(accessCode?.value || "").trim();
-    if (entered !== "2945") {
-      if (accessStatus) {
-        accessStatus.textContent = "İmza eşleşmedi. Hat sessizliğini koruyor.";
-        accessStatus.dataset.state = "error";
-      }
-      accessCode?.select();
-      return;
-    }
-
-    unlocked = true;
-    root.classList.remove("locked");
-    if (accessStatus) {
-      accessStatus.textContent = "İmza tanındı. Kanal açılıyor.";
-      accessStatus.dataset.state = "success";
-    }
-    if (accessCode) accessCode.value = "";
-    window.Gece.pulse("tigerk");
-    openHat();
   }
 
   function closeHat() {
@@ -363,7 +327,6 @@
     document.body.classList.remove("hat-open");
   }
 
-  accessForm?.addEventListener("submit", acceptAccessCode);
   document.getElementById("open-hat")?.addEventListener("click", openHat);
   document.getElementById("open-tigerk-hat")?.addEventListener("click", openHat);
   document.getElementById("hat-fab")?.addEventListener("click", openHat);
