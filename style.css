@@ -3001,3 +3001,66 @@ section[data-stamp]::before { -webkit-text-stroke-color: color-mix(in srgb, var(
   body::before, .top .rule, .ticker p, .sweep, .lightning { animation: none !important; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+
+/* BACKGROUND STABILITY FIX · 2026-10-24
+   The previous background moved two large image layers independently.
+   Keep one dependable image plate; retain mist/embers as restrained decoration. */
+.forest-run {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: #080506;
+  background-image:
+    linear-gradient(180deg, rgba(8,5,6,.30) 0%, rgba(8,5,6,.10) 38%, rgba(8,5,6,.54) 76%, #080506 100%),
+    linear-gradient(90deg, rgba(20,7,9,.28), rgba(8,5,6,.04) 48%, rgba(8,5,6,.24)),
+    url("photos/peron-train.jpg");
+  background-repeat: no-repeat;
+  background-position: center, center, center 42%;
+  background-size: cover, cover, cover;
+  isolation: isolate;
+}
+.fr-sky,
+.fr-far {
+  display: none !important;
+  animation: none !important;
+  transform: none !important;
+}
+.fr-mist {
+  height: 30%;
+  background: linear-gradient(180deg, transparent 0%, rgba(8,5,6,.34) 48%, #080506 100%);
+}
+.fr-ember { opacity: .45; }
+#rift {
+  z-index: 1;
+  opacity: .42;
+}
+.lightning { opacity: .12; }
+.vignette {
+  z-index: 3;
+  background:
+    radial-gradient(ellipse at center, transparent 34%, rgba(0,0,0,.46) 100%),
+    linear-gradient(180deg, rgba(0,0,0,.20), transparent 18%, transparent 72%, rgba(5,1,2,.58));
+}
+@media (max-width: 720px) {
+  .forest-run {
+    background-position: center, center, 58% center;
+    background-size: cover, cover, cover;
+  }
+  .fr-mist { height: 25%; }
+  .fr-ember { opacity: .3; }
+}
+@media (max-width: 420px) {
+  .forest-run {
+    background-image:
+      linear-gradient(180deg, rgba(8,5,6,.32), rgba(8,5,6,.18) 36%, rgba(8,5,6,.60) 78%, #080506),
+      linear-gradient(90deg, rgba(20,7,9,.22), rgba(8,5,6,.06) 48%, rgba(8,5,6,.18)),
+      url("photos/peron-train.jpg");
+    background-position: center, center, 56% center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fr-ember { animation: none !important; }
+}
