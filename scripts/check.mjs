@@ -78,7 +78,7 @@ for (const file of htmlFiles) {
 
   if (rel === "index.html") {
     for (const scriptName of ["fx.js", "script.js", "tigerk.js", "hat.js"]) {
-      if (!html.includes('src="' + scriptName + '"')) {
+      if (!(new RegExp('src="' + scriptName.replace(/[.*+?^${}()|[\\]\\]/g, "\\if (!html.includes('src="' + scriptName + '"')) {") + '(?:\\?[^"]*)?"')).test(html)) {
         fail(rel, "interaction script is not linked: " + scriptName);
       }
     }
