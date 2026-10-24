@@ -2575,3 +2575,149 @@ a { transition: color 160ms ease; }
   body::before, .top .rule, .lightning, .sweep, .ticker p { animation: none !important; }
   .portrait .viewport .base { transition: none; }
 }
+
+
+/* CRIMSON MOON / İnce kızıl sıcaklık, lacivert gök ve küçük gerçekçi yıldızlar. */
+:root {
+  --red: #cf8586;
+  --red-deep: #783540;
+  --red-dim: rgba(207, 133, 134, 0.14);
+}
+html[data-theme="gece"] {
+  --red: #cf8586;
+  --red-deep: #783540;
+  --red-dim: rgba(207, 133, 134, 0.14);
+}
+
+body {
+  background:
+    radial-gradient(ellipse at 7% 7%, rgba(108, 35, 51, 0.20), transparent 38%),
+    radial-gradient(ellipse at 82% 5%, rgba(61, 107, 132, 0.20), transparent 37%),
+    radial-gradient(ellipse at 46% 72%, rgba(43, 63, 78, 0.08), transparent 48%),
+    var(--bg);
+}
+
+body::before {
+  background:
+    radial-gradient(1px 1px at 8% 15%, rgba(245, 232, 206, 0.54) 55%, transparent 100%),
+    radial-gradient(1.2px 1.2px at 18% 38%, rgba(220, 229, 227, 0.46) 55%, transparent 100%),
+    radial-gradient(1px 1px at 29% 9%, rgba(246, 225, 198, 0.47) 55%, transparent 100%),
+    radial-gradient(1px 1px at 43% 25%, rgba(220, 229, 227, 0.40) 55%, transparent 100%),
+    radial-gradient(1.4px 1.4px at 57% 13%, rgba(246, 225, 198, 0.45) 55%, transparent 100%),
+    radial-gradient(1px 1px at 68% 37%, rgba(220, 229, 227, 0.42) 55%, transparent 100%),
+    radial-gradient(1px 1px at 83% 18%, rgba(246, 225, 198, 0.49) 55%, transparent 100%),
+    radial-gradient(1px 1px at 93% 44%, rgba(220, 229, 227, 0.37) 55%, transparent 100%),
+    radial-gradient(1px 1px at 74% 65%, rgba(246, 225, 198, 0.34) 55%, transparent 100%),
+    radial-gradient(1px 1px at 21% 76%, rgba(220, 229, 227, 0.32) 55%, transparent 100%),
+    repeating-linear-gradient(118deg, transparent 0 38px, rgba(216, 225, 222, 0.009) 38px 39px);
+  background-size: 100% 100%;
+  animation: none;
+  opacity: 0.78;
+}
+
+.top .rule {
+  background: linear-gradient(90deg, transparent, #713441 22%, #ce8586 39%, #f0d9b4 53%, #547a90 76%, transparent);
+  box-shadow: 0 0 14px rgba(207, 133, 134, 0.13);
+}
+
+.btn {
+  background: linear-gradient(135deg, #d7a0a0, #bd747e);
+  color: #20141a;
+  box-shadow: 0 8px 24px rgba(185, 88, 101, 0.13);
+}
+.btn:hover { color: #20141a; }
+.hero #mast em { color: #d49a9a; }
+
+.ticker {
+  border-top-color: rgba(207, 133, 134, 0.34);
+}
+.ticker p { color: #cf9292; }
+
+.hero::after {
+  background:
+    radial-gradient(1px 1px at 22% 13%, rgba(246, 232, 207, 0.48) 55%, transparent 100%),
+    radial-gradient(1px 1px at 31% 31%, rgba(214, 225, 228, 0.38) 55%, transparent 100%),
+    radial-gradient(1px 1px at 44% 19%, rgba(246, 232, 207, 0.4) 55%, transparent 100%),
+    radial-gradient(1.2px 1.2px at 60% 10%, rgba(214, 225, 228, 0.34) 55%, transparent 100%),
+    radial-gradient(1px 1px at 85% 7%, rgba(246, 232, 207, 0.35) 55%, transparent 100%),
+    radial-gradient(ellipse at 62% 38%, rgba(83, 129, 149, 0.11), transparent 56%);
+  opacity: 0.82;
+}
+
+.celestial-overlay {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    radial-gradient(1px 1px at 58% 13%, rgba(248, 237, 216, 0.64) 55%, transparent 100%),
+    radial-gradient(1px 1px at 66% 22%, rgba(221, 234, 233, 0.55) 55%, transparent 100%),
+    radial-gradient(1px 1px at 77% 12%, rgba(248, 237, 216, 0.6) 55%, transparent 100%),
+    radial-gradient(1px 1px at 88% 27%, rgba(221, 234, 233, 0.48) 55%, transparent 100%),
+    radial-gradient(1px 1px at 48% 20%, rgba(248, 237, 216, 0.42) 55%, transparent 100%),
+    radial-gradient(1px 1px at 92% 11%, rgba(221, 234, 233, 0.42) 55%, transparent 100%);
+}
+
+.celestial-overlay .moon {
+  position: absolute;
+  top: 8%;
+  right: 9%;
+  width: clamp(27px, 3.35vw, 43px);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 68% 28%, rgba(132, 142, 151, 0.28) 0 7%, transparent 8%),
+    radial-gradient(circle at 42% 63%, rgba(123, 135, 147, 0.22) 0 11%, transparent 12%),
+    radial-gradient(circle at 27% 30%, rgba(255, 250, 229, 0.99), rgba(235, 227, 204, 0.96) 47%, rgba(185, 197, 197, 0.95) 100%);
+  box-shadow: 0 0 8px rgba(249, 231, 195, 0.26), 0 0 24px rgba(209, 222, 226, 0.13);
+  opacity: 0.92;
+}
+
+.celestial-overlay .moon::after {
+  content: "";
+  position: absolute;
+  top: -5%;
+  left: 34%;
+  width: 94%;
+  height: 94%;
+  border-radius: 50%;
+  background: #0a1720;
+  box-shadow: inset 4px -2px 9px rgba(20, 34, 43, 0.65);
+}
+
+.celestial-overlay .star {
+  position: absolute;
+  display: block;
+  width: 1.5px;
+  height: 1.5px;
+  border-radius: 50%;
+  background: #f3e8d1;
+  box-shadow: 0 0 4px rgba(249, 233, 199, 0.56), 0 0 9px rgba(180, 211, 222, 0.16);
+  opacity: 0.72;
+  animation: star-glimmer 6.5s ease-in-out infinite;
+}
+.celestial-overlay .star-a { left: 56%; top: 13%; animation-delay: -1.2s; }
+.celestial-overlay .star-b { left: 65%; top: 18%; width: 1px; height: 1px; animation-delay: -3.4s; }
+.celestial-overlay .star-c { left: 72%; top: 10%; width: 2px; height: 2px; animation-delay: -2.1s; }
+.celestial-overlay .star-d { left: 83%; top: 17%; animation-delay: -4.2s; }
+.celestial-overlay .star-e { left: 92%; top: 23%; width: 1px; height: 1px; animation-delay: -0.7s; }
+.celestial-overlay .star-f { left: 49%; top: 25%; animation-delay: -2.7s; }
+.celestial-overlay .star-g { left: 61%; top: 31%; width: 1px; height: 1px; animation-delay: -5.1s; }
+.celestial-overlay .star-h { left: 77%; top: 28%; animation-delay: -3.8s; }
+.celestial-overlay .star-i { left: 88%; top: 9%; width: 1px; height: 1px; animation-delay: -1.8s; }
+.celestial-overlay .star-j { left: 42%; top: 15%; width: 1px; height: 1px; animation-delay: -4.7s; }
+.celestial-overlay .star-k { left: 96%; top: 35%; width: 1px; height: 1px; animation-delay: -2.4s; }
+.celestial-overlay .star-l { left: 68%; top: 35%; width: 1px; height: 1px; animation-delay: -0.4s; }
+
+@keyframes star-glimmer {
+  0%, 100% { opacity: 0.42; transform: scale(0.85); }
+  45% { opacity: 0.88; transform: scale(1.14); }
+  58% { opacity: 0.72; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .celestial-overlay .star { animation: none; opacity: 0.65; }
+}
