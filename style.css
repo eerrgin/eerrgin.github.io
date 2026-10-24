@@ -1480,7 +1480,7 @@ html.motion section.reveal.in { animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 
 .bird-mini-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 0 18px}
 .bird-mini-stats span{padding:12px 7px 12px 0;display:flex;flex-direction:column;gap:4px}
 .bird-mini-stats span+span{border-left:1px solid var(--line);padding-left:12px}
-.bird-mini-stats b{font:28px/1 var(--display);color:var(--paper)}
+.bird-mini-stats b{font:28px/1 var(--display);color:var(--fg)}
 .bird-mini-stats small{font:8px/1.4 var(--mono);letter-spacing:.08em;color:var(--muted)}
 .bird-home-actions{gap:8px;flex-wrap:wrap}.bird-home-actions .btn{font-size:10px;padding:11px 13px}
 .bird-table-panel{padding:18px 16px;display:flex;flex-direction:column;gap:13px}
@@ -1490,7 +1490,7 @@ html.motion section.reveal.in { animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 
 .bird-preview-table th{text-align:left;color:var(--muted);font:9px/1.4 var(--mono);letter-spacing:.04em;padding:9px 6px;border-bottom:1px solid var(--line)}
 .bird-preview-table td{vertical-align:middle;padding:11px 6px;border-bottom:1px solid var(--line-soft);color:var(--muted);white-space:nowrap}
 .bird-preview-table td:first-child{white-space:normal;min-width:130px}
-.bird-preview-table td strong{display:block;color:var(--paper);font-size:12px;font-weight:600}
+.bird-preview-table td strong{display:block;color:var(--fg);font-size:12px;font-weight:600}
 .bird-preview-table td small{display:block;font-family:var(--mono);font-size:9px;font-style:italic;margin-top:3px;color:var(--muted)}
 .bird-mini-year{display:flex;gap:2px;align-items:center}
 .bird-mini-year i{display:block;width:5px;height:13px;background:var(--line);border-radius:1px}
@@ -1503,7 +1503,7 @@ html.motion section.reveal.in { animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 
 .archive-promo>img{width:100%;height:100%;min-height:108px;object-fit:cover;filter:saturate(.76);border-right:1px solid var(--line)}
 .archive-promo-label{padding:12px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px;min-width:0}
 .archive-promo-label .kicker{font-size:8px;margin:0}
-.archive-promo-label strong{font:italic 19px/1.1 var(--display);color:var(--paper)}
+.archive-promo-label strong{font:italic 19px/1.1 var(--display);color:var(--fg)}
 .archive-promo-label small{font-size:9px;color:var(--muted);line-height:1.5}
 .archive-hero{margin-top:25px}
 @media(max-width:900px){.bird-home-layout{grid-template-columns:minmax(0,1fr)}.bird-preview-panel{padding-bottom:17px}.bird-art,.bird-art svg{max-height:220px}.bird-table-panel{padding:16px}}
