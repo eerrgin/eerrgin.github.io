@@ -1564,12 +1564,13 @@ html.motion section.reveal.in { animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 
 .project-card{position:relative;isolation:isolate;min-height:264px;padding:19px 19px 16px!important;border:1px solid color-mix(in srgb,var(--red) 25%,var(--line));background:linear-gradient(145deg,color-mix(in srgb,var(--surface-2) 88%,transparent),color-mix(in srgb,var(--bg) 96%,transparent) 78%);box-shadow:inset 0 1px #ffffff0a,0 15px 35px #0003;transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease}
 .project-card::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 100% 0,color-mix(in srgb,var(--red) 10%,transparent),transparent 46%);opacity:.7}
 .project-card::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--red);transition:right .35s cubic-bezier(.2,.7,.2,1)}
-.project-veilcheck{grid-column:span 5;--project-accent:#d8c2a5}
+.project-veilcheck{grid-column:span 4;--project-accent:#d8c2a5}
 .project-greysignal{grid-column:span 4;--project-accent:#c1b9ce}
-.project-reconx{grid-column:span 3;--project-accent:#e1ab91}
+.project-reconx{grid-column:span 4;--project-accent:#e1ab91}
 .project-sqli{grid-column:span 3;--project-accent:#d3bc8f}
-.project-tigerk{grid-column:span 4;--project-accent:#c2b4d9}
-.project-mycelforge{grid-column:span 5;--project-accent:#b6c89e}
+.project-tigerk{grid-column:span 3;--project-accent:#c2b4d9}
+.project-mycelforge{grid-column:span 3;--project-accent:#b6c89e}
+.project-savunma{grid-column:span 3;--project-accent:#e58f84}
 .project-card-top{position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;min-height:67px}
 .project-index{display:inline-block;padding-top:4px;color:var(--dim);font:9px/1.5 var(--mono);letter-spacing:.08em}
 .project-sigil{display:grid;place-items:center;width:66px;height:66px;flex:0 0 66px;color:var(--project-accent);opacity:.94;border:1px solid color-mix(in srgb,var(--project-accent) 25%,transparent);border-radius:48% 52% 56% 44%;background:radial-gradient(circle at 50% 50%,color-mix(in srgb,var(--project-accent) 9%,transparent),transparent 70%);transition:transform .6s cubic-bezier(.2,.7,.2,1),border-radius .6s}
@@ -1695,3 +1696,10 @@ html[data-motion="off"] .workbench-visual::after{display:none}
  .hat-form{padding:7px 9px calc(7px + env(safe-area-inset-bottom))}
  .hat-fab{min-width:62px;min-height:43px;font-size:19px}
 }
+
+.project-savunma{background:linear-gradient(135deg,color-mix(in srgb,#e58f84 9%,var(--surface)),var(--bg) 78%)}
+.project-savunma .project-sigil{border-radius:45% 55% 48% 52%}
+.project-savunma .project-card-top{min-height:67px}
+.project-savunma .project-sigil svg{color:var(--project-accent)}
+@media(max-width:1050px){.project-savunma{grid-column:span 3}}
+@media(max-width:760px){.project-savunma{grid-column:span 1}}
