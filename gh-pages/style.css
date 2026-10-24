@@ -1468,7 +1468,7 @@ html.motion section.reveal.in { animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 
 
 /* Samatya Kuş Hattı: ana sayfa vitrini */
 .bird-home-layout{display:grid;grid-template-columns:minmax(0,1.03fr) minmax(0,.97fr);gap:16px;margin-top:20px;align-items:stretch}
-.bird-preview-panel,.bird-table-panel{min-width:0;border:1px solid var(--line);background:color-mix(in srgb,var(--panel) 78%,transparent);overflow:hidden}
+.bird-preview-panel,.bird-table-panel{min-width:0;border:1px solid var(--line);background:color-mix(in srgb,var(--surface) 78%,transparent);overflow:hidden}
 .bird-preview-panel{padding:0 20px 20px}
 .bird-art{margin:0 -20px 18px;border-bottom:1px solid var(--line);overflow:hidden;background:#151c24}
 .bird-art svg{display:block;width:100%;height:auto;max-height:245px}
