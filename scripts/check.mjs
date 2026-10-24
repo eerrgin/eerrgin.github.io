@@ -77,8 +77,10 @@ for (const file of htmlFiles) {
   }
 
   if (rel === "index.html") {
+    const linkedScripts = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/gi)]
+      .map((match) => match[1].split("?")[0]);
     for (const scriptName of ["fx.js", "script.js", "tigerk.js", "hat.js"]) {
-      if (!(new RegExp('src="' + scriptName.replace(/[.*+?^${}()|[\\]\\]/g, "\\if (!html.includes('src="' + scriptName + '"')) {") + '(?:\\?[^"]*)?"')).test(html)) {
+      if (!linkedScripts.includes(scriptName)) {
         fail(rel, "interaction script is not linked: " + scriptName);
       }
     }
