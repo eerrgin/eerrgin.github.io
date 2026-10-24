@@ -1464,3 +1464,47 @@ html.motion section.reveal.in { animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 
 @media (prefers-reduced-motion: reduce) {
   .station { transition: none; }
 }
+
+
+/* Samatya Kuş Hattı: ana sayfa vitrini */
+.bird-home-layout{display:grid;grid-template-columns:minmax(0,1.03fr) minmax(0,.97fr);gap:16px;margin-top:20px;align-items:stretch}
+.bird-preview-panel,.bird-table-panel{min-width:0;border:1px solid var(--line);background:color-mix(in srgb,var(--panel) 78%,transparent);overflow:hidden}
+.bird-preview-panel{padding:0 20px 20px}
+.bird-art{margin:0 -20px 18px;border-bottom:1px solid var(--line);overflow:hidden;background:#151c24}
+.bird-art svg{display:block;width:100%;height:auto;max-height:245px}
+.bird-preview-head,.bird-table-title{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.bird-preview-head h3,.bird-table-title h3{font-size:clamp(21px,2.3vw,31px);line-height:1.08;margin:0;letter-spacing:-.025em}
+.bird-live-dot{white-space:nowrap;color:#e5bd78;border:1px solid color-mix(in srgb,#e5bd78 45%,transparent);padding:6px 8px;font:9px/1.2 var(--mono);letter-spacing:.12em}
+.bird-live-dot:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#e5bd78;margin-right:7px;vertical-align:1px}
+.bird-preview-copy{color:var(--muted);font-size:14px;line-height:1.7;margin:14px 0 18px}
+.bird-mini-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 0 18px}
+.bird-mini-stats span{padding:12px 7px 12px 0;display:flex;flex-direction:column;gap:4px}
+.bird-mini-stats span+span{border-left:1px solid var(--line);padding-left:12px}
+.bird-mini-stats b{font:28px/1 var(--display);color:var(--paper)}
+.bird-mini-stats small{font:8px/1.4 var(--mono);letter-spacing:.08em;color:var(--muted)}
+.bird-home-actions{gap:8px;flex-wrap:wrap}.bird-home-actions .btn{font-size:10px;padding:11px 13px}
+.bird-table-panel{padding:18px 16px;display:flex;flex-direction:column;gap:13px}
+.bird-table-title{align-items:end}.bird-table-title>a{font-size:10px;white-space:nowrap}
+.bird-preview-table-wrap{overflow-x:auto}
+.bird-preview-table{border-collapse:collapse;width:100%;font-size:11px;min-width:410px}
+.bird-preview-table th{text-align:left;color:var(--muted);font:9px/1.4 var(--mono);letter-spacing:.04em;padding:9px 6px;border-bottom:1px solid var(--line)}
+.bird-preview-table td{vertical-align:middle;padding:11px 6px;border-bottom:1px solid var(--line-soft);color:var(--muted);white-space:nowrap}
+.bird-preview-table td:first-child{white-space:normal;min-width:130px}
+.bird-preview-table td strong{display:block;color:var(--paper);font-size:12px;font-weight:600}
+.bird-preview-table td small{display:block;font-family:var(--mono);font-size:9px;font-style:italic;margin-top:3px;color:var(--muted)}
+.bird-mini-year{display:flex;gap:2px;align-items:center}
+.bird-mini-year i{display:block;width:5px;height:13px;background:var(--line);border-radius:1px}
+.bird-mini-year i.lvl1{background:color-mix(in srgb,#e5bd78 36%,transparent);height:6px}
+.bird-mini-year i.lvl2{background:color-mix(in srgb,#e5bd78 66%,transparent);height:9px}
+.bird-mini-year i.lvl3{background:#e5bd78}
+.bird-table-foot{color:var(--muted);font-size:10px;line-height:1.6;margin:0}
+.archive-promo{display:grid;grid-template-columns:100px minmax(0,1fr);align-items:stretch;margin-top:auto;min-height:108px;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 68%,transparent);transition:border-color 180ms ease}
+.archive-promo:hover{border-color:var(--red)}
+.archive-promo>img{width:100%;height:100%;min-height:108px;object-fit:cover;filter:saturate(.76);border-right:1px solid var(--line)}
+.archive-promo-label{padding:12px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px;min-width:0}
+.archive-promo-label .kicker{font-size:8px;margin:0}
+.archive-promo-label strong{font:italic 19px/1.1 var(--display);color:var(--paper)}
+.archive-promo-label small{font-size:9px;color:var(--muted);line-height:1.5}
+.archive-hero{margin-top:25px}
+@media(max-width:900px){.bird-home-layout{grid-template-columns:minmax(0,1fr)}.bird-preview-panel{padding-bottom:17px}.bird-art,.bird-art svg{max-height:220px}.bird-table-panel{padding:16px}}
+@media(max-width:560px){.bird-preview-panel{padding-left:13px;padding-right:13px}.bird-art{margin-left:-13px;margin-right:-13px}.bird-preview-head{flex-direction:column}.bird-live-dot{align-self:flex-start}.bird-mini-stats b{font-size:24px}.bird-mini-stats small{font-size:7px}.archive-promo{grid-template-columns:90px minmax(0,1fr)}.archive-promo-label strong{font-size:17px}.bird-home-actions .btn{flex:1;justify-content:center;text-align:center}}
