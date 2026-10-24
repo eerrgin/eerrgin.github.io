@@ -2721,3 +2721,137 @@ body::before {
 @media (prefers-reduced-motion: reduce) {
   .celestial-overlay .star { animation: none; opacity: 0.65; }
 }
+
+
+/* —— peron / orman geçidi · 20261024 —— */
+:root {
+  --bg: #070203;
+  --bg-2: #16060a;
+  --surface: #14080c;
+  --fg: #f7ece6;
+  --muted: #d7c2b8;
+  --red: #e10600;
+  --red-deep: #7a0c12;
+  --bone: #f3d7c8;
+}
+body {
+  background:
+    radial-gradient(1200px 520px at 70% -10%, rgba(225, 6, 0, 0.18), transparent 60%),
+    radial-gradient(900px 480px at 10% 110%, rgba(120, 18, 28, 0.35), transparent 55%),
+    #070203;
+}
+.forest-run {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.fr-sky {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 78% 16%, rgba(255, 214, 170, 0.16), transparent 18%),
+    linear-gradient(180deg, #120308 0%, #1a070c 38%, #0a0204 100%);
+}
+.fr-moon {
+  position: absolute;
+  width: 92px;
+  height: 92px;
+  right: 11%;
+  top: 9%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffe7d2, #c4554a 62%, transparent 64%);
+  filter: blur(0.2px);
+  box-shadow: 0 0 40px rgba(225, 40, 30, 0.35);
+  opacity: 0.85;
+}
+.fr-trees, .fr-rail, .fr-mist, .fr-train {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.fr-trees {
+  bottom: 0;
+  height: 46%;
+  background-repeat: repeat-x;
+  background-size: 640px 100%;
+  will-change: background-position;
+}
+.fr-far {
+  height: 38%;
+  opacity: 0.45;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 240'><path fill='%2312080c' d='M0 240 L40 90 L70 150 L110 40 L150 140 L190 70 L230 160 L270 30 L320 150 L360 80 L410 170 L450 50 L500 150 L540 90 L580 160 L640 60 L640 240 Z'/></svg>");
+  animation: drift-far 80s linear infinite;
+}
+.fr-near {
+  height: 52%;
+  opacity: 0.78;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 280'><path fill='%23040000' d='M0 280 L20 120 L55 190 L90 40 L130 170 L165 80 L210 200 L250 20 L300 180 L345 70 L390 210 L430 50 L480 190 L520 90 L560 200 L600 60 L640 150 L640 280 Z'/></svg>");
+  animation: drift-near 36s linear infinite;
+}
+.fr-rail {
+  bottom: 18%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(225,6,0,.8), #fff, rgba(225,6,0,.8), transparent);
+  box-shadow: 0 0 12px rgba(225,6,0,.6);
+}
+.fr-train {
+  bottom: 19%;
+  height: 54px;
+  display: flex;
+  gap: 6px;
+  width: max-content;
+  animation: train-pass 28s linear infinite;
+  filter: drop-shadow(0 8px 10px rgba(0,0,0,.55));
+}
+.fr-train .car {
+  width: 118px;
+  height: 46px;
+  background: linear-gradient(180deg, #1a0508, #050102);
+  border: 1px solid rgba(225,6,0,.55);
+  border-radius: 3px 3px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+}
+.fr-train .car i {
+  width: 16px;
+  height: 22px;
+  background: linear-gradient(180deg, #ffd7b0, #e24a2a 70%);
+  box-shadow: 0 0 12px rgba(255,120,60,.8);
+  border-radius: 1px;
+  opacity: 0.9;
+  animation: window-life 3.6s ease-in-out infinite;
+}
+.fr-train .car:nth-child(2) i { animation-delay: .4s; }
+.fr-train .car:nth-child(3) i { animation-delay: .9s; }
+.fr-mist {
+  inset: auto 0 0 0;
+  height: 28%;
+  background: linear-gradient(180deg, transparent, rgba(7,2,3,.72) 40%, #070203);
+}
+@keyframes drift-far { from { background-position: 0 0; } to { background-position: -640px 0; } }
+@keyframes drift-near { from { background-position: 0 0; } to { background-position: -640px 0; } }
+@keyframes train-pass { from { transform: translateX(110vw); } to { transform: translateX(-90vw); } }
+@keyframes window-life { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+.lightning { opacity: 0.45; animation-duration: 14s; }
+.vignette {
+  background:
+    radial-gradient(ellipse at center, transparent 42%, rgba(0,0,0,.62) 100%),
+    linear-gradient(180deg, rgba(0,0,0,.35), transparent 16%, transparent 78%, rgba(7,2,3,.75));
+}
+.top { background: linear-gradient(180deg, rgba(12,2,4,.82), rgba(7,1,3,.62)); }
+.viewport .base { filter: saturate(1.05) contrast(1.08) brightness(0.92); }
+.place, .card, .trace { background: linear-gradient(180deg, rgba(255,210,190,.05), transparent 30%), linear-gradient(165deg, rgba(40,10,14,.92), rgba(8,2,4,.92)); }
+@media (max-width: 720px) {
+  .fr-moon { width: 64px; height: 64px; right: 6%; }
+  .fr-train { bottom: 16%; }
+  .fr-train .car { width: 92px; height: 38px; }
+  .fr-near { height: 42%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fr-far, .fr-near, .fr-train, .fr-train .car i { animation: none; }
+  .fr-train { left: 8%; }
+}

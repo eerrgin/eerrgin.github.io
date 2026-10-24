@@ -23,7 +23,7 @@
   <link rel="mask-icon" href="favicon.svg?v=20261024" color="#ff3028">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="fonts/bss-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20261024-afterglow2">
+  <link rel="stylesheet" href="style.css?v=20261024-peron">
   <script>
     (function () {
       var root = document.documentElement;
@@ -45,8 +45,23 @@
 </head>
 <body>
   <canvas id="rift" aria-hidden="true"></canvas>
+  <div class="forest-run" aria-hidden="true">
+    <div class="fr-sky"></div>
+    <div class="fr-moon"></div>
+    <div class="fr-trees fr-far"></div>
+    <div class="fr-trees fr-near"></div>
+    <div class="fr-train">
+      <span class="car"><i></i><i></i><i></i><i></i></span>
+      <span class="car"><i></i><i></i><i></i><i></i></span>
+      <span class="car"><i></i><i></i><i></i><i></i></span>
+      <span class="car"><i></i><i></i><i></i><i></i></span>
+    </div>
+    <div class="fr-rail"></div>
+    <div class="fr-mist"></div>
+  </div>
   <div class="lightning" aria-hidden="true"></div>
   <div class="vignette" aria-hidden="true"></div>
+  <audio id="night-bed" preload="none" loop></audio>
   <a class="skip" href="#top">İçeriğe geç</a>
   <header class="top">
     <div class="rule"></div>
@@ -115,7 +130,7 @@
       </div>
       <figure class="portrait" id="portrait">
         <div class="viewport">
-          <img class="base" src="photos/gece-hatti.jpg" alt="Dağların arasından geçen, pencereleri sıcak bir gece treni." width="800" height="450">
+          <img class="base" src="photos/gece-hatti.jpg" alt="Ormanın içinden geçen gece treni: sıcak pencereler, peronda bekleyenler." width="800" height="450">
           <img class="ghost" id="ghost" src="photos/gece-hatti.jpg" alt="" aria-hidden="true" width="800" height="450">
           <span class="celestial-overlay" aria-hidden="true"><span class="moon"></span><i class="star star-a"></i><i class="star star-b"></i><i class="star star-c"></i><i class="star star-d"></i><i class="star star-e"></i><i class="star star-f"></i><i class="star star-g"></i><i class="star star-h"></i><i class="star star-i"></i><i class="star star-j"></i><i class="star star-k"></i><i class="star star-l"></i></span>
           <span class="sweep" aria-hidden="true"></span>
@@ -587,6 +602,59 @@
     </form>
   </div>
   <button class="hat-fab" id="hat-fab" type="button">HAT</button>
+
+  <script>
+    (function () {
+      var started = false;
+      function bed() {
+        if (started) return;
+        started = true;
+        var AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+        var ctx = new AC();
+        var master = ctx.createGain();
+        master.gain.value = 0.0;
+        master.connect(ctx.destination);
+        function noiseBuf() {
+          var n = ctx.createBuffer(1, ctx.sampleRate * 2, ctx.sampleRate);
+          var d = n.getChannelData(0);
+          for (var i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+          return n;
+        }
+        var src = ctx.createBufferSource();
+        src.buffer = noiseBuf();
+        src.loop = true;
+        var bp = ctx.createBiquadFilter();
+        bp.type = "lowpass";
+        bp.frequency.value = 180;
+        var lfo = ctx.createOscillator();
+        lfo.frequency.value = 0.07;
+        var lfoG = ctx.createGain();
+        lfoG.gain.value = 40;
+        lfo.connect(lfoG);
+        lfoG.connect(bp.frequency);
+        src.connect(bp);
+        bp.connect(master);
+        var tone = ctx.createOscillator();
+        tone.type = "sine";
+        tone.frequency.value = 62;
+        var tg = ctx.createGain();
+        tg.gain.value = 0.35;
+        tone.connect(tg);
+        tg.connect(master);
+        src.start();
+        tone.start();
+        lfo.start();
+        var now = ctx.currentTime;
+        master.gain.setValueAtTime(0, now);
+        master.gain.linearRampToValueAtTime(0.045, now + 2.8);
+        window.__nightBed = { ctx: ctx, master: master };
+      }
+      ["pointerdown", "keydown"].forEach(function (ev) {
+        window.addEventListener(ev, bed, { once: true, passive: true });
+      });
+    })();
+  </script>
   <script src="fx.js" defer></script>
   <script src="script.js?v=20261024-afterglow2" defer></script>
   <script src="tigerk.js" defer></script>
