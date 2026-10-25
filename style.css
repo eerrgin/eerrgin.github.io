@@ -3280,3 +3280,9 @@ html[data-motion="off"] .topos-scan,html[data-motion="off"] .topos-highlight{ani
   .cockpit-frame { height: 820px; }
   .cockpit-footer-line { gap: 5px 12px; overflow-wrap: anywhere; }
 }
+
+
+/* ATMOSPHERE EMBED · allow the complete compact panel to size itself */
+.cockpit-frame { height: 480px; }
+@media (max-width: 899px) { .cockpit-frame { height: 650px; } }
+@media (max-width: 600px) { .cockpit-frame { height: 820px; } }
