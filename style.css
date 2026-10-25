@@ -3198,6 +3198,9 @@ html[data-motion="off"] .topos-scan,html[data-motion="off"] .topos-highlight{ani
 
 /* ISTANBUL LIVE COCKPIT · OPEN-DATA WINDOW */
 .istanbul-cockpit {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   position: relative;
   z-index: 2;
   padding: clamp(26px, 4vw, 54px) 0 clamp(22px, 3vw, 38px);
