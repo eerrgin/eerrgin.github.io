@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Samatya — topocentric gökyüzü</title>
+  <meta name="description" content="Samatya (41.0028°K, 28.9404°D) merkezli, kütüphanesiz Kepler + ışık gecikmesi gökyüzü simülasyonu.">
+  <meta name="theme-color" content="#050307">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <canvas id="sky"></canvas>
+  <header class="hud">
+    <div class="brand">
+      <a href="../">e.</a>
+      <div>
+        <strong>SAMATYA TOPOS</strong>
+        <span>41.0028°K · 28.9404°D · 18 m</span>
+      </div>
+    </div>
+    <div class="readouts" id="readouts"></div>
+  </header>
+  <aside class="panel" id="panel"></aside>
+  <p class="hint">Sürükle: bakış · tekerlek: yakınlaş · Samatya ufku sabit, gökkubbe UTC ile döner.</p>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
