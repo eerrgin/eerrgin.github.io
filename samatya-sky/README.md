@@ -41,3 +41,10 @@ Güneş kenarındaki Einstein sapması \(1.75''\), çarpma parametresi büyüdü
 - `app.js` — zaman, yörünge, ufuk, Three.js sahnesi
 
 Three.js yalnızca çizim içindir, gök mekaniği onun içinde değildir.
+
+
+## Kullanım ve model sınırları
+
+- Görünümü sürükleyerek döndür; tekerlek veya dokunmatik hareketle yakınlaş; alttaki kaydırıcıyla canlı tarihin çevresinde ±400 güne git.
+- Astronomi hesabı özel JavaScript kodudur; Three.js yalnızca 3B çizim ve kontroller için kullanılır. Sayfanın ilk açılışında modül dosyaları jsDelivr üzerinden yüklenir, bu nedenle ilk açılışta internet bağlantısı gerekir.
+- Yörünge öğeleri ve atmosferik kırılma yaklaşımı yaklaşık bir model sunar. Eğitim ve keşif içindir; hassas efemeris, gözlem planlaması veya navigasyon aracı olarak kullanılmamalıdır.
