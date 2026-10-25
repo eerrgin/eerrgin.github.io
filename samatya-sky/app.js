@@ -58,6 +58,7 @@ const STARS = [
   ["Alhena", 6.6285, 16.399, 1.93], ["Peacock", 20.427, -56.735, 1.94],
   ["Polaris", 2.5303, 89.264, 1.98], ["Algieba", 10.3328, 19.841, 2.08],
   ["Hamal", 2.1195, 23.462, 2.0], ["Diphda", 0.7264, -17.987, 2.04],
+  ["Merak", 11.0307, 56.382, 2.37], ["Phecda", 11.897, 53.695, 2.44], ["Megrez", 12.257, 57.033, 3.31], ["Mizar", 13.398, 54.925, 2.04],
 ];
 
 function julianDate(date) {
@@ -384,9 +385,113 @@ addEventListener("resize", () => {
   renderer.setSize(innerWidth, innerHeight);
 });
 
+const off = document.getElementById("off");
+const when = document.getElementById("when");
+let dayOffset = 0;
+off.addEventListener("input", () => { dayOffset = parseFloat(off.value) || 0; });
+document.getElementById("now").addEventListener("click", () => { dayOffset = 0; off.value = "0"; });
+
+const LINES = [
+  ["Dubhe","Merak"],["Merak","Phecda"],["Phecda","Megrez"],["Megrez","Dubhe"],["Megrez","Alioth"],["Alioth","Mizar"],["Mizar","Alkaid"],
+  ["Betelgeuse","Bellatrix"],["Bellatrix","Alnilam"],["Alnilam","Alnitak"],["Alnitak","Rigel"],
+  ["Altair","Vega"],["Vega","Deneb"],["Deneb","Altair"],
+];
+const byName = Object.fromEntries(starBase.map((s,i)=>[s.name,i]));
+const linePos = new Float32Array(LINES.length * 2 * 3);
+const lineGeo = new THREE.BufferGeometry();
+lineGeo.setAttribute("position", new THREE.BufferAttribute(linePos, 3));
+scene.add(new THREE.LineSegments(lineGeo, new THREE.LineBasicMaterial({ color: 0xff2a22, transparent: true, opacity: 0.35 })));
+
+const MW = 1400;
+const mwPos = new Float32Array(MW * 3);
+const mwCol = new Float32Array(MW * 3);
+const mwBase = [];
+for (let i = 0; i < MW; i++) {
+  const l = Math.random() * Math.PI * 2;
+  const b = (Math.random() - 0.5) * 0.28;
+  const poleRa = 192.85948 * Math.PI / 180;
+  const poleDec = 27.12825 * Math.PI / 180;
+  const angp = 122.932 * Math.PI / 180;
+  const sb = Math.sin(b), cb = Math.cos(b);
+  const sl = Math.sin(l - angp), cl = Math.cos(l - angp);
+  const dec = Math.asin(Math.sin(poleDec)*sb + Math.cos(poleDec)*cb*cl);
+  const y = cb*sl;
+  const x = Math.cos(poleDec)*sb - Math.sin(poleDec)*cb*cl;
+  const ra = wrap(poleRa + Math.atan2(y, x));
+  mwBase.push({ ra, dec });
+  mwCol[i*3] = 0.55; mwCol[i*3+1] = 0.28; mwCol[i*3+2] = 0.32;
+}
+const mwGeo = new THREE.BufferGeometry();
+mwGeo.setAttribute("position", new THREE.BufferAttribute(mwPos, 3));
+mwGeo.setAttribute("color", new THREE.BufferAttribute(mwCol, 3));
+scene.add(new THREE.Points(mwGeo, new THREE.PointsMaterial({ size: 0.22, vertexColors: true, transparent: true, opacity: 0.55 })));
+
+const saturn = planetMeshes.get("Satürn");
+if (saturn) {
+  const ring = new THREE.Mesh(
+    new THREE.RingGeometry(0.7, 1.25, 40),
+    new THREE.MeshBasicMaterial({ color: 0xe6d3a1, side: THREE.DoubleSide, transparent: true, opacity: 0.85 })
+  );
+  ring.rotation.x = Math.PI / 2.4;
+  saturn.add(ring);
+}
+
+function earthVel(T) {
+  const dt = 1 / 36525;
+  const a = heliocentric(PLANETS[2], T);
+  const b = heliocentric(PLANETS[2], T + dt);
+  const eps = obliquity(T);
+  const va = eclipticToEq(b.x - a.x, b.y - a.y, b.z - a.z, eps);
+  const days = dt * 36525;
+  return new THREE.Vector3(va.x / days, va.y / days, va.z / days);
+}
+function aberrate(ra, dec, vel) {
+  const u = new THREE.Vector3(Math.cos(dec) * Math.cos(ra), Math.cos(dec) * Math.sin(ra), Math.sin(dec));
+  u.addScaledVector(vel, 1 / C_AU_PER_DAY);
+  u.normalize();
+  return { ra: Math.atan2(u.y, u.x), dec: Math.asin(Math.max(-1, Math.min(1, u.z))) };
+}
+
+const _place = place;
+function placeAber(state) {
+  const vel = earthVel(state.T);
+  state.vel = vel;
+  for (const s of starBase) {
+    if (!s._ra) { s._ra = s.ra; s._dec = s.dec; }
+    const q = aberrate(s._ra, s._dec, vel);
+    s.ra = q.ra; s.dec = q.dec;
+  }
+  for (const b of state.bodies) {
+    const q = aberrate(b.ra, b.dec, vel);
+    const hor = eqToHorizontal(q.ra, q.dec, state.lst);
+    b.alt = hor.alt + refractionRad(hor.alt);
+    b.az = hor.az;
+  }
+  _place(state);
+  const sp = starGeo.attributes.position;
+  LINES.forEach((pair, i) => {
+    const ia = byName[pair[0]], ib = byName[pair[1]];
+    if (ia == null || ib == null) return;
+    linePos.set([sp.getX(ia), sp.getY(ia), sp.getZ(ia), sp.getX(ib), sp.getY(ib), sp.getZ(ib)], i * 6);
+  });
+  lineGeo.attributes.position.needsUpdate = true;
+  const mp = mwGeo.attributes.position;
+  mwBase.forEach((s, i) => {
+    const q = aberrate(s.ra, s.dec, vel);
+    let hor = eqToHorizontal(q.ra, q.dec, state.lst);
+    hor.alt += refractionRad(hor.alt);
+    const v = domeVector(hor.alt, hor.az, DOME * 0.97);
+    mp.setXYZ(i, v.x, v.y, v.z);
+  });
+  mp.needsUpdate = true;
+}
+
 function frame() {
-  const state = bodyAt(julianDate(new Date()));
-  place(state);
+  const live = julianDate(new Date());
+  const state = bodyAt(live + dayOffset);
+  placeAber(state);
+  if (dayOffset === 0) when.textContent = "canlı · sapma açık";
+  else when.textContent = (dayOffset > 0 ? "+" : "") + dayOffset.toFixed(2) + " gün";
   controls.update();
   renderer.render(scene, camera);
   requestAnimationFrame(frame);

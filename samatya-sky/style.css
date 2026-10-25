@@ -46,3 +46,17 @@ td.name { color: var(--ink); text-align: left; }
   .readouts { display: none; }
   .panel { max-height: 38vh; }
 }
+
+.clockbar {
+  position: fixed; z-index: 3; left: 50%; bottom: 16px; transform: translateX(-50%);
+  display: flex; gap: 10px; align-items: center;
+  background: rgba(8,3,8,.78); border: 1px solid rgba(255,42,34,.45);
+  padding: 8px 12px; font-family: var(--mono); font-size: 11px; color: #f4ebe6;
+  pointer-events: auto; width: min(560px, calc(100% - 24px));
+}
+.clockbar input { flex: 1; accent-color: #ff2a22; }
+.clockbar button { background: #ff2a22; color: #1a0505; border: 0; padding: 6px 10px; cursor: pointer; font: inherit; }
+@media (max-width: 720px) {
+  .clockbar { bottom: 8px; }
+  .hint { display: none; }
+}

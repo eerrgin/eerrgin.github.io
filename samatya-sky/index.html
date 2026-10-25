@@ -29,7 +29,12 @@
     <div class="readouts" id="readouts"></div>
   </header>
   <aside class="panel" id="panel"></aside>
-  <p class="hint">Sürükle: bakış · tekerlek: yakınlaş · Samatya ufku sabit, gökkubbe UTC ile döner.</p>
+  <div class="clockbar">
+    <label>gün kaydır <input id="off" type="range" min="-400" max="400" value="0" step="0.05"></label>
+    <button id="now" type="button">şimdi</button>
+    <span id="when">canlı</span>
+  </div>
+  <p class="hint">Sürükle: bakış · tekerlek: yakınlaş · çubuk: yılı sar, gökkubbe yürüsün.</p>
   <script type="module" src="app.js"></script>
 </body>
 </html>
