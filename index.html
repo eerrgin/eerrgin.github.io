@@ -38,7 +38,7 @@
   <link rel="mask-icon" href="favicon.svg?v=20261024" color="#ff3028">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="fonts/bss-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20261025-lab05">
+  <link rel="stylesheet" href="style.css?v=20261025-atmosphere01">
   <script>
     (function () {
       var root = document.documentElement;
@@ -147,9 +147,9 @@
     <div class="wrap cockpit-wrap">
       <div class="cockpit-heading">
         <div class="cockpit-heading-copy">
-          <p class="kicker"><span class="cockpit-pulse" aria-hidden="true"></span> 01 / AÇIK VERİ · İSTANBUL HATTI</p>
-          <h2 id="istanbul-cockpit-title">Şehrin nabzı <em>şimdi.</em></h2>
-          <p>Hava, ışık penceresi, ay, hava kalitesi, basınç nefesi, sismik nabız ve yörünge. İstanbul için Ergin Lab atmosfer kokpiti.</p>
+          <p class="kicker"><span class="cockpit-pulse" aria-hidden="true"></span> ERGIN LAB · SAHA DENEYİ 01</p>
+          <h2 id="istanbul-cockpit-title">İstanbul <em>/ Atmosfer</em></h2>
+          <p>Şehrin o anki hâli: hava, ışık penceresi, ay evresi, hava kalitesi, basınç, sismik kayıt ve yörünge. Canlı gözlemler, tek bir saha defterinde.</p>
         </div>
         <div class="cockpit-heading-meta" aria-label="Veri kaynakları">
           <span>AÇIK VERİ</span><span>ANAHTARSIZ HAVA</span><span>CANLI ALETLER</span>
@@ -186,7 +186,9 @@
         if (!data || data.type !== "istanbul-cockpit:resize") return;
         var height = Number(data.height);
         if (!Number.isFinite(height) || height < 280) return;
-        frame.style.height = Math.min(Math.max(Math.ceil(height), 420), 620) + "px";
+        var maxHeight = window.matchMedia("(max-width: 600px)").matches ? 900 :
+          (window.matchMedia("(max-width: 899px)").matches ? 760 : 620);
+        frame.style.height = Math.min(Math.max(Math.ceil(height), 420), maxHeight) + "px";
       });
       frame.addEventListener("load", function () {
         frame.contentWindow.postMessage({ type: "istanbul-cockpit:measure" }, window.location.origin);
