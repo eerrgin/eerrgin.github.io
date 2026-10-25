@@ -1421,11 +1421,21 @@ if (!reduceMotion && frame) {
   window.setTimeout(loop, 1400);
 }
 
+let scopeVisible = false;
+let scopeFrame = 0;
+const scopeCanvas = document.getElementById("scope");
+
+function queueScopePaint() {
+  if (!scopeVisible || document.visibilityState === "hidden" || scopeFrame) return;
+  scopeFrame = requestAnimationFrame(paintScope);
+}
+
 function paintScope(now) {
-  const canvas = document.getElementById("scope");
-  if (!canvas) return;
+  scopeFrame = 0;
+  if (!scopeCanvas) return;
+  const canvas = scopeCanvas;
   const ctx = canvas.getContext("2d");
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const dpr = Math.min(window.devicePixelRatio || 1, window.innerWidth <= 720 ? 1.35 : 1.75);
   const w = canvas.clientWidth || 640;
   const h = canvas.clientHeight || 72;
   if (canvas.width !== Math.floor(w * dpr) || canvas.height !== Math.floor(h * dpr)) {
@@ -1459,9 +1469,37 @@ function paintScope(now) {
     }
   }
   ctx.stroke();
-  if (!reduceMotion) requestAnimationFrame(paintScope);
+  if (document.documentElement.dataset.motion === "on" &&
+      scopeVisible && document.visibilityState !== "hidden") queueScopePaint();
 }
-requestAnimationFrame(paintScope);
+
+if (scopeCanvas && "IntersectionObserver" in window) {
+  const scopeObserver = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.target !== scopeCanvas) continue;
+      scopeVisible = entry.isIntersecting;
+      if (scopeVisible) queueScopePaint();
+      else if (scopeFrame) {
+        cancelAnimationFrame(scopeFrame);
+        scopeFrame = 0;
+      }
+    }
+  }, { threshold: 0.01 });
+  scopeObserver.observe(scopeCanvas);
+} else {
+  scopeVisible = Boolean(scopeCanvas);
+  queueScopePaint();
+}
+
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") queueScopePaint();
+});
+const scopeMotionObserver = new MutationObserver(() => queueScopePaint());
+scopeMotionObserver.observe(document.documentElement, {
+  attributes: true,
+  attributeFilter: ["data-motion"],
+});
+
 
 function moonName(date) {
   const synodic = 29.53058867;
