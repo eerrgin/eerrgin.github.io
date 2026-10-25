@@ -38,7 +38,7 @@
   <link rel="mask-icon" href="favicon.svg?v=20261024" color="#ff3028">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="fonts/bss-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20261025-ergin-lab01">
+  <link rel="stylesheet" href="style.css?v=20261025-lab05">
   <script>
     (function () {
       var root = document.documentElement;
@@ -185,8 +185,8 @@
         var data = event.data;
         if (!data || data.type !== "istanbul-cockpit:resize") return;
         var height = Number(data.height);
-        if (!Number.isFinite(height) || height < 300) return;
-        frame.style.height = Math.min(Math.max(Math.ceil(height), 620), 2300) + "px";
+        if (!Number.isFinite(height) || height < 280) return;
+        frame.style.height = Math.min(Math.max(Math.ceil(height), 420), 620) + "px";
       });
       frame.addEventListener("load", function () {
         frame.contentWindow.postMessage({ type: "istanbul-cockpit:measure" }, window.location.origin);
