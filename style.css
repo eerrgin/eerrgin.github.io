@@ -3072,7 +3072,7 @@ section[data-stamp]::before { -webkit-text-stroke-color: color-mix(in srgb, var(
   isolation: isolate;
   padding: clamp(48px, 7vw, 92px) 0 30px;
 }
-.topos-home::before {
+.topos-home[data-stamp]::before {
   content: "00";
   position: absolute;
   z-index: -1;
