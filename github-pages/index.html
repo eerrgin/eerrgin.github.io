@@ -38,7 +38,7 @@
   <link rel="mask-icon" href="favicon.svg?v=20261024" color="#ff3028">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="fonts/bss-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20261025-topos01">
+  <link rel="stylesheet" href="style.css?v=20261025-topos02">
   <script>
     (function () {
       var root = document.documentElement;
@@ -173,59 +173,33 @@
           <p class="kicker">00 / YENİ GÖKYÜZÜ DOSYASI · SAMATYA TOPOS</p>
           <div class="topos-overline"><span><i aria-hidden="true"></i> GÖZLEM NOKTASI SABİT</span><span>41.0028° K · 28.9404° D</span></div>
           <h2 id="topos-title">Gökyüzü,<br><em>Samatya’dan</em> başlar.</h2>
-          <p class="lede topos-lede">Bir mahallenin koordinatlarından gökkubbeye uzanan etkileşimli bir 3B deney. Yıldızları ve gezegenleri yerel ufka göre hesaplar; yörüngelere, ışığın yoluna ve zamana başka bir pencereden bakar.</p>
-          <p class="topos-prompt">Günü kaydır. Ufku döndür. Aynı gökyüzüne başka bir zamandan bak.</p>
+          <p class="lede topos-lede">Samatya'nın ufkunu merkez alan bir gök atlası. Yıldızların ve gezegenlerin hangi yönde göründüğünü, ufkun ne kadar üstünde kaldığını ve ışıklarının bize yaklaşık ne kadar sürede ulaştığını keşfet.</p>
+          <p class="topos-prompt">Bakışını seç. Bir cismi bul. Zamanı değiştir. Gökyüzü yeniden hesaplansın.</p>
           <div class="row topos-actions">
             <a class="btn" href="samatya-sky/" aria-label="Samatya Topos üç boyutlu gökyüzü simülasyonunu aç">GÖKKUBBEYİ AÇ ↗</a>
             <a class="btn ghost" href="https://github.com/eerrgin/eerrgin.github.io/tree/main/samatya-sky" target="_blank" rel="noopener">HESAPLAMALAR VE KAYNAK ↗</a>
           </div>
           <div class="topos-specs" aria-label="Projenin öne çıkan özellikleri">
-            <span>KEPLER YÖRÜNGELERİ</span><span>IŞIK GECİKMESİ</span><span>YEREL UFUK</span><span>TARAYICIDA 3B</span>
+            <span>KEPLER HESABI</span><span>IŞIK YOLCULUĞU</span><span>YEREL UFUK</span><span>3B GÖK ATLASI</span>
           </div>
         </div>
         <div class="topos-visual" aria-hidden="true">
           <div class="topos-visual-meta"><span>OBSERVER / SAMATYA</span><span>EL · TOPOS 001</span></div>
-          <svg class="topos-diagram" viewBox="0 0 520 400" role="presentation" focusable="false">
-            <defs>
-              <radialGradient id="toposCoreGlow"><stop offset="0" stop-color="#ffe6bd" stop-opacity=".95"/><stop offset=".2" stop-color="#ef6555" stop-opacity=".6"/><stop offset="1" stop-color="#ef6555" stop-opacity="0"/></radialGradient>
-              <linearGradient id="toposHorizon" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ff5147" stop-opacity="0"/><stop offset=".5" stop-color="#f2c6ab" stop-opacity=".7"/><stop offset="1" stop-color="#9db7e6" stop-opacity="0"/></linearGradient>
-            </defs>
-            <g class="topos-technical-grid" fill="none" stroke="#a8b6d6" stroke-opacity=".13">
-              <path d="M28 68H492M28 112H492M28 156H492M28 200H492M28 244H492M28 288H492M28 332H492"/>
-              <path d="M62 36V356M126 36V356M190 36V356M254 36V356M318 36V356M382 36V356M446 36V356"/>
-            </g>
-            <g fill="none" stroke="#f3c9b5" stroke-opacity=".46">
-              <ellipse cx="260" cy="192" rx="188" ry="72" transform="rotate(-24 260 192)"/>
-              <ellipse cx="260" cy="192" rx="145" ry="111" transform="rotate(34 260 192)" stroke-opacity=".32"/>
-              <ellipse cx="260" cy="192" rx="82" ry="151" transform="rotate(-52 260 192)" stroke-opacity=".24"/>
-            </g>
-            <path d="M40 276Q150 242 260 276T480 276" fill="none" stroke="url(#toposHorizon)" stroke-width="2"/>
-            <path d="M40 290Q150 256 260 290T480 290" fill="none" stroke="#9caecc" stroke-opacity=".23"/>
-            <circle cx="260" cy="192" r="61" fill="url(#toposCoreGlow)"/>
-            <circle cx="260" cy="192" r="18" fill="#f5d1a2"/>
-            <circle cx="254" cy="186" r="5" fill="#fff3d8" opacity=".9"/>
-            <g class="topos-spin topos-spin-one">
-              <circle cx="430" cy="144" r="7" fill="#8ab7ee"/>
-              <circle cx="430" cy="144" r="13" fill="none" stroke="#8ab7ee" stroke-opacity=".4"/>
-            </g>
-            <g class="topos-spin topos-spin-two">
-              <circle cx="171" cy="263" r="4.5" fill="#f1b89d"/>
-              <circle cx="171" cy="263" r="9" fill="none" stroke="#f1b89d" stroke-opacity=".4"/>
-            </g>
-            <g fill="#f5e4cb">
-              <circle cx="90" cy="94" r="1.7"/><circle cx="145" cy="52" r="1.2"/><circle cx="347" cy="72" r="1.7"/>
-              <circle cx="401" cy="245" r="1.3"/><circle cx="110" cy="310" r="1.4"/><circle cx="466" cy="103" r="1"/>
-              <circle cx="319" cy="324" r="1.6"/><circle cx="202" cy="86" r="1"/><circle cx="377" cy="345" r="1"/>
-            </g>
-            <g class="topos-labels" fill="#d8c9c3" font-family="monospace" font-size="9" letter-spacing="1.4">
-              <text x="40" y="48">LOCAL SKY / 41.0028 N</text>
-              <text x="40" y="376">MARMARA · 28.9404 E</text>
-              <text x="480" y="376" text-anchor="end">TIME IS A DIMENSION</text>
-            </g>
-          </svg>
+          <svg class="topos-diagram" viewBox="0 0 520 400" role="img" aria-labelledby="topos-sky-title topos-sky-desc">
+<title id="topos-sky-title">Samatya'dan görünen gökyüzünün şeması</title><desc id="topos-sky-desc">Ufuk çizgisi, 30 ve 60 derecelik yükseklik yayları, pusula yönleri ve yıldızlar. Şema yörünge çizimi değildir.</desc>
+<defs><radialGradient id="toposSkyGlow"><stop offset="0" stop-color="#b5d4ff" stop-opacity=".32"/><stop offset="1" stop-color="#b5d4ff" stop-opacity="0"/></radialGradient><linearGradient id="toposHorizon" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ff5147" stop-opacity="0"/><stop offset=".5" stop-color="#ff776c" stop-opacity=".9"/><stop offset="1" stop-color="#ff5147" stop-opacity="0"/></linearGradient></defs>
+<circle cx="270" cy="178" r="158" fill="url(#toposSkyGlow)"/>
+<g fill="none" stroke="#98b6e9" stroke-opacity=".24"><path d="M74 292 A196 196 0 0 1 466 292"/><path d="M121 292 A149 149 0 0 1 419 292"/><path d="M172 292 A98 98 0 0 1 368 292"/><path d="M270 292 L270 68" stroke-dasharray="3 7" stroke-opacity=".3"/><path d="M110 292 Q270 133 430 292" stroke-dasharray="3 7" stroke-opacity=".2"/><path d="M142 292 Q270 202 398 292" stroke-dasharray="3 7" stroke-opacity=".18"/></g>
+<path d="M45 292 Q270 275 495 292" fill="none" stroke="url(#toposHorizon)" stroke-width="2.5"/><path d="M72 300 H468" stroke="#d6bbac" stroke-opacity=".35"/>
+<g fill="#9eb2d7" font-family="monospace" font-size="10" letter-spacing="1.2"><text x="276" y="91">60°</text><text x="276" y="151">30°</text><text x="276" y="281">0° / UFUK</text></g>
+<g fill="none" stroke="#b4c8ec" stroke-opacity=".55" stroke-width="1.2"><path d="M130 156 L169 132 L200 170 L235 121 L273 145 L302 102"/><path d="M235 121 L247 190 L281 220"/><path d="M327 160 L365 128 L398 179"/></g>
+<g fill="#e3edff"><circle cx="130" cy="156" r="2.6"/><circle cx="169" cy="132" r="1.8"/><circle cx="200" cy="170" r="2.4"/><circle cx="235" cy="121" r="3.1"/><circle cx="273" cy="145" r="1.8"/><circle cx="302" cy="102" r="2.4"/><circle cx="247" cy="190" r="1.9"/><circle cx="281" cy="220" r="1.7"/><circle cx="327" cy="160" r="2.1"/><circle cx="365" cy="128" r="2.7"/><circle cx="398" cy="179" r="1.8"/></g>
+<circle class="topos-highlight" cx="302" cy="102" r="11" fill="none" stroke="#b8d6ff" stroke-opacity=".7"/><circle cx="302" cy="102" r="3.2" fill="#fff1c8"/>
+<g fill="#e9c8a7" font-family="monospace" font-size="9" letter-spacing="1.2"><text x="55" y="320">K · KUZEY</text><text x="408" y="320">D · DOĞU</text><text x="270" y="42" text-anchor="middle">ZENİT / 90°</text><text x="270" y="365" text-anchor="middle">SAMATYA GÖZLEM NOKTASI</text></g><path class="topos-scan" d="M92 278 Q270 45 448 278" fill="none" stroke="#ff7a71" stroke-width="1.3" stroke-dasharray="4 9" stroke-linecap="round"/></svg>
           <div class="topos-visual-bottom"><span><i aria-hidden="true"></i> 3B GÖKKUBBE</span><span>CANLI ZAMAN / TARİH KAYDIRMA</span></div>
         </div>
       </div>
+<div class="topos-reading-guide" aria-label="Gök çizelgesini okuma rehberi"><article><span>01 / YÜKSEKLİK</span><strong>Ufkun üstünde mi?</strong><p>Artı derece ufkun üstünü, eksi derece görünür ufkun altını anlatır.</p></article><article><span>02 / YÖN</span><strong>Kuzeyden başlayarak</strong><p>Azimut kuzey 0°, doğu 90°, güney 180° ve batı 270° üzerinden okunur.</p></article><article><span>03 / IŞIK YOLU</span><strong>Ne kadar bekledi?</strong><p>Işık süresi, hesaplanan uzaklıktan ışığın bize yaklaşık geliş süresidir.</p></article></div><p class="topos-model-note">Not: Bu, yörünge maketi değil; Samatya'dan görünen gök yönlerinin yaklaşık ve ölçek dışı bir atlasıdır.</p>
       <div class="topos-footnote"><span>EL / SAMATYA TOPOS</span><span>MAHALLE ÖLÇEĞİNDE BİR GÖKYÜZÜ DEFTERİ</span><span>MERAK İÇİN AÇIK</span></div>
     </section>
 
@@ -741,7 +715,7 @@
       });
     })();
   </script>
-  <script src="fx.js" defer></script>
+  <script src="fx.js?v=20261025-topos02" defer></script>
   <script src="script.js?v=20261024-afterglow2" defer></script>
   <script src="tigerk.js" defer></script>
   <script src="hat.js" defer></script>

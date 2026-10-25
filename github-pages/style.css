@@ -3176,3 +3176,21 @@ section[data-stamp]::before { -webkit-text-stroke-color: color-mix(in srgb, var(
   .topos-spin-one, .topos-spin-two { animation: none !important; }
 }
 html[data-motion="off"] .topos-spin-one, html[data-motion="off"] .topos-spin-two { animation: none !important; }
+
+
+/* Samatya Topos: a readable horizon-and-altitude illustration, not an orbital diagram. */
+.topos-spin-one,.topos-spin-two{animation:none!important}
+.topos-scan{stroke-dashoffset:0;animation:topos-sky-scan 8s ease-in-out infinite alternate}
+.topos-highlight{transform-box:fill-box;transform-origin:center;animation:topos-star-glow 3.8s ease-in-out infinite}
+@keyframes topos-sky-scan{from{opacity:.18;stroke-dashoffset:40}to{opacity:.85;stroke-dashoffset:0}}
+@keyframes topos-star-glow{0%,100%{opacity:.42;transform:scale(.88)}50%{opacity:1;transform:scale(1.16)}}
+.topos-reading-guide{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:15px}
+.topos-reading-guide article{min-width:0;border:1px solid rgba(170,190,226,.16);background:linear-gradient(135deg,rgba(15,20,35,.64),rgba(12,7,13,.55));padding:14px 15px}
+.topos-reading-guide article>span{display:block;margin-bottom:10px;color:#df968b;font:8px/1.4 var(--mono,monospace);letter-spacing:.1em}
+.topos-reading-guide article strong{display:block;color:#f4e9e0;font:400 17px/1.2 "Instrument Serif",Georgia,serif}
+.topos-reading-guide article p{margin:8px 0 0;color:var(--muted,#b7a39a);font:11px/1.65 var(--body,Georgia,serif)}
+.topos-model-note{margin:11px 0 0;color:var(--dim,#8a736c);font:10px/1.65 var(--mono,monospace)}
+.topos-visual{background:radial-gradient(ellipse at 50% 42%,rgba(74,94,142,.23),transparent 52%),linear-gradient(160deg,rgba(12,17,31,.94),rgba(8,5,12,.98))}
+@media(max-width:900px){.topos-reading-guide{grid-template-columns:1fr}.topos-reading-guide article{padding:12px 14px}.topos-reading-guide article>span{margin-bottom:5px}.topos-reading-guide article strong{font-size:16px}}
+@media(prefers-reduced-motion:reduce){.topos-scan,.topos-highlight{animation:none!important}}
+html[data-motion="off"] .topos-scan,html[data-motion="off"] .topos-highlight{animation:none!important}

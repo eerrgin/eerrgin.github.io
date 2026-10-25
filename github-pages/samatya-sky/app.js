@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 /** Samatya, İstanbul. Rakım kıyı kotu. */
 const SITE = {
@@ -198,7 +197,7 @@ function bodyAt(jd) {
   hor.alt -= moon.parallax;
   hor.alt += refractionRad(hor.alt);
   out.push({
-    name: "Ay", color: 0xf2efe6, ra: moon.ra, dec: moon.dec,
+    name: "Ay", color: 0xf2efe6, ra: moon.ra, dec: moon.dec, parallax: moon.parallax,
     distAU: moon.distKm / AU_KM, lightDays: (moon.distKm / AU_KM) / C_AU_PER_DAY,
     ...hor, mag: -12,
   });
@@ -239,14 +238,46 @@ renderer.setClearColor(0x070208, 1);
 
 const scene = new THREE.Scene();
 scene.fog = new THREE.FogExp2(0x14060c, 0.012);
-const camera = new THREE.PerspectiveCamera(55, innerWidth / innerHeight, 0.1, 400);
-camera.position.set(0.2, 1.5, 0.2);
-
-const controls = new OrbitControls(camera, canvas);
-controls.enableDamping = true;
-controls.target.set(8, 6, -12);
-controls.minDistance = 0.4;
-controls.maxDistance = 28;
+const camera = new THREE.PerspectiveCamera(56,innerWidth/innerHeight,.1,400);
+camera.position.set(0,0,0);camera.rotation.order="YXZ";
+let viewYaw=.16,viewPitch=.28,targetYaw=viewYaw,targetPitch=viewPitch,focusedBodyIndex=null,dragState=null;
+camera.rotation.set(viewPitch,viewYaw,0);
+const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
+const wrapDelta=(to,from)=>Math.atan2(Math.sin(to-from),Math.cos(to-from));
+const viewPresets={overview:{yaw:.16,pitch:.28,fov:56},north:{yaw:0,pitch:.06,fov:49},east:{yaw:Math.PI/2,pitch:.16,fov:51},zenith:{yaw:.2,pitch:1.18,fov:61},south:{yaw:Math.PI,pitch:.16,fov:51}};
+let targetFov=camera.fov;
+function setView(name){
+ const preset=viewPresets[name]||viewPresets.overview;targetYaw=preset.yaw;targetPitch=preset.pitch;targetFov=preset.fov;focusedBodyIndex=null;
+ document.querySelectorAll("[data-view]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.view===name)));
+ document.querySelectorAll("[data-focus-index]").forEach(b=>b.setAttribute("aria-pressed","false"));
+}
+document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>setView(b.dataset.view)));
+const guideCard=document.getElementById("guide-card"),guideToggle=document.getElementById("guide-toggle");
+function closeGuide(){guideCard.hidden=true;guideToggle.setAttribute("aria-expanded","false");}
+document.getElementById("guide-dismiss").addEventListener("click",closeGuide);
+document.getElementById("guide-start").addEventListener("click",closeGuide);
+guideToggle.addEventListener("click",()=>{const opening=guideCard.hidden;guideCard.hidden=!opening;guideToggle.setAttribute("aria-expanded",String(opening));});
+const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();
+canvas.addEventListener("pointerdown",e=>{if(e.button!==0)return;dragState={id:e.pointerId,x:e.clientX,y:e.clientY,sx:e.clientX,sy:e.clientY,moved:false};canvas.setPointerCapture(e.pointerId);canvas.classList.add("dragging");});
+canvas.addEventListener("pointermove",e=>{
+ if(!dragState||dragState.id!==e.pointerId)return;
+ const dx=e.clientX-dragState.x,dy=e.clientY-dragState.y;dragState.x=e.clientX;dragState.y=e.clientY;
+ if(Math.hypot(e.clientX-dragState.sx,e.clientY-dragState.sy)>4)dragState.moved=true;
+ if(!dragState.moved)return;
+ targetYaw-=dx*.0045;targetPitch=clamp(targetPitch-dy*.004,-1.43,1.43);focusedBodyIndex=null;
+ document.querySelectorAll("[data-view]").forEach(b=>b.setAttribute("aria-pressed","false"));
+ document.querySelectorAll("[data-focus-index]").forEach(b=>b.setAttribute("aria-pressed","false"));
+});
+function endDrag(e){
+ if(!dragState||dragState.id!==e.pointerId)return;const state=dragState;dragState=null;canvas.classList.remove("dragging");if(state.moved)return;
+ pointer.x=e.clientX/innerWidth*2-1;pointer.y=-(e.clientY/innerHeight)*2+1;raycaster.setFromCamera(pointer,camera);
+ const hit=raycaster.intersectObjects([...planetMeshes.values()].filter(m=>m.visible),false)[0];
+ if(hit){const name=[...planetMeshes.entries()].find(([,m])=>m===hit.object)?.[0];const index=latestState?.bodies.findIndex(b=>b.name===name)??-1;if(index>=0)focusBody(index);}
+}
+canvas.addEventListener("pointerup",endDrag);
+canvas.addEventListener("pointercancel",()=>{dragState=null;canvas.classList.remove("dragging");});
+canvas.addEventListener("lostpointercapture",()=>{dragState=null;canvas.classList.remove("dragging");});
+canvas.addEventListener("wheel",e=>{e.preventDefault();targetFov=clamp(targetFov+Math.sign(e.deltaY)*2.5,34,75);},{passive:false});
 
 scene.add(new THREE.AmbientLight(0xffd0c0, 0.35));
 const moonLight = new THREE.DirectionalLight(0xfff1e0, 0.6);
@@ -272,131 +303,119 @@ function makeBody(color, r) {
   const label = document.createElement("div");
   return m;
 }
-for (const n of ["Güneş", "Ay", ...PLANETS.filter((p) => p.name !== "Dünya").map((p) => p.name)]) {
-  const r = n === "Güneş" ? 1.15 : n === "Ay" ? 0.55 : n === "Jüpiter" ? 0.7 : 0.38;
-  planetMeshes.set(n, makeBody(0xffffff, r));
+for(const n of ["Güneş","Ay",...PLANETS.filter(p=>p.name!=="Dünya").map(p=>p.name)]){
+ const r=n==="Güneş"?1.05:n==="Ay"?.7:n==="Jüpiter"?.62:n==="Satürn"?.55:.46;
+ const color=n==="Güneş"?0xffd59a:n==="Ay"?0xe6e8f2:(PLANETS.find(p=>p.name===n)?.color??0xdac9b7);
+ planetMeshes.set(n,makeBody(color,r));
 }
 
-// Kütleçekimsel ızgara: Güneş doğrultusunda çöken bir düzlem, analitik sapma görseli.
-const grid = new THREE.Mesh(
-  new THREE.PlaneGeometry(36, 36, 48, 48),
-  new THREE.MeshBasicMaterial({ color: 0xff2a22, wireframe: true, transparent: true, opacity: 0.28 })
-);
-grid.rotation.x = -Math.PI / 2;
-grid.position.y = -0.02;
-scene.add(grid);
-
-const horizon = new THREE.Mesh(
-  new THREE.RingGeometry(6, 22, 80),
-  new THREE.MeshBasicMaterial({ color: 0x2a1014, side: THREE.DoubleSide })
-);
-horizon.rotation.x = -Math.PI / 2;
-horizon.position.y = -0.03;
-scene.add(horizon);
-
-const readouts = document.getElementById("readouts");
-const panel = document.getElementById("panel");
-
-function fmt(n, d = 2) {
-  return Number.isFinite(n) ? n.toFixed(d) : "—";
+function addDomeLine(points,color=0x94b7e9,opacity=.17,loop=false){
+ const g=new THREE.BufferGeometry().setFromPoints(points),m=new THREE.LineBasicMaterial({color,transparent:true,opacity,depthWrite:false});
+ scene.add(loop?new THREE.LineLoop(g,m):new THREE.Line(g,m));
 }
-function dms(rad) {
-  const sign = rad < 0 ? "-" : "";
-  let x = Math.abs(deg(rad));
-  const dd = Math.floor(x);
-  x = (x - dd) * 60;
-  const mm = Math.floor(x);
-  const ss = (x - mm) * 60;
-  return `${sign}${dd}° ${String(mm).padStart(2, "0")}′ ${ss.toFixed(1)}″`;
+function addCompassSprite(shortLabel,subLabel,azimuth){
+ const c=document.createElement("canvas");c.width=320;c.height=112;const x=c.getContext("2d");
+ x.fillStyle="rgba(6,7,16,.82)";x.strokeStyle="rgba(157,195,255,.52)";x.lineWidth=2;x.beginPath();x.roundRect(3,3,314,106,16);x.fill();x.stroke();
+ x.textAlign="center";x.textBaseline="middle";x.fillStyle="#fff0df";x.font="600 38px monospace";x.fillText(shortLabel,160,39);x.fillStyle="#b8c9e7";x.font="22px monospace";x.fillText(subLabel,160,79);
+ const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;const sprite=new THREE.Sprite(new THREE.SpriteMaterial({map:t,transparent:true,depthTest:false}));
+ sprite.position.copy(domeVector($(2),$(azimuth),DOME*.91));sprite.scale.set(8.4,2.95,1);scene.add(sprite);
 }
+function addCelestialDome(){
+ const radius=DOME*.975;
+ for(const altitude of [0,30,60]){
+  const points=[];
+  for(let degree=0;degree<360;degree+=3){const az=$(degree),alt=$(altitude);points.push(new THREE.Vector3(radius*Math.cos(alt)*Math.sin(az),radius*Math.sin(alt),-radius*Math.cos(alt)*Math.cos(az)));}
+  addDomeLine(points,altitude===0?0xff6b61:0x88a8dd,altitude===0?.45:.16,true);
+ }
+ for(let azimuth=0;azimuth<180;azimuth+=30){
+  const points=[];
+  for(let altitude=0;altitude<=90;altitude+=3){const a=$(altitude),z=$(azimuth);points.push(new THREE.Vector3(radius*Math.cos(a)*Math.sin(z),radius*Math.sin(a),-radius*Math.cos(a)*Math.cos(z)));}
+  for(let altitude=87;altitude>=0;altitude-=3){const a=$(altitude),z=$(azimuth+180);points.push(new THREE.Vector3(radius*Math.cos(a)*Math.sin(z),radius*Math.sin(a),-radius*Math.cos(a)*Math.cos(z)));}
+  addDomeLine(points,0x7790be,.1,false);
+ }
+ addCompassSprite("K","KUZEY",0);addCompassSprite("D","DOĞU",90);addCompassSprite("G","GÜNEY",180);addCompassSprite("B","BATI",270);
+}
+addCelestialDome();
+function makeStarLabel(name){
+ const c=document.createElement("canvas");c.width=300;c.height=60;const x=c.getContext("2d");x.font="24px monospace";x.textAlign="left";x.textBaseline="middle";x.fillStyle="rgba(218,228,250,.92)";x.fillText(name.toUpperCase(),3,30);
+ const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;const s=new THREE.Sprite(new THREE.SpriteMaterial({map:t,transparent:true,depthTest:false}));s.scale.set(7.2,1.45,1);s.visible=false;scene.add(s);return s;
+}
+const labelledStarNames=["Polaris","Vega","Sirius","Betelgeuse","Rigel","Arcturus","Altair","Deneb"];
+const starLabels=new Map(labelledStarNames.map(n=>[n,makeStarLabel(n)]));
+const focusHalo=new THREE.Mesh(new THREE.RingGeometry(1.1,1.32,56),new THREE.MeshBasicMaterial({color:0xffe5b2,transparent:true,opacity:.95,side:THREE.DoubleSide,depthTest:false}));
+focusHalo.visible=false;scene.add(focusHalo);
 
-let lastHud = 0;
-function place(state) {
-  const pos = starGeo.attributes.position;
-  const col = starGeo.attributes.color;
-  starBase.forEach((s, i) => {
-    let hor = eqToHorizontal(s.ra, s.dec, state.lst);
-    hor.alt += refractionRad(hor.alt);
-    const mag = apparentMag(s.v, hor.alt);
-    const v = domeVector(hor.alt, hor.az, DOME * 0.98);
-    pos.setXYZ(i, v.x, v.y, v.z);
-    const seen = mag < 5.2 && hor.alt > 0;
-    const bright = seen ? Math.max(0.15, 1.15 - mag / 5) : 0.02;
-    col.setXYZ(i, bright, bright * 0.82, bright * 0.75);
-  });
-  pos.needsUpdate = true;
-  col.needsUpdate = true;
 
-  const sun = state.bodies.find((b) => b.name === "Güneş");
-  for (const b of state.bodies) {
-    const mesh = planetMeshes.get(b.name);
-    if (!mesh) continue;
-    const v = domeVector(b.alt, b.az, b.name === "Ay" ? 28 : 46);
-    mesh.position.copy(v);
-    mesh.visible = b.alt > -0.12;
-    if (b.name === "Güneş") moonLight.position.copy(v);
-  }
 
-  const gpos = grid.geometry.attributes.position;
-  const sunDir = domeVector(sun.alt, sun.az, 1).normalize();
-  const sunHorizontalLength = Math.hypot(sunDir.x, sunDir.z) || 1;
-  const sunX = sunDir.x / sunHorizontalLength;
-  const sunZ = sunDir.z / sunHorizontalLength;
-  for (let i = 0; i < gpos.count; i++) {
-    const x = gpos.getX(i);
-    const y = gpos.getY(i);
-    const pointLength = Math.hypot(x, y) || 1;
-    const dot = (x / pointLength) * sunX + (y / pointLength) * sunZ;
-    const sep = Math.acos(Math.max(-1, Math.min(1, dot)));
-    const bend = Math.min(1.4, 0.9 / Math.max(0.15, sep));
-    gpos.setZ(i, -bend);
-  }
-  gpos.needsUpdate = true;
-
-  const nowMs = performance.now();
-  if (nowMs - lastHud > 250) {
-    lastHud = nowMs;
-    const utc = new Date((state.jd - 2440587.5) * 86400000);
-    const lstH = (deg(state.lst) / 15);
-    const domeMm = (rad) => rad * 2000;
-    readouts.innerHTML = `
-      <span>UTC <b>${utc.toISOString().slice(11, 19)}</b></span>
-      <span>LST <b>${fmt(lstH, 3)} h</b></span>
-      <span>ε <b>${fmt(deg(obliquity(state.T)), 5)}°</b></span>
-      <span>1 m kubbede 1″ <b>${fmt(domeMm(Math.PI / 180 / 3600), 3)} mm</b></span>`;
-    const rows = state.bodies.map((b) => {
-      const sep = Math.acos(Math.max(-1, Math.min(1,
-        Math.sin(b.alt) * Math.sin(sun.alt) + Math.cos(b.alt) * Math.cos(sun.alt) * Math.cos(b.az - sun.az)
-      )));
-      const ein = b.name === "Güneş" ? 1.75 : einsteinArcsec(Math.max(sep, 0.0047));
-      return `<tr>
-        <td class="name">${b.name}</td>
-        <td class="${b.alt > 0 ? "up" : ""}">${dms(b.alt)}</td>
-        <td>${dms(b.az)}</td>
-        <td>${b.lightDays < 0.01 ? fmt(b.lightDays * 86400, 1) + " s" : fmt(b.lightDays * 1440, 1) + " dk"}</td>
-        <td>${fmt(ein, 2)}″</td>
-      </tr>`;
-    }).join("");
-    panel.innerHTML = `<h2>Ufuk hesabı, ışığın gecikmesiyle.</h2>
-      <table><thead><tr><td></td><td>yükseklik</td><td>azimut</td><td>ışık</td><td>sapma</td></tr></thead><tbody>${rows}</tbody></table>
-      <p style="color:#b7a39a;margin:8px 0 0">Azimut kuzeyden doğuya. Yükseklik refraksiyonlu. Gezegen ışık süresi 3 yinelemeli Kepler. Ay için ufuk paralaksı var. Sapma, Güneş kütlesinin Einstein açısı ölçeğinde.</p>`;
-  }
+const readouts=document.getElementById("readouts"),panel=document.getElementById("panel");
+const bodyRows=document.getElementById("body-rows"),visibleCount=document.getElementById("visible-count");
+const offsetLabel=document.getElementById("offset-label"),offsetInput=document.getElementById("off"),when=document.getElementById("when");
+let dayOffset=0,latestState=null,lastHud=-Infinity;
+function fmt(n,d=2){return Number.isFinite(n)?n.toFixed(d):"—";}
+function formatDegrees(rad){const v=deg(rad);return (v>0?"+":"")+v.toFixed(1)+"°";}
+function compassDirection(rad){const names=["KUZEY","KD","DOĞU","GD","GÜNEY","GB","BATI","KB"],v=((deg(rad)%360)+360)%360;return names[Math.round(v/45)%8];}
+function formatLightTime(seconds){
+ if(!Number.isFinite(seconds)||seconds<0)return "—";
+ if(seconds<60)return seconds.toFixed(1)+" sn";
+ if(seconds<3600)return Math.floor(seconds/60)+" dk "+Math.round(seconds%60)+" sn";
+ if(seconds<86400)return Math.floor(seconds/3600)+" sa "+Math.floor((seconds%3600)/60)+" dk";
+ return Math.floor(seconds/86400)+" gün "+Math.floor((seconds%86400)/3600)+" sa";
+}
+function updateOffsetLabel(){const offset=Number(offsetInput.value);offsetLabel.textContent=Math.abs(offset)<.001?"BUGÜN":(offset>0?"+":"")+offset.toFixed(1)+" GÜN";when.textContent=Math.abs(offset)<.001?"CANLI":"ZAMAN KAYDIRILDI";}
+function focusBody(index){
+ const b=latestState?.bodies[index];if(!b)return;focusedBodyIndex=index;targetYaw=b.az;targetPitch=clamp(b.alt,-1.35,1.35);targetFov=43;
+ document.querySelectorAll("[data-view]").forEach(b=>b.setAttribute("aria-pressed","false"));
+ panel.querySelectorAll("[data-focus-index]").forEach(b=>b.setAttribute("aria-pressed",String(Number(b.dataset.focusIndex)===index)));
+}
+function buildBodyRows(state){
+ bodyRows.innerHTML=state.bodies.map((b,i)=>{
+  const color="#"+(b.color>>>0).toString(16).padStart(6,"0");
+  return `<tr id="body-row-${i}"><td><button type="button" class="body-focus" data-focus-index="${i}" aria-pressed="false" title="${b.name} gökyüzünde ortala"><span class="body-dot" style="--body-color:${color}"></span><span class="body-title"><strong>${b.name}</strong><small id="body-status-${i}">HESAPLANIYOR</small></span></button></td><td data-label="Yükseklik"><span class="altitude-value" id="body-alt-${i}">—</span></td><td data-label="Yön"><span class="azimuth-value"><strong id="body-dir-${i}">—</strong><small id="body-az-${i}">—</small></span></td><td data-label="Işık yolu" id="body-light-${i}">—</td><td data-label="Sapma ölçeği" id="body-ein-${i}">—</td></tr>`;
+ }).join("");
+ panel.querySelectorAll("[data-focus-index]").forEach(b=>b.addEventListener("click",()=>focusBody(Number(b.dataset.focusIndex))));
+}
+function updateDashboard(state){
+ const sun=state.bodies.find(b=>b.name==="Güneş"),date=new Date((state.jd-2440587.5)*86400000);
+ const localTime=date.toLocaleTimeString("tr-TR",{timeZone:"Europe/Istanbul",hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false});
+ const localDate=date.toLocaleDateString("tr-TR",{timeZone:"Europe/Istanbul",day:"2-digit",month:"short",year:"numeric"});
+ const lstH=((deg(state.lst)/15)%24+24)%24;
+ readouts.innerHTML=`<span><small>SAMATYA SAATİ</small><b>${localTime}</b></span><span><small>YEREL TARİH</small><b>${localDate}</b></span><span><small>YEREL YILDIZ ZAMANI</small><b>${fmt(lstH,2)} sa</b></span>`;
+ if(!bodyRows.children.length)buildBodyRows(state);
+ let above=0;
+ state.bodies.forEach((b,i)=>{
+  const row=document.getElementById("body-row-"+i),status=document.getElementById("body-status-"+i),alt=document.getElementById("body-alt-"+i);
+  const dir=document.getElementById("body-dir-"+i),az=document.getElementById("body-az-"+i),light=document.getElementById("body-light-"+i),ein=document.getElementById("body-ein-"+i);
+  if(!row||!status||!alt||!dir||!az||!light||!ein)return;
+  const onSky=b.alt>0;if(onSky)above++;row.classList.toggle("below-horizon",!onSky);status.textContent=onSky?"UFUK ÜSTÜ":"UFUK ALTI";
+  alt.textContent=formatDegrees(b.alt);alt.className="altitude-value "+(onSky?"above":"below");
+  const azDeg=((deg(b.az)%360)+360)%360;dir.textContent=compassDirection(b.az);az.textContent=Math.round(azDeg)+"°";light.textContent=formatLightTime(b.lightDays*86400);
+  const sep=Math.acos(Math.max(-1,Math.min(1,Math.sin(b.alt)*Math.sin(sun.alt)+Math.cos(b.alt)*Math.cos(sun.alt)*Math.cos(b.az-sun.az))));
+  ein.textContent="≈"+fmt(b.name==="Güneş"?1.75:einsteinArcsec(Math.max(sep,.00465)),2)+"″";
+ });
+ visibleCount.textContent=String(above);
+}
+function place(state){
+ latestState=state;const pos=starGeo.attributes.position,col=starGeo.attributes.color;
+ starBase.forEach((s,i)=>{
+  const hor=eqToHorizontal(s.ra,s.dec,state.lst);hor.alt+=refractionRad(hor.alt);
+  const mag=apparentMag(s.v,hor.alt),v=domeVector(hor.alt,hor.az,DOME*.98);pos.setXYZ(i,v.x,v.y,v.z);
+  const bright=(mag<5.2&&hor.alt>0)?Math.max(.15,1.15-mag/5):.02;col.setXYZ(i,bright,bright*.82,bright*.75);
+  const label=starLabels.get(s.name);if(label){label.position.copy(domeVector(hor.alt,hor.az,DOME*.89));label.visible=hor.alt>3*Math.PI/180;}
+ });
+ pos.needsUpdate=true;col.needsUpdate=true;
+ for(const b of state.bodies){const mesh=planetMeshes.get(b.name);if(!mesh)continue;mesh.position.copy(domeVector(b.alt,b.az,DOME*.94));mesh.visible=b.alt>-.12;if(b.name==="Güneş")moonLight.position.copy(mesh.position);}
+ if(focusedBodyIndex!=null&&state.bodies[focusedBodyIndex]){const mesh=planetMeshes.get(state.bodies[focusedBodyIndex].name);if(mesh){focusHalo.visible=mesh.visible;focusHalo.position.copy(mesh.position);focusHalo.quaternion.copy(camera.quaternion);}}else focusHalo.visible=false;
+ if(performance.now()-lastHud>500){lastHud=performance.now();updateDashboard(state);}
 }
 
-addEventListener("resize", () => {
-  const width = Math.max(1, innerWidth);
-  const height = Math.max(1, innerHeight);
-  camera.aspect = width / height;
-  camera.updateProjectionMatrix();
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, width <= 720 ? 1.5 : 2));
-  renderer.setSize(width, height);
-}, { passive: true });
+addEventListener("resize",()=>{
+ const width=Math.max(1,innerWidth),height=Math.max(1,innerHeight);
+ camera.aspect=width/height;camera.updateProjectionMatrix();renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,width<=720?1.35:1.75));renderer.setSize(width,height);
+},{passive:true});
+offsetInput.addEventListener("input",()=>{dayOffset=parseFloat(offsetInput.value)||0;updateOffsetLabel();});
+document.getElementById("now").addEventListener("click",()=>{dayOffset=0;offsetInput.value="0";updateOffsetLabel();lastHud=-Infinity;});
 
-const off = document.getElementById("off");
-const when = document.getElementById("when");
-let dayOffset = 0;
-off.addEventListener("input", () => { dayOffset = parseFloat(off.value) || 0; });
-document.getElementById("now").addEventListener("click", () => { dayOffset = 0; off.value = "0"; });
+
 
 const LINES = [
   ["Dubhe","Merak"],["Merak","Phecda"],["Phecda","Megrez"],["Megrez","Dubhe"],["Megrez","Alioth"],["Alioth","Mizar"],["Mizar","Alkaid"],
@@ -471,6 +490,7 @@ function placeAber(state) {
   for (const b of state.bodies) {
     const q = aberrate(b.ra, b.dec, vel);
     const hor = eqToHorizontal(q.ra, q.dec, state.lst);
+    if (b.name === "Ay") hor.alt -= b.parallax || 0;
     b.alt = hor.alt + refractionRad(hor.alt);
     b.az = hor.az;
   }
@@ -493,20 +513,16 @@ function placeAber(state) {
   mp.needsUpdate = true;
 }
 
-let lastSkyUpdate = -Infinity;
-function frame(now = performance.now()) {
-  /* Orbital mechanics and horizon projection need not be recomputed at 60 Hz.
-     Five updates per second keep the scene responsive while reducing CPU churn. */
-  if (now - lastSkyUpdate >= 200) {
-    const live = julianDate(new Date());
-    const state = bodyAt(live + dayOffset);
-    placeAber(state);
-    if (dayOffset === 0) when.textContent = "canlı · sapma açık";
-    else when.textContent = (dayOffset > 0 ? "+" : "") + dayOffset.toFixed(2) + " gün";
-    lastSkyUpdate = now;
-  }
-  controls.update();
-  renderer.render(scene, camera);
-  requestAnimationFrame(frame);
+let lastSkyUpdate=-Infinity,renderFrameId=0;
+function frame(now=performance.now()){
+ if(now-lastSkyUpdate>=200){const live=julianDate(new Date()),state=bodyAt(live+dayOffset);placeAber(state);lastSkyUpdate=now;}
+ viewYaw+=wrapDelta(targetYaw,viewYaw)*.12;viewPitch+=(targetPitch-viewPitch)*.12;camera.fov+=(targetFov-camera.fov)*.12;
+ camera.rotation.set(viewPitch,viewYaw,0,"YXZ");camera.updateProjectionMatrix();
+ if(focusedBodyIndex!=null){const body=latestState?.bodies[focusedBodyIndex],mesh=body?planetMeshes.get(body.name):null;if(mesh){focusHalo.position.copy(mesh.position);focusHalo.quaternion.copy(camera.quaternion);}}
+ renderer.render(scene,camera);renderFrameId=requestAnimationFrame(frame);
 }
-frame();
+document.addEventListener("visibilitychange",()=>{
+ if(document.visibilityState==="hidden"){if(renderFrameId)cancelAnimationFrame(renderFrameId);renderFrameId=0;}
+ else if(!renderFrameId){lastSkyUpdate=-Infinity;renderFrameId=requestAnimationFrame(frame);}
+});
+updateOffsetLabel();renderFrameId=requestAnimationFrame(frame);

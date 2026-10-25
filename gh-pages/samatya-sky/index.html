@@ -3,22 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Samatya Topos | Samatya'dan 3B gökyüzü simülasyonu</title>
-  <meta name="description" content="Samatya'nın 41.0028° K, 28.9404° D koordinatlarından hesaplanan etkileşimli 3B gökkubbe. Kepler yörüngeleri, yerel ufuk dönüşümü ve ışık gecikmesi yaklaşımını keşfet.">
-  <meta name="theme-color" content="#050307">
-  <meta name="color-scheme" content="dark">
+  <title>Samatya Topos | Samatya'dan gökyüzü atlası</title>
+  <meta name="description" content="Samatya'nın koordinatlarından çalışan etkileşimli gök atlası. Yıldızları, Ay'ı ve gezegenleri yerel ufuk, yön, yükseklik ve ışık yolculuğuyla keşfet.">
+  <meta name="theme-color" content="#050307"><meta name="color-scheme" content="dark">
   <meta name="author" content="Ergin Kaplan">
   <link rel="canonical" href="https://eerrgin.github.io/samatya-sky/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Samatya Topos | Samatya'dan gökyüzüne">
-  <meta property="og:description" content="Bir mahallenin koordinatlarından gökkubbeye uzanan etkileşimli 3B gökyüzü deneyi.">
+  <meta property="og:title" content="Samatya Topos | Bir mahallenin gökyüzü atlası">
+  <meta property="og:description" content="Samatya'nın ufkuna yerleşen, yönleri ve gök cisimlerinin görünür konumlarını anlatan etkileşimli 3B gök atlası.">
   <meta property="og:url" content="https://eerrgin.github.io/samatya-sky/">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Samatya Topos | Samatya'dan gökyüzüne">
-  <meta name="twitter:description" content="Samatya merkezli 3B gökyüzü simülasyonu: yörüngeler, yerel ufuk ve ışık gecikmesi.">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta name="twitter:title" content="Samatya Topos | Gökyüzü atlası">
+  <meta name="twitter:description" content="Samatya'dan gökyüzüne: yükseklik, azimut ve ışığın yolculuğu.">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -27,7 +24,7 @@
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "Web browser",
     "url": "https://eerrgin.github.io/samatya-sky/",
-    "description": "Samatya koordinatları için yerel ufuk ve ışık gecikmesi yaklaşımını içeren etkileşimli gökyüzü modeli.",
+    "description": "Samatya gözlem noktasına göre gök cisimlerinin görünür yönlerini, ufuk yüksekliğini ve ışık yolculuğu sürelerini gösteren etkileşimli gök atlası.",
     "isAccessibleForFree": true,
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TRY" },
     "author": { "@type": "Person", "name": "Ergin Kaplan", "url": "https://eerrgin.github.io/" },
@@ -35,34 +32,52 @@
   }
   </script>
   <link rel="stylesheet" href="style.css">
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
-      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
-    }
-  }
-  </script>
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"}}</script>
 </head>
 <body>
-  <canvas id="sky" role="img" aria-label="Samatya ufkunda yıldızların ve gök cisimlerinin etkileşimli üç boyutlu simülasyonu">Gökyüzü çizimi yüklenemedi. WebGL destekleyen güncel bir tarayıcı kullan.</canvas>
+  <canvas id="sky" role="img" aria-label="Samatya'dan bakılan gökyüzünün yıldızları, yönleri ve gök cisimleriyle etkileşimli üç boyutlu atlası">Gökyüzü çizimi yüklenemedi. WebGL destekleyen güncel bir tarayıcı kullan.</canvas>
+  <div class="scene-vignette" aria-hidden="true"></div>
   <header class="hud">
-    <div class="brand">
-      <a href="../">e.</a>
-      <div>
-        <strong>SAMATYA TOPOS</strong>
-        <span>41.0028°K · 28.9404°D · 18 m</span>
-      </div>
-    </div>
-    <div class="readouts" id="readouts"></div>
+    <div class="brand"><a href="../" aria-label="Ergin'in ana sayfasına dön">e.</a><div><strong>SAMATYA TOPOS</strong><span>GÖKYÜZÜ ATLASI / 41.0028° K · 28.9404° D</span></div></div>
+    <div class="readouts" id="readouts" aria-label="Gökyüzü zaman bilgileri"><span><small>İSTANBUL SAATİ</small><b>Hesaplanıyor…</b></span><span><small>YEREL YILDIZ ZAMANI</small><b>—</b></span></div>
   </header>
-  <aside class="panel" id="panel" role="region" aria-label="Gök cisimleri ve gözlem değerleri"></aside>
-  <div class="clockbar">
-    <label>gün kaydır <input id="off" aria-label="Zamanı gün cinsinden kaydır" type="range" min="-400" max="400" value="0" step="0.05"></label>
-    <button id="now" type="button">şimdi</button>
-    <span id="when">canlı</span>
+  <nav class="scene-toolbar" aria-label="Gök atlası görünümleri">
+    <span class="toolbar-label">BAKIŞ</span>
+    <button type="button" data-view="overview" aria-pressed="true">Genel bakış</button>
+    <button type="button" data-view="north" aria-pressed="false">Kuzey</button>
+    <button type="button" data-view="east" aria-pressed="false">Doğu</button>
+    <button type="button" data-view="zenith" aria-pressed="false">Zenit</button>
+    <button type="button" data-view="south" aria-pressed="false">Güney</button>
+    <button type="button" id="guide-toggle" aria-expanded="true" aria-controls="guide-card">Rehber ?</button>
+  </nav>
+  <section class="guide-card" id="guide-card" aria-labelledby="guide-title">
+    <div class="guide-topline"><span>01 / NASIL OKUNUR?</span><button type="button" id="guide-dismiss" aria-label="Rehberi kapat">×</button></div>
+    <h1 id="guide-title">Bir gezegen maketi değil.<br><em>Bir gökyüzü penceresi.</em></h1>
+    <p>Küre, Samatya'dan baktığında gök cisimlerinin hangi yönde göründüğünü temsil eder. Boyutlar ve uzaklıklar gerçek ölçeklerinde değildir.</p>
+    <ol><li><b>Bakış seç:</b> Kuzey, Doğu veya Zenit.</li><li><b>Bir cisme dokun:</b> Atlas onu görüş alanının ortasına taşır.</li><li><b>Zamanı değiştir:</b> Çizelge gökyüzündeki değişimi hesaplar.</li></ol>
+    <p class="guide-note">Sürüklemek isteğe bağlı. Hazır görünümler ve çizelge tek başına yeterli.</p>
+    <button type="button" class="guide-start" id="guide-start">Tamam, keşfet <span aria-hidden="true">↗</span></button>
+  </section>
+  <aside class="panel" id="panel" role="region" aria-label="Gök cisimleri çizelgesi">
+    <div class="panel-heading"><div><p class="eyebrow">SAMATYA / CANLI HESAP</p><h2>Gök çizelgesi</h2></div><div class="visible-count"><strong id="visible-count">—</strong><span>ufkun<br>üzerinde</span></div></div>
+    <p class="panel-intro">Bir satıra dokun; o cismi gökyüzünde bul. Yükseklik ufka göre, yön kuzeyden başlayarak ölçülür.</p>
+    <div class="table-wrap"><table class="celestial-table">
+      <thead><tr><th scope="col">Cisim</th><th scope="col" title="Ufuktan yukarı veya aşağı açısal uzaklık">Yükseklik</th><th scope="col" title="Kuzeyden saat yönünde ölçülen yön">Yön</th><th scope="col" title="Işığın model mesafesinden hesaplanan yol süresi">Işık yolu</th><th scope="col" title="Güneş'e açısal uzaklıktan türetilen öğretici kestirim">Sapma*</th></tr></thead>
+      <tbody id="body-rows"></tbody>
+    </table></div>
+    <details class="reading-guide"><summary>Bu değerleri nasıl okumalıyım?</summary><dl>
+      <div><dt>Yükseklik</dt><dd>0° ufuk çizgisidir. Pozitif değer ufkun üstünde, negatif değer altındadır.</dd></div>
+      <div><dt>Yön / azimut</dt><dd>Kuzey 0°, Doğu 90°, Güney 180°, Batı 270°. Ara yönler de gösterilir.</dd></div>
+      <div><dt>Işık yolu</dt><dd>Modelin hesapladığı uzaklıktan ışığın yaklaşık geliş süresi.</dd></div>
+      <div><dt>Sapma*</dt><dd>Güneş kenarında yaklaşık 1,75 yay-saniyeyi referans alan basit açı ölçeği. Doğrudan ölçüm değildir.</dd></div>
+    </dl></details>
+    <p class="panel-footnote">Model notu: Gezegen konumları yaklaşık Kepler öğeleriyle hesaplanır. Eğitim ve keşif içindir; profesyonel efemeris veya gözlem planının yerine geçmez.</p>
+  </aside>
+  <div class="clockbar" role="group" aria-label="Zamanı değiştir">
+    <label for="off"><span>TAKVİM KAYDIRMA</span><input id="off" aria-label="Bugünden itibaren günü değiştir" type="range" min="-400" max="400" value="0" step="0.05"></label>
+    <output id="offset-label" for="off">BUGÜN</output><button id="now" type="button">Şimdiye dön</button><span id="when" aria-live="off">CANLI</span>
   </div>
-  <p class="hint">Sürükle: bakış · tekerlek: yakınlaş · çubuk: yılı sar, gökkubbe yürüsün.</p>
+  <p class="hint">Sürükle: gökyüzüne bak · tekerlek: yakınlaş · çizelgeden bir cisim seç.</p>
   <noscript><p class="noscript-note">Samatya Topos için JavaScript açık olmalı. Simülasyon, tarayıcındaki WebGL desteğiyle çalışır.</p></noscript>
   <script type="module" src="app.js"></script>
 </body>
