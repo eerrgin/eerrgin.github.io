@@ -297,7 +297,7 @@ scene.add(stars);
 
 const planetMeshes = new Map();
 function makeBody(color, r) {
-  const g = new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.35, roughness: 0.6 });
+  const g = new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.35, roughness: 0.6, transparent: true });
   const m = new THREE.Mesh(new THREE.SphereGeometry(r, 24, 16), g);
   scene.add(m);
   const label = document.createElement("div");
@@ -403,7 +403,7 @@ function place(state){
   const label=starLabels.get(s.name);if(label){label.position.copy(domeVector(hor.alt,hor.az,DOME*.89));label.visible=hor.alt>3*Math.PI/180;}
  });
  pos.needsUpdate=true;col.needsUpdate=true;
- for(const b of state.bodies){const mesh=planetMeshes.get(b.name);if(!mesh)continue;mesh.position.copy(domeVector(b.alt,b.az,DOME*.94));mesh.visible=b.alt>-.12;if(b.name==="Güneş")moonLight.position.copy(mesh.position);}
+ for(const b of state.bodies){const mesh=planetMeshes.get(b.name);if(!mesh)continue;mesh.position.copy(domeVector(b.alt,b.az,DOME*.94));mesh.visible=Math.abs(b.alt)<Math.PI/2;mesh.material.opacity=b.alt>0?1:.22;mesh.material.emissiveIntensity=b.alt>0?.35:.08;if(b.name==="Güneş")moonLight.position.copy(mesh.position);}
  if(focusedBodyIndex!=null&&state.bodies[focusedBodyIndex]){const mesh=planetMeshes.get(state.bodies[focusedBodyIndex].name);if(mesh){focusHalo.visible=mesh.visible;focusHalo.position.copy(mesh.position);focusHalo.quaternion.copy(camera.quaternion);}}else focusHalo.visible=false;
  if(performance.now()-lastHud>500){lastHud=performance.now();updateDashboard(state);}
 }

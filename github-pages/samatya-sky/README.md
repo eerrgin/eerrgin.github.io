@@ -15,7 +15,7 @@ Canlı deneyim: https://eerrgin.github.io/samatya-sky/
 - **Sapma*:** Güneş kenarında yaklaşık 1,75 yay-saniyelik genel görelilik sapmasını referans alan, Güneş'e açısal uzaklığa göre basitleştirilmiş bir ölçek. Ölçülmüş değer veya ayrıntılı ışın izleme sonucu değildir.
 - **Zaman kaydırma:** Canlı tarihten ±400 güne kaydırma yapar. Hazır bakış düğmeleri kuzey, doğu, güney veya zenit yönüne geçer; çizelgedeki bir cisme dokunmak onu görüş alanının ortasına getirir.
 
-Gök cisimleri aynı kavramsal küreye yerleştirilir. Boyutları ve uzaklıkları **gerçek ölçekli değildir**; tasarım, cisimlerin Samatya'dan görünen yönlerini anlaşılır kılmak içindir. Sahne gezegenlerin yörünge yollarını çizmez.
+Gök cisimleri aynı kavramsal küreye yerleştirilir. Boyutları ve uzaklıkları **gerçek ölçekli değildir**; tasarım, cisimlerin Samatya'dan görünen yönlerini anlaşılır kılmak içindir. Ufuk altındaki cisimler, çizelgedeki negatif yükseklikle eşleşmesi için sahnede soluk işaretlenir; bu, onları o anda gözlenebilir yapmaz. Sahne gezegenlerin yörünge yollarını çizmez.
 
 ## Hesaplama yaklaşımı
 
