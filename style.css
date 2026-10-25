@@ -3064,3 +3064,115 @@ section[data-stamp]::before { -webkit-text-stroke-color: color-mix(in srgb, var(
 @media (prefers-reduced-motion: reduce) {
   .fr-ember { animation: none !important; }
 }
+
+
+/* Samatya Topos home feature: a lightweight orbital plate, not a second WebGL scene. */
+.topos-home {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(48px, 7vw, 92px) 0 30px;
+}
+.topos-home::before {
+  content: "00";
+  position: absolute;
+  z-index: -1;
+  top: 16px;
+  right: 0;
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--red, #ff3028) 28%, transparent);
+  font: 400 clamp(82px, 13vw, 168px)/.8 "Instrument Serif", Georgia, serif;
+  opacity: .52;
+  pointer-events: none;
+}
+.topos-frame {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(300px, .98fr);
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--red, #ff3028) 44%, var(--line, #38252a));
+  background: linear-gradient(128deg, rgba(27, 7, 12, .96), rgba(9, 9, 17, .97) 58%, rgba(6, 9, 17, .98));
+  box-shadow: 0 22px 90px rgba(0, 0, 0, .22);
+}
+.topos-copy { min-width: 0; padding: clamp(22px, 4vw, 48px); align-self: center; }
+.topos-overline, .topos-visual-meta, .topos-visual-bottom, .topos-footnote {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  color: var(--dim, #b6a6a0);
+  font: 9px/1.5 var(--mono, monospace);
+  letter-spacing: .1em;
+}
+.topos-overline { flex-wrap: wrap; margin: 18px 0 20px; }
+.topos-overline span:first-child, .topos-visual-bottom span:first-child { display: inline-flex; align-items: center; gap: 8px; }
+.topos-overline i, .topos-visual-bottom i {
+  width: 6px; height: 6px; border-radius: 50%; background: #f46c58; display: inline-block;
+  box-shadow: 0 0 12px rgba(244, 108, 88, .75);
+}
+.topos-copy h2 {
+  margin: 0 0 18px;
+  max-width: 12ch;
+  font: 400 clamp(38px, 5vw, 68px)/.98 "Instrument Serif", Georgia, serif;
+  letter-spacing: -.035em;
+}
+.topos-copy h2 em { color: #e99c8a; font-weight: 400; }
+.topos-lede { max-width: 54ch; margin-bottom: 14px; }
+.topos-prompt { margin: 0 0 25px; color: #e3c9bd; font: italic 15px/1.65 "Instrument Serif", Georgia, serif; }
+.topos-actions { gap: 9px; flex-wrap: wrap; }
+.topos-actions .btn { min-height: 43px; }
+.topos-specs {
+  display: flex; flex-wrap: wrap; gap: 7px; margin-top: 28px; padding-top: 17px;
+  border-top: 1px solid rgba(238, 196, 184, .16);
+}
+.topos-specs span {
+  border: 1px solid rgba(238, 196, 184, .2); padding: 6px 8px; color: #c5b3ae;
+  font: 8px/1.25 var(--mono, monospace); letter-spacing: .08em;
+}
+.topos-visual {
+  position: relative; display: flex; flex-direction: column; justify-content: space-between;
+  min-width: 0; min-height: 430px; overflow: hidden; padding: 18px 18px 16px;
+  border-left: 1px solid rgba(238, 196, 184, .12);
+  background:
+    radial-gradient(ellipse at 51% 48%, rgba(90, 95, 145, .21), transparent 42%),
+    radial-gradient(ellipse at 50% 46%, rgba(155, 51, 54, .15), transparent 62%),
+    linear-gradient(160deg, rgba(12, 17, 31, .85), rgba(8, 5, 12, .92));
+}
+.topos-visual::before {
+  content: ""; position: absolute; inset: 12% 8%; border: 1px solid rgba(178, 191, 221, .09);
+  border-radius: 50%; transform: rotate(-18deg) scaleY(.74); pointer-events: none;
+}
+.topos-visual-meta, .topos-visual-bottom { position: relative; z-index: 1; font-size: 8px; }
+.topos-diagram { display: block; width: 100%; max-height: 360px; flex: 1 1 auto; overflow: visible; }
+.topos-technical-grid { opacity: .78; }
+.topos-spin { transform-box: view-box; transform-origin: 260px 192px; }
+.topos-spin-one { animation: topos-revolve-one 28s linear infinite; }
+.topos-spin-two { animation: topos-revolve-two 38s linear infinite; }
+.topos-visual-bottom { padding-top: 12px; border-top: 1px solid rgba(178, 191, 221, .16); }
+.topos-footnote { padding: 12px 1px 0; font-size: 8px; flex-wrap: wrap; }
+@keyframes topos-revolve-one { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes topos-revolve-two { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+@media (max-width: 900px) {
+  .topos-frame { grid-template-columns: minmax(0, 1fr); }
+  .topos-visual { order: -1; min-height: 270px; border-left: 0; border-bottom: 1px solid rgba(238, 196, 184, .12); }
+  .topos-diagram { max-width: 520px; align-self: center; }
+  .topos-copy { padding: clamp(20px, 4vw, 34px); }
+  .topos-copy h2 { max-width: 15ch; }
+}
+@media (max-width: 540px) {
+  .topos-home { padding-top: 44px; }
+  .topos-home::before { top: 14px; font-size: 88px; }
+  .topos-visual { min-height: 220px; padding: 13px 10px 12px; }
+  .topos-diagram { min-height: 190px; }
+  .topos-visual-meta, .topos-visual-bottom { font-size: 7px; letter-spacing: .055em; }
+  .topos-copy { padding: 21px 16px 19px; }
+  .topos-copy h2 { font-size: clamp(39px, 11vw, 52px); }
+  .topos-overline { margin: 14px 0 17px; font-size: 8px; }
+  .topos-actions .btn { flex: 1 1 100%; justify-content: center; text-align: center; }
+  .topos-specs { margin-top: 20px; gap: 6px; }
+  .topos-specs span { font-size: 7px; }
+  .topos-footnote { gap: 7px 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .topos-spin-one, .topos-spin-two { animation: none !important; }
+}
+html[data-motion="off"] .topos-spin-one, html[data-motion="off"] .topos-spin-two { animation: none !important; }
