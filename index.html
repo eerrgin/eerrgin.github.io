@@ -186,7 +186,7 @@
         if (!data || data.type !== "istanbul-cockpit:resize") return;
         var height = Number(data.height);
         if (!Number.isFinite(height) || height < 300) return;
-        frame.style.height = Math.min(Math.max(Math.ceil(height), 620), 1550) + "px";
+        frame.style.height = Math.min(Math.max(Math.ceil(height), 620), 2300) + "px";
       });
       frame.addEventListener("load", function () {
         frame.contentWindow.postMessage({ type: "istanbul-cockpit:measure" }, window.location.origin);
