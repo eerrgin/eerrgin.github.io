@@ -233,7 +233,7 @@ function domeVector(alt, az, radius = DOME) {
 
 const canvas = document.getElementById("sky");
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, innerWidth <= 720 ? 1.5 : 2));
 renderer.setSize(innerWidth, innerHeight);
 renderer.setClearColor(0x070208, 1);
 
@@ -339,11 +339,15 @@ function place(state) {
 
   const gpos = grid.geometry.attributes.position;
   const sunDir = domeVector(sun.alt, sun.az, 1).normalize();
+  const sunHorizontalLength = Math.hypot(sunDir.x, sunDir.z) || 1;
+  const sunX = sunDir.x / sunHorizontalLength;
+  const sunZ = sunDir.z / sunHorizontalLength;
   for (let i = 0; i < gpos.count; i++) {
     const x = gpos.getX(i);
     const y = gpos.getY(i);
-    const flat = new THREE.Vector3(x, 0, y).normalize();
-    const sep = Math.acos(Math.max(-1, Math.min(1, flat.dot(new THREE.Vector3(sunDir.x, 0, sunDir.z).normalize()))));
+    const pointLength = Math.hypot(x, y) || 1;
+    const dot = (x / pointLength) * sunX + (y / pointLength) * sunZ;
+    const sep = Math.acos(Math.max(-1, Math.min(1, dot)));
     const bend = Math.min(1.4, 0.9 / Math.max(0.15, sep));
     gpos.setZ(i, -bend);
   }
@@ -380,10 +384,13 @@ function place(state) {
 }
 
 addEventListener("resize", () => {
-  camera.aspect = innerWidth / innerHeight;
+  const width = Math.max(1, innerWidth);
+  const height = Math.max(1, innerHeight);
+  camera.aspect = width / height;
   camera.updateProjectionMatrix();
-  renderer.setSize(innerWidth, innerHeight);
-});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, width <= 720 ? 1.5 : 2));
+  renderer.setSize(width, height);
+}, { passive: true });
 
 const off = document.getElementById("off");
 const when = document.getElementById("when");
@@ -486,12 +493,18 @@ function placeAber(state) {
   mp.needsUpdate = true;
 }
 
-function frame() {
-  const live = julianDate(new Date());
-  const state = bodyAt(live + dayOffset);
-  placeAber(state);
-  if (dayOffset === 0) when.textContent = "canlı · sapma açık";
-  else when.textContent = (dayOffset > 0 ? "+" : "") + dayOffset.toFixed(2) + " gün";
+let lastSkyUpdate = -Infinity;
+function frame(now = performance.now()) {
+  /* Orbital mechanics and horizon projection need not be recomputed at 60 Hz.
+     Five updates per second keep the scene responsive while reducing CPU churn. */
+  if (now - lastSkyUpdate >= 200) {
+    const live = julianDate(new Date());
+    const state = bodyAt(live + dayOffset);
+    placeAber(state);
+    if (dayOffset === 0) when.textContent = "canlı · sapma açık";
+    else when.textContent = (dayOffset > 0 ? "+" : "") + dayOffset.toFixed(2) + " gün";
+    lastSkyUpdate = now;
+  }
   controls.update();
   renderer.render(scene, camera);
   requestAnimationFrame(frame);
