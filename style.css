@@ -3255,3 +3255,28 @@ html[data-motion="off"] .topos-scan,html[data-motion="off"] .topos-highlight{ani
   .cockpit-footer-line { font-size:8px; }
 }
 @media (prefers-reduced-motion:reduce) { .cockpit-pulse { animation:none; } }
+
+
+/* ATMOSPHERE PANEL / main-site visual language and responsive frame */
+.istanbul-cockpit { min-width: 0; overflow: clip; }
+.cockpit-heading { margin-bottom: 16px; gap: 18px; }
+.cockpit-heading h2 { max-width: 100%; letter-spacing: -.015em; }
+.cockpit-heading h2 em { color: var(--red); }
+.cockpit-frame-shell {
+  border-color: color-mix(in srgb, var(--red) 46%, var(--line));
+  border-radius: 2px;
+  box-shadow: 0 18px 48px rgba(0,0,0,.24), inset 0 1px rgba(255,220,207,.025);
+}
+.cockpit-frame-top { min-height: 32px; padding: 7px 12px; }
+.cockpit-frame { height: 500px; background: var(--bg); }
+.cockpit-footer-line { padding-top: 9px; }
+@media (max-width: 899px) {
+  .cockpit-frame { height: 650px; }
+}
+@media (max-width: 600px) {
+  .cockpit-heading { margin-bottom: 13px; }
+  .cockpit-frame-top { gap: 8px; }
+  .cockpit-frame-top span:last-child { white-space: nowrap; }
+  .cockpit-frame { height: 820px; }
+  .cockpit-footer-line { gap: 5px 12px; overflow-wrap: anywhere; }
+}
