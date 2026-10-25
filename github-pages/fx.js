@@ -4,7 +4,8 @@
   if (!canvas) return;
   const ctx = canvas.getContext("2d", { alpha: true });
   if (!ctx) return;
-  const reduce = document.documentElement.dataset.motion !== "on";
+  let lastFrame = 0;
+  let framePending = false;
   let w = 0;
   let h = 0;
   let dpr = 1;
@@ -40,7 +41,7 @@
   }
 
   function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    dpr = Math.min(window.devicePixelRatio || 1, window.innerWidth <= 720 ? 1.35 : 1.75);
     w = window.innerWidth;
     h = window.innerHeight;
     canvas.width = Math.floor(w * dpr);
@@ -99,18 +100,32 @@
     return pts;
   }
 
+  function scheduleFrame() {
+    if (framePending) return;
+    framePending = true;
+    requestAnimationFrame(frame);
+  }
+
   function frame(now) {
-    ctx.clearRect(0, 0, w, h);
+    framePending = false;
+    const motionOn = document.documentElement.dataset.motion === "on";
     const tremor = document.documentElement.dataset.tremor !== "off";
+    /* The texture is atmospheric, so 30 FPS is visually enough and halves canvas work. */
+    if (motionOn && tremor && now - lastFrame < 1000 / 30) {
+      scheduleFrame();
+      return;
+    }
+    lastFrame = now;
+    ctx.clearRect(0, 0, w, h);
     const nx = window.__nx ?? 0.72;
     const ny = window.__ny ?? 0.22;
-    if (!reduce && tremor) angle += 0.0011;
+    if (motionOn && tremor) angle += 0.0011;
     const r1 = Math.min(w, h) * 0.34;
     sigil(w * (0.78 + (nx - 0.5) * 0.04), h * (0.22 + (ny - 0.5) * 0.03), r1, angle);
     sigil(w * 0.08, h * 0.86, Math.min(w, h) * 0.16, -angle * 1.4);
 
     const [r0, g0, b0] = accent();
-    if (!reduce && tremor) {
+    if (motionOn && tremor) {
       sparks.forEach((p) => {
         p.y -= p.v * 0.0032;
         p.x += Math.sin(now * 0.001 + p.drift) * 0.00035;
@@ -153,10 +168,18 @@
       if (tear.life <= 0) tear = null;
     }
 
-    if (!reduce && tremor) requestAnimationFrame(frame);
+    if (motionOn && tremor) scheduleFrame();
   }
 
-  window.addEventListener("resize", resize);
+  window.addEventListener("resize", resize, { passive: true });
+  const motionObserver = new MutationObserver(() => {
+    if (document.documentElement.dataset.motion === "on" &&
+        document.documentElement.dataset.tremor !== "off") scheduleFrame();
+  });
+  motionObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-motion", "data-tremor"],
+  });
   resize();
-  requestAnimationFrame(frame);
+  scheduleFrame();
 })();
