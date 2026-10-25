@@ -106,28 +106,56 @@
       <button class="ghost" id="open-cmd" type="button" aria-label="Komut menüsünü aç">⌘K</button>
     </div>
   </header>
-  <aside class="weather" id="hava" aria-label="İstanbul havası" aria-live="polite">
-    <div class="wrap weather-in">
-      <div class="w-now">
-        <span class="w-icon" id="w-icon">····</span>
-        <div>
-          <p class="kicker">İSTANBUL · ŞİMDİ</p>
-          <p class="w-temp"><span id="w-temp">--</span><small>°C</small></p>
+  <section class="istanbul-cockpit" id="hava" aria-labelledby="istanbul-cockpit-title">
+    <div class="wrap cockpit-wrap">
+      <div class="cockpit-heading">
+        <div class="cockpit-heading-copy">
+          <p class="kicker"><span class="cockpit-pulse" aria-hidden="true"></span> 01 / AÇIK VERİ · İSTANBUL HATTI</p>
+          <h2 id="istanbul-cockpit-title">Şehrin nabzı <em>şimdi.</em></h2>
+          <p>Hava, ulaşım, duraklar ve gökyüzündeki trafik. İstanbul’un açık veri akışı, tek bir canlı kokpitte.</p>
         </div>
-        <div class="w-desc">
-          <strong id="w-desc">hat yok</strong>
-          <span id="w-feel">Open-Meteo bekleniyor.</span>
+        <div class="cockpit-heading-meta" aria-label="Veri kaynakları">
+          <span>OPEN DATA</span><span>ANAHTARSIZ HAVA</span><span>LIVE MAP</span>
         </div>
       </div>
-      <dl class="w-stats">
-        <div><dt>Nem</dt><dd id="w-hum">—</dd></div>
-        <div><dt>Rüzgâr</dt><dd id="w-wind">—</dd></div>
-        <div><dt>Bugün</dt><dd id="w-range">—</dd></div>
-      </dl>
-      <ol class="w-days" id="w-days"></ol>
-      <p class="w-src">Open-Meteo · anahtarsız <span id="w-time"></span></p>
+      <div class="cockpit-frame-shell">
+        <div class="cockpit-frame-top" aria-hidden="true">
+          <span><i></i> İSTANBUL / CANLI TELEMETRİ</span>
+          <span>41°00′N · 28°58′E</span>
+        </div>
+        <iframe
+          id="istanbul-live-frame"
+          class="cockpit-frame"
+          src="/istanbul-cockpit/?embed=1"
+          title="İstanbul Açık Ulaşım ve Hava Kokpiti: canlı hava durumu, harita, duraklar ve uçuş radarı"
+          loading="eager"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+      </div>
+      <div class="cockpit-footer-line">
+        <span>OPEN-METEO · OPENSTREETMAP · OPENSKY</span>
+        <span>SEFER SAATİ DEĞİL, AÇIK HARİTA VE UÇUŞ VERİSİ</span>
+        <a href="/istanbul-cockpit/" target="_blank" rel="noopener">TAM KOKPİTİ AÇ ↗</a>
+      </div>
     </div>
-  </aside>
+  </section>
+  <script>
+    (function () {
+      var frame = document.getElementById("istanbul-live-frame");
+      if (!frame) return;
+      window.addEventListener("message", function (event) {
+        if (event.origin !== window.location.origin || event.source !== frame.contentWindow) return;
+        var data = event.data;
+        if (!data || data.type !== "istanbul-cockpit:resize") return;
+        var height = Number(data.height);
+        if (!Number.isFinite(height) || height < 300) return;
+        frame.style.height = Math.min(Math.max(Math.ceil(height), 620), 1550) + "px";
+      });
+      frame.addEventListener("load", function () {
+        frame.contentWindow.postMessage({ type: "istanbul-cockpit:measure" }, window.location.origin);
+      });
+    })();
+  </script>
   <main class="wrap" id="top">
     <section class="hero reveal in">
       <div>
