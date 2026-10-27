@@ -1,4 +1,4 @@
-# eerrgin — Gece Vardiyası
+# ERGİN TEKNİK ATÖLYE — Gece Vardiyası
 
 Ana belge: [`README.md`](./README.md).
 
