@@ -1,21 +1,31 @@
 import type { LocationRewrite } from "@tanstack/react-router";
 
+type ImportMetaWithEnv = ImportMeta & {
+  env?: Record<string, string | boolean | undefined>;
+};
+
+function configuredPathBasedPreviewHosts(): Set<string> {
+  const raw = (import.meta as ImportMetaWithEnv).env?.VITE_ATOLYE_PREVIEW_PATH_HOSTS;
+  return new Set(
+    String(raw ?? "")
+      .split(",")
+      .map((host) => host.trim().toLowerCase())
+      .filter(Boolean),
+  );
+}
+
+const PORT_ID_PREFIX = /^\\/hds-[a-z0-9]+-\\d+-[a-z0-9]+(?=\\/|$)/i;
+
 /**
- * Path-based preview hosts serve the dev server under `/{port_id}/` and strip
- * that prefix before forwarding, so SSR sees `/` while the browser URL keeps the
- * prefix. TanStack Start resets `basepath` on hydration, so a `rewrite` keeps
- * client routing and generated links aligned with the public URL.
+ * Rewrites the development server path only for explicitly configured hosts.
+ * No provider-specific hostnames are embedded in the source.
  */
-const PATH_BASED_PREVIEW_HOSTS = new Set([
-  "preview.grok.genai.mil",
-  "preview.grok.mil",
-  "preview.grokgsac.com",
-]);
-
-const PORT_ID_PREFIX = /^\/hds-[a-z0-9]+-\d+-[a-z0-9]+(?=\/|$)/i;
-
-export function previewPathPrefix(hostname: string, pathname: string): string | undefined {
-  if (!PATH_BASED_PREVIEW_HOSTS.has(hostname.toLowerCase())) return undefined;
+export function previewPathPrefix(
+  hostname: string,
+  pathname: string,
+  allowedHosts: ReadonlySet<string> = configuredPathBasedPreviewHosts(),
+): string | undefined {
+  if (!allowedHosts.has(hostname.toLowerCase())) return undefined;
   return PORT_ID_PREFIX.exec(pathname)?.[0];
 }
 
