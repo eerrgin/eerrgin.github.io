@@ -24,7 +24,7 @@
 | `scripts/check.mjs` | Bağlantı, çapa, JSON/JS/SVG ve temel HTML kontrolü |
 | `.github/workflows/ci.yml` | Her push ve pull request'te kontrolü çalıştırır |
 | `public/`, `vite.config.js`, `package.json` | Eski Vite kalıntısı; yayın bunlara bağlı değil |
-| `cat-ai.js` | Ana sayfaya şu an bağlı değil (tarayıcıda görsel sınıflandırma denemesi) |
+| `kedi-gorsel-modeli.js` | Ana sayfaya bağlı olmayan görsel sınıflandırma deneyi |
 
 ## Yerelde çalıştırma ve kontrol
 
