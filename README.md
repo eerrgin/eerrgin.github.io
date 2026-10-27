@@ -1,4 +1,4 @@
-# eerrgin — Gece Vardiyası
+# ERGİN TEKNİK ATÖLYE — Gece Vardiyası
 
 `https://eerrgin.github.io/` adresinde yayınlanan kişisel site. Düz HTML, CSS ve JavaScript; derleme adımı yok.
 
