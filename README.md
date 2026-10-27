@@ -21,7 +21,7 @@
 | `scripts/check.mjs` | Yerel bağlantılar, çapalar, CSS varlıkları, JSON/JSONC, JavaScript ve ana sayfa kopyalarının kontrolü |
 | `.github/workflows/ci.yml` | Her push ve pull request'te HTML/bağlantı/JSON/JavaScript kontrolü |
 | `public/`, `src/`, `server/`, `vite.config.js` | Tarihsel/yardımcı uygulama dosyaları; ana sayfanın GitHub Pages yayını kök HTML dosyalarından yapılır |
-| `cat-ai.js` | Ana sayfaya şu an bağlı değil (tarayıcıda görsel sınıflandırma denemesi) |
+| `kedi-gorsel-modeli.js` | Ana sayfaya bağlı olmayan görsel sınıflandırma deneyi |
 
 ## Yerelde çalıştırma ve kontrol
 
