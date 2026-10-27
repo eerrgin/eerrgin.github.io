@@ -7,7 +7,6 @@ import { execFileSync } from "node:child_process";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const skip = new Set([".git", "node_modules", "dist", "dist-pages", ".github", "public"]);
-const templateFiles = new Set(["scripts/install-page.html"]);
 const errors = [];
 const fail = (file, message) => errors.push(file + ": " + message);
 
@@ -59,8 +58,6 @@ for (const file of htmlFiles) {
       if (ref.length > 1 && !ids.has(ref.slice(1))) fail(rel, "missing anchor: " + ref);
       continue;
     }
-    // The Grok install document is a platform template, not a standalone page in this repository.
-    if (templateFiles.has(rel) && (ref.startsWith("/__grok/") || ref.includes("{{"))) continue;
     if (ref.includes("{{")) continue;
 
     const clean = ref.split("#")[0].split("?")[0];
