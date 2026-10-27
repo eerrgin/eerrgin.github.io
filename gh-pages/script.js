@@ -1295,6 +1295,8 @@ function showWeatherError() {
 }
 
 async function loadWeather() {
+  // The live Istanbul cockpit now owns the weather UI and refresh cycle.
+  if (!document.getElementById("w-temp")) return;
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 8000);
   try {

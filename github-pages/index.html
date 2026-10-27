@@ -38,7 +38,7 @@
   <link rel="mask-icon" href="favicon.svg?v=20261024" color="#ff3028">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="fonts/bss-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20261025-topos02">
+  <link rel="stylesheet" href="style.css?v=20261025-atmosphere02">
   <script>
     (function () {
       var root = document.documentElement;
@@ -106,28 +106,6 @@
       <button class="ghost" id="open-cmd" type="button" aria-label="Komut menüsünü aç">⌘K</button>
     </div>
   </header>
-  <aside class="weather" id="hava" aria-label="İstanbul havası" aria-live="polite">
-    <div class="wrap weather-in">
-      <div class="w-now">
-        <span class="w-icon" id="w-icon">····</span>
-        <div>
-          <p class="kicker">İSTANBUL · ŞİMDİ</p>
-          <p class="w-temp"><span id="w-temp">--</span><small>°C</small></p>
-        </div>
-        <div class="w-desc">
-          <strong id="w-desc">hat yok</strong>
-          <span id="w-feel">Open-Meteo bekleniyor.</span>
-        </div>
-      </div>
-      <dl class="w-stats">
-        <div><dt>Nem</dt><dd id="w-hum">—</dd></div>
-        <div><dt>Rüzgâr</dt><dd id="w-wind">—</dd></div>
-        <div><dt>Bugün</dt><dd id="w-range">—</dd></div>
-      </dl>
-      <ol class="w-days" id="w-days"></ol>
-      <p class="w-src">Open-Meteo · anahtarsız <span id="w-time"></span></p>
-    </div>
-  </aside>
   <main class="wrap" id="top">
     <section class="hero reveal in">
       <div>
@@ -164,6 +142,59 @@
       </div>
     </section>
     <div class="ticker" aria-hidden="true"><p>MERAK ✳ DİJİTAL ARKEOLOJİ ✳ ŞEHRİN HAFIZASI ✳ SESİN GÖLGESİ ✳ İŞLEYEN FİKİRLER ✳ İSTANBUL ✳ MERAK ✳ DİJİTAL ARKEOLOJİ ✳ ŞEHRİN HAFIZASI ✳ SESİN GÖLGESİ ✳ İŞLEYEN FİKİRLER ✳ İSTANBUL ✳</p></div>
+
+  <section class="istanbul-cockpit" id="hava" aria-labelledby="istanbul-cockpit-title">
+    <div class="wrap cockpit-wrap">
+      <div class="cockpit-heading">
+        <div class="cockpit-heading-copy">
+          <p class="kicker"><span class="cockpit-pulse" aria-hidden="true"></span> ERGIN LAB · SAHA DENEYİ 01</p>
+          <h2 id="istanbul-cockpit-title">İstanbul <em>/ Atmosfer</em></h2>
+          <p>Şehrin o anki hâli: hava, ışık penceresi, ay evresi, hava kalitesi, basınç, sismik kayıt ve yörünge. Canlı gözlemler, tek bir saha defterinde.</p>
+        </div>
+        <div class="cockpit-heading-meta" aria-label="Veri kaynakları">
+          <span>AÇIK VERİ</span><span>ANAHTARSIZ HAVA</span><span>CANLI ALETLER</span>
+        </div>
+      </div>
+      <div class="cockpit-frame-shell">
+        <div class="cockpit-frame-top" aria-hidden="true">
+          <span><i></i> İSTANBUL / CANLI TELEMETRİ</span>
+          <span>41°00′N · 28°58′E</span>
+        </div>
+        <iframe
+          id="istanbul-live-frame"
+          class="cockpit-frame"
+          src="/istanbul-cockpit/?embed=1&v=20261025-atmosphere02"
+          title="Ergin Lab İstanbul atmosfer kokpiti: hava, ışık, ay, kalite, basınç, deprem ve yörünge"
+          loading="eager"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+      </div>
+      <div class="cockpit-footer-line">
+        <span>CANLI GÖZLEM / İSTANBUL</span>
+        <span>HAVA · IŞIK · AY · SİSMİK · YÖRÜNGE</span>
+        <a href="/istanbul-cockpit/" target="_blank" rel="noopener">TAM KOKPİTİ AÇ ↗</a>
+      </div>
+    </div>
+  </section>
+  <script>
+    (function () {
+      var frame = document.getElementById("istanbul-live-frame");
+      if (!frame) return;
+      window.addEventListener("message", function (event) {
+        if (event.origin !== window.location.origin || event.source !== frame.contentWindow) return;
+        var data = event.data;
+        if (!data || data.type !== "istanbul-cockpit:resize") return;
+        var height = Number(data.height);
+        if (!Number.isFinite(height) || height < 280) return;
+        var maxHeight = window.matchMedia("(max-width: 600px)").matches ? 1800 :
+          (window.matchMedia("(max-width: 899px)").matches ? 1400 : 1100);
+        frame.style.height = Math.min(Math.max(Math.ceil(height), 420), maxHeight) + "px";
+      });
+      frame.addEventListener("load", function () {
+        frame.contentWindow.postMessage({ type: "istanbul-cockpit:measure" }, window.location.origin);
+      });
+    })();
+  </script>
 
     
 
@@ -296,9 +327,9 @@
           <p class="meta"><span>SQLITE / EDUCATION</span><a href="https://github.com/eerrgin/local-sqli-lab" rel="noopener">Kaynağı gör ↗</a></p>
         </article>
         <article class="card project-card project-tigerk">
-          <div class="project-card-top"><span class="project-index">05 / AI CORE</span><span class="project-sigil" aria-hidden="true"><svg viewBox="0 0 72 72"><g fill="none" stroke="currentColor" stroke-opacity=".7"><path d="M16 20 36 12 56 25 51 52 28 59 13 42Z"/><path d="M16 20 51 52M56 25 28 59M36 12 28 59"/></g><g fill="currentColor"><circle cx="16" cy="20" r="4"/><circle cx="36" cy="12" r="4"/><circle cx="56" cy="25" r="4"/><circle cx="51" cy="52" r="4"/><circle cx="28" cy="59" r="4"/><circle cx="13" cy="42" r="4"/></g></svg></span></div>
-          <h3>Tigerk</h3><p>Yapay zekâya odaklanan bir geliştirme alanı. Ağın iskeleti, deneyler ve mimari notları açık ilerliyor.</p>
-          <p class="meta"><span>PYTHON / AI</span><a href="https://github.com/eerrgin/Tigerk/tree/main" rel="noopener">Kaynağı gör ↗</a></p>
+          <div class="project-card-top"><span class="project-index">05 / ATÖLYE CORE</span><span class="project-sigil" aria-hidden="true"><svg viewBox="0 0 72 72"><g fill="none" stroke="currentColor" stroke-opacity=".7"><path d="M16 20 36 12 56 25 51 52 28 59 13 42Z"/><path d="M16 20 51 52M56 25 28 59M36 12 28 59"/></g><g fill="currentColor"><circle cx="16" cy="20" r="4"/><circle cx="36" cy="12" r="4"/><circle cx="56" cy="25" r="4"/><circle cx="51" cy="52" r="4"/><circle cx="28" cy="59" r="4"/><circle cx="13" cy="42" r="4"/></g></svg></span></div>
+          <h3>Tigerk</h3><p>Ergin Teknik Atölye içindeki sinir ağı deney alanı. Ağın iskeleti, eğitim adımları ve mimari notları açıkça incelenebilir.</p>
+          <p class="meta"><span>PYTHON / MODEL LAB</span><a href="https://github.com/eerrgin/Tigerk/tree/main" rel="noopener">Kaynağı gör ↗</a></p>
         </article>
         <article class="card project-card project-mycelforge mycelforge-card">
           <div class="project-card-top"><span class="project-index">06 / BIOMATERIALS LAB</span><span class="project-sigil mycelium-sigil" aria-hidden="true"><svg viewBox="0 0 72 72"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M35 66V40l-12-9V15M35 48l15-11 4-17M35 56l-15 1-8-12M23 31l-8-6M50 37l-9-8M20 57l-4 9M54 20l8-6M35 40l11-8M12 45l-4-9"/><path d="M23 15q-7-8-13 0M54 20q6-9 11-3M8 36q-5-7-2-12M41 29q-6-9-1-14"/></g><g fill="currentColor"><circle cx="35" cy="40" r="3"/><circle cx="23" cy="31" r="2.5"/><circle cx="50" cy="37" r="2.5"/><circle cx="20" cy="57" r="2.5"/></g></svg></span></div>
@@ -551,7 +582,7 @@
       <div class="grid two">
         <a class="card" href="https://news.ycombinator.com/" rel="noopener"><h3>Hacker News</h3><p>Başlığı orada oku. Metni buraya taşımıyorum.</p></a>
         <a class="card" href="https://tr.wikipedia.org/wiki/Special:Random" rel="noopener"><h3>Rastgele madde</h3><p>Ansiklopediden bir tünel. Özet koşulsuz kopyalanmaz.</p></a>
-        <a class="card" href="https://arxiv.org/list/cs.AI/recent" rel="noopener"><h3>arXiv / AI</h3><p>Yeni araştırma ön baskıları.</p></a>
+        <a class="card" href="https://arxiv.org/list/cs.AI/recent" rel="noopener"><h3>arXiv / ARAŞTIRMA</h3><p>Yeni araştırma ön baskıları.</p></a>
         <a class="card" href="https://developer.mozilla.org/" rel="noopener"><h3>MDN</h3><p>Web platformunun hafızası.</p></a>
         <a class="card" href="https://archive.org/" rel="noopener"><h3>Internet Archive</h3><p>Kaybolmaması gereken şeyler.</p></a>
         <a class="card" href="https://github.com/eerrgin" rel="noopener"><h3>Depolar</h3><p>Kaynak, not, deneme.</p></a>
@@ -596,7 +627,7 @@
       <ul>
         <li>Siber güvenlik: kapıyı kilitleyip anahtarı paspasın altına koymaktır.</li>
         <li>DevOps, hatayı üretimde bulma kültürüdür.</li>
-        <li>AI etik kurulu, kuralları model eğitildikten sonra yazar.</li>
+        <li>Atölye ilkeleri, deneyin sonuna bırakılmaz; sınırlar kodla birlikte yazılır.</li>
         <li>Tigerk ağı ve iskelet bu sekmede kalır. Ağırlık tarayıcı hafızasındadır, depoya gitmez.</li>
         <li>HAT terminali aynı ağı kullanır. Yazdığın cümle bir sunucuya taşınmaz.</li>
         <li>Algoritma seni tanımıyor; sadece tıklamalarını tanıyor.</li>
@@ -716,7 +747,7 @@
     })();
   </script>
   <script src="fx.js?v=20261025-topos02" defer></script>
-  <script src="script.js?v=20261024-afterglow2" defer></script>
+  <script src="script.js?v=20261025-cockpit01" defer></script>
   <script src="tigerk.js" defer></script>
   <script src="hat.js" defer></script>
 </body>
