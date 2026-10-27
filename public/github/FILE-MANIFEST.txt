@@ -7,7 +7,7 @@ Ana sayfa
   photos/*.jpg, fonts/*.woff2
 
 Alt sayfalar: ergin-lab/, kirpintilar/icerik.json, message.html, oku.html
-Arama/duyuru: robots.txt, sitemap.xml, llms.txt
+Arama/duyuru: robots.txt, sitemap.xml, ATOLYE-REHBERI.txt
 Belgeler: README.md, README-TR.md, LEGAL-AND-DEPLOY.md, LICENSE-CODE.txt
 Otomasyon: .github/workflows/ci.yml, .github/dependabot.yml, scripts/check.mjs
 
