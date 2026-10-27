@@ -435,9 +435,9 @@
     const reply = (label, answer) => ({ label, answer });
 
     if (/(^|\s)(kimsin|sen kimsin|adin ne|nesin|tigerk nedir|tigerk ne yapar)(\s|$)/.test(q)) {
-      return reply("AGENT / SESSION", [
-        "Tigerk / Engineering Reasoning Layer",
-        "İstek yönlendirme, yerel bilgi erişimi ve mühendislik playbook'larını ayrı katmanlarda çalıştırır.",
+      return reply("ERGİN ATÖLYE / OTURUM", [
+        "Tigerk / Ergin Teknik Atölye",
+        "İstek yönlendirme, yerel bilgi erişimi ve atölye notlarını ayrı katmanlarda çalıştırır.",
         "Odak: kod inceleme, hata ayıklama, API sözleşmeleri, test stratejileri, performans ve mimari kararlar.",
         "İnceleme protokolü: bulgu → etki → doğrulama → en küçük güvenli düzeltme."
       ].join("\n"));
@@ -720,7 +720,7 @@
     }
     if (hit.intent === "yardim") {
       return [
-        "Tigerk / Engineering Reasoning Layer",
+        "Tigerk / Ergin Teknik Atölye",
         "API sözleşmesi · code review · root-cause triage · test stratejisi · performans · güvenlik sınırları · sistem tasarımı.",
         "Örnek istem: API retry semantiğini idempotency, concurrency ve failure response açısından incele.",
         "Çıktı: bulgu → etki → doğrulama → düzeltme."
