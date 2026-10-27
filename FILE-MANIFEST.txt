@@ -18,7 +18,7 @@ Ek deneyler ve projeler
   assets/                    Yardımcı SVG ve yedek çizimler; ana İstanbul kartları photos/ kullanır
 
 Arama ve belgeler
-  robots.txt, sitemap.xml, llms.txt
+  robots.txt, sitemap.xml, ATOLYE-REHBERI.txt
   README.md, README-TR.md, LEGAL-AND-DEPLOY.md, LICENSE-CODE.txt
 
 Otomasyon ve denetim
