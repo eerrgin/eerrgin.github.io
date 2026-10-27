@@ -17,9 +17,6 @@ import {
 
 assertAppDataServerOnly("app-data/client.server");
 
-export const CONNECTORS_HOST_STAGING = "connectors.app-builder-testing.com";
-export const CONNECTORS_HOST_PROD = "connectors.grok.me";
-
 function isLoopbackHost(host: string): boolean {
   return host === "localhost" || host === "127.0.0.1" || host === "[::1]";
 }
@@ -30,22 +27,12 @@ type InboundContext = {
   connectorsBase: string | null;
 };
 
-function connectorsBaseFor(publicHost: string | null): string | null {
-  const explicit = env("GROK_CONNECTORS_URL");
-  if (explicit) return explicit.replace(/\/+$/, "");
-
-  const host = publicHost?.toLowerCase();
-  if (!host || isLoopbackHost(host)) return null;
-  if (
-    host === "app-builder-testing.com" ||
-    host.endsWith(".app-builder-testing.com")
-  ) {
-    return `https://${CONNECTORS_HOST_STAGING}`;
-  }
-  if (host === "grok.me" || host.endsWith(".grok.me")) {
-    return `https://${CONNECTORS_HOST_PROD}`;
-  }
-  return null;
+function connectorsBaseFor(_publicHost: string | null): string | null {
+  // No service is contacted implicitly. A project must explicitly configure
+  // its own connector endpoint in ATOLYE_CONNECTORS_URL.
+  const explicit = env("ATOLYE_CONNECTORS_URL");
+  if (!explicit) return null;
+  return explicit.replace(/\\/+$/, "");
 }
 
 function tryGetRequest(): Request | null {
@@ -65,7 +52,7 @@ function inboundContext(): InboundContext {
   const envToken =
     process.env.NODE_ENV === "production"
       ? null
-      : (env("GROK_CONNECTOR_ACCESS_TOKEN") ?? null);
+      : (env("ATOLYE_CONNECTOR_ACCESS_TOKEN") ?? null);
   return {
     token: headerToken ?? envToken,
     publicHost,
