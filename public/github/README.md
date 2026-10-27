@@ -36,4 +36,4 @@ GitHub Pages ana site için `main` dalının kökünden yayınlanır. Her push v
 
 ## Gizlilik
 
-Analitik, reklam ve takip kodu yok. Hava durumu şeridi Open-Meteo'ya, kedi ve ses bölümleri yalnızca tarayıcıya yerel çalışır. Ayrıntı: `LEGAL-AND-DEPLOY.md`, `llms.txt`.
+Analitik, reklam ve takip kodu yok. Hava durumu şeridi Open-Meteo'ya, kedi ve ses bölümleri yalnızca tarayıcıya yerel çalışır. Ayrıntı: `LEGAL-AND-DEPLOY.md`, `ATOLYE-REHBERI.txt`.
