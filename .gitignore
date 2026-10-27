@@ -1,10 +1,5 @@
-# v0 sandbox internal files
-__v0_runtime_loader.js
-__v0_devtools.tsx
-__v0_jsx-dev-runtime.ts
-.snowflake/
+# Local development and deployment artifacts
 .design-cache/
-.v0-trash/
 .vercel/
 
 # Environment variables
@@ -14,3 +9,7 @@ __v0_jsx-dev-runtime.ts
 node_modules
 .next/
 .DS_Store
+
+# Local Ergin Teknik Atölye preview state
+ergin-teknik-atolye/preview.pid
+ergin-teknik-atolye/preview.log
