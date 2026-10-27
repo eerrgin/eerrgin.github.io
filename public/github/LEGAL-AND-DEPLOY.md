@@ -16,7 +16,6 @@ Bu dosya hukuki görüş değildir. Her dosyanın ve bağlantının izin durumun
 - Hacker News: resmi herkese açık Firebase API'sinden başlık, puan ve yorum sayısı okunur; haber yazıları kopyalanmaz, kaynak sayfasına bağlantı verilir.
 - Wikipedia: rastgele sayfa özeti, makale bağlantısı ve katkı geçmişi bağlantısı gösterilir. Metin CC BY-SA yükümlülükleri kapsamında kaynak gösterilerek kullanılır; Wikipedia'nın kendi politika/atıf şartları zamanla değişebileceği için yeniden dağıtım veya kapsamlı alıntıda güncel koşulları kontrol et.
 - GitHub: yalnızca `eerrgin` kullanıcısının herkese açık repo metaverisi çekilir. Depo API'si yanıt vermediğinde yerel projeler bölümü kalır.
-- Tesla, xAI ve Elon Musk bağlantıları resmî kaynağa yönlendirir. Başlık veya gönderi kazıma, taklit içerik, logo dosyası ya da başka sitelerden haber metni kopyalama yapılmaz.
 
 ## Gizlilik ve ağ
 
