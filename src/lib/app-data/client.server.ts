@@ -32,7 +32,7 @@ function connectorsBaseFor(_publicHost: string | null): string | null {
   // its own connector endpoint in ATOLYE_CONNECTORS_URL.
   const explicit = env("ATOLYE_CONNECTORS_URL");
   if (!explicit) return null;
-  return explicit.replace(/\\/+$/, "");
+  return explicit.replace(/\/+$/, "");
 }
 
 function tryGetRequest(): Request | null {
