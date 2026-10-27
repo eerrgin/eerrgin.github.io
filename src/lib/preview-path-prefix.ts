@@ -14,7 +14,7 @@ function configuredPathBasedPreviewHosts(): Set<string> {
   );
 }
 
-const PORT_ID_PREFIX = /^\\/hds-[a-z0-9]+-\\d+-[a-z0-9]+(?=\\/|$)/i;
+const PORT_ID_PREFIX = /^\/hds-[a-z0-9]+-\d+-[a-z0-9]+(?=\/|$)/i;
 
 /**
  * Rewrites the development server path only for explicitly configured hosts.
