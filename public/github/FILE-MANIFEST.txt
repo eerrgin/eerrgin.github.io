@@ -16,5 +16,5 @@ Eski / bağlı olmayan dosyalar (silinmedi, kontrol edilmeli)
   cat-ai.js          ana sayfaya bağlı değil
   12.jpg 122.jpg 1232.jpg varan-otogar-*.jpg contact.png work.png hero.png
   final-hero.png hud-optical.png hud-thermal.png
-  ergin-k1791821010771.py, ergin_html_20261012_61f84b.html, veil.sig
+  ergin-teknik-atolye-gorev-defteri.py, ergin_html_20261012_61f84b.html, veil.sig
   7mix.mp3, ergin_kaplan_,videos.mp4   (yayın hakkı sahibi doğrulamalı)
