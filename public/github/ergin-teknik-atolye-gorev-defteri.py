@@ -8,7 +8,7 @@ files_content = {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Prompt & Task Studio - Ergin Kaplan</title>
+    <title>Ergin Teknik Atölye · Görev Defteri</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -21,41 +21,41 @@ files_content = {
     <header class="app-header">
         <div class="logo">
             <span class="icon">⚡</span>
-            <h1>Prompt Studio</h1>
+            <h1>Görev Defteri</h1>
         </div>
-        <p class="subtitle">Geliştiriciler & AI Araştırmacıları İçin Özel Prompt Yönetim Paneli</p>
+        <p class="subtitle">Ergin Teknik Atölye için yerel talimat ve görev düzenleme alanı</p>
     </header>
 
     <main class="container">
         <section class="card form-section">
-            <h2>Yeni Prompt Ekle</h2>
+            <h2>Yeni Talimat Ekle</h2>
             <form id="promptForm">
                 <div class="input-group">
                     <label for="title">Başlık</label>
-                    <input type="text" id="title" placeholder="Örn: Python Code Refactor Prompt" required>
+                    <input type="text" id="title" placeholder="Örn: Python kodunu düzenle" required>
                 </div>
                 <div class="input-group">
                     <label for="category">Kategori</label>
                     <select id="category">
                         <option value="Kodlama">Kodlama / Yazılım</option>
                         <option value="Metin Yazımı">Metin & İçerik</option>
-                        <option value="Görsel AI">Görsel / Tasarım</option>
+                        <option value="Görsel / Tasarım">Görsel / Tasarım</option>
                         <option value="Analiz">Analiz & Mantık</option>
                     </select>
                 </div>
                 <div class="input-group">
-                    <label for="promptText">Prompt İçeriği</label>
-                    <textarea id="promptText" rows="4" placeholder="AI modeline verilecek talimatı buraya yazın..." required></textarea>
+                    <label for="promptText">Talimat İçeriği</label>
+                    <textarea id="promptText" rows="4" placeholder="Görev veya üretim talimatını buraya yazın..." required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">+ Prompt Kaydet</button>
+                <button type="submit" class="btn btn-primary">+ Talimat Kaydet</button>
             </form>
         </section>
 
         <section class="card list-section">
             <div class="list-header">
-                <h2>Kayıtlı Promptlar</h2>
+                <h2>Kayıtlı Talimatlar</h2>
                 <div class="filter-box">
-                    <input type="text" id="searchInput" placeholder="Prompt ara...">
+                    <input type="text" id="searchInput" placeholder="Talimat ara...">
                 </div>
             </div>
             <div id="promptList" class="prompt-grid">
@@ -371,7 +371,7 @@ function renderPrompts(filterText = '') {
     );
 
     if (filtered.length === 0) {
-        promptList.innerHTML = '<p style="color: #64748b; font-size: 0.9rem;">Henüz kayıtlı prompt bulunamadı.</p>';
+        promptList.innerHTML = '<p style="color: #64748b; font-size: 0.9rem;">Henüz kayıtlı talimat bulunamadı.</p>';
         return;
     }
 
@@ -428,7 +428,7 @@ function copyPrompt(id) {
     const prompt = prompts.find(p => p.id.toString() === id.toString());
     if (prompt) {
         navigator.clipboard.writeText(prompt.text).then(() => {
-            alert('Prompt panoya kopyalandı!');
+            alert('Talimat panoya kopyalandı!');
         });
     }
 }
@@ -445,13 +445,13 @@ searchInput.addEventListener('input', (e) => {
 // Sayfa yüklendiğinde çalıştır
 renderPrompts();
 """,
-    "README.md": """# AI Prompt & Task Studio ⚡
+    "README.md": """# ERGİN TEKNİK ATÖLYE · GÖREV DEFTERİ
 
-Geliştiriciler ve yapay zeka araçları (ChatGPT, Claude, Gemini) ile çalışanlar için özel olarak geliştirilmiş **Prompt ve Görev Yönetim Paneli**.
+Ergin Teknik Atölye projelerinde kullanılabilecek talimatları ve görev metinlerini düzenlemek için hazırlanmış yerel bir panel.
 
 ## 🚀 Özellikler
-- **Kategori Bazlı Organizasyon:** Kodlama, metin, tasarım ve analiz promptlarını sınıflandırma.
-- **Hızlı Kopyalama:** Tek tıkla ilgili promptu panoya alma.
+- **Kategori Bazlı Düzen:** Kodlama, metin, tasarım ve analiz talimatlarını sınıflandırma.
+- **Hızlı Kopyalama:** Seçili talimatı tek tıkla panoya alma.
 - **Yerel Depolama (LocalStorage):** Veriler tamamen kullanıcının tarayıcısında saklanır, veri kaybı yaşanmaz.
 - **Anlık Arama:** Başlık veya içerik üzerinden canlı filtreleme.
 - **Modern UI/UX:** Dark-mode ve responsive tasarım.
@@ -466,5 +466,5 @@ Geliştiriciler ve yapay zeka araçları (ChatGPT, Claude, Gemini) ile çalışa
 }
 
 # Create zip file
-zip_filename = "ai-prompt-studio.zip"
+zip_filename = "ergin-teknik-atolye-gorev-defteri.zip"
 with
