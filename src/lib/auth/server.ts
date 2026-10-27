@@ -5,7 +5,7 @@
  * local email/password, flip the flag in `./email-password` only (see auth skill).
  *
  * The app runs its own Better Auth at `/api/auth/*`, so the session cookie stays
- * on this app's own origin. Sign-in federates to the shared **Grok auth broker**
+ * on this app's own origin. Sign-in federates to the shared **platform OAuth broker**
  * (`GROK_AUTH_ISSUER`) via the `genericOAuth` plugin — the broker brokers the
  * upstream sign-in methods (Google, X, …) and holds their shared secrets; this
  * app only holds its own client id/secret and names the upstream it wants via
