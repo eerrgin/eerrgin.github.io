@@ -2,6 +2,7 @@ import { genericOAuthClient } from "better-auth/client/plugins";
 import { createAuthClient } from "better-auth/react";
 import { runPreSignInSignOut, runSignOut } from "../../../scripts/sign-out-plan.mjs";
 import { ATOLYE_PROVIDERS } from "./providers";
+import { isAtolyePreviewGuestHost } from "../preview-embedder-origin";
 
 /**
  * Better Auth client for this React SPA (browser-side).
@@ -68,14 +69,14 @@ function setBearerToken(token: string | null): void {
 }
 
 /**
- * The sandbox live preview runs this app inside an iframe on a `*.atolye-sandbox.com`
+ * The sandbox configured preview runs this app inside an iframe on a `configured preview host`
  * host, where a full-page redirect to the broker can't work — so sign-in uses a
  * popup there and a normal redirect everywhere else.
  */
 function inLivePreview(): boolean {
   return (
     typeof window !== "undefined" &&
-    window.location.hostname.endsWith(".atolye-sandbox.com")
+    isAtolyePreviewGuestHost(window.location.hostname)
   );
 }
 
@@ -86,7 +87,7 @@ type PopupMessage = { source: "ergin-atolye-auth-popup"; token: string | null; e
  * Start sign-in with one upstream provider (`providerId` from `ATOLYE_PROVIDERS`),
  * federating through the preview platform OAuth broker.
  *
- * - **Live preview** (`*.atolye-sandbox.com` iframe): opens a POPUP to
+ * - **Configured preview** (`configured preview host` iframe): opens a POPUP to
  *   `/auth/popup`, served by the template Vite plugin (see `vite.config.ts` +
  *   `popup.server.ts`) — 302s to the broker/upstream login (no app chrome) and,
  *   on return, posts the session bearer token back. We store it and refresh the
