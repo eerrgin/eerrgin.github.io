@@ -1,0 +1,36 @@
+ERGİN TEKNİK ATÖLYE · GECE VARDİYASI
+
+Site: https://eerrgin.github.io/
+Geliştirici: Ergin Kaplan
+Dil: Türkçe
+
+## Atölye hakkında
+
+Küçük yazılım deneyleri, tarayıcı içinde çalışan araçlar, retro arayüzler, sentetik ses, İstanbul arşivi ve teknik notlar için kişisel çalışma alanı.
+
+## Projeler
+
+- VeilCheck: dosyalarda gizli kalmış olabilecek sır işaretlerini yerel olarak inceleyen yardımcı araç.
+- GreySignal: HTTP güvenlik başlıklarını salt okunur biçimde denetleyen araç.
+- ReconX: yalnızca yetki verilen hedefler için keşif yardımcıları.
+- local-sqli-lab: çevrimdışı SQLite öğrenme laboratuvarı.
+- Tigerk: tarayıcı içinde çalışan küçük sinir ağı ve mühendislik yönlendirme deneyi. Ağırlıklar tarayıcıda saklanır; dışarıdan bir model çağrısı yapılmaz.
+- MycelForge: miselyum biyomalzeme aday reçetelerini ve deney protokollerini taramak için sezgisel değerlendirme aracı. Sonuçlar laboratuvar ölçümü veya sertifikasyon yerine geçmez.
+
+## Veri ve gizlilik
+
+- Analitik, reklam pikseli veya takip betiği bilerek yüklenmez.
+- Hava durumu, Hacker News, Wikipedia ve herkese açık GitHub depo bilgileri ilgili kaynaklardan istenir. Kaynaklardan biri yanıt vermezse diğer sayfa özellikleri çalışmaya devam eder.
+- Greyfield FM, Web Audio API ile tarayıcıda ses üretir; üçüncü taraf şarkı akışı içermez.
+- Yerel görsel ve ses dosyaları sayfa tarafından sunucuya yüklenmez. İsteğe bağlı dosya seçimi, tarayıcı oturumu için yerel bir nesne adresi kullanır.
+- MycelForge not defteri tarayıcı deposunda tutulur.
+
+## Kaynaklar
+
+- GitHub: https://github.com/eerrgin
+- MycelForge kaynak kodu: https://github.com/eerrgin/mycelforge
+- Hacker News API: https://github.com/HackerNews/API
+- Open-Meteo: https://open-meteo.com/
+- Wikipedia: https://www.wikipedia.org/
+
+Güvenlik araçları yalnızca kullanıcının sahibi olduğu veya değerlendirme izni aldığı sistemlerde kullanılmalıdır. Eksik başlıklar ya da sezgisel eşleşmeler tek başına bir ihlalin kanıtı değildir.
