@@ -1,5 +1,6 @@
 /*
- * Cat identity lab: browser-side zero-shot image classification.
+ * ERGİN TEKNİK ATÖLYE · Kedi Görsel Laboratuvarı.
+ * Tarayıcı içi sıfır örnekli görsel sınıflandırma deneyi.
  * The model and runtime are downloaded from public CDNs on first use. The selected image
  * is passed to the model inside this browser; no image upload endpoint is used.
  */
@@ -164,7 +165,7 @@
       renderClassification(normalized, 'vision'); setStatus('Analiz tamamlandı.', 100);
       setTimeout(() => { progressPanel.hidden = true; }, 1900);
     } catch (error) {
-      console.error('Cat visual model error:', error);
+      console.error('Ergin Teknik Atölye / kedi görsel modeli:', error);
       progressPanel.hidden = true;
       showMessage('Görsel model başlatılamadı. Bağlantı, tarayıcı belleği veya model indirmesi engel olmuş olabilir. “Özelliklerle” sekmesindeki yerel eşleştirme kullanılabilir.');
     } finally { setBusy(false); }
