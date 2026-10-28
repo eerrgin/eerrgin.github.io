@@ -685,8 +685,16 @@ let radioMaster = null;
 let radioLevel = 0.78;
 let radioMuted = false;
 try {
-  const savedLevel = Number(localStorage.getItem("e.radio.volume"));
-  if (Number.isFinite(savedLevel) && savedLevel >= 0 && savedLevel <= 1) radioLevel = savedLevel;
+  const storedLevel = localStorage.getItem("e.radio.volume");
+  const savedLevel = storedLevel === null ? NaN : Number(storedLevel);
+  // Zero is not a useful startup level here because the mixer already has a
+  // dedicated mute control. Recover stale zero-volume preferences to a gentle
+  // default so the radio does not open silently on the next visit.
+  if (Number.isFinite(savedLevel) && savedLevel > 0 && savedLevel <= 1) {
+    radioLevel = savedLevel;
+  } else if (storedLevel !== null) {
+    localStorage.setItem("e.radio.volume", String(radioLevel));
+  }
   radioMuted = localStorage.getItem("e.radio.muted") === "1";
 } catch {}
 let analyser = null;
