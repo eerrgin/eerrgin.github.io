@@ -38,7 +38,7 @@
   <link rel="mask-icon" href="favicon.svg?v=20261024" color="#ff3028">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="fonts/bss-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20261025-atmosphere02">
+  <link rel="stylesheet" href="style.css?v=20261028-os-lab-tray">
   <script>
     (function () {
       var root = document.documentElement;
@@ -100,6 +100,7 @@
         <a href="#sinyal">Sinyal</a>
         <a href="#arsiv">Arşiv</a>
         <a href="#hat">Kırmızı hat</a>
+        <a href="#proje-tepsisi">Çalışma tepsisi</a>
       </nav>
       <div class="clock"><span id="clock">--:--:--</span><br>IST</div>
       <button class="ghost" id="open-hat" type="button">HAT</button>
@@ -116,6 +117,7 @@
           <a class="btn" href="#atolye">DENEMELER</a>
           <a class="btn ghost" href="#laboratuvar">Kedi</a>
           <a class="btn ghost lab-shortcut" href="https://eerrgin.github.io/ergin-lab/" aria-label="Ergin Lab deneylerini aç">Ergin Lab ↗</a>
+          <a class="btn ghost" href="#proje-tepsisi">ÇALIŞMA TEPSİSİ ↘</a>
         </div>
         <div class="identity-chip">
           <img src="https://eerrgin.github.io/erginkaplan1.jpg" alt="Ergin Kaplan'ın kişisel fotoğrafı" width="88" height="88" decoding="async" fetchpriority="high">
@@ -306,42 +308,21 @@
         <div><p class="kicker">KÜÇÜK ARAÇLAR / FARKLI NİYETLER</p><h3>Masadaki <em>işler.</em></h3></div>
         <p>Altı proje. Altı ayrı merak. Hiçbiri bitmiş olmak zorunda değil.</p>
       </div>
-      <div class="grid projects workbench-grid">
-        <article class="card project-card project-veilcheck">
-          <div class="project-card-top"><span class="project-index">01 / LOCAL SCAN</span><span class="project-sigil" aria-hidden="true"><svg viewBox="0 0 72 72"><path d="M36 5 59 14V33c0 15-9 25-23 34C22 58 13 48 13 33V14Z" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M24 34l8 8 17-19" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="53" cy="17" r="3" fill="currentColor"/></svg></span></div>
-          <h3>VeilCheck</h3><p>Kodun içinde unutulmuş sır işaretlerini arar. Dosyayı dışarı taşımaz; bulduğunu ifşa etmek yerine işaret eder.</p>
-          <p class="meta"><span>PYTHON / STDLIB</span><a href="https://github.com/eerrgin/VeilCheck" rel="noopener">Kaynağı gör ↗</a></p>
+      <div class="grid projects workbench-grid workbench-notes">
+        <article class="card project-card workbench-note-card">
+          <div class="project-card-top"><span class="project-index">01 / FIELD NOTES</span><span class="project-sigil" aria-hidden="true">∿</span></div>
+          <h3>Ölç, sonra anlat.</h3><p>Bir denemenin değeri güzel görünen çıktıda değil; başlangıç koşulu, ölçüm yöntemi ve tekrarlandığında aynı sonucu verip vermediğinde.</p>
+          <p class="meta"><span>ÇALIŞMA YÖNTEMİ</span><a href="#hat">Sınırları oku ↗</a></p>
         </article>
-        <article class="card project-card project-greysignal">
-          <div class="project-card-top"><span class="project-index">02 / HEADER STUDY</span><span class="project-sigil" aria-hidden="true"><svg viewBox="0 0 72 72"><path d="M5 37h9l5-13 8 27 8-36 8 43 8-29 6 8h10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 58H67" stroke="currentColor" stroke-opacity=".3"/><circle cx="52" cy="12" r="3" fill="currentColor"/></svg></span></div>
-          <h3>GreySignal</h3><p>Bir adresin yanıt başlıklarını okur. Eksik tabelayı otomatik olarak açık kapı ilan etmez.</p>
-          <p class="meta"><span>HTTP / READ ONLY</span><a href="https://github.com/eerrgin/GreySignal" rel="noopener">Kaynağı gör ↗</a></p>
+        <article class="card project-card workbench-note-card">
+          <div class="project-card-top"><span class="project-index">02 / RECOVERY PLAN</span><span class="project-sigil" aria-hidden="true">↶</span></div>
+          <h3>Önce dönüş yolunu yaz.</h3><p>Deneyi büyütmeden önce nasıl duracağını, hangi verinin korunacağını ve önceki duruma nasıl döneceğini tanımla. İyi bir deneme, geri alınabilir olandır.</p>
+          <p class="meta"><span>DENEME DİSİPLİNİ</span><a href="#hat">Çalışma sınırları ↗</a></p>
         </article>
-        <article class="card project-card project-reconx">
-          <div class="project-card-top"><span class="project-index">03 / RECON</span><span class="project-sigil" aria-hidden="true"><svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="27" fill="none" stroke="currentColor" stroke-opacity=".6"/><circle cx="36" cy="36" r="17" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-dasharray="2 5"/><path d="M36 8v56M8 36h56M36 36l20-17" stroke="currentColor" stroke-width="1.1"/><circle cx="56" cy="19" r="4" fill="currentColor"/></svg></span></div>
-          <h3>ReconX</h3><p>İzin verilen keşfi okunur rapora dönüştürür. Davetiye yoksa kapı da yok.</p>
-          <p class="meta"><span>PYTHON / REPORT</span><a href="https://github.com/eerrgin/ReconX-Web-Reconnaissance-Toolkit-" rel="noopener">Kaynağı gör ↗</a></p>
-        </article>
-        <article class="card project-card project-sqli">
-          <div class="project-card-top"><span class="project-index">04 / OFFLINE LAB</span><span class="project-sigil" aria-hidden="true"><svg viewBox="0 0 72 72"><path d="M13 17h46v38H13Z" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M13 28h46M24 17v38M48 17v38M13 42h46" stroke="currentColor" stroke-opacity=".38"/><path d="M30 35l6 6 9-13" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></div>
-          <h3>local-sqli-lab</h3><p>SQL enjeksiyonunu internete çıkmadan, küçük bir SQLite masasında anlatır. Öğrenme alanı kontrollüdür.</p>
-          <p class="meta"><span>SQLITE / EDUCATION</span><a href="https://github.com/eerrgin/local-sqli-lab" rel="noopener">Kaynağı gör ↗</a></p>
-        </article>
-        <article class="card project-card project-tigerk">
-          <div class="project-card-top"><span class="project-index">05 / ATÖLYE CORE</span><span class="project-sigil" aria-hidden="true"><svg viewBox="0 0 72 72"><g fill="none" stroke="currentColor" stroke-opacity=".7"><path d="M16 20 36 12 56 25 51 52 28 59 13 42Z"/><path d="M16 20 51 52M56 25 28 59M36 12 28 59"/></g><g fill="currentColor"><circle cx="16" cy="20" r="4"/><circle cx="36" cy="12" r="4"/><circle cx="56" cy="25" r="4"/><circle cx="51" cy="52" r="4"/><circle cx="28" cy="59" r="4"/><circle cx="13" cy="42" r="4"/></g></svg></span></div>
-          <h3>Tigerk</h3><p>Ergin Teknik Atölye içindeki sinir ağı deney alanı. Ağın iskeleti, eğitim adımları ve mimari notları açıkça incelenebilir.</p>
-          <p class="meta"><span>PYTHON / MODEL LAB</span><a href="https://github.com/eerrgin/Tigerk/tree/main" rel="noopener">Kaynağı gör ↗</a></p>
-        </article>
-        <article class="card project-card project-mycelforge mycelforge-card">
-          <div class="project-card-top"><span class="project-index">06 / BIOMATERIALS LAB</span><span class="project-sigil mycelium-sigil" aria-hidden="true"><svg viewBox="0 0 72 72"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M35 66V40l-12-9V15M35 48l15-11 4-17M35 56l-15 1-8-12M23 31l-8-6M50 37l-9-8M20 57l-4 9M54 20l8-6M35 40l11-8M12 45l-4-9"/><path d="M23 15q-7-8-13 0M54 20q6-9 11-3M8 36q-5-7-2-12M41 29q-6-9-1-14"/></g><g fill="currentColor"><circle cx="35" cy="40" r="3"/><circle cx="23" cy="31" r="2.5"/><circle cx="50" cy="37" r="2.5"/><circle cx="20" cy="57" r="2.5"/></g></svg></span></div>
-          <h3>MycelForge <em>· Miselyum atölyesi</em></h3><p>Tarımsal atıklardan miselyum biyomalzemeleri için formül adayları ve deney protokolleri üretir. Bilimsel ölçümün yerini almaz; araştırmaya bir başlangıç noktası sunar.</p>
-          <p class="meta"><span>ERGİN LAB / FORMÜL MOTORU</span><a href="https://eerrgin.github.io/mycelforge/" rel="noopener">Canlı atölyeyi aç ↗</a></p>
-        </article>
-        <article class="card project-card project-savunma">
-          <div class="project-card-top"><span class="project-index">07 / DEFENSIVE SECURITY</span><span class="project-sigil" aria-hidden="true"><svg viewBox="0 0 72 72"><path d="M36 5 59 14V33c0 15-9 25-23 34C22 58 13 48 13 33V14Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M24 35l8 8 17-20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="54" cy="16" r="3" fill="currentColor"/></svg></span></div>
-          <h3>Savunma Anatomisi <em>· kullanıcı &amp; yönetici</em></h3>
-          <p>Kişisel hesaptan sistem odasına: parola ve kimlik koruması, oltalama sinyalleri, web güvenliği, yönetici erişimi, yedekleme ve olayın ilk saati için savunma rehberi.</p>
-          <p class="meta"><span>ERGİN LAB / DEFENSIVE HANDBOOK</span><a href="https://github.com/eerrgin/ergin-lab-savunma-anatomisi" target="_blank" rel="noopener noreferrer">Depoyu incele ↗</a></p>
+        <article class="card project-card workbench-note-card">
+          <div class="project-card-top"><span class="project-index">03 / SOURCE NOTES</span><span class="project-sigil" aria-hidden="true">§</span></div>
+          <h3>Kaynağı ve lisansı kaydet.</h3><p>Bir bağımlılığı yalnızca çalıştığı için seçme. Sürümünü, kaynağını, lisansını ve neyi doğrulamadığını not et. Belirsizlik de kaydın bir parçasıdır.</p>
+          <p class="meta"><span>BAKIM / PROVENANCE</span><a href="#sinyal">Kaynaklar ↗</a></p>
         </article>
       </div>
       <div class="trace" id="tigerk">
@@ -623,25 +604,39 @@
       <div class="archive-endnote"><span>ARŞİV / 006</span><span>SAKLANAN HER ŞEY DOSYADA DURMAZ</span></div>
     </section>
     <section id="proje-tepsisi" class="project-tray-section" aria-labelledby="project-tray-title">
-      <div class="project-tray-head"><div><p class="kicker">08 / AÇIK DOSYALAR</p><h2 id="project-tray-title">Çalışma <em>tepsisi.</em></h2></div><p>Deneyler, araçlar ve notlar. Her kartta canlı sayfaya veya kaynak koda giden bir yol var; kapsamı ve sınırları açıkça belirtilen işler.</p></div>
+      <div class="project-tray-head"><div><p class="kicker">08 / AÇIK DOSYALAR</p><h2 id="project-tray-title">Çalışma <em>tepsisi.</em></h2></div><p>Deneyler, araçlar ve notlar. Kategori seçerek ilerle; masaüstünde altı, telefonda üç kart görünür. Aynı proje kartlarını yukarıdaki masada tekrar etmiyoruz.</p></div>
+      <div class="project-tray-controls" role="group" aria-label="Çalışma tepsisi kategorileri">
+        <button class="tray-filter" type="button" data-tray-filter="all" aria-pressed="true">Tümü</button>
+        <button class="tray-filter" type="button" data-tray-filter="sky" aria-pressed="false">Şehir &amp; doğa</button>
+        <button class="tray-filter" type="button" data-tray-filter="build" aria-pressed="false">Deney &amp; üretim</button>
+        <button class="tray-filter" type="button" data-tray-filter="secure" aria-pressed="false">Güvenlik</button>
+        <button class="tray-filter" type="button" data-tray-filter="systems" aria-pressed="false">İşletim sistemleri</button>
+        <button class="tray-filter" type="button" data-tray-filter="archive" aria-pressed="false">Arşiv</button>
+      </div>
+      <p class="tray-status" id="tray-status" aria-live="polite">Çalışma tepsisi hazırlanıyor…</p>
       <div class="project-tray-grid">
-        <a class="tray-card tray-feature" href="samatya-sky/"><span class="tray-no">01 · ASTRONOMİ</span><h3>Samatya Topos</h3><p>Samatya koordinatlarından yaklaşık gökyüzü yönlerini hesaplayan 3B atlas.</p><span class="tray-link">Gökyüzünü aç ↗</span></a>
-        <a class="tray-card" href="samatya-sky/hesaplama-yontemi.html"><span class="tray-no">02 · TEKNİK DERİNLİK</span><h3>Hesaplama yöntemi</h3><p>Kepler denklemi, koordinat dönüşümü, veri kaynakları, belirsizlikler ve doğrulama planı.</p><span class="tray-link">Yöntemi incele ↗</span></a>
-        <a class="tray-card" href="/istanbul-cockpit/"><span class="tray-no">03 · ATMOSFER</span><h3>İstanbul Kokpiti</h3><p>Hava ve şehir sinyallerini kaynaklarına göre ayıran gözlem paneli.</p><span class="tray-link">Kokpiti aç ↗</span></a>
-        <a class="tray-card" href="kus-hatti/"><span class="tray-no">04 · DOĞA ARŞİVİ</span><h3>Kuş Hattı</h3><p>Türler ve mevsimsel görülme pencereleri için yerel saha defteri.</p><span class="tray-link">Kuş defterini aç ↗</span></a>
-        <a class="tray-card" href="sehrin-tas-hafizasi.html"><span class="tray-no">05 · İSTANBUL</span><h3>Şehrin Taş Hafızası</h3><p>Samatya ve İstanbul için tarihî mekânlar, fotoğraflar ve notlar.</p><span class="tray-link">Arşivi aç ↗</span></a>
-        <a class="tray-card" href="https://eerrgin.github.io/ergin-lab/"><span class="tray-no">06 · TARAYICI DENEYLERİ</span><h3>Ergin Lab</h3><p>Fourier çizgileri, dalga girişimi, çift sarkaç, Lissajous ve sentetik ses deneyleri.</p><span class="tray-link">Gece tezgâhını aç ↗</span></a>
-        <a class="tray-card" href="https://eerrgin.github.io/performance-lab/"><span class="tray-no">07 · PERFORMANS</span><h3>Performans Laboratuvarı</h3><p>Aynı veri üzerinde algoritma süreleri, medyan ölçüm ve doğruluk kontrolü.</p><span class="tray-link">Ölçümü başlat ↗</span></a>
-        <a class="tray-card" href="https://github.com/eerrgin/mycelforge/tree/main/resilience-lab"><span class="tray-no">08 · TEST / DAYANIKLILIK</span><h3>Resilience Lab</h3><p>Bozuk veri, çevrimdışı kuyruk ve tarayıcı yetenekleri için küçük test örnekleri.</p><span class="tray-link">Testleri incele ↗</span></a>
-        <a class="tray-card" href="https://eerrgin.github.io/mycelforge/"><span class="tray-no">09 · BİYOMALZEME</span><h3>MycelForge</h3><p>Miselyum bazlı biyomalzeme adaylarını araştırmak için deneysel formül aracı.</p><span class="tray-link">Atölyeyi aç ↗</span></a>
-        <a class="tray-card" href="https://github.com/eerrgin/VeilCheck"><span class="tray-no">10 · GÜVENLİK</span><h3>VeilCheck</h3><p>Dosyalarda olası gizli bilgi işaretlerini yerel incelemeye yardımcı araç.</p><span class="tray-link">Kaynak kod ↗</span></a>
-        <a class="tray-card" href="https://github.com/eerrgin/GreySignal"><span class="tray-no">11 · HTTP</span><h3>GreySignal</h3><p>HTTP güvenlik başlıklarını salt okunur şekilde incelemeye yardımcı araç.</p><span class="tray-link">Kaynak kod ↗</span></a>
-        <a class="tray-card" href="https://github.com/eerrgin/ReconX-Web-Reconnaissance-Toolkit-"><span class="tray-no">12 · KEŞİF / RAPOR</span><h3>ReconX</h3><p>Yalnızca izin verilen hedefler için keşif çıktıları ve raporlama.</p><span class="tray-link">Kaynak kod ↗</span></a>
-        <a class="tray-card" href="https://github.com/eerrgin/local-sqli-lab"><span class="tray-no">13 · SQL / EĞİTİM</span><h3>local-sqli-lab</h3><p>SQLite üzerinde kontrollü, çevrimdışı SQL enjeksiyonu öğrenme alanı.</p><span class="tray-link">Laboratuvarı incele ↗</span></a>
-        <a class="tray-card" href="https://github.com/eerrgin/Tigerk"><span class="tray-no">14 · MODEL DENEYİ</span><h3>Tigerk</h3><p>Küçük sinir ağı, eğitim adımları ve mühendislik yönlendirme deneyi.</p><span class="tray-link">Kaynak kod ↗</span></a>
-        <a class="tray-card" href="https://github.com/eerrgin/ergin-lab-savunma-anatomisi"><span class="tray-no">15 · SAVUNMA</span><h3>Savunma Anatomisi</h3><p>Hesap, web, yönetici erişimi, yedek ve olay müdahalesi için savunma rehberi.</p><span class="tray-link">Rehberi incele ↗</span></a>
-        <a class="tray-card" href="https://github.com/eerrgin"><span class="tray-no">16 · KAYNAK ARŞİVİ</span><h3>GitHub depoları</h3><p>Diğer küçük projeler, kod geçmişi ve geliştirme notları.</p><span class="tray-link">Tüm depolar ↗</span></a>
-      </div><div class="project-tray-foot"><span>ERGİN KAPLAN · İSTANBUL</span><span>ÖLÇ · BELGELE · İYİLEŞTİR</span><span>TELEFONDAN MASAÜSTÜNE</span></div>
+        <a class="tray-card tray-feature" href="samatya-sky/" data-tray-category="sky"><span class="tray-no">01 · ASTRONOMİ</span><h3>Samatya Topos</h3><p>Samatya koordinatlarından yaklaşık gökyüzü yönlerini hesaplayan 3B atlas.</p><span class="tray-link">Gökyüzünü aç ↗</span></a>
+        <a class="tray-card" href="samatya-sky/hesaplama-yontemi.html" data-tray-category="sky"><span class="tray-no">02 · TEKNİK DERİNLİK</span><h3>Hesaplama yöntemi</h3><p>Kepler denklemi, koordinat dönüşümü, veri kaynakları, belirsizlikler ve doğrulama planı.</p><span class="tray-link">Yöntemi incele ↗</span></a>
+        <a class="tray-card" href="/istanbul-cockpit/" data-tray-category="sky"><span class="tray-no">03 · ATMOSFER</span><h3>İstanbul Kokpiti</h3><p>Hava ve şehir sinyallerini kaynaklarına göre ayıran gözlem paneli.</p><span class="tray-link">Kokpiti aç ↗</span></a>
+        <a class="tray-card" href="kus-hatti/" data-tray-category="sky"><span class="tray-no">04 · DOĞA ARŞİVİ</span><h3>Kuş Hattı</h3><p>Türler ve mevsimsel görülme pencereleri için yerel saha defteri.</p><span class="tray-link">Kuş defterini aç ↗</span></a>
+        <a class="tray-card" href="sehrin-tas-hafizasi.html" data-tray-category="sky"><span class="tray-no">05 · İSTANBUL</span><h3>Şehrin Taş Hafızası</h3><p>Samatya ve İstanbul için tarihî mekânlar, fotoğraflar ve notlar.</p><span class="tray-link">Arşivi aç ↗</span></a>
+        <a class="tray-card" href="https://eerrgin.github.io/ergin-lab/" data-tray-category="build"><span class="tray-no">06 · TARAYICI DENEYLERİ</span><h3>Ergin Lab</h3><p>Fourier çizgileri, dalga girişimi, çift sarkaç, Lissajous ve sentetik ses deneyleri.</p><span class="tray-link">Gece tezgâhını aç ↗</span></a>
+        <a class="tray-card" href="https://eerrgin.github.io/performance-lab/" data-tray-category="build"><span class="tray-no">07 · PERFORMANS</span><h3>Performans Laboratuvarı</h3><p>Aynı veri üzerinde algoritma süreleri, medyan ölçüm ve doğruluk kontrolü.</p><span class="tray-link">Ölçümü başlat ↗</span></a>
+        <a class="tray-card" href="https://github.com/eerrgin/mycelforge/tree/main/resilience-lab" data-tray-category="build"><span class="tray-no">08 · TEST / DAYANIKLILIK</span><h3>Resilience Lab</h3><p>Bozuk veri, çevrimdışı kuyruk ve tarayıcı yetenekleri için küçük test örnekleri.</p><span class="tray-link">Testleri incele ↗</span></a>
+        <a class="tray-card" href="https://eerrgin.github.io/mycelforge/" data-tray-category="build"><span class="tray-no">09 · BİYOMALZEME</span><h3>MycelForge</h3><p>Miselyum bazlı biyomalzeme adaylarını araştırmak için deneysel formül aracı.</p><span class="tray-link">Atölyeyi aç ↗</span></a>
+        <a class="tray-card" href="https://github.com/eerrgin/VeilCheck" data-tray-category="secure"><span class="tray-no">10 · GÜVENLİK</span><h3>VeilCheck</h3><p>Dosyalarda olası gizli bilgi işaretlerini yerel incelemeye yardımcı araç.</p><span class="tray-link">Kaynak kod ↗</span></a>
+        <a class="tray-card" href="https://github.com/eerrgin/GreySignal" data-tray-category="secure"><span class="tray-no">11 · HTTP</span><h3>GreySignal</h3><p>HTTP güvenlik başlıklarını salt okunur şekilde incelemeye yardımcı araç.</p><span class="tray-link">Kaynak kod ↗</span></a>
+        <a class="tray-card" href="https://github.com/eerrgin/ReconX-Web-Reconnaissance-Toolkit-" data-tray-category="secure"><span class="tray-no">12 · KEŞİF / RAPOR</span><h3>ReconX</h3><p>Yalnızca izin verilen hedefler için keşif çıktıları ve raporlama.</p><span class="tray-link">Kaynak kod ↗</span></a>
+        <a class="tray-card" href="https://github.com/eerrgin/local-sqli-lab" data-tray-category="secure"><span class="tray-no">13 · SQL / EĞİTİM</span><h3>local-sqli-lab</h3><p>SQLite üzerinde kontrollü, çevrimdışı SQL enjeksiyonu öğrenme alanı.</p><span class="tray-link">Laboratuvarı incele ↗</span></a>
+        <a class="tray-card" href="https://github.com/eerrgin/Tigerk" data-tray-category="build"><span class="tray-no">14 · MODEL DENEYİ</span><h3>Tigerk</h3><p>Küçük sinir ağı, eğitim adımları ve mühendislik yönlendirme deneyi.</p><span class="tray-link">Kaynak kod ↗</span></a>
+        <a class="tray-card" href="https://github.com/eerrgin/ergin-lab-savunma-anatomisi" data-tray-category="secure"><span class="tray-no">15 · SAVUNMA</span><h3>Savunma Anatomisi</h3><p>Hesap, web, yönetici erişimi, yedek ve olay müdahalesi için savunma rehberi.</p><span class="tray-link">Rehberi incele ↗</span></a>
+        <a class="tray-card" data-tray-category="systems" href="https://github.com/eerrgin/ergin-linux-lab"><span class="tray-no">16 · LINUX / SYSTEMS</span><h3>Ergin Linux Lab</h3><p>Terminalden sistem gözlemine, lisans envanterine ve ileri işletim projelerine uzanan mühendislik rotası.</p><span class="tray-link">Linux laboratuvarını incele ↗</span></a>
+        <a class="tray-card" data-tray-category="systems" href="https://github.com/eerrgin/ergin-android-lab"><span class="tray-no">17 · ANDROID / TRACE</span><h3>Ergin İz</h3><p>Python/C tabanlı yerel izleme prototipi. Şu an Android cihaz uygulaması değildir; kapsamı ve marka sınırları açıklanmıştır.</p><span class="tray-link">Kaynak depo ve belgeler ↗</span></a>
+        <a class="tray-card" data-tray-category="systems" href="windows-lab/"><span class="tray-no">18 · WINDOWS / POWERSHELL</span><h3>Ergin Windows Lab</h3><p>PowerShell, süreçler, servisler, olay kayıtları ve uç nokta mühendisliği için bağımsız bir başlangıç alanı.</p><span class="tray-link">Windows laboratuvarını aç ↗</span></a>
+        <a class="tray-card" href="https://github.com/eerrgin" data-tray-category="archive"><span class="tray-no">19 · KAYNAK ARŞİVİ</span><h3>GitHub depoları</h3><p>Diğer küçük projeler, kod geçmişi ve geliştirme notları.</p><span class="tray-link">Tüm depolar ↗</span></a>
+      </div>
+      <div class="project-tray-pager"><button type="button" id="tray-prev" disabled>← Önceki kartlar</button><button type="button" id="tray-next">Sonraki kartlar →</button></div>
+      <div class="project-tray-foot"><span>ERGİN KAPLAN · İSTANBUL</span><span>ÖLÇ · BELGELE · İYİLEŞTİR</span><span>TELEFONDAN MASAÜSTÜNE</span></div>
     </section>
     <section id="hat" class="reveal" data-stamp="07">
       <p class="kicker">07 / KIRMIZI HAT</p>
@@ -774,5 +769,45 @@
   <script src="script.js?v=20261025-cockpit01" defer></script>
   <script src="tigerk.js" defer></script>
   <script src="hat.js" defer></script>
+  <script>
+    (function () {
+      "use strict";
+      var grid = document.querySelector(".project-tray-grid");
+      if (!grid) return;
+      var cards = Array.prototype.slice.call(grid.querySelectorAll(".tray-card"));
+      var filters = Array.prototype.slice.call(document.querySelectorAll("[data-tray-filter]"));
+      var status = document.getElementById("tray-status");
+      var prev = document.getElementById("tray-prev");
+      var next = document.getElementById("tray-next");
+      var page = 0;
+      var active = "all";
+      function pageSize() { return window.matchMedia("(max-width: 560px)").matches ? 3 : 6; }
+      function matches() { return cards.filter(function (card) { return active === "all" || card.dataset.trayCategory === active; }); }
+      function render() {
+        var chosen = matches();
+        var size = pageSize();
+        var pageCount = Math.max(1, Math.ceil(chosen.length / size));
+        page = Math.min(page, pageCount - 1);
+        var start = page * size;
+        cards.forEach(function (card) { card.hidden = true; });
+        chosen.forEach(function (card, index) { card.hidden = index < start || index >= start + size; });
+        if (status) status.textContent = chosen.length + " kayıt · görünüm " + (page + 1) + " / " + pageCount;
+        if (prev) prev.disabled = page <= 0;
+        if (next) next.disabled = page >= pageCount - 1;
+      }
+      filters.forEach(function (button) {
+        button.addEventListener("click", function () {
+          active = button.dataset.trayFilter || "all";
+          page = 0;
+          filters.forEach(function (candidate) { candidate.setAttribute("aria-pressed", candidate === button ? "true" : "false"); });
+          render();
+        });
+      });
+      if (prev) prev.addEventListener("click", function () { if (page > 0) { page -= 1; render(); } });
+      if (next) next.addEventListener("click", function () { if ((page + 1) * pageSize() < matches().length) { page += 1; render(); } });
+      window.addEventListener("resize", render, { passive: true });
+      render();
+    })();
+  </script>
 </body>
 </html>
