@@ -1,4 +1,4 @@
-# Ergin Windows Lab - salt-okunur sistem özeti
+# Ergin Sistem Lab - salt-okunur sistem özeti
 # Kurulum yapmaz, dosya yazmaz/silmez, servis veya güvenlik ayarını değiştirmez.
 # Windows PowerShell 5.1+ hedeflenmiştir; bazı cmdlet'ler sürüme göre bulunmayabilir.
 $ErrorActionPreference = 'Stop'
@@ -8,7 +8,7 @@ function Write-Section([string]$Title) {
     Write-Output ("== {0} ==" -f $Title)
 }
 
-Write-Output "Ergin Windows Lab / salt-okunur gözlem"
+Write-Output "Ergin Sistem Lab / salt-okunur gözlem"
 Write-Output "Çıktı makine ve süreç ayrıntısı içerebilir; paylaşmadan önce incele."
 
 Write-Section "İşletim sistemi"
