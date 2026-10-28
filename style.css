@@ -3295,3 +3295,23 @@ html[data-motion="off"] .topos-scan,html[data-motion="off"] .topos-highlight{ani
 .project-tray-head h2{font-size:clamp(34px,5vw,58px);line-height:1.03;letter-spacing:-.045em;margin:8px 0 0}.project-tray-head h2 em{color:#c8a77e;font-family:Georgia,serif;font-weight:400}.project-tray-head>p{margin:0;max-width:56ch;color:#b9b7b1;font-size:clamp(13px,1.5vw,16px)}
 .project-tray-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;min-width:0}.tray-card{display:flex;flex-direction:column;align-items:flex-start;min-width:0;min-height:188px;padding:16px;border:1px solid var(--tray-line);border-radius:13px;background:rgba(255,255,255,.025);color:#eee8dc;text-decoration:none;transition:transform .18s ease,border-color .18s ease,background .18s ease}.tray-card:hover{transform:translateY(-3px);border-color:rgba(200,167,126,.65);background:rgba(200,167,126,.07)}.tray-card:focus-visible{outline:3px solid #c8a77e;outline-offset:3px}.tray-card.tray-feature{background:linear-gradient(145deg,rgba(89,104,111,.22),rgba(255,255,255,.025));border-color:rgba(154,217,201,.35)}.tray-no{font:10px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.09em;color:#9ad9c9;overflow-wrap:anywhere}.tray-card h3{font-size:clamp(16px,1.55vw,20px);line-height:1.2;margin:20px 0 8px;overflow-wrap:anywhere}.tray-card p{font-size:13px;line-height:1.55;color:#b9b7b1;margin:0 0 18px;overflow-wrap:anywhere;hyphens:auto}.tray-link{margin-top:auto;padding-top:10px;color:#e5c69b;font-size:12px;font-weight:650}.project-tray-foot{display:flex;justify-content:space-between;gap:10px 20px;flex-wrap:wrap;border-top:1px solid var(--tray-line);margin-top:20px;padding-top:13px;color:#8e918f;font:9px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em}
 @media(max-width:1000px){.project-tray-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:760px){.project-tray-head{grid-template-columns:minmax(0,1fr);gap:12px}.project-tray-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.tray-card{min-height:178px;padding:14px}}@media(max-width:420px){.project-tray-section{padding:15px;border-radius:14px;margin-inline:0}.project-tray-grid{grid-template-columns:minmax(0,1fr);gap:8px}.tray-card{min-height:0;padding:15px}.tray-card h3{margin-top:12px;font-size:18px}.tray-card p{margin-bottom:10px}.project-tray-section::before{font-size:23px}.project-tray-foot{display:grid;grid-template-columns:minmax(0,1fr);gap:5px}}@media(prefers-reduced-motion:reduce){.tray-card{transition:none}.tray-card:hover{transform:none}}
+
+
+/* OS laboratory notes and a compact, paged work tray. */
+.workbench-grid .workbench-note-card{grid-column:span 4;--project-accent:#d8b99b}
+.workbench-note-card .project-sigil{font:31px/1 Georgia,serif;border-radius:50%}
+.project-tray-controls{position:relative;display:flex;flex-wrap:wrap;gap:7px;margin:0 0 9px}
+.tray-filter{appearance:none;min-height:38px;padding:8px 13px;border:1px solid rgba(218,203,179,.28);border-radius:999px;background:rgba(255,255,255,.025);color:#d4d0c7;font:11px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.035em;cursor:pointer}
+.tray-filter[aria-pressed="true"]{border-color:rgba(154,217,201,.7);background:rgba(154,217,201,.12);color:#d9f5ea;box-shadow:inset 0 -2px rgba(154,217,201,.5)}
+.tray-filter:hover{border-color:rgba(200,167,126,.72);color:#fff1dc}
+.tray-filter:focus-visible,.project-tray-pager button:focus-visible{outline:3px solid #c8a77e;outline-offset:3px}
+.tray-status{margin:0 0 12px;color:#8eaaa0;font:10px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.06em}
+.tray-card[hidden]{display:none!important}
+.project-tray-pager{display:flex;justify-content:space-between;gap:10px;margin-top:14px}
+.project-tray-pager button{min-height:40px;padding:8px 13px;border:1px solid rgba(218,203,179,.28);border-radius:9px;background:rgba(255,255,255,.035);color:#eee8dc;font:11px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;cursor:pointer}
+.project-tray-pager button:disabled{opacity:.38;cursor:not-allowed}
+.project-tray-pager button:not(:disabled):hover{border-color:#c8a77e;background:rgba(200,167,126,.08)}
+@media(max-width:1050px){.workbench-grid .workbench-note-card{grid-column:span 3}}
+@media(max-width:760px){.workbench-grid .workbench-note-card{grid-column:span 1}.project-tray-controls{gap:6px}.tray-filter{min-height:36px;padding:7px 10px;font-size:10px}}
+@media(max-width:500px){.workbench-grid .workbench-note-card{grid-column:1}.project-tray-controls{margin-right:-2px}.tray-filter{flex:0 1 auto}.project-tray-pager button{flex:1;min-height:42px;padding-inline:8px}}
+@media(prefers-reduced-motion:reduce){.tray-filter,.project-tray-pager button{transition:none}}
