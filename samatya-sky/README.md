@@ -17,6 +17,10 @@ Canlı deneyim: https://eerrgin.github.io/samatya-sky/
 
 Gök cisimleri aynı kavramsal küreye yerleştirilir. Boyutları ve uzaklıkları **gerçek ölçekli değildir**; tasarım, cisimlerin Samatya'dan görünen yönlerini anlaşılır kılmak içindir. Ufuk altındaki cisimler, çizelgedeki negatif yükseklikle eşleşmesi için sahnede soluk işaretlenir; bu, onları o anda gözlenebilir yapmaz. Sahne gezegenlerin yörünge yollarını çizmez.
 
+## Hesaplama yöntemi, kaynaklar ve doğrulama
+
+Ayrıntılı yöntem notu: [`hesaplama-yontemi.html`](./hesaplama-yontemi.html). Bu belge denklemleri, NASA/JPL ve USNO kaynaklarını, hata kaynaklarını ve bağımsız efemerisle karşılaştırma planını açıklar. Yerel yükseklik/azimut çıktıları için sayısal hata sınırları henüz otomatik olarak ölçülmüş değildir.
+
 ## Hesaplama yaklaşımı
 
 Yerel yıldız zamanı Julian Date üzerinden Greenwich ortalama yıldız zamanına boylam eklenerek yaklaşır:
