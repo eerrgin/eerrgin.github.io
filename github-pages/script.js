@@ -681,6 +681,14 @@ renderSavedCats();
 window.addEventListener("beforeunload", () => { if (imageUrl) URL.revokeObjectURL(imageUrl); });
 
 let audio = null;
+let radioMaster = null;
+let radioLevel = 0.78;
+let radioMuted = false;
+try {
+  const savedLevel = Number(localStorage.getItem("e.radio.volume"));
+  if (Number.isFinite(savedLevel) && savedLevel >= 0 && savedLevel <= 1) radioLevel = savedLevel;
+  radioMuted = localStorage.getItem("e.radio.muted") === "1";
+} catch {}
 let analyser = null;
 let wave = null;
 const tape = new Audio();
@@ -848,6 +856,7 @@ function stopRadio() {
   radioTimers = [];
   const old = audio;
   audio = null;
+  radioMaster = null;
   analyser = null;
   wave = null;
   if (old) {
@@ -1080,7 +1089,8 @@ function startRadio(kind, options) {
   const ctx = new AudioCtx();
   audio = ctx;
   const master = ctx.createGain();
-  master.gain.value = RADIO_SCENES[selectedRadio].volume;
+  radioMaster = master;
+  master.gain.value = RADIO_SCENES[selectedRadio].volume * (radioMuted ? 0 : radioLevel);
   const tap = ctx.createAnalyser();
   tap.fftSize = 1024;
   tap.smoothingTimeConstant = 0.78;
@@ -1617,7 +1627,33 @@ window.Gece = {
     return document.querySelector("#clock")?.textContent || "";
   },
   radioOn() {
-    return Boolean(audio);
+    return Boolean(audio && audio.state === "running");
+  },
+  radioVolume() {
+    return radioLevel;
+  },
+  radioMuted() {
+    return radioMuted;
+  },
+  setRadioVolume(value) {
+    const next = Number(value);
+    if (!Number.isFinite(next)) return radioLevel;
+    radioLevel = Math.max(0, Math.min(1, next));
+    try { localStorage.setItem("e.radio.volume", String(radioLevel)); } catch {}
+    if (radioMaster && audio && audio.state !== "closed") {
+      const target = RADIO_SCENES[selectedRadio].volume * (radioMuted ? 0 : radioLevel);
+      radioMaster.gain.setTargetAtTime(target, audio.currentTime, 0.035);
+    }
+    return radioLevel;
+  },
+  setRadioMuted(value) {
+    radioMuted = Boolean(value);
+    try { localStorage.setItem("e.radio.muted", radioMuted ? "1" : "0"); } catch {}
+    if (radioMaster && audio && audio.state !== "closed") {
+      const target = RADIO_SCENES[selectedRadio].volume * (radioMuted ? 0 : radioLevel);
+      radioMaster.gain.setTargetAtTime(target, audio.currentTime, 0.025);
+    }
+    return radioMuted;
   },
   station() {
     const button = document.querySelector(".station.on");
