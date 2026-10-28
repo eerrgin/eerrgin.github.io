@@ -80,7 +80,6 @@
   </div>
   <div class="lightning" aria-hidden="true"></div>
   <div class="vignette" aria-hidden="true"></div>
-  <audio id="night-bed" preload="none" loop></audio>
   <a class="skip" href="#top">İçeriğe geç</a>
   <header class="top">
     <div class="rule"></div>
@@ -765,58 +764,7 @@
   </div>
   <button class="hat-fab" id="hat-fab" type="button">HAT</button>
 
-  <script>
-    (function () {
-      var started = false;
-      function bed() {
-        if (started) return;
-        started = true;
-        var AC = window.AudioContext || window.webkitAudioContext;
-        if (!AC) return;
-        var ctx = new AC();
-        var master = ctx.createGain();
-        master.gain.value = 0.0;
-        master.connect(ctx.destination);
-        function noiseBuf() {
-          var n = ctx.createBuffer(1, ctx.sampleRate * 2, ctx.sampleRate);
-          var d = n.getChannelData(0);
-          for (var i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
-          return n;
-        }
-        var src = ctx.createBufferSource();
-        src.buffer = noiseBuf();
-        src.loop = true;
-        var bp = ctx.createBiquadFilter();
-        bp.type = "lowpass";
-        bp.frequency.value = 180;
-        var lfo = ctx.createOscillator();
-        lfo.frequency.value = 0.07;
-        var lfoG = ctx.createGain();
-        lfoG.gain.value = 40;
-        lfo.connect(lfoG);
-        lfoG.connect(bp.frequency);
-        src.connect(bp);
-        bp.connect(master);
-        var tone = ctx.createOscillator();
-        tone.type = "sine";
-        tone.frequency.value = 62;
-        var tg = ctx.createGain();
-        tg.gain.value = 0.35;
-        tone.connect(tg);
-        tg.connect(master);
-        src.start();
-        tone.start();
-        lfo.start();
-        var now = ctx.currentTime;
-        master.gain.setValueAtTime(0, now);
-        master.gain.linearRampToValueAtTime(0.045, now + 2.8);
-        window.__nightBed = { ctx: ctx, master: master };
-      }
-      ["pointerdown", "keydown"].forEach(function (ev) {
-        window.addEventListener(ev, bed, { once: true, passive: true });
-      });
-    })();
-  </script>
+
   <script src="fx.js?v=20261025-topos02" defer></script>
   <script src="script.js?v=20261028-night-cockpit01" defer></script>
   <script src="tigerk.js" defer></script>
