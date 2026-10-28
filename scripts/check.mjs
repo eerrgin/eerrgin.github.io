@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const skip = new Set([".git", "node_modules", "dist", "dist-pages", ".github", "public"]);
+const skip = new Set([".git", "node_modules", "dist", "dist-pages", ".github", "public", "gh-pages", "github-pages"]);
 const errors = [];
 const fail = (file, message) => errors.push(file + ": " + message);
 
@@ -146,6 +146,7 @@ const mirroredHomepageFiles = [
   "fx.js",
   "tigerk.js",
   "hat.js",
+  "kokpit.js",
   "manifest.webmanifest",
   "favicon.svg",
 ];
