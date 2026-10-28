@@ -1,8 +1,8 @@
-# Ergin Windows Lab
+# Ergin Sistem Lab
 
 Ergin Kaplan Atölyesi · Sistem mühendisliği / Windows ve PowerShell
 
-Windows Lab, terminal temelleri, süreçler, servisler, olay kayıtları, ACL, ağ, otomasyon ve uç nokta gözlemi için bağımsız bir eğitim alanıdır. Linux kadar önemli görünmesinin nedeni işletim sistemi rekabeti değil; gerçek sistemlerin farklı işletim ortamları, yönetim araçları ve güvenlik sınırları arasında çalışmasıdır.
+Windows çalışma alanı, terminal temelleri, süreçler, servisler, olay kayıtları, ACL, ağ, otomasyon ve uç nokta gözlemi için bağımsız bir eğitim alanıdır. Linux kadar önemli görünmesinin nedeni işletim sistemi rekabeti değil; gerçek sistemlerin farklı işletim ortamları, yönetim araçları ve güvenlik sınırları arasında çalışmasıdır.
 
 ## Salt-okunur ilk deney
 
@@ -29,4 +29,4 @@ Detayları [ileri yol haritasında](belgeler/ileri-yol.md) bulunur. Her deneyi �
 
 ## Marka ve lisans sınırı
 
-Ergin Windows Lab, Microsoft tarafından desteklenen veya onaylanan resmî bir proje değildir. Windows ve PowerShell ilgili platformları tanımlamak için kullanılır. Resmî logo ve ürün varlıkları kopyalanmaz. Bu atölyenin özgün metni ve betikleri için [lisans ve marka notları](belgeler/lisans-ve-marka.md) ile [ana depodaki BELIRT.md](../BELIRT.md) birlikte okunmalıdır.
+Ergin Sistem Lab, Microsoft tarafından desteklenen veya onaylanan resmî bir proje değildir. Windows ve PowerShell ilgili platformları tanımlamak için kullanılır. Resmî logo ve ürün varlıkları kopyalanmaz. Bu atölyenin özgün metni ve betikleri için [lisans ve marka notları](belgeler/lisans-ve-marka.md) ile [ana depodaki BELIRT.md](../BELIRT.md) birlikte okunmalıdır.
