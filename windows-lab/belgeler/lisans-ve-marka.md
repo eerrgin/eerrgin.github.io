@@ -1,9 +1,9 @@
-# Ergin Windows Lab — lisans ve marka notları
+# Ergin Sistem Lab — Windows için lisans ve marka notları
 
 Bu belge hukuki görüş değildir. Projenin bağımsız kapsamını ve üçüncü taraf bileşen ekleme politikasını açıklar.
 
 ## Bağımsızlık
-Ergin Windows Lab, Ergin Kaplan tarafından hazırlanan bağımsız bir eğitim çalışmasıdır. Microsoft tarafından desteklenmez, onaylanmaz veya sertifikalandırılmaz. Windows ve PowerShell adları ilgili platformu/ürünü tanımlamak amacıyla kullanılır. Bu depoda Microsoft logosu, ürün ikon seti veya resmî onay izlenimi oluşturacak işaretler kullanılmaz.
+Ergin Sistem Lab, Ergin Kaplan tarafından hazırlanan bağımsız bir eğitim çalışmasıdır. Microsoft tarafından desteklenmez, onaylanmaz veya sertifikalandırılmaz. Windows ve PowerShell adları ilgili platformu/ürünü tanımlamak amacıyla kullanılır. Bu depoda Microsoft logosu, ürün ikon seti veya resmî onay izlenimi oluşturacak işaretler kullanılmaz.
 
 ## Kaynak ve lisans politikası
 - Özgün sayfa ve betikler ana depodaki `BELIRT.md` altında bildirilen haklara tabidir.
