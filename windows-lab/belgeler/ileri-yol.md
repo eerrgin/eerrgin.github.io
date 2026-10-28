@@ -1,4 +1,4 @@
-# Ergin Windows Lab — ileri proje yol haritası
+# Ergin Sistem Lab — Windows için ileri proje yol haritası
 
 Bu dosyadaki fikirler geliştirme önerisidir; mevcut betiğin yaptığı işler olarak okunmamalıdır.
 
