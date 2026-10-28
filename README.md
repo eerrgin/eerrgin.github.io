@@ -11,6 +11,8 @@
 
 
 - **Performans Laboratuvarı** — `/performance-lab/` altında aynı veri üzerinde algoritma sürelerini ölçen, sonuçları doğrulayan ve mikro-benchmark sınırlarını açıklayan tarayıcı deneyi.
+- **Samatya Topos yöntem notu** — `/samatya-sky/hesaplama-yontemi.html` altında Kepler hesabı, koordinat dönüşümü, veri kaynakları, belirsizlikler ve doğrulama planı.
+- **Çalışma tepsisi** — ana sayfada astronomi, atmosfer, kuş arşivi, Ergin Lab, performans, dayanıklılık testleri, MycelForge ve güvenlik araçlarını tek bir mobil uyumlu dizinde toplar.
 
 ## Dosya düzeni
 
