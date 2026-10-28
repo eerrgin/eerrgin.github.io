@@ -9,6 +9,9 @@
 - **Atölye, kedi laboratuvarı, Greyfield FM, arşiv** — projeler, tarayıcıda çalışan özellik karşılaştırma, Web Audio ile üretilen ses ve kısa notlar.
 - **MycelForge** — `/mycelforge/` altında yayınlanan miselyum biyomalzeme formül/protokol tarama arayüzü. Kaynak kodu ayrı [MycelForge deposunda](https://github.com/eerrgin/mycelforge); siteye otomatik olarak derlenip kopyalanır.
 
+
+- **Performans Laboratuvarı** — `/performance-lab/` altında aynı veri üzerinde algoritma sürelerini ölçen, sonuçları doğrulayan ve mikro-benchmark sınırlarını açıklayan tarayıcı deneyi.
+
 ## Dosya düzeni
 
 | Yol | Görev |

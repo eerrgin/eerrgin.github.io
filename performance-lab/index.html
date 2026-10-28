@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ergin Kaplan'ın ölçülebilir performans laboratuvarı: algoritmaları aynı veriyle karşılaştır, gerçek süreleri ölç, sınırları gör.">
+  <meta name="theme-color" content="#111827">
+  <title>Performans Laboratuvarı — Ergin Kaplan</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0b1020;--panel:#131b2e;--line:#293550;--text:#edf2ff;--muted:#aab7d0;--accent:#8ee3c2;--warm:#ffd18a}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#182641 0,#0b1020 55%);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif}
+    main{width:min(980px,calc(100% - 32px));margin:0 auto;padding:32px 0 64px}a{color:var(--accent)}a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(--warm);outline-offset:3px}
+    .eyebrow{color:var(--accent);font-size:.78rem;letter-spacing:.15em;text-transform:uppercase}h1{font-size:clamp(2rem,6vw,3.7rem);line-height:1.05;margin:.45em 0}h2{line-height:1.2}p{max-width:75ch}.muted{color:var(--muted)}
+    .panel{background:rgba(19,27,46,.92);border:1px solid var(--line);border-radius:16px;padding:20px;margin:18px 0}.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:end}
+    label{display:grid;gap:6px;color:var(--muted);font-size:.9rem}select,button{font:inherit;border-radius:9px;border:1px solid var(--line);padding:10px 13px;background:#0b1020;color:var(--text)}button{cursor:pointer;background:var(--accent);color:#092019;border-color:transparent;font-weight:700}button:disabled{opacity:.55;cursor:wait}
+    .results{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.result{border:1px solid var(--line);border-radius:12px;padding:15px}.result h3{margin:.2rem 0}.metric{font-size:1.8rem;font-weight:750;font-variant-numeric:tabular-nums}.tag{font-size:.8rem;color:var(--muted)}
+    .bar{height:12px;background:#28334a;border-radius:99px;overflow:hidden;margin:12px 0}.bar span{display:block;height:100%;width:0;background:var(--warm);transition:width .2s}
+    code{background:#0b1020;border:1px solid var(--line);padding:2px 5px;border-radius:5px;overflow-wrap:anywhere}li{margin:.35rem 0}.notice{border-left:3px solid var(--warm);padding-left:13px}.status{min-height:1.5em;color:var(--accent)}footer{border-top:1px solid var(--line);margin-top:30px;padding-top:20px;color:var(--muted);font-size:.9rem}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Ergin Kaplan · öğrenerek ölçmek</p>
+  <h1>Performans<br>Laboratuvarı</h1>
+  <p class="muted">Bir kod parçası “hızlı görünüyor” diye hızlı sayılmaz. Aynı veri üzerinde iki yaklaşımı çalıştırıp süreyi ölçelim; sonuçları, doğruluğu ve ölçümün sınırlarını birlikte inceleyelim.</p>
+  <p><a href="../">← Ergin Teknik Atölye'ye dön</a> · <a href="https://github.com/eerrgin/eerrgin.github.io/tree/main/performance-lab">Kaynak kodu ve açıklamalar</a></p>
+
+  <section class="panel" aria-labelledby="setup-title">
+    <h2 id="setup-title">1. Deneyi seç</h2>
+    <p>Bu deney, listedeki benzersiz değerleri bulmanın iki yolunu karşılaştırır: her değer için dizide tekrar arama ve <code>Set</code> kullanma. Veri tarayıcında üretilir; bir sunucuya gönderilmez.</p>
+    <div class="controls">
+      <label for="size">Veri kümesi
+        <select id="size"><option value="1000">1.000 değer</option><option value="3000" selected>3.000 değer</option><option value="6000">6.000 değer</option><option value="10000">10.000 değer (daha yavaş olabilir)</option></select>
+      </label>
+      <label for="runs">Ölçüm tekrarı
+        <select id="runs"><option value="3">3 tekrar</option><option value="5" selected>5 tekrar</option><option value="7">7 tekrar</option></select>
+      </label>
+      <button id="run" type="button">Ölçümü başlat</button>
+    </div>
+    <p id="status" class="status" role="status" aria-live="polite">Hazır. İlk çalıştırma tarayıcı motorunu ısıtabilir.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="results-title">
+    <h2 id="results-title">2. Gerçek ölçüm</h2>
+    <div class="results">
+      <article class="result"><span class="tag">Tekrarlı dizi araması · indexOf</span><h3>Basit yaklaşım</h3><div id="slow-time" class="metric">—</div><div class="bar"><span id="slow-bar"></span></div><p id="slow-check" class="tag">Henüz ölçülmedi</p></article>
+      <article class="result"><span class="tag">Set ile tek geçiş</span><h3>Daha az tekrar arama</h3><div id="fast-time" class="metric">—</div><div class="bar"><span id="fast-bar"></span></div><p id="fast-check" class="tag">Henüz ölçülmedi</p></article>
+      <article class="result"><span class="tag">Karşılaştırma</span><h3>Ölçülen fark</h3><div id="speedup" class="metric">—</div><p id="winner" class="tag">Sonuçlar bekleniyor</p></article>
+    </div>
+    <p class="muted">Süreler milisaniyedir; kartlarda tekrarların medyanı gösterilir. Kısa işler cihaz, pil modu, tarayıcı ve arka plan yükünden etkilenir. Bu yüzden tek çalıştırmayı kesin hüküm sayma.</p>
+  </section>
+
+  <section class="panel">
+    <h2>3. Bu deney ne anlatıyor?</h2>
+    <ul>
+      <li><strong>Doğruluk önce gelir:</strong> iki yöntemin ürettiği benzersiz değer sayısı ve kontrol toplamı aynı değilse süre karşılaştırması geçersizdir.</li>
+      <li><strong>Algoritma önemlidir:</strong> tekrarlı arama, her öğe için listeyi yeniden tarar. <code>Set</code> üyelik bilgisini tutarak çoğu pratik durumda gereksiz taramaları azaltır.</li>
+      <li><strong>Ölçüm kanıt değildir tek başına:</strong> burada ölçülen yalnızca bu küçük JavaScript işlemi ve senin cihazındaki tarayıcıdır; uygulamanın tamamı veya sunucu performansı değildir.</li>
+      <li><strong>Optimizasyonun bedeli olabilir:</strong> ek veri yapıları bellek kullanır. Küçük veride fark anlamsız olabilir; gerçek iş yüküyle ölçmek gerekir.</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>4. Ergin'in çalışma notları</h2>
+    <p>Bu laboratuvar, performans iddiasını süslü animasyonlarla değil; tekrar edilebilir deney, aynı girdiler, doğruluk kontrolü ve açıklanmış sınırlarla göstermeyi amaçlıyor. Bir sonraki adım, aynı yaklaşımı MycelForge gibi projelerde gerçek darboğazları belirlemek için kullanmak.</p>
+    <p class="notice">Güvenlik ve kişiselleştirme notu: kişiye özel başlık, ad veya arayüz tek başına kodu korumaz. Gerçek koruma için gizli anahtarları kaynak koduna koymamak, erişimi en az yetkiyle sınırlamak, yedek tutmak, bağımlılıkları denetlemek ve önemli depolarda inceleme/CI kuralları kullanmak gerekir. Herkese açık depodaki kod kopyalanabilir; lisans da yeniden kullanım haklarını belirler.</p>
+  </section>
+  <footer>
+    <p>Ergin Kaplan · Performans Laboratuvarı</p>
+    <p><a href="https://github.com/eerrgin">GitHub profilim</a> · <a href="https://github.com/eerrgin/mycelforge/tree/main/resilience-lab">Test ve hata yönetimi</a></p>
+    <p>Bu sayfa ölçümü tarayıcında yapar. Sonuçlar otomatik olarak kaydedilmez veya gönderilmez.</p>
+  </footer>
+</main>
+<script>
+(function(){
+  "use strict";
+  const sizeEl=document.getElementById("size"), runsEl=document.getElementById("runs"), button=document.getElementById("run"), status=document.getElementById("status");
+  const median=values=>{const sorted=[...values].sort((a,b)=>a-b);return sorted[Math.floor(sorted.length/2)];};
+  function makeData(n){const values=Array.from({length:n},(_,i)=>((i*7919)% (n*2)));for(let i=0;i<n;i+=7)values[i]=values[Math.floor(i/2)];return values;}
+  function naiveUnique(values){return values.filter((value,index)=>values.indexOf(value)===index);}
+  function setUnique(values){return [...new Set(values)];}
+  function checksum(values){let sum=0;for(const value of values)sum=(sum+value)>>>0;return sum;}
+  function measure(fn,data){const start=performance.now();const result=fn(data);const elapsed=performance.now()-start;return {elapsed,result,count:result.length,checksum:checksum(result)};}
+  function show(prefix,ms,ok){document.getElementById(prefix+"-time").textContent=ms.toFixed(3)+" ms";document.getElementById(prefix+"-check").textContent=ok?"Doğruluk kontrolü geçti":"Doğruluk kontrolü başarısız";document.getElementById(prefix+"-check").style.color=ok?"var(--accent)":"#ff8b8b";}
+  button.addEventListener("click",()=>{
+    button.disabled=true;status.textContent="Veri hazırlanıyor ve ölçülüyor…";
+    setTimeout(()=>{
+      try{
+        const n=Number(sizeEl.value), runs=Number(runsEl.value), data=makeData(n);
+        // Warm-up both paths, discard these timings.
+        naiveUnique(data);setUnique(data);
+        const slow=[],fast=[];let expected=null,valid=true;
+        for(let i=0;i<runs;i++){
+          const a=measure(naiveUnique,data), b=measure(setUnique,data);
+          slow.push(a.elapsed);fast.push(b.elapsed);
+          if(a.count!==b.count||a.checksum!==b.checksum)valid=false;
+          expected={count:a.count,checksum:a.checksum};
+        }
+        const a=median(slow),b=median(fast),max=Math.max(a,b,0.001);
+        show("slow",a,valid);show("fast",b,valid);
+        document.getElementById("slow-bar").style.width=(a/max*100)+"%";
+        document.getElementById("fast-bar").style.width=(b/max*100)+"%";
+        const ratio=Math.max(a,b)/Math.max(Math.min(a,b),0.001);
+        document.getElementById("speedup").textContent=ratio.toFixed(2)+"×";
+        document.getElementById("winner").textContent=a===b?"Bu ölçümde fark ayırt edilemedi":(a>b?"Set yaklaşımı bu ölçümde daha hızlı":"Dizi araması bu ölçümde daha hızlı");
+        status.textContent=valid?"Tamamlandı · "+n.toLocaleString("tr-TR")+" öğe · "+runs+" tekrar · "+expected.count.toLocaleString("tr-TR")+" benzersiz öğe.":"Doğruluk kontrolü başarısız; bu ölçümleri kullanma.";
+      }catch(error){status.textContent="Ölçüm sırasında hata oluştu: "+(error&&error.message?error.message:"bilinmeyen hata");}
+      finally{button.disabled=false;}
+    },30);
+  });
+})();
+</script>
+</body>
+</html>
