@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ergin Atolye test scenario",
+  "type": "object",
+  "required": ["id", "purpose", "input", "expected", "evaluator", "threshold"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[A-Z0-9][A-Z0-9._-]{2,63}$"},
+    "purpose": {"type": "string", "minLength": 5},
+    "risk": {"type": "string"},
+    "preconditions": {"type": "array", "items": {"type": "string"}},
+    "input": {},
+    "expected": {},
+    "evaluator": {"enum": ["rule", "grounding", "schema", "security", "cost_latency", "human"]},
+    "threshold": {"type": ["number", "string", "boolean"]},
+    "evidence_path": {"type": "string"},
+    "dataset_version": {"type": "string"}
+  },
+  "additionalProperties": false
+}
