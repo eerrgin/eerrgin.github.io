@@ -1,0 +1,30 @@
+[
+  {
+    "id": "PY-ASYNC-001",
+    "title": "Asenkron görevlerde iptal ve zaman aşımı",
+    "kind": "atolye-note",
+    "url": "https://docs.python.org/3/library/asyncio-task.html",
+    "text": "Asenkron iş akışında iptal ve zaman aşımı açıkça ele alınmalıdır. Bir görev iptal edildiğinde kaynakları finally bloğunda kapatmak ve iptali üst katmana doğru yaymak gerekir. Toplu görevlerde hata ve iptal davranışı test edilmelidir."
+  },
+  {
+    "id": "PY-PROFILE-001",
+    "title": "Profiling ve ölçüm sınırları",
+    "kind": "atolye-note",
+    "url": "https://docs.python.org/3/library/profile.html",
+    "text": "Profiling sonuçları çalışma zamanına ek yük getirebilir. Aynı iş yükü ve ortamla profil açık ve kapalı sonuçlar ayrı ölçülmeli; tekrar sayısı, medyan ve dağılım raporlanmalıdır. CPU profili bellek kullanımının doğrudan ölçümü değildir."
+  },
+  {
+    "id": "WEB-A11Y-001",
+    "title": "Klavye ile erişilebilir arayüz",
+    "kind": "atolye-note",
+    "url": "https://www.w3.org/WAI/fundamentals/accessibility-intro/",
+    "text": "Etkileşimli arayüz sadece fareyle değil klavyeyle de kullanılabilmelidir. Odak görünür olmalı, bağlantı ve düğmelerin amacı anlaşılır olmalı ve form hataları metinle bildirilmelidir. Otomatik tarama manuel klavye incelemesinin yerini tutmaz."
+  },
+  {
+    "id": "SEC-BOUNDARY-001",
+    "title": "Araç izinleri ve güven sınırı",
+    "kind": "atolye-note",
+    "url": "https://cheatsheetseries.owasp.org/",
+    "text": "Harici eylem araçları izin listesiyle sınırlandırılmalıdır. Belge içeriği talimat olarak güvenilmemeli, girdiler doğrulanmalı ve geri döndürülemez eylemler insan onayı gerektirmelidir. Ağ, dosya ve kaynak sınırları dar tutulmalıdır."
+  }
+]
