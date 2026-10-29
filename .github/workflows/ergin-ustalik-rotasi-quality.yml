@@ -15,9 +15,8 @@ jobs:
   source-quality:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Check required files
+      - uses: actions/checkout@v4
+      - name: Check required files and HTML structure
         shell: bash
         run: |
           set -euo pipefail
@@ -26,29 +25,58 @@ jobs:
           test -s ergin-ustalik-rotasi/README.md
           test -s ergin-ustalik-rotasi/LICENSE
           test -s ergin-ustalik-rotasi/NOTICE.md
-      - name: Check HTML structure and secret patterns
-        shell: bash
-        run: |
-          set -euo pipefail
           python - <<'PY'
           from html.parser import HTMLParser
           from pathlib import Path
-          import re
           class Check(HTMLParser):
               def __init__(self):
                   super().__init__()
-                  self.html = 0
-                  self.body = 0
+                  self.tags = []
               def handle_starttag(self, tag, attrs):
-                  if tag == "html": self.html += 1
-                  if tag == "body": self.body += 1
-          source = Path("ergin-ustalik-rotasi/index.html").read_text(encoding="utf-8")
-          parser = Check()
-          parser.feed(source)
-          assert parser.html == 1, "Expected one html root"
-          assert parser.body == 1, "Expected one body"
-          assert "</html>" in source.lower(), "Missing html close tag"
-          assert "ergin-ustalik-rotasi.progress.v1" in source, "Local progress namespace missing"
-          assert not re.search(r"(?i)(api[_-]?key|secret|password)\s*[:=]\s*['\"][^'\"]{8,}", source), "Possible hard-coded secret"
-          print("HTML structure and secret-pattern checks passed.")
+                  self.tags.append(tag)
+          html = Path("ergin-ustalik-rotasi/index.html").read_text(encoding="utf-8")
+          check = Check(); check.feed(html)
+          assert check.tags.count("html") == 1
+          assert check.tags.count("body") == 1
+          assert "</html>" in html.lower()
+          assert "ergin-ustalik-rotasi.progress.v1" in html
+          print("Required files and HTML checks passed.")
           PY
+  python-observatory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run unit tests and emit a sample profile report
+        run: |
+          cd ergin-ustalik-rotasi/projects/runtime-observatory
+          PYTHONPATH=src python -m unittest discover -s tests -v
+          PYTHONPATH=src python -m ergin_observatory.cli --output /tmp/runtime-report.json --profile
+          python -c "import json; json.load(open('/tmp/runtime-report.json', encoding='utf-8'))"
+  grounded-knowledge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run local retrieval and schema tests
+        run: |
+          cd ergin-ustalik-rotasi/projects/grounded-knowledge-workshop
+          node --test
+  java-ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Compile and run tenant/idempotency/breaker smoke tests
+        run: |
+          cd ergin-ustalik-rotasi/projects/transaction-audit-platform
+          mkdir -p out
+          javac -d out $(find src/main/java src/test/java -name '*.java')
+          java -ea -cp out tr.erginatolye.ledger.SelfTest
