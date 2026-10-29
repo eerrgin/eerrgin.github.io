@@ -14,8 +14,9 @@ export function findSources(query, sources, limit = 3) {
   if (!terms.length || !Array.isArray(sources) || !Number.isInteger(limit) || limit < 1) return [];
   return sources.map((source) => {
     const haystack = tokenize([source.title, source.text, source.id].join(" "));
-    const score = terms.reduce((sum, term) => sum + (haystack.includes(term) ? 1 : 0), 0);
-    return { ...source, score, matchedTerms: terms.filter((term) => haystack.includes(term)) };
+    const matchesTerm = (term) => haystack.some((token) => token === term || (term.length >= 4 && (token.startsWith(term) || term.startsWith(token))));
+    const score = terms.reduce((sum, term) => sum + (matchesTerm(term) ? 1 : 0), 0);
+    return { ...source, score, matchedTerms: terms.filter(matchesTerm) };
   }).filter((source) => source.score > 0)
     .sort((a, b) => b.score - a.score || a.id.localeCompare(b.id))
     .slice(0, limit);
