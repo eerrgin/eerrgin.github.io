@@ -1,0 +1,8 @@
+{
+  "name": "ergin-grounded-knowledge-workshop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local retrieval, source citations and evaluation starter for Ergin Atolye",
+  "type": "module",
+  "scripts": { "test": "node --test" }
+}
