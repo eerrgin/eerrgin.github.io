@@ -1,0 +1,54 @@
+name: Ergin Atolye Quality Gate
+on:
+  push:
+    paths:
+      - "ergin-ustalik-rotasi/**"
+      - ".github/workflows/ergin-ustalik-rotasi-quality.yml"
+  pull_request:
+    paths:
+      - "ergin-ustalik-rotasi/**"
+      - ".github/workflows/ergin-ustalik-rotasi-quality.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Check required files
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s ergin-ustalik-rotasi/index.html
+          test -s ergin-ustalik-rotasi/PLAN.md
+          test -s ergin-ustalik-rotasi/README.md
+          test -s ergin-ustalik-rotasi/LICENSE
+          test -s ergin-ustalik-rotasi/NOTICE.md
+      - name: Check HTML structure and secret patterns
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          import re
+          class Check(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.html = 0
+                  self.body = 0
+              def handle_starttag(self, tag, attrs):
+                  if tag == "html": self.html += 1
+                  if tag == "body": self.body += 1
+          source = Path("ergin-ustalik-rotasi/index.html").read_text(encoding="utf-8")
+          parser = Check()
+          parser.feed(source)
+          assert parser.html == 1, "Expected one html root"
+          assert parser.body == 1, "Expected one body"
+          assert "</html>" in source.lower(), "Missing html close tag"
+          assert "ergin-ustalik-rotasi.progress.v1" in source, "Local progress namespace missing"
+          assert not re.search(r"(?i)(api[_-]?key|secret|password)\s*[:=]\s*['\"][^'\"]{8,}", source), "Possible hard-coded secret"
+          print("HTML structure and secret-pattern checks passed.")
+          PY
