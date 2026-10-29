@@ -254,7 +254,7 @@ Sadece örnek değer kullanılır. Geliştirme/test/üretim ayarları ayrılır.
 6. Smoke test, gözlem süresi ve rollback provası.
 
 ## 8. Kaynak politikası
-Her kaynak için sürüm ve erişim tarihi kaydedilir. Öncelik; Python belgeleri ve CPython kaynak kodu, Python Packaging User Guide, Java Language/JVM Specification, OpenJDK ve Java API belgeleri, WHATWG HTML, W3C WAI/WCAG, MDN, TypeScript Handbook, web.dev, OAuth2/OIDC spesifikasyonları, OWASP Cheat Sheet/ASVS, OpenTelemetry ve lisansların özgün metinleridir. Kaynakla desteklenmeyen iddia kesin gerçek olarak yayınlanmaz; deney sonucuysa ortam ve tekrar sayısı belirtilir. Atıf, tek başına üçüncü taraf kodu/medyası için kullanım hakkı vermez.
+Her kaynak için sürüm ve erişim tarihi kaydedilir. Öncelik; Python belgeleri ve CPython kaynak kodu, Python Packaging User Guide, Java Language/JVM Specification, OpenJDK ve Java API belgeleri, WHATWG HTML, W3C WCAG, MDN, TypeScript Handbook, web.dev, OAuth2/OIDC spesifikasyonları, OWASP Cheat Sheet/ASVS, OpenTelemetry ve lisansların özgün metinleridir. Kaynakla desteklenmeyen iddia kesin gerçek olarak yayınlanmaz; deney sonucuysa ortam ve tekrar sayısı belirtilir. Atıf, tek başına üçüncü taraf kodu/medyası için kullanım hakkı vermez.
 
 ## 9. Haftalık gözden geçirme şablonu
 **Hafta/tarih:**  
