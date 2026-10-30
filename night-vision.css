@@ -406,3 +406,89 @@ footer{background:linear-gradient(180deg,transparent,rgba(17,11,14,.52))}
 @media(prefers-reduced-transparency:reduce){
   main.wrap>section:not(.hero){-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(13,10,12,.88)}
 }
+
+
+/* TOPOS DESKTOP REPAIR / explicit two-column composition */
+#topos .topos-frame{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.04fr) minmax(360px,.96fr)!important;
+  align-items:stretch;
+  gap:0;
+  width:100%;
+  min-width:0;
+}
+#topos .topos-copy{
+  display:block!important;
+  grid-column:1;
+  grid-row:1;
+  position:relative;
+  z-index:2;
+  min-width:0;
+  width:100%;
+  max-width:none;
+  align-self:center;
+  padding:clamp(26px,3.2vw,48px);
+  color:var(--night-cream,#eadcc8);
+  visibility:visible!important;
+  opacity:1!important;
+}
+#topos .topos-copy .kicker,
+#topos .topos-copy .topos-overline,
+#topos .topos-copy h2,
+#topos .topos-copy .topos-lede,
+#topos .topos-copy .topos-prompt,
+#topos .topos-copy .topos-actions,
+#topos .topos-copy .topos-specs{
+  position:relative;
+  z-index:1;
+  visibility:visible!important;
+  opacity:1!important;
+}
+#topos .topos-copy h2{
+  max-width:13ch;
+  font-size:clamp(42px,4.2vw,66px)!important;
+  line-height:1.02!important;
+  overflow-wrap:normal;
+  word-break:normal;
+}
+#topos .topos-lede{max-width:58ch;line-height:1.75}
+#topos .topos-visual{
+  display:flex!important;
+  grid-column:2;
+  grid-row:1;
+  position:relative;
+  min-width:0;
+  min-height:clamp(420px,38vw,560px);
+  width:100%;
+  align-self:stretch;
+  border-left:1px solid rgba(238,196,184,.12);
+  border-bottom:0;
+  order:initial;
+}
+#topos .topos-diagram{
+  display:block;
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  max-height:440px;
+  flex:1 1 auto;
+}
+#topos .topos-reading-guide{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:1100px){
+  #topos .topos-frame{grid-template-columns:minmax(0,1fr)!important}
+  #topos .topos-copy{grid-column:1;grid-row:2;padding:clamp(22px,4vw,36px)}
+  #topos .topos-visual{
+    grid-column:1;grid-row:1;
+    min-height:clamp(270px,42vw,390px);
+    border-left:0;
+    border-bottom:1px solid rgba(238,196,184,.12);
+  }
+  #topos .topos-diagram{max-width:520px;align-self:center}
+  #topos .topos-reading-guide{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:540px){
+  #topos .topos-copy{padding:21px 16px 19px}
+  #topos .topos-copy h2{font-size:clamp(39px,11vw,52px)!important}
+  #topos .topos-visual{min-height:220px;padding:13px 10px 12px}
+  #topos .topos-diagram{min-height:190px}
+}
