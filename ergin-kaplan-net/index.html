@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Ergin Kaplan">
+<meta name="description" content="Ergin Kaplan Net — 2003 Kervan Mahallesi internet kafe. Ergin Lab özgün salon oyunları.">
+<title>Ergin Kaplan Net — 2003 İnternet Kafe</title>
+<style>
+:root{--amber:#e8a838;--amber2:#ffd27a;--ph:#b7f5c8;--muted:#8ea894;--line:#2c4034}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{min-height:100vh;color:var(--ph);font-family:"Courier New",ui-monospace,monospace;background:#140e0b}
+button{font-family:inherit;cursor:pointer}
+.wrap{max-width:920px;margin:0 auto;padding:16px 12px 40px}
+.monitor{background:#1a120c;border:12px solid #2a2018;border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.6);overflow:hidden}
+.bezel{padding:10px;background:#0e0a08}
+.screen{position:relative;background:#07110d;min-height:420px;border:3px solid #1c2a20;overflow:hidden}
+.scan{pointer-events:none;position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(0,0,0,.12) 2px 4px);z-index:40}
+.boot{position:absolute;inset:0;z-index:50;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#3d9a4a;font-size:14px;text-align:center}
+.boot.gone{display:none}
+.boot h1{color:#e8a838;font-size:22px;margin:0 0 8px}
+#lobby{padding:10px;position:relative;z-index:5}
+.hero{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.hero button{flex:1;min-width:120px;background:linear-gradient(180deg,#243428,#15201a);border:2px solid var(--amber);color:var(--amber2);padding:10px;font-size:13px}
+.hero button small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.tabs{display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap}
+.tabs button{background:#152015;border:1px solid var(--line);color:var(--muted);padding:6px 12px;font-size:12px}
+.tabs button.on{border-color:var(--amber);color:var(--amber)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.card{background:#0e1812;border:1px solid var(--line);color:var(--ph);padding:8px;text-align:left;font-size:12px;min-height:70px}
+.card:hover{border-color:var(--amber)}
+.card.lab{border-color:#3d5a3a}
+.card b{display:block;color:var(--amber2);margin-bottom:2px}
+.card span{color:var(--muted);font-size:11px}
+.card canvas{width:100%;height:42px;display:block;margin-bottom:4px;background:#06110c;image-rendering:pixelated}
+.meta{font-size:11px;color:var(--muted);margin:8px 0}
+.bests{font-size:11px;color:var(--muted);margin-top:8px}
+.best-row{padding:2px 0;border-bottom:1px dotted #1a2a1a}
+.price{font-size:11px;color:var(--muted);padding:6px 8px;border-left:3px solid var(--amber);background:#0a120a;margin:8px 0}
+#game-view{display:none;position:relative;z-index:5}
+#game-view.on{display:block}
+.topbar{display:flex;align-items:center;gap:8px;padding:6px 8px;background:#0a120a;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.topbar .title{flex:1;color:var(--amber2);font-size:13px}
+.topbar .score{color:#7ee0d2;font-size:12px}
+.topbar button{background:#152015;border:1px solid var(--line);color:var(--ph);padding:4px 10px;font-size:12px}
+#stage-wrap{position:relative;background:#000;border:3px solid #1c1c1c}
+#stage{display:block;width:100%;height:auto;aspect-ratio:640/400;image-rendering:pixelated;touch-action:none}
+.overlay{position:absolute;inset:0;background:rgba(0,0,0,.78);display:none;flex-direction:column;align-items:center;justify-content:center;z-index:30;text-align:center;padding:20px}
+.overlay.on{display:flex}
+.overlay h2{color:var(--amber);margin:0 0 8px}
+.overlay p{color:var(--muted);margin:0 0 12px}
+.overlay button{background:#243428;border:2px solid var(--amber);color:var(--amber2);padding:8px 18px;font-size:14px}
+.hint{font-size:11px;color:var(--muted);padding:6px 8px}
+.touch{display:none;justify-content:center;gap:8px;padding:8px;background:#0a120a}
+.touch.on{display:flex}
+.touch button{width:46px;height:46px;border-radius:50%;background:rgba(30,50,30,.75);border:2px solid #3d9a4a;color:#c8d8c0;font-size:16px}
+.task{display:flex;justify-content:space-between;padding:6px 10px;font-size:11px;color:#6a5a4a;background:#120e0a;margin-top:4px}
+.shelf[hidden]{display:none}
+
+/* 2003 salonunun son görsel katmanı */
+body{
+  background:
+    radial-gradient(ellipse at 50% -12%,rgba(115,77,39,.34),transparent 52%),
+    radial-gradient(ellipse at 50% 100%,rgba(35,73,48,.2),transparent 55%),
+    #100b08;
+}
+.wrap{max-width:1180px;padding:24px 18px 52px}
+.monitor{
+  border:11px solid #33271d;border-radius:28px;
+  background:linear-gradient(145deg,#4b3829,#211811 48%,#302218);
+  box-shadow:0 28px 80px rgba(0,0,0,.72),inset 0 1px 0 rgba(255,230,190,.25),0 0 0 1px #100b08;
+}
+.bezel{padding:14px;background:linear-gradient(135deg,#19120e,#080706 70%);border-radius:12px}
+.screen{
+  min-height:620px;border:3px solid #2c4232;
+  background:
+    radial-gradient(ellipse at 50% 0,rgba(31,67,43,.36),transparent 65%),
+    #06100b;
+  box-shadow:inset 0 0 45px rgba(43,110,67,.14),0 0 22px rgba(61,154,74,.07);
+}
+#lobby{padding:20px 22px 26px}
+.lobby-mast{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:16px 18px;margin:0 0 14px;
+  border:1px solid #314735;border-left:4px solid var(--amber);
+  background:linear-gradient(110deg,rgba(30,48,33,.96),rgba(9,19,13,.88));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+}
+.mast-kicker{margin:0 0 6px;color:#8ea894;font-size:10px;letter-spacing:.2em}
+.lobby-mast h2{margin:0;color:#e8a838;font-size:clamp(18px,3vw,27px);letter-spacing:.055em}
+.lobby-mast h2 em{color:#d8e5c9;font-style:normal}
+.lobby-mast p:last-child{margin:7px 0 0;color:#a6b9a8;font-size:12px;line-height:1.55}
+.mast-stamp{
+  flex:0 0 92px;width:92px;height:92px;border:2px solid #786039;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;
+  color:#dcb66a;box-shadow:inset 0 0 0 4px #17251a,inset 0 0 0 5px #786039;
+  transform:rotate(-8deg);background:#0b130d;
+}
+.mast-stamp strong{font-size:28px;line-height:1}
+.mast-stamp span{font-size:8px;line-height:1.15;text-align:center;letter-spacing:.13em}
+.mast-stamp i{position:absolute;bottom:-7px;padding:1px 7px;background:#192519;color:#9ab18f;font-size:9px;font-style:normal}
+.hero{gap:12px;margin-bottom:16px}
+.hero button{
+  border-radius:4px;padding:13px 12px;min-height:62px;
+  background:linear-gradient(180deg,#304631,#15251a 70%,#101a13);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 3px 0 #080e09;
+  transition:transform .16s ease,filter .16s ease,box-shadow .16s ease;
+}
+.hero button:hover{transform:translateY(-2px);filter:brightness(1.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 5px 0 #080e09}
+.tabs{gap:6px;margin:18px 0 12px}
+.tabs button{padding:8px 16px;border-radius:3px;font-weight:bold;letter-spacing:.04em}
+.tabs button.on{background:#253b29;box-shadow:inset 0 -2px 0 var(--amber)}
+.grid{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.card{
+  position:relative;min-height:124px;padding:10px 12px 12px;border-radius:4px;
+  background:linear-gradient(145deg,#14231a,#0b1510 78%);
+  border:1px solid #2e4935;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 3px 0 #050a07;
+  transition:transform .15s ease,border-color .15s ease,filter .15s ease;
+}
+.card:hover{transform:translateY(-3px);filter:brightness(1.16);border-color:#d39a42}
+.card.lab{border-color:#667a3d;background:linear-gradient(145deg,#1c3020,#0c1710)}
+.card canvas{height:54px;margin-bottom:8px;border:1px solid rgba(165,190,144,.16);background:#06110c}
+.card b{font-size:13px;letter-spacing:.025em}
+.card span{display:block;margin-top:4px;font-size:11px;line-height:1.45}
+.meta{padding-top:10px;border-top:1px solid rgba(142,168,148,.15)}
+.price{border-left-width:4px;padding:9px 11px;border-top:1px solid rgba(232,168,56,.12);border-bottom:1px solid rgba(232,168,56,.12)}
+#game-view{padding:4px}
+.topbar{padding:10px 12px;min-height:48px}
+.topbar button{padding:7px 13px;border-radius:3px}
+#stage-wrap{max-width:960px;margin:12px auto 0;border:4px solid #29332a;box-shadow:0 8px 28px rgba(0,0,0,.45)}
+#stage{max-height:65vh;object-fit:contain;background:#05090d}
+.hint{max-width:960px;margin:10px auto;padding:10px 12px;border-left:3px solid #a47d3f;background:rgba(10,20,13,.7);line-height:1.5}
+.overlay{backdrop-filter:blur(2px)}
+.overlay button{border-radius:3px;box-shadow:0 3px 0 #111b12}
+.task{max-width:1140px;margin:0 auto 10px;padding:9px 14px;border:1px solid #2d251d;background:#17100c;color:#9e8668}
+@media(max-width:760px){
+  .wrap{padding:12px 8px 32px}
+  .monitor{border-width:7px;border-radius:19px}
+  .bezel{padding:7px}
+  #lobby{padding:12px 10px 18px}
+  .lobby-mast{padding:12px;gap:8px}
+  .mast-stamp{flex-basis:72px;width:72px;height:72px}
+  .mast-stamp strong{font-size:22px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .card{min-height:118px;padding:8px}
+  .hero button{min-width:calc(50% - 8px)}
+  #stage{max-height:58vh}
+}
+@media(max-width:380px){
+  .lobby-mast h2{font-size:16px}
+  .lobby-mast p:last-child{font-size:10px}
+  .mast-stamp{display:none}
+  .grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero button,.card{transition:none}
+}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="monitor">
+    <div class="bezel">
+      <div class="screen" id="screen">
+        <div class="scan"></div>
+        <div class="boot" id="boot">
+          <h1>ERGİN KAPLAN NET</h1>
+          <div>Kervan Mahallesi · 2003</div>
+          <div style="margin-top:14px;opacity:.7">BIOS v1.03 · RAM OK · HDD OK</div>
+          <div style="margin-top:8px">Salon yükleniyor...</div>
+          <div style="margin-top:18px;font-size:12px;color:#6a8a6a">Ergin Lab © Ergin Kaplan</div>
+        </div>
+        <div id="lobby">
+          <header class="lobby-mast">
+            <div>
+              <p class="mast-kicker">KERVAN MAHALLESİ · İSTANBUL · 2003</p>
+              <h2>İNTERNET KAFE <em>OYUN SALONU</em></h2>
+              <p>Bozuk jeton sesi, CRT parıltısı, klavye başında geçen akşamlar. Kapı açık, oyun hazır.</p>
+            </div>
+            <div class="mast-stamp"><strong>18</strong><span>ÖZGÜN<br>OYUN</span><i>2003</i></div>
+          </header>
+          <div class="hero">
+            <button type="button" data-game="yildiz"><b>Yıldız Koridoru</b><small>Uzay · ateş et</small></button>
+            <button type="button" data-game="ring"><b>Ring Kaplan</b><small>Karşılıklı dövüş</small></button>
+            <button type="button" id="btn-random"><b>Rastgele</b><small>Şansını dene</small></button>
+          </div>
+          <div class="tabs">
+            <button type="button" class="on" data-tab="lab">Ergin Lab</button>
+            <button type="button" data-tab="arcade">Arcade</button>
+            <button type="button" data-tab="zeka">Zeka</button>
+            <button type="button" data-tab="masa">Masa</button>
+          </div>
+          <section class="shelf" data-shelf="lab"><div class="grid" id="lab"></div></section>
+          <section class="shelf" data-shelf="arcade" hidden><div class="grid" id="arcade"></div></section>
+          <section class="shelf" data-shelf="zeka" hidden><div class="grid" id="zeka"></div></section>
+          <section class="shelf" data-shelf="masa" hidden><div class="grid" id="masa"></div></section>
+          <div class="price">Fiyat (2003): 30 dk = 1.500.000 TL · 1 saat = 2.500.000 TL · gece = 4.000.000 TL · çay ikram</div>
+          <div class="meta"><span id="count">18 oyun</span> · <strong id="clock">--:--</strong> · <button type="button" id="btn-clear" style="background:none;border:none;color:#6a5a4a;font:inherit;cursor:pointer">rekorları sil</button> · <button type="button" id="btn-sound" style="background:none;border:none;color:#6a5a4a;font:inherit;cursor:pointer">Ses açık</button></div>
+          <div class="bests" id="bests"><div class="best-row">Henüz yok</div></div>
+        </div>
+        <div id="game-view">
+          <div class="topbar">
+            <button type="button" id="btn-back">← Salon</button>
+            <span class="title" id="g-title">—</span>
+            <span class="score" id="g-score">Skor: 0</span>
+            <button type="button" id="btn-restart">Yeniden</button>
+          </div>
+          <div id="stage-wrap">
+            <canvas id="stage" width="640" height="400"></canvas>
+            <div class="overlay" id="overlay">
+              <h2 id="ov-title">Bitti</h2>
+              <p id="ov-msg"></p>
+              <button type="button" id="ov-btn">Tekrar oyna</button>
+            </div>
+          </div>
+          <p class="hint" id="g-hint"></p>
+          <div class="touch" id="touch">
+            <button type="button" data-k="ArrowLeft">◀</button>
+            <button type="button" data-k="ArrowUp">▲</button>
+            <button type="button" data-k="ArrowDown">▼</button>
+            <button type="button" data-k="ArrowRight">▶</button>
+            <button type="button" data-k=" ">●</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="task"><span>ERGİN KAPLAN NET · Kervan Mah. İnternet Kafe</span><span id="clock2">--:--</span></div>
+</div>
+<script src="salon.js"></script>
+<script src="games-a.js"></script>
+<script src="games-b.js"></script>
+<script>globalThis.EKN.boot();</script>
+</body>
+</html>
