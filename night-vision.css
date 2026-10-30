@@ -553,3 +553,41 @@ footer{background:linear-gradient(180deg,transparent,rgba(17,11,14,.52))}
   #ustalik-rotasi .project-card-top{min-height:48px}
   #ustalik-rotasi .project-card h3{font-size:26px}
 }
+
+
+/* USTALIK ROTASI / prevent Turkish words from breaking mid-word */
+#ustalik-rotasi .workbench-project-head h2,
+#ustalik-rotasi .workbench-project-head h2 em,
+#ustalik-rotasi .project-card h3,
+#ustalik-rotasi .project-card h3 em,
+#ustalik-rotasi .project-card>p,
+#ustalik-rotasi .project-card .meta,
+#ustalik-rotasi .project-card .meta span,
+#ustalik-rotasi .project-card .meta a{
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+  hyphens:none!important;
+}
+#ustalik-rotasi .project-card h3{
+  max-width:100%;
+  font-size:clamp(22px,2vw,31px)!important;
+  line-height:1.12!important;
+  letter-spacing:-.025em!important;
+}
+#ustalik-rotasi .project-card>p:not(.meta){
+  max-width:48ch;
+  line-height:1.7;
+}
+#ustalik-rotasi .project-card .meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+  flex-wrap:wrap;
+}
+#ustalik-rotasi .project-card .meta span{max-width:100%}
+#ustalik-rotasi .project-card .meta a{margin-left:auto}
+@media(max-width:600px){
+  #ustalik-rotasi .project-card h3{font-size:25px!important;line-height:1.14!important}
+  #ustalik-rotasi .project-card .meta{gap:7px}
+}
