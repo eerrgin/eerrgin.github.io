@@ -282,3 +282,38 @@ footer .foot-mark{font-family:"Literata",Georgia,serif;color:#c49a7b}footer .lin
  #topos .topos-lede{font-size:13px;line-height:1.7}
  #topos .topos-prompt{font-size:14px;line-height:1.5}
 }
+
+
+/* BIRD ARCHIVE / mobile heading must keep its full measure */
+@media (max-width:720px){
+  #kuslar .archive-heading{
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    align-items:start;
+    justify-content:stretch;
+    gap:12px;
+  }
+  #kuslar .archive-heading>div{
+    width:100%;
+    min-width:0;
+  }
+  #kuslar .archive-heading h2{
+    width:100%;
+    max-width:none;
+    margin:0;
+    font-size:clamp(34px,8.5vw,46px)!important;
+    line-height:1.06!important;
+    letter-spacing:-.035em;
+    overflow-wrap:normal;
+    word-break:normal;
+    hyphens:none;
+  }
+  #kuslar .archive-heading h2 em{display:inline}
+  #kuslar .archive-stamp{
+    justify-self:end;
+    margin-top:0;
+  }
+}
+@media (max-width:380px){
+  #kuslar .archive-heading h2{font-size:clamp(32px,8.8vw,38px)!important}
+}
