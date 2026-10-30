@@ -1,5 +1,5 @@
 /* Ergin Kaplan Net · Ergin Spor Salonu
-   Bowling, bilardo ve tenis. Özgün oyun kodu ve canvas çizimleri. */
+   Bowling, bilardo ve tenis. Özgün oyun kodu ve canvas çizimleri. © Ergin Kaplan. */
 (function () {
   "use strict";
   const E=globalThis.EKN;

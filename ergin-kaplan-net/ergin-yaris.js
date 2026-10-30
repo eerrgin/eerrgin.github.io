@@ -1,5 +1,5 @@
 /* Ergin Kaplan Net · Ergin Sokak Yarışı
-   Özgün pseudo-3B yarış oyunu, dış motor veya varlık kullanmaz. */
+   Özgün pseudo-3B yarış oyunu, dış motor veya varlık kullanmaz. © Ergin Kaplan. */
 (function () {
   "use strict";
   const E=globalThis.EKN;
