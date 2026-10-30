@@ -170,6 +170,38 @@ try {
 @media(max-width:440px){.story-card:not(.story-card-featured){grid-template-columns:88px minmax(0,1fr)}.story-card-art{min-height:220px}.story-card-content{padding:12px}.story-card-meta{margin-bottom:9px}.story-category,.story-date{font-size:7px}.story-card-content>p{font-size:12px;line-height:1.65}.story-card-bottom{padding-top:11px}.story-card-bottom>span{font-size:8px}.story-open{font-size:8px;padding:0 8px}.story-filters{gap:6px}.story-filter{font-size:9px;padding:0 10px}.story-dialog-top{align-items:flex-start}.story-dialog-mark{max-width:60%}}
 @media(prefers-reduced-motion:reduce){.story-card,.story-filter,.story-open{transition:none}.story-card:hover,.story-filter:hover,.story-open:hover{transform:none}}
 
+
+/* Samatya kapak düzeni · editoryal son dokunuşlar */
+.samatya-hero{position:relative;isolation:isolate;padding-top:clamp(38px,5.5vw,76px);padding-bottom:clamp(34px,5vw,62px)}
+.samatya-hero:after{content:"";position:absolute;z-index:-1;left:-8vw;right:-8vw;top:4%;height:88%;pointer-events:none;background:radial-gradient(ellipse at 18% 35%,color-mix(in srgb,var(--red) 10%,transparent),transparent 48%),linear-gradient(90deg,transparent 0%,color-mix(in srgb,var(--surface) 38%,transparent) 48%,transparent 100%);opacity:.8}
+.samatya-hero-copy{position:relative;z-index:1}
+.samatya-hero-copy>.kicker{display:flex;align-items:center;gap:11px;color:var(--bone)}
+.samatya-hero-copy>.kicker:before{content:"";width:27px;height:1px;background:var(--red);box-shadow:0 0 12px color-mix(in srgb,var(--red) 60%,transparent)}
+.samatya-hero h1{max-width:700px;margin-top:17px;text-wrap:balance}
+.samatya-hero h1 em{display:inline-block;text-shadow:0 8px 34px color-mix(in srgb,var(--red) 17%,transparent)}
+.samatya-hero .lede{max-width:58ch}
+.samatya-hero .row .btn{transition:transform .25s,border-color .25s,background .25s,box-shadow .25s}
+.samatya-hero .row .btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px #0005}
+.samatya-cover{position:relative;padding:10px;border:1px solid color-mix(in srgb,var(--bone) 20%,transparent);border-radius:3px;background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.015) 38%,rgba(130,80,55,.08));box-shadow:0 24px 70px #0007,inset 0 1px rgba(255,255,255,.2)}
+.samatya-cover:before,.samatya-cover:after{content:"";position:absolute;z-index:2;pointer-events:none}
+.samatya-cover:before{inset:17px;border:1px solid rgba(236,218,184,.2)}
+.samatya-cover:after{width:74px;height:74px;right:-12px;top:-12px;border-top:1px solid color-mix(in srgb,var(--red) 75%,transparent);border-right:1px solid color-mix(in srgb,var(--red) 75%,transparent)}
+.samatya-cover img{aspect-ratio:5/4;border:0;box-shadow:none;filter:sepia(.13) saturate(.72) contrast(1.08);transition:filter .5s,transform .7s}
+.samatya-cover:hover img{filter:sepia(.04) saturate(.88) contrast(1.06);transform:scale(1.008)}
+.samatya-cover figcaption{padding:0 5px 3px}
+.samatya-kickerline{margin-top:24px;gap:8px 22px}
+.samatya-kickerline span{display:inline-flex;align-items:center;gap:8px}
+.samatya-kickerline span+span:before{content:"";width:3px;height:3px;border-radius:50%;background:var(--red);opacity:.8}
+.samatya-section .archive-heading{position:relative}
+.samatya-era,.samatya-note,.samatya-walk article{transition:transform .28s,border-color .28s,background .28s,box-shadow .28s}
+.samatya-era:hover,.samatya-note:hover,.samatya-walk article:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--red) 38%,var(--line));box-shadow:0 16px 36px #0003}
+.samatya-image img,.samatya-duo-images img{transition:filter .45s,transform .65s}
+.samatya-image:hover img,.samatya-duo-images figure:hover img{filter:saturate(.94) contrast(1.06);transform:scale(1.008)}
+.samatya-sourcebox{border:1px solid var(--line);border-left:2px solid color-mix(in srgb,var(--red) 65%,transparent)}
+@media(max-width:900px){.samatya-hero{padding-top:34px}.samatya-cover{max-width:760px;margin-inline:auto}}
+@media(max-width:520px){.samatya-hero{padding-top:26px}.samatya-cover{padding:7px}.samatya-cover:before{inset:13px}.samatya-cover:after{width:48px;height:48px;right:-8px;top:-8px}.samatya-hero .row .btn{min-height:42px}.samatya-kickerline{gap:7px 13px}}
+@media(prefers-reduced-motion:reduce){.samatya-cover img,.samatya-hero .row .btn,.samatya-era,.samatya-note,.samatya-walk article,.samatya-image img,.samatya-duo-images img{transition:none}.samatya-cover:hover img,.samatya-era:hover,.samatya-note:hover,.samatya-walk article:hover,.samatya-image:hover img,.samatya-duo-images figure:hover img{transform:none}}
+
 </style>
 </head>
 <body>
