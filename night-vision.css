@@ -260,3 +260,25 @@ footer .foot-mark{font-family:"Literata",Georgia,serif;color:#c49a7b}footer .lin
  #hava .cockpit-frame{height:430px}
  #hava .cockpit-footer-line{gap:6px;flex-wrap:wrap}
 }
+
+
+/* TOPOS TYPOGRAPHY FIX / keep the Samatya sky note inside its frame */
+#topos .topos-frame{grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);align-items:stretch}
+#topos .topos-copy{min-width:0;max-width:100%;align-self:center;overflow-wrap:break-word}
+#topos .topos-copy h2{display:block;max-width:11ch;margin:0 0 17px;font-size:clamp(40px,4.8vw,62px)!important;line-height:1.02!important;letter-spacing:-.035em;overflow-wrap:normal;word-break:normal}
+#topos .topos-lede,#topos .topos-prompt{max-width:54ch;overflow-wrap:break-word}
+#topos .topos-overline{align-items:flex-start;flex-wrap:wrap;row-gap:7px}
+#topos .topos-actions{min-width:0}
+#topos .topos-actions .btn{max-width:100%;white-space:normal}
+@media(max-width:900px){
+ #topos .topos-frame{grid-template-columns:minmax(0,1fr)}
+ #topos .topos-copy{padding:clamp(20px,4vw,34px)}
+ #topos .topos-copy h2{max-width:13ch;font-size:clamp(40px,7vw,56px)!important}
+}
+@media(max-width:540px){
+ #topos .topos-copy{padding:20px 16px 19px}
+ #topos .topos-copy h2{max-width:12ch;font-size:clamp(38px,10.5vw,48px)!important;line-height:1.04!important}
+ #topos .topos-overline{font-size:7px;letter-spacing:.055em}
+ #topos .topos-lede{font-size:13px;line-height:1.7}
+ #topos .topos-prompt{font-size:14px;line-height:1.5}
+}
