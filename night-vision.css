@@ -750,3 +750,81 @@ footer{background:linear-gradient(180deg,transparent,rgba(17,11,14,.52))}
  .hero-footnote span:last-child{display:none}
 }
 @media(prefers-reduced-motion:reduce){.hero-dispatch,.portrait{scroll-behavior:auto;transition:none}}
+
+
+/* GRAND ARRIVAL / full-bleed opening scene; the site's existing page background remains below */
+.hero{
+  position:relative;isolation:isolate;display:grid;
+  min-height:calc(100svh - 62px);height:auto;
+  grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);
+  align-items:center;gap:clamp(24px,4vw,64px);
+  padding:clamp(72px,9vh,110px) clamp(22px,5vw,76px) 58px;
+  overflow:hidden;background:#08090c;
+}
+.hero:before{
+  content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(5,5,7,.94) 0%,rgba(5,5,7,.82) 37%,rgba(5,5,7,.2) 72%,rgba(5,5,7,.35) 100%),
+    linear-gradient(0deg,rgba(5,5,7,.9),transparent 34%,rgba(5,5,7,.12) 75%,rgba(5,5,7,.55)),
+    url("photos/suleymaniye.jpg") 76% 42%/min(62vw,900px) auto no-repeat,
+    url("photos/peron-train.jpg") center/cover no-repeat;
+  filter:saturate(.78) contrast(1.08);
+}
+.hero:after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.22;
+  background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,255,255,.035) 4px,transparent 5px);
+  mix-blend-mode:screen;
+}
+.hero>div:first-child{z-index:3;max-width:720px;padding:0}
+.hero h1{font-size:clamp(68px,9.2vw,136px);max-width:760px;margin:25px 0 22px;text-shadow:0 5px 38px #000}
+.hero-intro{max-width:540px;font-size:clamp(17px,1.5vw,21px)}
+.hero-dispatch{max-width:540px;background:linear-gradient(110deg,rgba(8,7,8,.86),rgba(24,14,12,.63));border-color:rgba(211,158,113,.46)}
+.hero .portrait{
+  position:absolute;z-index:1;inset:0;width:100%;height:100%;min-height:0;
+  margin:0;border:0;border-radius:0;box-shadow:none;pointer-events:none;
+  background:transparent;overflow:hidden;
+}
+.hero .portrait .viewport{position:absolute;inset:0;width:100%;height:100%;min-height:0;max-height:none;aspect-ratio:auto}
+.hero .portrait .base{display:none}
+.hero .portrait .ghost{display:none}
+.hero .portrait:before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;
+  background:
+   linear-gradient(90deg,rgba(5,5,7,.52),transparent 58%),
+   linear-gradient(0deg,rgba(5,5,7,.82),transparent 42%),
+   url("photos/kedi.jpg") 77% 78%/clamp(150px,19vw,270px) auto no-repeat;
+  opacity:.94;mix-blend-mode:normal;
+}
+.hero .portrait:after{content:"";position:absolute;z-index:2;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 78% 54%,transparent 8%,rgba(0,0,0,.16) 62%,rgba(0,0,0,.42) 100%);
+}
+.hero .portrait-caption{display:none}
+.hero .hero-footnote{position:relative;z-index:4;grid-column:1/-1;margin-top:8px}
+.hero .identity-chip{position:relative;z-index:4}
+.hero .hero-departures{position:relative;z-index:4}
+.ticker{position:relative;z-index:2}
+@media(max-width:900px){
+ .hero{min-height:calc(100svh - 54px);grid-template-columns:minmax(0,1fr) minmax(240px,.72fr);padding:76px 22px 42px}
+ .hero:before{background:
+  linear-gradient(90deg,rgba(5,5,7,.94),rgba(5,5,7,.72) 55%,rgba(5,5,7,.3)),
+  linear-gradient(0deg,rgba(5,5,7,.85),transparent 50%),
+  url("photos/suleymaniye.jpg") 78% 38%/70vw auto no-repeat,
+  url("photos/peron-train.jpg") center/cover no-repeat}
+}
+@media(max-width:680px){
+ .hero{display:flex;flex-direction:column;align-items:stretch;justify-content:center;min-height:calc(100svh - 48px);padding:76px 16px 34px;gap:12px}
+ .hero:before{background:
+  linear-gradient(90deg,rgba(5,5,7,.83),rgba(5,5,7,.56)),
+  linear-gradient(0deg,rgba(5,5,7,.88),transparent 68%),
+  url("photos/suleymaniye.jpg") 68% 24%/auto 62% no-repeat,
+  url("photos/peron-train.jpg") 52% center/cover no-repeat}
+ .hero>div:first-child{padding:0 2px}
+ .hero h1{font-size:clamp(62px,15vw,90px);max-width:100%;margin:19px 0 15px}
+ .hero-intro{max-width:37ch;font-size:15px;line-height:1.55}
+ .hero-dispatch{max-width:100%;margin-top:16px;padding:11px 12px}
+ .hero .portrait:before{background:
+  linear-gradient(0deg,rgba(5,5,7,.3),transparent 65%),
+  url("photos/kedi.jpg") 88% 87%/clamp(112px,30vw,170px) auto no-repeat}
+ .hero .hero-footnote{margin-top:8px}
+ .hero .identity-chip{margin-top:12px}
+}
+@media(prefers-reduced-motion:reduce){.hero:before,.hero:after{scroll-behavior:auto;transition:none}}
