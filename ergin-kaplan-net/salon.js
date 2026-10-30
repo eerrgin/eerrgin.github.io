@@ -28,7 +28,11 @@ globalThis.EKN = (function () {
     { id: "dort", name: "Dört Sıra", shelf: "masa", blurb: "Rıza'ya karşı dört taşı diz", hint: "Sütun seç. Dört taşı yatay, dikey veya çapraz sırala." },
     { id: "uctas", name: "Üç Taş", shelf: "masa", blurb: "X sen, O Rıza", hint: "Boş kareye tıkla. Üç taşı sıraya diz." },
     { id: "dart", name: "Dart Ustası", shelf: "masa", blurb: "Beş atış, tek hedef", hint: "Hedefe tıkla. Merkeze yaklaştıkça puan yükselir." },
-    { id: "penalti", name: "Penaltı Nöbeti", shelf: "masa", blurb: "Kaleciyi şaşırt", hint: "Kaleye tıklayarak köşe seç. Beş penaltı hakkın var." }
+    { id: "penalti", name: "Penaltı Nöbeti", shelf: "masa", blurb: "Kaleciyi şaşırt", hint: "Kaleye tıklayarak köşe seç. Beş penaltı hakkın var." },
+    { id: "bowling", name: "Ergin Bowl 2003", shelf: "spor", blurb: "On turluk mahalle bowling turnuvası", hint: "Sol / sağ ile atış açısını ayarla. Boşlukla topu gönder." },
+    { id: "bilardo", name: "Ergin 8-Ball Bilardo", shelf: "spor", blurb: "Ceplere dokuz top gönder", hint: "Fare veya dokunma ile nişan al. Tıklayarak veya boşlukla vur." },
+    { id: "tenispro", name: "Ergin Tenis Kulübü", shelf: "spor", blurb: "Kortta beş puanlık maç", hint: "A / D veya oklarla oyuncunu hareket ettir. Topu raketle karşıla." },
+    { id: "kervangp", name: "Ergin GP · Kervan Street", shelf: "yaris", blurb: "Gece şehrinde sokak yarışı", hint: "Yukarı gaz, aşağı fren, sol / sağ direksiyon." }
   ];
 
   const starters = Object.create(null);
@@ -157,6 +161,18 @@ globalThis.EKN = (function () {
       [15,11,7,3].forEach((r,i)=>{g.beginPath();g.arc(32,20,r,0,Math.PI*2);g.fillStyle=i%2?"#e8a838":"#e25b4a";g.fill();});
     } else if (id === "penalti") {
       bar(9,5,46,25,"#e8e0c7");bar(12,8,40,19,"#34794a");bar(20,13,24,14,"#e8e0c7");bar(30,29,4,6,"#fff0b5");
+    } else if (id === "bowling") {
+      bar(8,31,48,3,"#a47c4e");bar(15,20,8,13,"#f1ead9");bar(28,14,8,19,"#f1ead9");bar(41,20,8,13,"#f1ead9");
+      bar(15,24,8,3,"#d65a4b");bar(28,18,8,3,"#d65a4b");bar(41,24,8,3,"#d65a4b");bar(29,3,7,7,"#c88741");
+    } else if (id === "bilardo") {
+      bar(5,7,54,27,"#765034");bar(9,10,46,21,"#167653");bar(8,9,6,6,"#080a09");bar(50,9,6,6,"#080a09");bar(8,26,6,6,"#080a09");bar(50,26,6,6,"#080a09");
+      g.fillStyle="#f2e6cc";g.beginPath();g.arc(23,20,4,0,Math.PI*2);g.fill();g.fillStyle="#e7c84d";g.beginPath();g.arc(39,20,4,0,Math.PI*2);g.fill();
+    } else if (id === "tenispro") {
+      bar(7,5,50,30,"#287d59");bar(17,5,30,30,"#e3ddc7");bar(19,7,26,26,"#317d59");bar(18,19,28,2,"#f4efdc");
+      bar(29,12,3,14,"#e8c98a");bar(20,18,22,3,"#e8c98a");
+    } else if (id === "kervangp") {
+      bar(17,8,30,26,"#287e9a");bar(23,10,18,8,"#9fc6c7");bar(12,14,6,12,"#11191c");bar(46,14,6,12,"#11191c");
+      bar(22,29,7,5,"#14181b");bar(36,29,7,5,"#14181b");bar(27,3,10,7,"#e8b44d");
     }
     return c.toDataURL();
   }
@@ -257,7 +273,7 @@ globalThis.EKN = (function () {
   function updateTouch() {
     const t = $("touch");
     if (!t) return;
-    const need = current && /yildiz|yilan|tugla|tenis|tank|vardiya|labirent|lira|disket/.test(current);
+    const need = current && /yildiz|yilan|tugla|tenis|tank|vardiya|labirent|lira|disket|bowling|tenispro|kervangp/.test(current);
     t.classList.toggle("on", !!need && ("ontouchstart" in window || navigator.maxTouchPoints > 0));
   }
 
@@ -272,9 +288,14 @@ globalThis.EKN = (function () {
     tickClock(); setInterval(tickClock, 15000);
 
     document.querySelectorAll("[data-tab]").forEach((b) => b.addEventListener("click", () => {
-      document.querySelectorAll("[data-tab]").forEach((x) => x.classList.toggle("on", x === b));
+      const target = b.getAttribute("data-tab") || "all";
+      document.querySelectorAll("[data-tab]").forEach((x) => {
+        const active = x === b;
+        x.classList.toggle("on", active);
+        x.setAttribute("aria-pressed", active ? "true" : "false");
+      });
       document.querySelectorAll("[data-shelf]").forEach((s) => {
-        s.hidden = s.getAttribute("data-shelf") !== b.getAttribute("data-tab");
+        s.hidden = target !== "all" && s.getAttribute("data-shelf") !== target;
       });
     }));
 

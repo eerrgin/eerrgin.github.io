@@ -56,6 +56,25 @@ button{font-family:inherit;cursor:pointer}
 .touch button{width:46px;height:46px;border-radius:50%;background:rgba(30,50,30,.75);border:2px solid #3d9a4a;color:#c8d8c0;font-size:16px}
 .task{display:flex;justify-content:space-between;padding:6px 10px;font-size:11px;color:#6a5a4a;background:#120e0a;margin-top:4px}
 .shelf[hidden]{display:none}
+.shelf{margin:22px 0 27px}
+.shelf-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 10px;padding:0 2px 8px;border-bottom:1px solid rgba(142,168,148,.22)}
+.shelf-heading h4{margin:0;color:#e8b45c;font-size:12px;letter-spacing:.16em}
+.shelf-heading span{color:#718b79;font-size:9px;letter-spacing:.12em;text-align:right}
+.catalogue-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:24px 0 8px;padding-bottom:9px;border-bottom:1px solid #304434}
+.catalogue-head h3{margin:3px 0 0;color:#dce8d6;font-size:20px;letter-spacing:.02em}
+.catalogue-head h3 em{color:#e8a838;font-style:normal}
+.catalogue-count{font-size:10px;color:#d5b979;letter-spacing:.12em;text-align:right}
+.tabs{position:relative;z-index:2;gap:6px;margin:12px 0 18px}
+.tabs button{border-radius:3px;padding:9px 13px}
+.tabs button[aria-pressed="true"]{border-color:#e8a838;color:#ffd27a;background:#263b2b;box-shadow:inset 0 -2px 0 #e8a838}
+.card{cursor:pointer}
+@media(max-width:760px){
+ .catalogue-head{align-items:start;flex-direction:column}
+ .catalogue-count{text-align:left}
+ .tabs{display:flex;flex-wrap:nowrap;overflow-x:auto;padding-bottom:7px;scrollbar-width:thin}
+ .tabs button{white-space:nowrap;flex:0 0 auto}
+ .shelf-heading span{font-size:8px}
+}
 
 /* 2003 salonunun son görsel katmanı */
 body{
@@ -182,22 +201,45 @@ body{
             <div class="mast-stamp"><strong>20</strong><span>ÖZGÜN<br>OYUN</span><i>2003</i></div>
           </header>
           <div class="hero">
-            <button type="button" data-game="yildiz"><b>Yıldız Koridoru</b><small>Uzay · ateş et</small></button>
-            <button type="button" data-game="ring"><b>Ring Kaplan</b><small>Karşılıklı dövüş</small></button>
+            <button type="button" data-game="bowling"><b>Ergin Bowl 2003</b><small>10 turluk bowling</small></button>
+            <button type="button" data-game="bilardo"><b>Ergin 9-Ball</b><small>Bilardo masası</small></button>
+            <button type="button" data-game="tenispro"><b>Ergin Tenis</b><small>Kortta maç</small></button>
+            <button type="button" data-game="kervangp"><b>Ergin GP</b><small>Gece sokak yarışı</small></button>
             <button type="button" id="btn-random"><b>Rastgele</b><small>Şansını dene</small></button>
           </div>
-          <div class="tabs">
-            <button type="button" class="on" data-tab="lab">Ergin Lab</button>
-            <button type="button" data-tab="arcade">Arcade</button>
-            <button type="button" data-tab="zeka">Zeka</button>
-            <button type="button" data-tab="masa">Masa</button>
+          <div class="catalogue-head">
+            <div><span class="mast-kicker">ERGİN OYUN ARŞİVİ / 2003–2026</span><h3>Oyun <em>kataloğu</em></h3></div>
+            <span class="catalogue-count">24 OYUN · KURULUMSUZ</span>
           </div>
-          <section class="shelf" data-shelf="lab"><div class="grid" id="lab"></div></section>
-          <section class="shelf" data-shelf="arcade" hidden><div class="grid" id="arcade"></div></section>
-          <section class="shelf" data-shelf="zeka" hidden><div class="grid" id="zeka"></div></section>
-          <section class="shelf" data-shelf="masa" hidden><div class="grid" id="masa"></div></section>
+          <div class="tabs" role="group" aria-label="Oyun kategorileri">
+            <button type="button" class="on" data-tab="all" aria-pressed="true">Tüm Oyunlar</button>
+            <button type="button" data-tab="lab" aria-pressed="false">Ergin Lab</button>
+            <button type="button" data-tab="arcade" aria-pressed="false">Arcade</button>
+            <button type="button" data-tab="zeka" aria-pressed="false">Zeka</button>
+            <button type="button" data-tab="masa" aria-pressed="false">Masa</button>
+            <button type="button" data-tab="spor" aria-pressed="false">Spor</button>
+            <button type="button" data-tab="yaris" aria-pressed="false">Yarış</button>
+          </div>
+          <section class="shelf" data-shelf="lab">
+            <div class="shelf-heading"><h4>01 / ERGİN LAB</h4><span>ÖZGÜN MACERALAR</span></div><div class="grid" id="lab"></div>
+          </section>
+          <section class="shelf" data-shelf="arcade">
+            <div class="shelf-heading"><h4>02 / ARCADE</h4><span>REFLEKS · HIZ · AKSİYON</span></div><div class="grid" id="arcade"></div>
+          </section>
+          <section class="shelf" data-shelf="zeka">
+            <div class="shelf-heading"><h4>03 / ZEKA</h4><span>AKIL · HAFIZA · STRATEJİ</span></div><div class="grid" id="zeka"></div>
+          </section>
+          <section class="shelf" data-shelf="masa">
+            <div class="shelf-heading"><h4>04 / MASA</h4><span>ARKADAŞLARLA TURNUVA</span></div><div class="grid" id="masa"></div>
+          </section>
+          <section class="shelf" data-shelf="spor">
+            <div class="shelf-heading"><h4>05 / SPOR KULÜBÜ</h4><span>BOWLING · BİLARDO · TENİS</span></div><div class="grid" id="spor"></div>
+          </section>
+          <section class="shelf" data-shelf="yaris">
+            <div class="shelf-heading"><h4>06 / MOTOR & YARIŞ</h4><span>ERGİN GP · SOKAK PİSTİ</span></div><div class="grid" id="yaris"></div>
+          </section>
           <div class="price">Fiyat (2003): 30 dk = 1.500.000 TL · 1 saat = 2.500.000 TL · gece = 4.000.000 TL · çay ikram</div>
-          <div class="meta"><span id="count">18 oyun</span> · <strong id="clock">--:--</strong> · <button type="button" id="btn-clear" style="background:none;border:none;color:#6a5a4a;font:inherit;cursor:pointer">rekorları sil</button> · <button type="button" id="btn-sound" style="background:none;border:none;color:#6a5a4a;font:inherit;cursor:pointer">Ses açık</button></div>
+          <div class="meta"><span id="count">24 oyun</span> · <strong id="clock">--:--</strong> · <button type="button" id="btn-clear" style="background:none;border:none;color:#6a5a4a;font:inherit;cursor:pointer">rekorları sil</button> · <button type="button" id="btn-sound" style="background:none;border:none;color:#6a5a4a;font:inherit;cursor:pointer">Ses açık</button></div>
           <div class="bests" id="bests"><div class="best-row">Henüz yok</div></div>
         </div>
         <div id="game-view">
@@ -229,10 +271,12 @@ body{
   </div>
   <div class="task"><span>ERGİN KAPLAN NET · Kervan Mah. İnternet Kafe</span><span id="clock2">--:--</span></div>
 </div>
-<script src="salon.js"></script>
-<script src="games-a.js"></script>
-<script src="games-b.js"></script>
-<script src="games-c.js"></script>
+<script src="salon.js?v=20261030-ergin24"></script>
+<script src="games-a.js?v=20261030-ergin24"></script>
+<script src="games-b.js?v=20261030-ergin24"></script>
+<script src="games-c.js?v=20261030-ergin24"></script>
+<script src="ergin-spor.js?v=20261030-ergin24"></script>
+<script src="ergin-yaris.js?v=20261030-ergin24"></script>
 <script>globalThis.EKN.boot();</script>
 </body>
 </html>
