@@ -118,9 +118,9 @@
       <div>
         <p class="kicker hero-overline"><span>GECE VARDİYASI / STÜDYO 001</span><span class="hero-status"><i aria-hidden="true"></i> AÇIK · ISTANBUL</span></p>
         <h1 id="mast">Gece.<em>İz.</em>Hafıza.</h1>
-        <p class="lede hero-intro">Son tren çoktan kalkmış olabilir. Peronda hâlâ bir ışık yanıyor. Burası; Samatya’nın taş sokaklarından, eski terminal camlarından ve geceye karışan seslerden toplanmış kişisel bir hafıza hattı.</p>
+        <p class="lede hero-intro">Son tren çoktan kalkmış olabilir. Peronda hâlâ bir ışık yanıyor. Burası; eski taş sokaklardan, terminal camlarından ve geceye karışan seslerden toplanmış kişisel bir hafıza hattı.</p>
         <div class="row hero-departures">
-          <a class="btn" href="#topos">İLK SEFER · SAMATYA TOPOS ↗</a>
+          <a class="btn" href="#topos"><span id="first-departure-label">İLK SEFER · GÖKKUBBE DOSYASI</span> ↗</a>
           <a class="btn ghost" href="#frekans">GECE FREKANSI ↓</a>
         </div>
         <details class="hero-more">
@@ -161,21 +161,20 @@
     </section>
     <div class="ticker" aria-hidden="true"><p>SON SEFER 00:47 ✳ SAMATYA / PERON 01 ✳ ISLAK TAŞLAR ✳ UZAK PENCERELER ✳ FREKANS 88.8 ✳ GECE HATTI ✳ SON SEFER 00:47 ✳ SAMATYA / PERON 01 ✳ ISLAK TAŞLAR ✳ UZAK PENCERELER ✳ FREKANS 88.8 ✳ GECE HATTI ✳</p></div>
 
-  <section class="night-notes reveal" id="gece-notlari" aria-labelledby="night-notes-title">
-  <div class="night-notes-head"><p class="kicker">KAYIT DIŞI / GECE DEFTERİ</p><span class="night-notes-index">001—003 · SAMATYA</span></div>
-  <article class="night-note-feature">
-    <img src="https://images.unsplash.com/photo-1650260581423-98f1b92d38bd?auto=format&fit=crop&w=1800&q=82" alt="Yağmurdan sonra gece ışıklarıyla parlayan eski İstanbul sokağı" width="1800" height="1200" fetchpriority="high">
-    <div class="night-note-shade"></div>
-    <div class="night-note-feature-copy"><p class="kicker">SON SEFER NOTU · 00:47</p><h2 id="night-notes-title">Bazı yollar kapanır.<br><em>İnsan yine de ışığı hatırlar.</em></h2><p>Bir sokağın bütün hikâyesi, oradan kimin geçtiğinde saklı değildir. Bazen geriye yalnızca ıslak taşlar ve açık kalmış bir pencere kalır.</p></div>
-    <span class="night-note-photo-credit">İSTANBUL · GECE / FOTOĞRAF: UNSPLASH</span>
-  </article>
-  <div class="night-note-grid">
-    <article class="night-note-card"><div class="night-note-card-image night-note-window" role="img" aria-label="Yağmurdan sonra ışıklarla parlayan İstanbul sokağı"></div><p class="kicker">PENCEREDE KALAN IŞIK</p><p>Her ışık birini beklemez. Bazıları yalnızca sönmeyi unutmuştur.</p></article>
-    <article class="night-note-card"><div class="night-note-card-image night-note-radio" role="img" aria-label="Amber ışıklı eski radyo frekans kadranı"></div><p class="kicker">FREKANS 88.8</p><p>Bazı sesler artık duyulmaz. İnsan yine de istasyonu değiştirmez.</p></article>
-    <article class="night-note-card night-note-letter"><div class="night-note-letter-mark" aria-hidden="true">✉</div><p class="kicker">GÖNDERİLMEYEN MEKTUPLAR</p><p>Geçmişe dönmedim. Yalnızca bazı izleri silmedim.</p><details><summary>Bir notu aç</summary><blockquote>Her şeyin bir cevabı olmak zorunda değil. Bazı cümleler, söylendiği yerde değil, zaman geçtikten sonra anlaşılır.</blockquote></details></article>
-  </div>
-  <p class="night-notes-foot">İSİM YOK · ADRES YOK · YALNIZCA ŞEHİRDE KALAN İZLER</p>
-</section>
+  <section class="night-notes reveal" id="istasyon-notlari" aria-labelledby="night-notes-title">
+    <div class="night-notes-head"><div><p class="kicker">GECE HATTI / BASILI SEYAHAT DEFTERİ</p><h2 class="station-identity">İstasyon <em>Notları</em></h2></div><span class="night-notes-index">YOLCU SALONU · 1958 / AÇIK</span></div>
+    <div class="station-board" aria-label="İstasyon bilgi panosu"><div class="station-board-top"><span>GİDİŞLER / DEPARTURES</span><span>SON GÜNCELLEME: GECE</span><span class="station-board-light">● KAYIT AÇIK</span></div><div class="station-board-main"><span class="station-board-time">00:47</span><div><strong id="station-destination">SON SEFER</strong><small id="station-platform">PERON 01 · BİRAZ BEKLEYİNİZ</small></div><span class="station-board-status">BEKLEMEDE</span></div></div>
+    <article class="night-note-feature" id="station-feature"><img src="https://images.unsplash.com/photo-1650260581423-98f1b92d38bd?auto=format&fit=crop&w=1800&q=82" alt="Gece ışıkları altında eski İstanbul sokağı" width="1800" height="1200" fetchpriority="high"><div class="night-note-shade"></div><div class="night-note-feature-copy"><p class="kicker" id="station-kicker">PERON 01 · SON SEFER NOTU</p><h2 id="night-notes-title">Bazı yollar kapanır.<br><em>İnsan yine de ışığı hatırlar.</em></h2><p id="station-copy">Bir sokağın bütün hikâyesi, oradan kimin geçtiğinde saklı değildir. Bazen geriye yalnızca ıslak taşlar ve açık kalmış bir pencere kalır.</p></div><span class="night-note-photo-credit">İSTANBUL · GECE / FOTOĞRAF: UNSPLASH</span></article>
+    <div class="station-controls" aria-label="İstasyon notları gezinme"><button type="button" class="station-control" id="station-prev">← ÖNCEKİ DURAK</button><span id="station-counter" aria-live="polite">01 / 06</span><button type="button" class="station-control station-next" id="station-next">SONRAKİ TERMİNAL →</button></div>
+    <div class="night-note-grid station-note-grid">
+      <article class="night-note-card"><div class="night-note-card-image night-note-window" role="img" aria-label="Gece yağmurunda şehir ışıkları"></div><p class="kicker">BEKLEME SALONU</p><p>Herkes bir yere yetişmeye çalışırken, bazı kalpler aynı yerde kalır.</p></article>
+      <article class="night-note-card"><div class="night-note-card-image night-note-radio" role="img" aria-label="Amber ışıklı analog radyo kadranı"></div><p class="kicker">KISA DALGA / 88.8</p><p>Aradığın ses artık yayında olmayabilir. Frekansı yine de unutmazsın.</p></article>
+      <article class="night-note-card"><div class="night-note-letter-mark" aria-hidden="true">✉</div><p class="kicker">POSTA GÜVERCİNİ</p><p>Gönderilmeyen her mektup, sahibinin içinde biraz daha yol alır.</p></article>
+      <article class="night-note-card"><div class="night-note-card-image night-note-platform" role="img" aria-label="Sisli tren peronu ve uzak ışıklar"></div><p class="kicker">PERONDAKİ SAAT</p><p>Bir tren gecikince zaman durmaz. Yalnızca insanın içindeki takvim şaşar.</p></article>
+      <article class="night-note-card"><div class="night-note-card-image night-note-flight" role="img" aria-label="Eski havalimanı terminalinde gece ışıkları"></div><p class="kicker">SON UÇUŞ / GİŞE 04</p><p>Uzaklık bazen kilometreyle ölçülmez. Aynı şehirde iki ayrı kıyı da olabilir.</p></article>
+      <article class="night-note-card"><div class="night-note-card-image night-note-ferry" role="img" aria-label="Gece denizinde vapur ışıkları"></div><p class="kicker">VAPUR BEKLEME ODASI</p><p>Karşı kıyının ışıkları görünür. İnsan yine de hangi yakada kaldığını düşünür.</p></article>
+    </div><p class="night-notes-foot">BİLETİNİZİ SAKLAYIN · BAZI YOLCULUKLARIN VARIŞ NOKTASI YOKTUR</p>
+  </section>
 
 <section class="istanbul-cockpit" id="hava" aria-labelledby="istanbul-cockpit-title">
     <div class="wrap cockpit-wrap">
@@ -183,7 +182,7 @@
         <div class="cockpit-heading-copy">
           <p class="kicker"><span class="cockpit-pulse" aria-hidden="true"></span> ERGIN LAB · SAHA DENEYİ 01</p>
           <h2 id="istanbul-cockpit-title">İstanbul <em>/ Atmosfer</em></h2>
-          <p>Samatya’nın üstünde bu gece ne var? Havanın, ayın, ışığın ve yerin küçük hareketleri. Şehrin dışarıdaki hâlini içerideki sessizliğe bağlayan canlı bir pencere.</p>
+          <p>İstanbul’un üstünde bu gece ne var? Havanın, ayın, ışığın ve yerin küçük hareketleri. Şehrin dışarıdaki hâlini içerideki sessizliğe bağlayan canlı bir pencere.</p>
         </div>
         <div class="cockpit-heading-meta" aria-label="Veri kaynakları">
           <span>AÇIK VERİ</span><span>ANAHTARSIZ HAVA</span><span>CANLI ALETLER</span>
@@ -235,22 +234,23 @@
     <section id="topos" class="reveal in topos-home" data-stamp="00" aria-labelledby="topos-title">
       <div class="topos-frame">
         <div class="topos-copy">
-          <p class="kicker">00 / YENİ GÖKYÜZÜ DOSYASI · SAMATYA TOPOS</p>
+          <p class="kicker">00 / YENİ GÖKYÜZÜ DOSYASI · TOPOS 001</p>
           <div class="topos-overline"><span><i aria-hidden="true"></i> GÖZLEM NOKTASI SABİT</span><span>41.0028° K · 28.9404° D</span></div>
-          <h2 id="topos-title">Gökyüzü,<br><em>Samatya’dan</em> başlar.</h2>
-          <p class="lede topos-lede">Samatya'nın ufkunu merkez alan bir gök atlası. Yıldızların ve gezegenlerin hangi yönde göründüğünü, ufkun ne kadar üstünde kaldığını ve ışıklarının bize yaklaşık ne kadar sürede ulaştığını keşfet.</p>
-          <p class="topos-prompt">Bir yıldız seç. Saati geri al. Samatya’nın çatılarından göğe bak.</p>
+          <h2 id="topos-title">Gökyüzü,<br><em>bir yerden</em> başlar.</h2>
+          <p class="lede topos-lede">İstanbul’un güney kıyısındaki gözlem noktasını merkez alan bir gök atlası. Yıldızların ve gezegenlerin hangi yönde göründüğünü, ufkun ne kadar üstünde kaldığını ve ışıklarının bize yaklaşık ne kadar sürede ulaştığını keşfet.</p>
+          <p class="topos-prompt">Bir yıldız seç. Saati geri al. eski çatıların üzerinden göğe bak.</p>
           <div class="row topos-actions">
             <a class="btn" href="samatya-sky/" aria-label="Samatya Topos üç boyutlu gökyüzü simülasyonunu aç">GÖKKUBBEYİ AÇ ↗</a>
             <a class="btn ghost" href="samatya-sky/hesaplama-yontemi.html">YÖNTEM VE HATA PAYI ↗</a>
             <a class="btn ghost" href="https://github.com/eerrgin/eerrgin.github.io/tree/main/samatya-sky" target="_blank" rel="noopener">KAYNAK KOD ↗</a>
           </div>
+          <div class="departure-editor"><label for="departure-name">BU SEFERİN ADI</label><div><input id="departure-name" maxlength="34" value="GÖKKUBBE DOSYASI" aria-label="İlk sefer bağlantısının adı"><button type="button" id="departure-save">KAYDET</button></div><small>Bu küçük başlık yalnızca bu tarayıcıda hatırlanır.</small></div>
           <div class="topos-specs" aria-label="Projenin öne çıkan özellikleri">
             <span>KEPLER HESABI</span><span>IŞIK YOLCULUĞU</span><span>YEREL UFUK</span><span>3B GÖK ATLASI</span>
           </div>
         </div>
         <div class="topos-visual" aria-hidden="true">
-          <div class="topos-visual-meta"><span>OBSERVER / SAMATYA</span><span>EL · TOPOS 001</span></div>
+          <div class="topos-visual-meta"><span>OBSERVER / ISTANBUL</span><span>EL · TOPOS 001</span></div>
           <svg class="topos-diagram" viewBox="0 0 520 400" role="img" aria-labelledby="topos-sky-title topos-sky-desc">
 <title id="topos-sky-title">Samatya'dan görünen gökyüzünün şeması</title><desc id="topos-sky-desc">Ufuk çizgisi, 30 ve 60 derecelik yükseklik yayları, pusula yönleri ve yıldızlar. Şema yörünge çizimi değildir.</desc>
 <defs><radialGradient id="toposSkyGlow"><stop offset="0" stop-color="#b5d4ff" stop-opacity=".32"/><stop offset="1" stop-color="#b5d4ff" stop-opacity="0"/></radialGradient><linearGradient id="toposHorizon" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ff5147" stop-opacity="0"/><stop offset=".5" stop-color="#ff776c" stop-opacity=".9"/><stop offset="1" stop-color="#ff5147" stop-opacity="0"/></linearGradient></defs>
@@ -261,12 +261,12 @@
 <g fill="none" stroke="#b4c8ec" stroke-opacity=".55" stroke-width="1.2"><path d="M130 156 L169 132 L200 170 L235 121 L273 145 L302 102"/><path d="M235 121 L247 190 L281 220"/><path d="M327 160 L365 128 L398 179"/></g>
 <g fill="#e3edff"><circle cx="130" cy="156" r="2.6"/><circle cx="169" cy="132" r="1.8"/><circle cx="200" cy="170" r="2.4"/><circle cx="235" cy="121" r="3.1"/><circle cx="273" cy="145" r="1.8"/><circle cx="302" cy="102" r="2.4"/><circle cx="247" cy="190" r="1.9"/><circle cx="281" cy="220" r="1.7"/><circle cx="327" cy="160" r="2.1"/><circle cx="365" cy="128" r="2.7"/><circle cx="398" cy="179" r="1.8"/></g>
 <circle class="topos-highlight" cx="302" cy="102" r="11" fill="none" stroke="#b8d6ff" stroke-opacity=".7"/><circle cx="302" cy="102" r="3.2" fill="#fff1c8"/>
-<g fill="#e9c8a7" font-family="monospace" font-size="9" letter-spacing="1.2"><text x="55" y="320">K · KUZEY</text><text x="408" y="320">D · DOĞU</text><text x="270" y="42" text-anchor="middle">ZENİT / 90°</text><text x="270" y="365" text-anchor="middle">SAMATYA GÖZLEM NOKTASI</text></g><path class="topos-scan" d="M92 278 Q270 45 448 278" fill="none" stroke="#ff7a71" stroke-width="1.3" stroke-dasharray="4 9" stroke-linecap="round"/></svg>
+<g fill="#e9c8a7" font-family="monospace" font-size="9" letter-spacing="1.2"><text x="55" y="320">K · KUZEY</text><text x="408" y="320">D · DOĞU</text><text x="270" y="42" text-anchor="middle">ZENİT / 90°</text><text x="270" y="365" text-anchor="middle">YEREL GÖZLEM NOKTASI</text></g><path class="topos-scan" d="M92 278 Q270 45 448 278" fill="none" stroke="#ff7a71" stroke-width="1.3" stroke-dasharray="4 9" stroke-linecap="round"/></svg>
           <div class="topos-visual-bottom"><span><i aria-hidden="true"></i> 3B GÖKKUBBE</span><span>CANLI ZAMAN / TARİH KAYDIRMA</span></div>
         </div>
       </div>
 <div class="topos-reading-guide" aria-label="Gök çizelgesini okuma rehberi"><article><span>01 / YÜKSEKLİK</span><strong>Ufkun üstünde mi?</strong><p>Artı derece ufkun üstünü, eksi derece görünür ufkun altını anlatır.</p></article><article><span>02 / YÖN</span><strong>Kuzeyden başlayarak</strong><p>Azimut kuzey 0°, doğu 90°, güney 180° ve batı 270° üzerinden okunur.</p></article><article><span>03 / IŞIK YOLU</span><strong>Ne kadar bekledi?</strong><p>Işık süresi, hesaplanan uzaklıktan ışığın bize yaklaşık geliş süresidir.</p></article></div><p class="topos-model-note">Not: Bu, yörünge maketi değil; Samatya'dan görünen gök yönlerinin yaklaşık ve ölçek dışı bir atlasıdır.</p>
-      <div class="topos-footnote"><span>EL / SAMATYA TOPOS</span><span>MAHALLE ÖLÇEĞİNDE BİR GÖKYÜZÜ DEFTERİ</span><span>MERAK İÇİN AÇIK</span></div>
+      <div class="topos-footnote"><span>EL / TOPOS 001</span><span>YEREL ÖLÇEKTE BİR GÖKYÜZÜ DEFTERİ</span><span>MERAK İÇİN AÇIK</span></div>
     </section>
 
     <section id="kuslar" class="reveal in bird-home-section" data-stamp="01">
@@ -869,5 +869,24 @@
       render();
     })();
   </script>
+<script>
+(() => {
+ const notes = [
+  ["SON SEFER","PERON 01 · BİRAZ BEKLEYİNİZ","PERON 01 · SON SEFER NOTU","Bazı yollar kapanır.<br><em>İnsan yine de ışığı hatırlar.</em>","Bir sokağın bütün hikâyesi, oradan kimin geçtiğinde saklı değildir. Bazen geriye yalnızca ıslak taşlar ve açık kalmış bir pencere kalır."],
+  ["GECE EKSPRESİ","PERON 03 · KALKIŞI BELİRSİZ","HAREKET MEMURLUĞU · 02:16","Her gidiş uzaklaşmak değildir.<br><em>Bazen insan kendine varır.</em>","Camda kayan ışıklar, uykusuz bir şehir ve cebinde eski bir bilet. Bazı yolculukların haritası içeride açılır."],
+  ["SON UÇUŞ","GİŞE 04 · BİNİŞ KAPISI KAPANDI","HAVALİMANI BEKLEME SALONU · 03:08","Gökyüzü herkese açık.<br><em>Dönüş yolu herkese aynı değil.</em>","Anons sustuğunda terminalin camlarında yalnızca kendi yansıman kalır. Belki de bazı vedalar, uçak havalanmadan çok önce başlar."],
+  ["KIYI VAPURU","İSKELE 02 · SON DÜDÜK","MARMARA HATTI · 23:54","Karşı kıyı görünüyor.<br><em>Mesafe yine de yerinde.</em>","Vapurun arkasında uzayan köpük, geride bırakılan şeyleri bir süre daha taşır. Sonra deniz hepsini kendi diline çevirir."],
+  ["POSTA TRENİ","BAGAJ SALONU · TESLİM EDİLEMEYEN","POSTA VAGONU · KAYIT 05","Bazı mektuplar geç kalmaz.<br><em>Yalnızca doğru zamana ulaşamaz.</em>","Pulun köşesi kalkmış, mürekkep solmuş olabilir. Bir cümlenin içinden geçen zaman, bazen bütün şehirlerden uzundur."],
+  ["BEKLEME ODASI","SAAT DURDU · KAPI AÇIK","İSTASYON LOKANTASI · ŞAFAK ÖNCESİ","Beklemek boşluk değildir.<br><em>İnsan orada da değişir.</em>","Soğuyan çay, duvardaki saat ve dışarıda ilk otobüsü bekleyen şehir. Herkesin içinde, kimsenin bilmediği küçük bir bekleme salonu var."]
+ ];
+ let active=0; const id=x=>document.getElementById(x);
+ function show(i){active=(i+notes.length)%notes.length;const n=notes[active];id("station-destination").textContent=n[0];id("station-platform").textContent=n[1];id("station-kicker").textContent=n[2];id("night-notes-title").innerHTML=n[3];id("station-copy").textContent=n[4];id("station-counter").textContent=String(active+1).padStart(2,"0")+" / "+String(notes.length).padStart(2,"0");}
+ id("station-prev")?.addEventListener("click",()=>show(active-1));id("station-next")?.addEventListener("click",()=>show(active+1));show(0);
+ const input=id("departure-name"),save=id("departure-save"),label=id("first-departure-label");
+ try{const v=localStorage.getItem("e.departureLabel");if(v&&input)input.value=v;}catch(e){}
+ function saveName(){const v=(input?.value||"").trim().replace(/[<>]/g,"").slice(0,34);if(!v)return;if(label)label.textContent="İLK SEFER · "+v;if(input)input.value=v;try{localStorage.setItem("e.departureLabel",v);}catch(e){}if(save){save.textContent="KAYDEDİLDİ";window.setTimeout(()=>save.textContent="KAYDET",1400);}}
+ save?.addEventListener("click",saveName);input?.addEventListener("keydown",e=>{if(e.key==="Enter")saveName();});if(input&&label)label.textContent="İLK SEFER · "+input.value;
+})();
+</script>
 </body>
 </html>
