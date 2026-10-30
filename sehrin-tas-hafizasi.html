@@ -99,6 +99,77 @@ try {
 @media(max-width:700px){.samatya-intro-grid,.samatya-image-story,.samatya-image-story.reverse{grid-template-columns:minmax(0,1fr)}.samatya-image-story.reverse .samatya-image{order:0}.samatya-notes{grid-template-columns:minmax(0,1fr)}.samatya-image img{aspect-ratio:16/10}.samatya-image.tall img{aspect-ratio:4/5;max-height:460px}}
 @media(max-width:520px){.samatya-hero{padding-top:28px}.samatya-hero h1{font-size:clamp(39px,12vw,55px)}.samatya-timeline{grid-template-columns:minmax(0,1fr)}.samatya-walk{grid-template-columns:minmax(0,1fr)}.samatya-duo-images{grid-template-columns:minmax(0,1fr)}.samatya-pullquote p{font-size:23px}.samatya-era{padding:17px}}
 @media(prefers-reduced-motion:reduce){.samatya-cover img,.samatya-image img{scroll-behavior:auto;transition:none}}
+
+/* Şehrin Taş Hafızası · liquid-glass story archive */
+.story-archive{position:relative;isolation:isolate;padding-top:clamp(22px,4vw,44px)}
+.story-archive:before{content:"PSAMATHIA";position:absolute;z-index:-1;right:-2%;top:5%;font:clamp(58px,11vw,142px)/.8 var(--display);letter-spacing:.08em;color:transparent;-webkit-text-stroke:1px color-mix(in srgb,var(--bone) 12%,transparent);pointer-events:none}
+.story-archive-lede{max-width:66ch;margin:18px 0 22px;color:var(--muted)}
+.story-archive-topline{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:11px 2px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font:9px/1.5 var(--mono);letter-spacing:.14em;color:var(--dim)}
+.story-live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#b99a67;box-shadow:0 0 12px #b99a67;margin-right:8px}
+.story-tools{display:grid;gap:13px;margin:17px 0 19px}
+.story-search{display:flex;align-items:center;gap:11px;min-height:49px;padding:0 14px;border:1px solid color-mix(in srgb,var(--bone) 20%,transparent);border-radius:12px;background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.025));box-shadow:inset 0 1px rgba(255,255,255,.12),0 10px 32px #0003;-webkit-backdrop-filter:blur(18px) saturate(125%);backdrop-filter:blur(18px) saturate(125%)}
+.story-search>span{font:25px/1 var(--body);color:var(--bone)}
+.story-search input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:var(--fg);font:13px/1.4 var(--body)}
+.story-search input::placeholder{color:var(--dim)}
+.story-search kbd{padding:3px 7px;border:1px solid var(--line);border-radius:5px;color:var(--dim);font:10px var(--mono)}
+.story-filters{display:flex;gap:7px;flex-wrap:wrap}
+.story-filter{min-height:35px;padding:0 12px;border:1px solid color-mix(in srgb,var(--bone) 16%,transparent);border-radius:99px;background:rgba(255,255,255,.035);color:var(--muted);font:10px/1.2 var(--mono);letter-spacing:.025em;transition:background .25s,border-color .25s,color .25s,transform .25s}
+.story-filter:hover{border-color:color-mix(in srgb,var(--red) 60%,var(--line));color:var(--fg);transform:translateY(-1px)}
+.story-filter.is-active{background:linear-gradient(135deg,color-mix(in srgb,var(--red) 24%,transparent),rgba(255,255,255,.07));border-color:color-mix(in srgb,var(--red) 62%,var(--line));color:var(--bone);box-shadow:inset 0 1px rgba(255,255,255,.12),0 5px 20px #0003}
+.story-filter span{margin-left:5px;color:var(--red)}
+.story-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.story-card{--story-accent:#b99a67;position:relative;display:grid;grid-template-columns:minmax(108px,.36fr) minmax(0,1fr);min-width:0;overflow:hidden;border:1px solid color-mix(in srgb,var(--bone) 17%,transparent);border-radius:15px;background:linear-gradient(135deg,rgba(255,255,255,.095),rgba(255,255,255,.025) 55%,rgba(130,85,55,.055)),color-mix(in srgb,var(--surface) 78%,transparent);box-shadow:inset 0 1px rgba(255,255,255,.12),0 16px 38px #0004;-webkit-backdrop-filter:blur(16px) saturate(120%);backdrop-filter:blur(16px) saturate(120%);transition:transform .3s,border-color .3s,box-shadow .3s}
+.story-card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--story-accent) 54%,transparent);box-shadow:inset 0 1px rgba(255,255,255,.18),0 22px 48px #0006}
+.story-card[hidden]{display:none}
+.story-card-featured{grid-column:1/-1;grid-template-columns:minmax(180px,.72fr) minmax(0,1.28fr);--story-accent:#c5a16c}
+.story-card-art{position:relative;display:grid;place-items:center;min-height:196px;overflow:hidden;border-right:1px solid color-mix(in srgb,var(--story-accent) 24%,transparent);background:radial-gradient(ellipse at 50% 45%,color-mix(in srgb,var(--story-accent) 24%,transparent),transparent 56%),linear-gradient(145deg,rgba(255,255,255,.09),transparent 65%),#120c0c}
+.story-card-featured .story-card-art{min-height:245px}
+.story-card-art:before,.story-card-art:after{content:"";position:absolute;inset:12px;border:1px solid color-mix(in srgb,var(--story-accent) 25%,transparent);border-radius:50%;transform:scaleX(.72) rotate(-18deg)}
+.story-card-art:after{inset:25px;transform:scaleX(.72) rotate(22deg);border-style:dashed;opacity:.6}
+.story-art-symbol{position:relative;z-index:1;color:var(--story-accent);font:clamp(48px,6vw,76px)/1 var(--body);text-shadow:0 0 30px color-mix(in srgb,var(--story-accent) 50%,transparent)}
+.story-art-caption{position:absolute;z-index:2;left:10px;right:10px;bottom:13px;text-align:center;color:color-mix(in srgb,var(--story-accent) 85%,white);font:8px/1.5 var(--mono);letter-spacing:.12em}
+.story-art-number{position:absolute;top:11px;left:13px;color:color-mix(in srgb,var(--story-accent) 70%,transparent);font:10px var(--mono)}
+.story-art-orbit{position:absolute;width:62px;height:62px;border:1px solid color-mix(in srgb,var(--story-accent) 48%,transparent);border-radius:50%;box-shadow:0 0 32px color-mix(in srgb,var(--story-accent) 24%,transparent)}
+.story-art-cat{background:radial-gradient(ellipse at 50% 45%,rgba(190,151,92,.25),transparent 55%),linear-gradient(145deg,#21160f,#0b0909 70%)}
+.story-art-cat .story-art-symbol{font-size:82px;transform:rotate(-35deg)}
+.story-art-water{--story-accent:#9bb4bd;background:radial-gradient(ellipse at 50% 60%,rgba(96,144,159,.25),transparent 58%),linear-gradient(145deg,#111b20,#090c10 72%)}
+.story-art-bell{--story-accent:#c8a56d;background:radial-gradient(ellipse at 50% 50%,rgba(184,142,78,.2),transparent 55%),linear-gradient(145deg,#21190f,#0b0909 72%)}
+.story-art-market{--story-accent:#c18b72;background:radial-gradient(ellipse at 50% 50%,rgba(177,109,77,.22),transparent 55%),linear-gradient(145deg,#21120f,#0b0909 72%)}
+.story-art-cinema{--story-accent:#a99ab9;background:radial-gradient(ellipse at 50% 50%,rgba(135,111,163,.23),transparent 55%),linear-gradient(145deg,#191321,#09090d 72%)}
+.story-card-content{display:flex;flex-direction:column;min-width:0;padding:17px 18px 15px}
+.story-card-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:13px}
+.story-category{color:var(--story-accent);font:8px/1.5 var(--mono);letter-spacing:.1em}
+.story-date{color:var(--dim);font:8px var(--mono);letter-spacing:.08em}
+.story-card h3{font:clamp(21px,2.2vw,28px)/1.1 var(--display);letter-spacing:.005em;margin:0 0 10px;color:var(--fg)}
+.story-card-featured h3{font-size:clamp(29px,3.4vw,43px)}
+.story-card-content>p{margin:0;color:var(--muted);font:13px/1.8 var(--body)}
+.story-card-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:16px}
+.story-card-bottom>span{color:var(--dim);font:9px/1.5 var(--mono)}
+.story-open{display:inline-flex;align-items:center;gap:9px;min-height:35px;padding:0 11px;border:1px solid color-mix(in srgb,var(--story-accent) 48%,transparent);border-radius:99px;background:color-mix(in srgb,var(--story-accent) 9%,transparent);color:var(--bone);font:9px var(--mono);letter-spacing:.07em;transition:background .2s,transform .2s}
+.story-open:hover{background:color-mix(in srgb,var(--story-accent) 20%,transparent);transform:translateY(-1px)}
+.story-open span{font-size:14px;color:var(--story-accent)}
+.story-empty{padding:38px 18px;text-align:center;border:1px dashed var(--line);border-radius:14px;color:var(--muted)}
+.story-empty>span{font-size:34px;color:var(--dim)}
+.story-empty p{margin:5px 0 14px}
+.story-empty button{padding:8px 13px;border:1px solid var(--line);border-radius:99px;background:transparent;color:var(--bone);font:10px var(--mono)}
+.story-sources{margin-top:16px}
+.story-dialog{width:min(760px,calc(100% - 28px));max-width:none;max-height:min(86svh,900px);padding:0;overflow:visible;border:1px solid color-mix(in srgb,var(--bone) 24%,transparent);border-radius:18px;background:transparent;color:var(--fg);box-shadow:0 35px 100px #000b}
+.story-dialog::backdrop{background:rgba(4,3,3,.78);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.story-dialog-shell{position:relative;max-height:min(86svh,900px);overflow:auto;padding:clamp(22px,5vw,48px);border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.045) 36%,rgba(16,9,8,.94) 80%),#160e0d;-webkit-backdrop-filter:blur(26px) saturate(125%);backdrop-filter:blur(26px) saturate(125%);box-shadow:inset 0 1px rgba(255,255,255,.2)}
+.story-dialog-top{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-bottom:15px;margin-bottom:27px;border-bottom:1px solid color-mix(in srgb,var(--bone) 18%,transparent)}
+.story-dialog-mark,.story-dialog-foot{color:var(--dim);font:8px/1.6 var(--mono);letter-spacing:.13em}
+.story-dialog-top button{flex-shrink:0;padding:7px 10px;border:1px solid var(--line);border-radius:99px;background:rgba(0,0,0,.2);color:var(--bone);font:9px var(--mono);letter-spacing:.08em}
+.story-dialog-top button b{margin-left:8px;color:var(--red);font-size:15px}
+.story-dialog h2{font:clamp(34px,6vw,58px)/1.02 var(--display);letter-spacing:0;margin:0 0 20px}
+.story-dialog-rule{width:70px;height:2px;margin:0 0 25px;background:linear-gradient(90deg,var(--red),transparent)}
+.story-dialog-copy p{color:var(--muted);font:clamp(15px,1.7vw,17px)/1.95 var(--body);margin:0 0 17px}
+.story-dialog-copy .story-ending{margin-top:24px;padding:18px 20px;border-left:2px solid #b99a67;background:rgba(185,154,103,.08);color:var(--bone);font-style:italic}
+.story-dialog-copy .story-fiction-note{margin-top:20px;padding-top:13px;border-top:1px solid var(--line);color:var(--dim);font:10px/1.8 var(--mono)}
+.story-dialog-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:30px;padding-top:14px;border-top:1px solid color-mix(in srgb,var(--bone) 16%,transparent)}
+@media(max-width:760px){.story-grid{grid-template-columns:minmax(0,1fr)}.story-card-featured{grid-column:auto;grid-template-columns:minmax(0,1fr)}.story-card-featured .story-card-art{min-height:145px}.story-card-featured .story-card-art:before,.story-card-featured .story-card-art:after{transform:scaleX(1.3) rotate(-18deg)}.story-card{grid-template-columns:112px minmax(0,1fr)}.story-card-featured{grid-template-columns:minmax(0,1fr)}.story-card-art{min-height:205px}.story-card-content{padding:14px}.story-card h3{font-size:22px}.story-card-featured h3{font-size:32px}}
+@media(max-width:440px){.story-card:not(.story-card-featured){grid-template-columns:88px minmax(0,1fr)}.story-card-art{min-height:220px}.story-card-content{padding:12px}.story-card-meta{margin-bottom:9px}.story-category,.story-date{font-size:7px}.story-card-content>p{font-size:12px;line-height:1.65}.story-card-bottom{padding-top:11px}.story-card-bottom>span{font-size:8px}.story-open{font-size:8px;padding:0 8px}.story-filters{gap:6px}.story-filter{font-size:9px;padding:0 10px}.story-dialog-top{align-items:flex-start}.story-dialog-mark{max-width:60%}}
+@media(prefers-reduced-motion:reduce){.story-card,.story-filter,.story-open{transition:none}.story-card:hover,.story-filter:hover,.story-open:hover{transform:none}}
+
 </style>
 </head>
 <body>
@@ -108,7 +179,7 @@ try {
 <a class="mark" href="index.html">e.</a>
 <div class="brand-block"><strong>eerrgin</strong><span class="kicker">gece vardiyası / istanbul</span></div>
 <nav aria-label="Bölümler">
-<a href="#samatya" aria-current="page">Samatya</a><a href="#zaman">Tarih katmanları</a><a href="#kiliseler">Kilise hafızası</a><a href="#cumhuriyetin-ilk-yillari">Cumhuriyet yılları</a><a href="#ergin-defteri">Ergin’in defteri</a><a href="#other-stops">Diğer duraklar</a>
+<a href="#samatya" aria-current="page">Samatya</a><a href="#zaman">Tarih katmanları</a><a href="#sesler">Hikâye arşivi</a><a href="#kiliseler">Kilise hafızası</a><a href="#cumhuriyetin-ilk-yillari">Cumhuriyet yılları</a><a href="#ergin-defteri">Ergin’in defteri</a><a href="#other-stops">Diğer duraklar</a>
 </nav>
 <div class="clock"><span id="clock">--:--:--</span><br>IST</div>
 </div></header>
@@ -203,16 +274,54 @@ try {
 </div>
 </section>
 
-<section id="sesler" class="samatya-section reveal in" data-stamp="04">
-<div class="archive-heading"><div><p class="kicker">04 / ARŞİVDEKİ KÜÇÜK HİKÂYELER</p><h2>Bir semtin hafızası,<br><em>ayrıntıda saklı.</em></h2></div><p class="archive-stamp"><span>04</span><small>RİVAYET · ZANAAT<br>GÜNDELİK HAYAT</small></p></div>
-<div class="samatya-notes">
-<article class="samatya-note"><span class="note-no">KAYIT / 001</span><h3>Suyun adını bıraktığı manastır</h3><p>Sulu Manastır adı, Surp Kevork çevresindeki ayazma ve büyük sarnıçla birlikte anılıyor. Bir yapının adı yalnız duvarda yazmıyor; yerin altındaki suya, orada kurulan ritüele ve nesilden nesile taşınan dile de siniyor.</p><details><summary>Kaynağın anlattığı ayrıntı</summary><p>Türkiye Ermenileri Patrikliği’nin tarihçesi, kilisenin Bizans manastırı Panagia Peribleptos’un bulunduğu alanla ilişkisini ve “Sulu Manastır” adını açıkça kaydediyor. Bu nedenle su hikâyesini yalnızca şiirli bir benzetme olarak değil, yerel tarih kaydına dayanan bir ayrıntı olarak okuyorum.</p></details></article>
-<article class="samatya-note"><span class="note-no">KAYIT / 002</span><h3>Mehterin sesi, Samatya’nın zanaatkârı</h3><p>yerel kurumsal kaynak tarih anlatısında Ermeni zanaatkârlar, Samatya’nın Osmanlı dönemindeki yaşamının önemli parçası olarak geçiyor. Zil yapımıyla anılan Avedis Zilcioğlu’nun Sultan II. Osman tarafından mehter zilleri üretmek üzere görevlendirildiği de aynı kaynakta aktarılıyor.</p><details><summary>Bu hikâyede beni çeken ne?</summary><p>Bir mahallenin tarihini yalnızca saray kararları ve büyük yapılar taşımaz. Bir zanaatkârın eliyle yapılan zil, bir törenin sesine karışır; ses şehirden şehre giderken onu yapan insanın adı da yolculuk eder. Samatya’yı anlamak için işte bu küçük bağlantılar da önemli.</p></details></article>
-<article class="samatya-note"><span class="note-no">KAYIT / 003</span><h3>Cumartesi pazarının ritmi</h3><p>Semtin eski cumartesi pazarının Marmara Caddesi üzerinde kurulduğu, zamanla kuzeye taşındığı yerel kurumsal kaynak kaydediliyor. Pazar, bir mahallede yalnızca alışveriş demek değildir: karşılaşmaların, tanıdık seslerin, fiyat pazarlıklarının ve mevsimlerin de takvimidir.</p><details><summary>Bir mahalleyi nasıl okurum?</summary><p>Bir sokak adından, dükkânın tabelasından ya da eski bir pazar yerinden başlarım. Çünkü gündelik hayatın haritası çoğu zaman anıtların resmi haritasından daha çok şey anlatır. Pazar yerini bulmak, geçmişte kimlerin birbiriyle karşılaştığını da düşünmek demek.</p></details></article>
-<article class="samatya-note"><span class="note-no">KAYIT / 004</span><h3>Bir diziyle ulusal belleğe giren meydan</h3><p>1998–2001 yıllarında yayımlanan <em>İkinci Bahar</em>, Samatya’yı Türkiye’nin dört bir yanındaki izleyicilerin belleğine yerleştiren yapımlardan biri oldu. Dizi araştırmaları, Kocamustafapaşa istasyonu yönüne açılan meydanın dış çekimlerde kullanıldığını kaydediyor.</p><details><summary>Kurguyla gerçek yer arasındaki çizgi</summary><p>Benim için ilginç tarafı şu: televizyon bir semte yeni bir kalabalık getirebilir, ama kameradan önce de orada yaşayanlar vardır. Ekranda görünen mahalle hikâyesi, gerçek esnafın ve gerçek sokakların üstüne kuruluydu; kurgu ile yerin kendi hafızasını ayrı ayrı hatırlamak gerekiyor.</p></details></article>
+<section id="sesler" class="samatya-section reveal in story-archive" data-stamp="04">
+<div class="archive-heading"><div><p class="kicker">04 / ŞEHRİN TAŞ HAFIZASI · HİKÂYE ARŞİVİ</p><h2>Her taşın ardında<br><em>bir ses, bir iz var.</em></h2></div><p class="archive-stamp"><span>04</span><small>ANILAR · ZANAAT<br>RİVAYET · KURGU</small></p></div>
+<p class="lede story-archive-lede">Samatya'nın hafızasını tek bir uzun metne sıkıştırmadan, küçük kayıtlar hâlinde saklıyorum. Bir hikâyeyi seç; kendi sayfası açılsın, gerisi sessizce yerinde kalsın.</p>
+<div class="story-archive-topline"><span><i class="story-live-dot"></i> DİJİTAL HAFIZA KOLEKSİYONU</span><span id="story-count" aria-live="polite">05 KAYIT</span></div>
+<div class="story-tools">
+<label class="story-search"><span aria-hidden="true">⌕</span><input id="story-search" type="search" placeholder="Bir hikâye, yer ya da kelime ara…" autocomplete="off" aria-label="Hikâyelerde ara"><kbd>/</kbd></label>
+<div class="story-filters" role="group" aria-label="Hikâyeleri kategoriye göre filtrele">
+<button class="story-filter is-active" type="button" data-story-filter="all" aria-pressed="true">Tümü <span>05</span></button>
+<button class="story-filter" type="button" data-story-filter="history" aria-pressed="false">Tarih & rivayet</button>
+<button class="story-filter" type="button" data-story-filter="craft" aria-pressed="false">Zanaat</button>
+<button class="story-filter" type="button" data-story-filter="daily" aria-pressed="false">Gündelik hayat</button>
+<button class="story-filter" type="button" data-story-filter="culture" aria-pressed="false">Kent kültürü</button>
+<button class="story-filter" type="button" data-story-filter="fiction" aria-pressed="false">Kurgu</button>
 </div>
-<p class="photo-credit" style="margin-top:13px">Kaynaklar: <a href="https://archives.saltresearch.org/handle/123456789/6647" target="_blank" rel="noopener">SALT Research · Samatya ve Kocamustafapaşa’nın havadan görünümü ↗</a></p>
+</div>
+<div class="story-grid" id="story-grid">
+<article class="story-card story-card-featured" data-story-card data-category="fiction" data-search="kedinin getirdiği anahtar kedi narlıkapı rum evi mektup fotoğraf günlük yunanistan yalnızlık kurgu">
+<div class="story-card-art story-art-cat" aria-hidden="true"><span class="story-art-orbit"></span><span class="story-art-symbol">⌁</span><span class="story-art-caption">NARLIKAPI · GECE KAYDI</span><span class="story-art-number">05</span></div>
+<div class="story-card-content"><div class="story-card-meta"><span class="story-category">KURGU · SAMATYA'DAN ESİNLENDİ</span><span class="story-date">GECE / 001</span></div><h3>Kedinin Getirdiği Anahtar</h3><p>Bir gece kapımın önünde beliren bir kedi, beni Narlıkapı'da unutulmuş bir sandığa ve yıllardır sahibini bekleyen mektuplara götürdü.</p><div class="story-card-bottom"><span>Bir bağın yeniden bulunması</span><button type="button" class="story-open" data-story-open aria-label="Kedinin Getirdiği Anahtar hikâyesini oku">HİKÂYEYİ AÇ <span>↗</span></button></div></div>
+<div class="story-full" hidden><p>Bir gece miyavlamalarla uyandım. Kapımın önünde bir kedi, ağzında paslı bir anahtar tutuyordu. Anahtarı aldım; kedi peşime takıldı. Beni Narlıkapı’ya doğru götürdü. Eski bir Rum evinin bahçesinde, kedinin işaret ettiği yerde bir teneke sandık buldum.</p><p>Anahtar sandığa uydu. İçinde 1960’lardan kalma mektuplar, birkaç fotoğraf ve bir günlük vardı. Mektuplar, Samatya’dan ayrılmak zorunda kalan bir Rum ailesine aitti. Fotoğraflardaki yüzleri araştırdım; sosyal medyada ailenin bir torununa ulaştım. Mektupları Yunanistan’a gönderdim.</p><p>Haftalar sonra bir teşekkür mektubu geldi. Yıllardır kapalı duran bir hikâye, iki farklı ülkede yaşayan insanlar arasında yeniden bir bağ kurmuştu.</p><p>Samatya’da her gün yeni bir hikâye birikiyor: bazen bir martı, bazen bir simit, bazen bir kedi. Ama hepsi aynı şeyi fısıldıyor: Yalnızlık, paylaşıldığında anlam kazanır.</p><p class="story-ending">Bir kedinin sayesinde geçmişin kapısı aralandı ve yalnızlığım anlam kazandı.</p><p class="story-fiction-note">Bu kayıt, Samatya'nın çok katmanlı geçmişinden ve Narlıkapı'nın atmosferinden esinlenen edebî bir kurmacadır; tarihî belge veya yaşanmış olay iddiası taşımaz.</p></div>
+</article>
+<article class="story-card" data-story-card data-category="history" data-search="suyun adını bıraktığı manastır surp kevork sulu manastır ayazma sarnıç bizans">
+<div class="story-card-art story-art-water" aria-hidden="true"><span class="story-art-symbol">≈</span><span class="story-art-caption">SULU MANASTIR · SU HAFIZASI</span><span class="story-art-number">01</span></div>
+<div class="story-card-content"><div class="story-card-meta"><span class="story-category">TARİH & RİVAYET</span><span class="story-date">KAYIT / 001</span></div><h3>Suyun Adını Bıraktığı Manastır</h3><p>Sulu Manastır adı, Surp Kevork çevresindeki ayazma ve büyük sarnıçla birlikte anılıyor. Bir yerin hafızası bazen toprağın altında saklı.</p><div class="story-card-bottom"><span>Yerel tarih kaydı</span><button type="button" class="story-open" data-story-open>HİKÂYEYİ AÇ <span>↗</span></button></div></div>
+<div class="story-full" hidden><p>Sulu Manastır adı, Surp Kevork çevresindeki ayazma ve büyük sarnıçla birlikte anılıyor. Bir yapının adı yalnız duvarda yazmıyor; yerin altındaki suya, orada kurulan ritüele ve nesilden nesile taşınan dile de siniyor.</p><p>Türkiye Ermenileri Patrikliği’nin tarihçesi, kilisenin Bizans manastırı Panagia Peribleptos’un bulunduğu alanla ilişkisini ve “Sulu Manastır” adını kaydediyor. Bu nedenle su hikâyesini yalnızca şiirli bir benzetme olarak değil, yerel tarih kaydına dayanan bir ayrıntı olarak okuyorum.</p><p class="story-ending">Bazı isimler, bir mahallenin hafızasında su gibi akmaya devam eder.</p></div>
+</article>
+<article class="story-card" data-story-card data-category="craft" data-search="mehterin sesi samatya zanaatkar zilci avedis zilcioğlu mehter zilleri osmanlı">
+<div class="story-card-art story-art-bell" aria-hidden="true"><span class="story-art-symbol">◉</span><span class="story-art-caption">ZİL USTASI · SESİN İZİ</span><span class="story-art-number">02</span></div>
+<div class="story-card-content"><div class="story-card-meta"><span class="story-category">ZANAAT</span><span class="story-date">KAYIT / 002</span></div><h3>Mehterin Sesi, Samatya’nın Zanaatkârı</h3><p>Zil yapımıyla anılan Avedis Zilcioğlu’nun, Sultan II. Osman döneminde mehter zilleri üretmek üzere görevlendirildiği aktarılıyor.</p><div class="story-card-bottom"><span>Bir ustanın şehirden taşan sesi</span><button type="button" class="story-open" data-story-open>HİKÂYEYİ AÇ <span>↗</span></button></div></div>
+<div class="story-full" hidden><p>Yerel kurumsal kaynakların tarih anlatısında Ermeni zanaatkârlar, Samatya’nın Osmanlı dönemindeki yaşamının önemli parçalarından biri olarak geçiyor. Zil yapımıyla anılan Avedis Zilcioğlu’nun Sultan II. Osman tarafından mehter zilleri üretmek üzere görevlendirildiği de aynı kaynaklarda aktarılıyor.</p><p>Bir mahallenin tarihini yalnızca saray kararları ve büyük yapılar taşımaz. Bir zanaatkârın eliyle yapılan zil, bir törenin sesine karışır; ses şehirden şehre giderken onu yapan insanın adı da yolculuk eder.</p><p class="story-ending">Bazen bir semtin hafızası, yüzyıllar sonra bile duyulabilen bir sesin içinde saklıdır.</p></div>
+</article>
+<article class="story-card" data-story-card data-category="daily" data-search="cumartesi pazarı marmara caddesi esnaf mahalle gündelik hayat karşılaşmalar">
+<div class="story-card-art story-art-market" aria-hidden="true"><span class="story-art-symbol">✳</span><span class="story-art-caption">MARMARA CADDESİ · PAZAR</span><span class="story-art-number">03</span></div>
+<div class="story-card-content"><div class="story-card-meta"><span class="story-category">GÜNDELİK HAYAT</span><span class="story-date">KAYIT / 003</span></div><h3>Cumartesi Pazarının Ritmi</h3><p>Semtin eski cumartesi pazarı, Marmara Caddesi üzerinde kurulurmuş. Pazar, alışverişten fazlası: karşılaşmaların ve mevsimlerin takvimi.</p><div class="story-card-bottom"><span>Mahallenin gündelik sesi</span><button type="button" class="story-open" data-story-open>HİKÂYEYİ AÇ <span>↗</span></button></div></div>
+<div class="story-full" hidden><p>Semtin eski cumartesi pazarının Marmara Caddesi üzerinde kurulduğu, zamanla kuzeye taşındığı yerel kurumsal kaynaklarda kaydediliyor. Pazar, bir mahallede yalnızca alışveriş demek değildir: karşılaşmaların, tanıdık seslerin, fiyat pazarlıklarının ve mevsimlerin de takvimidir.</p><p>Bir sokak adından, dükkânın tabelasından ya da eski bir pazar yerinden başlarım. Çünkü gündelik hayatın haritası çoğu zaman anıtların resmî haritasından daha çok şey anlatır. Pazar yerini bulmak, geçmişte kimlerin birbiriyle karşılaştığını da düşünmek demek.</p><p class="story-ending">Mahallenin ritmi, bazen tezgâhların kurulup toplandığı saatlerde saklıdır.</p></div>
+</article>
+<article class="story-card" data-story-card data-category="culture" data-search="ikinci bahar dizi meydan samatya televizyon popüler kültür 1998 2001">
+<div class="story-card-art story-art-cinema" aria-hidden="true"><span class="story-art-symbol">✧</span><span class="story-art-caption">İKİNCİ BAHAR · EKRAN HAFIZASI</span><span class="story-art-number">04</span></div>
+<div class="story-card-content"><div class="story-card-meta"><span class="story-category">KENT KÜLTÜRÜ</span><span class="story-date">KAYIT / 004</span></div><h3>Bir Diziyle Ulusal Belleğe Giren Meydan</h3><p>1998–2001 yıllarında yayımlanan <em>İkinci Bahar</em>, Samatya meydanını ülkenin dört bir yanındaki izleyicilerin belleğine taşıdı.</p><div class="story-card-bottom"><span>Kurgu ile gerçek hayatın kesişimi</span><button type="button" class="story-open" data-story-open>HİKÂYEYİ AÇ <span>↗</span></button></div></div>
+<div class="story-full" hidden><p>1998–2001 yıllarında yayımlanan <em>İkinci Bahar</em>, Samatya’yı Türkiye’nin dört bir yanındaki izleyicilerin belleğine yerleştiren yapımlardan biri oldu. Dizi araştırmaları, Kocamustafapaşa istasyonu yönüne açılan meydanın dış çekimlerde kullanıldığını kaydediyor.</p><p>Televizyon bir semte yeni bir kalabalık getirebilir, ama kameradan önce de orada yaşayanlar vardır. Ekranda görünen mahalle hikâyesi, gerçek esnafın ve gerçek sokakların üstüne kuruluydu; kurgu ile yerin kendi hafızasını ayrı ayrı hatırlamak gerekiyor.</p><p class="story-ending">Ekranda kalan bir meydan, gerçek hayatta yaşamaya devam eder.</p></div>
+</article>
+</div>
+<div class="story-empty" id="story-empty" hidden><span>⌕</span><p>Bu arşivde aradığın iz henüz bulunamadı.</p><button type="button" id="story-reset">Bütün hikâyeleri göster</button></div>
+<p class="photo-credit story-sources">Tarih kayıtları için başvuru: <a href="https://archives.saltresearch.org/handle/123456789/6647" target="_blank" rel="noopener">SALT Research · Samatya ve Kocamustafapaşa’nın havadan görünümü ↗</a>. Kurmaca kayıtlar ayrıca belirtilmiştir.</p>
 </section>
+<dialog class="story-dialog" id="story-dialog" aria-labelledby="story-dialog-title">
+<div class="story-dialog-shell"><div class="story-dialog-top"><span class="story-dialog-mark">ŞEHRİN TAŞ HAFIZASI / OKUMA ODASI</span><button type="button" id="story-dialog-close" aria-label="Hikâyeyi kapat">KAPAT <b>×</b></button></div><p class="kicker" id="story-dialog-category">ARŞİV KAYDI</p><h2 id="story-dialog-title">Hikâye</h2><div class="story-dialog-rule"></div><div class="story-dialog-copy" id="story-dialog-copy"></div><div class="story-dialog-foot"><span>ERGİN'İN SAMATYA DEFTERİ</span><span>OKUMA ODASI · 001—005</span></div></div>
+</dialog>
 
 <section id="cumhuriyet" class="samatya-section reveal in" data-stamp="05">
 <div class="archive-heading"><div><p class="kicker">05 / CUMHURİYET YILLARI</p><h2>Kıyının geri çekilişi,<br><em>mahallenin değişen sesi.</em></h2></div><p class="archive-stamp"><span>05</span><small>1923 → BUGÜN<br>GÖÇ · ŞEHİR · HAFIZA</small></p></div>
@@ -420,5 +529,69 @@ try {
  dialog.addEventListener("click",event=>{if(event.target===dialog)shut();});
 })();
 </script>
+
+<script>
+(() => {
+ const root=document.getElementById("sesler");
+ if(!root)return;
+ const cards=[...root.querySelectorAll("[data-story-card]")];
+ const filters=[...root.querySelectorAll("[data-story-filter]")];
+ const search=root.querySelector("#story-search");
+ const count=root.querySelector("#story-count");
+ const empty=root.querySelector("#story-empty");
+ const grid=root.querySelector("#story-grid");
+ const reset=root.querySelector("#story-reset");
+ const dialog=document.getElementById("story-dialog");
+ const dialogTitle=document.getElementById("story-dialog-title");
+ const dialogCategory=document.getElementById("story-dialog-category");
+ const dialogCopy=document.getElementById("story-dialog-copy");
+ const close=document.getElementById("story-dialog-close");
+ let active="all";
+ const apply=()=>{
+  const term=(search?.value||"").trim().toLocaleLowerCase("tr-TR");
+  let visible=0;
+  cards.forEach(card=>{
+   const category=card.dataset.category||"";
+   const haystack=((card.dataset.search||"")+" "+card.innerText).toLocaleLowerCase("tr-TR");
+   const matchCategory=active==="all"||category===active;
+   const matchTerm=!term||haystack.includes(term);
+   const show=matchCategory&&matchTerm;
+   card.hidden=!show;
+   if(show)visible++;
+  });
+  if(count)count.textContent=String(visible).padStart(2,"0")+" / "+String(cards.length).padStart(2,"0")+" KAYIT";
+  if(empty)empty.hidden=visible!==0;
+  if(grid)grid.hidden=visible===0;
+ };
+ filters.forEach(button=>button.addEventListener("click",()=>{
+  active=button.dataset.storyFilter||"all";
+  filters.forEach(item=>{const selected=item===button;item.classList.toggle("is-active",selected);item.setAttribute("aria-pressed",String(selected));});
+  apply();
+ }));
+ search?.addEventListener("input",apply);
+ reset?.addEventListener("click",()=>{active="all";if(search)search.value="";filters.forEach(item=>{const selected=item.dataset.storyFilter==="all";item.classList.toggle("is-active",selected);item.setAttribute("aria-pressed",String(selected));});apply();});
+ root.querySelectorAll("[data-story-open]").forEach(button=>button.addEventListener("click",()=>{
+  const card=button.closest("[data-story-card]");
+  const title=card?.querySelector("h3")?.textContent?.trim();
+  const category=card?.querySelector(".story-category")?.textContent?.trim();
+  const body=card?.querySelector(".story-full");
+  if(!title||!body||!dialog||!dialogTitle||!dialogCopy)return;
+  dialogTitle.textContent=title;
+  dialogCategory.textContent=category||"ARŞİV KAYDI";
+  dialogCopy.replaceChildren(...[...body.children].map(node=>node.cloneNode(true)));
+  dialog.showModal();
+  close?.focus();
+ }));
+ const shut=()=>{if(dialog?.open)dialog.close();};
+ close?.addEventListener("click",shut);
+ dialog?.addEventListener("click",event=>{if(event.target===dialog)shut();});
+ document.addEventListener("keydown",event=>{
+  if(event.key==="/"&&document.activeElement!==search&&!dialog?.open){event.preventDefault();search?.focus();}
+  if(event.key==="Escape"&&dialog?.open)shut();
+ });
+ apply();
+})();
+</script>
+
 </body>
 </html>
