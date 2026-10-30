@@ -492,3 +492,64 @@ footer{background:linear-gradient(180deg,transparent,rgba(17,11,14,.52))}
   #topos .topos-visual{min-height:220px;padding:13px 10px 12px}
   #topos .topos-diagram{min-height:190px}
 }
+
+
+/* LEARN / BUILD / PROVE · compact, correctly proportioned project panel */
+#ustalik-rotasi.workbench-section{
+  padding-block:clamp(30px,3.6vw,50px)!important;
+  min-height:0;
+}
+#ustalik-rotasi .workbench-project-head{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(260px,.72fr);
+  align-items:end;
+  gap:clamp(18px,3vw,38px);
+  margin:0 0 20px;
+}
+#ustalik-rotasi .workbench-project-head>div{min-width:0}
+#ustalik-rotasi .workbench-project-head h2{
+  max-width:14ch;
+  font-size:clamp(38px,4.2vw,58px)!important;
+  line-height:1.02!important;
+}
+#ustalik-rotasi .workbench-project-head>p{
+  max-width:48ch;
+  text-align:left;
+  margin:0 0 3px;
+  font-size:clamp(12px,1vw,14px);
+  line-height:1.65;
+}
+#ustalik-rotasi .workbench-grid.grid.projects{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  align-items:stretch;
+  gap:clamp(12px,1.5vw,18px);
+}
+#ustalik-rotasi .workbench-grid.grid.projects>.project-card{
+  grid-column:auto!important;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  min-height:220px;
+  height:100%;
+  padding:17px 18px 15px!important;
+}
+#ustalik-rotasi .project-card-top{min-height:54px}
+#ustalik-rotasi .project-card h3{font-size:clamp(22px,1.8vw,29px);line-height:1.08}
+#ustalik-rotasi .project-card>p:not(.meta){font-size:12px;line-height:1.65}
+#ustalik-rotasi .project-card .meta{margin-top:auto;gap:8px;flex-wrap:wrap}
+@media(max-width:1050px){
+  #ustalik-rotasi .workbench-grid.grid.projects{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  #ustalik-rotasi .workbench-project-head{grid-template-columns:1fr;gap:10px}
+  #ustalik-rotasi .workbench-project-head>p{max-width:65ch}
+}
+@media(max-width:600px){
+  #ustalik-rotasi.workbench-section{padding-block:26px!important}
+  #ustalik-rotasi .workbench-project-head{gap:8px;margin-bottom:15px}
+  #ustalik-rotasi .workbench-project-head h2{font-size:clamp(34px,9vw,44px)!important;max-width:100%}
+  #ustalik-rotasi .workbench-project-head>p{font-size:12px;line-height:1.6}
+  #ustalik-rotasi .workbench-grid.grid.projects{grid-template-columns:minmax(0,1fr)!important;gap:11px}
+  #ustalik-rotasi .workbench-grid.grid.projects>.project-card{min-height:0;height:auto;padding:16px!important}
+  #ustalik-rotasi .project-card-top{min-height:48px}
+  #ustalik-rotasi .project-card h3{font-size:26px}
+}
