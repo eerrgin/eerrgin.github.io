@@ -17,6 +17,8 @@ globalThis.EKN = (function () {
     { id: "tank", name: "Kaplan Tank", shelf: "arcade", blurb: "Mahalle savunma hattı", hint: "WASD veya oklarla hareket et. F / Boşluk ile ateş." },
     { id: "vardiya", name: "Gece Vardiyası", shelf: "arcade", blurb: "Kervan Sokak'ta gece sürüşü", hint: "Sol/sağ oklarla şerit değiştir, trafiğe çarpma." },
     { id: "balon", name: "Balon Patlat", shelf: "arcade", blurb: "Mahalle şenliği", hint: "Fareyle veya dokunarak balonları patlat. 45 saniye." },
+    { id: "disket", name: "Disket Koşusu", shelf: "arcade", blurb: "Gece yolunda disketleri kurtar", hint: "Boşluk / yukarı ile zıpla, aşağı ile eğil." },
+    { id: "kaset", name: "Kaset Ritmi", shelf: "arcade", blurb: "Kaseti ritme göre sar", hint: "A / S / D / F tuşlarıyla notaları çizgide yakala." },
     { id: "refleks", name: "Refleks Testi", shelf: "zeka", blurb: "Elin mi hızlı, gözün mü?", hint: "Ekran yeşile dönünce tıkla veya Boşluk'a bas." },
     { id: "labirent", name: "Nöbet Labirenti", shelf: "zeka", blurb: "Dört fişi topla, çıkışı bul", hint: "Oklar veya WASD ile hareket et. Dört fişi topla." },
     { id: "mayin", name: "Mayın Tarlası", shelf: "zeka", blurb: "İlk kare güvenli", hint: "Sol tık açar, sağ tık bayrak koyar." },
@@ -130,6 +132,10 @@ globalThis.EKN = (function () {
       bar(20,7,24,28,"#317d85");bar(24,10,16,7,"#b7d7d0");bar(15,10,4,7,"#e8a838");bar(45,10,4,7,"#e8a838");
     } else if (id === "balon") {
       ["#e25b4a","#e8a838","#69a5aa"].forEach((v,i)=>{g.fillStyle=v;g.beginPath();g.arc(15+i*18,14+(i%2)*5,8,0,Math.PI*2);g.fill();bar(14+i*18,22+(i%2)*5,2,8,"#cbbd9c");});
+    } else if (id === "disket") {
+      bar(10,5,44,30,"#b7c9b4");bar(15,8,32,9,"#26362d");bar(19,9,5,7,"#e8a838");bar(20,20,24,11,"#647f71");bar(25,23,14,5,"#d7dfc7");
+    } else if (id === "kaset") {
+      bar(7,9,50,24,"#bea36d");bar(10,12,44,18,"#2c302d");bar(14,15,10,10,"#d8c48c");bar(40,15,10,10,"#d8c48c");bar(24,17,16,6,"#e8a838");bar(27,18,3,4,"#333");
     } else if (id === "refleks") {
       g.strokeStyle="#80e59a";g.lineWidth=3;g.beginPath();g.arc(32,20,13,0,Math.PI*2);g.stroke();bar(30,5,4,30,"#e8a838");bar(17,18,30,4,"#e8a838");
     } else if (id === "labirent") {
@@ -251,7 +257,7 @@ globalThis.EKN = (function () {
   function updateTouch() {
     const t = $("touch");
     if (!t) return;
-    const need = current && /yildiz|yilan|tugla|tenis|tank|vardiya|labirent|lira/.test(current);
+    const need = current && /yildiz|yilan|tugla|tenis|tank|vardiya|labirent|lira|disket/.test(current);
     t.classList.toggle("on", !!need && ("ontouchstart" in window || navigator.maxTouchPoints > 0));
   }
 
