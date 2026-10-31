@@ -205,7 +205,7 @@
         <iframe
           id="istanbul-live-frame"
           class="cockpit-frame"
-          src="/istanbul-cockpit/?embed=1&v=20261031-gece04"
+          src="/istanbul-cockpit/?embed=1&v=20261031-gece05"
           title="Ergin Lab İstanbul atmosfer kokpiti: hava, ışık, ay, kalite, basınç, deprem ve yörünge"
           loading="eager"
           referrerpolicy="strict-origin-when-cross-origin"
@@ -220,21 +220,52 @@
   </section>
   <script>
     (function () {
+      "use strict";
       var frame = document.getElementById("istanbul-live-frame");
       if (!frame) return;
+      var lastHeight = 0;
+      var measurePending = false;
+
+      function applyHeight(rawHeight) {
+        var height = Number(rawHeight);
+        if (!Number.isFinite(height) || height < 240 || height > 2400) return;
+        var isPhone = window.matchMedia("(max-width: 600px)").matches;
+        var isTablet = window.matchMedia("(max-width: 899px)").matches;
+        var minHeight = 320;
+        var maxHeight = isPhone ? 900 : (isTablet ? 860 : 820);
+        var nextHeight = Math.min(Math.max(Math.ceil(height), minHeight), maxHeight);
+        if (Math.abs(nextHeight - lastHeight) < 4) return;
+        lastHeight = nextHeight;
+        frame.style.setProperty("height", nextHeight + "px", "important");
+        frame.style.setProperty("min-height", "0px", "important");
+      }
+
+      function requestMeasure() {
+        if (measurePending) return;
+        measurePending = true;
+        window.requestAnimationFrame(function () {
+          measurePending = false;
+          if (frame.contentWindow) {
+            frame.contentWindow.postMessage(
+              { type: "istanbul-cockpit:measure" },
+              window.location.origin
+            );
+          }
+        });
+      }
+
       window.addEventListener("message", function (event) {
         if (event.origin !== window.location.origin || event.source !== frame.contentWindow) return;
         var data = event.data;
         if (!data || data.type !== "istanbul-cockpit:resize") return;
-        var height = Number(data.height);
-        if (!Number.isFinite(height) || height < 280) return;
-        var maxHeight = window.matchMedia("(max-width: 600px)").matches ? 1800 :
-          (window.matchMedia("(max-width: 899px)").matches ? 1400 : 1100);
-        frame.style.height = Math.min(Math.max(Math.ceil(height), 420), maxHeight) + "px";
+        applyHeight(data.height);
       });
-      frame.addEventListener("load", function () {
-        frame.contentWindow.postMessage({ type: "istanbul-cockpit:measure" }, window.location.origin);
-      });
+      frame.addEventListener("load", requestMeasure);
+      window.addEventListener("resize", function () {
+        lastHeight = 0;
+        requestMeasure();
+      }, { passive: true });
+      requestMeasure();
     })();
   </script>
 
