@@ -741,3 +741,19 @@ html[data-embed="true"] main {
     scroll-behavior:auto!important;
   }
 }
+
+/* LIVE DATA STATUS / clear feedback when an endpoint is unavailable */
+html[data-embed="true"] .app-status {
+  margin:5px 0 0;
+  color:#a9c6a2;
+  font:7px/1.5 var(--mono);
+  letter-spacing:.06em;
+  overflow-wrap:anywhere;
+}
+html[data-embed="true"] .app-status[data-state="warning"] { color:#d5b68b; }
+html[data-embed="true"] .app-status[data-state="error"] {
+  color:#edaaa0;
+  padding:5px 7px;
+  border:1px solid rgba(237,170,160,.24);
+  background:rgba(95,27,31,.18);
+}
