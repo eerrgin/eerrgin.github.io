@@ -16,6 +16,26 @@ function text(id, value) {
   if (node) node.textContent = value;
 }
 
+function setAppStatus(message, state = 'ok') {
+  const node = $('app-status');
+  if (!node) return;
+  node.textContent = message || '';
+  node.hidden = !message;
+  node.dataset.state = state;
+}
+
+function cachedValue(key) {
+  try { return readCache(window.localStorage, `ergin-lab:${key}`); }
+  catch (error) { return null; }
+}
+
+function saveCachedValue(key, data) {
+  try { writeCache(window.localStorage, `ergin-lab:${key}`, data, 30 * 60 * 1000); }
+  catch (error) {
+    // Storage is optional: a privacy setting must never block live rendering.
+  }
+}
+
 function clock(iso) {
   const date = new Date(iso);
   if (Number.isNaN(date.getTime())) return '—';
@@ -73,9 +93,15 @@ function lightWindow(now, sunriseIso, sunsetIso) {
 }
 
 async function fetchJson(url) {
-  const response = await fetch(url);
-  if (!response.ok) throw new Error(String(response.status));
-  return response.json();
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), 12000);
+  try {
+    const response = await fetch(url, { signal: controller.signal, cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    return await response.json();
+  } finally {
+    window.clearTimeout(timeout);
+  }
 }
 
 function renderWeather(data) {
@@ -211,30 +237,76 @@ function renderMoon() {
   paintMoon(moon.illumination);
 }
 
+let loadingPromise = null;
+
 async function loadAll() {
-  const banner = $('offline-banner');
-  const online = navigator.onLine;
-  text('net', online ? 'Çevrimiçi' : 'Çevrimdışı');
-  $('net').dataset.state = online ? 'on' : 'off';
-  renderMoon();
-  const tasks = [
-    ['wx', WEATHER, renderWeather],
-    ['air', AIR, renderAir],
-    ['quake', QUAKE, renderQuake],
-    ['iss', ISS, renderIss]
-  ];
-  await Promise.all(tasks.map(async ([key, url, render]) => {
-    try {
-      const data = await fetchJson(url);
-      writeCache(localStorage, `ergin-lab:${key}`, data, 30 * 60 * 1000);
-      render(data);
-    } catch (error) {
-      const cached = readCache(localStorage, `ergin-lab:${key}`);
-      if (cached) render(cached);
-      else if (key === 'wx') text('desc', 'Hava şu an alınamadı. Birazdan yeniden dene.');
+  if (loadingPromise) return loadingPromise;
+  loadingPromise = (async () => {
+    const banner = $('offline-banner');
+    const online = navigator.onLine;
+    const net = $('net');
+    text('net', online ? 'Çevrimiçi' : 'Çevrimdışı');
+    if (net) net.dataset.state = online ? 'on' : 'off';
+    renderMoon();
+
+    const tasks = [
+      ['wx', WEATHER, renderWeather],
+      ['air', AIR, renderAir],
+      ['quake', QUAKE, renderQuake],
+      ['iss', ISS, renderIss]
+    ];
+
+    const results = await Promise.all(tasks.map(async ([key, url, render]) => {
+      try {
+        const data = await fetchJson(url);
+        render(data);
+        saveCachedValue(key, data);
+        return 'live';
+      } catch (error) {
+        const cached = cachedValue(key);
+        if (cached) {
+          try {
+            render(cached);
+            return 'cached';
+          } catch (cacheError) {
+            // Continue to the visible fallback below.
+          }
+        }
+
+        if (key === 'wx') {
+          text('desc', 'Hava verisi şu an alınamıyor.');
+          text('updated', 'BAĞLANTI BEKLENİYOR');
+          ['wind', 'humid', 'press', 'app'].forEach((id) => text(id, '—'));
+        } else if (key === 'air') {
+          text('aqi', '—');
+          text('aqi-label', 'Ölçüm alınamadı');
+          $('aqi-list')?.replaceChildren();
+        } else if (key === 'quake') {
+          text('quake-mag', '—');
+          text('quake-copy', 'Deprem kaynağına şu an ulaşılamıyor.');
+          $('quake-list')?.replaceChildren();
+        } else if (key === 'iss') {
+          text('iss-dist', '—');
+          text('iss-copy', 'Yörünge verisi şu an alınamıyor.');
+        }
+        return 'unavailable';
+      }
+    }));
+
+    const liveCount = results.filter((state) => state === 'live').length;
+    const cachedCount = results.filter((state) => state === 'cached').length;
+    if (liveCount === tasks.length) {
+      setAppStatus('TÜM ALET VERİLERİ CANLI · SON OKUMA ŞİMDİ', 'ok');
+    } else if (liveCount + cachedCount > 0) {
+      setAppStatus(`CANLI ${liveCount}/4 · ÖNBELLEK ${cachedCount}/4 · BAZI KAYNAKLAR BEKLEMEDE`, 'warning');
+    } else {
+      setAppStatus('VERİ KAYNAKLARINA ULAŞILAMADI · BAĞLANTIYI KONTROL EDİP YENİLE', 'error');
     }
-  }));
-  if (banner) banner.hidden = online;
+    if (banner) banner.hidden = online;
+  })();
+
+  try { return await loadingPromise; }
+  finally { loadingPromise = null; }
 }
 
 function bindChrome() {
