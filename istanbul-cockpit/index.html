@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="style.css?v=20261031-gauge02">
+  <link rel="stylesheet" href="style.css?v=20261031-gauge03">
   <script>
     try {
       if (new URLSearchParams(location.search).has('embed')) document.documentElement.dataset.embed = 'true';
@@ -49,6 +49,7 @@
         <p id="desc" class="lede">İstanbul bekleniyor</p>
         <p id="feel" class="muted"></p>
         <p id="updated" class="stamp">HAVA VERİSİ BEKLENİYOR</p>
+        <p id="app-status" class="app-status" role="status" aria-live="polite" hidden></p>
       </div>
       <dl class="hero-stats">
         <div><dt>Rüzgâr</dt><dd id="wind">—</dd></div>
@@ -133,7 +134,26 @@
       </div>
     </section>
   </main>
-  <script type="module" src="app.js?v=20261025-lab05"></script>
+  <script type="module" id="cockpit-app" src="app.js?v=20261031-lab06"></script>
+  <script>
+    (function () {
+      var appScript = document.getElementById("cockpit-app");
+      var status = document.getElementById("app-status");
+      if (!appScript || !status) return;
+      appScript.addEventListener("error", function () {
+        status.hidden = false;
+        status.dataset.state = "error";
+        status.textContent = "PANO KODU YÜKLENEMEDİ · SAYFAYI YENİLE";
+      });
+      window.addEventListener("error", function () {
+        if (!status.textContent) {
+          status.hidden = false;
+          status.dataset.state = "error";
+          status.textContent = "PANO BAŞLATILIRKEN BİR HATA OLUŞTU";
+        }
+      });
+    })();
+  </script>
   <script>
     (function () {
       "use strict";
