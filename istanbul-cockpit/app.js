@@ -146,23 +146,33 @@ function renderWeather(data) {
   });
 
   const now = new Date();
-  const light = lightWindow(now, data.daily.sunrise[0], data.daily.sunset[0]);
-  text('light-state', light.active);
-  text('light-copy', light.active === 'Gece'
-    ? 'Şehir karanlıkta. Bir sonraki altın saat gün doğumundan sonraki ilk saat.'
-    : 'Işık şu an bu pencerede. Fotoğraf ve saha kaydı için en duru aralık.');
+  const sunrise = data.daily?.sunrise?.[0];
+  const sunset = data.daily?.sunset?.[0];
   const list = $('light-list');
-  list.innerHTML = '';
-  [
-    ['Gün doğumu', clock(light.sunrise)],
-    ['Sabah altını', `${clock(light.sunrise)} – ${clock(light.morningEnd)}`],
-    ['Akşam altını', `${clock(light.eveningStart)} – ${clock(light.sunset)}`],
-    ['Mavi saat', `${clock(light.sunset)} – ${clock(light.blueEnd)}`]
-  ].forEach(([k, v]) => {
-    const li = document.createElement('li');
-    li.textContent = `${k} · ${v}`;
-    list.appendChild(li);
-  });
+  if (sunrise && sunset) {
+    const light = lightWindow(now, sunrise, sunset);
+    text('light-state', light.active);
+    text('light-copy', light.active === 'Gece'
+      ? 'Şehir karanlıkta. Bir sonraki altın saat gün doğumundan sonraki ilk saat.'
+      : 'Işık şu an bu pencerede. Fotoğraf ve saha kaydı için en duru aralık.');
+    if (list) {
+      list.replaceChildren();
+      [
+        ['Gün doğumu', clock(light.sunrise)],
+        ['Sabah altını', `${clock(light.sunrise)} – ${clock(light.morningEnd)}`],
+        ['Akşam altını', `${clock(light.eveningStart)} – ${clock(light.sunset)}`],
+        ['Mavi saat', `${clock(light.sunset)} – ${clock(light.blueEnd)}`]
+      ].forEach(([k, v]) => {
+        const li = document.createElement('li');
+        li.textContent = `${k} · ${v}`;
+        list.appendChild(li);
+      });
+    }
+  } else {
+    text('light-state', 'Veri yok');
+    text('light-copy', 'Gün doğumu ve gün batımı bilgisi şu an alınamadı.');
+    list?.replaceChildren();
+  }
 
   const hourlyP = data.hourly?.surface_pressure || [];
   const idx = times.findIndex((stamp) => stamp.slice(0, 13) >= nowHour);
@@ -247,6 +257,7 @@ async function loadAll() {
     const net = $('net');
     text('net', online ? 'Çevrimiçi' : 'Çevrimdışı');
     if (net) net.dataset.state = online ? 'on' : 'off';
+    setAppStatus('VERİLER ALINIYOR…', 'loading');
     renderMoon();
 
     const tasks = [
