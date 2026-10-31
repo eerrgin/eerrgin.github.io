@@ -39,7 +39,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="fonts/bss-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css?v=20261031-gece04">
-  <link rel="stylesheet" href="night-vision.css?v=20261031-gece04">
+  <link rel="stylesheet" href="night-vision.css?v=20261031-gece05">
   <script>
     (function () {
       var root = document.documentElement;
@@ -176,14 +176,12 @@
       <span class="night-note-photo-credit">GECE HATTI · KAYIT 001 / 012</span>
     </article>
 
-    <div class="station-controls" aria-label="Gece hattı durakları arasında gezin">
-      <button type="button" class="station-control" id="station-prev">← ÖNCEKİ DURAK</button>
+    <div class="station-controls" aria-label="Gece hattı durağı">
       <span id="station-counter" aria-live="polite">01 / 12</span>
-      <button type="button" class="station-control station-random" id="station-random">TESADÜFEN BİR DURAK ↝</button>
-      <button type="button" class="station-control station-next" id="station-next">SONRAKİ DURAK →</button>
+      <button type="button" class="station-control station-random" id="station-random">DİĞER DURAĞI GÖSTER ↝</button>
     </div>
 
-    <div class="night-note-grid station-note-grid" id="station-note-grid" aria-label="Gece hattındaki bütün duraklar"></div>
+    
     <p class="night-notes-foot">BAZI HATLARIN SON DURAĞI, HÂLÂ BEKLENEN YERDİR</p>
   </section>
 
@@ -984,12 +982,7 @@
     const card = event.target.closest("[data-note-index]");
     if (card && grid.contains(card)) show(Number(card.dataset.noteIndex));
   });
-  byId("station-prev")?.addEventListener("click", () => show(active - 1));
-  byId("station-next")?.addEventListener("click", () => show(active + 1));
-  byId("station-random")?.addEventListener("click", () => {
-    const offset = 1 + Math.floor(Math.random() * (notes.length - 1));
-    show(active + offset);
-  });
+  byId("station-random")?.addEventListener("click", () => show(active + 1));
 
   const input = byId("departure-name");
   const save = byId("departure-save");
