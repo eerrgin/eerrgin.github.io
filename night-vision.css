@@ -1221,3 +1221,28 @@ body:before{
   font:9px/1.4 "Martian Mono", ui-monospace, monospace;
   letter-spacing:.14em;
 }
+
+/* GECE HATTI / one featured stop + one change action */
+#istasyon-notlari .station-controls{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  flex-wrap:wrap!important;
+  gap:12px!important;
+  padding:12px 0 18px!important;
+}
+#istasyon-notlari #station-counter{margin-right:auto!important}
+#istasyon-notlari .station-random{
+  grid-column:auto!important;
+  grid-row:auto!important;
+  min-width:190px;
+}
+@media(max-width:720px){
+  #istasyon-notlari .station-controls{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:10px!important;
+  }
+  #istasyon-notlari .station-random{flex:1 1 auto;min-width:0}
+}
