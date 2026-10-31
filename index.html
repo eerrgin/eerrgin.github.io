@@ -38,8 +38,8 @@
   <link rel="mask-icon" href="favicon.svg?v=20261024" color="#ff3028">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="fonts/bss-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20261031-gece05">
-  <link rel="stylesheet" href="night-vision.css?v=20261031-gece05">
+  <link rel="stylesheet" href="style.css?v=20261031-gece04">
+  <link rel="stylesheet" href="night-vision.css?v=20261031-gece04">
   <script>
     (function () {
       var root = document.documentElement;
@@ -183,11 +183,8 @@
       <button type="button" class="station-control station-next" id="station-next">SONRAKİ DURAK →</button>
     </div>
 
-    <div class="night-note-grid station-note-grid" id="station-note-grid" aria-label="Gece hattından dört durak"></div>
-    <div class="station-tray-pager">
-      <p class="night-notes-foot" id="station-tray-label">01 · 02 · 03 · 04  /  12</p>
-      <button type="button" class="station-control station-shift" id="station-shift">DEĞİŞTİR</button>
-    </div>
+    <div class="night-note-grid station-note-grid" id="station-note-grid" aria-label="Gece hattındaki bütün duraklar"></div>
+    <p class="night-notes-foot">BAZI HATLARIN SON DURAĞI, HÂLÂ BEKLENEN YERDİR</p>
   </section>
 
 <section class="istanbul-cockpit" id="hava" aria-labelledby="istanbul-cockpit-title">
@@ -210,7 +207,7 @@
         <iframe
           id="istanbul-live-frame"
           class="cockpit-frame"
-          src="/istanbul-cockpit/?embed=1&compact=1&v=20261031-gece05"
+          src="/istanbul-cockpit/?embed=1&v=20261031-gece04"
           title="Ergin Lab İstanbul atmosfer kokpiti: hava, ışık, ay, kalite, basınç, deprem ve yörünge"
           loading="eager"
           referrerpolicy="strict-origin-when-cross-origin"
@@ -842,7 +839,7 @@
   <script src="tigerk.js" defer></script>
   <script src="hat.js?v=20261028-cockpit" defer></script>
   <script src="kokpit.js?v=20261028-cockpit" defer></script>
-  <script src="night-vision.js?v=20261031-gece05" defer></script>
+  <script src="night-vision.js?v=20261031-gece04" defer></script>
   <script>
     (function () {
       "use strict";
@@ -940,24 +937,11 @@
     return card;
   }
 
-  let trayStart = 0;
-  const traySize = 4;
-  function trayIndexes() {
-    return Array.from({ length: traySize }, (_, step) => (trayStart + step) % notes.length);
-  }
   function renderCards() {
     if (!grid) return;
-    const indexes = trayIndexes();
     const fragment = document.createDocumentFragment();
-    indexes.forEach((index) => fragment.appendChild(makeCard(notes[index], index)));
+    notes.forEach((note, index) => fragment.appendChild(makeCard(note, index)));
     grid.replaceChildren(fragment);
-    const label = byId("station-tray-label");
-    if (label) {
-      label.textContent = indexes.map((index) => String(index + 1).padStart(2, "0")).join(" · ") + "  /  " + String(notes.length).padStart(2, "0");
-    }
-    grid.querySelectorAll("[data-note-index]").forEach((card) => {
-      card.setAttribute("aria-pressed", Number(card.dataset.noteIndex) === active ? "true" : "false");
-    });
   }
 
   function show(index) {
@@ -987,8 +971,11 @@
       const credit = feature.querySelector(".night-note-photo-credit");
       if (credit) credit.textContent = "GECE HATTI · KAYIT " + String(active + 1).padStart(3, "0") + " / " + String(notes.length).padStart(3, "0");
     }
-    if (!trayIndexes().includes(active)) trayStart = active;
-    renderCards();
+    if (grid) {
+      grid.querySelectorAll("[data-note-index]").forEach((card) => {
+        card.setAttribute("aria-pressed", Number(card.dataset.noteIndex) === active ? "true" : "false");
+      });
+    }
   }
 
   renderCards();
@@ -1002,10 +989,6 @@
   byId("station-random")?.addEventListener("click", () => {
     const offset = 1 + Math.floor(Math.random() * (notes.length - 1));
     show(active + offset);
-  });
-  byId("station-shift")?.addEventListener("click", () => {
-    trayStart = (trayStart + traySize) % notes.length;
-    renderCards();
   });
 
   const input = byId("departure-name");

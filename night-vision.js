@@ -16,11 +16,8 @@
   var panel=document.createElement("div");panel.className="night-fold-panel";
   var button=document.createElement("button");button.type="button";button.className="night-fold-toggle";button.setAttribute("aria-expanded","true");
   var h=section.querySelector("h2,h3"),label=(h?h.textContent:section.id).replace(/\s+/g," ").trim();
-  button.innerHTML='<span class="fold-mark" aria-hidden="true">⌄</span><span>İÇERİĞİ AÇ</span>';
-  button.setAttribute("aria-expanded","false");
-  button.setAttribute("aria-label",label+" bölümünü aç");
-  panel.classList.add("is-folded");panel.setAttribute("aria-hidden","true");panel.inert=true;
-  parent.insertBefore(button,chosen[0]);parent.insertBefore(panel,chosen[0]);chosen.forEach(function(el){panel.appendChild(el)});
+  button.innerHTML='<span class="fold-mark" aria-hidden="true">⌄</span><span>İÇERİĞİ DARALT</span>';
+  button.setAttribute("aria-label",label+" bölümünün içeriğini daralt");parent.insertBefore(button,chosen[0]);parent.insertBefore(panel,chosen[0]);chosen.forEach(function(el){panel.appendChild(el)});
   button.addEventListener("click",function(){var open=button.getAttribute("aria-expanded")==="true";button.setAttribute("aria-expanded",String(!open));panel.classList.toggle("is-folded",open);panel.setAttribute("aria-hidden",String(open));panel.inert=open;button.querySelector("span:last-child").textContent=open?"İÇERİĞİ AÇ":"İÇERİĞİ DARALT";button.setAttribute("aria-label",label+" bölümünün içeriğini "+(open?"aç":"daralt"))});
  }
  plans.forEach(function(p){fold(document.getElementById(p[0]),p[1])});
