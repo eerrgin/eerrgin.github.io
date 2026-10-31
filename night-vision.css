@@ -1053,3 +1053,138 @@ footer{background:linear-gradient(180deg,transparent,rgba(17,11,14,.52))}
 @media(prefers-reduced-motion:reduce){
   .night-note-feature>img,.station-card-image img{transition:none!important;animation:none!important}
 }
+
+
+/* GECE HATTI / SMOKE RED OPTICAL FINISH */
+:root{
+  --night-rust:#9b3439;
+  --night-red:#b43b42;
+  --night-brass:#bd9772;
+  --night-line:rgba(205,158,147,.18);
+}
+body{background:#0a0809!important}
+body:before{
+  background:
+    radial-gradient(ellipse at 12% 18%,rgba(117,25,36,.28),transparent 37%),
+    radial-gradient(ellipse at 82% 34%,rgba(91,19,29,.22),transparent 40%),
+    radial-gradient(ellipse at 48% 100%,rgba(91,30,33,.15),transparent 44%),
+    repeating-linear-gradient(117deg,transparent 0 31px,rgba(225,190,169,.009) 31px 32px),
+    linear-gradient(155deg,#0b0809 0%,#130b0e 48%,#080708 100%)!important;
+}
+#istasyon-notlari.night-notes{
+  border-color:rgba(190,91,91,.24)!important;
+  background:
+    radial-gradient(ellipse at 8% 15%,rgba(142,28,42,.22),transparent 33%),
+    radial-gradient(ellipse at 91% 68%,rgba(108,26,36,.18),transparent 37%),
+    linear-gradient(145deg,rgba(25,12,15,.97),rgba(12,9,11,.98) 55%,rgba(20,10,13,.97))!important;
+  box-shadow:0 30px 90px rgba(0,0,0,.42),inset 0 1px rgba(255,225,215,.055)!important;
+}
+#istasyon-notlari:before{
+  opacity:.68!important;
+  background:
+    radial-gradient(ellipse at 13% 12%,rgba(165,40,51,.19),transparent 27%),
+    radial-gradient(ellipse at 86% 72%,rgba(151,36,48,.15),transparent 33%),
+    repeating-linear-gradient(118deg,transparent 0 52px,rgba(225,195,176,.018) 52px 53px)!important;
+}
+#istasyon-notlari:after{
+  content:"";position:absolute;z-index:-1;inset:4% -4%;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 17% 42%,rgba(156,35,48,.18),transparent 24%),
+    radial-gradient(ellipse at 78% 18%,rgba(183,48,59,.14),transparent 27%),
+    radial-gradient(ellipse at 56% 93%,rgba(110,25,36,.16),transparent 31%);
+  filter:blur(34px);opacity:.9;
+}
+#istasyon-notlari .night-notes-heading-copy>.kicker{color:#c28c82!important}
+#istasyon-notlari .station-identity em{color:#cb7775!important}
+#istasyon-notlari .night-notes-intro{color:#c1b0a8!important}
+#istasyon-notlari .night-notes-index{
+  border-color:rgba(195,116,104,.22)!important;
+  background:rgba(91,25,31,.13)!important;color:#b99d94!important
+}
+#istasyon-notlari .night-notes-index strong{color:#d5b29a!important}
+#istasyon-notlari .station-board{
+  border-color:rgba(178,89,79,.34)!important;
+  background:linear-gradient(105deg,rgba(29,15,17,.98),rgba(15,11,13,.98))!important;
+  color:#e0c6b5!important;
+}
+#istasyon-notlari .station-board-top{color:#b18b82!important}
+#istasyon-notlari .station-board-light{color:#d08e79!important}
+#istasyon-notlari .station-board-light i{background:#bc4e50!important;box-shadow:0 0 12px rgba(201,58,65,.72)!important}
+#istasyon-notlari .station-board-time{color:#e4b6a0!important;text-shadow:0 0 18px rgba(186,50,59,.26)!important}
+#istasyon-notlari .station-board-main strong{color:#f0ded1!important}
+#istasyon-notlari .station-board-main small{color:#b9a39b!important}
+#istasyon-notlari .station-board-status{color:#d38b79!important}
+#istasyon-notlari .night-note-feature{
+  border-color:rgba(199,101,91,.3)!important;
+  background:#160c0f!important;
+  box-shadow:0 28px 78px rgba(0,0,0,.42),0 0 48px rgba(117,25,36,.10)!important;
+}
+#istasyon-notlari .night-note-feature>img{
+  filter:saturate(.79) sepia(.12) contrast(1.12) brightness(.72)!important;
+  object-position:center 50%!important;
+}
+#istasyon-notlari .night-note-shade{
+  background:
+    linear-gradient(90deg,rgba(12,6,9,.91),rgba(17,7,10,.72) 42%,rgba(18,7,10,.2) 100%),
+    linear-gradient(0deg,rgba(12,5,8,.72),transparent 54%)!important;
+}
+#istasyon-notlari .night-note-feature-copy{
+  max-width:min(730px,68%)!important;
+  padding:clamp(36px,5vw,64px)!important;
+  padding-top:clamp(50px,6vw,76px)!important;
+}
+#istasyon-notlari .night-note-feature-copy>.kicker{color:#d59a83!important}
+#istasyon-notlari .night-note-feature-copy h2{color:#f1e3d8!important}
+#istasyon-notlari .night-note-feature-copy h2 em{color:#d77b78!important}
+#istasyon-notlari .night-note-feature-copy>p:not(.kicker){color:rgba(239,223,212,.84)!important}
+#istasyon-notlari .station-feature-meta{border-top-color:rgba(215,153,137,.24)!important;color:rgba(227,197,183,.72)!important}
+#istasyon-notlari .night-note-photo-credit{color:rgba(240,207,194,.78)!important}
+#istasyon-notlari .station-control{
+  border-color:rgba(195,111,101,.28)!important;
+  background:rgba(83,24,31,.15)!important;color:#e0c0b3!important;
+}
+#istasyon-notlari .station-control:hover{
+  background:rgba(151,42,52,.2)!important;border-color:rgba(211,120,108,.62)!important;
+}
+#istasyon-notlari .station-random{color:#e2ae9a!important;border-color:rgba(206,116,101,.42)!important}
+#istasyon-notlari .station-note-card{
+  border-color:rgba(192,119,111,.18)!important;
+  background:linear-gradient(145deg,rgba(65,24,29,.26),rgba(18,12,14,.76))!important;
+}
+#istasyon-notlari .station-note-card:hover,
+#istasyon-notlari .station-note-card[aria-pressed=true]{
+  border-color:rgba(210,123,111,.58)!important;
+  background:linear-gradient(145deg,rgba(112,34,42,.32),rgba(24,13,16,.88))!important;
+}
+#istasyon-notlari .station-card-image{background:#1b1013!important}
+#istasyon-notlari .station-card-image img{
+  filter:saturate(.8) sepia(.1) contrast(1.08) brightness(.78)!important;
+}
+#istasyon-notlari .station-note-card:hover .station-card-image img,
+#istasyon-notlari .station-note-card[aria-pressed=true] .station-card-image img{
+  filter:saturate(.98) sepia(.06) contrast(1.09) brightness(.91)!important;
+}
+#istasyon-notlari .station-card-kicker{color:#ca9282!important}
+#istasyon-notlari .station-card-title{color:#eee0d6!important}
+#istasyon-notlari .station-card-teaser{color:#c2ada5!important}
+#istasyon-notlari .night-notes-foot{border-top-color:rgba(192,119,111,.2)!important;color:#b69c94!important}
+
+/* Desktop photo is a controlled cinema frame, not a vertically expanding poster. */
+@media(min-width:721px){
+  #istasyon-notlari .night-note-feature{
+    height:clamp(470px,39vw,590px)!important;
+    min-height:0!important;max-height:590px!important;
+  }
+  #istasyon-notlari .night-note-feature>img{
+    width:100%!important;height:100%!important;inset:0!important;
+    object-fit:cover!important;object-position:center 50%!important;
+  }
+  #istasyon-notlari .night-note-feature-copy{
+    width:min(730px,66%)!important;max-width:66%!important;
+    min-height:100%;display:flex;flex-direction:column;justify-content:center;
+  }
+}
+@media(max-width:720px){
+  #istasyon-notlari .night-note-feature{height:auto!important;min-height:540px!important;max-height:none!important}
+  #istasyon-notlari .night-note-feature-copy{max-width:100%!important;width:100%!important}
+}
