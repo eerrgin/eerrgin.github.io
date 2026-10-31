@@ -8,7 +8,7 @@
  topButton.addEventListener("click",function(){window.scrollTo({top:0,behavior:reduce?"auto":"smooth"})});document.body.appendChild(topButton);
  function update(){var max=document.documentElement.scrollHeight-window.innerHeight;bar.style.transform="scaleX("+(max>0?Math.min(1,window.scrollY/max):0)+")";topButton.classList.toggle("is-visible",window.scrollY>480);ticking=false}
  window.addEventListener("scroll",function(){if(!ticking){ticking=true;requestAnimationFrame(update)}},{passive:true});
- var plans=[["hava",".cockpit-frame-shell,.cockpit-footer-line"],["topos",".topos-visual"],["kuslar",".bird-home-layout"],["atolye",".workbench-grid"],["ustalik-rotasi",".grid.projects"],["laboratuvar",".catlab-layout"],["frekans","img.frame"],["sinyal","img.frame"],["arsiv",".archive-composition"],["proje-tepsisi",".project-tray-controls,.tray-status,.project-tray-grid"],["hat","ul"]];
+ var plans=[["kuslar",".bird-home-layout"],["atolye",".workbench-grid"],["ustalik-rotasi",".grid.projects"],["laboratuvar",".catlab-layout"],["frekans","img.frame"],["sinyal","img.frame"],["arsiv",".archive-composition"],["proje-tepsisi",".project-tray-controls,.tray-status,.project-tray-grid"],["hat","ul"]];
  function fold(section,selector){
   if(!section)return;var chosen=Array.prototype.slice.call(section.querySelectorAll(selector));if(!chosen.length)return;
   if(section.id==="frekans"||section.id==="sinyal"){var first=chosen[0],p=first.parentElement,children=Array.prototype.slice.call(p.children),at=children.indexOf(first);chosen=children.slice(at).filter(function(el){return !el.matches("script,style,.night-fold-toggle,.night-fold-panel")})}

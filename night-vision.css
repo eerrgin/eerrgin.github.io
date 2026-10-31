@@ -1188,3 +1188,36 @@ body:before{
   #istasyon-notlari .night-note-feature{height:auto!important;min-height:540px!important;max-height:none!important}
   #istasyon-notlari .night-note-feature-copy{max-width:100%!important;width:100%!important}
 }
+
+
+/* GECE 04 / atmosphere stacks, sky plate is a real column */
+#hava .cockpit-wrap{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:0!important}
+#hava .cockpit-heading{display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;gap:12px!important;margin-bottom:16px!important;width:100%!important}
+#hava .cockpit-heading-copy{display:block!important;grid-template-columns:none!important;max-width:none!important;width:100%!important}
+#hava .cockpit-heading-copy h2{white-space:normal!important;max-width:16ch!important;font-size:clamp(36px,4.2vw,58px)!important;line-height:1.02!important;letter-spacing:-.03em!important}
+#hava .cockpit-heading-copy>p:last-child{display:block!important;margin:10px 0 0!important;max-width:62ch!important;font-size:15px!important;line-height:1.7!important;color:#cbb8aa!important}
+#hava .cockpit-heading-meta{justify-content:flex-start!important;max-width:none!important;margin:0!important}
+#hava .night-fold-toggle{display:none!important}
+#hava .night-fold-panel{display:contents!important}
+#hava .cockpit-frame{height:auto!important;min-height:720px!important;width:100%!important}
+@media(max-width:899px){#hava .cockpit-frame{min-height:980px!important}}
+@media(max-width:600px){#hava .cockpit-heading-copy h2{font-size:clamp(32px,9vw,42px)!important;max-width:100%!important}#hava .cockpit-heading-copy>p:last-child{font-size:14px!important}#hava .cockpit-frame{min-height:1180px!important}}
+
+#topos .night-fold-toggle{display:none!important}
+#topos .night-fold-panel{display:contents!important}
+#topos .topos-visual{
+  background:
+    radial-gradient(ellipse at 50% 38%, rgba(120,150,210,.28), transparent 46%),
+    radial-gradient(ellipse at 70% 70%, rgba(180,70,60,.16), transparent 42%),
+    linear-gradient(165deg, rgba(16,22,38,.96), rgba(8,6,10,.98)) !important;
+}
+#topos .topos-diagram{opacity:1;filter:contrast(1.15) saturate(1.05)}
+#topos .topos-visual::after{
+  content:"UFUK · 0°    30°    60°    ZENİT";
+  position:relative;
+  z-index:1;
+  margin-top:8px;
+  color:#d7c2b4;
+  font:9px/1.4 "Martian Mono", ui-monospace, monospace;
+  letter-spacing:.14em;
+}

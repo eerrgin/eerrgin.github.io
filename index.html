@@ -38,8 +38,8 @@
   <link rel="mask-icon" href="favicon.svg?v=20261024" color="#ff3028">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="fonts/bss-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20261028-night-cockpit01">
-  <link rel="stylesheet" href="night-vision.css?v=20261031-istanbul-nocturne03">
+  <link rel="stylesheet" href="style.css?v=20261031-gece04">
+  <link rel="stylesheet" href="night-vision.css?v=20261031-gece04">
   <script>
     (function () {
       var root = document.documentElement;
@@ -166,8 +166,8 @@
       <div class="night-note-shade" aria-hidden="true"></div>
       <div class="night-note-feature-copy">
         <p class="kicker" id="station-kicker">SAHİL HATTI / KAPI 01 · KAYIT 194</p>
-        <h2 id="night-notes-title">Son sefer çoktan kalktı.<br><em>İskeledeki ışık yine de söndürülmedi.</em></h2>
-        <p id="station-copy">Samatya kıyısında son seferden sonra da bir ışık yanar. Tarifede görünmeyen bu küçük gecikmenin kime ayrıldığını kimse sormaz.</p>
+        <h2 id="night-notes-title">Son sefer kalktı.<br><em>Işık yerinde kaldı.</em></h2>
+        <p id="station-copy">Tarifede yok. Yine de yanıyor. Kıyı kimseyi ikna etmiyor; sadece kararmıyor.</p>
         <div class="station-feature-meta">
           <span id="station-photo-credit">SAMATYA · MARMARA KIYISI</span>
           <span>İSTANBUL GECE ARŞİVİ</span>
@@ -184,7 +184,7 @@
     </div>
 
     <div class="night-note-grid station-note-grid" id="station-note-grid" aria-label="Gece hattındaki bütün duraklar"></div>
-    <p class="night-notes-foot">BİLETİNİZİ SAKLAYIN · BAZI HATLARIN SON DURAĞI, BİRİNİN HÂLÂ BEKLEDİĞİ YERDİR</p>
+    <p class="night-notes-foot">BAZI HATLARIN SON DURAĞI, HÂLÂ BEKLENEN YERDİR</p>
   </section>
 
 <section class="istanbul-cockpit" id="hava" aria-labelledby="istanbul-cockpit-title">
@@ -193,7 +193,7 @@
         <div class="cockpit-heading-copy">
           <p class="kicker"><span class="cockpit-pulse" aria-hidden="true"></span> ERGIN LAB · SAHA DENEYİ 01</p>
           <h2 id="istanbul-cockpit-title">İstanbul <em>/ Atmosfer</em></h2>
-          <p>İstanbul’un üstünde bu gece ne var? Havanın, ayın, ışığın ve yerin küçük hareketleri. Şehrin dışarıdaki hâlini içerideki sessizliğe bağlayan canlı bir pencere.</p>
+          <p>Sıcaklık, rüzgâr, ay, basınç. Süslü cümle yok; şehir susunca sayılar durur.</p>
         </div>
         <div class="cockpit-heading-meta" aria-label="Veri kaynakları">
           <span>AÇIK VERİ</span><span>ANAHTARSIZ HAVA</span><span>CANLI ALETLER</span>
@@ -207,7 +207,7 @@
         <iframe
           id="istanbul-live-frame"
           class="cockpit-frame"
-          src="/istanbul-cockpit/?embed=1&v=20261031-gauge01"
+          src="/istanbul-cockpit/?embed=1&v=20261031-gece04"
           title="Ergin Lab İstanbul atmosfer kokpiti: hava, ışık, ay, kalite, basınç, deprem ve yörünge"
           loading="eager"
           referrerpolicy="strict-origin-when-cross-origin"
@@ -248,8 +248,8 @@
           <p class="kicker">00 / YENİ GÖKYÜZÜ DOSYASI · TOPOS 001</p>
           <div class="topos-overline"><span><i aria-hidden="true"></i> GÖZLEM NOKTASI SABİT</span><span>41.0028° K · 28.9404° D</span></div>
           <h2 id="topos-title">Gökyüzü,<br><em>bir yerden</em> başlar.</h2>
-          <p class="lede topos-lede">İstanbul’un güney kıyısındaki gözlem noktasını merkez alan bir gök atlası. Yıldızların ve gezegenlerin hangi yönde göründüğünü, ufkun ne kadar üstünde kaldığını ve ışıklarının bize yaklaşık ne kadar sürede ulaştığını keşfet.</p>
-          <p class="topos-prompt">Bir yıldız seç. Saati geri al. eski çatıların üzerinden göğe bak.</p>
+          <p class="lede topos-lede">Samatya’dan bakınca gökyüzü bir atlas olur. Yön, yükseklik, ışığın yolu. Nerede, ne kadar yukarıda, ne kadar uzakta.</p>
+          <p class="topos-prompt">Bir yıldız seç. Saati geri al. Çatıların üzerinden bak.</p>
           <div class="row topos-actions">
             <a class="btn" href="samatya-sky/" aria-label="Samatya Topos üç boyutlu gökyüzü simülasyonunu aç">GÖKKUBBEYİ AÇ ↗</a>
             <a class="btn ghost" href="samatya-sky/hesaplama-yontemi.html">YÖNTEM VE HATA PAYI ↗</a>
@@ -839,7 +839,7 @@
   <script src="tigerk.js" defer></script>
   <script src="hat.js?v=20261028-cockpit" defer></script>
   <script src="kokpit.js?v=20261028-cockpit" defer></script>
-  <script src="night-vision.js?v=20261031-02" defer></script>
+  <script src="night-vision.js?v=20261031-gece04" defer></script>
   <script>
     (function () {
       "use strict";
@@ -884,18 +884,18 @@
 (() => {
   "use strict";
   const notes = [
-    {destination:"SAMATYA KIYISI",platform:"SAHİL HATTI · SON SEFERDEN SONRA",kicker:"SAHİL HATTI / KAPI 01 · KAYIT 194",line1:"Son sefer çoktan kalktı.",line2:"İskeledeki ışık yine de söndürülmedi.",copy:"Samatya kıyısında son seferden sonra da bir ışık yanar. Tarifede görünmeyen bu küçük gecikmenin kime ayrıldığını kimse sormaz.",image:"/photos/samatya.jpg",alt:"Samatya kıyısında gece manzarası",place:"SAMATYA · MARMARA KIYISI",time:"00:47",status:"BEKLEMEDE",teaser:"İskeledeki ışık, tarifeden sonra da yanıyor.",position:"center 55%"},
-    {destination:"KISA DALGA / 88.8",platform:"KARAKÖY · ESKİ YAYIN ODASI",kicker:"RADYO DAİRESİ / FREKANS 88.8",line1:"Frekans temiz.",line2:"Yalnızca bir ses cevap vermiyor.",copy:"Karaköy'ün dar sokaklarında bazı sesler duvarlardan daha uzun yaşar. Kadranı aynı yerde bıraktık; yayın değişti, alışkanlık kalmış olabilir.",image:"/photos/radyo.jpg",alt:"Analog radyo kadranı ve loş ışık",place:"KARAKÖY · GALATA KIYISI",time:"01:08",status:"ZAYIF SİNYAL",teaser:"Sinyal temiz; karşılık veren yok.",position:"center"},
-    {destination:"POSTA GÜVERCİNİ",platform:"FATİH · AVLU POSTA NOKTASI",kicker:"POSTA HATTI / ZARF NO. 08",line1:"Adresin doğruluğundan emindik.",line2:"Takvim aynı fikirde değildi.",copy:"Fatih'te avluya bakan eski bir posta kutusunda, köşesi açılmış bir zarf duruyor. Üzerindeki sokak hâlâ yerinde; yalnızca kapıyı açacak kişinin saati değişmiş.",image:"/photos/ayasofya.jpg",alt:"Ayasofya çevresinde eski İstanbul meydanı",place:"FATİH · ESKİ ŞEHİR",time:"01:26",status:"TESLİM BEKLİYOR",teaser:"Adres doğruydu. Takvim başka bir şey söylüyordu.",position:"center 48%"},
-    {destination:"PERONDAKİ SAAT",platform:"SİRKECİ · PERON 04",kicker:"DEMİRYOLU / GECİKME KAYDI 04:12",line1:"Tren tarifeye göre geldi.",line2:"Beklediğimiz şey başka bir zamandaydı.",copy:"Sirkeci'nin ışıkları rayların üzerinde uzarken saat işlemeyi sürdürür. Peronda bekleyen herkes aynı treni bekliyor gibi görünür; saatler aynı şeyi söylemez.",image:"/photos/peron-train.jpg",alt:"Gece treninin yanında aydınlanan peron",place:"SİRKECİ · TARİHÎ GARI",time:"04:12",status:"RAYDA",teaser:"Tren geldi. Beklenen şey gelmedi.",position:"center 52%"},
-    {destination:"VAPUR BEKLEME ODASI",platform:"EMİNÖNÜ · KARŞI KIYI HATTI",kicker:"ŞEHİR HATLARI / İSKELE 02",line1:"Karşı kıyıda bir pencere yandı.",line2:"Bu tarafta kimse başını kaldırmadı.",copy:"Eminönü'nde vapur düdüğü iki kıyı arasında kısa bir boşluk bırakır. O aralıkta, insan bazen hangi tarafa varmak istediğini değil, nereden ayrıldığını hatırlar.",image:"/photos/eminonu.jpg",alt:"Eminönü sahilinde vapur ve gece ışıkları",place:"EMİNÖNÜ · HALİÇ AĞZI",time:"23:54",status:"SON SEFER",teaser:"Karşı kıyıda tek bir pencere açık.",position:"center 54%"},
-    {destination:"SON UÇUŞ / GİŞE 04",platform:"ESKİ TERMİNAL · KAYIT 04",kicker:"KALKIŞ SALONU / GİŞE 04",line1:"Kartın üzerinde tek yön yazıyordu.",line2:"Dönüş saati kurşun kalemle eklenmişti.",copy:"Terminal camlarında şehir ışıkları küçük işaretlere dönüşür. Bazı biletler yalnızca bir kapıdan geçmek için alınır; arkasına yazılan saat, başka bir hikâyeye aittir.",image:"/photos/peron-mist.jpg",alt:"Sisli gece terminalini andıran aydınlık peron",place:"İSTANBUL · ESKİ TERMİNAL",time:"03:08",status:"KAPI KAPANDI",teaser:"Biniş kapısı kapandı, dönüş saati silinmedi.",position:"center 52%"},
-    {destination:"GALATA KÖPRÜSÜ",platform:"HALİÇ · SABAH ÖNCESİ",kicker:"KIYI DEFTERİ / KAYIT 07",line1:"Sabaha karşı oltalar boş çekildi.",line2:"Kimse bunu başarısızlık saymadı.",copy:"Galata Köprüsü'nde sabah, önce çay bardaklarının buğusunda belirir. Balıkçılar oltalarını toplarken şehir, gece boyunca tuttuğu nefesi yavaşça bırakır.",image:"/photos/galata.jpg",alt:"Gece ışıklarıyla Galata Köprüsü ve su",place:"GALATA KÖPRÜSÜ · HALİÇ",time:"05:21",status:"ŞAFAK YAKIN",teaser:"Oltalar boştu. Sabah yine de başladı.",position:"center 52%"},
-    {destination:"KARŞI PERON",platform:"HAYDARPAŞA · PERON 02",kicker:"ANADOLU HATTI / İKİNCİ PERON",line1:"İki tren aynı anda hareket etti.",line2:"Camdaki yansıma yerinden kıpırdamadı.",copy:"Haydarpaşa'nın taş cephesinde ışıklar birer birer sönerken peronda kalan gölgeler birbirine karışır. Bazen giden araç değil, camda kalan görüntüdür.",image:"/photos/peron-mist.jpg",alt:"Sis içindeki gece peronu ve ray ışıkları",place:"HAYDARPAŞA · ANADOLU YAKASI",time:"00:32",status:"HAREKET HALİNDE",teaser:"Camda bir yansıma, peronda iki hareket.",position:"center 60%"},
-    {destination:"YAĞMUR TARİFESİ",platform:"KUMKAPI · SAÇAK ALTI",kicker:"HAVA DURUMU / ISLAK ZEMİN",line1:"Saçağın altı iki kişilikti.",line2:"Yağmur dinince de kimse acele etmedi.",copy:"Kumkapı'nın taş sokaklarında yağmur, tabelaların eski yazılarını parlatır. Birkaç dakika süren sığınak, bazen bütün akşamdan daha uzun hatırlanır.",image:"/photos/yagmur.jpg",alt:"Yağmur sonrası İstanbul sokak ışıkları",place:"KUMKAPI · SAMATYA ARASI",time:"22:46",status:"YAĞIŞ DİNDİ",teaser:"Yağmur dindi; saçak altında yer kaldı.",position:"center 54%"},
-    {destination:"SON AVLU",platform:"SÜLEYMANİYE · AVLU KENARI",kicker:"AVLU DEFTERİ / KAYIT 11",line1:"Avluda iki gölge vardı.",line2:"Kapı kapanınca biri eksik kaldı.",copy:"Süleymaniye taş avlusunda gece sesleri erkenden çekilir. Bir banka bırakılan gazete sabaha kadar yerinde kalır; yanına konan ikinci bardak ise çoktan kaldırılmıştır.",image:"/photos/suleymaniye.jpg",alt:"Gece ışığında Süleymaniye ve İstanbul silüeti",place:"SÜLEYMANİYE · TARİHÎ YARIMADA",time:"01:26",status:"AVLU SESSİZ",teaser:"Gazete kaldı; ikinci bardak kaldırıldı.",position:"center 55%"},
-    {destination:"KULE FENERİ",platform:"KIZ KULESİ · AÇIK DENİZ",kicker:"FENER İDARESİ / DÖNÜŞ 11",line1:"Fener her gece aynı yere döner.",line2:"Bakanın kıyısı değişir.",copy:"Kız Kulesi'nin ışığı suyun üzerinde kırılırken Üsküdar ve Salacak kendi sessizliğini korur. Aynı manzaraya bakan iki kişi, bazen aynı şeyi görmez.",image:"/photos/kiz-kulesi.jpg",alt:"İstanbul Boğazı'nda Kız Kulesi",place:"SALACAK · BOĞAZ HATTI",time:"23:18",status:"FENER AÇIK",teaser:"Fener dönüyor; bakış aynı kıyıda.",position:"center 58%"},
-    {destination:"GECE OTOBÜSÜ",platform:"TAKSİM → SAMATYA · SON AKTARMA",kicker:"ŞEHİR İÇİ / HAT 00:16",line1:"Arka koltukta bir yer boş kaldı.",line2:"Şoför yine de kapıyı iki kez kapattı.",copy:"Gece otobüsünün buğulu camında sokak adları birbirine karışır. Her durakta biri iner, biri biner; bazı boşluklar ise son durağa kadar korunur.",image:"/photos/otobus.jpg",alt:"İstanbul'da gece otobüsü ve sokak ışıkları",place:"TAKSİM · GECE ŞEHİR HATTI",time:"00:16",status:"HATTA",teaser:"Arka koltuk boş; durak yine geçildi.",position:"center 48%"}
+    {destination:"SAMATYA KIYISI",platform:"SAHİL HATTI · SON SEFERDEN SONRA",kicker:"SAHİL HATTI / KAPI 01 · KAYIT 194",line1:"Son sefer kalktı.",line2:"Işık yerinde kaldı.",copy:"Tarifede yok. Yine de yanıyor. Kıyı kimseyi ikna etmiyor; sadece kararmıyor.",image:"/photos/samatya.jpg",alt:"Samatya kıyısında gece manzarası",place:"SAMATYA · MARMARA KIYISI",time:"00:47",status:"BEKLEMEDE",teaser:"İskele kararmadı.",position:"center 55%"},
+    {destination:"KISA DALGA / 88.8",platform:"KARAKÖY · ESKİ YAYIN ODASI",kicker:"RADYO DAİRESİ / FREKANS 88.8",line1:"Frekans duruyor.",line2:"Karşılık yok.",copy:"Kadran aynı yerde. Yayın değişmiş olabilir. Alışkanlık, sinyalden daha inatçı.",image:"/photos/radyo.jpg",alt:"Analog radyo kadranı ve loş ışık",place:"KARAKÖY · GALATA KIYISI",time:"01:08",status:"ZAYIF SİNYAL",teaser:"Kadran duruyor, oda boş.",position:"center"},
+    {destination:"POSTA GÜVERCİNİ",platform:"FATİH · AVLU POSTA NOKTASI",kicker:"POSTA HATTI / ZARF NO. 08",line1:"Adres yerinde.",line2:"Saat değil.",copy:"Zarf duruyor. Sokak duruyor. Kapıyı açacak kişi başka bir günde.",image:"/photos/ayasofya.jpg",alt:"Ayasofya çevresinde eski İstanbul meydanı",place:"FATİH · ESKİ ŞEHİR",time:"01:26",status:"TESLİM BEKLİYOR",teaser:"Adres doğru. Zaman değil.",position:"center 48%"},
+    {destination:"PERONDAKİ SAAT",platform:"SİRKECİ · PERON 04",kicker:"DEMİRYOLU / GECİKME KAYDI 04:12",line1:"Tren geldi.",line2:"Beklenen gelmedi.",copy:"Raylar ıslak, saat işliyor. Perondaki herkes aynı trene bakıyor; herkes aynı şeyi beklemiyor.",image:"/photos/peron-train.jpg",alt:"Gece treninin yanında aydınlanan peron",place:"SİRKECİ · TARİHÎ GARI",time:"04:12",status:"RAYDA",teaser:"Tren vaktinde. Bekleyiş değil.",position:"center 52%"},
+    {destination:"VAPUR BEKLEME ODASI",platform:"EMİNÖNÜ · KARŞI KIYI HATTI",kicker:"ŞEHİR HATLARI / İSKELE 02",line1:"Karşıda bir pencere yandı.",line2:"Bu kıyı başını kaldırmadı.",copy:"Düdük iki kıyı arasında kısa bir boşluk bırakır. O boşlukta şehir, varmaktan çok ayrılmayı hatırlar.",image:"/photos/eminonu.jpg",alt:"Eminönü sahilinde vapur ve gece ışıkları",place:"EMİNÖNÜ · HALİÇ AĞZI",time:"23:54",status:"SON SEFER",teaser:"Karşı kıyıda bir pencere.",position:"center 54%"},
+    {destination:"SON UÇUŞ / GİŞE 04",platform:"ESKİ TERMİNAL · KAYIT 04",kicker:"KALKIŞ SALONU / GİŞE 04",line1:"Bilet tek yön.",line2:"Dönüş saati kurşun kalem.",copy:"Bazı kapılar kapanır. Camda kalan şehir ışığı, biletin arkasına yazılan saatten daha geç söner.",image:"/photos/peron-mist.jpg",alt:"Sisli gece terminalini andıran aydınlık peron",place:"İSTANBUL · ESKİ TERMİNAL",time:"03:08",status:"KAPI KAPANDI",teaser:"Kapı kapandı. Saat silinmedi.",position:"center 52%"},
+    {destination:"GALATA KÖPRÜSÜ",platform:"HALİÇ · SABAH ÖNCESİ",kicker:"KIYI DEFTERİ / KAYIT 07",line1:"Olta boş geldi.",line2:"Sabah yine de başladı.",copy:"Çayın buğusu köprüden önce uyanır. Boş olta bir başarısızlık değil; gecenin bırakılışı.",image:"/photos/galata.jpg",alt:"Gece ışıklarıyla Galata Köprüsü ve su",place:"GALATA KÖPRÜSÜ · HALİÇ",time:"05:21",status:"ŞAFAK YAKIN",teaser:"Olta boş. Sabah değil.",position:"center 52%"},
+    {destination:"KARŞI PERON",platform:"HAYDARPAŞA · PERON 02",kicker:"ANADOLU HATTI / İKİNCİ PERON",line1:"İki tren kalktı.",line2:"Camdaki görüntü kaldı.",copy:"Giden vagon değil, bazen camda duran yansımadır. Peron bunu düzeltmez.",image:"/photos/peron-mist.jpg",alt:"Sis içindeki gece peronu ve ray ışıkları",place:"HAYDARPAŞA · ANADOLU YAKASI",time:"00:32",status:"HAREKET HALİNDE",teaser:"Tren gitti. Yansıma kaldı.",position:"center 60%"},
+    {destination:"YAĞMUR TARİFESİ",platform:"KUMKAPI · SAÇAK ALTI",kicker:"HAVA DURUMU / ISLAK ZEMİN",line1:"Saçak dardı.",line2:"Kimse acele etmedi.",copy:"Yağmur tabelayı bir dakika parlatır. Sığınak kısa sürer; hatırası sürmez.",image:"/photos/yagmur.jpg",alt:"Yağmur sonrası İstanbul sokak ışıkları",place:"KUMKAPI · SAMATYA ARASI",time:"22:46",status:"YAĞIŞ DİNDİ",teaser:"Yağmur dindi. Yer duruyor.",position:"center 54%"},
+    {destination:"SON AVLU",platform:"SÜLEYMANİYE · AVLU KENARI",kicker:"AVLU DEFTERİ / KAYIT 11",line1:"İki gölge vardı.",line2:"Kapı birini içeride bıraktı.",copy:"Gazete bankta. İkinci bardak yok. Avlu bunu açıklamaz.",image:"/photos/suleymaniye.jpg",alt:"Gece ışığında Süleymaniye ve İstanbul silüeti",place:"SÜLEYMANİYE · TARİHÎ YARIMADA",time:"01:26",status:"AVLU SESSİZ",teaser:"Gazete kaldı. Bardak gitti.",position:"center 55%"},
+    {destination:"KULE FENERİ",platform:"KIZ KULESİ · AÇIK DENİZ",kicker:"FENER İDARESİ / DÖNÜŞ 11",line1:"Fener aynı yayı çizer.",line2:"Bakan kıyı değişir.",copy:"Işık suda kırılır. Aynı noktaya bakan iki kişi aynı şeyi görmek zorunda değil.",image:"/photos/kiz-kulesi.jpg",alt:"İstanbul Boğazı'nda Kız Kulesi",place:"SALACAK · BOĞAZ HATTI",time:"23:18",status:"FENER AÇIK",teaser:"Fener dönüyor. Kıyı duruyor.",position:"center 58%"},
+    {destination:"GECE OTOBÜSÜ",platform:"TAKSİM → SAMATYA · SON AKTARMA",kicker:"ŞEHİR İÇİ / HAT 00:16",line1:"Arka koltuk boş.",line2:"Kapı iki kez kapandı.",copy:"Cam buğulu, duraklar birbirine karışır. Bazı boş yerler son durağa kadar korunur.",image:"/photos/otobus.jpg",alt:"İstanbul'da gece otobüsü ve sokak ışıkları",place:"TAKSİM · GECE ŞEHİR HATTI",time:"00:16",status:"HATTA",teaser:"Koltuk boş. Hat işliyor.",position:"center 48%"}
   ];
   const byId = (name) => document.getElementById(name);
   const grid = byId("station-note-grid");
