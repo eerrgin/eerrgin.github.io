@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="style.css?v=20261031-gauge01">
+  <link rel="stylesheet" href="style.css?v=20261031-gauge02">
   <script>
     try {
       if (new URLSearchParams(location.search).has('embed')) document.documentElement.dataset.embed = 'true';
@@ -136,19 +136,48 @@
   <script type="module" src="app.js?v=20261025-lab05"></script>
   <script>
     (function () {
-      if (document.documentElement.dataset.embed !== 'true') return;
-      var notify = function () {
-        var height = Math.ceil(document.documentElement.scrollHeight);
-        parent.postMessage({ type: 'istanbul-cockpit:resize', height: height }, location.origin);
-      };
-      addEventListener('load', notify);
-      addEventListener('resize', notify);
-      addEventListener('message', function (event) {
+      "use strict";
+      if (document.documentElement.dataset.embed !== "true") return;
+      var queued = false;
+      function notify() {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(function () {
+          queued = false;
+          var root = document.documentElement;
+          var body = document.body;
+          var main = document.querySelector("main");
+          var height = Math.ceil(Math.max(
+            root ? root.scrollHeight : 0,
+            root ? root.offsetHeight : 0,
+            body ? body.scrollHeight : 0,
+            body ? body.offsetHeight : 0,
+            main ? main.getBoundingClientRect().bottom + 8 : 0
+          ));
+          if (height > 0) {
+            parent.postMessage(
+              { type: "istanbul-cockpit:resize", height: height },
+              location.origin
+            );
+          }
+        });
+      }
+      addEventListener("load", notify, { once: true });
+      addEventListener("resize", notify, { passive: true });
+      addEventListener("message", function (event) {
         if (event.origin !== location.origin || event.source !== parent) return;
-        if (event.data && event.data.type === 'istanbul-cockpit:measure') notify();
+        if (event.data && event.data.type === "istanbul-cockpit:measure") notify();
       });
-      document.addEventListener('DOMContentLoaded', function () { requestAnimationFrame(notify); });
-      if ('ResizeObserver' in window) new ResizeObserver(notify).observe(document.documentElement);
+      document.addEventListener("DOMContentLoaded", notify, { once: true });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(notify);
+      if ("ResizeObserver" in window) {
+        var observer = new ResizeObserver(notify);
+        if (document.documentElement) observer.observe(document.documentElement);
+        if (document.body) observer.observe(document.body);
+        var main = document.querySelector("main");
+        if (main) observer.observe(main);
+      }
+      notify();
     })();
   </script>
 </body>
