@@ -715,3 +715,29 @@ html[data-embed="true"] .credit{display:none!important}
  html[data-embed="true"] .inst h3{font-size:10px}
  html[data-embed="true"] .big{font-size:16px}
 }
+
+/* EMBED MODE / natural content height for parent auto-sizing */
+html[data-embed="true"] {
+  height:auto!important;
+  min-height:0!important;
+}
+html[data-embed="true"] body {
+  height:auto!important;
+  min-height:0!important;
+  overflow:hidden!important;
+}
+html[data-embed="true"] main {
+  height:auto!important;
+  min-height:0!important;
+  overflow:visible!important;
+}
+@media(max-width:860px) {
+  html[data-embed="true"] body { overflow:hidden!important; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html[data-embed="true"] *,html[data-embed="true"] *::before,html[data-embed="true"] *::after {
+    animation:none!important;
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+}
