@@ -750,6 +750,7 @@ html[data-embed="true"] .app-status {
   letter-spacing:.06em;
   overflow-wrap:anywhere;
 }
+html[data-embed="true"] .app-status[data-state="loading"] { color:#d5b68b; }
 html[data-embed="true"] .app-status[data-state="warning"] { color:#d5b68b; }
 html[data-embed="true"] .app-status[data-state="error"] {
   color:#edaaa0;
