@@ -40,6 +40,7 @@
   <link rel="preload" href="fonts/bss-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css?v=20261101-radio19b">
   <link rel="stylesheet" href="night-vision.css?v=20261031-gece06">
+  <link rel="stylesheet" href="night-refit.css?v=20261101-01">
   <script>
     (function () {
       var root = document.documentElement;
@@ -130,6 +131,37 @@
       <div class="arrival-footer"><span>ERGİN KAPLAN · İSTANBUL</span><span>“Her gidiş uzaklaşmak değildir. Bazen insan kendine varır.”</span><span>41.0°N 28.9°E ✳</span></div>
     </section>
     <div class="ticker" aria-hidden="true"><p>PERON 01 ✳ ISLAK TAŞLAR ✳ UZAK PENCERELER ✳ FREKANS 88.8 ✳ GECE HATTI ✳ SAMATYA ✳ PERON 01 ✳ ISLAK TAŞLAR ✳ UZAK PENCERELER ✳ FREKANS 88.8 ✳</p></div>
+    <nav class="night-route-map" aria-label="Gece hattı bölüm haritası">
+      <div class="night-route-top">
+        <div>
+          <p class="kicker">HAT HARİTASI / 04 ROTA</p>
+          <p class="night-route-caption">Uzun koridorlar yerine, doğru perona kısa bir geçiş.</p>
+        </div>
+        <span class="night-route-mark">IST · 41°00′N / 28°56′E</span>
+      </div>
+      <div class="night-route-grid">
+        <article class="night-route-card">
+          <span class="night-route-index">01 <i>GÖZLEM</i></span>
+          <h3><a href="#topos">Gökyüzü &amp; kıyı <span>↗</span></a></h3>
+          <div class="night-route-links"><a href="#kuslar">Kuş hattı</a><a href="#hava">Atmosfer</a></div>
+        </article>
+        <article class="night-route-card">
+          <span class="night-route-index">02 <i>ATÖLYE</i></span>
+          <h3><a href="#atolye">Deney masası <span>↗</span></a></h3>
+          <div class="night-route-links"><a href="#tigerk">Tigerk</a><a href="#laboratuvar">Kedi dosyası</a><a href="#ustalik-rotasi">Ustalık rotası</a></div>
+        </article>
+        <article class="night-route-card">
+          <span class="night-route-index">03 <i>YAYIN</i></span>
+          <h3><a href="#frekans">Gece frekansı <span>↗</span></a></h3>
+          <div class="night-route-links"><a href="#sinyal">Dış sinyal</a><a href="#arsiv">Gece arşivi</a></div>
+        </article>
+        <article class="night-route-card">
+          <span class="night-route-index">04 <i>KAYIT</i></span>
+          <h3><a href="#proje-tepsisi">Açık dosyalar <span>↗</span></a></h3>
+          <div class="night-route-links"><a href="#hat">Kırmızı hat</a><a href="sapma-defteri/">Sapma defteri</a></div>
+        </article>
+      </div>
+    </nav>
 
     <section class="night-notes reveal" id="istasyon-notlari" aria-labelledby="night-notes-title">
     <div class="night-notes-head">
@@ -757,7 +789,7 @@
       <div class="archive-endnote"><span>ARŞİV / 006</span><span>SAKLANAN HER ŞEY DOSYADA DURMAZ</span></div>
     </section>
     <section id="proje-tepsisi" class="project-tray-section" aria-labelledby="project-tray-title">
-      <div class="project-tray-head"><div><p class="kicker">08 / AÇIK DOSYALAR</p><h2 id="project-tray-title">Çalışma <em>tepsisi.</em></h2></div><p>Deneyler, araçlar ve notlar. Kategori seçerek ilerle; masaüstünde altı, telefonda üç kart görünür. Aynı proje kartlarını yukarıdaki masada tekrar etmiyoruz.</p></div>
+      <div class="project-tray-head"><div><p class="kicker">08 / AÇIK DOSYALAR</p><h2 id="project-tray-title">Çalışma <em>tepsisi.</em></h2></div><p>Deneyler, araçlar ve notlar. Kategori seçerek ilerle; masaüstünde altı, telefonda dört kart görünür. Aynı proje kartlarını yukarıdaki masada tekrar etmiyoruz.</p></div>
       <div class="project-tray-controls" role="group" aria-label="Çalışma tepsisi kategorileri">
         <button class="tray-filter" type="button" data-tray-filter="all" aria-pressed="true">Tümü</button>
         <button class="tray-filter" type="button" data-tray-filter="sky" aria-pressed="false">Şehir &amp; doğa</button>
@@ -909,7 +941,7 @@
       var next = document.getElementById("tray-next");
       var page = 0;
       var active = "all";
-      function pageSize() { return window.matchMedia("(max-width: 560px)").matches ? 3 : 6; }
+      function pageSize() { return window.matchMedia("(max-width: 560px)").matches ? 4 : 6; }
       function matches() { return cards.filter(function (card) { return active === "all" || card.dataset.trayCategory === active; }); }
       function render() {
         var chosen = matches();
