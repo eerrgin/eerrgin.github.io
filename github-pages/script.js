@@ -15,7 +15,6 @@ const breeds = [
 const choice = { fur: "any", pattern: "any", build: "any", ears: "any" };
 const reduceMotion = document.documentElement.dataset.motion !== "on";
 const THEMES = ["gece", "amber", "kemik", "sis"];
-let lastWeather = null;
 
 // İstanbul arşivi: erişilebilir, klavyeyle de kullanılabilen büyük görsel görünümü.
 (() => {
@@ -412,7 +411,7 @@ catPhotoInput?.addEventListener("change", () => {
   imageUrl = null;
   image = null;
   if (!file) {
-    if (catPhoto) catPhoto.src = "photos/kedi.jpg";
+    if (catPhoto) catPhoto.src = "/assets/illustrations/cat-field.svg";
     const caption = document.querySelector("#cat-photo-caption");
     if (caption) caption.textContent = "Örnek portre · kendi fotoğrafınla değiştir";
     return;
@@ -663,7 +662,7 @@ document.querySelector("#cat-clear")?.addEventListener("click", () => {
   imageUrl = null;
   image = null;
   if (catPhoto) {
-    catPhoto.src = "photos/kedi.jpg";
+    catPhoto.src = "/assets/illustrations/cat-field.svg";
     catPhoto.alt = "Kedi kimliği laboratuvarının örnek portresi; koyu fonda beyaz bir kedi.";
   }
   const caption = document.querySelector("#cat-photo-caption");
@@ -1281,92 +1280,7 @@ document.querySelector("#cmd-filter")?.addEventListener("input", (event) => {
   if (needle.trim() !== "statik") staticArmed = false;
 });
 
-const WMO = {
-  0: ["AÇIK", "Açık"], 1: ["AÇIK", "Çoğunlukla açık"], 2: ["PARÇA", "Parçalı bulutlu"], 3: ["KAPALI", "Kapalı"],
-  45: ["SİS", "Sisli"], 48: ["SİS", "Kırağılı sis"],
-  51: ["ÇİSE", "Hafif çiseleme"], 53: ["ÇİSE", "Çiseleme"], 55: ["ÇİSE", "Yoğun çiseleme"],
-  56: ["ÇİSE", "Dondurucu çiseleme"], 57: ["ÇİSE", "Dondurucu çiseleme"],
-  61: ["YAĞMUR", "Hafif yağmur"], 63: ["YAĞMUR", "Yağmur"], 65: ["YAĞMUR", "Şiddetli yağmur"],
-  66: ["YAĞMUR", "Dondurucu yağmur"], 67: ["YAĞMUR", "Dondurucu yağmur"],
-  71: ["KAR", "Hafif kar"], 73: ["KAR", "Kar"], 75: ["KAR", "Yoğun kar"], 77: ["KAR", "Kar taneleri"],
-  80: ["SAĞNAK", "Hafif sağanak"], 81: ["SAĞNAK", "Sağanak"], 82: ["SAĞNAK", "Şiddetli sağanak"],
-  85: ["KAR", "Kar sağanağı"], 86: ["KAR", "Yoğun kar sağanağı"],
-  95: ["FIRTINA", "Gök gürültülü fırtına"], 96: ["FIRTINA", "Dolulu fırtına"], 99: ["FIRTINA", "Şiddetli dolulu fırtına"],
-};
-const wmo = (code) => WMO[code] || ["····", "Bilinmiyor"];
-const WEATHER_URL =
-  "https://api.open-meteo.com/v1/forecast?latitude=41.0082&longitude=28.9784" +
-  "&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m" +
-  "&daily=weather_code,temperature_2m_max,temperature_2m_min" +
-  "&timezone=Europe%2FIstanbul&forecast_days=4&wind_speed_unit=kmh";
-
-function setText(id, text) {
-  const node = document.getElementById(id);
-  if (node) node.textContent = text;
-}
-
-function showWeatherError() {
-  setText("w-icon", "YOK");
-  setText("w-temp", "--");
-  setText("w-desc", "Hava alınamadı");
-  setText("w-feel", "Yerel bölümler ayakta. Sayfayı yenilemek yeter.");
-}
-
-async function loadWeather() {
-  // The live Istanbul cockpit now owns the weather UI and refresh cycle.
-  if (!document.getElementById("w-temp")) return;
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 8000);
-  try {
-    const res = await fetch(WEATHER_URL, { signal: controller.signal });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    const cur = data.current;
-    const day = data.daily;
-    if (!cur || !day) throw new Error("beklenmeyen yanıt");
-    const [icon, label] = wmo(cur.weather_code);
-    setText("w-icon", icon);
-    setText("w-temp", Math.round(cur.temperature_2m));
-    setText("w-desc", label);
-    setText("w-feel", `Hissedilen ${Math.round(cur.apparent_temperature)}°C`);
-    setText("w-hum", `%${Math.round(cur.relative_humidity_2m)}`);
-    setText("w-wind", `${Math.round(cur.wind_speed_10m)} km/sa`);
-    setText("w-range", `${Math.round(day.temperature_2m_min[0])}° / ${Math.round(day.temperature_2m_max[0])}°`);
-    const list = document.getElementById("w-days");
-    if (list) {
-      list.replaceChildren();
-      for (let i = 1; i < day.time.length; i += 1) {
-        const li = document.createElement("li");
-        const name = document.createElement("strong");
-        name.textContent = new Intl.DateTimeFormat("tr-TR", { weekday: "short", timeZone: "Europe/Istanbul" }).format(
-          new Date(`${day.time[i]}T12:00:00+03:00`),
-        );
-        const ico = document.createElement("span");
-        ico.textContent = wmo(day.weather_code[i])[0];
-        li.append(name, ico, document.createTextNode(`${Math.round(day.temperature_2m_min[i])}° / ${Math.round(day.temperature_2m_max[i])}°`));
-        li.title = wmo(day.weather_code[i])[1];
-        list.append(li);
-      }
-    }
-    setText("w-time", `· ${new Intl.DateTimeFormat("tr-TR", { timeZone: "Europe/Istanbul", hour: "2-digit", minute: "2-digit", hour12: false }).format(new Date())}`);
-    lastWeather = {
-      temp: Math.round(cur.temperature_2m),
-      feel: Math.round(cur.apparent_temperature),
-      label,
-      code: icon,
-      hum: Math.round(cur.relative_humidity_2m),
-      wind: Math.round(cur.wind_speed_10m),
-      low: Math.round(day.temperature_2m_min[0]),
-      high: Math.round(day.temperature_2m_max[0]),
-    };
-  } catch {
-    showWeatherError();
-  } finally {
-    clearTimeout(timer);
-  }
-}
-loadWeather();
-setInterval(loadWeather, 15 * 60 * 1000);
+// Harici hava verisi çağrıları kaldırıldı.
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.getRegistrations().then((regs) => {

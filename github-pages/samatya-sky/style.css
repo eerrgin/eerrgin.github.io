@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400;1,7..72,500&display=swap");
 :root{color-scheme:dark;--bg:#05050b;--panel:rgba(9,9,18,.88);--ink:#f3efe9;--dim:#b7b4c3;--muted:#85869c;--red:#ff544d;--blue:#9dc3ff;--line:rgba(194,198,226,.17);--mono:"IBM Plex Mono",ui-monospace,monospace;--serif:"Literata",Georgia,serif}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--ink)}body{font-family:var(--mono);-webkit-font-smoothing:antialiased}button,input{font:inherit}button{color:inherit}
 #sky{position:fixed;inset:0;z-index:0;width:100%;height:100%;display:block;cursor:grab;touch-action:none;outline:none}#sky.dragging{cursor:grabbing}
