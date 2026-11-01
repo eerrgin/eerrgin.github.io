@@ -920,10 +920,10 @@ const RADIO_FIELD_RECORDINGS = {
   dawn: { id: "631479", title: "AMB CITY DAWN DISTANT TRAFFIC BIRDS", creator: "tferrino", href: "https://freesound.org/people/tferrino/sounds/631479/" },
   shore: { id: "796011", title: "Canet — Windy Sea Ambience", creator: "Sadiquecat", href: "https://freesound.org/people/Sadiquecat/sounds/796011/" },
   inn: { id: "770068", title: "Footsteps Knight — Walk & run, courtyard", creator: "Vrymaa", href: "https://freesound.org/people/Vrymaa/sounds/770068/" },
-  sleep: { id: "768329", title: "SNORING — quiet room ambience", creator: "wanaki", href: "https://freesound.org/people/wanaki/sounds/768329/" },
+  sleep: { id: "207116", title: "man_breathing_asleep.wav", creator: "harleto", href: "https://freesound.org/people/harleto/sounds/207116/" },
   harbor: { id: "561815", title: "Genaral Habour Ambience", creator: "Kinoton", href: "https://freesound.org/people/Kinoton/sounds/561815/" },
   walk: { id: "652426", title: "FootstepsInCity.wav", creator: "zatar", href: "https://freesound.org/people/zatar/sounds/652426/" },
-  voices: { id: "473586", title: "People talking (Adults & Children)", creator: "Breviceps", href: "https://freesound.org/people/Breviceps/sounds/473586/" },
+  voices: { id: "528615", title: "Muffled Talking", creator: "PuplPndaHimwx", href: "https://freesound.org/people/PuplPndaHimwx/sounds/528615/" },
   rain: { id: "607228", title: "Raining In the City Ambience", creator: "RyanKingArt", href: "https://freesound.org/people/RyanKingArt/sounds/607228/" },
   lighthouse: { id: "561815", title: "Genaral Habour Ambience", creator: "Kinoton", href: "https://freesound.org/people/Kinoton/sounds/561815/" },
   neon: { id: "423644", title: "City at Night — Ambience", creator: "YellowJacketStudios", href: "https://freesound.org/people/YellowJacketStudios/sounds/423644/" }
