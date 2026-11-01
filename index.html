@@ -38,7 +38,7 @@
   <link rel="mask-icon" href="favicon.svg?v=20261024" color="#ff3028">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="fonts/bss-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20261031-gece05">
+  <link rel="stylesheet" href="style.css?v=20261101-uzaktren01">
   <link rel="stylesheet" href="night-vision.css?v=20261031-gece06">
   <script>
     (function () {
@@ -607,14 +607,17 @@
     <section id="frekans" class="reveal" data-stamp="04">
       <p class="kicker">04 / GREYFIELD FM</p>
       <h2>Bir kanal seç. <em>Geceyi dinle.</em></h2>
-      <p class="lede">Şehrin dış sesi çekildiğinde geriye kalan frekanslar. Yağmur, uzak motor, analog hışırtı ve gece otobüsünün camındaki titreşim. Sesi açmak senin kararın.</p>
+      <p class="lede">Şehrin dış sesi çekildiğinde geriye kalan frekanslar. Yağmur, uzak motor, analog hışırtı, gece otobüsünün camı ve uzak rayların uğultusu. Sesi açmak senin kararın.</p>
       <img class="frame" src="photos/radyo.jpg" alt="Karanlık bir masada eski bir analog radyo." width="800" height="450" loading="lazy">
       <p class="air-row"><i class="led" id="led" aria-hidden="true"></i><span class="kicker" id="air">BEKLEMEDE</span></p>
       <p class="display" id="freq">88.8</p>
       <h3 id="sname">Gece Otobüsü</h3>
       <canvas id="scope" width="640" height="72" aria-hidden="true"></canvas>
-      <div class="station-grid" role="group" aria-label="On yerel sentez kanalı">
-        <button class="station on" type="button" data-kind="bus" data-freq="88.8" data-name="Gece Otobüsü" aria-pressed="true">
+      <div class="station-grid" role="group" aria-label="On bir yerel sentez kanalı">
+        <button class="station on" type="button" data-kind="train" data-freq="102.7" data-name="Uzak Tren" aria-pressed="true">
+          <span class="station-frequency">102.7</span><strong class="station-title">Uzak Tren</strong><small class="station-description">“Uzak trenler geçer; bekleyiş aynı peronda kalır.”</small>
+        </button>
+        <button class="station" type="button" data-kind="bus" data-freq="88.8" data-name="Gece Otobüsü" aria-pressed="false">
           <span class="station-frequency">88.8</span><strong class="station-title">Gece Otobüsü</strong><small class="station-description">Motor uğultusu, uzak yol ve titreşen cam.</small>
         </button>
         <button class="station" type="button" data-kind="vhs" data-freq="87.9" data-name="VHS Rüyası" aria-pressed="false">
@@ -648,12 +651,12 @@
       <div class="radio-mixer" aria-label="Radyo mikseri">
         <div class="radio-mixer-top">
           <span class="radio-mixer-label"><i aria-hidden="true"></i> YEREL SES MOTORU</span>
-          <span class="radio-mixer-state" id="radio-mixer-state">HAZIR / 10 FREKANS</span>
+          <span class="radio-mixer-state" id="radio-mixer-state">HAZIR / 11 FREKANS</span>
         </div>
         <div class="radio-mixer-grid">
           <label class="radio-volume-control" for="radio-volume">
-            <span>SES SEVİYESİ <output id="radio-volume-value" for="radio-volume">78%</output></span>
-            <input id="radio-volume" type="range" min="0" max="100" step="1" value="78">
+            <span>SES SEVİYESİ <output id="radio-volume-value" for="radio-volume">90%</output></span>
+            <input id="radio-volume" type="range" min="0" max="100" step="1" value="90">
           </label>
           <label class="radio-sleep-control" for="radio-sleep">
             <span>UYKU ZAMANLAYICISI</span>
@@ -673,8 +676,22 @@
         <button class="btn" id="play" type="button" aria-pressed="false">Yayını başlat</button>
         <button class="btn ghost" id="stop-radio" type="button">Sesi kapat</button>
       </div>
-      <p class="note" id="radio-help" aria-live="polite">Açılış kanalı 88.8 Gece Otobüsü. Tarayıcı otomatik sesi engellerse ilk dokunuşunda kendiliğinden uyanır.</p>
-      <p class="note">Bütün kanal sesleri Web Audio ile o anda tarayıcıda üretilir. Harici kayıt veya örnek kullanılmaz; her atmosfer durdurulana kadar sürekli evrilir.</p>
+      <p class="note" id="radio-help" aria-live="polite">Açılış kanalı 102.7 Uzak Tren. Tarayıcı otomatik sesi engellerse sayfaya ilk dokunuşunda yayın uyanır.</p>
+      <div class="train-source-panel">
+        <p class="kicker">HAM İSTASYON KAYDI / BERLIN HAUPTBAHNHOF · EPICWIZARD</p>
+        <iframe
+          title="Freesound: Berlin Hauptbahnhof — Night Ambience (Quiet), EpicWizard"
+          src="https://freesound.org/embed/sound/iframe/439483/simple/medium/"
+          width="481"
+          height="86"
+          loading="lazy"
+          allow="autoplay"
+          referrerpolicy="strict-origin-when-cross-origin"
+          style="display:block;width:min(100%,481px);height:86px;border:0;background:#070103"
+        ></iframe>
+        <p class="note">Orijinal 67 saniyelik istasyon kaydı · EpicWizard · <a href="https://freesound.org/people/EpicWizard/sounds/439483/" target="_blank" rel="noopener">Freesound / CC0 ↗</a>. Bu oynatıcıdaki kayıt özgün saha sesidir; üstteki radyo armonisi ayrıca tarayıcıda üretilir.</p>
+      </div>
+      <p class="note">Uzak Tren’in ray uğultusu ve özlem tınısı Web Audio ile her dinleyişte tarayıcıda üretilir. Beste ve tını özgündür; hazır bir müzik örneği kullanılmaz.</p>
       <h3>Eski teyp</h3>
       <p class="note">Kendi ses dosyan yalnızca bu oturumda çalar. 7mix pakete konmadı. SoundCloud dış bağlantıdır.</p>
       <label for="tape" class="kicker">Cihazından ses dosyası seç</label>
@@ -864,10 +881,10 @@
 
 
   <script src="fx.js?v=20261025-topos02" defer></script>
-  <script src="script.js?v=20261028-night-cockpit02" defer></script>
+  <script src="script.js?v=20261101-uzaktren01" defer></script>
   <script src="tigerk.js" defer></script>
   <script src="hat.js?v=20261028-cockpit" defer></script>
-  <script src="kokpit.js?v=20261028-cockpit" defer></script>
+  <script src="kokpit.js?v=20261101-uzaktren01" defer></script>
   <script src="night-vision.js?v=20261031-gece04" defer></script>
   <script>
     (function () {
