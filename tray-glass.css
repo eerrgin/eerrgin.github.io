@@ -1,0 +1,68 @@
+/* Çalışma tepsisi: smaller night glass. Loaded after style.css. */
+.tray-card{
+  min-height:104px;
+  padding:12px 14px 11px;
+  border-radius:12px;
+  background:rgba(8,5,6,.72);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  box-shadow:inset 0 1px 0 rgba(232,210,184,.06);
+}
+.tray-card:hover{
+  transform:translateY(-2px);
+  background:rgba(20,10,12,.82);
+}
+.tray-card.tray-feature{
+  background:linear-gradient(160deg,rgba(89,104,111,.28),rgba(8,5,6,.72));
+}
+.tray-card h3{
+  font-size:clamp(15px,1.35vw,18px);
+  margin:8px 0 0;
+}
+.tray-card p{
+  font-size:12.5px;
+  line-height:1.45;
+  margin:8px 0 0;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.tray-link{
+  margin-top:10px;
+  padding-top:0;
+  font-size:11px;
+  letter-spacing:.04em;
+}
+@media (hover:hover) and (pointer:fine){
+  .tray-card p{
+    max-height:0;
+    margin:0;
+    opacity:0;
+    overflow:hidden;
+    display:block;
+    -webkit-line-clamp:unset;
+    transition:max-height .22s ease,opacity .18s ease,margin .18s ease;
+  }
+  .tray-card:hover p,
+  .tray-card:focus-visible p,
+  .tray-card:focus-within p{
+    max-height:7.2em;
+    margin-top:8px;
+    opacity:1;
+  }
+}
+@media (max-width:760px){
+  .tray-card{min-height:96px;padding:12px 13px}
+}
+@media (max-width:420px){
+  .tray-card{min-height:0;padding:13px 14px}
+  .tray-card h3{margin-top:8px;font-size:17px}
+  .tray-card p{margin-top:6px;-webkit-line-clamp:4}
+}
+@media (hover:none) and (max-width:420px){
+  .tray-card p{max-height:none;opacity:1;margin-top:6px}
+}
+@media (prefers-reduced-motion:reduce){
+  .tray-card p{transition:none}
+}
