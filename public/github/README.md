@@ -4,10 +4,15 @@
 
 ## Sayfada neler var
 
-- **Hava durumu şeridi** — sayfanın en üstünde, İstanbul için anlık durum ve 3 günlük tahmin ([Open-Meteo](https://open-meteo.com/), anahtar gerekmez). Yanıt gelmezse şerit hata mesajı gösterir, sayfa çalışmaya devam eder.
-- **İstanbul arşivi** — Galata Kulesi, Eminönü, Samatya, Ayasofya, Süleymaniye ve Kız Kulesi kartları. Ana sayfa şu anda görseller için `photos/*.jpg` dosyalarını kullanır; `assets/istanbul/` SVG'leri yardımcı/eski görsel varlıklarıdır.
+- **İstanbul gece haritası** — yalnızca bu depo için oluşturulmuş, ölçeksiz yerel SVG şeması; hava, deprem veya konum servisi çağırmaz.
+- **İstanbul arşivi** — Galata Kulesi, Eminönü, Samatya, Ayasofya, Süleymaniye ve Kız Kulesi kartları. Ana sayfa ve alt sayfalar `assets/illustrations/*.svg` altındaki özgün vektör çizimlerini kullanır.
 - **Atölye, kedi laboratuvarı, Greyfield FM, arşiv** — projeler, tarayıcıda çalışan özellik karşılaştırma, Web Audio ile üretilen ses ve kısa notlar.
 - **MycelForge** — `/mycelforge/` altında yayınlanan miselyum biyomalzeme formül/protokol tarama arayüzü. Kaynak kodu ayrı [MycelForge deposunda](https://github.com/eerrgin/mycelforge); siteye otomatik olarak derlenip kopyalanır.
+
+
+- **Performans Laboratuvarı** — `/performance-lab/` altında aynı veri üzerinde algoritma sürelerini ölçen, sonuçları doğrulayan ve mikro-benchmark sınırlarını açıklayan tarayıcı deneyi.
+- **Samatya Topos yöntem notu** — `/samatya-sky/hesaplama-yontemi.html` altında Kepler hesabı, koordinat dönüşümü, veri kaynakları, belirsizlikler ve doğrulama planı.
+- **Çalışma tepsisi** — ana sayfada astronomi, atmosfer, kuş arşivi, Ergin Lab, performans, dayanıklılık testleri, MycelForge ve güvenlik araçlarını tek bir mobil uyumlu dizinde toplar.
 
 ## Dosya düzeni
 
@@ -15,7 +20,7 @@
 | --- | --- |
 | `index.html`, `style.css` | Ana sayfa yapısı ve görünüm |
 | `fx.js`, `script.js`, `tigerk.js`, `hat.js` | Arka plan, hava durumu, etkileşimler, tarayıcı ağı ve HAT terminali |
-| `photos/`, `fonts/`, `assets/` | Görseller, yazı tipleri, SVG'ler |
+| `assets/illustrations/`, `assets/` | Özgün vektör çizimler ve SVG arayüz varlıkları |
 | `ergin-lab/` | Mini web deneyleri (ayrı alt sayfalar) |
 | `404.html` | Bulunamayan adresler için sayfa |
 | `scripts/check.mjs` | Yerel bağlantılar, çapalar, CSS varlıkları, JSON/JSONC, JavaScript ve ana sayfa kopyalarının kontrolü |
@@ -36,4 +41,4 @@ GitHub Pages ana site için `main` dalının kökünden yayınlanır. Her push v
 
 ## Gizlilik
 
-Analitik, reklam ve takip kodu yok. Hava durumu şeridi Open-Meteo'ya, kedi ve ses bölümleri yalnızca tarayıcıya yerel çalışır. Ayrıntı: `LEGAL-AND-DEPLOY.md`, `ATOLYE-REHBERI.txt`.
+Analitik, reklam, sosyal medya takip kodu veya canlı veri servisi yok. Radyo sesleri tarayıcıda üretilir; seçilen yerel ses dosyası sunucuya gönderilmez. Ayrıntı: `LEGAL-AND-DEPLOY.md`, `THIRD-PARTY-NOTICES.md`, `ATOLYE-REHBERI.txt`.

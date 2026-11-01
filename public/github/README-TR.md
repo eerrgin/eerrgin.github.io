@@ -1,9 +1,10 @@
 # ERGİN TEKNİK ATÖLYE — Gece Vardiyası
 
-Ana belge için `README.md` dosyasına bak. Kısa özet:
+Ana belge: [`README.md`](./README.md).
 
-- Site GitHub Pages ile `main` dalının **kök** dizininden yayınlanır; `index.html`, `style.css`, `script.js`, `tigerk.js`, `hat.js`, `photos/`, `fonts/` ve `assets/` aynı seviyede kalmalı.
-- Eski görünüm çoğu zaman tarayıcı önbelleğinden gelir: **Ctrl+Shift+R** (Mac: Cmd+Shift+R). `script.js` eski service worker kayıtlarını kendiliğinden temizler.
-- Değişiklikten önce `node scripts/check.mjs` çalıştır; kırık bağlantı ve sözdizimi hatalarını yakalar.
-- `ergin-lab/`, `kirpintilar/`, `message.html`, `oku.html` gibi eski sayfaları silme.
-- HAT terminali ve Tigerk ağı ana sayfadadır. İkisi de sunucusuz çalışır.
+- Site, GitHub Pages ile `main` dalının kökünden yayınlanır. `index.html`, `style.css`, `script.js`, `fx.js`, `tigerk.js`, `hat.js`, `assets/illustrations/` ve `assets/` birbirine bağlıdır.
+- MycelForge, [kaynak deposundan](https://github.com/eerrgin/mycelforge) test edilerek `/mycelforge/` dizinine yayımlanır. Oluşturulmuş `mycelforge/assets/` paketlerini elle düzenleme.
+- `node scripts/check.mjs` yerel HTML, dosya, çapa, JSON, SVG/XML ve JavaScript kontrollerini çalıştırır. Kontrol GitHub Actions'ta da her push ve pull request için çalışır.
+- Eski kopyalar `gh-pages/` ve `github-pages/` ayrı URL'ler olarak korunur; ana görünümle tutarlı tutulurlar.
+- Tarayıcı eski görünümü tutuyorsa Ctrl+Shift+R (Mac: Cmd+Shift+R) ile yenile.
+- `ergin-lab/`, `kirpintilar/`, `message.html` ve `oku.html` gibi bağlı deneyleri bağımlılıklarını kontrol etmeden silme.
