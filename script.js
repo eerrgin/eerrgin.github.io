@@ -682,10 +682,10 @@ window.addEventListener("beforeunload", () => { if (imageUrl) URL.revokeObjectUR
 
 let audio = null;
 let radioMaster = null;
-let radioLevel = 0.78;
+let radioLevel = 0.90;
 let radioMuted = false;
 try {
-  const storedLevel = localStorage.getItem("e.radio.volume");
+  const storedLevel = localStorage.getItem("e.radio.volume.v2");
   const savedLevel = storedLevel === null ? NaN : Number(storedLevel);
   // Zero is not a useful startup level here because the mixer already has a
   // dedicated mute control. Recover stale zero-volume preferences to a gentle
@@ -693,9 +693,9 @@ try {
   if (Number.isFinite(savedLevel) && savedLevel > 0 && savedLevel <= 1) {
     radioLevel = savedLevel;
   } else if (storedLevel !== null) {
-    localStorage.setItem("e.radio.volume", String(radioLevel));
+    localStorage.setItem("e.radio.volume.v2", String(radioLevel));
   }
-  radioMuted = localStorage.getItem("e.radio.muted") === "1";
+  radioMuted = localStorage.getItem("e.radio.muted.v2") === "1";
 } catch {}
 let analyser = null;
 let wave = null;
@@ -703,9 +703,23 @@ const tape = new Audio();
 let tapeUrl = null;
 let radioTimers = [];
 let autoStartTimer = null;
-let selectedRadio = "bus";
+let selectedRadio = "train";
 
 const RADIO_SCENES = {
+  train: {
+    volume: 0.34,
+    layers: [
+      { color: "brown", filter: "lowpass", freq: 165, gain: 0.145, q: 0.62, pulseHz: 0.18, depth: 0.025 },
+      { color: "brown", filter: "bandpass", freq: 480, gain: 0.022, q: 0.75, pulseHz: 0.32, depth: 0.006 },
+      { color: "white", filter: "bandpass", freq: 1850, gain: 0.008, q: 0.65 },
+      { color: "white", filter: "highpass", freq: 3400, gain: 0.0035, q: 0.55 }
+    ],
+    tones: [
+      { freq: 54.9, type: "sine", gain: 0.026, vibrato: 0.9 },
+      { freq: 110, type: "sine", gain: 0.006, vibrato: 1.2 }
+    ],
+    echo: true
+  },
   bus: {
     volume: 0.24,
     layers: [
@@ -835,8 +849,8 @@ function syncRadioUI() {
   const play = document.querySelector("#play");
   const help = document.querySelector("#radio-help");
   const selected = document.querySelector(".station.on");
-  const frequency = selected ? selected.dataset.freq : "88.8";
-  const name = selected ? selected.dataset.name : "Gece Otobüsü";
+  const frequency = selected ? selected.dataset.freq : "102.7";
+  const name = selected ? selected.dataset.name : "Uzak Tren";
   const running = Boolean(active && active.state === "running");
   const suspended = Boolean(active && active.state === "suspended");
   if (air) air.textContent = running ? "YAYINDA · " + frequency : suspended ? "İLK DOKUNUŞTA SES" : "SESSİZ";
@@ -1052,6 +1066,31 @@ function buildScene(ctx, master, kind, echo) {
         }, 115);
       }
     }, 720);
+  } else if (kind === "train") {
+    // Düzensiz tekerlek eklemleri: makine ritmi, sabit bir davula dönüşmesin.
+    const railNotes = [196, 220, 174.61, 207.65, 185, 233.08, 164.81, 207.65];
+    let railStep = 0;
+    loopRadio(ctx, () => {
+      const base = railNotes[railStep % railNotes.length];
+      playPing(ctx, master, null, base, 0.008 + Math.random() * 0.003, 0.075, "triangle", base * 0.72);
+      if (railStep % 4 === 2) {
+        playPing(ctx, master, null, base * 1.48, 0.0045, 0.055, "sine", base * 1.08);
+      }
+      railStep += 1;
+    }, 430);
+    // Kısa, özgün ve yavaş bir özlem motifi; hazır bir şarkı örneği kullanmaz.
+    const wistfulNotes = [392, 349.23, 293.66, 261.63, 293.66, 349.23, 329.63, 293.66];
+    let wistfulStep = 0;
+    loopRadio(ctx, () => {
+      playPing(ctx, master, echo, wistfulNotes[wistfulStep % wistfulNotes.length], 0.0105, 2.9, "sine");
+      wistfulStep += 1;
+    }, 3850);
+    loopRadio(ctx, () => {
+      if (Math.random() < 0.42) {
+        const shimmer = 660 + Math.random() * 260;
+        playPing(ctx, master, echo, shimmer, 0.0028, 0.8, "sine", shimmer * 0.96);
+      }
+    }, 6100);
   } else if (kind === "longing") {
     const notes = [392, 329.63, 293.66, 261.63, 220, 293.66, 329.63, 261.63];
     let note = 0;
@@ -1077,7 +1116,7 @@ function selectRadio(kind, persist) {
     if (name) name.textContent = selected.dataset.name;
   }
   if (persist) {
-    try { localStorage.setItem("e.radio.station", selectedRadio); } catch {}
+    try { localStorage.setItem("e.radio.station.v2", selectedRadio); } catch {}
   }
 }
 
@@ -1161,10 +1200,7 @@ function unlockRadio() {
 document.addEventListener("pointerdown", unlockRadio, { passive: true });
 document.addEventListener("keydown", unlockRadio);
 
-try {
-  const saved = localStorage.getItem("e.radio.station");
-  if (saved && RADIO_SCENES[saved]) selectedRadio = saved;
-} catch {}
+// Ana sayfanın açılış frekansı her zaman Uzak Tren'dir.
 selectRadio(selectedRadio, false);
 autoStartTimer = window.setTimeout(() => {
   autoStartTimer = null;
@@ -1647,7 +1683,7 @@ window.Gece = {
     const next = Number(value);
     if (!Number.isFinite(next)) return radioLevel;
     radioLevel = Math.max(0, Math.min(1, next));
-    try { localStorage.setItem("e.radio.volume", String(radioLevel)); } catch {}
+    try { localStorage.setItem("e.radio.volume.v2", String(radioLevel)); } catch {}
     if (radioMaster && audio && audio.state !== "closed") {
       const target = RADIO_SCENES[selectedRadio].volume * (radioMuted ? 0 : radioLevel);
       radioMaster.gain.setTargetAtTime(target, audio.currentTime, 0.035);
@@ -1656,7 +1692,7 @@ window.Gece = {
   },
   setRadioMuted(value) {
     radioMuted = Boolean(value);
-    try { localStorage.setItem("e.radio.muted", radioMuted ? "1" : "0"); } catch {}
+    try { localStorage.setItem("e.radio.muted.v2", radioMuted ? "1" : "0"); } catch {}
     if (radioMaster && audio && audio.state !== "closed") {
       const target = RADIO_SCENES[selectedRadio].volume * (radioMuted ? 0 : radioLevel);
       radioMaster.gain.setTargetAtTime(target, audio.currentTime, 0.025);
