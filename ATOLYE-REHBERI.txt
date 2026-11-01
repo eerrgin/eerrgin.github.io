@@ -15,22 +15,22 @@ Küçük yazılım deneyleri, tarayıcı içinde çalışan araçlar, retro aray
 - ReconX: yalnızca yetki verilen hedefler için keşif yardımcıları.
 - local-sqli-lab: çevrimdışı SQLite öğrenme laboratuvarı.
 - Tigerk: tarayıcı içinde çalışan küçük sinir ağı ve mühendislik yönlendirme deneyi. Ağırlıklar tarayıcıda saklanır; dışarıdan bir model çağrısı yapılmaz.
-- MycelForge: miselyum biyomalzeme aday reçetelerini ve deney protokollerini taramak için sezgisel değerlendirme aracı. Sonuçlar laboratuvar ölçümü veya sertifikasyon yerine geçmez.
+- MycelForge: ayrı kaynak deposunda tutulan miselyum biyomalzeme deneyi. Bu sitede derlenmiş üçüncü taraf uygulama paketi barındırılmaz.
 
-## Veri ve gizlilik
+## Medya, lisans ve gizlilik
 
-- Analitik, reklam pikseli veya takip betiği bilerek yüklenmez.
-- Hava durumu, Hacker News, Wikipedia ve herkese açık GitHub depo bilgileri ilgili kaynaklardan istenir. Kaynaklardan biri yanıt vermezse diğer sayfa özellikleri çalışmaya devam eder.
-- Greyfield FM, Web Audio API ile tarayıcıda ses üretir; üçüncü taraf şarkı akışı içermez.
-- Yerel görsel ve ses dosyaları sayfa tarafından sunucuya yüklenmez. İsteğe bağlı dosya seçimi, tarayıcı oturumu için yerel bir nesne adresi kullanır.
-- MycelForge not defteri tarayıcı deposunda tutulur.
+- Ana sayfada raster fotoğraf, indirilebilir müzik, video veya harici fotoğraf sağlayıcısı kullanılmaz. Görsel yüzeyler `assets/illustrations/` altındaki özgün SVG çizimlerdir; tarihî fotoğraf veya belge oldukları iddia edilmez.
+- Fotoğraf, ses, video ve yerel font dosyaları lisans/izin durumu belirsiz olduğu için bu depodan kaldırılmıştır.
+- Greyfield FM, Web Audio API ile tarayıcıda sentetik ses üretir. Ziyaretçinin kendi cihazından seçtiği ses dosyası yalnızca yerel tarayıcı nesne adresiyle çalar; sunucuya yüklenmez.
+- Hava durumu, hava kalitesi, deprem, ISS ve harita karo servisleri kaldırılmıştır. İstanbul kokpiti ölçeksiz, yerel bir vektör şemasıdır; canlı veri veya navigasyon sunmaz.
+- Kuş Hattı, Wikipedia görsel/özet API'sini çağırmaz. Wikipedia yalnızca kullanıcı isterse açabileceği dış kaynak bağlantısıdır.
+- Analitik, reklam pikseli veya sosyal medya takip betiği yoktur.
+- Samatya Topos, Three.js 0.170.0 modülünü jsDelivr üzerinden yükler. Kütüphane MIT lisanslıdır; lisans bildirimi `THIRD-PARTY-NOTICES.md` dosyasındadır.
 
-## Kaynaklar
+## Kaynak bağlantıları
 
 - GitHub: https://github.com/eerrgin
 - MycelForge kaynak kodu: https://github.com/eerrgin/mycelforge
-- Hacker News API: https://github.com/HackerNews/API
-- Open-Meteo: https://open-meteo.com/
 - Wikipedia: https://www.wikipedia.org/
 
 Güvenlik araçları yalnızca kullanıcının sahibi olduğu veya değerlendirme izni aldığı sistemlerde kullanılmalıdır. Eksik başlıklar ya da sezgisel eşleşmeler tek başına bir ihlalin kanıtı değildir.

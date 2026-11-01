@@ -1,39 +1,41 @@
-SITE DOSYA ENVANTERİ
+SITE DOSYA ENVANTERİ · 02 KASIM 2026
 
-Ana sayfa (GitHub Pages: main / root)
-  index.html                 Ana sayfa, meta etiketleri ve etkileşim bölümleri
-  style.css                  Renk temaları, hareket, masaüstü/tablet/telefon düzeni
+Yayın kökü (GitHub Pages: main / root)
+  index.html                 Ana sayfa ve bölüm yapısı
+  style.css                  Ana stil sistemi; sistem font yığınları
+  night-vision.css            Gece sahnesi ve yerel SVG görsel katmanı
+  night-refit.css             Cam yüzeyler ve gece rotası
   fx.js                      Kor/yıldırım arka planı
-  script.js                  Saat, hava şeridi, kedi karşılaştırma, Greyfield FM, komut menüsü
-  tigerk.js                   Tarayıcı içi küçük sinir ağı deneyi
-  hat.js                     HAT terminali ve komut tamamlama
-  photos/*.jpg, fonts/*.woff2
+  script.js                  Yerel etkileşimler, kedi laboratuvarı ve Greyfield FM
+  tigerk.js, hat.js           Tarayıcı içi deneyler ve yerel terminal
+  kokpit.js                  Gece kokpiti etkileşimleri
+  assets/illustrations/      18 özgün SVG vektör çizim
   favicon.svg, manifest.webmanifest, 404.html
 
-Ek deneyler ve projeler
-  ergin-lab/                 Mini deneyler: Taskflow, Calc Lab, Skyline, Tempo
-  mycelforge/                MycelForge derlenmiş web uygulaması; kaynak ayrı depoda
-  kirpintilar/               Not/icerik verileri
-  message.html, oku.html     Ayrı eski/yardımcı sayfalar
-  assets/                    Yardımcı SVG ve yedek çizimler; ana İstanbul kartları photos/ kullanır
+Alt sayfalar ve projeler
+  kus-hatti/                  Yerel kuş türü referans tablosu ve gözlem defteri
+  samatya-sky/                Samatya Topos; Three.js 0.170.0 MIT modülü
+  sehrin-tas-hafizasi.html    Kaynak bağlantılı metin ve özgün vektör çizimler
+  istanbul-cockpit/           Harici API/harita kullanmayan yerel şema
+  ergin-lab/                  Tarayıcı içi deneyler
+  performance-lab/            Yerel performans karşılaştırmaları
+  windows-lab/                Sistem ve PowerShell belgeleri
+  sapma-defteri/              Yerel hata inceleme defteri
+  mycelforge/                 Ayrı kaynak depoya yönlendiren bilgi sayfası
 
-Arama ve belgeler
-  robots.txt, sitemap.xml, ATOLYE-REHBERI.txt
-  README.md, README-TR.md, LEGAL-AND-DEPLOY.md, LICENSE-CODE.txt
+Lisans ve kaynak notları
+  LICENSE-CODE.txt            Bu depoda üretilmiş kod ve SVG varlıklarının lisansı
+  THIRD-PARTY-NOTICES.md      Samatya Topos'ta kullanılan Three.js MIT bildirimi
+  LEGAL-AND-DEPLOY.md         Medya, harici kaynaklar ve dağıtım notları
+  ATOLYE-REHBERI.txt          Güncel site ve gizlilik rehberi
+  README.md, README-TR.md     Proje açıklamaları
 
 Otomasyon ve denetim
-  .github/workflows/ci.yml                Her push/PR'de statik site kalite denetimi
-  .github/workflows/mycelforge-publish.yml Kaynak depodan MycelForge'u test edip /mycelforge/ altına derler
-  scripts/check.mjs                       Bağlantı/çapa/CSS/JSONC/JS ve kopya tutarlılığı kontrolü
-  package.json, package-lock.json         Denetim aracı ve yardımcı çalışma ortamı
+  .github/workflows/ci.yml    HTML, yerel bağlantı, çapa, JSON ve JavaScript denetimi
+  scripts/check.mjs           Yerel kalite kontrol betiği
+  package.json                Yardımcı geliştirme/denetim araçları
+  .github/workflows/mycelforge-publish.yml kaldırıldı; üretilmiş uygulama paketi artık yayımlanmaz.
 
-Korunan eski kopyalar
-  gh-pages/, github-pages/                Ana sayfanın eski adresler için tutulan kopyaları; temel dosyalar ana kaynakla eşit olmalı
-
-Eski / bağlı olmayan dosyalar (kullanımı doğrulamadan silme)
-  cat-ai.js                              Ana sayfaya bağlı olmayan görsel sınıflandırma denemesi
-  public/, src/, server/, Vite yapılandırmaları ve bağımlılıkları
-  12.jpg, 122.jpg, 1232.jpg, varan-otogar-*.jpg, contact.png, work.png
-  final-hero.png, hero.png, hud-optical.png, hud-thermal.png
-  ergin-teknik-atolye-gorev-defteri.py, ergin_html_20261012_61f84b.html, veil.sig
-  7mix.mp3, ergin_kaplan_,videos.mp4   Yayın/yeniden kullanım hakkını ayrıca doğrula
+Medya temizliği
+  Raster fotoğraflar, profil görselleri, ekran görüntüleri, MP3, MP4 ve yerel font ikilileri bu depodan kaldırılmıştır.
+  Ana sayfada dışarıdan resim, ses, video veya harita karosu gömülmez.
