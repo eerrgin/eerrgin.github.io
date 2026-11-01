@@ -277,9 +277,10 @@ main.wrap > section[data-stamp]:not(.workbench-section) {
 /* GECE HATTI · FOTOĞRAF PLAKLARI VE SESSİZ HAREKET */
 .arrival-hero::before {
   background:
-    linear-gradient(90deg,rgba(8,5,4,.94) 0%,rgba(8,5,4,.78) 32%,rgba(8,5,4,.22) 70%,rgba(8,5,4,.12) 100%),
-    linear-gradient(0deg,rgba(5,4,4,.72),transparent 40%,rgba(5,4,4,.2)),
-    url("/photos/peron-train.jpg") center 48% / cover no-repeat !important;
+    linear-gradient(90deg,rgba(8,5,4,.96) 0%,rgba(8,5,4,.84) 34%,rgba(8,5,4,.28) 68%,rgba(8,5,4,.12) 100%),
+    linear-gradient(0deg,rgba(5,4,4,.72),transparent 34%,rgba(5,4,4,.15)),
+    url("/photos/gece-hatti.jpg") center 52% / cover no-repeat !important;
+  filter:saturate(.9) contrast(1.08);
   animation: gece-plate-drift 72s cubic-bezier(.22,1,.36,1) infinite alternate;
   transform-origin: 62% 48%;
   will-change: transform;
@@ -405,4 +406,61 @@ main.wrap > section[data-stamp]:not(.workbench-section) {
   .arrival-hero::before, .fr-sky, .fr-far, .fr-train::before,
   .night-note-feature > img { animation:none !important; transform:none !important; }
   .station-card-image img { transition:none !important; }
+}
+
+/* FIRST FRAME / the original near-black arrival image and drifting station dust */
+.arrival-backdrop {
+  position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;
+}
+.arrival-backdrop::before {
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 77% 37%,rgba(202,139,101,.15),transparent 31%),
+    radial-gradient(ellipse at 94% 69%,rgba(143,61,55,.12),transparent 30%),
+    linear-gradient(115deg,transparent 48%,rgba(224,181,141,.035) 49%,transparent 50%);
+  mix-blend-mode:screen;opacity:.82;
+}
+.arrival-backdrop::after {
+  content:"";position:absolute;right:8%;top:9%;width:min(44vw,560px);height:min(44vw,560px);
+  border:1px solid rgba(207,171,137,.07);border-radius:50%;
+  box-shadow:0 0 0 30px rgba(207,171,137,.018),0 0 0 78px rgba(207,171,137,.012);
+  transform:rotate(-18deg);animation:arrival-orbit 38s ease-in-out infinite alternate;
+}
+.arrival-dust {
+  position:absolute;display:block;width:2px;height:2px;border-radius:50%;
+  left:var(--x);top:var(--y);background:#f3d0a6;
+  opacity:.0;box-shadow:0 0 8px 2px rgba(232,167,117,.55);
+  animation:arrival-dust-drift var(--duration,18s) ease-in-out var(--delay,0s) infinite;
+}
+.arrival-dust:nth-child(3n){width:3px;height:3px;background:#fff0d8;box-shadow:0 0 12px 3px rgba(244,195,143,.65)}
+.arrival-dust:nth-child(3n + 1){background:#c87b61;box-shadow:0 0 10px 2px rgba(206,113,83,.5)}
+.dust-01{--x:61%;--y:24%;--duration:24s;--delay:-8s}
+.dust-02{--x:72%;--y:68%;--duration:19s;--delay:-4s}
+.dust-03{--x:88%;--y:33%;--duration:28s;--delay:-16s}
+.dust-04{--x:53%;--y:77%;--duration:21s;--delay:-12s}
+.dust-05{--x:94%;--y:58%;--duration:26s;--delay:-5s}
+.dust-06{--x:79%;--y:17%;--duration:22s;--delay:-13s}
+.dust-07{--x:67%;--y:48%;--duration:29s;--delay:-19s}
+.dust-08{--x:84%;--y:82%;--duration:23s;--delay:-9s}
+.dust-09{--x:47%;--y:39%;--duration:27s;--delay:-15s}
+@keyframes arrival-dust-drift {
+  0%{opacity:0;transform:translate3d(-5px,18px,0) scale(.65)}
+  15%{opacity:.65}
+  55%{opacity:.28;transform:translate3d(18px,-28px,0) scale(1.15)}
+  100%{opacity:0;transform:translate3d(35px,-62px,0) scale(.55)}
+}
+@keyframes arrival-orbit {
+  from{transform:rotate(-18deg) scale(.98);opacity:.45}
+  to{transform:rotate(-8deg) scale(1.04);opacity:.9}
+}
+.arrival-hero::before {
+  background-position:center,center,center 52%;
+}
+.arrival-content,.arrival-footer {z-index:2}
+@media(max-width:680px) {
+  .arrival-hero::before {background-position:center,center,58% center}
+  .arrival-backdrop::after {right:-18%;top:12%;width:68vw;height:68vw}
+}
+@media(prefers-reduced-motion:reduce) {
+  .arrival-dust,.arrival-backdrop::after {animation:none!important;opacity:.35}
 }

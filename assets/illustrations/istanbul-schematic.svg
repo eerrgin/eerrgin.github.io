@@ -1,15 +1,146 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="t d"><title id="t">İstanbul şematik haritası</title><desc id="d">GECE HATTI · ÖZGÜN VEKTÖR ÇİZİM; fotoğraf veya tarihî belge değildir.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<title id="title">İstanbul, gece kartografisi</title>
+<desc id="desc">Boğazı, iki yakayı, kıyı mahallelerini, vapur geçişlerini ve gece ışıklarını soyutlayan özgün, ölçeksiz vektör harita. Navigasyon veya gerçek zamanlı veri değildir.</desc>
 <defs>
- <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#111b29"/><stop offset=".48" stop-color="#171018"/><stop offset="1" stop-color="#080b12"/></linearGradient>
- <radialGradient id="halo"><stop stop-color="#d58c70" stop-opacity=".32"/><stop offset="1" stop-color="#d58c70" stop-opacity="0"/></radialGradient>
- <linearGradient id="warm" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f0c79b"/><stop offset="1" stop-color="#9a6257"/></linearGradient>
- <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#42556a"/><stop offset="1" stop-color="#101923"/></linearGradient>
- <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7a98b" stop-opacity=".2"/><stop offset="1" stop-color="#6c7e92" stop-opacity=".04"/></linearGradient>
- <filter id="glow"><feGaussianBlur stdDeviation="12"/></filter>
- <pattern id="grain" width="80" height="80" patternUnits="userSpaceOnUse"><circle cx="6" cy="11" r="1" fill="#f5e2ce" opacity=".18"/><circle cx="51" cy="43" r=".8" fill="#f5e2ce" opacity=".12"/><circle cx="29" cy="69" r=".7" fill="#f5e2ce" opacity=".13"/></pattern>
+ <linearGradient id="night" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080d16"/><stop offset=".48" stop-color="#11151e"/><stop offset="1" stop-color="#090b11"/></linearGradient>
+ <linearGradient id="sea" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#254354"/><stop offset=".4" stop-color="#142b3c"/><stop offset="1" stop-color="#0c1b29"/></linearGradient>
+ <linearGradient id="shorelight" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#d1a781" stop-opacity="0"/><stop offset=".5" stop-color="#d1a781" stop-opacity=".7"/><stop offset="1" stop-color="#d1a781" stop-opacity="0"/></linearGradient>
+ <radialGradient id="cityglow"><stop stop-color="#e1a776" stop-opacity=".22"/><stop offset="1" stop-color="#e1a776" stop-opacity="0"/></radialGradient>
+ <radialGradient id="waterglow"><stop stop-color="#80bdc8" stop-opacity=".18"/><stop offset="1" stop-color="#80bdc8" stop-opacity="0"/></radialGradient>
+ <filter id="softglow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="8"/></filter>
+ <filter id="pointglow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3"/></filter>
+ <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#a8bdc4" stroke-opacity=".075" stroke-width="1"/></pattern>
+ <pattern id="grain" width="96" height="96" patternUnits="userSpaceOnUse"><circle cx="12" cy="19" r=".7" fill="#f6e4ce" opacity=".16"/><circle cx="66" cy="44" r=".65" fill="#f6e4ce" opacity=".12"/><circle cx="37" cy="83" r=".6" fill="#f6e4ce" opacity=".1"/></pattern>
+ <clipPath id="mapclip"><rect x="34" y="96" width="1132" height="558" rx="8"/></clipPath>
 </defs>
 <style>
-#night-route-network{stroke-dasharray:2 14;animation:route-wake 42s linear infinite}.waterway-glint{stroke-dasharray:5 22;animation:water-memory 54s linear infinite}.night-stars circle{transform-box:fill-box;transform-origin:center;animation:star-memory 7s ease-in-out infinite alternate}.night-stars circle:nth-child(2n){animation-delay:-2.7s;animation-duration:9s}.night-stars circle:nth-child(3n){animation-delay:-4.3s;animation-duration:11s}.breathing-halo{transform-box:fill-box;transform-origin:center;animation:halo-memory 26s ease-in-out infinite alternate}
-@keyframes route-wake{to{stroke-dashoffset:-128}}@keyframes water-memory{to{stroke-dashoffset:108}}@keyframes star-memory{from{opacity:.35}to{opacity:.92}}@keyframes halo-memory{from{opacity:.68;transform:scale(.96)}to{opacity:1;transform:scale(1.04)}}
-@media(prefers-reduced-motion:reduce){#night-route-network,.waterway-glint,.night-stars circle,.breathing-halo{animation:none!important}}
-</style><rect width="1200" height="720" fill="url(#bg)"/><circle class="breathing-halo" cx="900" cy="180" r="250" fill="url(#halo)"/><g class="night-stars" fill="#f3e4d4" opacity=".68"><circle cx="130" cy="102" r="2"/><circle cx="254" cy="178" r="1.5"/><circle cx="1035" cy="90" r="1.7"/><circle cx="780" cy="75" r="1.2"/><circle cx="1090" cy="300" r="1.3"/><circle cx="490" cy="97" r="1"/></g><path d="M530-40q-90 160-35 270t-40 210q-60 120 15 280" fill="none" stroke="#608497" stroke-width="210" opacity=".7"/><path class="waterway-glint" d="M535-40q-90 160-35 270t-40 210q-60 120 15 280" fill="none" stroke="#9cb5b4" stroke-width="2" stroke-dasharray="9 12" opacity=".6"/><path d="M0 90q150 20 300 0t300 0 300 0 300 0M0 620q150-30 300 0t300 0 300 0 300 0" fill="none" stroke="#b58b73" stroke-opacity=".22" stroke-width="3"/><path id="night-route-network" d="M120 170 360 265 760 180 1040 350 850 550 450 470 120 170M170 560 360 265m400-85 90 370m190-200-300 10" fill="none" stroke="#d9ad8c" stroke-width="4" stroke-opacity=".52"/><g fill="#efc6a2" stroke="#131a24" stroke-width="10"><circle cx="360" cy="265" r="22"/><circle cx="760" cy="180" r="22"/><circle cx="850" cy="550" r="22"/><circle cx="450" cy="470" r="22"/></g><g font-family="Arial,sans-serif" fill="#f0d5bd" font-size="25" letter-spacing="3"><text x="135" y="145">SAMATYA</text><text x="795" y="140">GALATA</text><text x="880" y="600">ÜSKÜDAR</text><text x="250" y="530">HALİÇ</text></g><rect width="1200" height="720" fill="url(#grain)" opacity=".35"/><path d="M44 52h72M44 52v28M1156 52h-72M1156 52v28M44 668h72M44 668v-28M1156 668h-72M1156 668v-28" fill="none" stroke="#d8ad91" stroke-opacity=".5" stroke-width="1.4"/><g font-family="Arial, sans-serif" letter-spacing="4" fill="#ead7c6"><text x="62" y="110" font-size="18" opacity=".8">ERGİN / GECE ARŞİVİ</text><text x="62" y="650" font-size="13" opacity=".52">GECE HATTI · ÖZGÜN VEKTÖR ÇİZİM</text><text x="1138" y="650" font-size="13" text-anchor="end" opacity=".6">16</text></g></svg>
+ .small{font:10px ui-monospace,monospace;letter-spacing:2px;fill:#9fb0b8}
+ .label{font:11px ui-monospace,monospace;letter-spacing:1.5px;fill:#dfc4a8}
+ .district{font:15px Georgia,serif;letter-spacing:1px;fill:#eee2d5}
+ .micro{font:8px ui-monospace,monospace;letter-spacing:1.5px;fill:#8fa0aa}
+ .shore{fill:none;stroke:#b18d70;stroke-width:2;stroke-opacity:.48}
+ .street{fill:none;stroke:#95a9b3;stroke-width:1;stroke-opacity:.15}
+ .street-bright{fill:none;stroke:#d6b28e;stroke-width:1.2;stroke-opacity:.24}
+ .route{fill:none;stroke:#e1b488;stroke-width:1.8;stroke-dasharray:3 10;stroke-linecap:round;animation:route-flow 34s linear infinite}
+ .route.cool{stroke:#82bdc4;stroke-opacity:.8;animation-duration:48s}
+ .water-line{fill:none;stroke:#9bcbd0;stroke-opacity:.26;stroke-width:1.2;stroke-dasharray:3 18;animation:water-flow 42s linear infinite}
+ .place{fill:#f4d2a6;stroke:#19212b;stroke-width:4}
+ .halo{fill:#f1b987;opacity:.36;filter:url(#pointglow)}
+ .pulse{fill:none;stroke:#eab98d;stroke-width:1.4;transform-box:fill-box;transform-origin:center;animation:pulse 4.8s ease-out infinite}
+ .pintext{font:9px ui-monospace,monospace;letter-spacing:1.2px;fill:#e6d1ba}
+ .city-dot{fill:#d6a77d;opacity:.38}
+ .bridge{fill:none;stroke:#cba785;stroke-width:2;stroke-opacity:.72}
+ .vessel{fill:#f4d0a6;stroke:#141f29;stroke-width:2}
+ .orbit{fill:none;stroke:#b7cad0;stroke-opacity:.14;stroke-dasharray:2 9}
+ @keyframes route-flow{to{stroke-dashoffset:-156}}
+ @keyframes water-flow{to{stroke-dashoffset:126}}
+ @keyframes pulse{0%{opacity:.75;transform:scale(.5)}85%,100%{opacity:0;transform:scale(2.8)}}
+ @keyframes signal{0%,100%{opacity:.25}50%{opacity:1}}
+ @media(prefers-reduced-motion:reduce){.route,.water-line,.pulse{animation:none!important}}
+</style>
+<rect width="1200" height="720" fill="url(#night)"/>
+<rect width="1200" height="720" fill="url(#grid)"/>
+<circle cx="220" cy="210" r="230" fill="url(#cityglow)"/>
+<circle cx="900" cy="460" r="270" fill="url(#cityglow)"/>
+<circle cx="590" cy="380" r="340" fill="url(#waterglow)"/>
+<g opacity=".5" fill="#d8c5af">
+ <circle cx="151" cy="143" r="1.3"/><circle cx="286" cy="188" r="1"/><circle cx="422" cy="132" r="1.2"/><circle cx="736" cy="141" r="1"/><circle cx="1012" cy="184" r="1.3"/><circle cx="1084" cy="545" r="1"/><circle cx="218" cy="558" r="1"/><circle cx="932" cy="590" r="1.2"/>
+</g>
+<g clip-path="url(#mapclip)">
+ <rect x="34" y="96" width="1132" height="558" fill="url(#sea)"/>
+ <path d="M34 96H470Q494 144 468 185T458 267Q423 319 465 376T467 496Q438 557 486 654H34Z" fill="#17212a"/>
+ <path d="M1166 96H730Q704 151 744 209T757 303Q792 363 748 425T752 535Q780 588 720 654H1166Z" fill="#1a252c"/>
+ <path d="M34 96H470Q494 144 468 185T458 267Q423 319 465 376T467 496Q438 557 486 654" class="shore"/>
+ <path d="M1166 96H730Q704 151 744 209T757 303Q792 363 748 425T752 535Q780 588 720 654" class="shore"/>
+ <path d="M485 96Q519 153 495 207T497 321Q519 377 497 443T509 556Q516 610 500 654H714Q692 598 710 548T700 428Q680 365 706 313T713 204Q692 148 716 96Z" fill="#183448" opacity=".7"/>
+ <path d="M595 96Q628 160 608 222T613 337Q635 393 614 455T625 569Q631 614 614 654" fill="none" stroke="#79a8b3" stroke-opacity=".15" stroke-width="64" filter="url(#softglow)"/>
+ <path d="M593 96Q626 160 606 222T611 337Q633 393 612 455T623 569Q629 614 612 654" class="water-line"/>
+ <!-- soft shoreline streets -->
+ <g class="street">
+  <path d="M68 156L408 214L376 278L438 328L356 388L440 456L395 524L477 594"/>
+  <path d="M88 205L300 165L404 244L310 316L424 382L319 455L442 542"/>
+  <path d="M52 294L242 260L375 314L250 400L396 475L303 590"/>
+  <path d="M77 484L224 438L346 491L423 574"/>
+  <path d="M1129 148L800 198L824 267L755 330L853 396L765 464L835 533L735 610"/>
+  <path d="M1145 238L954 174L811 245L920 319L780 390L909 468L787 552"/>
+  <path d="M1162 328L1008 285L862 343L1015 415L852 497L982 594"/>
+  <path d="M1100 520L970 454L850 512L765 604"/>
+ </g>
+ <g class="street-bright">
+  <path d="M84 365L210 330L332 350L426 414"/>
+  <path d="M110 560L255 520L365 555L454 610"/>
+  <path d="M1116 362L986 332L864 362L752 414"/>
+  <path d="M1091 548L964 508L845 542L740 603"/>
+  <path d="M156 128L208 217L177 307M276 140L319 234L285 300M365 400L297 470L357 557"/>
+  <path d="M1030 136L980 222L1012 304M890 142L850 234L900 305M824 405L904 470L856 560"/>
+ </g>
+ <!-- district blocks and city lights -->
+ <g>
+  <circle class="city-dot" cx="140" cy="236" r="2"/><circle class="city-dot" cx="188" cy="260" r="2"/><circle class="city-dot" cx="247" cy="218" r="2"/><circle class="city-dot" cx="332" cy="247" r="2"/><circle class="city-dot" cx="376" cy="344" r="2"/><circle class="city-dot" cx="166" cy="418" r="2"/><circle class="city-dot" cx="290" cy="476" r="2"/><circle class="city-dot" cx="392" cy="532" r="2"/>
+  <circle class="city-dot" cx="1043" cy="242" r="2"/><circle class="city-dot" cx="972" cy="278" r="2"/><circle class="city-dot" cx="869" cy="229" r="2"/><circle class="city-dot" cx="810" cy="326" r="2"/><circle class="city-dot" cx="1060" cy="420" r="2"/><circle class="city-dot" cx="951" cy="475" r="2"/><circle class="city-dot" cx="829" cy="548" r="2"/><circle class="city-dot" cx="1002" cy="584" r="2"/>
+ </g>
+ <!-- Bosphorus crossings, deliberately schematic -->
+ <path class="bridge" d="M466 205Q594 184 742 205M470 211Q594 194 738 211M486 451Q606 430 728 451M489 457Q606 440 725 457"/>
+ <path class="bridge" d="M586 192V224M610 190V223M604 438V470M628 437V469" stroke-width="1"/>
+ <!-- ferry / night routes -->
+ <path class="route" d="M182 204Q338 132 548 242T867 275T1048 510"/>
+ <path class="route cool" d="M256 532Q430 590 610 470T916 381"/>
+ <path class="route" d="M351 315Q486 270 610 337T886 470"/>
+ <g transform="translate(590 254)">
+  <circle r="22" fill="#d8a97b" opacity=".12" filter="url(#softglow)"/>
+  <path class="vessel" d="M-14 3H14L9 11H-8Z"/><path d="M-6 -4H7V3H-6Z" fill="#e6c29e"/><path d="M-12 14H13" stroke="#d9b28c" stroke-width="1.2"/>
+  <circle r="29" class="pulse"/>
+ </g>
+ <g fill="none" stroke="#c8b093" stroke-opacity=".7">
+  <path d="M180 194l8-8 8 8-8 8zM1048 500l8-8 8 8-8 8zM255 522l8-8 8 8-8 8zM916 371l8-8 8 8-8 8z" fill="#d8a97b" fill-opacity=".35"/>
+ </g>
+ <!-- small landmark silhouettes -->
+ <g transform="translate(305 232)" fill="#d6b18c" opacity=".8">
+  <path d="M-20 14H20V20H-20ZM-15 7H15L12 14H-12ZM-10 1L0-12 10 1ZM-4 -8V-20M4 -8V-20" stroke="#d6b18c" stroke-width="1.2" fill="none"/>
+  <circle cx="0" cy="-22" r="2" fill="#e9caa7"/>
+ </g>
+ <g transform="translate(925 290)" fill="none" stroke="#d6b18c" stroke-width="1.3" opacity=".82">
+  <path d="M-17 8H17L14 14H-14Z"/><path d="M-12 7Q0-12 12 7M0-12V-24M-5-4V7M5-4V7"/>
+ </g>
+ <g transform="translate(863 518)" fill="none" stroke="#d6b18c" stroke-width="1.2" opacity=".75">
+  <path d="M-17 15H17M-13 15V4Q0-13 13 4V15M-7 15V6M7 15V6M-4-8V-17H4V-8"/>
+ </g>
+</g>
+<rect x="34" y="96" width="1132" height="558" rx="8" fill="none" stroke="#b89476" stroke-opacity=".42"/>
+<rect x="34" y="96" width="1132" height="558" rx="8" fill="url(#grain)" opacity=".42"/>
+<!-- Header and instrumentation -->
+<g>
+ <text class="small" x="54" y="52">E / GECE HATTI · KARTOGRAFİ ARŞİVİ</text>
+ <text x="54" y="82" font-family="Georgia,serif" font-size="26" fill="#efe4d8">İki kıyı, tek gece.</text>
+ <text class="micro" x="1145" y="52" text-anchor="end">ISTANBUL / 001</text>
+ <text class="small" x="1145" y="78" text-anchor="end">ÖLÇEKSİZ · YEREL ÇİZİM</text>
+ <path d="M54 676H1146" stroke="#b89476" stroke-opacity=".28"/>
+ <text class="micro" x="54" y="698">KIYI HATTI / HAFIZA / GECE GEÇİŞLERİ</text>
+ <text class="micro" x="1146" y="698" text-anchor="end">NAVİGASYON DEĞİLDİR</text>
+</g>
+<!-- place markers and labels -->
+<g>
+ <circle class="halo" cx="182" cy="204" r="15"/><circle class="place" cx="182" cy="204" r="4"/><circle class="pulse" cx="182" cy="204" r="8"/>
+ <text class="pintext" x="129" y="185">SAMATYA</text>
+ <circle class="halo" cx="305" cy="232" r="15"/><circle class="place" cx="305" cy="232" r="4"/><text class="pintext" x="260" y="208">EMİNÖNÜ</text>
+ <circle class="halo" cx="548" cy="242" r="15"/><circle class="place" cx="548" cy="242" r="4"/><text class="pintext" x="509" y="219">KARAKÖY</text>
+ <circle class="halo" cx="867" cy="275" r="15"/><circle class="place" cx="867" cy="275" r="4"/><text class="pintext" x="830" y="252">BEŞİKTAŞ</text>
+ <circle class="halo" cx="1048" cy="510" r="15"/><circle class="place" cx="1048" cy="510" r="4"/><text class="pintext" x="1003" y="487">KADIKÖY</text>
+ <circle class="halo" cx="916" cy="381" r="15"/><circle class="place" cx="916" cy="381" r="4"/><text class="pintext" x="873" y="358">ÜSKÜDAR</text>
+</g>
+<!-- compass and legend -->
+<g transform="translate(1090 150)">
+ <circle r="31" fill="#111820" fill-opacity=".82" stroke="#b89476" stroke-opacity=".38"/>
+ <circle r="21" class="orbit"/>
+ <path d="M0-23L5 0 0 7-5 0Z" fill="#e2b48d"/><path d="M0 23L-4 0 0-7 4 0Z" fill="#7f9fa6"/>
+ <text class="micro" x="0" y="-38" text-anchor="middle">K</text>
+ <text class="micro" x="0" y="47" text-anchor="middle">G</text>
+</g>
+<g transform="translate(72 618)">
+ <path d="M0 0H110" stroke="url(#shorelight)" stroke-width="2"/>
+ <text class="micro" x="0" y="20">GECE VAPUR HATTI</text>
+ <path d="M260 -4H318" stroke="#e1b488" stroke-width="2" stroke-dasharray="3 8"/>
+ <text class="micro" x="326" y="0">KIYI GEÇİŞİ</text>
+ <circle cx="535" cy="-4" r="4" fill="#f4d2a6"/><text class="micro" x="548" y="0">DURAK</text>
+</g>
+</svg>
