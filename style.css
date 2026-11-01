@@ -1434,18 +1434,7 @@ html.motion section.reveal.in { animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 
 .radio-actions{margin-top:12px}
 #stop-radio{border-color:color-mix(in srgb,var(--red) 55%,var(--line))}
 #radio-help{min-height:1.5em;margin:8px 0 4px}
-.radio-recording-panel{margin:14px 0 20px;padding:13px;border:1px solid var(--line);background:rgba(6,2,4,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.radio-recording-panel[hidden]{display:none}
-.radio-recording-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
-.radio-recording-heading>div{display:grid;gap:4px;min-width:0}
-.radio-recording-heading .kicker{margin:0;font-size:9px;color:var(--dim)}
-.radio-recording-heading strong{font:700 12px/1.35 var(--mono);color:var(--bone)}
-.radio-recording-heading small{font:9px/1.4 var(--mono);color:var(--muted)}
-.radio-recording-mark{flex:0 0 auto;padding:6px 8px;border:1px solid var(--line);color:var(--red);font:8px/1.4 var(--mono);letter-spacing:.12em;text-align:center}
-#radio-recording-frame{display:block;width:min(100%,481px);height:86px;border:0;background:#070103}
-.radio-recording-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:8px 0 0;color:var(--muted);font:9px/1.5 var(--mono)}
-.radio-recording-foot a{color:var(--bone);text-decoration-color:var(--red);text-underline-offset:3px}
-@media(max-width:600px){.station-rail-heading{margin-top:14px}.station{flex-basis:min(66vw,204px);min-height:82px;padding:8px 9px}.station-frequency{font-size:19px}.station-description{font-size:9px}.radio-recording-panel{padding:10px}.radio-recording-foot{display:grid}}
+@media(max-width:600px){.station-rail-heading{margin-top:14px}.station{flex-basis:min(66vw,204px);min-height:82px;padding:8px 9px}.station-frequency{font-size:19px}.station-description{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.station{transition:none}}
 @media (prefers-reduced-motion: reduce) {
   html:not([data-motion="on"]) .station { transition: none; }
