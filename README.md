@@ -5,9 +5,9 @@
 ## Sayfada neler var
 
 - **İstanbul gece haritası** — yalnızca bu depo için oluşturulmuş, ölçeksiz yerel SVG şeması; hava, deprem veya konum servisi çağırmaz.
-- **İstanbul arşivi** — Galata Kulesi, Eminönü, Samatya, Ayasofya, Süleymaniye ve Kız Kulesi kartları. Ana sayfa ve alt sayfalar `assets/illustrations/*.svg` altındaki özgün vektör çizimlerini kullanır.
+- **İstanbul arşivi** — Galata Kulesi, Eminönü, Samatya, Ayasofya, Süleymaniye ve Kız Kulesi kartları. Ana sayfa, `photos/` altındaki kişisel gece fotoğraf seçkisini ve `assets/illustrations/*.svg` altındaki özgün şemaları birlikte kullanır.
 - **Atölye, kedi laboratuvarı, Greyfield FM, arşiv** — projeler, tarayıcıda çalışan özellik karşılaştırma, Web Audio ile üretilen ses ve kısa notlar.
-- **MycelForge** — `/mycelforge/` altında yayınlanan miselyum biyomalzeme formül/protokol tarama arayüzü. Kaynak kodu ayrı [MycelForge deposunda](https://github.com/eerrgin/mycelforge); siteye otomatik olarak derlenip kopyalanır.
+- **MycelForge** — `/mycelforge/` altında yayınlanan miselyum biyomalzeme formül/protokol tarama arayüzü. Kaynak kodu ayrı [MycelForge deposundadır](https://github.com/eerrgin/mycelforge); bu sitedeki sayfa yalnızca kaynak depoya yönlendiren hafif bir bağlantıdır.
 
 
 - **Performans Laboratuvarı** — `/performance-lab/` altında aynı veri üzerinde algoritma sürelerini ölçen, sonuçları doğrulayan ve mikro-benchmark sınırlarını açıklayan tarayıcı deneyi.
@@ -19,7 +19,7 @@
 | Yol | Görev |
 | --- | --- |
 | `index.html`, `style.css` | Ana sayfa yapısı ve görünüm |
-| `fx.js`, `script.js`, `tigerk.js`, `hat.js` | Arka plan, hava durumu, etkileşimler, tarayıcı ağı ve HAT terminali |
+| `fx.js`, `script.js`, `tigerk.js`, `hat.js` | Atmosfer, yerel etkileşimler, tarayıcı ağı ve HAT terminali |
 | `assets/illustrations/`, `assets/` | Özgün vektör çizimler ve SVG arayüz varlıkları |
 | `ergin-lab/` | Mini web deneyleri (ayrı alt sayfalar) |
 | `404.html` | Bulunamayan adresler için sayfa |
@@ -37,7 +37,7 @@ python3 -m http.server 8000 # http://localhost:8000
 
 ## Yayın
 
-GitHub Pages ana site için `main` dalının kökünden yayınlanır. Her push ve pull request'te `.github/workflows/ci.yml` yerel dosya, HTML, çapa, JSON ve JavaScript kontrollerini çalıştırır. MycelForge sürümü `.github/workflows/mycelforge-publish.yml` ile ayrı depodan çekilir, test edilir ve `/mycelforge/` altına derlenir.
+GitHub Pages ana site için `main` dalının kökünden yayınlanır. Her push ve pull request'te `.github/workflows/ci.yml` yerel dosya, HTML, çapa, JSON ve JavaScript kontrollerini çalıştırır. MycelForge sayfası `/mycelforge/` altında ayrı kaynak depoya yönlendiren statik bir bilgi sayfasıdır; otomatik paket yayımlayan iş akışı kaldırılmıştır.
 
 ## Gizlilik
 

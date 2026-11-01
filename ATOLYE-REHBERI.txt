@@ -19,8 +19,9 @@ Küçük yazılım deneyleri, tarayıcı içinde çalışan araçlar, retro aray
 
 ## Medya, lisans ve gizlilik
 
-- Ana sayfada raster fotoğraf, indirilebilir müzik, video veya harici fotoğraf sağlayıcısı kullanılmaz. Görsel yüzeyler `assets/illustrations/` altındaki özgün SVG çizimlerdir; tarihî fotoğraf veya belge oldukları iddia edilmez.
-- Fotoğraf, ses, video ve yerel font dosyaları lisans/izin durumu belirsiz olduğu için bu depodan kaldırılmıştır.
+- Ana sayfanın eski kişisel görsel seçkisinden 14 fotoğraf (`photos/`) Git geçmişinden geri getirildi. Depo sahibi bunların bir bölümünü kendi ürettiğini, bir bölümünü düzenlediğini belirtiyor; tüm dosyaların ilk üreticisi ve lisans zinciri bağımsız olarak doğrulanmış değil.
+- Fotoğrafların yaşı tek başına kamu malı statüsü veya telif hakkının sona erdiği anlamına gelmez. Hak durumu dosya bazında saklanan izin/kaynak kanıtıyla desteklenmelidir. Ayrıntı: `photos/README.md` ve `LEGAL-AND-DEPLOY.md`.
+- Ekran görüntüleri, profil görselleri, video, MP3 ve yerel font dosyaları depoda değildir. Vektör şema ve çizimler `assets/illustrations/` altındadır.
 - Greyfield FM, Web Audio API ile tarayıcıda sentetik ses üretir. Ziyaretçinin kendi cihazından seçtiği ses dosyası yalnızca yerel tarayıcı nesne adresiyle çalar; sunucuya yüklenmez.
 - Hava durumu, hava kalitesi, deprem, ISS ve harita karo servisleri kaldırılmıştır. İstanbul kokpiti ölçeksiz, yerel bir vektör şemasıdır; canlı veri veya navigasyon sunmaz.
 - Kuş Hattı, Wikipedia görsel/özet API'sini çağırmaz. Wikipedia yalnızca kullanıcı isterse açabileceği dış kaynak bağlantısıdır.
