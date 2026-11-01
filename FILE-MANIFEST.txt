@@ -10,6 +10,7 @@ Yayın kökü (GitHub Pages: main / root)
   tigerk.js, hat.js           Tarayıcı içi deneyler ve yerel terminal
   kokpit.js                  Gece kokpiti etkileşimleri
   assets/illustrations/      18 özgün SVG vektör çizim
+  photos/                    14 yerel fotoğraf; ana sayfanın eski kişisel seçkisi
   favicon.svg, manifest.webmanifest, 404.html
 
 Alt sayfalar ve projeler
@@ -36,6 +37,8 @@ Otomasyon ve denetim
   package.json                Yardımcı geliştirme/denetim araçları
   .github/workflows/mycelforge-publish.yml kaldırıldı; üretilmiş uygulama paketi artık yayımlanmaz.
 
-Medya temizliği
-  Raster fotoğraflar, profil görselleri, ekran görüntüleri, MP3, MP4 ve yerel font ikilileri bu depodan kaldırılmıştır.
-  Ana sayfada dışarıdan resim, ses, video veya harita karosu gömülmez.
+Medya kapsamı
+  Ana sayfanın önceki kişisel fotoğraf seçkisinden 14 JPG, depo sahibinin talebiyle photos/ altında geri getirildi.
+  Bu dosyaların her birinin ilk üreticisi/lisans zinciri bağımsız olarak doğrulanmış değildir; yaşları kamu malı oldukları anlamına gelmez.
+  Ekran görüntüleri, profil ikonları, MP3, MP4, yerel font dosyaları ve eski ZIP arşivleri geri getirilmedi.
+  Dış fotoğraf servisi, ses/video gömmesi veya harita karosu kullanılmaz.

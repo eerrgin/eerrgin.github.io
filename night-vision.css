@@ -608,7 +608,7 @@ footer{background:linear-gradient(180deg,transparent,rgba(17,11,14,.52))}
 .night-note-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
 .night-note-card{min-width:0;padding:14px;border:1px solid rgba(220,185,156,.14);border-radius:14px;background:rgba(8,7,9,.56)}
 .night-note-card-image{height:155px;margin:-14px -14px 15px;border-radius:14px 14px 0 0;background-size:cover;background-position:center}
-.night-note-window{background-image:linear-gradient(0deg,rgba(10,6,8,.24),rgba(10,6,8,.05)),url("/assets/illustrations/coast-night.svg");background-position:50% 42%}
+.night-note-window{background-image:linear-gradient(0deg,rgba(10,6,8,.24),rgba(10,6,8,.05)),url("/photos/samatya.jpg");background-position:50% 42%}
 .night-note-radio{background-image:radial-gradient(ellipse at 50% 55%,rgba(230,151,79,.35),transparent 42%),linear-gradient(135deg,#1c1110,#09090b 70%)}
 .night-note-card>p:last-of-type{font:17px/1.6 var(--serif,Georgia);color:#e8d8c9;margin:10px 0 4px}
 .night-note-letter-mark{height:155px;display:grid;place-items:center;margin:-14px -14px 15px;border-radius:14px 14px 0 0;background:radial-gradient(circle,rgba(185,111,83,.25),transparent 52%),linear-gradient(145deg,#211517,#0b090b);font:70px Georgia;color:#bd8976}
@@ -665,11 +665,11 @@ footer{background:linear-gradient(180deg,transparent,rgba(17,11,14,.52))}
 .night-note-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:4px}
 .night-note-card{min-width:0;padding:14px;border:1px solid rgba(203,164,124,.18);border-radius:2px;background:rgba(8,7,7,.62)}
 .night-note-card-image{height:155px;margin:-14px -14px 15px;border-radius:1px;background-size:cover;background-position:center}
-.night-note-window{background-image:linear-gradient(0deg,rgba(10,6,8,.24),rgba(10,6,8,.05)),url("/assets/illustrations/coast-night.svg");background-position:50% 42%}
+.night-note-window{background-image:linear-gradient(0deg,rgba(10,6,8,.24),rgba(10,6,8,.05)),url("/photos/samatya.jpg");background-position:50% 42%}
 .night-note-radio{background-image:radial-gradient(ellipse at 50% 55%,rgba(230,151,79,.35),transparent 42%),linear-gradient(135deg,#1c1110,#09090b 70%)}
-.night-note-platform{background-image:linear-gradient(0deg,#09090b88,#09090b22),url("/assets/illustrations/night-train.svg")}
-.night-note-flight{background-image:linear-gradient(0deg,#09090b88,#09090b22),url("/assets/illustrations/air-terminal.svg")}
-.night-note-ferry{background-image:linear-gradient(0deg,#09090b88,#09090b22),url("/assets/illustrations/eminonu-ferry.svg")}
+.night-note-platform{background-image:linear-gradient(0deg,#09090b88,#09090b22),url("/photos/peron-train.jpg")}
+.night-note-flight{background-image:linear-gradient(0deg,#09090b88,#09090b22),url("/photos/peron-mist.jpg")}
+.night-note-ferry{background-image:linear-gradient(0deg,#09090b88,#09090b22),url("/photos/eminonu.jpg")}
 .night-note-card>p:last-of-type{font:17px/1.6 var(--serif,Georgia);color:#e8d8c9;margin:10px 0 4px}
 .night-note-letter-mark{height:155px;display:grid;place-items:center;margin:-14px -14px 15px;border-radius:1px;background:radial-gradient(circle,rgba(185,111,83,.25),transparent 52%),linear-gradient(145deg,#211517,#0b090b);font:70px Georgia;color:#bd8976}
 .night-notes-foot{margin:18px 0 0;text-align:right}
@@ -766,8 +766,8 @@ footer{background:linear-gradient(180deg,transparent,rgba(17,11,14,.52))}
   background:
     linear-gradient(90deg,rgba(5,5,7,.94) 0%,rgba(5,5,7,.82) 37%,rgba(5,5,7,.2) 72%,rgba(5,5,7,.35) 100%),
     linear-gradient(0deg,rgba(5,5,7,.9),transparent 34%,rgba(5,5,7,.12) 75%,rgba(5,5,7,.55)),
-    url("/assets/illustrations/suleymaniye-dome.svg") 76% 42%/min(62vw,900px) auto no-repeat,
-    url("/assets/illustrations/old-street.svg") center/cover no-repeat;
+    url("/photos/suleymaniye.jpg") 76% 42%/min(62vw,900px) auto no-repeat,
+    url("/photos/gece-hatti.jpg") center/cover no-repeat;
   filter:saturate(.78) contrast(1.08);
 }
 .hero:after{
@@ -791,7 +791,7 @@ footer{background:linear-gradient(180deg,transparent,rgba(17,11,14,.52))}
   background:
    linear-gradient(90deg,rgba(5,5,7,.52),transparent 58%),
    linear-gradient(0deg,rgba(5,5,7,.82),transparent 42%),
-   url("/assets/illustrations/cat-field.svg") 77% 78%/clamp(150px,19vw,270px) auto no-repeat;
+   url("/photos/kedi.jpg") 77% 78%/clamp(150px,19vw,270px) auto no-repeat;
   opacity:.94;mix-blend-mode:normal;
 }
 .hero .portrait:after{content:"";position:absolute;z-index:2;inset:0;pointer-events:none;
@@ -807,23 +807,23 @@ footer{background:linear-gradient(180deg,transparent,rgba(17,11,14,.52))}
  .hero:before{background:
   linear-gradient(90deg,rgba(5,5,7,.94),rgba(5,5,7,.72) 55%,rgba(5,5,7,.3)),
   linear-gradient(0deg,rgba(5,5,7,.85),transparent 50%),
-  url("/assets/illustrations/suleymaniye-dome.svg") 78% 38%/70vw auto no-repeat,
-  url("/assets/illustrations/old-street.svg") center/cover no-repeat}
+  url("/photos/suleymaniye.jpg") 78% 38%/70vw auto no-repeat,
+  url("/photos/gece-hatti.jpg") center/cover no-repeat}
 }
 @media(max-width:680px){
  .hero{display:flex;flex-direction:column;align-items:stretch;justify-content:center;min-height:calc(100svh - 48px);padding:76px 16px 34px;gap:12px}
  .hero:before{background:
   linear-gradient(90deg,rgba(5,5,7,.83),rgba(5,5,7,.56)),
   linear-gradient(0deg,rgba(5,5,7,.88),transparent 68%),
-  url("/assets/illustrations/suleymaniye-dome.svg") 68% 24%/auto 62% no-repeat,
-  url("/assets/illustrations/old-street.svg") 52% center/cover no-repeat}
+  url("/photos/suleymaniye.jpg") 68% 24%/auto 62% no-repeat,
+  url("/photos/gece-hatti.jpg") 52% center/cover no-repeat}
  .hero>div:first-child{padding:0 2px}
  .hero h1{font-size:clamp(62px,15vw,90px);max-width:100%;margin:19px 0 15px}
  .hero-intro{max-width:37ch;font-size:15px;line-height:1.55}
  .hero-dispatch{max-width:100%;margin-top:16px;padding:11px 12px}
  .hero .portrait:before{background:
   linear-gradient(0deg,rgba(5,5,7,.3),transparent 65%),
-  url("/assets/illustrations/cat-field.svg") 88% 87%/clamp(112px,30vw,170px) auto no-repeat}
+  url("/photos/kedi.jpg") 88% 87%/clamp(112px,30vw,170px) auto no-repeat}
  .hero .hero-footnote{margin-top:8px}
  .hero .identity-chip{margin-top:12px}
 }
@@ -841,7 +841,7 @@ footer{background:linear-gradient(180deg,transparent,rgba(17,11,14,.52))}
 .arrival-hero:before{content:"";position:absolute;inset:0;z-index:-2;background:
  linear-gradient(90deg,rgba(8,5,4,.96) 0%,rgba(8,5,4,.84) 34%,rgba(8,5,4,.28) 68%,rgba(8,5,4,.12) 100%),
  linear-gradient(0deg,rgba(5,4,4,.72),transparent 34%,rgba(5,4,4,.15)),
- url("/assets/illustrations/night-train.svg") center 52%/cover no-repeat;
+ url("/photos/peron-train.jpg") center 52%/cover no-repeat;
  filter:saturate(.9) contrast(1.08)}
 .arrival-hero:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.55;
  background:radial-gradient(ellipse at 78% 42%,transparent 0 25%,rgba(0,0,0,.22) 75%),linear-gradient(90deg,transparent 70%,rgba(0,0,0,.2))}
@@ -863,7 +863,7 @@ footer{background:linear-gradient(180deg,transparent,rgba(17,11,14,.52))}
 .arrival-grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E")}
 @media(max-width:680px){
  .arrival-hero{min-height:calc(100svh - 118px)!important;padding:66px 22px 96px!important}
- .arrival-hero:before{background:linear-gradient(90deg,rgba(8,5,4,.9),rgba(8,5,4,.54)),linear-gradient(0deg,rgba(5,4,4,.76),transparent 55%),url("/assets/illustrations/night-train.svg") 58% center/cover no-repeat}
+ .arrival-hero:before{background:linear-gradient(90deg,rgba(8,5,4,.9),rgba(8,5,4,.54)),linear-gradient(0deg,rgba(5,4,4,.76),transparent 55%),url("/photos/peron-train.jpg") 58% center/cover no-repeat}
  .arrival-content{width:100%}
  .arrival-hero h1{font-size:clamp(68px,17vw,100px)!important}
  .arrival-overline{font-size:8px;gap:9px}

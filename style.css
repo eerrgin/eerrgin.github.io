@@ -2648,14 +2648,14 @@ body::before {
 .fr-sky {
   inset: -8%;
   background:
-    url("/assets/illustrations/night-train.svg") center 42% / cover no-repeat;
+    url("/photos/peron-train.jpg") center 42% / cover no-repeat;
   animation: plate-drift 48s ease-in-out infinite alternate;
   filter: saturate(1.08) contrast(1.08);
 }
 .fr-moon { display: none; }
 .fr-far {
   inset: -6%;
-  background: url("/assets/illustrations/night-train.svg") center / cover no-repeat;
+  background: url("/photos/peron-train.jpg") center / cover no-repeat;
   opacity: 0.38;
   mix-blend-mode: lighten;
   animation: plate-drift-2 62s ease-in-out infinite alternate;
@@ -2923,7 +2923,7 @@ section[data-stamp]::before { -webkit-text-stroke-color: color-mix(in srgb, var(
   background-image:
     linear-gradient(180deg, rgba(8,5,6,.30) 0%, rgba(8,5,6,.10) 38%, rgba(8,5,6,.54) 76%, #080506 100%),
     linear-gradient(90deg, rgba(20,7,9,.28), rgba(8,5,6,.04) 48%, rgba(8,5,6,.24)),
-    url("/assets/illustrations/night-train.svg");
+    url("/photos/peron-train.jpg");
   background-repeat: no-repeat;
   background-position: center, center, center 42%;
   background-size: cover, cover, cover;
@@ -2964,7 +2964,7 @@ section[data-stamp]::before { -webkit-text-stroke-color: color-mix(in srgb, var(
     background-image:
       linear-gradient(180deg, rgba(8,5,6,.32), rgba(8,5,6,.18) 36%, rgba(8,5,6,.60) 78%, #080506),
       linear-gradient(90deg, rgba(20,7,9,.22), rgba(8,5,6,.06) 48%, rgba(8,5,6,.18)),
-      url("/assets/illustrations/night-train.svg");
+      url("/photos/peron-train.jpg");
     background-position: center, center, 56% center;
   }
 }

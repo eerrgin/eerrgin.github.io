@@ -273,3 +273,136 @@ main.wrap > section[data-stamp]:not(.workbench-section) {
   outline-offset: 3px;
   border-radius: 4px;
 }
+
+/* GECE HATTI · FOTOĞRAF PLAKLARI VE SESSİZ HAREKET */
+.arrival-hero::before {
+  background:
+    linear-gradient(90deg,rgba(8,5,4,.94) 0%,rgba(8,5,4,.78) 32%,rgba(8,5,4,.22) 70%,rgba(8,5,4,.12) 100%),
+    linear-gradient(0deg,rgba(5,4,4,.72),transparent 40%,rgba(5,4,4,.2)),
+    url("/photos/peron-train.jpg") center 48% / cover no-repeat !important;
+  animation: gece-plate-drift 72s cubic-bezier(.22,1,.36,1) infinite alternate;
+  transform-origin: 62% 48%;
+  will-change: transform;
+}
+.forest-run {
+  background: #080506 !important;
+  background-image: none !important;
+}
+.fr-sky, .fr-far {
+  display: block !important;
+  position: absolute;
+  pointer-events: none;
+}
+.fr-sky {
+  z-index: 0;
+  inset: -7%;
+  background: url("/photos/peron-train.jpg") center 43% / cover no-repeat !important;
+  opacity: .44;
+  filter: saturate(.68) contrast(1.12);
+  animation: gece-plate-drift 86s ease-in-out infinite alternate !important;
+}
+.fr-far {
+  z-index: 1;
+  inset: -8%;
+  background: url("/photos/peron-mist.jpg") center 52% / cover no-repeat !important;
+  opacity: .18;
+  mix-blend-mode: screen;
+  filter: saturate(.55) blur(1px);
+  animation: gece-mist-drift 104s ease-in-out infinite alternate !important;
+}
+.fr-mist { z-index: 2; }
+.fr-rail { z-index: 3; }
+.fr-train {
+  z-index: 4;
+  left: -24%;
+  right: -24%;
+  bottom: 19%;
+  height: 2px;
+  overflow: visible;
+  background: linear-gradient(90deg,transparent,rgba(212,112,82,.14),transparent);
+}
+.fr-train::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -24%;
+  width: clamp(150px,24vw,360px);
+  height: 2px;
+  background: linear-gradient(90deg,transparent,rgba(222,160,117,.08),rgba(255,190,135,.85),rgba(255,224,184,.12),transparent);
+  box-shadow: 0 0 14px rgba(235,137,94,.48);
+  animation: gece-sinyal-gecisi 38s linear infinite;
+}
+.night-note-feature > img {
+  animation: gece-fotograf-nefesi 34s ease-in-out infinite alternate;
+  transform-origin: center;
+  will-change: transform;
+}
+.station-card-image img {
+  transition: transform 850ms cubic-bezier(.2,.75,.25,1), filter 850ms ease;
+}
+.station-note-card:hover .station-card-image img,
+.station-note-card[aria-pressed="true"] .station-card-image img {
+  transform: scale(1.055);
+  filter: saturate(.95) contrast(1.04);
+}
+.night-note-window {
+  background-image: linear-gradient(0deg,rgba(10,6,8,.34),rgba(10,6,8,.04)),url("/photos/samatya.jpg") !important;
+}
+.night-note-radio {
+  background-image: linear-gradient(0deg,rgba(8,5,6,.5),rgba(8,5,6,.14)),url("/photos/radyo.jpg") !important;
+}
+.night-note-platform {
+  background-image: linear-gradient(0deg,#09090bcc,#09090b22),url("/photos/peron-train.jpg") !important;
+}
+.night-note-flight {
+  background-image: linear-gradient(0deg,#09090bcc,#09090b22),url("/photos/peron-mist.jpg") !important;
+}
+.night-note-ferry {
+  background-image: linear-gradient(0deg,#09090bcc,#09090b22),url("/photos/eminonu.jpg") !important;
+}
+.workbench-hero {
+  background-image:
+    linear-gradient(90deg,rgba(9,7,8,.94),rgba(9,7,8,.68) 52%,rgba(9,7,8,.25)),
+    url("/photos/masa.jpg") !important;
+  background-position:center, right 48%;
+  background-size:cover;
+}
+.site-signature {
+  margin: 9px 0 0;
+  color: rgba(216,193,169,.58);
+  font: italic 12px/1.6 "Literata", Georgia, serif;
+  letter-spacing: .035em;
+}
+.site-signature span {
+  color: #ddbea0;
+  font: italic 16px/1.2 "Literata", Georgia, serif;
+}
+@keyframes gece-plate-drift {
+  from { transform: scale(1.035) translate3d(0,0,0); }
+  to   { transform: scale(1.12) translate3d(-1.25%,-.55%,0); }
+}
+@keyframes gece-mist-drift {
+  from { transform: scale(1.06) translate3d(1.2%,0,0); opacity:.12; }
+  to   { transform: scale(1.16) translate3d(-1.8%,.75%,0); opacity:.22; }
+}
+@keyframes gece-sinyal-gecisi {
+  0% { transform:translateX(0); opacity:0; }
+  8% { opacity:.85; }
+  92% { opacity:.72; }
+  100% { transform:translateX(150vw); opacity:0; }
+}
+@keyframes gece-fotograf-nefesi {
+  from { transform:scale(1.015); }
+  to { transform:scale(1.07); }
+}
+@media (max-width: 720px) {
+  .arrival-hero::before { background-position: 58% center !important; }
+  .fr-sky { background-position: 58% center !important; opacity:.28; }
+  .fr-far { opacity:.12; }
+  .workbench-hero { background-position:center, 62% center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .arrival-hero::before, .fr-sky, .fr-far, .fr-train::before,
+  .night-note-feature > img { animation:none !important; transform:none !important; }
+  .station-card-image img { transition:none !important; }
+}

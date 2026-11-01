@@ -3,8 +3,13 @@
 Bu dosya hukuki görüş değildir; depodaki kullanılan varlıkları ve teknik kaynakları açıkça kaydeder.
 
 ## Medya ve yazı tipleri
-- Kaynağı veya yeniden yayımlama hakkı doğrulanamayan raster fotoğraflar, ekran görüntüleri, profil görselleri, video, MP3 ve yerel font dosyaları depodan çıkarıldı.
-- Bunların yerine `assets/illustrations/*.svg` altında bu depo için sıfırdan hazırlanmış vektör çizimler kullanılır. Çizimler tarihî fotoğraf, gerçek mekân fotoğrafı veya arşiv belgesi değildir.
+## Ana sayfa fotoğraf seçkisi
+- Önceki ana sayfa konseptinde kullanılan 14 fotoğraf (photos/*.jpg) Git geçmişinden, depo sahibinin açık talebiyle geri getirildi.
+- Depo sahibi seçkinin bir bölümünü kendi ürettiğini, bir bölümünü düzenlediğini belirtiyor. Her fotoğrafın ilk üreticisi ve üçüncü taraf hak zinciri bu depodan bağımsız olarak doğrulanmış değil.
+- Fotoğrafın yaşı tek başına kamu malı statüsü veya telif hakkının sona erdiği anlamına gelmez. Bu geri yükleme, fotoğrafların anonim ya da kamu malı olduğu iddiasını içermez. Ticari/yeniden dağıtım kullanımlarında dosya bazında izin kanıtı saklanmalıdır.
+- Ekran görüntüleri, profil ikonları, video, MP3, yerel font dosyaları, eski ZIP arşivleri ve üçüncü taraf derlenmiş paketler hâlâ depoda değildir.
+- Ana sayfanın eski fotoğraf alanları bu yerel seçkiyle çalışır; harici fotoğraf API'si veya harita karosu eklenmedi.
+- Yeni SVG çizimler (`assets/illustrations/*.svg`) fotoğraf olmayan, bu depo için hazırlanmış vektör illüstrasyonlardır.
 - `7mix.mp3` ve eski kopyaları kaldırıldı. Radyo kanalları Web Audio ile tarayıcıda sentezlenir. Kullanıcının kendi ses dosyası seçimi yerel `blob:` URL kullanır; dosya sunucuya yüklenmez.
 - BLOK3 bağlantısı yalnızca YouTube'a dış bağlantıdır. Video gömülmez, ses indirilmez, kopyalanmaz veya sitede yeniden yayımlanmaz.
 
