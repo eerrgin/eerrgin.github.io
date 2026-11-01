@@ -789,20 +789,6 @@ const RADIO_SCENES = {
     ],
     tones: [{ freq: 82.4, type: "sine", gain: 0.007, vibrato: 0.4 }], echo: true
   },
-  train: {
-    volume: 0.34,
-    layers: [
-      { color: "brown", filter: "lowpass", freq: 165, gain: 0.145, q: 0.62, pulseHz: 0.18, depth: 0.025 },
-      { color: "brown", filter: "bandpass", freq: 480, gain: 0.022, q: 0.75, pulseHz: 0.32, depth: 0.006 },
-      { color: "white", filter: "bandpass", freq: 1850, gain: 0.008, q: 0.65 },
-      { color: "white", filter: "highpass", freq: 3400, gain: 0.0035, q: 0.55 }
-    ],
-    tones: [
-      { freq: 54.9, type: "sine", gain: 0.026, vibrato: 0.9 },
-      { freq: 110, type: "sine", gain: 0.006, vibrato: 1.2 }
-    ],
-    echo: true
-  },
   bus: {
     volume: 0.24,
     layers: [
