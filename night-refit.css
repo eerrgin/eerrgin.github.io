@@ -265,3 +265,11 @@ main.wrap > section[data-stamp]:not(.workbench-section) {
   .night-route-card, .night-route-card h3 a span { transition: none; }
   .night-route-card:hover { transform: none; }
 }
+
+/* Keyboard route visibility */
+.night-route-card a:focus-visible,
+.tray-card:focus-visible {
+  outline: 2px solid rgba(226, 184, 151, .9);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
