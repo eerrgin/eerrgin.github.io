@@ -912,48 +912,6 @@ const RADIO_SCENES = {
   }
 };
 
-const RADIO_FIELD_RECORDINGS = {
-  train: { id: "439483", title: "Berlin Hauptbahnhof — Night Ambience (Quiet)", creator: "EpicWizard", href: "https://freesound.org/people/EpicWizard/sounds/439483/" },
-  bus: { id: "536337", title: "Tel Aviv City Public Bus Ride Ambience", creator: "khenshom", href: "https://freesound.org/people/khenshom/sounds/536337/" },
-  platform: { id: "825616", title: "old passenger train", creator: "Julian_Eftei", href: "https://freesound.org/people/Julian_Eftei/sounds/825616/" },
-  waiting: { id: "802065", title: "Busy train station ambience 01", creator: "TuneSeeker", href: "https://freesound.org/people/TuneSeeker/sounds/802065/" },
-  dawn: { id: "631479", title: "AMB CITY DAWN DISTANT TRAFFIC BIRDS", creator: "tferrino", href: "https://freesound.org/people/tferrino/sounds/631479/" },
-  shore: { id: "796011", title: "Canet — Windy Sea Ambience", creator: "Sadiquecat", href: "https://freesound.org/people/Sadiquecat/sounds/796011/" },
-  inn: { id: "770068", title: "Footsteps Knight — Walk & run, courtyard", creator: "Vrymaa", href: "https://freesound.org/people/Vrymaa/sounds/770068/" },
-  sleep: { id: "207116", title: "man_breathing_asleep.wav", creator: "harleto", href: "https://freesound.org/people/harleto/sounds/207116/" },
-  harbor: { id: "561815", title: "Genaral Habour Ambience", creator: "Kinoton", href: "https://freesound.org/people/Kinoton/sounds/561815/" },
-  walk: { id: "652426", title: "FootstepsInCity.wav", creator: "zatar", href: "https://freesound.org/people/zatar/sounds/652426/" },
-  voices: { id: "528615", title: "Muffled Talking", creator: "PuplPndaHimwx", href: "https://freesound.org/people/PuplPndaHimwx/sounds/528615/" },
-  rain: { id: "607228", title: "Raining In the City Ambience", creator: "RyanKingArt", href: "https://freesound.org/people/RyanKingArt/sounds/607228/" },
-  lighthouse: { id: "561815", title: "Genaral Habour Ambience", creator: "Kinoton", href: "https://freesound.org/people/Kinoton/sounds/561815/" },
-  neon: { id: "423644", title: "City at Night — Ambience", creator: "YellowJacketStudios", href: "https://freesound.org/people/YellowJacketStudios/sounds/423644/" }
-};
-function syncFieldRecording(kind) {
-  const panel = document.getElementById("radio-recording-panel");
-  const frame = document.getElementById("radio-recording-frame");
-  const title = document.getElementById("radio-recording-title");
-  const credit = document.getElementById("radio-recording-credit");
-  const kicker = document.getElementById("radio-recording-kicker");
-  const note = document.getElementById("radio-recording-note");
-  const link = document.getElementById("radio-recording-link");
-  if (!panel || !frame) return;
-  const recording = RADIO_FIELD_RECORDINGS[kind];
-  if (!recording) {
-    panel.hidden = true;
-    if (frame.getAttribute("src") !== "about:blank") frame.src = "about:blank";
-    return;
-  }
-  panel.hidden = false;
-  const playerUrl = "https://freesound.org/embed/sound/iframe/" + recording.id + "/simple/medium/";
-  if (frame.getAttribute("src") !== playerUrl) frame.src = playerUrl;
-  frame.title = recording.title + " — " + recording.creator + " / Freesound field recording";
-  if (title) title.textContent = recording.title;
-  if (credit) credit.textContent = recording.creator + " · CC0 / Public Domain · Freesound";
-  if (kicker) kicker.textContent = "HAM SAHA KAYDI / " + (document.querySelector(".station.on")?.dataset.name || "RADYO");
-  if (note) note.textContent = "Gerçek kayıt ayrı oynatılır. Başlatmak için Freesound oynatıcısındaki play düğmesine bas.";
-  if (link) link.href = recording.href;
-}
-
 function syncRadioUI() {
   const active = audio;
   const air = document.querySelector("#air");
@@ -1292,7 +1250,6 @@ function selectRadio(kind, persist) {
     if (frequency) frequency.textContent = selected.dataset.freq;
     if (name) name.textContent = selected.dataset.name;
   }
-  syncFieldRecording(selectedRadio);
   if (persist) {
     try { localStorage.setItem("e.radio.station.v2", selectedRadio); } catch {}
   }
