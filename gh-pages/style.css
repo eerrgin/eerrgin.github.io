@@ -1353,49 +1353,24 @@ html.motion section.reveal.in { animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 
 .identity-chip-copy { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
 .identity-chip-copy strong { font-family: var(--display); font-size: 23px; line-height: 1.05; letter-spacing: 0.04em; }
 .identity-chip-copy > span:last-child { color: var(--muted); font-size: 12px; line-height: 1.35; }
-.station-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 9px;
-  margin: 18px 0 12px;
-}
-.station {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 5px;
-  min-width: 0;
-  min-height: 112px;
-  padding: 12px 11px;
-  text-align: left;
-  border: 1px solid var(--line);
-  background: linear-gradient(150deg, rgba(255, 255, 255, 0.025), rgba(4, 1, 2, 0.4));
-  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
-}
-.station-frequency { color: var(--red); font-family: var(--display); font-size: 24px; line-height: 0.95; letter-spacing: 0.04em; }
-.station-title { font-family: var(--mono); font-size: 11px; font-weight: 700; line-height: 1.25; letter-spacing: 0.04em; text-transform: uppercase; overflow-wrap: anywhere; }
-.station-description { color: var(--muted); font-size: 11px; line-height: 1.35; letter-spacing: 0; text-transform: none; }
-.station.on, .station:hover, .station:focus-visible { border-color: var(--red); color: var(--fg); background: linear-gradient(150deg, rgba(255, 31, 26, 0.14), rgba(8, 1, 3, 0.8)); }
-.station.on { box-shadow: inset 0 0 0 1px rgba(255, 31, 26, 0.24), 0 0 16px rgba(255, 31, 26, 0.07); }
-.station.on .station-frequency { text-shadow: 0 0 18px color-mix(in srgb, var(--red) 60%, transparent); }
-.radio-actions { margin-top: 12px; }
-#stop-radio { border-color: color-mix(in srgb, var(--red) 55%, var(--line)); }
-#radio-help { min-height: 1.5em; margin: 8px 0 4px; }
-@media (max-width: 899px) {
-  .station-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-@media (max-width: 600px) {
-  .identity-chip { gap: 11px; margin-top: 18px; padding: 8px 11px 8px 8px; }
-  .identity-chip img { width: 68px; height: 68px; flex-basis: 68px; }
-  .identity-chip-copy strong { font-size: 21px; }
-  .identity-chip-copy > span:last-child { font-size: 11px; }
-  .station-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; margin-top: 14px; }
-  .station { min-height: 110px; padding: 10px 9px; }
-  .station-frequency { font-size: 22px; }
-  .station-title { font-size: 10px; }
-  .station-description { font-size: 10px; }
-}
+.station-rail-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0 8px}
+.station-rail-heading>.kicker{margin:0;color:var(--dim);font-size:9px;letter-spacing:.13em}
+.station-rail-actions{display:flex;gap:6px;flex:0 0 auto}
+.station-rail-actions button{width:32px;height:30px;padding:0;border:1px solid var(--line);background:rgba(7,2,4,.88);color:var(--bone);font:15px var(--mono);cursor:pointer}
+.station-rail-actions button:hover,.station-rail-actions button:focus-visible{border-color:var(--red);color:var(--red)}
+.station-grid{display:flex;gap:8px;margin:0 0 12px;padding:3px 2px 11px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--red) 58%,transparent) rgba(8,2,4,.62);-webkit-overflow-scrolling:touch;mask-image:linear-gradient(90deg,#000 0%,#000 95%,transparent 100%)}
+.station{display:flex;flex:0 0 clamp(150px,17vw,184px);flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:4px;min-width:0;min-height:88px;padding:9px 10px;text-align:left;scroll-snap-align:start;border:1px solid var(--line);border-radius:3px;background:rgba(7,2,4,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:border-color 180ms ease,background 180ms ease,transform 180ms ease}
+.station-frequency{color:var(--red);font-family:var(--display);font-size:20px;line-height:.95;letter-spacing:.04em}
+.station-title{font-family:var(--mono);font-size:10px;font-weight:700;line-height:1.22;letter-spacing:.035em;text-transform:uppercase;overflow-wrap:anywhere}
+.station-description{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;color:var(--muted);font-size:9px;line-height:1.3;letter-spacing:0;text-transform:none}
+.station.on,.station:hover,.station:focus-visible{border-color:var(--red);color:var(--fg);background:rgba(29,7,9,.96)}
+.station.on{box-shadow:inset 0 0 0 1px rgba(255,31,26,.25),0 0 14px rgba(255,31,26,.06)}
+.station.on .station-frequency{text-shadow:0 0 15px color-mix(in srgb,var(--red) 60%,transparent)}
+.radio-actions{margin-top:12px}
+#stop-radio{border-color:color-mix(in srgb,var(--red) 55%,var(--line))}
+#radio-help{min-height:1.5em;margin:8px 0 4px}
+@media(max-width:600px){.station-rail-heading{margin-top:14px}.station{flex-basis:min(66vw,204px);min-height:82px;padding:8px 9px}.station-frequency{font-size:19px}.station-description{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.station{transition:none}}
 @media (prefers-reduced-motion: reduce) {
   html:not([data-motion="on"]) .station { transition: none; }
 }
@@ -2673,14 +2648,14 @@ body::before {
 .fr-sky {
   inset: -8%;
   background:
-    url("../assets/illustrations/night-train.svg") center 42% / cover no-repeat;
+    url("/assets/illustrations/night-train.svg") center 42% / cover no-repeat;
   animation: plate-drift 48s ease-in-out infinite alternate;
   filter: saturate(1.08) contrast(1.08);
 }
 .fr-moon { display: none; }
 .fr-far {
   inset: -6%;
-  background: url("../assets/illustrations/night-train.svg") center / cover no-repeat;
+  background: url("/assets/illustrations/night-train.svg") center / cover no-repeat;
   opacity: 0.38;
   mix-blend-mode: lighten;
   animation: plate-drift-2 62s ease-in-out infinite alternate;
@@ -2948,7 +2923,7 @@ section[data-stamp]::before { -webkit-text-stroke-color: color-mix(in srgb, var(
   background-image:
     linear-gradient(180deg, rgba(8,5,6,.30) 0%, rgba(8,5,6,.10) 38%, rgba(8,5,6,.54) 76%, #080506 100%),
     linear-gradient(90deg, rgba(20,7,9,.28), rgba(8,5,6,.04) 48%, rgba(8,5,6,.24)),
-    url("../assets/illustrations/night-train.svg");
+    url("/assets/illustrations/night-train.svg");
   background-repeat: no-repeat;
   background-position: center, center, center 42%;
   background-size: cover, cover, cover;
@@ -2989,7 +2964,7 @@ section[data-stamp]::before { -webkit-text-stroke-color: color-mix(in srgb, var(
     background-image:
       linear-gradient(180deg, rgba(8,5,6,.32), rgba(8,5,6,.18) 36%, rgba(8,5,6,.60) 78%, #080506),
       linear-gradient(90deg, rgba(20,7,9,.22), rgba(8,5,6,.06) 48%, rgba(8,5,6,.18)),
-      url("../assets/illustrations/night-train.svg");
+      url("/assets/illustrations/night-train.svg");
     background-position: center, center, 56% center;
   }
 }
@@ -3189,36 +3164,28 @@ html[data-motion="off"] .topos-scan,html[data-motion="off"] .topos-highlight{ani
 @media (prefers-reduced-motion:reduce) { .cockpit-pulse { animation:none; } }
 
 
-/* ATMOSPHERE PANEL / main-site visual language and responsive frame */
-.istanbul-cockpit { min-width: 0; overflow: clip; }
-.cockpit-heading { margin-bottom: 16px; gap: 18px; }
-.cockpit-heading h2 { max-width: 100%; letter-spacing: -.015em; }
-.cockpit-heading h2 em { color: var(--red); }
+/* ATMOSPHERE PANEL / stable responsive frame sizing */
+.istanbul-cockpit { min-width:0; overflow:clip; }
+.cockpit-heading { margin-bottom:16px; gap:clamp(16px,2vw,26px); }
+.cockpit-heading h2 { max-width:100%; letter-spacing:-.015em; }
+.cockpit-heading h2 em { color:var(--red); }
 .cockpit-frame-shell {
-  border-color: color-mix(in srgb, var(--red) 46%, var(--line));
-  border-radius: 2px;
-  box-shadow: 0 18px 48px rgba(0,0,0,.24), inset 0 1px rgba(255,220,207,.025);
+  min-width:0;
+  border-color:color-mix(in srgb,var(--red) 46%,var(--line));
+  border-radius:2px;
+  box-shadow:0 18px 48px rgba(0,0,0,.24),inset 0 1px rgba(255,220,207,.025);
 }
-.cockpit-frame-top { min-height: 32px; padding: 7px 12px; }
-.cockpit-frame { height: 500px; background: var(--bg); }
-.cockpit-footer-line { padding-top: 9px; }
-@media (max-width: 899px) {
-  .cockpit-frame { height: 650px; }
+.cockpit-frame-top { min-height:32px; padding:7px 12px; }
+.cockpit-frame { display:block; width:100%; height:480px; min-height:320px; border:0; background:var(--bg); }
+.cockpit-footer-line { padding-top:9px; }
+@media(max-width:899px) { .cockpit-frame { height:540px; } }
+@media(max-width:600px) {
+  .cockpit-heading { margin-bottom:13px; }
+  .cockpit-frame-top { gap:8px; }
+  .cockpit-frame-top span:last-child { white-space:nowrap; }
+  .cockpit-frame { height:560px; }
+  .cockpit-footer-line { gap:5px 12px; overflow-wrap:anywhere; }
 }
-@media (max-width: 600px) {
-  .cockpit-heading { margin-bottom: 13px; }
-  .cockpit-frame-top { gap: 8px; }
-  .cockpit-frame-top span:last-child { white-space: nowrap; }
-  .cockpit-frame { height: 820px; }
-  .cockpit-footer-line { gap: 5px 12px; overflow-wrap: anywhere; }
-}
-
-
-/* ATMOSPHERE EMBED · allow the complete compact panel to size itself */
-.cockpit-frame { height: 480px; }
-@media (max-width: 899px) { .cockpit-frame { height: 650px; } }
-@media (max-width: 600px) { .cockpit-frame { height: 820px; } }
-
 
 /* Compact, overflow-safe project tray: desktop, tablet and mobile. */
 .project-tray-section{--tray-line:rgba(218,203,179,.22);position:relative;isolation:isolate;margin:clamp(44px,7vw,100px) 0;padding:clamp(18px,4vw,42px);border:1px solid var(--tray-line);border-radius:22px;background:linear-gradient(135deg,rgba(20,23,27,.96),rgba(12,15,19,.96));min-width:0;max-width:100%;overflow:hidden}
@@ -3403,3 +3370,15 @@ body.live #led{box-shadow:0 0 13px var(--red);animation:radio-led-breathe 2.2s e
   body.live #led{animation:none}
   .nav-more-menu,.cmd-action{transition:none}
 }
+
+
+/* Uzak Tren / Freesound CC0 saha kaydı */
+.train-source-panel {
+  margin: 16px 0 22px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  background: linear-gradient(120deg, color-mix(in srgb, var(--red) 5%, var(--surface)), color-mix(in srgb, var(--bg) 92%, transparent));
+}
+.train-source-panel > .kicker { margin: 0 0 10px; }
+.train-source-panel .note { max-width: 70ch; margin: 9px 0 0; }
+.train-source-panel a { color: var(--bone); text-decoration-color: var(--red); text-underline-offset: 3px; }

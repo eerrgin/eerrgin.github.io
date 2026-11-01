@@ -681,10 +681,10 @@ window.addEventListener("beforeunload", () => { if (imageUrl) URL.revokeObjectUR
 
 let audio = null;
 let radioMaster = null;
-let radioLevel = 0.78;
+let radioLevel = 0.90;
 let radioMuted = false;
 try {
-  const storedLevel = localStorage.getItem("e.radio.volume");
+  const storedLevel = localStorage.getItem("e.radio.volume.v2");
   const savedLevel = storedLevel === null ? NaN : Number(storedLevel);
   // Zero is not a useful startup level here because the mixer already has a
   // dedicated mute control. Recover stale zero-volume preferences to a gentle
@@ -692,9 +692,9 @@ try {
   if (Number.isFinite(savedLevel) && savedLevel > 0 && savedLevel <= 1) {
     radioLevel = savedLevel;
   } else if (storedLevel !== null) {
-    localStorage.setItem("e.radio.volume", String(radioLevel));
+    localStorage.setItem("e.radio.volume.v2", String(radioLevel));
   }
-  radioMuted = localStorage.getItem("e.radio.muted") === "1";
+  radioMuted = localStorage.getItem("e.radio.muted.v2") === "1";
 } catch {}
 let analyser = null;
 let wave = null;
@@ -702,9 +702,92 @@ const tape = new Audio();
 let tapeUrl = null;
 let radioTimers = [];
 let autoStartTimer = null;
-let selectedRadio = "bus";
+let selectedRadio = "train";
 
 const RADIO_SCENES = {
+  train: {
+    volume: 0.34,
+    layers: [
+      { color: "brown", filter: "lowpass", freq: 165, gain: 0.145, q: 0.62, pulseHz: 0.18, depth: 0.025 },
+      { color: "brown", filter: "bandpass", freq: 480, gain: 0.022, q: 0.75, pulseHz: 0.32, depth: 0.006 },
+      { color: "white", filter: "bandpass", freq: 1850, gain: 0.008, q: 0.65 },
+      { color: "white", filter: "highpass", freq: 3400, gain: 0.0035, q: 0.55 }
+    ],
+    tones: [{ freq: 54.9, type: "sine", gain: 0.026, vibrato: 0.9 }, { freq: 110, type: "sine", gain: 0.006, vibrato: 1.2 }],
+    echo: true
+  },
+  waiting: {
+    volume: 0.30,
+    layers: [
+      { color: "brown", filter: "lowpass", freq: 260, gain: 0.105, q: 0.7, pulseHz: 0.055, depth: 0.015 },
+      { color: "brown", filter: "bandpass", freq: 720, gain: 0.030, q: 0.85, pulseHz: 0.11, depth: 0.008 },
+      { color: "white", filter: "highpass", freq: 2500, gain: 0.004, q: 0.6 }
+    ],
+    tones: [{ freq: 82.4, type: "sine", gain: 0.012, vibrato: 0.6 }], echo: true
+  },
+  dawn: {
+    volume: 0.28,
+    layers: [
+      { color: "brown", filter: "lowpass", freq: 235, gain: 0.10, q: 0.7, pulseHz: 0.09, depth: 0.022 },
+      { color: "white", filter: "bandpass", freq: 1350, gain: 0.012, q: 0.55 },
+      { color: "white", filter: "highpass", freq: 3600, gain: 0.005, q: 0.6 }
+    ],
+    tones: [{ freq: 55, type: "sine", gain: 0.014, vibrato: 0.5 }], echo: true
+  },
+  shore: {
+    volume: 0.30,
+    layers: [
+      { color: "brown", filter: "lowpass", freq: 330, gain: 0.125, q: 0.65, pulseHz: 0.075, depth: 0.058 },
+      { color: "white", filter: "lowpass", freq: 2100, gain: 0.028, q: 0.6, pulseHz: 0.075, depth: 0.012 },
+      { color: "white", filter: "highpass", freq: 4200, gain: 0.004, q: 0.55 }
+    ],
+    tones: [{ freq: 65.4, type: "sine", gain: 0.012, vibrato: 0.8 }], echo: true
+  },
+  inn: {
+    volume: 0.29,
+    layers: [
+      { color: "brown", filter: "lowpass", freq: 190, gain: 0.075, q: 0.7 },
+      { color: "brown", filter: "bandpass", freq: 510, gain: 0.025, q: 1.1 },
+      { color: "white", filter: "lowpass", freq: 1700, gain: 0.006, q: 0.7 }
+    ],
+    tones: [{ freq: 73.4, type: "triangle", gain: 0.009, vibrato: 0.35 }], echo: true
+  },
+  sleep: {
+    volume: 0.27,
+    layers: [
+      { color: "brown", filter: "lowpass", freq: 420, gain: 0.062, q: 0.65, pulseHz: 0.22, depth: 0.025 },
+      { color: "white", filter: "lowpass", freq: 1150, gain: 0.006, q: 0.6, pulseHz: 0.22, depth: 0.004 },
+      { color: "brown", filter: "highpass", freq: 75, gain: 0.014, q: 0.7 }
+    ],
+    tones: [{ freq: 55, type: "sine", gain: 0.009, vibrato: 0.3 }], echo: true
+  },
+  harbor: {
+    volume: 0.30,
+    layers: [
+      { color: "brown", filter: "lowpass", freq: 310, gain: 0.115, q: 0.65, pulseHz: 0.085, depth: 0.035 },
+      { color: "white", filter: "bandpass", freq: 950, gain: 0.014, q: 0.65 },
+      { color: "white", filter: "highpass", freq: 3200, gain: 0.005, q: 0.6 }
+    ],
+    tones: [{ freq: 65.4, type: "sine", gain: 0.016, vibrato: 0.65 }], echo: true
+  },
+  walk: {
+    volume: 0.30,
+    layers: [
+      { color: "brown", filter: "lowpass", freq: 280, gain: 0.095, q: 0.65, pulseHz: 0.045, depth: 0.025 },
+      { color: "white", filter: "bandpass", freq: 1250, gain: 0.016, q: 0.6 },
+      { color: "white", filter: "highpass", freq: 3900, gain: 0.003, q: 0.55 }
+    ],
+    tones: [{ freq: 73.4, type: "sine", gain: 0.010, vibrato: 0.4 }], echo: true
+  },
+  voices: {
+    volume: 0.27,
+    layers: [
+      { color: "brown", filter: "bandpass", freq: 680, gain: 0.040, q: 0.75, pulseHz: 0.13, depth: 0.012 },
+      { color: "brown", filter: "bandpass", freq: 1120, gain: 0.022, q: 0.9, pulseHz: 0.09, depth: 0.008 },
+      { color: "white", filter: "lowpass", freq: 2200, gain: 0.006, q: 0.65 }
+    ],
+    tones: [{ freq: 82.4, type: "sine", gain: 0.007, vibrato: 0.4 }], echo: true
+  },
   bus: {
     volume: 0.24,
     layers: [
@@ -834,8 +917,8 @@ function syncRadioUI() {
   const play = document.querySelector("#play");
   const help = document.querySelector("#radio-help");
   const selected = document.querySelector(".station.on");
-  const frequency = selected ? selected.dataset.freq : "88.8";
-  const name = selected ? selected.dataset.name : "Gece Otobüsü";
+  const frequency = selected ? selected.dataset.freq : "102.7";
+  const name = selected ? selected.dataset.name : "Uzak Tren";
   const running = Boolean(active && active.state === "running");
   const suspended = Boolean(active && active.state === "suspended");
   if (air) air.textContent = running ? "YAYINDA · " + frequency : suspended ? "İLK DOKUNUŞTA SES" : "SESSİZ";
@@ -876,7 +959,7 @@ function stopRadio() {
 }
 
 function noise(ctx, color) {
-  const length = ctx.sampleRate * 8;
+  const length = ctx.sampleRate * 5;
   const buffer = ctx.createBuffer(1, length, ctx.sampleRate);
   const data = buffer.getChannelData(0);
   let last = 0;
@@ -1051,6 +1134,97 @@ function buildScene(ctx, master, kind, echo) {
         }, 115);
       }
     }, 720);
+  } else if (kind === "train") {
+    // Düzensiz tekerlek eklemleri: makine ritmi, sabit bir davula dönüşmesin.
+    const railNotes = [196, 220, 174.61, 207.65, 185, 233.08, 164.81, 207.65];
+    let railStep = 0;
+    loopRadio(ctx, () => {
+      const base = railNotes[railStep % railNotes.length];
+      playPing(ctx, master, null, base, 0.008 + Math.random() * 0.003, 0.075, "triangle", base * 0.72);
+      if (railStep % 4 === 2) {
+        playPing(ctx, master, null, base * 1.48, 0.0045, 0.055, "sine", base * 1.08);
+      }
+      railStep += 1;
+    }, 430);
+    // Kısa, özgün ve yavaş bir özlem motifi; hazır bir şarkı örneği kullanmaz.
+    const wistfulNotes = [392, 349.23, 293.66, 261.63, 293.66, 349.23, 329.63, 293.66];
+    let wistfulStep = 0;
+    loopRadio(ctx, () => {
+      playPing(ctx, master, echo, wistfulNotes[wistfulStep % wistfulNotes.length], 0.0105, 2.9, "sine");
+      wistfulStep += 1;
+    }, 3850);
+    loopRadio(ctx, () => {
+      if (Math.random() < 0.42) {
+        const shimmer = 660 + Math.random() * 260;
+        playPing(ctx, master, echo, shimmer, 0.0028, 0.8, "sine", shimmer * 0.96);
+      }
+    }, 6100);
+  } else if (kind === "waiting") {
+    const announcements = [587.33, 659.25, 523.25, 698.46];
+    let signal = 0;
+    loopRadio(ctx, () => {
+      const f = announcements[signal % announcements.length];
+      playPing(ctx, master, echo, f, 0.006, 0.42, "sine", f * 0.94);
+      signal += 1;
+    }, 9200);
+    loopRadio(ctx, () => {
+      if (Math.random() < 0.58) playPing(ctx, master, echo, 170 + Math.random() * 110, 0.0035, 0.38, "triangle");
+    }, 2600);
+  } else if (kind === "dawn") {
+    loopRadio(ctx, () => {
+      if (Math.random() < 0.82) {
+        const bird = 1850 + Math.random() * 1500;
+        playPing(ctx, master, echo, bird, 0.003 + Math.random() * 0.003, 0.22 + Math.random() * 0.18, "sine", bird * (1.06 + Math.random() * 0.12));
+      }
+    }, 1250);
+    loopRadio(ctx, () => {
+      const pass = 65 + Math.random() * 32;
+      playPing(ctx, master, null, pass, 0.008, 1.8, "sine", pass * 0.78);
+    }, 7300);
+  } else if (kind === "shore") {
+    loopRadio(ctx, () => {
+      if (Math.random() < 0.56) {
+        const gull = 620 + Math.random() * 420;
+        playPing(ctx, master, echo, gull, 0.004, 1.35, "sine", gull * (0.72 + Math.random() * 0.12));
+      }
+    }, 5200);
+    loopRadio(ctx, () => {
+      playPing(ctx, master, null, 115 + Math.random() * 90, 0.006, 0.42, "triangle", 65 + Math.random() * 35);
+    }, 1850);
+  } else if (kind === "inn") {
+    loopRadio(ctx, () => {
+      const foot = 76 + Math.random() * 28;
+      playPing(ctx, master, echo, foot, 0.014 + Math.random() * 0.004, 0.12, "triangle", foot * 0.68);
+      if (Math.random() < 0.22) playPing(ctx, master, echo, 310 + Math.random() * 80, 0.003, 0.7, "sine", 230);
+    }, 760);
+  } else if (kind === "sleep") {
+    loopRadio(ctx, () => {
+      const breath = 145 + Math.random() * 25;
+      playPing(ctx, master, echo, breath, 0.0028, 1.1, "sine", breath * 0.82);
+    }, 4600);
+  } else if (kind === "harbor") {
+    const harborBells = [196, 233.08, 174.61];
+    let bell = 0;
+    loopRadio(ctx, () => {
+      playPing(ctx, master, echo, harborBells[bell % harborBells.length], 0.013, 2.2, "sine");
+      bell += 1;
+    }, 8400);
+    loopRadio(ctx, () => {
+      if (Math.random() < 0.45) playPing(ctx, master, null, 88 + Math.random() * 40, 0.008, 0.18, "triangle", 56);
+    }, 1700);
+  } else if (kind === "walk") {
+    loopRadio(ctx, () => {
+      const step = 88 + Math.random() * 30;
+      playPing(ctx, master, echo, step, 0.011, 0.085, "triangle", step * 0.7);
+    }, 690);
+    loopRadio(ctx, () => {
+      if (Math.random() < 0.42) playPing(ctx, master, null, 75 + Math.random() * 24, 0.007, 2.0, "sine", 58);
+    }, 5100);
+  } else if (kind === "voices") {
+    loopRadio(ctx, () => {
+      const murmur = 220 + Math.random() * 240;
+      playPing(ctx, master, echo, murmur, 0.0025, 0.55 + Math.random() * 0.55, "sine", murmur * (0.92 + Math.random() * 0.12));
+    }, 1450);
   } else if (kind === "longing") {
     const notes = [392, 329.63, 293.66, 261.63, 220, 293.66, 329.63, 261.63];
     let note = 0;
@@ -1062,7 +1236,7 @@ function buildScene(ctx, master, kind, echo) {
 }
 
 function selectRadio(kind, persist) {
-  selectedRadio = RADIO_SCENES[kind] ? kind : "bus";
+  selectedRadio = RADIO_SCENES[kind] ? kind : "train";
   document.querySelectorAll(".station").forEach((button) => {
     const active = button.dataset.kind === selectedRadio;
     button.classList.toggle("on", active);
@@ -1076,7 +1250,7 @@ function selectRadio(kind, persist) {
     if (name) name.textContent = selected.dataset.name;
   }
   if (persist) {
-    try { localStorage.setItem("e.radio.station", selectedRadio); } catch {}
+    try { localStorage.setItem("e.radio.station.v2", selectedRadio); } catch {}
   }
 }
 
@@ -1124,6 +1298,14 @@ function startRadio(kind, options) {
   return true;
 }
 
+const stationGrid = document.getElementById("station-grid");
+document.getElementById("station-scroll-prev")?.addEventListener("click", () => {
+  if (stationGrid) stationGrid.scrollBy({ left: -280, behavior: reduceMotion ? "auto" : "smooth" });
+});
+document.getElementById("station-scroll-next")?.addEventListener("click", () => {
+  if (stationGrid) stationGrid.scrollBy({ left: 280, behavior: reduceMotion ? "auto" : "smooth" });
+});
+
 document.querySelectorAll(".station").forEach((button) => {
   button.addEventListener("click", () => {
     selectRadio(button.dataset.kind, true);
@@ -1160,10 +1342,7 @@ function unlockRadio() {
 document.addEventListener("pointerdown", unlockRadio, { passive: true });
 document.addEventListener("keydown", unlockRadio);
 
-try {
-  const saved = localStorage.getItem("e.radio.station");
-  if (saved && RADIO_SCENES[saved]) selectedRadio = saved;
-} catch {}
+// Ana sayfanın açılış frekansı her zaman Uzak Tren'dir.
 selectRadio(selectedRadio, false);
 autoStartTimer = window.setTimeout(() => {
   autoStartTimer = null;
@@ -1280,7 +1459,7 @@ document.querySelector("#cmd-filter")?.addEventListener("input", (event) => {
   if (needle.trim() !== "statik") staticArmed = false;
 });
 
-// Harici hava verisi çağrıları kaldırıldı.
+// Harici hava verisi çağrıları kaldırıldı; ana sayfa yerel çalışır.
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.getRegistrations().then((regs) => {
@@ -1561,7 +1740,7 @@ window.Gece = {
     const next = Number(value);
     if (!Number.isFinite(next)) return radioLevel;
     radioLevel = Math.max(0, Math.min(1, next));
-    try { localStorage.setItem("e.radio.volume", String(radioLevel)); } catch {}
+    try { localStorage.setItem("e.radio.volume.v2", String(radioLevel)); } catch {}
     if (radioMaster && audio && audio.state !== "closed") {
       const target = RADIO_SCENES[selectedRadio].volume * (radioMuted ? 0 : radioLevel);
       radioMaster.gain.setTargetAtTime(target, audio.currentTime, 0.035);
@@ -1570,7 +1749,7 @@ window.Gece = {
   },
   setRadioMuted(value) {
     radioMuted = Boolean(value);
-    try { localStorage.setItem("e.radio.muted", radioMuted ? "1" : "0"); } catch {}
+    try { localStorage.setItem("e.radio.muted.v2", radioMuted ? "1" : "0"); } catch {}
     if (radioMaster && audio && audio.state !== "closed") {
       const target = RADIO_SCENES[selectedRadio].volume * (radioMuted ? 0 : radioLevel);
       radioMaster.gain.setTargetAtTime(target, audio.currentTime, 0.025);

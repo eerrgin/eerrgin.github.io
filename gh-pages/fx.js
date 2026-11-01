@@ -9,7 +9,7 @@
   let w = 0;
   let h = 0;
   let dpr = 1;
-  const count = Math.min(90, Math.max(36, Math.round((window.innerWidth * window.innerHeight) / 18000)));
+  const count = Math.min(64, Math.max(24, Math.round((window.innerWidth * window.innerHeight) / 26000)));
   const sparks = Array.from({ length: count }, spawn);
   let bolt = null;
   let boltLife = 0;
@@ -41,7 +41,7 @@
   }
 
   function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, window.innerWidth <= 720 ? 1.35 : 1.75);
+    dpr = Math.min(window.devicePixelRatio || 1, window.innerWidth <= 720 ? 1.15 : 1.5);
     w = window.innerWidth;
     h = window.innerHeight;
     canvas.width = Math.floor(w * dpr);
@@ -108,6 +108,7 @@
 
   function frame(now) {
     framePending = false;
+    if (document.hidden) return;
     const motionOn = document.documentElement.dataset.motion === "on";
     const tremor = document.documentElement.dataset.tremor !== "off";
     /* The texture is atmospheric, so 30 FPS is visually enough and halves canvas work. */
@@ -171,6 +172,9 @@
     if (motionOn && tremor) scheduleFrame();
   }
 
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && document.documentElement.dataset.motion === "on" && document.documentElement.dataset.tremor !== "off") scheduleFrame();
+  });
   window.addEventListener("resize", resize, { passive: true });
   const motionObserver = new MutationObserver(() => {
     if (document.documentElement.dataset.motion === "on" &&

@@ -37,8 +37,9 @@
   <link rel="icon" href="favicon.svg?v=20261024" type="image/svg+xml">
   <link rel="mask-icon" href="favicon.svg?v=20261024" color="#ff3028">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="style.css?v=20261028-night-cockpit01">
-  <link rel="stylesheet" href="night-vision.css?v=20261031-istanbul-nocturne03">
+  <link rel="stylesheet" href="style.css?v=20261101-radio19b">
+  <link rel="stylesheet" href="night-vision.css?v=20261031-gece06">
+  <link rel="stylesheet" href="night-refit.css?v=20261101-01">
   <script>
     (function () {
       var root = document.documentElement;
@@ -129,6 +130,37 @@
       <div class="arrival-footer"><span>ERGİN KAPLAN · İSTANBUL</span><span>“Her gidiş uzaklaşmak değildir. Bazen insan kendine varır.”</span><span>41.0°N 28.9°E ✳</span></div>
     </section>
     <div class="ticker" aria-hidden="true"><p>PERON 01 ✳ ISLAK TAŞLAR ✳ UZAK PENCERELER ✳ FREKANS 88.8 ✳ GECE HATTI ✳ SAMATYA ✳ PERON 01 ✳ ISLAK TAŞLAR ✳ UZAK PENCERELER ✳ FREKANS 88.8 ✳</p></div>
+    <nav class="night-route-map" aria-label="Gece hattı bölüm haritası">
+      <div class="night-route-top">
+        <div>
+          <p class="kicker">HAT HARİTASI / 04 ROTA</p>
+          <p class="night-route-caption">Uzun koridorlar yerine, doğru perona kısa bir geçiş.</p>
+        </div>
+        <span class="night-route-mark">IST · 41°00′N / 28°56′E</span>
+      </div>
+      <div class="night-route-grid">
+        <article class="night-route-card">
+          <span class="night-route-index">01 <i>GÖZLEM</i></span>
+          <h3><a href="#topos">Gökyüzü &amp; kıyı <span>↗</span></a></h3>
+          <div class="night-route-links"><a href="#kuslar">Kuş hattı</a><a href="#hava">Atmosfer</a></div>
+        </article>
+        <article class="night-route-card">
+          <span class="night-route-index">02 <i>ATÖLYE</i></span>
+          <h3><a href="#atolye">Deney masası <span>↗</span></a></h3>
+          <div class="night-route-links"><a href="#tigerk">Tigerk</a><a href="#laboratuvar">Kedi dosyası</a><a href="#ustalik-rotasi">Ustalık rotası</a></div>
+        </article>
+        <article class="night-route-card">
+          <span class="night-route-index">03 <i>YAYIN</i></span>
+          <h3><a href="#frekans">Gece frekansı <span>↗</span></a></h3>
+          <div class="night-route-links"><a href="#sinyal">Dış sinyal</a><a href="#arsiv">Gece arşivi</a></div>
+        </article>
+        <article class="night-route-card">
+          <span class="night-route-index">04 <i>KAYIT</i></span>
+          <h3><a href="#proje-tepsisi">Açık dosyalar <span>↗</span></a></h3>
+          <div class="night-route-links"><a href="#hat">Kırmızı hat</a><a href="sapma-defteri/">Sapma defteri</a></div>
+        </article>
+      </div>
+    </nav>
 
     <section class="night-notes reveal" id="istasyon-notlari" aria-labelledby="night-notes-title">
     <div class="night-notes-head">
@@ -165,8 +197,8 @@
       <div class="night-note-shade" aria-hidden="true"></div>
       <div class="night-note-feature-copy">
         <p class="kicker" id="station-kicker">SAHİL HATTI / KAPI 01 · KAYIT 194</p>
-        <h2 id="night-notes-title">Son sefer çoktan kalktı.<br><em>İskeledeki ışık yine de söndürülmedi.</em></h2>
-        <p id="station-copy">Samatya kıyısında son seferden sonra da bir ışık yanar. Tarifede görünmeyen bu küçük gecikmenin kime ayrıldığını kimse sormaz.</p>
+        <h2 id="night-notes-title">Son sefer kalktı.<br><em>Işık yerinde kaldı.</em></h2>
+        <p id="station-copy">Tarifede yok. Yine de yanıyor. Kıyı kimseyi ikna etmiyor; sadece kararmıyor.</p>
         <div class="station-feature-meta">
           <span id="station-photo-credit">SAMATYA · MARMARA KIYISI</span>
           <span>İSTANBUL GECE ARŞİVİ</span>
@@ -175,80 +207,28 @@
       <span class="night-note-photo-credit">GECE HATTI · KAYIT 001 / 012</span>
     </article>
 
-    <div class="station-controls" aria-label="Gece hattı durakları arasında gezin">
-      <button type="button" class="station-control" id="station-prev">← ÖNCEKİ DURAK</button>
+    <div class="station-controls" aria-label="Gece hattı durağı">
       <span id="station-counter" aria-live="polite">01 / 12</span>
-      <button type="button" class="station-control station-random" id="station-random">TESADÜFEN BİR DURAK ↝</button>
-      <button type="button" class="station-control station-next" id="station-next">SONRAKİ DURAK →</button>
+      <button type="button" class="station-control station-random" id="station-random">DİĞER DURAĞI GÖSTER ↝</button>
     </div>
 
-    <div class="night-note-grid station-note-grid" id="station-note-grid" aria-label="Gece hattındaki bütün duraklar"></div>
-    <p class="night-notes-foot">BİLETİNİZİ SAKLAYIN · BAZI HATLARIN SON DURAĞI, BİRİNİN HÂLÂ BEKLEDİĞİ YERDİR</p>
+    
+    <p class="night-notes-foot">BAZI HATLARIN SON DURAĞI, HÂLÂ BEKLENEN YERDİR</p>
   </section>
 
 <section class="istanbul-cockpit" id="hava" aria-labelledby="istanbul-cockpit-title">
-    <div class="wrap cockpit-wrap">
-      <div class="cockpit-heading">
-        <div class="cockpit-heading-copy">
-          <p class="kicker"><span class="cockpit-pulse" aria-hidden="true"></span> ERGIN LAB · SAHA DENEYİ 01</p>
-          <h2 id="istanbul-cockpit-title">İstanbul <em>/ Atmosfer</em></h2>
-          <p>İstanbul’un üstünde bu gece ne var? Havanın, ayın, ışığın ve yerin küçük hareketleri. Şehrin dışarıdaki hâlini içerideki sessizliğe bağlayan canlı bir pencere.</p>
-        </div>
-        <div class="cockpit-heading-meta" aria-label="Veri kaynakları">
-          <span>AÇIK VERİ</span><span>ANAHTARSIZ HAVA</span><span>CANLI ALETLER</span>
-        </div>
-      </div>
-      <div class="cockpit-frame-shell">
-        <div class="cockpit-frame-top" aria-hidden="true">
-          <span><i></i> İSTANBUL / CANLI TELEMETRİ</span>
-          <span>41°00′N · 28°58′E</span>
-        </div>
-        <iframe
-          id="istanbul-live-frame"
-          class="cockpit-frame"
-          src="/istanbul-cockpit/?embed=1&v=20261031-gauge01"
-          title="Ergin Lab İstanbul atmosfer kokpiti: hava, ışık, ay, kalite, basınç, deprem ve yörünge"
-          loading="eager"
-          referrerpolicy="strict-origin-when-cross-origin"
-        ></iframe>
-      </div>
-      <div class="cockpit-footer-line">
-        <span>CANLI GÖZLEM / İSTANBUL</span>
-        <span>HAVA · IŞIK · AY · SİSMİK · YÖRÜNGE</span>
-        <a href="/istanbul-cockpit/" target="_blank" rel="noopener">TAM KOKPİTİ AÇ ↗</a>
-      </div>
-    </div>
-  </section>
-  <script>
-    (function () {
-      var frame = document.getElementById("istanbul-live-frame");
-      if (!frame) return;
-      window.addEventListener("message", function (event) {
-        if (event.origin !== window.location.origin || event.source !== frame.contentWindow) return;
-        var data = event.data;
-        if (!data || data.type !== "istanbul-cockpit:resize") return;
-        var height = Number(data.height);
-        if (!Number.isFinite(height) || height < 280) return;
-        var maxHeight = window.matchMedia("(max-width: 600px)").matches ? 1800 :
-          (window.matchMedia("(max-width: 899px)").matches ? 1400 : 1100);
-        frame.style.height = Math.min(Math.max(Math.ceil(height), 420), maxHeight) + "px";
-      });
-      frame.addEventListener("load", function () {
-        frame.contentWindow.postMessage({ type: "istanbul-cockpit:measure" }, window.location.origin);
-      });
-    })();
-  </script>
+<div class="wrap cockpit-wrap"><div class="cockpit-heading"><div class="cockpit-heading-copy"><p class="kicker">ERGİN LAB · YEREL ŞEMA / 01</p><h2 id="istanbul-cockpit-title">İstanbul <em>/ Gece Haritası</em></h2><p>Bir kıyı çizgisi, birkaç rota ve şehrin hafızası. Bu pano ölçeksiz, özgün bir vektör yorumudur; canlı veri veya navigasyon aracı değildir.</p></div><div class="cockpit-heading-meta"><span>YEREL ÇİZİM</span><span>DIŞ VERİ YOK</span><span>ÖLÇEKSİZ</span></div></div>
+<figure class="night-map-plate"><img src="/assets/illustrations/istanbul-schematic.svg" alt="İstanbul Boğazı ve kıyı semtlerinden esinlenen özgün, ölçeksiz vektör şema." width="1200" height="720" loading="lazy" decoding="async"><figcaption>Özgün vektör çizim · coğrafi koordinat veya gerçek zamanlı veri sunmaz.</figcaption></figure>
+<div class="cockpit-footer-line"><span>İSTANBUL · 41°00′N</span><span>KIYI · ROTA · HAFIZA</span><a href="/sehrin-tas-hafizasi.html">ŞEHRİN TAŞ HAFIZASINI AÇ ↗</a></div></div></section>
 
-    
-
-    <section id="topos" class="reveal in topos-home" data-stamp="00" aria-labelledby="topos-title">
+<section id="topos" class="reveal in topos-home" data-stamp="00" aria-labelledby="topos-title">
       <div class="topos-frame">
         <div class="topos-copy">
           <p class="kicker">00 / YENİ GÖKYÜZÜ DOSYASI · TOPOS 001</p>
           <div class="topos-overline"><span><i aria-hidden="true"></i> GÖZLEM NOKTASI SABİT</span><span>41.0028° K · 28.9404° D</span></div>
           <h2 id="topos-title">Gökyüzü,<br><em>bir yerden</em> başlar.</h2>
-          <p class="lede topos-lede">İstanbul’un güney kıyısındaki gözlem noktasını merkez alan bir gök atlası. Yıldızların ve gezegenlerin hangi yönde göründüğünü, ufkun ne kadar üstünde kaldığını ve ışıklarının bize yaklaşık ne kadar sürede ulaştığını keşfet.</p>
-          <p class="topos-prompt">Bir yıldız seç. Saati geri al. eski çatıların üzerinden göğe bak.</p>
+          <p class="lede topos-lede">Samatya’dan bakınca gökyüzü bir atlas olur. Yön, yükseklik, ışığın yolu. Nerede, ne kadar yukarıda, ne kadar uzakta.</p>
+          <p class="topos-prompt">Bir yıldız seç. Saati geri al. Çatıların üzerinden bak.</p>
           <div class="row topos-actions">
             <a class="btn" href="samatya-sky/" aria-label="Samatya Topos üç boyutlu gökyüzü simülasyonunu aç">GÖKKUBBEYİ AÇ ↗</a>
             <a class="btn ghost" href="samatya-sky/hesaplama-yontemi.html">YÖNTEM VE HATA PAYI ↗</a>
@@ -577,14 +557,18 @@
     <section id="frekans" class="reveal" data-stamp="04">
       <p class="kicker">04 / GREYFIELD FM</p>
       <h2>Bir kanal seç. <em>Geceyi dinle.</em></h2>
-      <p class="lede">Şehrin dış sesi çekildiğinde geriye kalan frekanslar. Yağmur, uzak motor, analog hışırtı ve gece otobüsünün camındaki titreşim. Sesi açmak senin kararın.</p>
+      <p class="lede">Şehrin dış sesi çekildiğinde geriye kalan frekanslar. Yağmur, uzak motor, analog hışırtı, gece otobüsünün camı ve uzak rayların uğultusu. Sesi açmak senin kararın.</p>
       <img class="frame" src="/assets/illustrations/analog-radio.svg" alt="Karanlık bir masada eski bir analog radyo." width="800" height="450" loading="lazy">
       <p class="air-row"><i class="led" id="led" aria-hidden="true"></i><span class="kicker" id="air">BEKLEMEDE</span></p>
-      <p class="display" id="freq">88.8</p>
-      <h3 id="sname">Gece Otobüsü</h3>
+      <p class="display" id="freq">102.7</p>
+      <h3 id="sname">Uzak Tren</h3>
       <canvas id="scope" width="640" height="72" aria-hidden="true"></canvas>
-      <div class="station-grid" role="group" aria-label="On yerel sentez kanalı">
-        <button class="station on" type="button" data-kind="bus" data-freq="88.8" data-name="Gece Otobüsü" aria-pressed="true">
+      <div class="station-rail-heading"><span class="kicker">19 FREKANS / KAYDIRARAK KEŞFET</span><div class="station-rail-actions"><button type="button" id="station-scroll-prev" aria-label="Kanalları sola kaydır">←</button><button type="button" id="station-scroll-next" aria-label="Kanalları sağa kaydır">→</button></div></div>
+      <div class="station-grid" id="station-grid" role="group" aria-label="On dokuz deneysel radyo kanalı">
+        <button class="station on" type="button" data-kind="train" data-freq="102.7" data-name="Uzak Tren" aria-pressed="true">
+          <span class="station-frequency">102.7</span><strong class="station-title">Uzak Tren</strong><small class="station-description">“Uzak trenler geçer; bekleyiş aynı peronda kalır.”</small>
+        </button>
+        <button class="station" type="button" data-kind="bus" data-freq="88.8" data-name="Gece Otobüsü" aria-pressed="false">
           <span class="station-frequency">88.8</span><strong class="station-title">Gece Otobüsü</strong><small class="station-description">Motor uğultusu, uzak yol ve titreşen cam.</small>
         </button>
         <button class="station" type="button" data-kind="vhs" data-freq="87.9" data-name="VHS Rüyası" aria-pressed="false">
@@ -614,16 +598,40 @@
         <button class="station" type="button" data-kind="longing" data-freq="101.8" data-name="Özlemek" aria-pressed="false">
           <span class="station-frequency">101.8</span><strong class="station-title">Özlemek</strong><small class="station-description">Uzak piyano hissi, yumuşak armoni ve geçmeyen bir akşam.</small>
         </button>
+        <button class="station" type="button" data-kind="waiting" data-freq="103.1" data-name="Bekleme Salonu" aria-pressed="false">
+          <span class="station-frequency">103.1</span><strong class="station-title">Bekleme Salonu</strong><small class="station-description">Kısık anonslar, kalabalık uğultusu, yaklaşan tren.</small>
+        </button>
+        <button class="station" type="button" data-kind="dawn" data-freq="104.3" data-name="Sabahın İlk Sokağı" aria-pressed="false">
+          <span class="station-frequency">104.3</span><strong class="station-title">Sabahın İlk Sokağı</strong><small class="station-description">Şafak trafiği, boş kaldırım ve ilk kuşlar.</small>
+        </button>
+        <button class="station" type="button" data-kind="shore" data-freq="105.6" data-name="Kıyı Rüzgârı" aria-pressed="false">
+          <span class="station-frequency">105.6</span><strong class="station-title">Kıyı Rüzgârı</strong><small class="station-description">Gece dalgası, tuzlu rüzgâr ve uzaktan bir martı.</small>
+        </button>
+        <button class="station" type="button" data-kind="inn" data-freq="106.8" data-name="Tarihi Han" aria-pressed="false">
+          <span class="station-frequency">106.8</span><strong class="station-title">Tarihi Han</strong><small class="station-description">Taş zeminde adımlar, ahşap gıcırtısı, avlu yankısı.</small>
+        </button>
+        <button class="station" type="button" data-kind="sleep" data-freq="108.1" data-name="Uyuyan Vagon" aria-pressed="false">
+          <span class="station-frequency">108.1</span><strong class="station-title">Uyuyan Vagon</strong><small class="station-description">Nefes benzeri dalga, kompartıman uğultusu ve yavaş ritim.</small>
+        </button>
+        <button class="station" type="button" data-kind="harbor" data-freq="109.4" data-name="Liman Nöbeti" aria-pressed="false">
+          <span class="station-frequency">109.4</span><strong class="station-title">Liman Nöbeti</strong><small class="station-description">Halatların sesi, suya vuran gövde ve uzak sis düdüğü.</small>
+        </button>
+        <button class="station" type="button" data-kind="walk" data-freq="110.7" data-name="Gece Yürüyüşü" aria-pressed="false">
+          <span class="station-frequency">110.7</span><strong class="station-title">Gece Yürüyüşü</strong><small class="station-description">Taş kaldırım, seyrek araba ve geride kalan adımlar.</small>
+        </button>
+        <button class="station" type="button" data-kind="voices" data-freq="112.0" data-name="Gece Misafirleri" aria-pressed="false">
+          <span class="station-frequency">112.0</span><strong class="station-title">Gece Misafirleri</strong><small class="station-description">Duvar arkasından gelen kısık konuşmalar ve oda uğultusu.</small>
+        </button>
       </div>
       <div class="radio-mixer" aria-label="Radyo mikseri">
         <div class="radio-mixer-top">
           <span class="radio-mixer-label"><i aria-hidden="true"></i> YEREL SES MOTORU</span>
-          <span class="radio-mixer-state" id="radio-mixer-state">HAZIR / 10 FREKANS</span>
+          <span class="radio-mixer-state" id="radio-mixer-state">HAZIR / 19 FREKANS</span>
         </div>
         <div class="radio-mixer-grid">
           <label class="radio-volume-control" for="radio-volume">
-            <span>SES SEVİYESİ <output id="radio-volume-value" for="radio-volume">78%</output></span>
-            <input id="radio-volume" type="range" min="0" max="100" step="1" value="78">
+            <span>SES SEVİYESİ <output id="radio-volume-value" for="radio-volume">90%</output></span>
+            <input id="radio-volume" type="range" min="0" max="100" step="1" value="90">
           </label>
           <label class="radio-sleep-control" for="radio-sleep">
             <span>UYKU ZAMANLAYICISI</span>
@@ -643,14 +651,14 @@
         <button class="btn" id="play" type="button" aria-pressed="false">Yayını başlat</button>
         <button class="btn ghost" id="stop-radio" type="button">Sesi kapat</button>
       </div>
-      <p class="note" id="radio-help" aria-live="polite">Açılış kanalı 88.8 Gece Otobüsü. Tarayıcı otomatik sesi engellerse ilk dokunuşunda kendiliğinden uyanır.</p>
-      <p class="note">Bütün kanal sesleri Web Audio ile o anda tarayıcıda üretilir. Harici kayıt veya örnek kullanılmaz; her atmosfer durdurulana kadar sürekli evrilir.</p>
+      <p class="note" id="radio-help" aria-live="polite">Açılış kanalı 102.7 Uzak Tren. Tarayıcı otomatik sesi engellerse sayfaya ilk dokunuşunda yayın uyanır.</p>
+      <p class="note">19 kanalın atmosferleri Web Audio ile doğrudan tarayıcıda üretilir. Harici oynatıcı, kayıt penceresi veya indirme yoktur; her kanal kendi ses katmanlarıyla çalışır.</p>
       <h3>Eski teyp</h3>
-      <p class="note">Kendi ses dosyan yalnızca bu oturumda çalar. 7mix pakete konmadı. SoundCloud dış bağlantıdır.</p>
+      <p class="note">Kendi ses dosyan yalnızca bu oturumda çalar.</p>
       <label for="tape" class="kicker">Cihazından ses dosyası seç</label>
       <input id="tape" type="file" accept="audio/*">
       <p id="tape-name">Dosya seçilmedi.</p>
-      <p><a href="https://soundcloud.com/yukseksadakat/y-ksek-sadakat-katil-makt-l-1" rel="noopener">SoundCloud bağlantısı ↗</a></p>
+      <p><a href="https://www.youtube.com/watch?v=A7ShtPRP2Mc&amp;t=2s" target="_blank" rel="noopener noreferrer">Kimbilir kaç 🥂 </a></p>
     </section>
     <section id="sinyal" class="reveal" data-stamp="05">
       <p class="kicker">05 / OUTSIDE NOISE</p>
@@ -699,7 +707,7 @@
       <div class="archive-endnote"><span>ARŞİV / 006</span><span>SAKLANAN HER ŞEY DOSYADA DURMAZ</span></div>
     </section>
     <section id="proje-tepsisi" class="project-tray-section" aria-labelledby="project-tray-title">
-      <div class="project-tray-head"><div><p class="kicker">08 / AÇIK DOSYALAR</p><h2 id="project-tray-title">Çalışma <em>tepsisi.</em></h2></div><p>Deneyler, araçlar ve notlar. Kategori seçerek ilerle; masaüstünde altı, telefonda üç kart görünür. Aynı proje kartlarını yukarıdaki masada tekrar etmiyoruz.</p></div>
+      <div class="project-tray-head"><div><p class="kicker">08 / AÇIK DOSYALAR</p><h2 id="project-tray-title">Çalışma <em>tepsisi.</em></h2></div><p>Deneyler, araçlar ve notlar. Kategori seçerek ilerle; masaüstünde altı, telefonda dört kart görünür. Aynı proje kartlarını yukarıdaki masada tekrar etmiyoruz.</p></div>
       <div class="project-tray-controls" role="group" aria-label="Çalışma tepsisi kategorileri">
         <button class="tray-filter" type="button" data-tray-filter="all" aria-pressed="true">Tümü</button>
         <button class="tray-filter" type="button" data-tray-filter="sky" aria-pressed="false">Şehir &amp; doğa</button>
@@ -833,12 +841,12 @@
   <button class="hat-fab" id="hat-fab" type="button">HAT</button>
 
 
-  <script src="fx.js?v=20261025-topos02" defer></script>
-  <script src="script.js?v=20261028-night-cockpit02" defer></script>
+  <script src="fx.js?v=20261101-perf02" defer></script>
+  <script src="script.js?v=20261101-radio19b" defer></script>
   <script src="tigerk.js" defer></script>
   <script src="hat.js?v=20261028-cockpit" defer></script>
-  <script src="kokpit.js?v=20261028-cockpit" defer></script>
-  <script src="night-vision.js?v=20261031-02" defer></script>
+  <script src="kokpit.js?v=20261101-uzaktren01" defer></script>
+  <script src="night-vision.js?v=20261031-gece04" defer></script>
   <script>
     (function () {
       "use strict";
@@ -851,7 +859,7 @@
       var next = document.getElementById("tray-next");
       var page = 0;
       var active = "all";
-      function pageSize() { return window.matchMedia("(max-width: 560px)").matches ? 3 : 6; }
+      function pageSize() { return window.matchMedia("(max-width: 560px)").matches ? 4 : 6; }
       function matches() { return cards.filter(function (card) { return active === "all" || card.dataset.trayCategory === active; }); }
       function render() {
         var chosen = matches();
@@ -883,18 +891,18 @@
 (() => {
   "use strict";
   const notes = [
-    {destination:"SAMATYA KIYISI",platform:"SAHİL HATTI · SON SEFERDEN SONRA",kicker:"SAHİL HATTI / KAPI 01 · KAYIT 194",line1:"Son sefer çoktan kalktı.",line2:"İskeledeki ışık yine de söndürülmedi.",copy:"Samatya kıyısında son seferden sonra da bir ışık yanar. Tarifede görünmeyen bu küçük gecikmenin kime ayrıldığını kimse sormaz.",image:"/assets/illustrations/coast-night.svg",alt:"Samatya kıyısında gece manzarası",place:"SAMATYA · MARMARA KIYISI",time:"00:47",status:"BEKLEMEDE",teaser:"İskeledeki ışık, tarifeden sonra da yanıyor.",position:"center 55%"},
-    {destination:"KISA DALGA / 88.8",platform:"KARAKÖY · ESKİ YAYIN ODASI",kicker:"RADYO DAİRESİ / FREKANS 88.8",line1:"Frekans temiz.",line2:"Yalnızca bir ses cevap vermiyor.",copy:"Karaköy'ün dar sokaklarında bazı sesler duvarlardan daha uzun yaşar. Kadranı aynı yerde bıraktık; yayın değişti, alışkanlık kalmış olabilir.",image:"/assets/illustrations/analog-radio.svg",alt:"Analog radyo kadranı ve loş ışık",place:"KARAKÖY · GALATA KIYISI",time:"01:08",status:"ZAYIF SİNYAL",teaser:"Sinyal temiz; karşılık veren yok.",position:"center"},
-    {destination:"POSTA GÜVERCİNİ",platform:"FATİH · AVLU POSTA NOKTASI",kicker:"POSTA HATTI / ZARF NO. 08",line1:"Adresin doğruluğundan emindik.",line2:"Takvim aynı fikirde değildi.",copy:"Fatih'te avluya bakan eski bir posta kutusunda, köşesi açılmış bir zarf duruyor. Üzerindeki sokak hâlâ yerinde; yalnızca kapıyı açacak kişinin saati değişmiş.",image:"/assets/illustrations/hagia-dome.svg",alt:"Ayasofya çevresinde eski İstanbul meydanı",place:"FATİH · ESKİ ŞEHİR",time:"01:26",status:"TESLİM BEKLİYOR",teaser:"Adres doğruydu. Takvim başka bir şey söylüyordu.",position:"center 48%"},
-    {destination:"PERONDAKİ SAAT",platform:"SİRKECİ · PERON 04",kicker:"DEMİRYOLU / GECİKME KAYDI 04:12",line1:"Tren tarifeye göre geldi.",line2:"Beklediğimiz şey başka bir zamandaydı.",copy:"Sirkeci'nin ışıkları rayların üzerinde uzarken saat işlemeyi sürdürür. Peronda bekleyen herkes aynı treni bekliyor gibi görünür; saatler aynı şeyi söylemez.",image:"/assets/illustrations/night-train.svg",alt:"Gece treninin yanında aydınlanan peron",place:"SİRKECİ · TARİHÎ GARI",time:"04:12",status:"RAYDA",teaser:"Tren geldi. Beklenen şey gelmedi.",position:"center 52%"},
-    {destination:"VAPUR BEKLEME ODASI",platform:"EMİNÖNÜ · KARŞI KIYI HATTI",kicker:"ŞEHİR HATLARI / İSKELE 02",line1:"Karşı kıyıda bir pencere yandı.",line2:"Bu tarafta kimse başını kaldırmadı.",copy:"Eminönü'nde vapur düdüğü iki kıyı arasında kısa bir boşluk bırakır. O aralıkta, insan bazen hangi tarafa varmak istediğini değil, nereden ayrıldığını hatırlar.",image:"/assets/illustrations/eminonu-ferry.svg",alt:"Eminönü sahilinde vapur ve gece ışıkları",place:"EMİNÖNÜ · HALİÇ AĞZI",time:"23:54",status:"SON SEFER",teaser:"Karşı kıyıda tek bir pencere açık.",position:"center 54%"},
-    {destination:"SON UÇUŞ / GİŞE 04",platform:"ESKİ TERMİNAL · KAYIT 04",kicker:"KALKIŞ SALONU / GİŞE 04",line1:"Kartın üzerinde tek yön yazıyordu.",line2:"Dönüş saati kurşun kalemle eklenmişti.",copy:"Terminal camlarında şehir ışıkları küçük işaretlere dönüşür. Bazı biletler yalnızca bir kapıdan geçmek için alınır; arkasına yazılan saat, başka bir hikâyeye aittir.",image:"/assets/illustrations/night-train.svg",alt:"Sisli gece terminalini andıran aydınlık peron",place:"İSTANBUL · ESKİ TERMİNAL",time:"03:08",status:"KAPI KAPANDI",teaser:"Biniş kapısı kapandı, dönüş saati silinmedi.",position:"center 52%"},
-    {destination:"GALATA KÖPRÜSÜ",platform:"HALİÇ · SABAH ÖNCESİ",kicker:"KIYI DEFTERİ / KAYIT 07",line1:"Sabaha karşı oltalar boş çekildi.",line2:"Kimse bunu başarısızlık saymadı.",copy:"Galata Köprüsü'nde sabah, önce çay bardaklarının buğusunda belirir. Balıkçılar oltalarını toplarken şehir, gece boyunca tuttuğu nefesi yavaşça bırakır.",image:"/assets/illustrations/galata-night.svg",alt:"Gece ışıklarıyla Galata Köprüsü ve su",place:"GALATA KÖPRÜSÜ · HALİÇ",time:"05:21",status:"ŞAFAK YAKIN",teaser:"Oltalar boştu. Sabah yine de başladı.",position:"center 52%"},
-    {destination:"KARŞI PERON",platform:"HAYDARPAŞA · PERON 02",kicker:"ANADOLU HATTI / İKİNCİ PERON",line1:"İki tren aynı anda hareket etti.",line2:"Camdaki yansıma yerinden kıpırdamadı.",copy:"Haydarpaşa'nın taş cephesinde ışıklar birer birer sönerken peronda kalan gölgeler birbirine karışır. Bazen giden araç değil, camda kalan görüntüdür.",image:"/assets/illustrations/night-train.svg",alt:"Sis içindeki gece peronu ve ray ışıkları",place:"HAYDARPAŞA · ANADOLU YAKASI",time:"00:32",status:"HAREKET HALİNDE",teaser:"Camda bir yansıma, peronda iki hareket.",position:"center 60%"},
-    {destination:"YAĞMUR TARİFESİ",platform:"KUMKAPI · SAÇAK ALTI",kicker:"HAVA DURUMU / ISLAK ZEMİN",line1:"Saçağın altı iki kişilikti.",line2:"Yağmur dinince de kimse acele etmedi.",copy:"Kumkapı'nın taş sokaklarında yağmur, tabelaların eski yazılarını parlatır. Birkaç dakika süren sığınak, bazen bütün akşamdan daha uzun hatırlanır.",image:"/assets/illustrations/rain-street.svg",alt:"Yağmur sonrası İstanbul sokak ışıkları",place:"KUMKAPI · SAMATYA ARASI",time:"22:46",status:"YAĞIŞ DİNDİ",teaser:"Yağmur dindi; saçak altında yer kaldı.",position:"center 54%"},
-    {destination:"SON AVLU",platform:"SÜLEYMANİYE · AVLU KENARI",kicker:"AVLU DEFTERİ / KAYIT 11",line1:"Avluda iki gölge vardı.",line2:"Kapı kapanınca biri eksik kaldı.",copy:"Süleymaniye taş avlusunda gece sesleri erkenden çekilir. Bir banka bırakılan gazete sabaha kadar yerinde kalır; yanına konan ikinci bardak ise çoktan kaldırılmıştır.",image:"/assets/illustrations/suleymaniye-dome.svg",alt:"Gece ışığında Süleymaniye ve İstanbul silüeti",place:"SÜLEYMANİYE · TARİHÎ YARIMADA",time:"01:26",status:"AVLU SESSİZ",teaser:"Gazete kaldı; ikinci bardak kaldırıldı.",position:"center 55%"},
-    {destination:"KULE FENERİ",platform:"KIZ KULESİ · AÇIK DENİZ",kicker:"FENER İDARESİ / DÖNÜŞ 11",line1:"Fener her gece aynı yere döner.",line2:"Bakanın kıyısı değişir.",copy:"Kız Kulesi'nin ışığı suyun üzerinde kırılırken Üsküdar ve Salacak kendi sessizliğini korur. Aynı manzaraya bakan iki kişi, bazen aynı şeyi görmez.",image:"/assets/illustrations/maiden-tower.svg",alt:"İstanbul Boğazı'nda Kız Kulesi",place:"SALACAK · BOĞAZ HATTI",time:"23:18",status:"FENER AÇIK",teaser:"Fener dönüyor; bakış aynı kıyıda.",position:"center 58%"},
-    {destination:"GECE OTOBÜSÜ",platform:"TAKSİM → SAMATYA · SON AKTARMA",kicker:"ŞEHİR İÇİ / HAT 00:16",line1:"Arka koltukta bir yer boş kaldı.",line2:"Şoför yine de kapıyı iki kez kapattı.",copy:"Gece otobüsünün buğulu camında sokak adları birbirine karışır. Her durakta biri iner, biri biner; bazı boşluklar ise son durağa kadar korunur.",image:"/assets/illustrations/night-bus.svg",alt:"İstanbul'da gece otobüsü ve sokak ışıkları",place:"TAKSİM · GECE ŞEHİR HATTI",time:"00:16",status:"HATTA",teaser:"Arka koltuk boş; durak yine geçildi.",position:"center 48%"}
+    {destination:"SAMATYA KIYISI",platform:"SAHİL HATTI · SON SEFERDEN SONRA",kicker:"SAHİL HATTI / KAPI 01 · KAYIT 194",line1:"Son sefer kalktı.",line2:"Işık yerinde kaldı.",copy:"Tarifede yok. Yine de yanıyor. Kıyı kimseyi ikna etmiyor; sadece kararmıyor.",image:"/assets/illustrations/coast-night.svg",alt:"Samatya kıyısında gece manzarası",place:"SAMATYA · MARMARA KIYISI",time:"00:47",status:"BEKLEMEDE",teaser:"İskele kararmadı.",position:"center 55%"},
+    {destination:"KISA DALGA / 88.8",platform:"KARAKÖY · ESKİ YAYIN ODASI",kicker:"RADYO DAİRESİ / FREKANS 88.8",line1:"Frekans duruyor.",line2:"Karşılık yok.",copy:"Kadran aynı yerde. Yayın değişmiş olabilir. Alışkanlık, sinyalden daha inatçı.",image:"/assets/illustrations/analog-radio.svg",alt:"Analog radyo kadranı ve loş ışık",place:"KARAKÖY · GALATA KIYISI",time:"01:08",status:"ZAYIF SİNYAL",teaser:"Kadran duruyor, oda boş.",position:"center"},
+    {destination:"POSTA GÜVERCİNİ",platform:"FATİH · AVLU POSTA NOKTASI",kicker:"POSTA HATTI / ZARF NO. 08",line1:"Adres yerinde.",line2:"Saat değil.",copy:"Zarf duruyor. Sokak duruyor. Kapıyı açacak kişi başka bir günde.",image:"/assets/illustrations/hagia-dome.svg",alt:"Ayasofya çevresinde eski İstanbul meydanı",place:"FATİH · ESKİ ŞEHİR",time:"01:26",status:"TESLİM BEKLİYOR",teaser:"Adres doğru. Zaman değil.",position:"center 48%"},
+    {destination:"PERONDAKİ SAAT",platform:"SİRKECİ · PERON 04",kicker:"DEMİRYOLU / GECİKME KAYDI 04:12",line1:"Tren geldi.",line2:"Beklenen gelmedi.",copy:"Raylar ıslak, saat işliyor. Perondaki herkes aynı trene bakıyor; herkes aynı şeyi beklemiyor.",image:"/assets/illustrations/night-train.svg",alt:"Gece treninin yanında aydınlanan peron",place:"SİRKECİ · TARİHÎ GARI",time:"04:12",status:"RAYDA",teaser:"Tren vaktinde. Bekleyiş değil.",position:"center 52%"},
+    {destination:"VAPUR BEKLEME ODASI",platform:"EMİNÖNÜ · KARŞI KIYI HATTI",kicker:"ŞEHİR HATLARI / İSKELE 02",line1:"Karşıda bir pencere yandı.",line2:"Bu kıyı başını kaldırmadı.",copy:"Düdük iki kıyı arasında kısa bir boşluk bırakır. O boşlukta şehir, varmaktan çok ayrılmayı hatırlar.",image:"/assets/illustrations/eminonu-ferry.svg",alt:"Eminönü sahilinde vapur ve gece ışıkları",place:"EMİNÖNÜ · HALİÇ AĞZI",time:"23:54",status:"SON SEFER",teaser:"Karşı kıyıda bir pencere.",position:"center 54%"},
+    {destination:"SON UÇUŞ / GİŞE 04",platform:"ESKİ TERMİNAL · KAYIT 04",kicker:"KALKIŞ SALONU / GİŞE 04",line1:"Bilet tek yön.",line2:"Dönüş saati kurşun kalem.",copy:"Bazı kapılar kapanır. Camda kalan şehir ışığı, biletin arkasına yazılan saatten daha geç söner.",image:"/assets/illustrations/night-train.svg",alt:"Sisli gece terminalini andıran aydınlık peron",place:"İSTANBUL · ESKİ TERMİNAL",time:"03:08",status:"KAPI KAPANDI",teaser:"Kapı kapandı. Saat silinmedi.",position:"center 52%"},
+    {destination:"GALATA KÖPRÜSÜ",platform:"HALİÇ · SABAH ÖNCESİ",kicker:"KIYI DEFTERİ / KAYIT 07",line1:"Olta boş geldi.",line2:"Sabah yine de başladı.",copy:"Çayın buğusu köprüden önce uyanır. Boş olta bir başarısızlık değil; gecenin bırakılışı.",image:"/assets/illustrations/galata-night.svg",alt:"Gece ışıklarıyla Galata Köprüsü ve su",place:"GALATA KÖPRÜSÜ · HALİÇ",time:"05:21",status:"ŞAFAK YAKIN",teaser:"Olta boş. Sabah değil.",position:"center 52%"},
+    {destination:"KARŞI PERON",platform:"HAYDARPAŞA · PERON 02",kicker:"ANADOLU HATTI / İKİNCİ PERON",line1:"İki tren kalktı.",line2:"Camdaki görüntü kaldı.",copy:"Giden vagon değil, bazen camda duran yansımadır. Peron bunu düzeltmez.",image:"/assets/illustrations/night-train.svg",alt:"Sis içindeki gece peronu ve ray ışıkları",place:"HAYDARPAŞA · ANADOLU YAKASI",time:"00:32",status:"HAREKET HALİNDE",teaser:"Tren gitti. Yansıma kaldı.",position:"center 60%"},
+    {destination:"YAĞMUR TARİFESİ",platform:"KUMKAPI · SAÇAK ALTI",kicker:"HAVA DURUMU / ISLAK ZEMİN",line1:"Saçak dardı.",line2:"Kimse acele etmedi.",copy:"Yağmur tabelayı bir dakika parlatır. Sığınak kısa sürer; hatırası sürmez.",image:"/assets/illustrations/rain-street.svg",alt:"Yağmur sonrası İstanbul sokak ışıkları",place:"KUMKAPI · SAMATYA ARASI",time:"22:46",status:"YAĞIŞ DİNDİ",teaser:"Yağmur dindi. Yer duruyor.",position:"center 54%"},
+    {destination:"SON AVLU",platform:"SÜLEYMANİYE · AVLU KENARI",kicker:"AVLU DEFTERİ / KAYIT 11",line1:"İki gölge vardı.",line2:"Kapı birini içeride bıraktı.",copy:"Gazete bankta. İkinci bardak yok. Avlu bunu açıklamaz.",image:"/assets/illustrations/suleymaniye-dome.svg",alt:"Gece ışığında Süleymaniye ve İstanbul silüeti",place:"SÜLEYMANİYE · TARİHÎ YARIMADA",time:"01:26",status:"AVLU SESSİZ",teaser:"Gazete kaldı. Bardak gitti.",position:"center 55%"},
+    {destination:"KULE FENERİ",platform:"KIZ KULESİ · AÇIK DENİZ",kicker:"FENER İDARESİ / DÖNÜŞ 11",line1:"Fener aynı yayı çizer.",line2:"Bakan kıyı değişir.",copy:"Işık suda kırılır. Aynı noktaya bakan iki kişi aynı şeyi görmek zorunda değil.",image:"/assets/illustrations/maiden-tower.svg",alt:"İstanbul Boğazı'nda Kız Kulesi",place:"SALACAK · BOĞAZ HATTI",time:"23:18",status:"FENER AÇIK",teaser:"Fener dönüyor. Kıyı duruyor.",position:"center 58%"},
+    {destination:"GECE OTOBÜSÜ",platform:"TAKSİM → SAMATYA · SON AKTARMA",kicker:"ŞEHİR İÇİ / HAT 00:16",line1:"Arka koltuk boş.",line2:"Kapı iki kez kapandı.",copy:"Cam buğulu, duraklar birbirine karışır. Bazı boş yerler son durağa kadar korunur.",image:"/assets/illustrations/night-bus.svg",alt:"İstanbul'da gece otobüsü ve sokak ışıkları",place:"TAKSİM · GECE ŞEHİR HATTI",time:"00:16",status:"HATTA",teaser:"Koltuk boş. Hat işliyor.",position:"center 48%"}
   ];
   const byId = (name) => document.getElementById(name);
   const grid = byId("station-note-grid");
@@ -983,12 +991,7 @@
     const card = event.target.closest("[data-note-index]");
     if (card && grid.contains(card)) show(Number(card.dataset.noteIndex));
   });
-  byId("station-prev")?.addEventListener("click", () => show(active - 1));
-  byId("station-next")?.addEventListener("click", () => show(active + 1));
-  byId("station-random")?.addEventListener("click", () => {
-    const offset = 1 + Math.floor(Math.random() * (notes.length - 1));
-    show(active + offset);
-  });
+  byId("station-random")?.addEventListener("click", () => show(active + 1));
 
   const input = byId("departure-name");
   const save = byId("departure-save");

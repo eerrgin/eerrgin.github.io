@@ -55,7 +55,7 @@
   function syncMixer() {
     const api = gecev();
     if (!api) return;
-    const currentVolume = typeof api.radioVolume === "function" ? api.radioVolume() : 0.78;
+    const currentVolume = typeof api.radioVolume === "function" ? api.radioVolume() : 0.90;
     if (volume && document.activeElement !== volume) volume.value = String(Math.round(currentVolume * 100));
     if (volumeValue) volumeValue.value = Math.round(currentVolume * 100) + "%";
     if (muteButton) {
@@ -121,7 +121,7 @@
       syncMixer();
       return;
     }
-    const original = typeof api.radioVolume === "function" ? api.radioVolume() : 0.78;
+    const original = typeof api.radioVolume === "function" ? api.radioVolume() : 0.90;
     let step = 0;
     showSleepStatus("Gece yayını yumuşakça kapatılıyor…");
     fadeInterval = window.setInterval(() => {
