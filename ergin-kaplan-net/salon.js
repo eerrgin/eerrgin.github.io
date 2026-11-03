@@ -9,6 +9,10 @@ globalThis.EKN = (function () {
   ctx.imageSmoothingEnabled = false;
 
   const GAMES = [
+    { id: "lan", name: "LAN Operasyonu", shelf: "lab", blurb: "İnternet kafe usulü taktik çatışma", hint: "WASD ile hareket et, fareyle nişan al ve ateş et. Düşman botlarını temizle." },
+    { id: "efsane", name: "Kervan Efsaneleri", shelf: "lab", blurb: "Fantastik çevrimiçi RPG ruhu", hint: "WASD / oklarla keşfet. Boşluk ile yaratıklara saldır, kristalleri topla." },
+    { id: "saha", name: "Saha 2003", shelf: "lab", blurb: "Mahalleler arası futbol maçı", hint: "A/D ile hareket et, W ile zıpla, Boşluk ile şut çek." },
+    { id: "komuta", name: "Son Komuta", shelf: "lab", blurb: "Gerçek zamanlı üs ve birlik stratejisi", hint: "Birlik üretmek için üsse tıkla. Birliklere tıklayıp hedef seç." },
     { id: "yildiz", name: "Yıldız Koridoru", shelf: "lab", blurb: "Derin uzay savunması", hint: "Oklar veya WASD ile uç. Boşluk / F ile ateş." },
     { id: "ring", name: "Ring Kaplan", shelf: "lab", blurb: "Mahalle usulü dövüş", hint: "1. oyuncu: A/D, W, F/G. 2. oyuncu: oklar, K/L. Aynı klavyede." },
     { id: "yilan", name: "Ergin Yılan", shelf: "arcade", blurb: "Çay bardağını yakala", hint: "Ok tuşlarıyla yön değiştir. Duvara ve kendine çarpma." },
@@ -118,7 +122,11 @@ globalThis.EKN = (function () {
     const g = c.getContext("2d"); g.imageSmoothingEnabled = false;
     g.fillStyle = "#06110c"; g.fillRect(0, 0, 64, 40);
     const bar = (x,y,w,h,color) => { g.fillStyle=color; g.fillRect(x,y,w,h); };
-    if (id === "yildiz") {
+    if (id === "lan") { bar(9,8,46,25,"#263e48");bar(14,13,36,15,"#111b22");bar(28,16,8,8,"#e8a838");bar(18,18,6,6,"#e25b4a");bar(40,18,6,6,"#e25b4a");
+    } else if (id === "efsane") { bar(28,4,8,31,"#b88b4d");bar(18,12,28,20,"#365d49");bar(25,7,14,9,"#d9c18b");bar(30,2,4,12,"#e8a838");
+    } else if (id === "saha") { bar(5,5,54,30,"#26764a");bar(9,8,46,24,"#3c9a5d");g.strokeStyle="#e8e4ce";g.strokeRect(10,9,44,22);g.beginPath();g.arc(32,20,6,0,Math.PI*2);g.stroke();
+    } else if (id === "komuta") { bar(8,8,48,25,"#253a42");bar(12,12,16,16,"#a87843");bar(36,12,16,16,"#527f9b");bar(29,17,7,7,"#e8c46d");
+    } else if (id === "yildiz") {
       bar(28,28,8,6,"#7ee0d2"); bar(27,10,10,18,"#2c8e9a"); bar(30,5,4,9,"#e8a838");
       for(let i=0;i<5;i++)bar(6+i*12,5+(i%3)*5,5,5,"#e25b4a");
     } else if (id === "ring") {
@@ -216,6 +224,8 @@ globalThis.EKN = (function () {
       if (shelf) shelf.appendChild(el);
     });
     $("count").textContent = GAMES.length + " oyun";
+    const catalogueCount = document.querySelector(".catalogue-count");
+    if (catalogueCount) catalogueCount.textContent = GAMES.length + " OYUN · KURULUMSUZ";
     renderBests();
   }
   function loop(update, draw) {
