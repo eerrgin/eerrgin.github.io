@@ -192,3 +192,8 @@ body.gh-reading-mode .gh-reading-caption{opacity:1}
 .top nav>.nav-hat-link{display:inline-flex!important;align-items:center;justify-content:center;min-height:34px;padding:8px 12px;border:1px solid rgba(220,198,177,.2);color:#d6b69a;background:rgba(194,139,112,.07);font-size:9px;letter-spacing:.15em}
 .top nav>.nav-hat-link:hover{border-color:rgba(194,139,112,.58);background:rgba(194,139,112,.14);color:#f0d8c3}
 @media(max-width:760px){.top nav>.nav-hat-link{flex:0 0 auto;min-height:32px;padding:7px 10px}}
+
+/* Kervan is a direct destination beside the main navigation links. */
+.top nav>.nav-kervan-link{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border:1px solid rgba(220,198,177,.2);color:#d6b69a;background:rgba(194,139,112,.07);font-size:9px;letter-spacing:.15em;text-decoration:none}
+.top nav>.nav-kervan-link:hover{border-color:rgba(194,139,112,.58);background:rgba(194,139,112,.14);color:#f0d8c3}
+@media(max-width:760px){.top nav>.nav-kervan-link{flex:0 0 auto;padding:7px 10px}}
