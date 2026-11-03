@@ -186,3 +186,6 @@ body.gh-reading-mode .gh-reading-caption{opacity:1}
 /* One floating control only: keep the new reading-room button. */
 .hat-fab,
 .night-top-button{display:none!important}
+
+/* Remove the remaining compact HAT shortcut from the header as well. */
+#open-hat{display:none!important}
