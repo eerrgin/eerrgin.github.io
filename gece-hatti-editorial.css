@@ -182,3 +182,7 @@ body.gh-reading-mode .gh-reading-caption{opacity:1}
  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
  .gh-route-stop[aria-current=location]{transform:none}
 }
+
+/* One floating control only: keep the new reading-room button. */
+.hat-fab,
+.night-top-button{display:none!important}
