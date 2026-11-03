@@ -355,7 +355,7 @@ globalThis.EKN = (function () {
       b.addEventListener("pointercancel", () => { keys[k] = false; });
     });
 
-    setTimeout(() => startGame("bilardo"), 950);
+    setTimeout(dismissBoot, 700);
   }
 
   return {
