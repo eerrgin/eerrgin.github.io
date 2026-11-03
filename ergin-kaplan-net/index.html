@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Ergin Kaplan">
-<meta name="description" content="Kervan İnternet Kafe Hatırası · 2003. CRT ekranlar, eski internet oyunları ve yıllar önce kalan gece seansları.">
-<title>Kervan 2003 | İnternet Kafe Hatırası</title>
+<meta name="description" content="Kervan Gaming Club. İnternet kafe kültüründen ilham alan özgün tarayıcı oyunları, salon klasikleri ve turnuvalar.">
+<title>KERVAN Gaming Club | Oyun Salonu</title>
 <style>
 :root{--amber:#e8a838;--amber2:#ffd27a;--ph:#b7f5c8;--muted:#8ea894;--line:#2c4034}
 *{box-sizing:border-box}html,body{margin:0;padding:0}
@@ -176,6 +176,78 @@ body{
   .hero button,.card{transition:none}
 }
 
+
+/* KERVAN GAMING CLUB · salon arayüzü */
+:root{--amber:#e7b866;--amber2:#ffe0a0;--ph:#e5eadf;--muted:#91a293;--line:#293c35;--panel:#101b19}
+body{background:radial-gradient(ellipse at 50% -10%,#294239 0,transparent 46%),linear-gradient(145deg,#0b1212,#111a18 55%,#090e10);color:var(--ph);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:1240px;padding:34px 22px 60px}
+.monitor{border:1px solid #40564a;border-radius:18px;background:#111a18;box-shadow:0 35px 100px #0009,0 0 0 7px #17211e,0 0 0 8px #40564a;overflow:hidden}
+.bezel{padding:0;background:#101816}
+.screen{min-height:650px;border:0;background:linear-gradient(180deg,#111d1a,#0b1312);box-shadow:none}
+.scan{opacity:.13}
+#lobby{padding:clamp(18px,3vw,38px)}
+.lobby-mast{position:relative;overflow:hidden;min-height:190px;padding:30px clamp(20px,4vw,48px);border:1px solid #344a40;border-left:3px solid var(--amber);border-radius:10px;background:radial-gradient(circle at 85% 35%,#45634a55,transparent 27%),linear-gradient(110deg,#1d3029,#101b19 65%,#17211d);box-shadow:0 16px 35px #0004}
+.mast-kicker{font-size:10px;letter-spacing:.2em;color:#b6c7b2}
+.lobby-mast h2{font-size:clamp(30px,5vw,54px);line-height:1.02;letter-spacing:-.045em;color:#f0eee2}
+.lobby-mast h2 em{color:var(--amber);font-style:normal}
+.lobby-mast p:last-of-type{max-width:590px;font-size:13px;color:#b8c5b8;line-height:1.7}
+.mast-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.mast-pills span{padding:6px 9px;border:1px solid #536b58;border-radius:30px;color:#c7d7c2;font-size:9px;letter-spacing:.1em}
+.mast-stamp{width:112px;height:112px;flex-basis:112px;border:1px solid #b68c4b;box-shadow:inset 0 0 0 5px #1b2c24,inset 0 0 0 6px #b68c4b;transform:rotate(7deg)}
+.mast-stamp strong{font-size:34px;color:#f0c778}
+.hero{display:block;margin:18px 0 10px}
+.feature-row{display:grid;grid-template-columns:1fr .9fr;min-height:230px;overflow:hidden;border:1px solid #354a40;border-radius:9px;background:linear-gradient(110deg,#172722,#101918)}
+.feature-copy{padding:26px 30px;align-self:center}
+.feature-label{font-size:9px;letter-spacing:.2em;color:#e5b967}
+.feature-copy h3{margin:12px 0 8px;color:#f2f0e7;font-size:clamp(24px,4vw,39px);letter-spacing:-.04em}
+.feature-copy p{max-width:440px;color:#aab9ac;font-size:12px;line-height:1.7}
+.play-feature{margin-top:10px;padding:11px 17px;border:1px solid #e3b764;border-radius:4px;background:#d7a956;color:#172019;font-size:10px;font-weight:900;letter-spacing:.12em}
+.play-feature span{margin-left:15px}
+.feature-art{position:relative;min-height:230px;overflow:hidden;background:radial-gradient(ellipse at 50% 50%,#41604d,#172922 58%,#101a18)}
+.feature-grid{position:absolute;inset:0;background-image:linear-gradient(#a5c4a322 1px,transparent 1px),linear-gradient(90deg,#a5c4a322 1px,transparent 1px);background-size:28px 28px;transform:perspective(300px) rotateX(18deg) scale(1.2);opacity:.6}
+.feature-cross{position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);font-size:150px;font-weight:200;color:#d9bc7c55}
+.feature-emblem{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-7deg);width:132px;height:132px;border:2px solid #e4bd72;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#13221ddd;box-shadow:0 0 45px #d4a34b33,inset 0 0 0 5px #13221d,inset 0 0 0 6px #e4bd72;color:#e9c77f}
+.feature-emblem strong{font-size:44px;line-height:1.05;letter-spacing:.1em}
+.feature-emblem small{font-size:8px;letter-spacing:.2em}
+.feature-live{position:absolute;bottom:14px;right:18px;font-size:8px;letter-spacing:.14em;color:#b5c9b2}
+.quick-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:13px 2px 18px;border-bottom:1px solid #2b3c35}
+.quick-row>span{margin-right:auto;color:#819486;font-size:9px;letter-spacing:.17em}
+.quick-row button{padding:8px 11px;border:1px solid #35483d;border-radius:3px;background:#15221d;color:#d6dfd2;font-size:9px;letter-spacing:.08em}
+.quick-row button:hover{border-color:var(--amber);color:var(--amber2)}
+.catalogue-head{margin-top:30px;border-color:#354a40}
+.catalogue-head h3{font-size:25px;letter-spacing:-.03em;color:#f1eee4}
+.catalogue-head h3 em{color:var(--amber)}
+.catalogue-count{color:#d7bd83}
+.tabs{gap:7px;margin:16px 0 20px}
+.tabs button{border-radius:4px;padding:10px 15px;background:#15211d;border-color:#33473d;color:#a9b9aa;font-size:10px;letter-spacing:.06em}
+.tabs button[aria-pressed="true"]{background:#d4a653;color:#172019;border-color:#d4a653;box-shadow:none}
+.shelf{margin:25px 0 30px}
+.shelf-heading{padding-bottom:11px;border-color:#2b4036}
+.shelf-heading h4{font-size:10px;color:#e5bd75;letter-spacing:.18em}
+.shelf-heading span{font-size:9px;color:#81988a}
+.grid{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.card{min-height:125px;padding:12px;border-radius:6px;background:linear-gradient(145deg,#1a2923,#111c19);border:1px solid #30473b;box-shadow:0 5px 14px #0002}
+.card:hover{transform:translateY(-3px);border-color:#d7ac5f;filter:brightness(1.12)}
+.card.lab{border-color:#657b50;background:linear-gradient(145deg,#20372a,#111d18)}
+.card canvas{height:62px;border-radius:3px;background:#091311}
+.card b{font-size:12px;color:#f1d69f}
+.card span{font-size:10px;color:#9eb0a0;line-height:1.45}
+.price{display:flex;gap:14px;align-items:center;padding:13px 15px;border:1px solid #31483a;border-left:3px solid var(--amber);border-radius:4px;background:#14211b;color:#aebcae}
+.price strong{font-size:9px;letter-spacing:.15em;color:#e3bd78;white-space:nowrap}
+.price span{font-size:11px}
+.meta{padding-top:16px;color:#91a293}
+.bests{margin-top:12px;padding:12px;border:1px solid #2b4036;border-radius:5px;background:#0d1714}
+.best-row{border-color:#25372e}
+#game-view .topbar{padding:11px 13px;background:#14211c;border-color:#33483b}
+.topbar .title{font-size:12px;font-weight:700;color:#f1d69f}
+.topbar button{border-radius:4px;padding:7px 12px;background:#1d3027;color:#e4eadd}
+#stage-wrap{border:1px solid #3c5145}
+.hint{padding:11px 14px;color:#a4b5a5;font-size:11px}
+.task{margin-top:12px;padding:12px 4px;background:transparent;color:#84958a;border-top:1px solid #263a31;font-size:9px;letter-spacing:.1em}
+.task strong{color:#d8b46d}
+@media(max-width:680px){.wrap{padding:18px 10px 36px}.monitor{border-radius:11px;box-shadow:0 18px 45px #0008,0 0 0 3px #17211e}.bezel{padding:0}#lobby{padding:13px}.lobby-mast{padding:22px 18px}.mast-stamp{display:none}.feature-row{grid-template-columns:1fr}.feature-art{min-height:155px;grid-row:1}.feature-copy{padding:22px 19px}.quick-row>span{width:100%;margin-bottom:4px}.quick-row button{flex:1}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.card{min-height:120px;padding:9px}.catalogue-head h3{font-size:21px}.price{align-items:flex-start;flex-direction:column;gap:5px}}
+@media(max-width:390px){.grid{grid-template-columns:1fr}.mast-pills span{font-size:8px}}
+
 </style>
 </head>
 <body>
@@ -185,31 +257,45 @@ body{
       <div class="screen" id="screen">
         <div class="scan"></div>
         <div class="boot" id="boot">
-          <h1>ERGİN KAPLAN NET</h1>
-          <div>Kervan İnternet Kafe Hatırası · 2003</div>
+          <h1>KERVAN GAMING CLUB</h1>
+          <div>OYUN SALONU · İSTANBUL · EST. 2003</div>
           <div style="margin-top:14px;opacity:.7">BIOS v1.03 · RAM OK · HDD OK</div>
-          <div style="margin-top:8px">Salon yükleniyor...</div>
+          <div style="margin-top:8px">OYUN KATALOĞU HAZIRLANIYOR...</div>
           <div style="margin-top:18px;font-size:12px;color:#6a8a6a">Ergin Lab © Ergin Kaplan</div>
         </div>
         <div id="lobby">
           <header class="lobby-mast">
             <div>
-              <p class="mast-kicker">İNTERNET KAFE HATIRASI · İSTANBUL · 2003</p>
-              <h2>İNTERNET KAFE <em>OYUN SALONU</em></h2>
-              <p>Bozuk jeton sesi, CRT parıltısı, klavye başında geçen akşamlar. Kapı açık, oyun hazır.</p>
+              <p class="mast-kicker">KERVAN GAMING CLUB <span>·</span> İSTANBUL <span>·</span> EST. 2003</p>
+              <h2>OYUNUN <em>MERKEZİ</em></h2>
+              <p>İnternet kafe kültürünün enerjisi, tek ekranda onlarca oyun. Bir kategori seç, favorini aç ve skorunu salona bırak.</p>
+              <div class="mast-pills"><span>● KURULUMSUZ OYUN</span><span>● ÜCRETSİZ SALON</span><span>● MOBİL + DESKTOP</span></div>
             </div>
-            <div class="mast-stamp"><strong>20</strong><span>ÖZGÜN<br>OYUN</span><i>2003</i></div>
+            <div class="mast-stamp"><strong>28</strong><span>OYUN<br>ARŞİVİ</span><i>2003–2026</i></div>
           </header>
-          <div class="hero">
-            <button type="button" data-game="bowling"><b>Ergin Bowl 2003</b><small>10 turluk bowling</small></button>
-            <button type="button" data-game="bilardo"><b>Ergin 9-Ball</b><small>Bilardo masası</small></button>
-            <button type="button" data-game="tenispro"><b>Ergin Tenis</b><small>Kortta maç</small></button>
-            <button type="button" data-game="kervangp"><b>Ergin GP</b><small>Gece sokak yarışı</small></button>
-            <button type="button" id="btn-random"><b>Rastgele</b><small>Şansını dene</small></button>
+          <div class="feature-row">
+            <div class="feature-copy">
+              <span class="feature-label">✦ BUGÜNÜN ÖNE ÇIKANI</span>
+              <h3>LAN OPERASYONU</h3>
+              <p>Takım çatışmasının internet kafe ruhu. Nişanını al, bot takımını alt et ve salonun rekorunu kır.</p>
+              <button type="button" class="play-feature" data-game="lan">OYUNA BAŞLA <span>↗</span></button>
+            </div>
+            <div class="feature-art" aria-hidden="true">
+              <div class="feature-grid"></div><div class="feature-cross">+</div>
+              <div class="feature-emblem"><small>KERVAN</small><strong>LAN</strong><small>ARENA / 01</small></div>
+              <span class="feature-live">● SINGLE PLAYER MISSION</span>
+            </div>
+          </div>
+          <div class="quick-row">
+            <span>HIZLI ERİŞİM</span>
+            <button type="button" data-game="bilardo">BİLARDO ↗</button>
+            <button type="button" data-game="bowling">BOWLING ↗</button>
+            <button type="button" data-game="kervangp">GECE YARIŞI ↗</button>
+            <button type="button" id="btn-random">BENİ ŞAŞIRT ↗</button>
           </div>
           <div class="catalogue-head">
-            <div><span class="mast-kicker">ERGİN OYUN ARŞİVİ / 2003–2026</span><h3>Oyun <em>kataloğu</em></h3></div>
-            <span class="catalogue-count">24 OYUN · KURULUMSUZ</span>
+            <div><span class="mast-kicker">SALON REHBERİ / 2003–2026</span><h3>OYUN <em>KOLEKSİYONU</em></h3></div>
+            <span class="catalogue-count">28 OYUN · KURULUMSUZ</span>
           </div>
           <div class="tabs" role="group" aria-label="Oyun kategorileri">
             <button type="button" class="on" data-tab="all" aria-pressed="true">Tüm Oyunlar</button>
@@ -238,7 +324,7 @@ body{
           <section class="shelf" data-shelf="yaris">
             <div class="shelf-heading"><h4>06 / MOTOR & YARIŞ</h4><span>ERGİN GP · SOKAK PİSTİ</span></div><div class="grid" id="yaris"></div>
           </section>
-          <div class="price">Fiyat (2003): 30 dk = 1.500.000 TL · 1 saat = 2.500.000 TL · gece = 4.000.000 TL · çay ikram</div>
+          <div class="price"><strong>KERVAN SALON NOTU</strong><span>Kurulum yok, üyelik yok. Bir oyun seç ve kaldığın yerden rekor kovala.</span></div>
           <div class="meta"><span id="count">24 oyun</span> · <strong id="clock">--:--</strong> · <button type="button" id="btn-clear" style="background:none;border:none;color:#6a5a4a;font:inherit;cursor:pointer">rekorları sil</button> · <button type="button" id="btn-sound" style="background:none;border:none;color:#6a5a4a;font:inherit;cursor:pointer">Ses açık</button></div>
           <div class="bests" id="bests"><div class="best-row">Henüz yok</div></div>
         </div>
@@ -269,7 +355,7 @@ body{
       </div>
     </div>
   </div>
-  <div class="task"><span>ERGİN KAPLAN NET · Kervan İnternet Kafe Hatırası</span><span id="clock2">--:--</span></div>
+  <div class="task"><span><strong>KERVAN GAMING CLUB</strong> · İSTANBUL · PLAYER ONE READY</span><span id="clock2">--:--</span></div>
 </div>
 <script src="salon.js?v=20261104-kafe-klasikleri"></script>
 <script src="games-a.js?v=20261030-ergin24"></script>
