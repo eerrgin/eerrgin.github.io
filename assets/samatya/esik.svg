@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1100" role="img" aria-labelledby="t d">
+<title id="t">Aralık kapı</title>
+<desc id="d">Ergin gece hattı. Özgün çizim; fotoğraf, arşiv belgesi veya gerçek bir kişinin portresi değildir.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#140e10"/><stop offset=".45" stop-color="#1a1214"/><stop offset="1" stop-color="#070607"/></linearGradient>
+  <radialGradient id="halo" cx="70%" cy="28%" r="45%"><stop stop-color="#c47a62" stop-opacity=".42"/><stop offset="1" stop-color="#c47a62" stop-opacity="0"/></radialGradient>
+  <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#2c3c4a"/><stop offset="1" stop-color="#0c1218"/></linearGradient>
+  <linearGradient id="warm" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f0c9a4"/><stop offset="1" stop-color="#8d4e45"/></linearGradient>
+  <filter id="soft"><feGaussianBlur stdDeviation="8"/></filter>
+  <pattern id="grain" width="90" height="90" patternUnits="userSpaceOnUse">
+    <circle cx="8" cy="14" r=".8" fill="#f3e6d8" opacity=".16"/>
+    <circle cx="44" cy="51" r=".6" fill="#f3e6d8" opacity=".1"/>
+    <circle cx="70" cy="22" r=".5" fill="#f3e6d8" opacity=".12"/>
+    <circle cx="23" cy="77" r=".7" fill="#000" opacity=".18"/>
+  </pattern>
+</defs>
+<rect width="800" height="1100" fill="url(#bg)"/>
+<circle cx="576" cy="242" r="418" fill="url(#halo)"/>
+
+<rect width="800" height="1100" fill="#120c0c"/>
+<path d="M90 140 h620 v860 h-620 z" fill="#1c1412"/>
+<path d="M230 250 h340 v640 h-340 z" fill="#2a1c18" stroke="#d7a88a" stroke-width="3"/>
+<path d="M250 270 h300 v600 h-300 z" fill="#140e0c"/>
+<path d="M400 270 v600" stroke="#e2b89a" stroke-opacity=".35"/>
+<circle cx="500" cy="580" r="7" fill="#e6c2a4"/>
+<path d="M248 868 h304" stroke="#f0c9a6" stroke-width="3" opacity=".8"/>
+<rect x="236" y="250" width="18" height="640" fill="#3a241c"/>
+<path d="M560 300 C 590 420 600 560 575 700" fill="none" stroke="#f2c7a2" stroke-width="10" opacity=".55" filter="url(#soft)"/>
+<g stroke="#e7c3a4" stroke-opacity=".2">
+  <path d="M40 80 v300"/><path d="M70 40 v360"/><path d="M740 60 v280"/>
+</g>
+<rect x="180" y="980" width="440" height="16" fill="#0e0c0c"/>
+<text x="70" y="90" fill="#ead7c6" font-family="Georgia, serif" font-size="20" letter-spacing="5" opacity=".72">EŞİK</text>
+
+<rect width="800" height="1100" fill="url(#grain)"/>
+<path d="M28 28h46M28 28v34M772 28h-46M772 28v34M28 1072h46M28 1072v-34M772 1072h-46M772 1072v-34" fill="none" stroke="#e4c2ae" stroke-opacity=".35" stroke-width="1.2"/>
+</svg>

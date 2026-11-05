@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#090808">
-<meta name="description" content="Ergin'in Samatya defteri: çocukluktan bugüne uzanan bağ, Bizans Psamathia'sı, Osmanlı Sulu Manastır'ı, kiliseler, Cumhuriyet yılları ve gerçek arşiv fotoğrafları.">
+<meta name="description" content="Güngören’den Samatya’ya bir gece inişi. Ergin’in defteri: eşik, kıyı, pazar ve söylenmeden kalan cevap.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Samatya: Eski Bağım, Yeni Evim | Ergin'in Semt Defteri">
-<meta property="og:description" content="Çocukluktan kalan bir bağın 2025'te eve dönüşmesi. Samatya'nın tarihi, kiliseleri, kaybolan kıyısı ve kişisel hatıralar.">
-<meta property="og:image" content="https://eerrgin.github.io/assets/illustrations/old-coastline.svg">
+<meta property="og:title" content="Samatya: Bırakmadığım Gidiş | Ergin’in Semt Defteri">
+<meta property="og:description" content="Tanıyan semt sormayı bırakır. 2025’in ilk soğuğunda Güngören’den Samatya’ya indim. Cevabı kapıda bıraktım.">
+<meta property="og:image" content="https://eerrgin.github.io/assets/samatya/varis.svg">
 <meta name="twitter:card" content="summary_large_image">
-<title>Samatya: Eski Bağım, Yeni Evim · Ergin'in Semt Defteri</title>
+<title>Samatya: Bırakmadığım Gidiş · Ergin’in Semt Defteri</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
 <script>
@@ -202,6 +202,11 @@ try {
 @media(max-width:520px){.samatya-hero{padding-top:26px}.samatya-cover{padding:7px}.samatya-cover:before{inset:13px}.samatya-cover:after{width:48px;height:48px;right:-8px;top:-8px}.samatya-hero .row .btn{min-height:42px}.samatya-kickerline{gap:7px 13px}}
 @media(prefers-reduced-motion:reduce){.samatya-cover img,.samatya-hero .row .btn,.samatya-era,.samatya-note,.samatya-walk article,.samatya-image img,.samatya-duo-images img{transition:none}.samatya-cover:hover img,.samatya-era:hover,.samatya-note:hover,.samatya-walk article:hover,.samatya-image:hover img,.samatya-duo-images figure:hover img{transform:none}}
 
+
+.story-card-art.has-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;filter:saturate(.82) contrast(1.04)}
+.story-card-art.has-photo:before,.story-card-art.has-photo:after{z-index:1;opacity:.28;pointer-events:none}
+.story-art-caption,.story-art-number{z-index:2}
+.story-card-art.has-photo .story-art-caption{left:0;right:0;bottom:0;padding:26px 10px 11px;background:linear-gradient(transparent,#000c)}
 </style>
 </head>
 <body>
@@ -211,149 +216,173 @@ try {
 <a class="mark" href="index.html">e.</a>
 <div class="brand-block"><strong>eerrgin</strong><span class="kicker">gece vardiyası / istanbul</span></div>
 <nav aria-label="Bölümler">
-<a href="#samatya" aria-current="page">Samatya</a><a href="#zaman">Tarih katmanları</a><a href="#sesler">Hikâye arşivi</a><a href="#kiliseler">Kilise hafızası</a><a href="#cumhuriyetin-ilk-yillari">Cumhuriyet yılları</a><a href="#ergin-defteri">Ergin’in defteri</a><a href="#other-stops">Diğer duraklar</a>
+<a href="#samatya" aria-current="page">Samatya</a><a href="#zaman">Hat</a><a href="#sesler">Kayıtlar</a><a href="#kiliseler">Eşik</a><a href="#cumhuriyet">Kıyı</a><a href="#bugun">Defter</a><a href="#other-stops">Diğer duraklar</a>
 </nav>
 <div class="clock"><span id="clock">--:--:--</span><br>IST</div>
 </div></header>
 <main class="wrap" id="top">
 <section id="samatya" class="hero reveal in samatya-hero">
-<div id="ergin-defteri" class="samatya-hero-copy">
-<p class="kicker">ŞEHRİN TAŞ HAFIZASI / 001 · PSAMATHIA → SAMATYA</p>
-<h1>Samatya:<br><em>eski bağım, yeni evim.</em></h1>
-<p class="lede">Çocukluğumda yolumun düştüğü, yıllar boyunca yeniden yeniden uğradığım bir semt… 2025 yılının başında buraya taşındım. Şimdi, bir zamanlar ziyaret ettiğim sokakların arasında yaşayarak bu mahallenin tarihini, sesini ve bende bıraktığı duyguyu anlamaya çalışıyorum.</p>
-<p class="lede">Bu sayfa, bitmiş bir tarih kitabı değil. Kaynaklardan öğrendiklerimle kendi belleğimde taşıdıklarımı yan yana tuttuğum bir kent defteri. Bazı taşların tarihi var; bazı hatıralarınsa yalnızca insanda kalan izi.</p>
-<div class="row"><a class="btn" href="#ergin-defteri">ERGİN’İN SAMATYA DEFTERİ</a><a class="btn ghost" href="#zaman">TARİHİN İÇİNE GİR ↘</a></div>
-<div class="samatya-kickerline"><span>41°00′N · 28°56′E</span><span>FATİH / İSTANBUL</span><span>YERLEŞME: 2025 BAŞI</span></div>
+<div class="samatya-hero-copy">
+<p class="kicker">ŞEHRİN TAŞ HAFIZASI / 001 · GÜNGÖREN → SAMATYA</p>
+<h1>Samatya:<br><em>bırakmadığım gidiş.</em></h1>
+<p class="lede">Güngören beni tanıyordu. Tanıyan yer, bir süre sonra sormayı bırakır. 2025’in ilk soğuğunda indim: bir çanta, bir anahtar, bir gece otobüsü. Samatya hâlâ soruyor. Ben cevap yerine kapıyı iki kez çeviriyorum.</p>
+<p class="lede">Bu bir semt tarihi değil. Tarih, dipnotta saklanan adamın işidir. Ben sokakta kalanım.</p>
+<div class="row"><a class="btn" href="#sesler">KAYITLARI AÇ</a><a class="btn ghost" href="#kiliseler">EŞİĞE BAK ↘</a></div>
+<div class="samatya-kickerline"><span>41°00′N · 28°56′E</span><span>FATİH / İSTANBUL</span><span>VARIŞ: 2025 BAŞI</span></div>
 </div>
 <figure class="samatya-cover">
-<img src="/assets/illustrations/old-coastline.svg" alt="Eski Samatya kıyısından esinlenen özgün ve ölçeksiz vektör çizim; tarihî fotoğraf değildir." width="1635" height="1038" fetchpriority="high">
-<figcaption>Özgün vektör çizim. Tarihî fotoğraf, arşiv belgesi veya birebir mimari tasvir değildir.</figcaption>
+<img src="/assets/samatya/varis.svg" alt="Gece, ıslak bir sokakta denize doğru yürüyen bir siluet. Özgün çizim." width="1200" height="800" fetchpriority="high">
+<figcaption>Gece hattı · özgün çizim. Yüz yok. Sadece gidiş.</figcaption>
 </figure>
-<div class="samatya-image-copy"><p class="kicker">BİZANS / COĞRAFYA</p><h3>İsimde bile <em>kıyının izi var.</em></h3><p>Yabancı dildeki yerel tarih ve mimarlık kaynaklarında Samatya’nın eski adı Psamathia, kumla ilişkilendirilen bir ad olarak aktarılır. Burası eski çağlarda denizle iç içe bir yerleşim, balıkçılığın ve kıyı ticaretinin uğradığı bir noktaydı. Şehir surlarının dışında değil, zamanla büyüyen tarihî yarımadanın savunma ve yaşam katmanlarının içinde kaldı.</p><p>Eski Samatya’yı bugünkü sahil yolu kenarından düşünmek yanıltıcı olabilir. Bir zamanlar denizle evler arasındaki ilişki daha yakındı; tekneler kıyıya sokulur, yamaçtaki yerleşime denizden bakılabilirdi. Bugün kıyının hafızasını anlamak için yalnızca bugünkü manzaraya değil, eski fotoğraflara da bakmak gerekiyor.</p><p class="samatya-fact">Araştırma notu: “Psamathia” adı ve eski liman niteliği, semtin tarihine ilişkin kaynaklarda birlikte anılır. Adın kökeni hakkındaki açıklama yerel tarih aktarımıdır; bütün tarihî ayrıntılar tek bir kesin anlatıya indirgenemez.</p><p class="photo-credit"><a href="https://grandeflanerie.com/armenianistanbul/" target="_blank" rel="noopener">Grande Flânerie · İstanbul’un Ermeni mirası ↗</a></p></div>
-</div>
 </section>
 
 <span id="zaman" aria-hidden="true"></span>
-<section id="cumhuriyetin-ilk-yillari" class="samatya-section reveal in" data-stamp="03">
-<div class="archive-heading"><div><p class="kicker">03 / 1923—1950 · YENİ CUMHURİYET</p><h2>Başkent değişti,<br><em>mahalle bir günde değişmedi.</em></h2></div><p class="archive-stamp"><span>1923</span><small>YENİ DÖNEM<br>ESKİ SOKAKLAR</small></p></div>
+<section id="cumhuriyetin-ilk-yillari" class="samatya-section reveal in" data-stamp="01">
+<div class="archive-heading"><div><p class="kicker">01 / HAT · GÜNGÖREN’DEN</p><h2>Güngören durdu.<br><em>Ben bindim.</em></h2></div><p class="archive-stamp"><span>2025</span><small>GECE SEFERİ<br>TEK ÇANTA</small></p></div>
 <div class="samatya-image-story">
-<figure class="samatya-image"><img src="/assets/illustrations/old-street.svg" alt="Samatya sokak mimarisinden esinlenen özgün vektör çizim; tarihî fotoğraf değildir." width="1200" height="1600" loading="lazy"><figcaption>Özgün vektör çizim. Tarihî fotoğraf, arşiv belgesi veya birebir mimari tasvir değildir.</figcaption></figure>
-<div class="samatya-image-copy"><p class="kicker">1923’ÜN ARDINDAN / GÜNDELİK HAYAT</p><h3>Devletin başkenti gitti.<br><em>Mahallenin zamanı kaldı.</em></h3><p>1923’te Cumhuriyet’in başkentinin Ankara olması, İstanbul’un siyasî merkez rolünü değiştirdi. Fakat bir mahallenin gündelik hayatı, bir kararnameyle bir gecede başka bir şeye dönüşmez. Pazar kurulur, fırın açılır, okul kapısından çocuklar girer, ibadethanelerin takvimi kendi ritmiyle devam eder. Samatya’nın erken Cumhuriyet yıllarını düşünürken, tam da bu yavaşlığı aklımda tutuyorum.</p><p>Bu dönem hakkında Samatya’nın her sokağını gün gün anlatan kolay erişilebilir bir günlük arşivi bulmak her zaman mümkün değil. Bu yüzden bilmediğim ayrıntıları doldurup bir aile hikâyesi uydurmak yerine, akademik koruma araştırmasının doğrulayabildiği daha geniş resmi kaydediyorum: Ermeni, Rum ve Müslüman sakinlerin oluşturduğu çok katmanlı çevre; dar parseller üzerinde yükselen iki-üç katlı konutlar; cami, kilise, hamam, okul ve çeşmeler çevresinde örgütlenen mahalle dokusu.</p><p>Bu yapılar yalnızca mimarlık örneği değildi. Aynı sokakta farklı ibadet takvimleri, okul günleri, esnaf saatleri ve aile hayatları yan yana yaşanıyordu. Herkesin aynı hikâyeyi yaşadığını varsayamayız; ama kentin bu ortak mekânları, farklı insanların gündelik hayatlarını birbirine değdiriyordu.</p><p>Benim için erken Cumhuriyet Samatyası’nı anlamanın anahtarı, yalnızca devlet tarihindeki büyük tarihlere bakmamak. Bir yapının kaç katlı olduğuna, avlusunun nasıl kullanıldığına, kapısının nereye açıldığına da bakmak. Tarih bazen resmî belgede bir satır; bazen de hâlâ ayakta kalmış bir evin cephe düzenidir.</p><p class="photo-credit"><a href="https://archives.saltresearch.org/handle/123456789/2168" target="_blank" rel="noopener">SALT Research · Samatya kartpostal arşivi ↗</a> · <a href="https://hyetert.org/2023/01/22/mezar-yerinde-dogan-semt-samatya/" target="_blank" rel="noopener">HyeTert · Samatya’nın cemaat hafızası ↗</a></p></div>
+<figure class="samatya-image"><img src="/assets/samatya/otobus.svg" alt="Boş bir gece otobüsü, camda yağmur, koltukta bir çanta. Özgün çizim." width="1200" height="800" loading="lazy"><figcaption>Karşı koltuk sormadı. Şehir sordu.</figcaption></figure>
+<div class="samatya-image-copy"><p class="kicker">GECE OTOBÜSÜ</p><h3>“Dönüyor musun?”<br><em>Gidiyorum, dedim.</em></h3><p>Karşı koltuk haritaya bakmıyordu. Şehir ona ezberdi. Bana henüz değil.</p><p>“Dönüyor musun?” dedi. “Gidiyorum.” Başını salladı. İkisini aynı kelime sananlara bu hatta sık rastlanır. Düzeltmedim. Düzeltseydim nedeni anlatmam gerekecekti. Neden, tam söylenince küçülür.</p><p>Camım Güngören’de duruyor. Durması, orada yaşadığım anlamına gelmez. Bazı camlar gideni bir süre daha yansıtır.</p><p class="samatya-fact">Anahtar iç cepteydi. Yeni kapınınki. Eski kapınınkinden ağır.</p></div>
 </div>
-<div class="samatya-history-dark"><p class="kicker">BİR KAYIPLA DEĞİL, ÇOK SAYIDA KÜÇÜK DEĞİŞİMLE</p><h3>Eski semt, yeni şehir.<br><em>Birbirini örten katmanlar.</em></h3><p>20. yüzyılın ortasında İstanbul’un geniş caddeler, yeni ulaşım hatları ve yoğun yapılaşmayla değişmesi, tarihî yarımadanın pek çok mahallesi gibi Samatya’nın da çevresini dönüştürdü. Bu değişimi tek başına bir “eski güzeldi, yeni kötü” cümlesine sığdırmak istemiyorum. Şehir büyüdü; yeni insanlar geldi; ihtiyaçlar değişti. Ama dönüşüm sırasında bazı mimari ve toplumsal bağların inceldiğini de kaynaklar gösteriyor.</p><p>2011 tarihli koruma çalışması, Samatya’nın 1960’lardan sonra Ermeni ve Rum nüfusun bir bölümünü kaybetmesiyle nitelik değiştirdiğini ve tarihî çevrenin korunması gereken unsurlarının azaldığını belirtiyor. Bu, her ailenin aynı sebeple ayrıldığı anlamına gelmez. Göç, ekonomik koşullar, siyasi iklim ve kişisel kararlar farklı hayatlarda farklı izler bıraktı.</p><p>Bugün bir cepheyi fotoğraflarken yalnızca estetik bir görüntü aramıyorum. O evde kimlerin yaşadığını, hangi dilin konuşulduğunu, çocukların hangi okul yolunu yürüdüğünü merak ediyorum. Kaynak bulabildiğim yerde yazıyorum; isimleri ve hayatları bilinmeyenleri ise kendi hayal gücümle doldurmamaya çalışıyorum.</p></div>
-</section>
-<section id="kiliseler" class="samatya-section reveal in" data-stamp="03">
-<div class="archive-heading"><div><p class="kicker">03 / TAŞIN İÇİNDEKİ SESLER</p><h2>Samatya’nın kiliseleri:<br><em>hafızanın yaşayan adresleri.</em></h2></div><p class="archive-stamp"><span>03</span><small>İBADET / HAFIZA<br>RUM · ERMENİ</small></p></div>
-<p class="lede">Samatya’yı anlamak, yalnızca güzel cepheleri fotoğraflamak değil. Bu yapılar, cemaatlerin ibadetlerini, eğitim hayatını, dayanışmasını ve yangınlar karşısında yeniden ayağa kalkma çabasını anlatıyor. Birinin kapalı olması, hikâyesinin kapanmış olduğu anlamına gelmiyor.</p>
-<div class="samatya-image-story">
-<figure class="samatya-image">
-<img src="/assets/illustrations/historic-church.svg" alt="Tarihî ibadet yapısından esinlenen özgün vektör çizim; gerçek yapının fotoğrafı değildir." width="1280" height="1033" loading="lazy">
-<figcaption>Özgün vektör çizim. Tarihî fotoğraf, arşiv belgesi veya birebir mimari tasvir değildir.</figcaption>
-</figure>
-<div class="samatya-image-copy"><p class="kicker">SURP KEVORK / SULU MANASTIR</p><h3>Bir manastırın adı, <em>bir mahallenin belleği.</em></h3><p>Surp Kevork Ermeni Kilisesi, Ermeni Patrikhanesi’nin kendi tarihçesinde, Bizans dönemine ait Panagia Peribleptos (Azize Meryem) manastırının bulunduğu alanla ilişkilendirilir. Altındaki ayazma ve büyük sarnıç sebebiyle burası Osmanlı döneminde “Sulu Manastır” adıyla da anılmıştır.</p><p>1453 sonrasında İstanbul’a yerleştirilen Ermenilerin dini hayatında bu merkez büyük önem kazandı. 1461’de Ermeni Patrikliği burada kuruldu; merkez 1641’de Kumkapı’ya taşınana dek Surp Kevork, patriklik kilisesi olarak kullanıldı. Bu bilgi, Samatya’nın yalnız bir mahalle değil, İstanbul Ermenilerinin kurumsal tarihinin de önemli bir durağı olduğunu gösteriyor.</p><p>Yangınlar yapının tarihini defalarca kesintiye uğrattı. Patrikhane kayıtları 1660 yangınından, 1722’de yeniden inşadan, 1782 ve 1866 yangınlarından söz ediyor. Bugünkü taş yapı 19. yüzyıldaki yeniden kurulum döneminin izlerini taşıyor; 2006 restorasyonunun ardından yeniden ibadete açıldı.</p><p class="photo-credit"><a href="https://haybad.org/tr/kilise/surp-kevork-kilisesi-samatya/" target="_blank" rel="noopener">Türkiye Ermenileri Patrikliği · Surp Kevork tarihçesi ↗</a></p></div>
-</div>
-<div class="samatya-duo-images">
-<figure><img src="/assets/illustrations/historic-church.svg" alt="Surp Kevork yapısından esinlenen özgün vektör çizim; tarihî fotoğraf değildir." width="1100" height="825" loading="lazy"><figcaption>Özgün vektör çizim. Tarihî fotoğraf, arşiv belgesi veya birebir mimari tasvir değildir.</figcaption></figure>
-<figure><img src="/assets/illustrations/historic-church.svg" alt="Aya Mina yapısından esinlenen özgün vektör çizim; tarihî fotoğraf değildir." width="1100" height="825" loading="lazy"><figcaption>Özgün vektör çizim. Tarihî fotoğraf, arşiv belgesi veya birebir mimari tasvir değildir.</figcaption></figure>
-</div>
-<div class="samatya-image-story reverse">
-<figure class="samatya-image tall">
-<img src="/assets/illustrations/historic-church.svg" alt="Aya Nikola yapısından esinlenen özgün vektör çizim; tarihî fotoğraf değildir." width="1100" height="1467" loading="lazy">
-<figcaption>Özgün vektör çizim. Tarihî fotoğraf, arşiv belgesi veya birebir mimari tasvir değildir.</figcaption>
-</figure>
-<div class="samatya-image-copy"><p class="kicker">RUM ORTODOKS HAFIZASI</p><h3>Aynı semtte <em>birden fazla zaman.</em></h3><p>Samatya’nın hafızası tek bir cemaatin ya da tek bir mimari biçimin hikâyesi değil. Aya Mina, Aya Nikola ve eski kaynaklarda anılan Hristos Analipsis gibi Rum Ortodoks ibadet yerleri, bu kıyıda Rum cemaatinin yüzyıllar boyunca kurduğu hayatı hatırlatıyor. İsimler ve yapıların durumları zaman içinde değişse de, ibadethanelerin mahalle coğrafyasındaki yeri kültürel hafızayı okumak için önemli bir anahtar.</p><p>Bu kapılara bakarken kendime şunu hatırlatıyorum: kiliseyi yalnızca mimarisiyle görmek eksik kalır. Bir yapının anlamı, içeride okunan dualar, bayram günleri, cemaatin okulları ve bu eşiği her gün açıp kapatan insanların hayatlarıyla tamamlanır.</p><p>yerel kurumsal kaynak tarih anlatısı, Bizans döneminde sahile yakın bölgelerde Rumların yaşadığını, Analipsis Kilisesi’nin de bu toplulukla bağlantılı bir ibadet yeri olarak anıldığını kaydeder. Bu sayfada doğrulanmış kurum tarihleriyle sözlü anlatıları birbirine karıştırmamaya çalışıyorum.</p><p class="photo-credit"> · </p></div>
+<div class="samatya-timeline">
+<article class="samatya-era"><span class="era-date">Güngören</span><h3>Uyku</h3><p>Adın söylenmeden bilinir. Rahattır. Rahatlık da bir uykudur.</p></article>
+<article class="samatya-era"><span class="era-date">Sefer</span><h3>Tek çanta</h3><p>İkinci çanta, “belki dönerim” demektir. Belkiyi evde bıraktım.</p></article>
+<article class="samatya-era"><span class="era-date">İlk sabah</span><h3>Fırın</h3><p>Benden önce açıktı. Şehir bana göre ayarlanmıyor. İyi.</p></article>
+<article class="samatya-era"><span class="era-date">Şimdi</span><h3>Eşik</h3><p>Kapı beni ezberliyor. Ben hâlâ eşiği sayıyorum.</p></article>
 </div>
 </section>
 
-<section id="sesler" class="samatya-section reveal in story-archive" data-stamp="04">
-<div class="archive-heading"><div><p class="kicker">04 / ŞEHRİN TAŞ HAFIZASI · HİKÂYE ARŞİVİ</p><h2>Her taşın ardında<br><em>bir ses, bir iz var.</em></h2></div><p class="archive-stamp"><span>04</span><small>ANILAR · ZANAAT<br>RİVAYET · KURGU</small></p></div>
-<p class="lede story-archive-lede">Samatya'nın hafızasını tek bir uzun metne sıkıştırmadan, küçük kayıtlar hâlinde saklıyorum. Bir hikâyeyi seç; kendi sayfası açılsın, gerisi sessizce yerinde kalsın.</p>
-<div class="story-archive-topline"><span><i class="story-live-dot"></i> DİJİTAL HAFIZA KOLEKSİYONU</span><span id="story-count" aria-live="polite">05 KAYIT</span></div>
+<section id="kiliseler" class="samatya-section reveal in" data-stamp="02">
+<div class="archive-heading"><div><p class="kicker">02 / EŞİK</p><h2>Çan soruyu çalar.<br><em>Cevabı değil.</em></h2></div><p class="archive-stamp"><span>02</span><small>GECE<br>KAPALI SAAT</small></p></div>
+<p class="lede">İbadethanenin önünden geçiyorum, içini saymıyorum. Saymak misafirin işi değil. Kapı aralıksa dururum. Davet olsa da her ışığa girilmez.</p>
+<div class="samatya-image-story">
+<figure class="samatya-image tall"><img src="/assets/samatya/esik.svg" alt="Gece aralık duran eski bir ahşap kapı, ince bir ışık. Özgün çizim." width="800" height="1100" loading="lazy"><figcaption>Aralıksa dur. İçeri her zaman girilmez.</figcaption></figure>
+<div class="samatya-image-copy"><p class="kicker">SULU MANASTIR</p><h3>İsim ıslaktı.<br><em>Taş kuruydu.</em></h3><p>Adını bir tabeladan önce bir ağızdan duydum. Altında su varmış. Suyu görmedim. Serinliği duydum; bu da bir tür görmek.</p><p>Yan kapı bir gece aralıktı. Işık inceydi. Eşikte durdum, geçmedim. İçeri girseydim bir şey öğrenecektim. Girmedim. Öğrendiğim, eşiğin de bir oda olduğuydu.</p><p>Başka bir gece çan. Hangi kapı, bilmiyorum. Bilmemek burada kusur değil. Çan adını söylemek zorunda değil. Ben de sormak zorunda değilim.</p></div>
+</div>
+<blockquote class="samatya-pullquote"><p>Kapı aralığında duran şey, her zaman bir davet değildir.</p><small>Ergin · eşik notu</small></blockquote>
+</section>
+
+<section id="sesler" class="samatya-section reveal in story-archive" data-stamp="03">
+<div class="archive-heading"><div><p class="kicker">03 / GECE KAYITLARI</p><h2>Söyledim.<br><em>Asıl cümle dışarıda kaldı.</em></h2></div><p class="archive-stamp"><span>05</span><small>KISA KAYIT<br>UZUN SORU</small></p></div>
+<p class="lede story-archive-lede">Beş kayıt. Hepsi kısa. Uzun olan, söylemediğim yer. Birini aç. Gerisi kapıda beklesin.</p>
+<div class="story-archive-topline"><span><i class="story-live-dot"></i> GECE HATTI · AÇIK</span><span id="story-count" aria-live="polite">05 KAYIT</span></div>
 <div class="story-tools">
-<label class="story-search"><span aria-hidden="true">⌕</span><input id="story-search" type="search" placeholder="Bir hikâye, yer ya da kelime ara…" autocomplete="off" aria-label="Hikâyelerde ara"><kbd>/</kbd></label>
-<div class="story-filters" role="group" aria-label="Hikâyeleri kategoriye göre filtrele">
+<label class="story-search"><span aria-hidden="true">⌕</span><input id="story-search" type="search" placeholder="Bir yer, bir kapı, bir soru…" autocomplete="off" aria-label="Kayıtlarda ara"><kbd>/</kbd></label>
+<div class="story-filters" role="group" aria-label="Kayıtları süz">
 <button class="story-filter is-active" type="button" data-story-filter="all" aria-pressed="true">Tümü <span>05</span></button>
-<button class="story-filter" type="button" data-story-filter="history" aria-pressed="false">Tarih & rivayet</button>
-<button class="story-filter" type="button" data-story-filter="craft" aria-pressed="false">Zanaat</button>
-<button class="story-filter" type="button" data-story-filter="daily" aria-pressed="false">Gündelik hayat</button>
-<button class="story-filter" type="button" data-story-filter="culture" aria-pressed="false">Kent kültürü</button>
-<button class="story-filter" type="button" data-story-filter="fiction" aria-pressed="false">Kurgu</button>
+<button class="story-filter" type="button" data-story-filter="tasinma" aria-pressed="false">Taşınma</button>
+<button class="story-filter" type="button" data-story-filter="esik" aria-pressed="false">Eşik</button>
+<button class="story-filter" type="button" data-story-filter="kiyi" aria-pressed="false">Kıyı</button>
+<button class="story-filter" type="button" data-story-filter="pazar" aria-pressed="false">Pazar</button>
+<button class="story-filter" type="button" data-story-filter="gece" aria-pressed="false">Gece</button>
 </div>
 </div>
 <div class="story-grid" id="story-grid">
-<article class="story-card story-card-featured" data-story-card data-category="fiction" data-search="kedinin getirdiği anahtar kedi narlıkapı rum evi mektup fotoğraf günlük yunanistan yalnızlık kurgu">
-<div class="story-card-art story-art-cat" aria-hidden="true"><span class="story-art-orbit"></span><span class="story-art-symbol">⌁</span><span class="story-art-caption">NARLIKAPI · GECE KAYDI</span><span class="story-art-number">05</span></div>
-<div class="story-card-content"><div class="story-card-meta"><span class="story-category">KURGU · SAMATYA'DAN ESİNLENDİ</span><span class="story-date">GECE / 001</span></div><h3>Kedinin Getirdiği Anahtar</h3><p>Bir gece kapımın önünde beliren bir kedi, beni Narlıkapı'da unutulmuş bir sandığa ve yıllardır sahibini bekleyen mektuplara götürdü.</p><div class="story-card-bottom"><span>Bir bağın yeniden bulunması</span><button type="button" class="story-open" data-story-open aria-label="Kedinin Getirdiği Anahtar hikâyesini oku">HİKÂYEYİ AÇ <span>↗</span></button></div></div>
-<div class="story-full" hidden><p>Bir gece miyavlamalarla uyandım. Kapımın önünde bir kedi, ağzında paslı bir anahtar tutuyordu. Anahtarı aldım; kedi peşime takıldı. Beni Narlıkapı’ya doğru götürdü. Eski bir Rum evinin bahçesinde, kedinin işaret ettiği yerde bir teneke sandık buldum.</p><p>Anahtar sandığa uydu. İçinde 1960’lardan kalma mektuplar, birkaç fotoğraf ve bir günlük vardı. Mektuplar, Samatya’dan ayrılmak zorunda kalan bir Rum ailesine aitti. Fotoğraflardaki yüzleri araştırdım; sosyal medyada ailenin bir torununa ulaştım. Mektupları Yunanistan’a gönderdim.</p><p>Haftalar sonra bir teşekkür mektubu geldi. Yıllardır kapalı duran bir hikâye, iki farklı ülkede yaşayan insanlar arasında yeniden bir bağ kurmuştu.</p><p>Samatya’da her gün yeni bir hikâye birikiyor: bazen bir martı, bazen bir simit, bazen bir kedi. Ama hepsi aynı şeyi fısıldıyor: Yalnızlık, paylaşıldığında anlam kazanır.</p><p class="story-ending">Bir kedinin sayesinde geçmişin kapısı aralandı ve yalnızlığım anlam kazandı.</p><p class="story-fiction-note">Bu kayıt, Samatya'nın çok katmanlı geçmişinden ve Narlıkapı'nın atmosferinden esinlenen edebî bir kurmacadır; tarihî belge veya yaşanmış olay iddiası taşımaz.</p></div>
-</article>
-<article class="story-card" data-story-card data-category="history" data-search="suyun adını bıraktığı manastır surp kevork sulu manastır ayazma sarnıç bizans">
-<div class="story-card-art story-art-water" aria-hidden="true"><span class="story-art-symbol">≈</span><span class="story-art-caption">SULU MANASTIR · SU HAFIZASI</span><span class="story-art-number">01</span></div>
-<div class="story-card-content"><div class="story-card-meta"><span class="story-category">TARİH & RİVAYET</span><span class="story-date">KAYIT / 001</span></div><h3>Suyun Adını Bıraktığı Manastır</h3><p>Sulu Manastır adı, Surp Kevork çevresindeki ayazma ve büyük sarnıçla birlikte anılıyor. Bir yerin hafızası bazen toprağın altında saklı.</p><div class="story-card-bottom"><span>Yerel tarih kaydı</span><button type="button" class="story-open" data-story-open>HİKÂYEYİ AÇ <span>↗</span></button></div></div>
-<div class="story-full" hidden><p>Sulu Manastır adı, Surp Kevork çevresindeki ayazma ve büyük sarnıçla birlikte anılıyor. Bir yapının adı yalnız duvarda yazmıyor; yerin altındaki suya, orada kurulan ritüele ve nesilden nesile taşınan dile de siniyor.</p><p>Türkiye Ermenileri Patrikliği’nin tarihçesi, kilisenin Bizans manastırı Panagia Peribleptos’un bulunduğu alanla ilişkisini ve “Sulu Manastır” adını kaydediyor. Bu nedenle su hikâyesini yalnızca şiirli bir benzetme olarak değil, yerel tarih kaydına dayanan bir ayrıntı olarak okuyorum.</p><p class="story-ending">Bazı isimler, bir mahallenin hafızasında su gibi akmaya devam eder.</p></div>
-</article>
-<article class="story-card" data-story-card data-category="craft" data-search="mehterin sesi samatya zanaatkar zilci avedis zilcioğlu mehter zilleri osmanlı">
-<div class="story-card-art story-art-bell" aria-hidden="true"><span class="story-art-symbol">◉</span><span class="story-art-caption">ZİL USTASI · SESİN İZİ</span><span class="story-art-number">02</span></div>
-<div class="story-card-content"><div class="story-card-meta"><span class="story-category">ZANAAT</span><span class="story-date">KAYIT / 002</span></div><h3>Mehterin Sesi, Samatya’nın Zanaatkârı</h3><p>Zil yapımıyla anılan Avedis Zilcioğlu’nun, Sultan II. Osman döneminde mehter zilleri üretmek üzere görevlendirildiği aktarılıyor.</p><div class="story-card-bottom"><span>Bir ustanın şehirden taşan sesi</span><button type="button" class="story-open" data-story-open>HİKÂYEYİ AÇ <span>↗</span></button></div></div>
-<div class="story-full" hidden><p>Yerel kurumsal kaynakların tarih anlatısında Ermeni zanaatkârlar, Samatya’nın Osmanlı dönemindeki yaşamının önemli parçalarından biri olarak geçiyor. Zil yapımıyla anılan Avedis Zilcioğlu’nun Sultan II. Osman tarafından mehter zilleri üretmek üzere görevlendirildiği de aynı kaynaklarda aktarılıyor.</p><p>Bir mahallenin tarihini yalnızca saray kararları ve büyük yapılar taşımaz. Bir zanaatkârın eliyle yapılan zil, bir törenin sesine karışır; ses şehirden şehre giderken onu yapan insanın adı da yolculuk eder.</p><p class="story-ending">Bazen bir semtin hafızası, yüzyıllar sonra bile duyulabilen bir sesin içinde saklıdır.</p></div>
-</article>
-<article class="story-card" data-story-card data-category="daily" data-search="cumartesi pazarı marmara caddesi esnaf mahalle gündelik hayat karşılaşmalar">
-<div class="story-card-art story-art-market" aria-hidden="true"><span class="story-art-symbol">✳</span><span class="story-art-caption">MARMARA CADDESİ · PAZAR</span><span class="story-art-number">03</span></div>
-<div class="story-card-content"><div class="story-card-meta"><span class="story-category">GÜNDELİK HAYAT</span><span class="story-date">KAYIT / 003</span></div><h3>Cumartesi Pazarının Ritmi</h3><p>Semtin eski cumartesi pazarı, Marmara Caddesi üzerinde kurulurmuş. Pazar, alışverişten fazlası: karşılaşmaların ve mevsimlerin takvimi.</p><div class="story-card-bottom"><span>Mahallenin gündelik sesi</span><button type="button" class="story-open" data-story-open>HİKÂYEYİ AÇ <span>↗</span></button></div></div>
-<div class="story-full" hidden><p>Semtin eski cumartesi pazarının Marmara Caddesi üzerinde kurulduğu, zamanla kuzeye taşındığı yerel kurumsal kaynaklarda kaydediliyor. Pazar, bir mahallede yalnızca alışveriş demek değildir: karşılaşmaların, tanıdık seslerin, fiyat pazarlıklarının ve mevsimlerin de takvimidir.</p><p>Bir sokak adından, dükkânın tabelasından ya da eski bir pazar yerinden başlarım. Çünkü gündelik hayatın haritası çoğu zaman anıtların resmî haritasından daha çok şey anlatır. Pazar yerini bulmak, geçmişte kimlerin birbiriyle karşılaştığını da düşünmek demek.</p><p class="story-ending">Mahallenin ritmi, bazen tezgâhların kurulup toplandığı saatlerde saklıdır.</p></div>
-</article>
-<article class="story-card" data-story-card data-category="culture" data-search="ikinci bahar dizi meydan samatya televizyon popüler kültür 1998 2001">
-<div class="story-card-art story-art-cinema" aria-hidden="true"><span class="story-art-symbol">✧</span><span class="story-art-caption">İKİNCİ BAHAR · EKRAN HAFIZASI</span><span class="story-art-number">04</span></div>
-<div class="story-card-content"><div class="story-card-meta"><span class="story-category">KENT KÜLTÜRÜ</span><span class="story-date">KAYIT / 004</span></div><h3>Bir Diziyle Ulusal Belleğe Giren Meydan</h3><p>1998–2001 yıllarında yayımlanan <em>İkinci Bahar</em>, Samatya meydanını ülkenin dört bir yanındaki izleyicilerin belleğine taşıdı.</p><div class="story-card-bottom"><span>Kurgu ile gerçek hayatın kesişimi</span><button type="button" class="story-open" data-story-open>HİKÂYEYİ AÇ <span>↗</span></button></div></div>
-<div class="story-full" hidden><p>1998–2001 yıllarında yayımlanan <em>İkinci Bahar</em>, Samatya’yı Türkiye’nin dört bir yanındaki izleyicilerin belleğine yerleştiren yapımlardan biri oldu. Dizi araştırmaları, Kocamustafapaşa istasyonu yönüne açılan meydanın dış çekimlerde kullanıldığını kaydediyor.</p><p>Televizyon bir semte yeni bir kalabalık getirebilir, ama kameradan önce de orada yaşayanlar vardır. Ekranda görünen mahalle hikâyesi, gerçek esnafın ve gerçek sokakların üstüne kuruluydu; kurgu ile yerin kendi hafızasını ayrı ayrı hatırlamak gerekiyor.</p><p class="story-ending">Ekranda kalan bir meydan, gerçek hayatta yaşamaya devam eder.</p></div>
-</article>
+
+<article class="story-card story-card-featured" data-story-card data-category="tasinma" data-search="güngören samatya otobüs anahtar çanta taşınma 2025 fırın saat">
+<div class="story-card-art has-photo"><img src="/assets/samatya/otobus.svg" alt=""><span class="story-art-caption">GÜNGÖREN · GECE SEFERİ</span><span class="story-art-number">01</span></div>
+<div class="story-card-content"><div class="story-card-meta"><span class="story-category">TAŞINMA</span><span class="story-date">2025 / BAŞI</span></div><h3>Saati orada bıraktım</h3><p>Bir çanta. Bir anahtar. Otobüste biri sordu: dönüyor musun? Güngören’i kapatmadım. Sadece artık orada uyumuyorum.</p><div class="story-card-bottom"><span>Tanıyan semt, sormayı bırakır</span><button class="story-open" type="button" data-story-open>KAYDI AÇ <span>↗</span></button></div></div>
+<div class="story-full" hidden>
+<p>Güngören’de pencere hâlâ benim camımı biliyordu. Bu, kalmak için yeterli bir sebep sayılır. Ben saymadım.</p>
+<p>2025’in ilk soğuğunda çıktım. Eşyayı değil, bir geceyi taşıdım. Çanta dizinimde. Anahtar iç cepte. Yeni kapının anahtarı, eskisinden ağırdı.</p>
+<p>Otobüste karşımdaki adam sordu: “Dönüyor musun?”</p>
+<p>“Gidiyorum,” dedim.</p>
+<p>Başını salladı. Düzeltmedim.</p>
+<p>Samatya’da indim. Fırın benden önce açıktı. Demek ki şehir, benim varışıma göre kurulmuyordu.</p>
+<p>İlk sabah anahtarı iki kez çevirdim. İkincisi gereksizdi. Yine de çevirdim. Bazı kapılar emin olmanı ister.</p>
+<p>Güngören’e döndüm mü? Sorunun kendisi cevap. Dönülen yer bırakılmış sayılmaz. Bırakılmış yer de insanı her gece bir durak eksik saydırır.</p>
+<p class="story-ending">Tanıyan semt tehlikelidir. Sormayı bırakır. Ben, soran bir kıyıya indim.</p>
 </div>
-<div class="story-empty" id="story-empty" hidden><span>⌕</span><p>Bu arşivde aradığın iz henüz bulunamadı.</p><button type="button" id="story-reset">Bütün hikâyeleri göster</button></div>
-<p class="photo-credit story-sources">Tarih kayıtları için başvuru: <a href="https://archives.saltresearch.org/handle/123456789/6647" target="_blank" rel="noopener">SALT Research · Samatya ve Kocamustafapaşa’nın havadan görünümü ↗</a>. Kurmaca kayıtlar ayrıca belirtilmiştir.</p>
+</article>
+
+<article class="story-card" data-story-card data-category="esik" data-search="kapı eşik sulu manastır çan ışık gece">
+<div class="story-card-art has-photo"><img src="/assets/samatya/esik.svg" alt=""><span class="story-art-caption">SULU MANASTIR · EŞİK</span><span class="story-art-number">02</span></div>
+<div class="story-card-content"><div class="story-card-meta"><span class="story-category">EŞİK</span><span class="story-date">GECE / KAPALI</span></div><h3>Kapı aralıktı</h3><p>Adını duydum önce. Suyu sonra. İçeri girmedim. Öğrendiğim de bu oldu.</p><div class="story-card-bottom"><span>Eşik de bir odadır</span><button class="story-open" type="button" data-story-open>KAYDI AÇ <span>↗</span></button></div></div>
+<div class="story-full" hidden>
+<p>Gece yarısından sonra çan saat söylemez. Bir şeyi hatırlatır; ne olduğunu söylemez.</p>
+<p>Sulu Manastır’a haritayla değil, adıyla geldim. İsim ıslaktı. Taş kuruydu. Bu ikisi uzun süre aynı kapıda durabiliyor.</p>
+<p>Yan kapı aralıktı. İçeriden ince, sıcak bir ışık. Davet yoktu. Yasak da yoktu. Eşikte durdum. Taş serindi. Altta su mu vardı, ben mi öyle duydum, ayırmadım. Bu saatte ayırmak kaba kaçıyor.</p>
+<p>İçeri girseydim bir şey öğrenecektim. Girmedim.</p>
+<p>Ertesi gece aynı kapı kapalıydı. Kızmadım. Kapılar borçlu değildir.</p>
+<p class="story-ending">Eşik de bir odadır. İçeri girmeden de kalınır.</p>
+</div>
+</article>
+
+<article class="story-card" data-story-card data-category="kiyi" data-search="kıyı deniz iskele korkuluk saat kadın otobüs marmara">
+<div class="story-card-art has-photo"><img src="/assets/samatya/kiyi.svg" alt=""><span class="story-art-caption">KIYI · KORKULUK</span><span class="story-art-number">03</span></div>
+<div class="story-card-content"><div class="story-card-meta"><span class="story-category">KIYI</span><span class="story-date">GECE / SU</span></div><h3>Deniz üç sokak içeride</h3><p>Eski iskeleyi aradım. Biri, denizin orada olmadığını söyledi. Saatimi söyledim. “Dünkü,” dedi.</p><div class="story-card-bottom"><span>Saat doğruydu. Gün, değil</span><button class="story-open" type="button" data-story-open>KAYDI AÇ <span>↗</span></button></div></div>
+<div class="story-full" hidden>
+<p>Sahil yolu denizi gösterir, eski denizi değil. Biri konuşur, biri hatırlar.</p>
+<p>Korkulukta biri vardı. Yüzü suda, bana değil. Sigaranın ucunu önce uzak bir pencere sandım.</p>
+<p>“Aradığın burada değil,” dedi. Bakmadan.</p>
+<p>“Nerede?”</p>
+<p>“Üç sokak içeride kaldı. Sen de biliyorsun. Yoksa bu saatte burada olmazdın.”</p>
+<p>Saatimi söyledim, cevap niyetine. “Bu dünkü,” dedi. Gülümsedim. O gülmedi. Doğru söyleyen, bazen gülmez.</p>
+<p>Otobüs geldi. İnecek gibi yaptı. İnmedi. Ya da indi; ben yanlış tarafa baktım.</p>
+<p>Hâlâ o iskeleyi arıyorum. Bulursam ne yapacağımı bilmiyorum. Aramak, varmak kadar dürüst olabiliyor.</p>
+<p class="story-ending">Saat doğruydu. Gün, değil.</p>
+</div>
+</article>
+
+<article class="story-card" data-story-card data-category="pazar" data-search="pazar cumartesi turunç marmara caddesi güngören adım esnaf">
+<div class="story-card-art has-photo"><img src="/assets/samatya/pazar.svg" alt=""><span class="story-art-caption">MARMARA · SABAH</span><span class="story-art-number">04</span></div>
+<div class="story-card-content"><div class="story-card-meta"><span class="story-category">PAZAR</span><span class="story-date">CUMARTESİ</span></div><h3>Ayağın hâlâ sayıyor</h3><p>Tek bir turunç. İhtiyacım yoktu. Satan adam adımı bilmiyordu. Semtimi biliyordu.</p><div class="story-card-bottom"><span>İyilik sorulunca küçülür</span><button class="story-open" type="button" data-story-open>KAYDI AÇ <span>↗</span></button></div></div>
+<div class="story-full" hidden>
+<p>Cumartesi, Marmara Caddesi erken uyanır. Ben de erken çıktım. Erken çıkan ya kaçıyordur ya yetişiyordur. Hangisi olduğumu tezgâh anladı. Ben anlamadım.</p>
+<p>Bir turunç. Pazarlık yok. Pazarlık, kalmak isteyenlerin dilidir.</p>
+<p>Adam tartmadan baktı. “Güngören’den misin?”</p>
+<p>Söylememiştim.</p>
+<p>“Ayağın,” dedi, “hâlâ oranın kaldırımını sayıyor. Buranın taşı daha kısa adım ister.”</p>
+<p>Parayı uzattım. Üstünü bırakmadı. “İlk hafta üstü olmaz.” İyilik miydi, işaret mi, sormadım. İyilik sorulunca küçülür.</p>
+<p>Ertesi cumartesi tezgâh duruyordu. Adam yoktu. Yerine genç biri “kim?” dedi. Ben de “kim?” dedim.</p>
+<p class="story-ending">İkisi de cevap alamadı. Samatya’da bu, dürüst bir konuşma sayılır.</p>
+</div>
+</article>
+
+<article class="story-card" data-story-card data-category="gece" data-search="avlu kilit narlıkapı palto sandalye gece sapak">
+<div class="story-card-art has-photo"><img src="/assets/samatya/avlu.svg" alt=""><span class="story-art-caption">NARLIKAPI · SAPAK</span><span class="story-art-number">05</span></div>
+<div class="story-card-content"><div class="story-card-meta"><span class="story-category">GECE</span><span class="story-date">KİLİT / KİBAR</span></div><h3>Kilit sadece kibardı</h3><p>Asılıydı. Kapalı değildi. Avluda benim olmayan bir palto, boş bir sandalye. Oturmadım.</p><div class="story-card-bottom"><span>Davetsiz kahraman olunmaz</span><button class="story-open" type="button" data-story-open>KAYDI AÇ <span>↗</span></button></div></div>
+<div class="story-full" hidden>
+<p>Narlıkapı’ya yakın bir sapak. Demir kapı. Kilit asılıydı; kapalı değildi. Bazı kilitler sadece nezaket içindir.</p>
+<p>İttim. Avlu, çamaşır ipi, bir sandalye, sandalyenin arkasında bir palto. Palto benim değildi. O gece emin olduğum tek cümle buydu.</p>
+<p>Oturabilirdim. Oturan, davetsiz değil yerleşik olur. Ben ikisinin arasında durdum ve çıktım.</p>
+<p>Bir hafta sonra kapı yine kibardı. İkinci bir sandalye gelmişti. Kimse yoktu. Oturmadım. İkinci sandalye bir soruydu. Cevap vermek için oturulmaz.</p>
+<p>Sonra başka bir saatte uğradım. Kapı kilitliydi. İçim rahatladı. Rahatlamak da bir çeşit cevaptır.</p>
+<p class="story-ending">Davet edilmeyen yerde kahraman olunmaz. Geçilir.</p>
+</div>
+</article>
+
+</div>
+<div class="story-empty" id="story-empty" hidden><span>⌕</span><p>Bu saatte o iz yok.</p><button type="button" id="story-reset">Bütün kayıtları göster</button></div>
+<p class="photo-credit story-sources">Dipnot yok. Dipnot, çekingen cümlenin arkasına saklandığı yerdir.</p>
 </section>
+
 <dialog class="story-dialog" id="story-dialog" aria-labelledby="story-dialog-title">
-<div class="story-dialog-shell"><div class="story-dialog-top"><span class="story-dialog-mark">ŞEHRİN TAŞ HAFIZASI / OKUMA ODASI</span><button type="button" id="story-dialog-close" aria-label="Hikâyeyi kapat">KAPAT <b>×</b></button></div><p class="kicker" id="story-dialog-category">ARŞİV KAYDI</p><h2 id="story-dialog-title">Hikâye</h2><div class="story-dialog-rule"></div><div class="story-dialog-copy" id="story-dialog-copy"></div><div class="story-dialog-foot"><span>ERGİN'İN SAMATYA DEFTERİ</span><span>OKUMA ODASI · 001—005</span></div></div>
+<div class="story-dialog-shell"><div class="story-dialog-top"><span class="story-dialog-mark">ŞEHRİN TAŞ HAFIZASI / OKUMA ODASI</span><button type="button" id="story-dialog-close" aria-label="Kaydı kapat">KAPAT <b>×</b></button></div><p class="kicker" id="story-dialog-category">KAYIT</p><h2 id="story-dialog-title">Kayıt</h2><div class="story-dialog-rule"></div><div class="story-dialog-copy" id="story-dialog-copy"></div><div class="story-dialog-foot"><span>ERGİN’İN SAMATYA DEFTERİ</span><span>OKUMA ODASI · 001—005</span></div></div>
 </dialog>
 
-<section id="cumhuriyet" class="samatya-section reveal in" data-stamp="05">
-<div class="archive-heading"><div><p class="kicker">05 / CUMHURİYET YILLARI</p><h2>Kıyının geri çekilişi,<br><em>mahallenin değişen sesi.</em></h2></div><p class="archive-stamp"><span>05</span><small>1923 → BUGÜN<br>GÖÇ · ŞEHİR · HAFIZA</small></p></div>
-<div class="samatya-image-story">
-<figure class="samatya-image">
-<img src="/assets/illustrations/old-coastline.svg" alt="Eski Samatya kıyısından esinlenen özgün ve ölçeksiz vektör çizim." width="1635" height="1038" loading="lazy">
-<figcaption>Özgün vektör çizim. Tarihî fotoğraf, arşiv belgesi veya birebir mimari tasvir değildir.</figcaption>
-</figure>
-<div class="samatya-image-copy"><p class="kicker">DENİZDEN KARAYA</p><h3>Bugünkü yolun altında <em>başka bir kıyı var.</em></h3><p>Bugünkü Sirkeci–Florya sahil yolunu sıradan bir trafik hattı gibi görüp geçmek mümkün. Oysa yerel kurumsal kaynak tarih anlatısına göre, 1957–1959 arasında yapılan yol ve dolgu çalışmaları Samatya’nın eski liman karakterini büyük ölçüde değiştirdi; deniz, yerleşimden bir adım daha uzağa itildi.</p><p>Eski kıyı fotoğrafına bakınca bu fark daha iyi görülüyor. Kayıklar, denizle neredeyse aynı çizgide duran yapılar ve yamaçta sıklaşan evler… Bugün önümden geçen araçların gürültüsünü bir anlığına aradan çekince, bu semtin ses haritasında denizin ne kadar merkezde olduğunu hayal etmeye çalışıyorum.</p><p>Şehir planlaması bazen yalnızca yeni yol yapmaz. İnsanların suya nasıl ulaştığını, çocukların nerede oynadığını, balıkçıların nerede durduğunu ve mahallelinin kendi kıyısıyla ilişkisini de değiştirir.</p><p class="photo-credit"></p></div>
-</div>
-<section id="bugun" class="samatya-section reveal in" data-stamp="06">
-<div class="archive-heading"><div><p class="kicker">06 / BUGÜNÜN SAMATYA’SI</p><h2>Bir semti yürüyerek<br><em>okuma denemesi.</em></h2></div><p class="archive-stamp"><span>4</span><small>DURAK / YAVAŞ ROTA<br>GÖZLEM DEFTERİ</small></p></div>
-<p class="lede">Samatya’yı tanımak için bir günde bütün tarihini çözmeye çalışmıyorum. Birkaç durak seçip bakmayı, kapıların önünde biraz oyalanmayı ve bildiklerimle bilmediklerimi ayırmayı daha anlamlı buluyorum.</p>
-<div class="samatya-walk">
-<article><h3>Samatya Meydanı</h3><p>Bir zamanlar gündelik hayatın ve pazarın toplandığı alanı merkeze al. Dizi hafızasıyla gerçek esnaf hayatının aynı yerde nasıl iç içe geçtiğini düşün.</p></article>
-<article><h3>Marmara Caddesi</h3><p>Eski ticaret ve cemaat izlerini, kapı üstlerini ve yapı cephelerini dışarıdan gözlemle. Her kitabeyi hemen çözemiyorsan fotoğrafını ve sorunu not et.</p></article>
-<article><h3>Surp Kevork çevresi</h3><p>Sulu Manastır olarak bilinen bu tarihî alanın hikâyesini Patrikhane kaynağından oku. Ziyaret ve fotoğraf konusunda ibadethanenin kurallarına saygı göster.</p></article>
-<article><h3>Eski kıyının izi</h3><p>Sahil yoluna çıkıp arşiv fotoğrafını yeniden aç. Bugünkü dolgu ve yol çizgisiyle eski deniz hattını zihninde karşılaştır.</p></article>
-</div>
-<div class="samatya-intro-grid">
-<div class="samatya-prose"><p>Mahalleye bakarken kendime sürekli şu soruyu soruyorum: Bir yapı neden ayakta kalır? Yalnızca sağlam taşla değil, kullanımını sürdüren insanlarla. Peki bir yapı ortadan kalktığında ne kaybolur? Duvarla birlikte bazen bir meslek, bir dil, bir komşuluk biçimi ve çocukların hatırlayacağı bir manzara da kaybolur.</p><p>Bu nedenle Samatya’yı sadece güzel fotoğraflar için değil, dikkat etmeyi öğrenmek için de geziyorum. Bir kapı açılmıyorsa, arkasındaki hikâyeyi benim yazmam gerekmiyor. Kaynağını bulabildiğim yerde onu aktarırım; yalnızca rivayet olarak kalanı da rivayet diye işaretlerim. Bilmediğim yerde ise soruyu açık bırakırım.</p></div>
-<blockquote class="samatya-pullquote"><p>Bir mahallenin en kıymetli haritası, üzerinde ne kadar yol çizildiği değil; kimlerin birbirine yol tarif ettiğiyle anlaşılır.</p><small>ERGİN’İN DEFTERİ · BUGÜNE DAİR</small></blockquote>
+<section id="cumhuriyet" class="samatya-section reveal in" data-stamp="04">
+<div class="archive-heading"><div><p class="kicker">04 / SU</p><h2>Deniz burada değil.<br><em>Üç sokak içeride.</em></h2></div><p class="archive-stamp"><span>04</span><small>ESKİ İSKELE<br>YENİ YOL</small></p></div>
+<div class="samatya-image-story reverse">
+<figure class="samatya-image"><img src="/assets/samatya/kiyi.svg" alt="Gece korkuluğunda denize dönük bir siluet. Özgün çizim." width="1200" height="800" loading="lazy"><figcaption>Yüz suda. Saat dünde.</figcaption></figure>
+<div class="samatya-image-copy"><p class="kicker">KORKULUK</p><h3>Tekrar, hatıranın<br><em>üstünü kapatır.</em></h3><p>Korkuluktaki cümleyi burada bir daha yazmayacağım. İki kez söylenen sır, sır olmaktan çıkar.</p><p>Eski su, sahil yolunun gösterdiği yerde değil. Şehir öne çıkmış. Su mu çekildi, taş mı yürüdü. İkisini aynı cümlede eritmiyorum.</p><p>Aramak, varmak kadar dürüst olabiliyor. Bazen daha dürüst. Çünkü varınca insan açıklamaya başlar.</p></div>
 </div>
 </section>
 
-<section id="kaynaklar" class="samatya-section reveal in" data-stamp="07">
-<div class="samatya-sourcebox">
-<h3>Başvurduğum kaynaklar</h3>
-<ul>
-<li><a href="https://grandeflanerie.com/armenianistanbul/" target="_blank" rel="noopener">Grande Flânerie (İngilizce):</a> İstanbul’un Ermeni kiliseleri ve Samatya’daki Surp Kevork hakkında mimari notlar; sayfadaki bilgiler Türkçe özetlenmiştir.</li>
-<li><a href="https://archives.saltresearch.org/handle/123456789/2168" target="_blank" rel="noopener">SALT Research · Samatya fotoğraf ve kartpostal koleksiyonu:</a> “Vue de Psamatia”, eski iskele, Marmara’dan görünüm ve gündelik iş hayatına ait arşiv kayıtları.</li>
-<li><a href="https://archives.saltresearch.org/handle/123456789/113296" target="_blank" rel="noopener">SALT Research · A view of Samatya from the Sea of Marmara:</a> Eski kıyıyı deniz tarafından gösteren kartpostal; görsel kaydı ve kullanım koşulları.</li>
-<li><a href="https://digitalarchive.library.bogazici.edu.tr/bitstreams/5b0e20c1-2cf2-414c-b059-1487619bc010/download" target="_blank" rel="noopener">Boğaziçi Üniversitesi dijital arşivi · Armenian Migrants in Turkey: History of a Journey (İngilizce):</a> Surp Kevork, Sulu Manastır ve İstanbul Ermeni cemaatinin tarihsel bağlamı üzerine akademik çalışma.</li>
-
-
-
-
-<li><a href="https://www.cambridge.org/core/journals/journal-of-economic-history/article/abs/wealth-tax-of-1942-and-the-disappearance-of-nonmuslim-enterprises-in-turkey/B05523EDB4D0AC1E4931C0562DE3E652" target="_blank" rel="noopener">The Journal of Economic History / Cambridge University Press:</a> 1942 Varlık Vergisi’nin gayrimüslim işletmeler üzerindeki etkisi hakkında akademik çalışma.</li>
-</ul>
-<p>Bir kaynak ile başka bir kaynak arasında ayrıntı farkı olduğunda, bunu tek bir kesin hikâyeye zorlamamak gerekir. Bu defter de öğrendikçe güncellenmeye açık.</p>
+<section id="bugun" class="samatya-section reveal in" data-stamp="05">
+<div class="archive-heading"><div><p class="kicker">05 / YÜRÜYÜŞ</p><h2>Dört durak.<br><em>Hiçbiri cevap değil.</em></h2></div><p class="archive-stamp"><span>04</span><small>YAVAŞ<br>SAAT YOK</small></p></div>
+<p class="lede">Samatya’yı bir günde çözen adam, semti değil kendi acelesini gezer.</p>
+<div class="samatya-walk">
+<article><h3>Meydan</h3><p>Otur. İki kez bakılana kadar kalkma. İkinci bakış selamdır. Birincisi sadece şehirdir.</p></article>
+<article><h3>Marmara</h3><p>Tabelayı değil eşiği oku. Eşik, tabeladan daha az yalan söyler.</p></article>
+<article><h3>Sulu Manastır</h3><p>Kapalıysa hikâyeyi sen yazma. Aralıksa da aceleyle girme.</p></article>
+<article><h3>Sahil</h3><p>Suya “nereden çekildin” diye sorma. Su, çekilenin kendisi olduğunu sanır.</p></article>
 </div>
+<blockquote class="samatya-pullquote" id="ergin-defteri"><p>Bir mahallenin haritası yol değildir. Kim, kime, hangi saatte “buradan” demiştir.</p><small>Ergin · henüz kapanmamış</small></blockquote>
+</section>
+
+<section id="kaynaklar" class="samatya-section reveal in" data-stamp="06">
+<div class="archive-heading"><div><p class="kicker">06 / YAZILMAYAN</p><h2>Bilmediğim kapıyı<br><em>açık bırakıyorum.</em></h2></div><p class="archive-stamp"><span>00</span><small>DİPNOT YOK<br>KOSTÜM YOK</small></p></div>
+<div class="samatya-history-dark"><p>Burada dipnot yok. Bir adamı dipnotla ciddi göstermek, en kolay kostümdür. Ben kostüm giymedim.</p><p>Gördüğümü yazdım. Görmediğimi kapıda bıraktım. Kapı yarın da orada olur. Ben belki başka bir saatte.</p><p>Güngören’e ne oldu, diye soran olursa: duruyor. Ben de duruyorum. İkimiz aynı cümlede değiliz. O kadar.</p></div>
 </section>
 
 <section id="other-stops" class="reveal in" data-stamp="01">
@@ -417,7 +446,7 @@ try {
             <details class="place-story">
               <summary><span>Taş hafızayı aç</span><span class="story-mark" aria-hidden="true">+</span></summary>
               <div class="place-story-copy">
-                <p>Surların güneyinde, Marmara'ya bakan eski bir mahalle. Yüzyıllardır Rum ve Ermeni cemaatlerinin yaşadığı sokaklarda kiliseler, ahşap evler ve balıkçı meyhaneleri yan yana durur. Turist kalabalığından uzak, yavaş bir İstanbul.</p>
+                <p>Surların güneyinde, Marmara’ya bakan eski bir mahalle. Kilise kapısı, ahşap eşik, balıkçı ışığı. Turist kalabalığı burada oyalanmaz. Gece oyalanır.</p>
                 <p class="meta"><span>Surp Kevork · sahil · balık</span><a href="https://tr.wikipedia.org/wiki/Samatya" rel="noopener">Kaydı oku ↗</a></p>
               </div>
             </details>

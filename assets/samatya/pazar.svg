@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="t d">
+<title id="t">Pazar</title>
+<desc id="d">Ergin gece hattı. Özgün çizim; fotoğraf, arşiv belgesi veya gerçek bir kişinin portresi değildir.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#140e10"/><stop offset=".45" stop-color="#1a1214"/><stop offset="1" stop-color="#070607"/></linearGradient>
+  <radialGradient id="halo" cx="70%" cy="28%" r="45%"><stop stop-color="#c47a62" stop-opacity=".42"/><stop offset="1" stop-color="#c47a62" stop-opacity="0"/></radialGradient>
+  <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#2c3c4a"/><stop offset="1" stop-color="#0c1218"/></linearGradient>
+  <linearGradient id="warm" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f0c9a4"/><stop offset="1" stop-color="#8d4e45"/></linearGradient>
+  <filter id="soft"><feGaussianBlur stdDeviation="8"/></filter>
+  <pattern id="grain" width="90" height="90" patternUnits="userSpaceOnUse">
+    <circle cx="8" cy="14" r=".8" fill="#f3e6d8" opacity=".16"/>
+    <circle cx="44" cy="51" r=".6" fill="#f3e6d8" opacity=".1"/>
+    <circle cx="70" cy="22" r=".5" fill="#f3e6d8" opacity=".12"/>
+    <circle cx="23" cy="77" r=".7" fill="#000" opacity=".18"/>
+  </pattern>
+</defs>
+<rect width="1200" height="800" fill="url(#bg)"/>
+<circle cx="864" cy="176" r="304" fill="url(#halo)"/>
+
+<rect x="160" y="360" width="860" height="280" rx="8" fill="#2a1c16" stroke="#d7a88a" stroke-opacity=".4"/>
+<g fill="#e07a3c">
+  <circle cx="300" cy="470" r="42"/><circle cx="390" cy="500" r="38"/><circle cx="470" cy="450" r="46"/>
+  <circle cx="560" cy="510" r="36"/><circle cx="650" cy="460" r="44"/><circle cx="740" cy="500" r="34"/>
+  <circle cx="820" cy="455" r="40"/>
+</g>
+<g fill="#f2c089" opacity=".35">
+  <ellipse cx="470" cy="470" rx="18" ry="10"/><ellipse cx="650" cy="480" rx="16" ry="9"/>
+</g>
+<path d="M250 640 H940" stroke="#c98970" stroke-opacity=".5"/>
+<path d="M430 640 v70 M760 640 v70" stroke="#e6c2a4" stroke-width="6"/>
+<g>
+  <path d="M180 360 C 200 250 260 230 300 250" fill="none" stroke="#e7d2c2" stroke-opacity=".3" stroke-width="2"/>
+</g>
+<text x="64" y="90" fill="#ead7c6" font-family="Georgia, serif" font-size="22" letter-spacing="6" opacity=".7">CUMARTESİ</text>
+<text x="64" y="140" fill="#ead7c6" font-family="Georgia, serif" font-size="15" letter-spacing="3" opacity=".45">tek turunç yeter</text>
+
+<rect width="1200" height="800" fill="url(#grain)"/>
+<path d="M28 28h46M28 28v34M1172 28h-46M1172 28v34M28 772h46M28 772v-34M1172 772h-46M1172 772v-34" fill="none" stroke="#e4c2ae" stroke-opacity=".35" stroke-width="1.2"/>
+</svg>
