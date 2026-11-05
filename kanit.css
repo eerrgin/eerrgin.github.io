@@ -1,0 +1,108 @@
+/* Teknik kanıt ve küçük ekran — Ergin Kaplan, 5 Kasım 2026 */
+
+.arrival-labline {
+  max-width: 38rem;
+  margin: 10px 0 14px;
+  color: var(--bone, #f3e7dc);
+  font-size: clamp(15px, 2.1vw, 18px);
+  line-height: 1.45;
+}
+
+.kanit { padding-top: 36px; }
+.kanit-head { max-width: 46rem; margin-bottom: 18px; }
+.kanit-card {
+  margin: 0 0 16px;
+  padding: 16px;
+  border: 1px solid rgba(220, 198, 177, 0.22);
+  background: rgba(10, 8, 12, 0.55);
+}
+.kanit-card header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-bottom: 12px;
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+.kanit-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 16px;
+  align-items: start;
+}
+.kanit-svg { width: 100%; height: auto; display: block; border: 1px solid rgba(220, 198, 177, 0.2); }
+.kanit-pre {
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  overflow-x: auto;
+  background: #070405;
+  border: 1px solid rgba(220, 198, 177, 0.18);
+  color: #f0d7cb;
+  font: 13px/1.55 ui-monospace, monospace;
+  white-space: pre-wrap;
+}
+.kanit-table-wrap { margin-top: 12px; overflow-x: auto; }
+.kanit table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.kanit caption { caption-side: bottom; text-align: left; color: var(--dim, #b7a79c); padding-top: 8px; font-size: 12px; }
+.kanit th, .kanit td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid rgba(220, 198, 177, 0.16); }
+.kanit th { font-family: var(--mono, ui-monospace, monospace); font-size: 11px; letter-spacing: 0.05em; }
+.kanit-foot, .kanit-others { color: var(--muted, #cbbdb4); font-size: 14px; }
+.kanit-others ul { padding-left: 1.1rem; }
+.kanit-others li { margin: 0.35rem 0; }
+
+@media (max-width: 800px) {
+  .kanit-split { grid-template-columns: minmax(0, 1fr); }
+  .arrival-labline { font-size: 16px; }
+
+  #frekans .station {
+    flex: 0 0 min(82vw, 260px);
+    min-height: 76px;
+    scroll-snap-align: start;
+  }
+  #frekans .station-title { overflow-wrap: anywhere; }
+  #frekans .radio-actions,
+  #frekans .radio-mixer-actions { display: grid; grid-template-columns: 1fr; }
+  #frekans .radio-actions .btn,
+  #frekans .radio-mixer-actions .btn { width: 100%; min-height: 48px; }
+  #frekans input[type="range"] { width: 100%; min-height: 44px; }
+  #frekans #freq { font-size: clamp(52px, 18vw, 88px); }
+  #frekans #scope { width: 100%; max-width: 100%; }
+
+  #topos .topos-frame { display: grid; grid-template-columns: minmax(0, 1fr) !important; }
+  #topos .topos-visual,
+  #topos .topos-diagram,
+  #topos .topos-reading-guide { max-width: 100%; min-width: 0; }
+  #topos .topos-diagram { height: auto; }
+  #topos .topos-actions,
+  #topos .row.topos-actions { display: grid; grid-template-columns: minmax(0, 1fr); }
+  #topos .topos-actions .btn { width: 100%; min-height: 48px; text-align: center; }
+  #topos .topos-reading-guide { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  #topos .departure-editor input { width: 100%; min-height: 44px; font-size: 16px; }
+
+  .project-tray-grid { grid-template-columns: minmax(0, 1fr) !important; }
+  .tray-card { min-width: 0; overflow-wrap: anywhere; }
+  .tray-card h3, .tray-card p { overflow-wrap: anywhere; }
+  .project-tray-controls { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 8px; -webkit-overflow-scrolling: touch; }
+  .tray-filter { flex: 0 0 auto; min-height: 44px; }
+
+  dialog#cmd {
+    width: calc(100vw - 12px);
+    max-width: none;
+    max-height: calc(100dvh - 12px);
+    margin: 6px auto;
+    overflow: auto;
+    padding-bottom: 12px;
+  }
+  #cmd-filter {
+    width: calc(100% - 24px) !important;
+    margin-left: 12px !important;
+    margin-right: 12px !important;
+    font-size: 16px;
+    min-height: 48px;
+  }
+  .cmd-quick-actions { grid-template-columns: 1fr 1fr !important; }
+  .cmd-links { max-height: none; grid-template-columns: minmax(0, 1fr) !important; }
+  #cmd .cmd-item { min-height: 44px; overflow-wrap: anywhere; }
+}

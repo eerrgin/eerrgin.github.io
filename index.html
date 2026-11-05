@@ -4,22 +4,39 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gece Hattı — Samatya'dan açık bir kişisel arşiv</title>
-  <meta name="description" content="Samatya’nın eski taş evleri, gece trenleri, analog sesler, gökyüzü ve kişisel kayıtlar arasında açık kalan bir gece hattı.">
+  <meta name="description" content="Ergin Lab; yazılım, sistem mühendisliği, şehir arşivleri ve etkileşimli dijital deneylerin kişisel çalışma alanıdır.">
   <meta name="author" content="Ergin Kaplan">
   <meta name="theme-color" content="#070103">
   <meta name="color-scheme" content="dark">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Gece Hattı — Samatya’dan açık bir kişisel arşiv">
-  <meta property="og:description" content="Eski terminal ışıkları, Samatya’nın taş evleri, gece frekansları ve gökyüzüne açılan kişisel bir arşiv.">
+  <meta property="og:site_name" content="Ergin Lab">
+  <meta property="og:description" content="Ergin Lab; yazılım, sistem mühendisliği, şehir arşivleri ve etkileşimli dijital deneylerin kişisel çalışma alanıdır.">
   <meta property="og:url" content="https://eerrgin.github.io/">
   <meta property="og:locale" content="tr_TR">
   <meta property="og:image" content="https://eerrgin.github.io/photos/samatya.jpg">
   <meta property="og:image:alt" content="Ergin Lab gece vardiyası için sinematik İstanbul gece fotoğrafı.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Ergin Teknik Atölye — Gece Vardiyası">
-  <meta name="twitter:description" content="Samatya Topos: Samatya koordinatlarından yıldızları, gezegenleri ve ışık gecikmesini gösteren 3B gökyüzü deneyi.">
+  <meta name="twitter:title" content="Gece Hattı — Samatya'dan açık bir kişisel arşiv">
+  <meta name="twitter:description" content="Ergin Lab; yazılım, sistem mühendisliği, şehir arşivleri ve etkileşimli dijital deneylerin kişisel çalışma alanıdır.">
   <meta name="twitter:image" content="https://eerrgin.github.io/photos/samatya.jpg">
   <link rel="canonical" href="https://eerrgin.github.io/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Ergin Lab",
+    "alternateName": "Gece Hattı",
+    "url": "https://eerrgin.github.io/",
+    "inLanguage": "tr",
+    "description": "Ergin Lab; yazılım, sistem mühendisliği, şehir arşivleri ve etkileşimli dijital deneylerin kişisel çalışma alanıdır.",
+    "author": {
+      "@type": "Person",
+      "name": "Ergin Kaplan",
+      "url": "https://github.com/eerrgin"
+    }
+  }
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -42,6 +59,7 @@
   <link rel="stylesheet" href="night-vision.css?v=20261102-photo-return">
   <link rel="stylesheet" href="night-refit.css?v=20261102-firstframe-restored">
   <link rel="stylesheet" href="gece-hatti-editorial.css?v=20261104-editorial01">
+  <link rel="stylesheet" href="kanit.css?v=20261105-kanit">
   <script>
     (function () {
       var root = document.documentElement;
@@ -117,6 +135,7 @@
       <div class="arrival-content">
         <p class="kicker arrival-overline"><span>GECE VARDİYASI / STÜDYO 001</span><span class="hero-status"><i aria-hidden="true"></i> AÇIK · İSTANBUL</span></p>
         <h1 id="mast">Gece.<em>İz.</em><br>Hafıza.</h1>
+        <p class="arrival-labline">Ergin Lab; yazılım, sistem mühendisliği, şehir arşivleri ve etkileşimli dijital deneylerin kişisel çalışma alanıdır.</p>
         <p class="arrival-lede">Bazı şehirler uyur.<br> Bazı istasyonlar yalnızca bekler.</p>
         <div class="arrival-actions">
           <a class="btn arrival-primary" href="#topos"><span aria-hidden="true">▣</span> İLK SEFER · GÖKKUBBE DOSYASI ↗</a>
@@ -703,6 +722,126 @@
       </div>
       <div class="archive-endnote"><span>ARŞİV / 006</span><span>SAKLANAN HER ŞEY DOSYADA DURMAZ</span></div>
     </section>
+
+    <section id="kanit" class="kanit" aria-labelledby="kanit-title">
+      <div class="kanit-head">
+        <p class="kicker">09 / TEKNİK KANIT</p>
+        <h2 id="kanit-title">Ne yaptım, <em>nasıl bakılır.</em></h2>
+        <p class="lede">Aşağıdaki üç dosya vitrin cümlesi değil. Her birinde mimari şema, çalıştırma örneği, testin adı ve depo bağlantısı var. Şemalar bu sayfa için çizildi; başka bir ekranın fotoğrafı değildir.</p>
+      </div>
+
+      <article class="kanit-card" id="kanit-tigerk">
+        <header><span>01 · TIGERK</span><a href="https://github.com/eerrgin/Tigerk" rel="noopener">github.com/eerrgin/Tigerk ↗</a></header>
+        <div class="kanit-split">
+          <svg class="kanit-svg" viewBox="0 0 520 220" role="img" aria-label="Tigerk mimarisi: veri, ağ, kayıp, geri yayılım ve denetçi">
+            <rect width="520" height="220" fill="#12080b"/>
+            <g font-family="ui-monospace,monospace" font-size="11" fill="#f0d7cb">
+              <rect x="16" y="78" width="86" height="54" fill="none" stroke="#c3aea6"/><text x="28" y="100">VERİ</text><text x="28" y="116">AND / XOR</text>
+              <rect x="128" y="58" width="100" height="94" fill="none" stroke="#ff6557"/><text x="140" y="82">AĞ</text><text x="140" y="100">katman</text><text x="140" y="116">nöron</text><text x="140" y="132">sigmoid</text>
+              <rect x="254" y="78" width="90" height="54" fill="none" stroke="#c3aea6"/><text x="266" y="100">MSE</text><text x="266" y="116">½(y−t)²</text>
+              <rect x="370" y="40" width="132" height="64" fill="none" stroke="#e4b99e"/><text x="382" y="64">GERİ YAYILIM</text><text x="382" y="82">delta · girdi</text>
+              <rect x="370" y="122" width="132" height="58" fill="none" stroke="#9ad9c9"/><text x="382" y="146" fill="#9ad9c9">DENETÇİ</text><text x="382" y="164" fill="#9ad9c9">sayısal türev</text>
+              <path d="M102 105 H128 M228 105 H254 M344 105 H370 M436 104 V122" fill="none" stroke="#ff6557"/>
+            </g>
+          </svg>
+          <div>
+            <h3>Kullanım</h3>
+            <pre class="kanit-pre">python main.py
+python mantik.py
+python denetci.py
+python -m unittest test_tigerk -v</pre>
+            <p>Harici paket yok. Python 3.9 ve üzeri. <code>main.py</code> AND kapısını eğitir. Ağırlıklar bu sayfadaki Tigerk kutusunda kalır, sunucuya gitmez.</p>
+          </div>
+        </div>
+        <div class="kanit-table-wrap">
+          <table>
+            <caption>test_tigerk.py içindeki denetimler. Sonuç rakamı burada uydurulmadı; komut depoda ve GitHub Actions dosyasında yazılı.</caption>
+            <thead><tr><th>Test</th><th>Ne bakıyor</th></tr></thead>
+            <tbody>
+              <tr><td>test_mse</td><td>mse([0, 1], [0, 0]) = 0.5</td></tr>
+              <tr><td>test_and_learns</td><td>Tohum 7, 6000 tur, oran 0.7; AND örnekleri 0.5 eşiğinde beklenen sınıfa düşer</td></tr>
+              <tr><td>test_ogrenme_orani_adimi_olcekler</td><td>Oran 0.4 iken ağırlık adımı, oran 0.2 adımının iki katı</td></tr>
+              <tr><td>test_geri_yayilim_sayisal_turevle_uyumlu</td><td>denetci.gercek_fark() < 1e-4</td></tr>
+              <tr><td>test_taslak_hatalari_bulunur_ve_duzelir</td><td>Üç bozuk taslak bulunur, düzeltmeden sonra fark 1e-4 altına iner</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="kanit-foot">İş akışı: <a href="https://github.com/eerrgin/Tigerk/blob/main/.github/workflows/tests.yml" rel="noopener">.github/workflows/tests.yml</a> — py_compile, unittest, main.py, tigerk_v0.py. Lisans depodaki LICENSE dosyasında.</p>
+      </article>
+
+      <article class="kanit-card" id="kanit-topos">
+        <header><span>02 · SAMATYA TOPOS</span><a href="samatya-sky/">Gökkubbeyi aç ↗</a></header>
+        <div class="kanit-split">
+          <svg class="kanit-svg" viewBox="0 0 520 220" role="img" aria-label="Topos hesap zinciri: tarih, Kepler, ufuk, sahne">
+            <rect width="520" height="220" fill="#0c121c"/>
+            <g font-family="ui-monospace,monospace" font-size="11" fill="#d6e4f5">
+              <rect x="14" y="78" width="92" height="56" fill="none" stroke="#9eb2d7"/><text x="24" y="102">TARİH</text><text x="24" y="118">Samatya</text>
+              <rect x="124" y="70" width="108" height="72" fill="none" stroke="#f0c78a"/><text x="134" y="96">JULIAN</text><text x="134" y="112">KEPLER</text><text x="134" y="128">10 adım</text>
+              <rect x="252" y="70" width="108" height="72" fill="none" stroke="#9ad9c9"/><text x="262" y="96">UFUK</text><text x="262" y="112">yükseklik</text><text x="262" y="128">azimut</text>
+              <rect x="380" y="70" width="124" height="72" fill="none" stroke="#ff776c"/><text x="392" y="96">3B SAHNE</text><text x="392" y="112">ölçeksiz</text><text x="392" y="128">kırılma ~</text>
+              <path d="M106 106 H124 M232 106 H252 M360 106 H380" fill="none" stroke="#9eb2d7"/>
+            </g>
+          </svg>
+          <div>
+            <h3>Kullanım</h3>
+            <pre class="kanit-pre">https://eerrgin.github.io/samatya-sky/
+gözlem: 41.0028° K, 28.9404° D
+yöntem notu: hesaplama-yontemi.html</pre>
+            <p>Gök konumu tarayıcıda, sayfadaki tarihten hesaplanır. Hazır bir gökyüzü videosu oynatılmaz. 3B sahne ölçekli bir yörünge maketi değildir.</p>
+          </div>
+        </div>
+        <div class="kanit-table-wrap">
+          <table>
+            <caption>Doğrulama durumu, yöntem notundaki kendi kaydımdan.</caption>
+            <thead><tr><th>Parça</th><th>Durum</th></tr></thead>
+            <tbody>
+              <tr><td>Kepler, M = E − e sin(E)</td><td>Newton–Raphson, kodda 10 adım</td></tr>
+              <tr><td>Kaynak</td><td>JPL yaklaşık elemanlar; tam JPL uygulaması değil. USNO ufuk formülü referans</td></tr>
+              <tr><td>Otomatik efemeris testi</td><td>Henüz yok. Yöntem notu bunu açıkça yazar; ± derece iddiası yok</td></tr>
+              <tr><td>Kaynak</td><td><a href="https://github.com/eerrgin/eerrgin.github.io/tree/main/samatya-sky" rel="noopener">samatya-sky/</a> · <a href="samatya-sky/hesaplama-yontemi.html">hata payı notu</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="kanit-card" id="kanit-linux">
+        <header><span>03 · ERGİN LINUX LAB</span><a href="https://github.com/eerrgin/ergin-linux-lab" rel="noopener">github.com/eerrgin/ergin-linux-lab ↗</a></header>
+        <div class="kanit-split">
+          <svg class="kanit-svg" viewBox="0 0 520 220" role="img" aria-label="Linux Lab rotası: kabuk, süreç, ağ, ayrıcalık, çekirdek, kayıt">
+            <rect width="520" height="220" fill="#10140f"/>
+            <g font-family="ui-monospace,monospace" font-size="11" fill="#d7e6cf">
+              <rect x="16" y="28" width="150" height="44" fill="none" stroke="#b7c7a4"/><text x="28" y="55">1 kabuk / izin</text>
+              <rect x="184" y="28" width="150" height="44" fill="none" stroke="#b7c7a4"/><text x="196" y="55">2 süreç / disk</text>
+              <rect x="352" y="28" width="150" height="44" fill="none" stroke="#b7c7a4"/><text x="364" y="55">3 ağ / TLS</text>
+              <rect x="16" y="110" width="150" height="44" fill="none" stroke="#e7c27a"/><text x="28" y="137">4 az ayrıcalık</text>
+              <rect x="184" y="110" width="150" height="44" fill="none" stroke="#e7c27a"/><text x="196" y="137">5 cgroup / eBPF</text>
+              <rect x="352" y="110" width="150" height="44" fill="none" stroke="#e7c27a"/><text x="364" y="137">6 SBOM / CI</text>
+              <text x="16" y="196" fill="#9ad9c9">lablar/oku-sistem.sh · salt okunur</text>
+            </g>
+          </svg>
+          <div>
+            <h3>Kullanım</h3>
+            <pre class="kanit-pre">git clone https://github.com/eerrgin/ergin-linux-lab.git
+cd ergin-linux-lab
+sh lablar/oku-sistem.sh</pre>
+            <p>Betik paket kurmaz, dosya silmez, servis değiştirmez, yönetici istemez. Çıktıdaki süreç bilgisi herkese açık paylaşılmadan önce elden geçirilir. Ayrı birim test dosyası yok; kontrol salt okunur özettir.</p>
+          </div>
+        </div>
+        <p class="kanit-foot">Lisans notu depoda: <code>BELIRT.md</code> ve <code>docs/lisans-ve-kaynak.md</code>. Herkese açık olması yeniden dağıtım izni değildir.</p>
+      </article>
+
+      <div class="kanit-others">
+        <p class="kicker">DİĞER MASALAR</p>
+        <ul>
+          <li><a href="https://eerrgin.github.io/performance-lab/">Performans Laboratuvarı</a> — aynı veride süre, medyan, doğruluk.</li>
+          <li><a href="https://github.com/eerrgin/mycelforge/tree/main/resilience-lab" rel="noopener">Resilience Lab</a> — bozuk veri ve çevrimdışı kuyruk örnekleri.</li>
+          <li><a href="windows-lab/">Ergin Sistem Lab</a> — PowerShell, süreç, olay kaydı.</li>
+          <li><a href="https://github.com/eerrgin/ergin-android-lab" rel="noopener">Ergin İz</a> — yerel izleme prototipi. Android ticari markası değildir.</li>
+          <li><a href="sapma-defteri/">Sapma Defteri</a> — belirti, hipotez, geri dönüş planı.</li>
+        </ul>
+      </div>
+    </section>
+
     <section id="proje-tepsisi" class="project-tray-section" aria-labelledby="project-tray-title">
       <div class="project-tray-head"><div><p class="kicker">08 / AÇIK DOSYALAR</p><h2 id="project-tray-title">Çalışma <em>tepsisi.</em></h2></div><p>Deneyler ve teknik çalışmalar. Kategoriyi seç; masaüstünde altı, telefonda dört kayıt görünür.</p></div>
       <div class="project-tray-controls" role="group" aria-label="Çalışma tepsisi kategorileri">
@@ -715,7 +854,7 @@
       </div>
       <p class="tray-status" id="tray-status" aria-live="polite">Çalışma tepsisi hazırlanıyor…</p>
       <div class="project-tray-grid">
-        <a class="tray-card tray-feature" href="samatya-sky/" data-tray-category="sky"><span class="tray-no">01 · ASTRONOMİ</span><h3>Samatya Topos</h3><p>Samatya koordinatlarından yaklaşık gökyüzü yönlerini hesaplayan 3B atlas.</p><span class="tray-link">Gökyüzünü aç ↗</span></a>
+        <a class="tray-card tray-feature" href="samatya-sky/" data-tray-category="sky"><span class="tray-no">01 · ASTRONOMİ</span><h3>Samatya Topos</h3><p>Samatya koordinatlarından yaklaşık gökyüzü yönlerini hesaplayan 3B atlas. Kanıt: <span class="tray-proof">yöntem notu ve mimari şema, #kanit-topos.</span></p><span class="tray-link">Gökyüzünü aç ↗</span></a>
         <a class="tray-card" href="samatya-sky/hesaplama-yontemi.html" data-tray-category="sky"><span class="tray-no">02 · TEKNİK DERİNLİK</span><h3>Hesaplama yöntemi</h3><p>Kepler denklemi, koordinat dönüşümü, veri kaynakları, belirsizlikler ve doğrulama planı.</p><span class="tray-link">Yöntemi incele ↗</span></a>
         <a class="tray-card" href="/istanbul-cockpit/" data-tray-category="sky"><span class="tray-no">03 · ATMOSFER</span><h3>İstanbul Kokpiti</h3><p>Hava ve şehir sinyallerini kaynaklarına göre ayıran gözlem paneli.</p><span class="tray-link">Kokpiti aç ↗</span></a>
         <a class="tray-card" href="kus-hatti/" data-tray-category="sky"><span class="tray-no">04 · DOĞA ARŞİVİ</span><h3>Kuş Hattı</h3><p>Türler ve mevsimsel görülme pencereleri için yerel saha defteri.</p><span class="tray-link">Kuş defterini aç ↗</span></a>
@@ -728,9 +867,9 @@
         <a class="tray-card" href="https://github.com/eerrgin/GreySignal" data-tray-category="secure"><span class="tray-no">11 · HTTP</span><h3>GreySignal</h3><p>HTTP güvenlik başlıklarını salt okunur şekilde incelemeye yardımcı araç.</p><span class="tray-link">Kaynak kod ↗</span></a>
         <a class="tray-card" href="https://github.com/eerrgin/ReconX-Web-Reconnaissance-Toolkit-" data-tray-category="secure"><span class="tray-no">12 · KEŞİF / RAPOR</span><h3>ReconX</h3><p>Yalnızca izin verilen hedefler için keşif çıktıları ve raporlama.</p><span class="tray-link">Kaynak kod ↗</span></a>
         <a class="tray-card" href="https://github.com/eerrgin/local-sqli-lab" data-tray-category="secure"><span class="tray-no">13 · SQL / EĞİTİM</span><h3>local-sqli-lab</h3><p>SQLite üzerinde kontrollü, çevrimdışı SQL enjeksiyonu öğrenme alanı.</p><span class="tray-link">Laboratuvarı incele ↗</span></a>
-        <a class="tray-card" href="https://github.com/eerrgin/Tigerk" data-tray-category="build"><span class="tray-no">14 · MODEL DENEYİ</span><h3>Tigerk</h3><p>Küçük sinir ağı, eğitim adımları ve mühendislik yönlendirme deneyi.</p><span class="tray-link">Kaynak kod ↗</span></a>
+        <a class="tray-card" href="https://github.com/eerrgin/Tigerk" data-tray-category="build"><span class="tray-no">14 · MODEL DENEYİ</span><h3>Tigerk</h3><p>Küçük sinir ağı, eğitim adımları ve mühendislik yönlendirme deneyi. Kanıt: unittest test_tigerk, #kanit-tigerk.</p><span class="tray-link">Kaynak kod ↗</span></a>
         <a class="tray-card" href="https://github.com/eerrgin/ergin-lab-savunma-anatomisi" data-tray-category="secure"><span class="tray-no">15 · SAVUNMA</span><h3>Savunma Anatomisi</h3><p>Hesap, web, yönetici erişimi, yedek ve olay müdahalesi için savunma rehberi.</p><span class="tray-link">Rehberi incele ↗</span></a>
-        <a class="tray-card" data-tray-category="systems" href="https://github.com/eerrgin/ergin-linux-lab"><span class="tray-no">16 · LINUX / SYSTEMS</span><h3>Ergin Linux Lab</h3><p>Terminalden sistem gözlemine, lisans envanterine ve ileri işletim projelerine uzanan mühendislik rotası.</p><span class="tray-link">Linux laboratuvarını incele ↗</span></a>
+        <a class="tray-card" data-tray-category="systems" href="https://github.com/eerrgin/ergin-linux-lab"><span class="tray-no">16 · LINUX / SYSTEMS</span><h3>Ergin Linux Lab</h3><p>Terminalden sistem gözlemine, lisans envanterine ve ileri işletim projelerine uzanan mühendislik rotası. Kanıt: oku-sistem.sh, #kanit-linux.</p><span class="tray-link">Linux laboratuvarını incele ↗</span></a>
         <a class="tray-card" data-tray-category="systems" href="https://github.com/eerrgin/ergin-android-lab"><span class="tray-no">17 · LOCAL TRACE</span><h3>Ergin İz</h3><p>Python/C tabanlı yerel izleme prototipi. Ergin İz, Google'dan bağımsızdır; henüz Android™ uygulaması değildir. Android™ Google LLC'nin ticari markasıdır.</p><span class="tray-link">Kaynak depo ve belgeler ↗</span></a>
         <a class="tray-card" data-tray-category="systems" href="windows-lab/"><span class="tray-no">18 · WINDOWS / POWERSHELL</span><h3>Ergin Sistem Lab</h3><p>PowerShell, süreçler, servisler, olay kayıtları ve uç nokta mühendisliği için bağımsız bir başlangıç alanı.</p><span class="tray-link">Windows laboratuvarını aç ↗</span></a>
         <a class="tray-card" href="sapma-defteri/" data-tray-category="build"><span class="tray-no">19 · DEBUG / FIELD NOTES</span><h3>Sapma Defteri</h3><p>Belirtiyi kanıttan ayır; hipotezleri karşılaştır; deney sonucunu ve geri dönüş planını yerel olarak kaydet.</p><span class="tray-link">İnceleme masasına geç ↗</span></a>
@@ -807,6 +946,7 @@
       <a class="cmd-item" href="https://github.com/eerrgin/ergin-android-lab" rel="noopener">Ergin İz ↗</a>
       <a class="cmd-item" href="windows-lab/">Ergin Sistem Lab / Windows ↗</a>
       <a class="cmd-item" href="/ergin-kaplan-net/">00 · Kervan 2003 / internet kafe oyun salonu</a>
+      <a class="cmd-item" href="#kanit">09 · Teknik kanıt / Tigerk Topos Linux</a>
       <a class="cmd-item" href="#proje-tepsisi">Çalışma tepsisi</a>
       <a class="cmd-item" href="#sevk">HAT / gece terminali</a>
       <a class="cmd-item" href="https://github.com/eerrgin" rel="noopener">GitHub depoları ↗</a>
