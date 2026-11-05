@@ -1,1 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="t d"><title id="t">Gece hattı</title><desc id="d">Yağmur altındaki İstanbul kıyısında kırmızı ışıkları yanan eski bir tramvay, raylar ve uzakta şehir silueti.</desc><defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#08080b"/><stop offset=".58" stop-color="#211016"/><stop offset="1" stop-color="#08090c"/></linearGradient><linearGradient id="street" x2="0" y2="1"><stop stop-color="#171116"/><stop offset="1" stop-color="#030507"/></linearGradient><linearGradient id="glass"><stop stop-color="#180d12"/><stop offset=".5" stop-color="#8c1428"/><stop offset="1" stop-color="#160b10"/></linearGradient><radialGradient id="halo"><stop stop-color="#e51d3d" stop-opacity=".42"/><stop offset="1" stop-color="#e51d3d" stop-opacity="0"/></radialGradient><filter id="blur"><feGaussianBlur stdDeviation="24"/></filter></defs><rect width="1200" height="760" fill="url(#sky)"/><circle cx="860" cy="205" r="210" fill="url(#halo)" filter="url(#blur)"/><path d="M0 365 80 320 140 344 205 275 270 332 340 288 410 352 470 310 540 355 620 294 690 344 770 302 840 350 910 295 980 350 1060 300 1200 355V530H0Z" fill="#0b0b10"/><g fill="#4a101c" opacity=".9"><path d="M20 130h190v370H20zM220 210h145v300H220zM950 170h220v330H950z"/><path d="M45 175h28v65H45zm58 0h28v65h-28zm58 0h28v65h-28zM250 250h30v60h-30zm55 0h30v60h-30zM990 215h35v70h-35zm70 0h35v70h-35z"/></g><path d="M0 500 1200 440v320H0Z" fill="url(#street)"/><path d="M0 540 1200 490M0 625 1200 565M0 710 1200 640" stroke="#50101d" stroke-width="3" opacity=".55"/><path d="M0 760 390 500M1200 760 805 500" stroke="#a91831" stroke-width="5" opacity=".72"/><path d="M0 760 520 500M1200 760 680 500" stroke="#301018" stroke-width="15"/><g transform="translate(95 300)"><path d="M0 110Q0 25 90 0h360q90 25 90 110v220H0Z" fill="#090a0d" stroke="#8d1b30" stroke-width="8"/><path d="M22 120Q22 40 100 20h340q78 20 78 100v15H22Z" fill="#1a0c11" stroke="#4f1420" stroke-width="5"/><g fill="url(#glass)" stroke="#c3213b" stroke-width="5"><path d="M45 50h90v105H45zM155 40h95v115h-95zM270 40h95v115h-95zM385 50h95v105h-95z"/></g><path d="M0 200h540v32H0z" fill="#310e18"/><path d="M20 330h500" stroke="#bd1c37" stroke-width="7"/><circle cx="62" cy="260" r="28" fill="#ff243f"/><circle cx="62" cy="260" r="72" fill="url(#halo)"/><circle cx="480" cy="260" r="18" fill="#e8b8a6"/><path d="M15 340h510" stroke="#0a0a0d" stroke-width="15"/></g><g opacity=".65" stroke="#d52b45" stroke-width="2"><path d="M30 20 5 230M155 0 115 240M440 10 405 240M720 0 685 250M1030 10 990 240M1160 0 1120 220"/></g><g fill="#f02a47" opacity=".7"><path d="M120 560h210l-100 14H95zM160 650h360l-180 12H120zM710 570h260l-110 12H680zM850 690h240l-120 10H820z"/></g><path d="M760 0v760" stroke="#5d1825" opacity=".2"/><text x="825" y="620" fill="#d8c4bd" opacity=".75" font-family="Georgia,serif" font-size="34" letter-spacing="7">GECE HATTI</text><text x="828" y="660" fill="#b8223b" opacity=".8" font-family="monospace" font-size="13" letter-spacing="4">SON SEFER · SAMATYA</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="gh-t gh-d">
+  <title id="gh-t">Gece hattı · Samatya</title>
+  <desc id="gh-d">Yağmur altında kırmızı neon yansımalı gece sokağı. Özgün çizim.</desc>
+  <defs>
+    <linearGradient id="s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#060408"/><stop offset=".5" stop-color="#140a10"/><stop offset="1" stop-color="#080608"/>
+    </linearGradient>
+    <linearGradient id="w" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1014"/><stop offset="1" stop-color="#050408"/>
+    </linearGradient>
+    <radialGradient id="n" cx="70%" cy="35%" r="40%">
+      <stop offset="0" stop-color="#ff1f1a" stop-opacity=".45"/><stop offset="1" stop-color="#ff1f1a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="g"><feGaussianBlur stdDeviation="8"/></filter>
+  </defs>
+  <rect width="1200" height="800" fill="url(#s)"/>
+  <ellipse cx="840" cy="220" rx="260" ry="160" fill="url(#n)"/>
+  <g fill="#0c080a">
+    <rect x="0" y="200" width="160" height="400"/><rect x="140" y="160" width="90" height="440"/>
+    <rect x="220" y="240" width="120" height="360"/><rect x="330" y="180" width="70" height="420"/>
+  </g>
+  <g fill="#ff5147" opacity=".25">
+    <rect x="30" y="260" width="4" height="4"/><rect x="60" y="300" width="4" height="4"/>
+    <rect x="160" y="220" width="3" height="4"/><rect x="250" y="280" width="4" height="3"/>
+  </g>
+  <g fill="#0e0a0c">
+    <rect x="900" y="180" width="100" height="420"/><rect x="990" y="140" width="80" height="460"/>
+    <rect x="1060" y="220" width="140" height="380"/>
+  </g>
+  <path d="M0 600 H1200 V800 H0 Z" fill="url(#w)"/>
+  <path d="M0 600 H1200" stroke="#ff1f1a" stroke-opacity=".2" stroke-width="1"/>
+  <g>
+    <rect x="700" y="320" width="180" height="40" rx="3" fill="#12080c" stroke="#ff1f1a" stroke-opacity=".7"/>
+    <text x="790" y="346" text-anchor="middle" fill="#ff3a32" font-family="Georgia,serif" font-size="16" letter-spacing="6">GECE</text>
+    <ellipse cx="790" cy="340" rx="120" ry="30" fill="#ff1f1a" opacity=".2" filter="url(#g)"/>
+  </g>
+  <path d="M700 640 Q790 620 880 650" stroke="#ff1f1a" stroke-opacity=".25" fill="none" stroke-width="8"/>
+  <g fill="#060408" opacity=".9">
+    <circle cx="480" cy="520" r="14"/>
+    <path d="M468 535 L472 600 L488 600 L492 535 Z"/>
+    <path d="M472 555 L455 590 M488 555 L505 590"/>
+  </g>
+  <g stroke="#c3aea6" stroke-opacity=".1" stroke-width="1">
+    <path d="M100 40 L85 160"/><path d="M300 20 L280 180"/><path d="M500 50 L485 170"/>
+    <path d="M750 30 L735 150"/><path d="M950 45 L935 165"/><path d="M1100 25 L1085 140"/>
+  </g>
+</svg>
