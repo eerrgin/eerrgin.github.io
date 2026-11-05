@@ -60,6 +60,7 @@
   <link rel="stylesheet" href="night-refit.css?v=20261102-firstframe-restored">
   <link rel="stylesheet" href="gece-hatti-editorial.css?v=20261104-editorial01">
   <link rel="stylesheet" href="kanit.css?v=20261105-kanit">
+  <link rel="stylesheet" href="project-archive-refit.css?v=20261105-01">
   <script>
     (function () {
       var root = document.documentElement;
@@ -842,7 +843,20 @@ sh lablar/oku-sistem.sh</pre>
       </div>
     </section>
 
-    <section id="proje-tepsisi" class="project-tray-section" aria-labelledby="project-tray-title">
+    <section class="featured-shelf" aria-labelledby="featured-shelf-title">
+  <div class="featured-shelf-head">
+    <div><p class="kicker">ERGİN LAB / SEÇİLMİŞ DOSYALAR</p><h2 id="featured-shelf-title">Geceye bırakılan <em>beş iz.</em></h2></div>
+    <p>İlk kez gelenler için kısa bir başlangıç. Diğer bütün proje adları aşağıdaki açık dosya dizininde yerini korur.</p>
+  </div>
+  <div class="featured-shelf-grid">
+    <a class="featured-project" href="#topos"><span class="featured-project-no">01 / GÖZLEM</span><span class="featured-project-symbol" aria-hidden="true">✳</span><h3>Samatya Topos</h3><p>Bir kıyıdan gökyüzüne bakan etkileşimli atlas.</p><span class="featured-project-cta">GÖKKUBBEYİ AÇ ↗</span></a>
+    <a class="featured-project" href="#frekans"><span class="featured-project-no">02 / YAYIN</span><span class="featured-project-symbol" aria-hidden="true">⌁</span><h3>Greyfield FM</h3><p>Tarayıcıda üretilen 19 gece frekansı.</p><span class="featured-project-cta">FREKANSI BUL ↗</span></a>
+    <a class="featured-project" href="#tigerk"><span class="featured-project-no">03 / MODEL</span><span class="featured-project-symbol" aria-hidden="true">∿</span><h3>Tigerk</h3><p>Küçük sinir ağı, eğitim ve sayısal denetim.</p><span class="featured-project-cta">DENEYİ İNCELE ↗</span></a>
+    <a class="featured-project" href="#kuslar"><span class="featured-project-no">04 / SAHA</span><span class="featured-project-symbol" aria-hidden="true">↝</span><h3>Kuş Hattı</h3><p>Türler ve mevsimsel gözlem pencereleri.</p><span class="featured-project-cta">SAHA DEFTERİ ↗</span></a>
+    <a class="featured-project" href="https://eerrgin.github.io/mycelforge/"><span class="featured-project-no">05 / ÜRETİM</span><span class="featured-project-symbol" aria-hidden="true">⌘</span><h3>MycelForge</h3><p>Miselyum bazlı biyomalzeme araştırma aracı.</p><span class="featured-project-cta">ATÖLYEYE GEÇ ↗</span></a>
+  </div>
+</section>
+<section id="proje-tepsisi" class="project-tray-section" aria-labelledby="project-tray-title">
       <div class="project-tray-head"><div><p class="kicker">08 / AÇIK DOSYALAR</p><h2 id="project-tray-title">Çalışma <em>tepsisi.</em></h2></div><p>Deneyler ve teknik çalışmalar. Kategoriyi seç; masaüstünde altı, telefonda dört kayıt görünür.</p></div>
       <div class="project-tray-controls" role="group" aria-label="Çalışma tepsisi kategorileri">
         <button class="tray-filter" type="button" data-tray-filter="all" aria-pressed="true">Tümü</button>
@@ -851,6 +865,16 @@ sh lablar/oku-sistem.sh</pre>
         <button class="tray-filter" type="button" data-tray-filter="secure" aria-pressed="false">Güvenlik</button>
         <button class="tray-filter" type="button" data-tray-filter="systems" aria-pressed="false">İşletim sistemleri</button>
         <button class="tray-filter" type="button" data-tray-filter="archive" aria-pressed="false">Arşiv</button>
+      </div>
+      <div class="project-index" aria-label="Tüm proje adları">
+        <div class="project-index-heading"><strong>TÜM AÇIK DOSYALAR / İSİMLERİ KORUNUR</strong><span id="project-index-count">DİZİN HAZIRLANIYOR</span></div>
+        <div class="project-index-list" id="project-index-list"></div>
+        <div hidden>
+          <a href="ergin-ustalik-rotasi/" data-project-index data-category="build">Ergin Ustalık Rotası</a>
+          <a href="https://github.com/eerrgin/eerrgin.github.io/blob/main/ergin-ustalik-rotasi/PLAN.md" data-project-index data-category="systems">Çalışma Zamanı Gözlemevi</a>
+          <a href="https://github.com/eerrgin/eerrgin.github.io/blob/main/ergin-ustalik-rotasi/README.md" data-project-index data-category="systems">İşlem Omurgası ve Bilgi Atölyesi</a>
+          <a href="/ergin-kaplan-net/" data-project-index data-category="archive">Kervan 2003 · İnternet Kafe</a>
+        </div>
       </div>
       <p class="tray-status" id="tray-status" aria-live="polite">Çalışma tepsisi hazırlanıyor…</p>
       <div class="project-tray-grid">
@@ -986,6 +1010,7 @@ sh lablar/oku-sistem.sh</pre>
   <script src="kokpit.js?v=20261101-uzaktren01" defer></script>
   <script src="night-vision.js?v=20261105-compact01" defer></script>
   <script src="gece-hatti-experience.js?v=20261104-editorial01" defer></script>
+  <script src="project-archive.js?v=20261105-01" defer></script>
   <script>
     (function () {
       "use strict";
