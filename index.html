@@ -1228,20 +1228,33 @@ sh lablar/oku-sistem.sh</pre>
 <script>
 (function(){
   "use strict";
-  var targets=["topos","kuslar","atolye","laboratuvar","frekans","kanit","hat"];
-  targets.forEach(function(id){
-    var section=document.getElementById(id);
-    if(!section)return;
-    var intro=section.querySelector(":scope > .lede, :scope .topos-lede, :scope .archive-lede, :scope .workbench-description");
-    if(!intro || intro.closest("details"))return;
+  var targets=["topos","kuslar","atolye","ustalik-rotasi","laboratuvar","frekans","sinyal","arsiv","kanit","proje-tepsisi","hat"];
+  var selectors=".lede, .topos-prompt, .workbench-description, .project-tray-head > p, .workbench-project-head > p";
+  function fold(node,label){
+    if(!node || node.closest("details") || node.dataset.folded==="true") return;
     var details=document.createElement("details");
     details.className="read-more";
     var summary=document.createElement("summary");
-    summary.textContent="AÇIKLAMA / DEVAMINI OKU +";
-    intro.parentNode.insertBefore(details,intro);
+    summary.textContent=label || "AÇIKLAMA / DEVAMINI OKU +";
+    node.parentNode.insertBefore(details,node);
     details.appendChild(summary);
-    details.appendChild(intro);
-    details.addEventListener("toggle",function(){summary.textContent=details.open?"AÇIKLAMA / KAPAT −":"AÇIKLAMA / DEVAMINI OKU +";});
+    details.appendChild(node);
+    node.dataset.folded="true";
+    details.addEventListener("toggle",function(){
+      summary.textContent=details.open ? "AÇIKLAMA / KAPAT −" : (label || "AÇIKLAMA / DEVAMINI OKU +");
+    });
+  }
+  targets.forEach(function(id){
+    var section=document.getElementById(id);
+    if(!section) return;
+    Array.prototype.slice.call(section.querySelectorAll(selectors)).forEach(function(node){
+      if(node.closest(".card, .station, .project-card, .night-note-card")) return;
+      fold(node);
+    });
+    if(id==="hat"){
+      var list=section.querySelector(":scope > ul");
+      if(list) fold(list,"İLKELERİ GÖR / AÇ +");
+    }
   });
 })();
 </script>
