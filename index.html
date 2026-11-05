@@ -235,35 +235,47 @@
 
 
 <style>
-.hizir-ledger{position:relative;margin:clamp(3rem,7vw,7rem) 0;padding:clamp(1.4rem,4vw,3.5rem);overflow:hidden;background:radial-gradient(ellipse at 82% 18%,rgba(112,151,112,.19),transparent 42%),linear-gradient(135deg,#101813 0%,#080b0a 58%,#17110e 100%);border:1px solid rgba(170,198,157,.42);box-shadow:0 24px 80px rgba(0,0,0,.32)}
-.hizir-ledger:before{content:"";position:absolute;inset:12px;border:1px solid rgba(170,198,157,.13);pointer-events:none}
-.hizir-ledger .hl-top{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:#a9c29e;font:600 .68rem/1.5 monospace;letter-spacing:.16em}
-.hizir-ledger h2{max-width:900px;margin:1.4rem 0 1rem;font-size:clamp(2.5rem,7vw,6.5rem);line-height:.94;letter-spacing:-.055em;color:#e8e6d9}
+.hizir-ledger{margin:clamp(2rem,5vw,4rem) 0;border:1px solid rgba(170,198,157,.42);background:#0b100e;box-shadow:0 18px 60px rgba(0,0,0,.28)}
+.hizir-ledger details{display:block}
+.hizir-ledger summary{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(240px,.75fr);gap:0;cursor:pointer;list-style:none;min-height:250px}
+.hizir-ledger summary::-webkit-details-marker{display:none}
+.hizir-ledger .hl-photo{width:100%;height:100%;min-height:250px;max-height:430px;object-fit:cover;display:block;filter:saturate(.78) contrast(1.06)}
+.hizir-ledger .hl-cover-copy{padding:clamp(1.4rem,4vw,3rem);display:flex;flex-direction:column;justify-content:center;background:radial-gradient(ellipse at 80% 15%,rgba(112,151,112,.16),transparent 45%),#0b100e}
+.hizir-ledger .hl-top{color:#a9c29e;font:600 .68rem/1.5 monospace;letter-spacing:.14em}
+.hizir-ledger h2{margin:1rem 0;font-size:clamp(2.3rem,5vw,4.8rem);line-height:.94;color:#e8e6d9;letter-spacing:-.05em}
 .hizir-ledger h2 em{color:#a9c29e;font-family:Georgia,serif;font-weight:400}
-.hizir-ledger .hl-deck{max-width:720px;color:#d0d4c9;font-size:clamp(1rem,1.7vw,1.22rem);line-height:1.8}
-.hizir-ledger .hl-columns{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(220px,.7fr);gap:clamp(1.5rem,4vw,4rem);margin-top:2rem}
-.hizir-ledger .hl-copy{color:#c2c8bd;line-height:1.9}
-.hizir-ledger .hl-copy p{margin:0 0 1rem}
-.hizir-ledger .hl-side{align-self:start;padding:1.2rem;border-left:2px solid #91a985;background:rgba(255,255,255,.035);color:#cbd4c5}
-.hizir-ledger .hl-side strong{display:block;margin-bottom:.8rem;color:#b8cba9;font:600 .7rem monospace;letter-spacing:.13em}
-.hizir-ledger .hl-side p{margin:0;line-height:1.8}
-.hizir-ledger .hl-foot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(170,198,157,.22);color:#91a18d;font: .65rem/1.6 monospace;letter-spacing:.1em}
-@media(max-width:700px){.hizir-ledger .hl-columns{grid-template-columns:1fr}.hizir-ledger{padding:1.3rem}}
+.hizir-ledger .hl-deck{color:#d0d4c9;line-height:1.7}
+.hizir-ledger .hl-open{margin-top:1rem;color:#b8cba9;font:600 .7rem monospace;letter-spacing:.12em}
+.hizir-ledger .hl-story{padding:clamp(1.4rem,4vw,3rem);border-top:1px solid rgba(170,198,157,.25);color:#c2c8bd;line-height:1.9}
+.hizir-ledger .hl-story p{margin:0 0 1rem}
+.hizir-ledger .hl-story aside{padding:1rem 1.2rem;border-left:2px solid #91a985;background:rgba(255,255,255,.035);color:#cbd4c5}
+.hizir-ledger .hl-foot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(170,198,157,.22);color:#91a18d;font:.65rem/1.6 monospace;letter-spacing:.1em}
+.read-more{margin:.8rem 0 1.2rem;border:1px solid rgba(170,198,157,.24);background:rgba(255,255,255,.025)}
+.read-more summary{padding:.8rem 1rem;cursor:pointer;color:#b8cba9;font:600 .72rem monospace;letter-spacing:.08em}
+.read-more[open]{padding-bottom:.8rem}
+.read-more p{margin:.2rem 1rem .5rem}
+@media(max-width:700px){.hizir-ledger summary{grid-template-columns:1fr}.hizir-ledger .hl-photo{min-height:190px;max-height:260px}.hizir-ledger .hl-cover-copy{padding:1.2rem}}
 </style>
 <section class="hizir-ledger reveal" id="golgedeki-yolcu" aria-labelledby="hizir-ledger-title">
-  <div class="hl-top"><span>STATIC ARCHIVE / 007 · SAMATYA DEFTERİ</span><span>GECE VARDİYASI · KAYIT AÇIK</span></div>
-  <h2 id="hizir-ledger-title">Gölgedeki <em>Yolcu.</em></h2>
-  <p class="hl-deck">Bazı şehir hikâyeleri bir meydanda değil, insanın her gün önünden geçtiği bir ağacın gölgesinde başlar.</p>
-  <div class="hl-columns">
-    <div class="hl-copy">
+  <details>
+    <summary>
+      <img class="hl-photo" src="/photos/golgedeki-yolcu.jpg" alt="Sümbül Efendi civarında, gece ışığında yaşlı ve gövdesi yarılmış tarihî çınar ağacı; taş avlu ve çeşme." width="1200" height="800" loading="lazy" decoding="async">
+      <span class="hl-cover-copy">
+        <span class="hl-top">STATIC ARCHIVE / 007 · SAMATYA DEFTERİ</span>
+        <h2 id="hizir-ledger-title">Gölgedeki <em>Yolcu.</em></h2>
+        <span class="hl-deck">Bir ağaç, eski bir semt rivayeti ve gece dönüşünde akılda kalan küçük bir soru.</span>
+        <span class="hl-open">HİKÂYEYİ AÇ ↓</span>
+      </span>
+    </summary>
+    <div class="hl-story">
       <p>Benim kaydım, Sümbül Efendi civarında gördüğüm bir ağaç yazısıyla başladı. Ağacın altında eskiden Sümbül Efendi ile Hızır Aleyhisselâm'ın buluştuğunu anlatan bir rivayet kulağıma geldi. Bu anlatının tarihî olarak doğrulandığını söylemiyorum; İstanbul'un sözlü hafızasında dolaşan bir iz olarak not ediyorum.</p>
-      <p>Evim de bu eski semt hikâyesinin yakınında. İnsan her gün aynı sokaklardan geçince, taşların ve dalların taşıdığı eski cümleleri fark etmeye başlıyor. Bir gece dönüşünde, ağacın orada birkaç dakika durup etrafa baktığımı hatırlıyorum. Karşı kaldırımda bir yolcu silueti mi vardı, yoksa lambanın gölgesi mi uzamıştı? Deftere kesin bir cevap yazmadım.</p>
+      <p>Evim de bu eski semt hikâyesinin yakınında. İnsan her gün aynı sokaklardan geçince, taşların ve dalların taşıdığı eski cümleleri fark etmeye başlıyor. Bir gece dönüşünde, ağacın orada birkaç dakika durup etrafa baktığımı hatırlıyorum. Karşı avluda bir gölge mi hareket etti, yoksa lambanın ışığı mı değişti? Deftere kesin bir cevap yazmadım.</p>
       <p>Belki de bu kaydın asıl meselesi karşılaşma değil; karşılaşma ihtimalinin insanda bıraktığı sessizliktir. Ne bir işaret ilan ediyorum ne de kendime bir makam biçiyorum. Yalnızca bir semtin rivayetini, kendi gece yürüyüşümün kenarına iliştiriyorum.</p>
       <p>Kehf kıssasında Mûsâ'nın yol arkadaşı olarak anlatılan, gelenekte Hızır diye anılan o ilimli dost; burada benim için aranacak bir kişi ya da beklenen bir kurtarıcı değil, sabır ve bilginin sınırları üzerine düşünmeye açılan eski bir edebî kapı.</p>
+      <aside>“O gece gerçekten biri geçti mi, bilmiyorum. Bazı hikâyeler, cevabı açık bırakıldığında da anlatılmaya değer.”</aside>
+      <div class="hl-foot"><span>RİVAYET / KİŞİSEL NOT / EDEBÎ ANLATI</span><span>NO PROPHECY · NO CLAIM · JUST A TRACE</span></div>
     </div>
-    <aside class="hl-side"><strong>GECE NOTU / 07-B</strong><p>“Eğer o gece gerçekten biri geçtiyse, bunu kanıtlayacak bir kaydım yok. Belki de bazı hikâyeler, tam da bu yüzden anlatı olarak kalmalı.”</p></aside>
-  </div>
-  <div class="hl-foot"><span>RİVAYET / KİŞİSEL NOT / EDEBÎ ANLATI</span><span>NO PROPHECY · NO CLAIM · JUST A TRACE</span></div>
+  </details>
 </section>
 
 <section class="istanbul-cockpit" id="hava" aria-labelledby="istanbul-cockpit-title">
@@ -1213,5 +1225,26 @@ sh lablar/oku-sistem.sh</pre>
   if (input && label) label.textContent = "İLK SEFER · " + input.value;
 })();
 </script>
+<script>
+(function(){
+  "use strict";
+  var targets=["topos","kuslar","atolye","laboratuvar","frekans","kanit","hat"];
+  targets.forEach(function(id){
+    var section=document.getElementById(id);
+    if(!section)return;
+    var intro=section.querySelector(":scope > .lede, :scope .topos-lede, :scope .archive-lede, :scope .workbench-description");
+    if(!intro || intro.closest("details"))return;
+    var details=document.createElement("details");
+    details.className="read-more";
+    var summary=document.createElement("summary");
+    summary.textContent="AÇIKLAMA / DEVAMINI OKU +";
+    intro.parentNode.insertBefore(details,intro);
+    details.appendChild(summary);
+    details.appendChild(intro);
+    details.addEventListener("toggle",function(){summary.textContent=details.open?"AÇIKLAMA / KAPAT −":"AÇIKLAMA / DEVAMINI OKU +";});
+  });
+})();
+</script>
+
 </body>
 </html>
