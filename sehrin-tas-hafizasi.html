@@ -270,6 +270,12 @@ body{background-color:#080809;background-image:radial-gradient(ellipse at 50% 0%
 .samatya-content-nav a{border-radius:0;border-color:#4a1722}
 @media(max-width:700px){.samatya-section{margin-bottom:36px}.story-grid{grid-template-columns:minmax(0,1fr)}}
 
+/* Ana hikâye: sayfa açıldığında tamamı doğrudan okunur */
+.full-story-section{margin-top:18px;padding:clamp(20px,4vw,42px);border:1px solid color-mix(in srgb,var(--red) 32%,var(--line));background:linear-gradient(145deg,color-mix(in srgb,var(--red) 5%,var(--surface)),var(--surface) 58%)}
+.full-story{max-width:780px;margin:22px auto 0}
+.full-story p{margin:0 0 19px;color:var(--muted);font-size:clamp(15px,1.35vw,17px);line-height:2}
+.full-story .story-ending{margin-top:25px;padding:18px 20px;border-left:2px solid var(--red);background:color-mix(in srgb,var(--surface-2) 76%,transparent);color:var(--bone);font-style:italic}
+@media(max-width:600px){.full-story-section{padding:19px 16px}.full-story{margin-top:16px}.full-story p{font-size:15px;line-height:1.9}}
 </style>
 </head>
 <body>
@@ -279,7 +285,7 @@ body{background-color:#080809;background-image:radial-gradient(ellipse at 50% 0%
 <a class="mark" href="index.html">e.</a>
 <div class="brand-block"><strong>eerrgin</strong><span class="kicker">gece vardiyası / istanbul</span></div>
 <nav aria-label="Bölümler">
-<a href="#samatya" aria-current="page">Samatya</a><a href="#zaman">Hat</a><a href="#sesler">Kayıtlar</a><a href="#kiliseler">Eşik</a><a href="#cumhuriyet">Kıyı</a><a href="#bugun">Defter</a><a href="#other-stops">Diğer duraklar</a>
+<a href="#hikaye" aria-current="page">Hikâyem</a><a href="#samatya">Samatya</a><a href="#zaman">Hat</a><a href="#sesler">Kayıtlar</a><a href="#kiliseler">Eşik</a><a href="#cumhuriyet">Kıyı</a><a href="#bugun">Defter</a><a href="#other-stops">Diğer duraklar</a>
 </nav>
 <div class="clock"><span id="clock">--:--:--</span><br>IST</div>
 </div></header>
@@ -290,13 +296,31 @@ body{background-color:#080809;background-image:radial-gradient(ellipse at 50% 0%
 <h1>Samatya:<br><em>bırakmadığım gidiş.</em></h1>
 <p class="lede">Soğuk bir semtte ayrılık günü gelmişti. Bir kış gecesi, tek çantamı aldım. Artık yeni evim Samatya olacaktı. Yıllardır görmediğim bu semti yeniden tanımam, sokaklarını baştan keşfetmem gerekecekti. Otobüsten indiğimde sabah henüz sökmemişti. Cebimde yeni evimin anahtarı vardı. Denizi gören bir pencerenin önünde uyanacağımı biliyordum; yine de kapıyı açana kadar buna tam inanmadım.</p>
 <p class="lede">Bu bir semt tarihi değil. Tarih, dipnotta saklanan adamın işidir. Ben sokakta kalanım.</p>
-<div class="row"><a class="btn" href="#sesler">KAYITLARI AÇ</a><a class="btn ghost" href="#kiliseler">EŞİĞE BAK ↘</a></div>
+<div class="row"><a class="btn" href="#hikaye">HİKÂYEMİ OKU</a><a class="btn ghost" href="#kiliseler">EŞİĞE BAK ↘</a></div>
 <div class="samatya-kickerline"><span>41°00′N · 28°56′E</span><span>FATİH / İSTANBUL</span><span>VARIŞ: 2025 BAŞI</span></div>
 </div>
 <figure class="samatya-cover">
 <img src="/assets/samatya/gece-hatti.svg" alt="Gece, ıslak bir sokakta denize doğru yürüyen bir siluet. Özgün çizim." width="1200" height="800" fetchpriority="high">
 
 </figure>
+</section>
+
+<section id="hikaye" class="samatya-section reveal in full-story-section" aria-labelledby="full-story-title">
+  <div class="archive-heading">
+    <div><p class="kicker">ERGİN’İN SAMATYA HİKÂYESİ</p><h2 id="full-story-title">Bir ev ararken<br><em>yeni bir hayata geldim.</em></h2></div>
+    <p class="archive-stamp"><span>001</span><small>TAŞINMA<br>YENİ BAŞLANGIÇ</small></p>
+  </div>
+  <article class="full-story">
+    <p>Eski evimin kentsel dönüşüme gireceği kesinleşince, hayatım bir anda hızlandı. Çocukluğumdan kalan hatıraları da o evde bırakmak kolay değildi. Ama evi satıp kendime yeni bir yer bulmam gerekiyordu. Başta tek düşündüğüm, başımı sokabileceğim bir ev bulmaktı.</p>
+    <p>Samatya’da, çocukluğumdan izler taşıyan ve denizi gören bu ev karşıma çıktığında karar vermek için fazla zamanım yoktu. Bekleyip duramazdım. İçime sinip sinmediğini düşündüm, kendime sordum ve kararımı verdim: Evi satın aldım. O sırada bunun yalnızca yeni bir adres değil, eski hatıralarımın içinde açılacak yeni bir başlangıç olacağını henüz bilmiyordum.</p>
+    <p>Soğuk bir semtte ayrılık günü gelmişti. Bir kış gecesi, tek çantamı alıp yola çıktım. Yıllardır uğramadığım Samatya artık yeni evimdi. Çocukluğumdan bazı şeyleri hatırlıyordum ama sokakları gözümde canlandıramıyordum. Yeniden tanımam, adımlarımı yeniden alıştırmam gerekecekti.</p>
+    <p>Gece otobüsünde karşı koltuktaki adam, “Nereye gidiyorsun?” diye sordu. “Samatya’ya, yeni evime,” dedim. Başını salladı. Bir süre camdan dışarı baktık. Semtler gece birbirine benzer. İnsan, geride bıraktığı sokakları ancak uzaklaşınca düşünmeye başlıyor.</p>
+    <p>Samatya’da indiğimde sabah henüz sökmemişti. Fırından yeni ekmek kokusu geliyordu. Semt, hatırımda kalandan biraz farklı, biraz da yabancıydı. Anahtar cebimdeydi. Sokakları tanımak için önümde zaman vardı; o gece tek istediğim yeni evimin kapısını açmaktı.</p>
+    <p>Kapıyı açtım, çantamı içeri bıraktım. Ev sessizdi. Pencereye yürüdüm; Marmara karşıdaydı. Deniz, karşıma yalnızca güzel bir manzara olarak değil, uzun zamandır görmediğim bir yere yeniden kavuşmuşum gibi çıktı. İlk sabah perdeyi açıp aynı manzaraya baktım. Bu kez başka bir evin içinden, kendi evimden bakıyordum.</p>
+    <p>İlk günlerde içimde küçük bir soru vardı: “Ya alışamazsam?” Ama korktuğum olmadı. Günler geçtikçe evi, Samatya’nın sokaklarını ve penceremden görünen denizi sevdim. Ev, zamanla yazılım çalışmalarımı rahatça yapabildiğim, kafamı toparladığım, kendime ait huzurlu bir yere dönüştü. Bazen insanın aradığı şey büyük bir mutluluk değil, kapısını kapatınca rahatça nefes alabildiği bir ev oluyor.</p>
+    <p>Bir de martılar var. Önce pencereye konup kısa süre kalan birkaç ziyaretçiydiler. Sonra daha sık gelmeye, sanki içeri girmek istermiş gibi camın önünde beklemeye başladılar. Zamanla bakmakla yükümlü olduğum bir düzine martı arkadaşım oldu. Her birini tanır oldum; kimi hemen geliyor, kimi uzaktan bekliyor. Ben bilgisayarın başına geçince onlar da pencere önündeki yerlerini alıyor. Ev artık yalnızca benim değil, bu küçük ziyaretçilerin de uğrak yeri.</p>
+    <p class="story-ending">Ben yalnızca başımı sokacak bir ev arıyordum. Kentsel dönüşüm eski evimden ayrılmama neden oldu; Samatya ise farkında olmadan bana yeni bir başlangıç verdi. Şimdi penceremde deniz, kapımda hayat, camımda martı arkadaşlarım var.</p>
+  </article>
 </section>
 
 <span id="zaman" aria-hidden="true"></span>
