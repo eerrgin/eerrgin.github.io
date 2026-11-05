@@ -9,11 +9,15 @@
   const grid = document.querySelector(".project-tray-grid");
   const archive = grid && grid.querySelector('[data-tray-category="archive"]');
   if (grid && archive && !grid.querySelector('[href="https://github.com/eerrgin/ergin-elf-defteri"]')) {
+    const style = document.createElement("style");
+    style.textContent = ".kanit-card.is-on{display:block !important}.kanit-card{display:none}";
+    document.head.append(style);
     proofs.forEach(([cat, no, title, copy, href, link]) => {
       const a = document.createElement("a");
-      a.className = "tray-card";
+      a.className = "tray-card kanit-card";
       a.dataset.trayCategory = cat;
       a.href = href;
+      a.rel = "noopener";
       a.innerHTML = '<span class="tray-no"></span><h3></h3><p></p><span class="tray-link"></span>';
       a.querySelector(".tray-no").textContent = no;
       a.querySelector("h3").textContent = title;
@@ -21,6 +25,16 @@
       a.querySelector(".tray-link").textContent = link;
       grid.insertBefore(a, archive);
     });
+    const sync = () => {
+      const pressed = document.querySelector("[data-tray-filter][aria-pressed=\"true\"]");
+      const active = pressed ? pressed.dataset.trayFilter || "all" : "all";
+      document.querySelectorAll(".kanit-card").forEach(card => {
+        const on = active === "all" || card.dataset.trayCategory === active;
+        card.classList.toggle("is-on", on);
+      });
+    };
+    document.querySelectorAll("[data-tray-filter]").forEach(button => button.addEventListener("click", () => setTimeout(sync, 0)));
+    sync();
   }
   const cmds = document.querySelector(".cmd-links");
   if (cmds && !cmds.querySelector('[href="https://github.com/eerrgin/ergin-elf-defteri"]')) {
@@ -38,7 +52,7 @@
     });
   }
   const trayHead = document.querySelector(".project-tray-head p:last-child");
-  if (trayHead && trayHead.textContent.includes("Kategori se\u00e7erek")) {
+  if (trayHead && /Kategori se/.test(trayHead.textContent)) {
     trayHead.textContent = "Deneyler ve ara\u00e7lar. Kategori se\u00e7; masa\u00fcst\u00fcnde alt\u0131, telefonda d\u00f6rt kart.";
   }
   const stops = [
