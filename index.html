@@ -55,12 +55,13 @@
   <link rel="icon" href="favicon.svg?v=20261024" type="image/svg+xml">
   <link rel="mask-icon" href="favicon.svg?v=20261024" color="#ff3028">
   <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preload" href="style.css?v=20261102-photo-return" as="style">
   <link rel="stylesheet" href="style.css?v=20261102-photo-return">
-  <link rel="stylesheet" href="night-vision.css?v=20261102-photo-return">
-  <link rel="stylesheet" href="night-refit.css?v=20261102-firstframe-restored">
-  <link rel="stylesheet" href="gece-hatti-editorial.css?v=20261104-editorial01">
-  <link rel="stylesheet" href="kanit.css?v=20261105-kanit">
-  <link rel="stylesheet" href="project-archive-refit.css?v=20261105-01">
+  <link rel="stylesheet" href="night-vision.css?v=20261102-photo-return" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="night-refit.css?v=20261102-firstframe-restored" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="gece-hatti-editorial.css?v=20261104-editorial01" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="kanit.css?v=20261105-kanit" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="project-archive-refit.css?v=20261105-01" media="print" onload="this.media='all'">
   <script>
     (function () {
       var root = document.documentElement;
@@ -74,7 +75,7 @@
       } catch (e) {}
       if (theme) root.dataset.theme = theme;
       var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      var enabled = motion === "on" || (motion !== "off" && !prefersReduced && tremor !== "off");
+      var enabled = motion === "on" && !prefersReduced && tremor !== "off";
       root.dataset.motion = enabled ? "on" : "off";
       root.dataset.tremor = enabled ? "on" : "off";
     })();
@@ -1255,6 +1256,38 @@ sh lablar/oku-sistem.sh</pre>
       if(list) fold(list,"İLKELERİ GÖR / AÇ +");
     }
   });
+})();
+</script>
+
+
+<style>
+main .archive-reading-fold{margin:.45rem 0 .8rem;border:1px solid rgba(190,150,130,.2);background:rgba(255,255,255,.018)}
+main .archive-reading-fold>summary{list-style:none;display:flex;align-items:center;gap:.65rem;min-height:40px;padding:.55rem .8rem;cursor:pointer;color:var(--muted,#c3aea6);font:600 .68rem/1.5 var(--mono,monospace);letter-spacing:.08em;text-transform:uppercase}
+main .archive-reading-fold>summary::-webkit-details-marker{display:none}
+main .archive-reading-fold>summary:after{content:"＋";margin-left:auto;color:var(--red,#ff1f1a)}
+main .archive-reading-fold[open]>summary:after{content:"−"}
+main .archive-reading-fold>p{margin:.15rem .85rem .85rem!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+html[data-motion="off"] body::before,html[data-motion="off"] .lightning,html[data-motion="off"] .top .rule{animation:none!important}
+</style>
+<script>
+(function(){
+"use strict";
+function compactDescriptions(){
+var roots=document.querySelectorAll("main section:not(.arrival-hero):not(.night-notes):not(.topos-home),main article:not(.night-note-feature)");
+roots.forEach(function(root){
+root.querySelectorAll("p:not(.kicker):not(.meta):not(.night-notes-foot):not(.arrival-note)").forEach(function(p){
+if(p.closest("details,.read-more,.archive-reading-fold,.hl-story,.station-board,.station-feature-meta,.cockpit-footer-line,.station-controls,button,a,nav,form"))return;
+if(p.dataset.compactFolded==="true"||!p.textContent.trim())return;
+var details=document.createElement("details"),summary=document.createElement("summary");
+details.className="archive-reading-fold";
+var heading=root.querySelector("h2,h3,h4");
+summary.textContent=(heading?heading.textContent.replace(/\\s+/g," ").trim():"BÖLÜM").slice(0,54)+" · AÇIKLAMAYI OKU";
+p.parentNode.insertBefore(details,p);details.appendChild(summary);details.appendChild(p);p.dataset.compactFolded="true";
+});
+});
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",compactDescriptions,{once:true});else compactDescriptions();
 })();
 </script>
 
