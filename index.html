@@ -1282,7 +1282,7 @@ if(p.dataset.compactFolded==="true"||!p.textContent.trim())return;
 var details=document.createElement("details"),summary=document.createElement("summary");
 details.className="archive-reading-fold";
 var heading=root.querySelector("h2,h3,h4");
-summary.textContent=(heading?heading.textContent.replace(/\\s+/g," ").trim():"BÖLÜM").slice(0,54)+" · AÇIKLAMAYI OKU";
+summary.textContent=(heading?heading.textContent.replace(/\s+/g," ").trim():"BÖLÜM").slice(0,54)+" · AÇIKLAMAYI OKU";
 p.parentNode.insertBefore(details,p);details.appendChild(summary);details.appendChild(p);p.dataset.compactFolded="true";
 });
 });
