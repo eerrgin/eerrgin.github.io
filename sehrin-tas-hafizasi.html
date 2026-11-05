@@ -243,6 +243,33 @@ body{font-family:var(--body);font-kerning:normal}
 @media(max-width:900px){.samatya-hero{grid-template-columns:minmax(0,1fr)}.samatya-cover img{aspect-ratio:16/9}}
 @media(max-width:600px){.threshold-panel{grid-template-columns:34px minmax(0,1fr);padding:19px 15px;gap:15px;min-height:0}.threshold-signal{width:30px;height:130px}.threshold-mark{grid-column:2;justify-self:end}.threshold-mark span{font-size:58px}.threshold-copy h3{font-size:30px}.threshold-copy p:not(.kicker){font-size:13px}}
 
+
+/* Complete visual pass · cinematic Samatya night line */
+:root{--night-red:#d51d3b}
+body{background-color:#080809;background-image:radial-gradient(ellipse at 50% 0%,#210b12 0,transparent 43%),linear-gradient(180deg,#090809 0%,#08090b 48%,#0b080a 100%)}
+.samatya-section{position:relative;padding-top:clamp(22px,3.5vw,38px);border-top:1px solid color-mix(in srgb,var(--red) 26%,transparent)}
+.archive-heading h2{letter-spacing:-.035em}
+.archive-heading .kicker,.samatya-image-copy .kicker{color:var(--red)}
+.samatya-image img{border-color:#40131d;box-shadow:0 18px 48px #0009,0 0 28px #b4162a12;filter:grayscale(.18) sepia(.12) saturate(.82) contrast(1.1)}
+.samatya-image-copy h3 em{color:#d52a43}
+.samatya-pullquote{border-color:#501622;background:linear-gradient(135deg,#180b10,#0c0b0d 65%,#12090d);box-shadow:inset 3px 0 #a91731}
+.story-archive{border-top:1px solid #501622}
+.story-archive:before{color:transparent;-webkit-text-stroke-color:#4d1823}
+.story-archive-topline{border-color:#4a1721;color:#b58d8c}
+.story-live-dot{background:#f02a46;box-shadow:0 0 12px #f02a46}
+.story-search{border-radius:2px;border-color:#4a1721;background:#100b0e;box-shadow:inset 0 0 22px #0008}
+.story-filter{border-radius:2px;border-color:#4b1721;background:#100b0e}
+.story-filter.is-active{background:#3a0d18;border-color:#d21b3a;color:#f1d9d5;box-shadow:0 0 18px #c51b3422}
+.story-grid{gap:clamp(12px,2vw,20px)}
+.story-card{border:1px solid #3a151e;border-radius:0;background:linear-gradient(155deg,#171014,#0b0b0e 70%);box-shadow:0 16px 42px #0007}
+.story-card-art{border-radius:0}
+.story-card-content{padding:clamp(15px,2vw,22px)}
+.story-card h3{font-family:var(--display);letter-spacing:-.025em}
+.story-open{color:#e52b48}
+.samatya-sourcebox,.samatya-note,.samatya-walk article{border-radius:0;border-color:#3c1720;background:#100c0f}
+.samatya-content-nav a{border-radius:0;border-color:#4a1722}
+@media(max-width:700px){.samatya-section{margin-bottom:36px}.story-grid{grid-template-columns:minmax(0,1fr)}}
+
 </style>
 </head>
 <body>
@@ -267,7 +294,7 @@ body{font-family:var(--body);font-kerning:normal}
 <div class="samatya-kickerline"><span>41°00′N · 28°56′E</span><span>FATİH / İSTANBUL</span><span>VARIŞ: 2025 BAŞI</span></div>
 </div>
 <figure class="samatya-cover">
-<img src="/assets/samatya/varis.svg" alt="Gece, ıslak bir sokakta denize doğru yürüyen bir siluet. Özgün çizim." width="1200" height="800" fetchpriority="high">
+<img src="/assets/samatya/gece-hatti.svg" alt="Gece, ıslak bir sokakta denize doğru yürüyen bir siluet. Özgün çizim." width="1200" height="800" fetchpriority="high">
 <figcaption>Gece hattı · özgün çizim. Yüz yok. Sadece gidiş.</figcaption>
 </figure>
 </section>
