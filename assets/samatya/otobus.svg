@@ -1,1 +1,147 @@
-PLACEHOLDER
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="ot-t ot-d">
+  <title id="ot-t">Gece durağı · kırmızı neon</title>
+  <desc id="ot-d">Islak peron, uzak tren ışıkları ve kırmızı neon levha. Özgün çizim; fotoğraf değildir.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#050308"/>
+      <stop offset=".42" stop-color="#12080e"/>
+      <stop offset=".72" stop-color="#1a0a12"/>
+      <stop offset="1" stop-color="#070507"/>
+    </linearGradient>
+    <linearGradient id="fog" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff1f1a" stop-opacity="0"/>
+      <stop offset=".45" stop-color="#ff2a24" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#ff1f1a" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="platform" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1216"/>
+      <stop offset="1" stop-color="#080608"/>
+    </linearGradient>
+    <linearGradient id="rail" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2a2226"/>
+      <stop offset=".5" stop-color="#6a4a48"/>
+      <stop offset="1" stop-color="#22181c"/>
+    </linearGradient>
+    <linearGradient id="car" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#241418"/>
+      <stop offset=".55" stop-color="#120c10"/>
+      <stop offset="1" stop-color="#0a0608"/>
+    </linearGradient>
+    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff4a3c"/>
+      <stop offset=".5" stop-color="#ff1f1a"/>
+      <stop offset="1" stop-color="#c01018"/>
+    </linearGradient>
+    <radialGradient id="lamp" cx="50%" cy="40%" r="55%">
+      <stop offset="0" stop-color="#ff6b5c" stop-opacity=".85"/>
+      <stop offset=".35" stop-color="#ff1f1a" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#ff1f1a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="headlight" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffe8d8" stop-opacity=".95"/>
+      <stop offset=".25" stop-color="#ffb090" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#ff1f1a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+    <filter id="rain">
+      <feGaussianBlur stdDeviation=".4"/>
+    </filter>
+    <pattern id="grain" width="120" height="120" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="18" r=".7" fill="#f0d8c8" opacity=".08"/>
+      <circle cx="54" cy="66" r=".5" fill="#f0d8c8" opacity=".05"/>
+      <circle cx="88" cy="30" r=".6" fill="#000" opacity=".12"/>
+      <circle cx="33" cy="94" r=".4" fill="#f0d8c8" opacity=".06"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#sky)"/>
+  <ellipse cx="900" cy="120" rx="280" ry="160" fill="#ff1f1a" opacity=".06" filter="url(#soft)"/>
+  <ellipse cx="200" cy="80" rx="220" ry="120" fill="#c3aea6" opacity=".03" filter="url(#soft)"/>
+  <g fill="#0c080a" opacity=".9">
+    <path d="M0 340 H1200 V800 H0 Z"/>
+    <rect x="40" y="250" width="38" height="100"/>
+    <rect x="90" y="220" width="28" height="130"/>
+    <rect x="130" y="265" width="52" height="85"/>
+    <rect x="200" y="240" width="34" height="110"/>
+    <rect x="250" y="200" width="22" height="150"/>
+    <rect x="290" y="255" width="44" height="95"/>
+    <rect x="980" y="230" width="40" height="120"/>
+    <rect x="1035" y="210" width="30" height="140"/>
+    <rect x="1080" y="245" width="55" height="105"/>
+    <rect x="1145" y="225" width="26" height="125"/>
+  </g>
+  <g fill="#ff5147" opacity=".35">
+    <rect x="98" y="240" width="3" height="3"/><rect x="110" y="255" width="3" height="3"/>
+    <rect x="255" y="220" width="2" height="3"/><rect x="262" y="240" width="2" height="3"/>
+    <rect x="1045" y="230" width="3" height="3"/><rect x="1095" y="260" width="3" height="3"/>
+  </g>
+  <rect y="300" width="1200" height="80" fill="url(#fog)"/>
+  <g stroke="url(#rail)" stroke-width="2" fill="none" opacity=".7">
+    <path d="M180 720 C400 560 520 480 600 420"/>
+    <path d="M1020 720 C800 560 680 480 600 420"/>
+  </g>
+  <g stroke="#3a2828" stroke-width="1" fill="none" opacity=".4">
+    <path d="M220 700 L980 700"/><path d="M260 660 L940 660"/>
+    <path d="M300 620 L900 620"/><path d="M340 580 L860 580"/>
+    <path d="M380 540 L820 540"/><path d="M420 500 L780 500"/>
+    <path d="M460 460 L740 460"/><path d="M500 430 L700 430"/>
+  </g>
+  <path d="M0 560 L1200 560 L1200 800 L0 800 Z" fill="url(#platform)"/>
+  <path d="M0 560 H1200" stroke="#ff1f1a" stroke-opacity=".18" stroke-width="1"/>
+  <path d="M0 575 H1200" stroke="#c3aea6" stroke-opacity=".08" stroke-width="1"/>
+  <g opacity=".25">
+    <path d="M80 640 Q200 620 320 650 T560 640" stroke="#ff1f1a" stroke-width="1.5" fill="none" opacity=".4"/>
+    <path d="M600 680 Q750 660 900 690 T1120 670" stroke="#ff5147" stroke-width="1" fill="none" opacity=".3"/>
+  </g>
+  <g fill="#121014">
+    <rect x="90" y="360" width="14" height="200"/>
+    <rect x="320" y="360" width="14" height="200"/>
+    <rect x="866" y="360" width="14" height="200"/>
+    <rect x="1096" y="360" width="14" height="200"/>
+  </g>
+  <path d="M60 360 H1140" stroke="#2a2226" stroke-width="8"/>
+  <path d="M60 368 H1140" stroke="#ff1f1a" stroke-opacity=".15" stroke-width="2"/>
+  <g filter="url(#glow)">
+    <rect x="430" y="300" width="340" height="56" rx="4" fill="#12080c" stroke="#ff1f1a" stroke-opacity=".7"/>
+    <text x="600" y="336" text-anchor="middle" fill="#ff3a32" font-family="Georgia, serif" font-size="22" letter-spacing="10">PERON · 01</text>
+  </g>
+  <ellipse cx="600" cy="328" rx="200" ry="40" fill="url(#lamp)" opacity=".55"/>
+  <g transform="translate(0,8)">
+    <ellipse cx="600" cy="470" rx="90" ry="40" fill="url(#headlight)"/>
+    <path d="M360 430 C400 400 440 390 480 388 L720 388 C760 390 800 400 840 430 L860 500 L340 500 Z" fill="url(#car)" stroke="#3a2428" stroke-width="1.5"/>
+    <path d="M480 388 L720 388" stroke="#ff1f1a" stroke-opacity=".25" stroke-width="2"/>
+    <g>
+      <rect x="420" y="415" width="70" height="42" rx="3" fill="#1a1014" stroke="#ff5147" stroke-opacity=".25"/>
+      <rect x="510" y="415" width="70" height="42" rx="3" fill="#221418" stroke="#ff5147" stroke-opacity=".3"/>
+      <rect x="600" y="415" width="70" height="42" rx="3" fill="#1a1014" stroke="#ff5147" stroke-opacity=".25"/>
+      <rect x="690" y="415" width="70" height="42" rx="3" fill="#241618" stroke="#ff5147" stroke-opacity=".28"/>
+      <rect x="515" y="420" width="60" height="32" rx="2" fill="#ff1f1a" opacity=".12"/>
+      <rect x="695" y="420" width="60" height="32" rx="2" fill="#ff6b5c" opacity=".08"/>
+    </g>
+    <circle cx="600" cy="470" r="8" fill="#ffe8d0"/>
+    <circle cx="600" cy="470" r="18" fill="#ffb090" opacity=".25"/>
+    <rect x="380" y="500" width="440" height="10" rx="2" fill="#0a0608"/>
+    <circle cx="440" cy="512" r="14" fill="#151014" stroke="#2a2024"/>
+    <circle cx="760" cy="512" r="14" fill="#151014" stroke="#2a2024"/>
+  </g>
+  <rect x="0" y="552" width="1200" height="3" fill="#ff1f1a" opacity=".35"/>
+  <rect x="0" y="552" width="1200" height="3" fill="#ff1f1a" opacity=".2" filter="url(#soft)"/>
+  <g stroke="#c3aea6" stroke-opacity=".12" stroke-width="1" filter="url(#rain)">
+    <path d="M80 40 L60 180"/><path d="M160 20 L140 200"/><path d="M240 60 L220 190"/>
+    <path d="M400 30 L385 170"/><path d="M520 50 L500 210"/><path d="M680 25 L660 185"/>
+    <path d="M820 45 L800 195"/><path d="M940 35 L920 175"/><path d="M1080 55 L1060 200"/>
+    <path d="M1140 70 L1125 190"/>
+  </g>
+  <g fill="#080608" opacity=".85">
+    <ellipse cx="180" cy="560" rx="18" ry="6"/>
+    <path d="M172 560 L175 500 L185 500 L188 560 Z"/>
+    <circle cx="180" cy="488" r="11"/>
+  </g>
+  <rect width="1200" height="800" fill="url(#grain)" opacity=".9"/>
+  <rect width="1200" height="800" fill="none" stroke="#000" stroke-width="120" opacity=".35" style="filter:blur(40px)"/>
+</svg>

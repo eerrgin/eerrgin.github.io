@@ -1,0 +1,130 @@
+/* Şehrin Taş Hafızası — tipografi hizası (Gece Hattı ile uyum)
+   style.css'ten sonra yükle veya <style> bloğunun sonuna ekle */
+
+.samatya-hero h1,
+.archive-heading h2,
+.story-dialog h2,
+.threshold-copy h3,
+.samatya-image-copy h3,
+.samatya-history-dark h3,
+.story-card h3,
+.story-card-featured h3,
+.samatya-era h3,
+.samatya-note h3,
+.samatya-sourcebox h3,
+.samatya-walk h3 {
+  font-family: var(--display, Georgia, "Times New Roman", serif);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--fg, #e8e6d9);
+}
+
+.samatya-hero h1 {
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+  max-width: 16ch;
+}
+
+.samatya-hero h1 em,
+.samatya-image-copy h3 em,
+.samatya-history-dark h3 em,
+.threshold-copy h3 em {
+  color: var(--red, #ff1f1a);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.samatya-image-copy h3,
+.samatya-history-dark h3,
+.threshold-copy h3 {
+  font-size: clamp(1.55rem, 3.2vw, 2.35rem);
+}
+
+.story-card h3 {
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  letter-spacing: -0.025em;
+}
+
+.story-card-featured h3 {
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
+}
+
+.samatya-era h3,
+.samatya-note h3,
+.samatya-walk h3 {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+}
+
+.samatya-sourcebox h3 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+}
+
+.story-dialog h2 {
+  font-size: clamp(1.9rem, 4.5vw, 3.2rem);
+}
+
+.samatya-prose p,
+.samatya-prose li,
+.threshold-copy p:not(.kicker),
+.samatya-era p,
+.samatya-note p,
+.story-card p {
+  font-family: var(--body, system-ui, -apple-system, "Segoe UI", sans-serif);
+  font-size: clamp(0.92rem, 1.15vw, 1rem);
+  line-height: 1.85;
+  color: var(--muted, #c3aea6);
+  max-width: 68ch;
+}
+
+.kicker,
+.samatya-kickerline,
+.story-card .kicker,
+.archive-stamp {
+  font-family: var(--mono, ui-monospace, "SF Mono", Menlo, monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim, #8a7a76);
+}
+
+.samatya-cover img,
+.samatya-era img,
+.samatya-history-dark img,
+img.frame {
+  display: block;
+  width: 100%;
+  border: 1px solid color-mix(in srgb, var(--red, #ff1f1a) 40%, transparent);
+  filter: saturate(0.78) contrast(1.06);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.45);
+  background: #0a080c;
+}
+
+.samatya-cover img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+img.frame {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.samatya-hero::before {
+  opacity: 0.22;
+  font-size: clamp(3.5rem, 10vw, 7.5rem);
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--red, #ff1f1a) 35%, transparent);
+}
+
+@media (max-width: 700px) {
+  .samatya-hero h1 {
+    font-size: clamp(2rem, 10vw, 2.6rem);
+  }
+  .threshold-copy h3,
+  .samatya-image-copy h3 {
+    font-size: 1.45rem;
+  }
+  .story-card h3 {
+    font-size: 1.15rem;
+  }
+}
