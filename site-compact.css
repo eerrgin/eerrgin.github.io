@@ -1,0 +1,97 @@
+/* Ergin Lab / kompakt görünüm ve düşük maliyetli çizim katmanı */
+:root { scroll-padding-top: 84px; }
+html { scroll-behavior: smooth; }
+.archive-reading-fold,
+.read-more {
+  margin: .55rem 0 .85rem;
+  border: 1px solid rgba(220,198,177,.16);
+  border-radius: 10px;
+  background: rgba(255,255,255,.018);
+}
+.archive-reading-fold > summary,
+.read-more > summary {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  min-height: 42px;
+  padding: .65rem .85rem;
+  cursor: pointer;
+  color: #d3b69d;
+  font: 600 .68rem/1.5 var(--mono, monospace);
+  letter-spacing: .075em;
+  list-style: none;
+}
+.archive-reading-fold > summary::-webkit-details-marker,
+.read-more > summary::-webkit-details-marker { display:none; }
+.archive-reading-fold > summary::after,
+.read-more > summary::after { content:"＋"; margin-left:auto; color:var(--red,#c28b70); }
+.archive-reading-fold[open] > summary::after,
+.read-more[open] > summary::after { content:"−"; }
+.archive-reading-fold > p,
+.read-more > p { margin: .15rem .9rem .9rem !important; max-width: 78ch; }
+.archive-reading-fold[open],
+.read-more[open] { padding-bottom:.15rem; }
+.hizir-ledger > details > summary { min-height: 190px; }
+.hizir-ledger .hl-open::after { content:""; }
+.workbench-notes,
+#ustalik-rotasi .workbench-grid,
+#topos .topos-reading-guide {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+.workbench-notes > *,
+#ustalik-rotasi .workbench-grid > *,
+#topos .topos-reading-guide > * { min-width:0; }
+.workbench-note-card,
+#ustalik-rotasi .workbench-grid .card {
+  height:100%;
+  padding:clamp(14px,1.8vw,22px);
+}
+#topos .topos-reading-guide > article {
+  padding:14px;
+  border:1px solid rgba(220,198,177,.15);
+  border-radius:10px;
+  background:rgba(255,255,255,.025);
+}
+#topos .topos-reading-guide p { margin-bottom:0; }
+.night-route-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
+.project-tray-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.featured-shelf-grid { grid-template-columns:repeat(5,minmax(0,1fr)); }
+main > section:not(.arrival-hero):not(.night-notes) { content-visibility:auto; contain-intrinsic-size:auto 780px; }
+main img:not([fetchpriority="high"]) { content-visibility:auto; }
+img[loading="lazy"] { contain-intrinsic-size:auto 260px; }
+@media (max-width: 900px) {
+  .featured-shelf-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .project-tray-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 700px) {
+  .workbench-notes,
+  #ustalik-rotasi .workbench-grid,
+  #topos .topos-reading-guide { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .night-route-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .featured-shelf-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  main > section:not(.arrival-hero):not(.night-notes) { contain-intrinsic-size:auto 620px; }
+}
+@media (max-width: 480px) {
+  .workbench-notes,
+  #ustalik-rotasi .workbench-grid,
+  #topos .topos-reading-guide,
+  .project-tray-grid { grid-template-columns:minmax(0,1fr); }
+  .featured-shelf-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .archive-reading-fold > summary,
+  .read-more > summary { min-height:44px; font-size:.65rem; }
+}
+/* Animasyonlar ve ses sistemi kapatılmaz; yalnızca pahalı dekoratif filtreler mobilde hafifletilir. */
+@media (max-width: 700px) {
+  .top { -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); }
+  .night-route-map,.project-tray-section,.featured-shelf {
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none;
+    box-shadow:inset 0 1px rgba(255,255,255,.04),0 10px 28px rgba(0,0,0,.18);
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto; }
+  *,*::before,*::after { scroll-behavior:auto!important; }
+}
