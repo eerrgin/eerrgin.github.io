@@ -8,7 +8,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Samatya: Bırakmadığım Gidiş | Ergin’in Semt Defteri">
 <meta property="og:description" content="Bir gece Samatya’ya indim. Yanımda tek çanta, cebimde eski bir anahtar vardı. Bazı cevapları kapıda bıraktım.">
-<meta property="og:image" content="https://eerrgin.github.io/assets/samatya/varis.svg">
+<meta property="og:image" content="https://eerrgin.github.io/assets/samatya/gece-hatti.svg">
 <meta name="twitter:card" content="summary_large_image">
 <title>Samatya: Bırakmadığım Gidiş · Ergin’in Semt Defteri</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -215,6 +215,34 @@ body{font-family:var(--body);font-kerning:normal}
 .story-card h3,.story-dialog h2,.samatya-hero h1,.archive-heading h2{font-family:var(--display);font-weight:600}
 .story-card-content>p,.story-dialog-copy p,.samatya-prose p,.samatya-image-copy p{overflow-wrap:break-word;word-break:normal}
 
+
+/* Night line redesign: restrained editorial layout, no literal doorway illustration */
+.samatya-hero{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(24px,4vw,54px)}
+.samatya-cover img{aspect-ratio:16/10;object-fit:cover;object-position:center;border-color:#6d1728;filter:contrast(1.08) saturate(.86);box-shadow:0 22px 70px #000b,0 0 35px #8e102322}
+.samatya-cover figcaption{font:10px/1.7 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.night-threshold{position:relative;padding-top:clamp(30px,5vw,58px);border-top:1px solid color-mix(in srgb,var(--red) 35%,var(--line))}
+.night-threshold .archive-heading{margin-bottom:20px}
+.threshold-panel{position:relative;display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:clamp(16px,3vw,34px);align-items:center;min-height:300px;padding:clamp(20px,4vw,42px);overflow:hidden;border:1px solid #48121d;background:radial-gradient(ellipse at 82% 12%,#4b0c1b55,transparent 44%),linear-gradient(120deg,#100b0e,#08090c 62%,#14090d)}
+.threshold-panel:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 42px,#ffffff04 43px,transparent 44px 86px);pointer-events:none}
+.threshold-signal{position:relative;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;height:170px;width:44px;border:1px solid #54202b;background:#08090c;box-shadow:0 0 35px #d0163322}
+.threshold-signal span{width:12px;height:12px;border-radius:50%;background:#35131b;border:1px solid #7b1b2b}
+.threshold-signal span:first-child{background:#f02242;box-shadow:0 0 9px #f02242,0 0 28px #f02242}
+.threshold-copy{position:relative;max-width:650px}
+.threshold-copy h3{margin:8px 0 17px;font:clamp(29px,4vw,48px)/1.05 var(--display);letter-spacing:-.03em}
+.threshold-copy h3 em{color:var(--red);font-weight:400}
+.threshold-copy p:not(.kicker){max-width:66ch;color:var(--muted);font-size:14px;line-height:1.9}
+.threshold-copy .threshold-last{margin-top:18px;color:var(--bone)!important}
+.threshold-mark{position:relative;align-self:end;color:#6c1829;text-align:right}
+.threshold-mark span{display:block;font:clamp(58px,9vw,112px)/.8 var(--display);color:transparent;-webkit-text-stroke:1px #6c1829}
+.threshold-mark small{display:block;margin-top:13px;color:var(--red);font:9px var(--mono);letter-spacing:.12em}
+.threshold-card-art{position:relative;min-height:150px;overflow:hidden;background:radial-gradient(ellipse at 70% 55%,#6e1025 0,transparent 30%),linear-gradient(130deg,#08090c,#1b0b11 58%,#08090c)}
+.threshold-card-art:before,.threshold-card-art:after{content:"";position:absolute;bottom:-15%;width:2px;height:130%;background:#a51a34;transform:rotate(22deg);box-shadow:0 0 16px #e31b3b}
+.threshold-card-art:before{left:35%}.threshold-card-art:after{left:62%;opacity:.45}
+.threshold-card-line{position:absolute;left:0;right:0;bottom:27%;height:1px;background:linear-gradient(90deg,transparent,#b31b36,transparent);box-shadow:0 0 18px #e31b3b}
+.threshold-card-art .story-art-caption,.threshold-card-art .story-art-number{position:absolute;z-index:1}
+@media(max-width:900px){.samatya-hero{grid-template-columns:minmax(0,1fr)}.samatya-cover img{aspect-ratio:16/9}}
+@media(max-width:600px){.threshold-panel{grid-template-columns:34px minmax(0,1fr);padding:19px 15px;gap:15px;min-height:0}.threshold-signal{width:30px;height:130px}.threshold-mark{grid-column:2;justify-self:end}.threshold-mark span{font-size:58px}.threshold-copy h3{font-size:30px}.threshold-copy p:not(.kicker){font-size:13px}}
+
 </style>
 </head>
 <body>
@@ -253,12 +281,14 @@ body{font-family:var(--body);font-kerning:normal}
 </div>
 </section>
 
-<section id="kiliseler" class="samatya-section reveal in" data-stamp="02">
-<div class="samatya-image-story">
-<figure class="samatya-image tall"><img src="/assets/samatya/esik.svg" alt="Gece aralık duran eski bir ahşap kapı, ince bir ışık. Özgün çizim." width="800" height="1100" loading="lazy"><figcaption>Aralıksa dur. İçeri her zaman girilmez.</figcaption></figure>
-<div class="samatya-image-copy"><p class="kicker">SULU MANASTIR</p><h3>İsim ıslaktı.<br><em>Taş kuruydu.</em></h3><p>Adını bir tabeladan önce bir ağızdan duydum. Altında su varmış. Suyu görmedim. Serinliği duydum; bu da bir tür görmek.</p><p>Yan kapı bir gece aralıktı. Işık inceydi. Eşikte durdum, geçmedim. İçeri girseydim bir şey öğrenecektim. Girmedim. Öğrendiğim, eşiğin de bir oda olduğuydu.</p><p>Başka bir gece çan. Hangi kapı, bilmiyorum. Bilmemek burada kusur değil. Çan adını söylemek zorunda değil. Ben de sormak zorunda değilim.</p></div>
+<section id="kiliseler" class="samatya-section reveal in night-threshold" data-stamp="02">
+<div class="archive-heading"><div><p class="kicker">02 / EŞİK · GECE HATTI</p><h2>Raylar susar.<br><em>Şehir devam eder.</em></h2></div><p class="archive-stamp"><span>02</span><small>GECE SEFERİ<br>SON IŞIK</small></p></div>
+<div class="threshold-panel">
+<div class="threshold-signal" aria-hidden="true"><span></span><span></span><span></span></div>
+<div class="threshold-copy"><p class="kicker">SULU MANASTIR · GECE NOTU</p><h3>Bir ışık gördüm.<br><em>Yönünü sormadım.</em></h3><p>Gece yarısından sonra çan saat söylemez. Sadece uzaktan duyulur; taşın, suyun ve uykusuzluğun arasından geçer.</p><p>Sulu Manastır’a haritayla değil, adıyla geldim. Bir süre sokağın başında durdum. İçeri girmek için değil; sesin nereden geldiğini anlamak için. Sonra ses kesildi. Ben yürümeye devam ettim.</p><p class="threshold-last">Bazı eşikler kapı değildir. Bir sokağın bittiği, düşüncenin başladığı yerdir.</p></div>
+<div class="threshold-mark" aria-hidden="true"><span>02</span><small>01:17 · IST</small></div>
 </div>
-<blockquote class="samatya-pullquote"><p>Kapı aralığında duran şey, her zaman bir davet değildir.</p><small>Ergin · eşik notu</small></blockquote>
+<blockquote class="samatya-pullquote"><p>Her ışık bir yere çağırmaz. Bazısı yalnızca karanlığın şeklini gösterir.</p><small>Ergin · gece hattı notu</small></blockquote>
 </section>
 
 <section id="sesler" class="samatya-section reveal in story-archive" data-stamp="03">
@@ -295,7 +325,7 @@ body{font-family:var(--body);font-kerning:normal}
 </article>
 
 <article class="story-card" data-story-card data-category="esik" data-search="kapı eşik sulu manastır çan ışık gece">
-<div class="story-card-art has-photo"><img src="/assets/samatya/esik.svg" alt=""><span class="story-art-caption">SULU MANASTIR · EŞİK</span><span class="story-art-number">02</span></div>
+<div class="story-card-art threshold-card-art"><span class="threshold-card-line"></span><span class="story-art-caption">GECE HATTI · EŞİK</span><span class="story-art-number">02</span></div>
 <div class="story-card-content"><div class="story-card-meta"><span class="story-category">EŞİK</span><span class="story-date">GECE / KAPALI</span></div><h3>Kapı aralıktı</h3><p>Adını duydum önce. Suyu sonra. İçeri girmedim. Öğrendiğim de bu oldu.</p><div class="story-card-bottom"><span>Eşik de bir odadır</span><button class="story-open" type="button" data-story-open>KAYDI AÇ <span>↗</span></button></div></div>
 <div class="story-full" hidden>
 <p>Gece yarısından sonra çan saat söylemez. Bir şeyi hatırlatır; ne olduğunu söylemez.</p>
