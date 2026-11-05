@@ -275,7 +275,20 @@ body{background-color:#080809;background-image:radial-gradient(ellipse at 50% 0%
 .full-story{max-width:780px;margin:22px auto 0}
 .full-story p{margin:0 0 19px;color:var(--muted);font-size:clamp(15px,1.35vw,17px);line-height:2}
 .full-story .story-ending{margin-top:25px;padding:18px 20px;border-left:2px solid var(--red);background:color-mix(in srgb,var(--surface-2) 76%,transparent);color:var(--bone);font-style:italic}
-@media(max-width:600px){.full-story-section{padding:19px 16px}.full-story{margin-top:16px}.full-story p{font-size:15px;line-height:1.9}}
+/* Hikâye başlığı: kelimeleri bölme, masaüstü ve mobilde doğal satır akışı */
+.full-story-section .archive-heading{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:clamp(12px,3vw,28px)}
+.full-story-section .archive-heading>div{min-width:0}
+.full-story-section .archive-heading h2{max-width:100%;font-size:clamp(34px,5vw,64px);line-height:1.04;letter-spacing:-.025em;overflow-wrap:normal;word-break:normal;hyphens:none;text-wrap:balance}
+.full-story-section .archive-stamp{min-width:0}
+.full-story p{overflow-wrap:normal;word-break:normal;hyphens:none}
+@media(max-width:600px){
+ .full-story-section{padding:19px 16px}
+ .full-story{margin-top:16px}
+ .full-story p{font-size:15px;line-height:1.9}
+ .full-story-section .archive-heading{grid-template-columns:minmax(0,1fr);gap:8px;align-items:start}
+ .full-story-section .archive-heading h2{font-size:clamp(30px,7.5vw,46px);line-height:1.08;letter-spacing:-.02em}
+ .full-story-section .archive-stamp{justify-self:end;margin:0 2px 0 0}
+}
 </style>
 </head>
 <body>
