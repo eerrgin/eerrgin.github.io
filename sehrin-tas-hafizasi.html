@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#090808">
-<meta name="description" content="Güngören’den Samatya’ya bir gece inişi. Ergin’in defteri: eşik, kıyı, pazar ve söylenmeden kalan cevap.">
+<meta name="description" content="Samatya’da başlayan bir gece defteri. Eşikler, kıyı, pazar ve adı konmamış bir geçmiş.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Samatya: Bırakmadığım Gidiş | Ergin’in Semt Defteri">
-<meta property="og:description" content="Tanıyan semt sormayı bırakır. 2025’in ilk soğuğunda Güngören’den Samatya’ya indim. Cevabı kapıda bıraktım.">
+<meta property="og:description" content="Bir gece Samatya’ya indim. Yanımda tek çanta, cebimde eski bir anahtar vardı. Bazı cevapları kapıda bıraktım.">
 <meta property="og:image" content="https://eerrgin.github.io/assets/samatya/varis.svg">
 <meta name="twitter:card" content="summary_large_image">
 <title>Samatya: Bırakmadığım Gidiş · Ergin’in Semt Defteri</title>
@@ -207,6 +207,14 @@ try {
 .story-card-art.has-photo:before,.story-card-art.has-photo:after{z-index:1;opacity:.28;pointer-events:none}
 .story-art-caption,.story-art-number{z-index:2}
 .story-card-art.has-photo .story-art-caption{left:0;right:0;bottom:0;padding:26px 10px 11px;background:linear-gradient(transparent,#000c)}
+
+/* Okunabilir tipografi: özel font yüklenmese de Türkçe karakterler ve ölçüler sabit kalsın. */
+:root{--display:"Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;--body:Georgia,"Times New Roman",serif;--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--body);font-kerning:normal}
+.story-card h3,.story-dialog h2,.samatya-hero h1,.archive-heading h2{font-family:var(--display);font-weight:600}
+.story-card-content>p,.story-dialog-copy p,.samatya-prose p,.samatya-image-copy p{overflow-wrap:break-word;word-break:normal}
+
 </style>
 </head>
 <body>
@@ -223,9 +231,9 @@ try {
 <main class="wrap" id="top">
 <section id="samatya" class="hero reveal in samatya-hero">
 <div class="samatya-hero-copy">
-<p class="kicker">ŞEHRİN TAŞ HAFIZASI / 001 · GÜNGÖREN → SAMATYA</p>
+<p class="kicker">ŞEHRİN TAŞ HAFIZASI / 001 · SAMATYA</p>
 <h1>Samatya:<br><em>bırakmadığım gidiş.</em></h1>
-<p class="lede">Güngören beni tanıyordu. Tanıyan yer, bir süre sonra sormayı bırakır. 2025’in ilk soğuğunda indim: bir çanta, bir anahtar, bir gece otobüsü. Samatya hâlâ soruyor. Ben cevap yerine kapıyı iki kez çeviriyorum.</p>
+<p class="lede">Bir zamanlar karanlık bir şehirde yaşadım. Adını söylemeyeceğim; bazı yerler geride bırakılınca bile insanın peşinden gelir. Samatya’ya bir gece indim: tek çanta, eski bir anahtar, nereye gittiğini söylemeyen bir otobüs. Burada kimse nereden geldiğimi sormuyor. Yalnız bazıları, beni daha önce görmüş gibi bakıyor.</p>
 <p class="lede">Bu bir semt tarihi değil. Tarih, dipnotta saklanan adamın işidir. Ben sokakta kalanım.</p>
 <div class="row"><a class="btn" href="#sesler">KAYITLARI AÇ</a><a class="btn ghost" href="#kiliseler">EŞİĞE BAK ↘</a></div>
 <div class="samatya-kickerline"><span>41°00′N · 28°56′E</span><span>FATİH / İSTANBUL</span><span>VARIŞ: 2025 BAŞI</span></div>
@@ -238,13 +246,13 @@ try {
 
 <span id="zaman" aria-hidden="true"></span>
 <section id="cumhuriyetin-ilk-yillari" class="samatya-section reveal in" data-stamp="01">
-<div class="archive-heading"><div><p class="kicker">01 / HAT · GÜNGÖREN’DEN</p><h2>Güngören durdu.<br><em>Ben bindim.</em></h2></div><p class="archive-stamp"><span>2025</span><small>GECE SEFERİ<br>TEK ÇANTA</small></p></div>
+<div class="archive-heading"><div><p class="kicker">01 / HAT · SON SEFER</p><h2>Son durak geride kaldı.<br><em>Ben indim.</em></h2></div><p class="archive-stamp"><span>2025</span><small>GECE SEFERİ<br>TEK ÇANTA</small></p></div>
 <div class="samatya-image-story">
 <figure class="samatya-image"><img src="/assets/samatya/otobus.svg" alt="Boş bir gece otobüsü, camda yağmur, koltukta bir çanta. Özgün çizim." width="1200" height="800" loading="lazy"><figcaption>Karşı koltuk sormadı. Şehir sordu.</figcaption></figure>
-<div class="samatya-image-copy"><p class="kicker">GECE OTOBÜSÜ</p><h3>“Dönüyor musun?”<br><em>Gidiyorum, dedim.</em></h3><p>Karşı koltuk haritaya bakmıyordu. Şehir ona ezberdi. Bana henüz değil.</p><p>“Dönüyor musun?” dedi. “Gidiyorum.” Başını salladı. İkisini aynı kelime sananlara bu hatta sık rastlanır. Düzeltmedim. Düzeltseydim nedeni anlatmam gerekecekti. Neden, tam söylenince küçülür.</p><p>Camım Güngören’de duruyor. Durması, orada yaşadığım anlamına gelmez. Bazı camlar gideni bir süre daha yansıtır.</p><p class="samatya-fact">Anahtar iç cepteydi. Yeni kapınınki. Eski kapınınkinden ağır.</p></div>
+<div class="samatya-image-copy"><p class="kicker">GECE OTOBÜSÜ</p><h3>“Nereye gidiyorsun?”<br><em>Henüz bilmiyorum.</em></h3><p>Karşı koltuk haritaya bakmıyordu. Şehir ona ezberdi. Bana henüz değil.</p><p>“Nereye gidiyorsun?” dedi. “Henüz bilmiyorum.” Başını salladı; sanki bu cevap ona yabancı değildi. Bir süre camdan dışarı baktık. Şehirler gece birbirine benzer. İnsan, hangisinden çıktığını ancak sabah olunca anlar.</p><p>Camda arkamdaki şehrin ışıkları kaldı. Bir süre yüzümün üzerinde titrediler; sonra hangisinin yansıma, hangisinin hatıra olduğunu ayıramadım.</p><p class="samatya-fact">Anahtar iç cepteydi. Yeni kapınınki. Eski kapınınkinden ağır.</p></div>
 </div>
 <div class="samatya-timeline">
-<article class="samatya-era"><span class="era-date">Güngören</span><h3>Uyku</h3><p>Adın söylenmeden bilinir. Rahattır. Rahatlık da bir uykudur.</p></article>
+<article class="samatya-era"><span class="era-date">Önce</span><h3>Uyku</h3><p>Adını kimsenin sormadığı bir yerde yaşadım. Rahatlık sandığım şey, belki de uzun bir sessizlikti.</p></article>
 <article class="samatya-era"><span class="era-date">Sefer</span><h3>Tek çanta</h3><p>İkinci çanta, “belki dönerim” demektir. Belkiyi evde bıraktım.</p></article>
 <article class="samatya-era"><span class="era-date">İlk sabah</span><h3>Fırın</h3><p>Benden önce açıktı. Şehir bana göre ayarlanmıyor. İyi.</p></article>
 <article class="samatya-era"><span class="era-date">Şimdi</span><h3>Eşik</h3><p>Kapı beni ezberliyor. Ben hâlâ eşiği sayıyorum.</p></article>
@@ -278,19 +286,19 @@ try {
 </div>
 <div class="story-grid" id="story-grid">
 
-<article class="story-card story-card-featured" data-story-card data-category="tasinma" data-search="güngören samatya otobüs anahtar çanta taşınma 2025 fırın saat">
-<div class="story-card-art has-photo"><img src="/assets/samatya/otobus.svg" alt=""><span class="story-art-caption">GÜNGÖREN · GECE SEFERİ</span><span class="story-art-number">01</span></div>
-<div class="story-card-content"><div class="story-card-meta"><span class="story-category">TAŞINMA</span><span class="story-date">2025 / BAŞI</span></div><h3>Saati orada bıraktım</h3><p>Bir çanta. Bir anahtar. Otobüste biri sordu: dönüyor musun? Güngören’i kapatmadım. Sadece artık orada uyumuyorum.</p><div class="story-card-bottom"><span>Tanıyan semt, sormayı bırakır</span><button class="story-open" type="button" data-story-open>KAYDI AÇ <span>↗</span></button></div></div>
+<article class="story-card story-card-featured" data-story-card data-category="tasinma" data-search="samatya gece otobüs anahtar çanta taşınma fırın saat karanlık şehir">
+<div class="story-card-art has-photo"><img src="/assets/samatya/otobus.svg" alt=""><span class="story-art-caption">SON SEFER · GECE</span><span class="story-art-number">01</span></div>
+<div class="story-card-content"><div class="story-card-meta"><span class="story-category">TAŞINMA</span><span class="story-date">2025 / BAŞI</span></div><h3>Saati orada bıraktım</h3><p>Bir çanta. Eski bir anahtar. Otobüste biri sordu: “Nereye?” Cevap vermedim. Bazı yolculuklar varış yerini söyleyince başlamış sayılır.</p><div class="story-card-bottom"><span>Tanıyan semt, sormayı bırakır</span><button class="story-open" type="button" data-story-open>KAYDI AÇ <span>↗</span></button></div></div>
 <div class="story-full" hidden>
-<p>Güngören’de pencere hâlâ benim camımı biliyordu. Bu, kalmak için yeterli bir sebep sayılır. Ben saymadım.</p>
-<p>2025’in ilk soğuğunda çıktım. Eşyayı değil, bir geceyi taşıdım. Çanta dizinimde. Anahtar iç cepte. Yeni kapının anahtarı, eskisinden ağırdı.</p>
+<p>Arkamda kalan evin penceresinde tek bir ışık yanıyordu. Bana mı aitti, yoksa o saatte uyanık olan başka birine mi, bilmiyorum. Bir süre baktım. Sonra otobüs hareket etti.</p>
+<p>Kışın hangi günüydü, hatırlamıyorum. Eşyam azdı; yine de çanta dizlerime ağır geliyordu. Anahtar iç cebimdeydi. Hangi kapıyı açtığını biliyordum, ama hangi kapıyı kapattığını bilmiyordum.</p>
 <p>Otobüste karşımdaki adam sordu: “Dönüyor musun?”</p>
 <p>“Gidiyorum,” dedim.</p>
 <p>Başını salladı. Düzeltmedim.</p>
 <p>Samatya’da indim. Fırın benden önce açıktı. Demek ki şehir, benim varışıma göre kurulmuyordu.</p>
-<p>İlk sabah anahtarı iki kez çevirdim. İkincisi gereksizdi. Yine de çevirdim. Bazı kapılar emin olmanı ister.</p>
-<p>Güngören’e döndüm mü? Sorunun kendisi cevap. Dönülen yer bırakılmış sayılmaz. Bırakılmış yer de insanı her gece bir durak eksik saydırır.</p>
-<p class="story-ending">Tanıyan semt tehlikelidir. Sormayı bırakır. Ben, soran bir kıyıya indim.</p>
+<p>İlk sabah anahtarı kilitte iki kez çevirdim. İkincisi gereksizdi. Yine de yaptım. Kapının açılması, içeriye ait olduğum anlamına gelmiyordu.</p>
+<p>Geri döndüm mü? Bu soruyu soran olmadı. Belki de cevabın yüzümde durduğunu düşündüler. Bazı geceler, otobüs aynı kavşaktan iki kez geçiyor. İkincisinde camdan bakmıyorum.</p>
+<p class="story-ending">Bir şehir insanı tanımaya başladığında, ondan kaçmak için geç kalmış olabilirsin. Samatya henüz adımı bilmiyor. Şimdilik bu yeter.</p>
 </div>
 </article>
 
@@ -312,7 +320,7 @@ try {
 <div class="story-card-content"><div class="story-card-meta"><span class="story-category">KIYI</span><span class="story-date">GECE / SU</span></div><h3>Deniz üç sokak içeride</h3><p>Eski iskeleyi aradım. Biri, denizin orada olmadığını söyledi. Saatimi söyledim. “Dünkü,” dedi.</p><div class="story-card-bottom"><span>Saat doğruydu. Gün, değil</span><button class="story-open" type="button" data-story-open>KAYDI AÇ <span>↗</span></button></div></div>
 <div class="story-full" hidden>
 <p>Sahil yolu denizi gösterir, eski denizi değil. Biri konuşur, biri hatırlar.</p>
-<p>Korkulukta biri vardı. Yüzü suda, bana değil. Sigaranın ucunu önce uzak bir pencere sandım.</p>
+<p>Korkulukta biri vardı. Yüzü suya dönüktü; beni görmüyordu. Sigaranın ucunu önce uzaktaki bir pencerenin ışığı sandım.</p>
 <p>“Aradığın burada değil,” dedi. Bakmadan.</p>
 <p>“Nerede?”</p>
 <p>“Üç sokak içeride kaldı. Sen de biliyorsun. Yoksa bu saatte burada olmazdın.”</p>
@@ -329,12 +337,12 @@ try {
 <div class="story-full" hidden>
 <p>Cumartesi, Marmara Caddesi erken uyanır. Ben de erken çıktım. Erken çıkan ya kaçıyordur ya yetişiyordur. Hangisi olduğumu tezgâh anladı. Ben anlamadım.</p>
 <p>Bir turunç. Pazarlık yok. Pazarlık, kalmak isteyenlerin dilidir.</p>
-<p>Adam tartmadan baktı. “Güngören’den misin?”</p>
+<p>Adam tartmadan baktı. “Bu sokaktan daha önce geçtin mi?”</p>
 <p>Söylememiştim.</p>
-<p>“Ayağın,” dedi, “hâlâ oranın kaldırımını sayıyor. Buranın taşı daha kısa adım ister.”</p>
+<p>“Ayağın,” dedi, “buraya alışmamış. Taşın üstünde duruyor ama aklın başka sokakta.”</p>
 <p>Parayı uzattım. Üstünü bırakmadı. “İlk hafta üstü olmaz.” İyilik miydi, işaret mi, sormadım. İyilik sorulunca küçülür.</p>
 <p>Ertesi cumartesi tezgâh duruyordu. Adam yoktu. Yerine genç biri “kim?” dedi. Ben de “kim?” dedim.</p>
-<p class="story-ending">İkisi de cevap alamadı. Samatya’da bu, dürüst bir konuşma sayılır.</p>
+<p class="story-ending">İkimiz de gülmedik. Tezgâhın arkasındaki adamın yüzünü bir daha görmedim. Ama her cumartesi aynı saatte oradan geçiyorum.</p>
 </div>
 </article>
 
@@ -382,7 +390,7 @@ try {
 
 <section id="kaynaklar" class="samatya-section reveal in" data-stamp="06">
 <div class="archive-heading"><div><p class="kicker">06 / YAZILMAYAN</p><h2>Bilmediğim kapıyı<br><em>açık bırakıyorum.</em></h2></div><p class="archive-stamp"><span>00</span><small>DİPNOT YOK<br>KOSTÜM YOK</small></p></div>
-<div class="samatya-history-dark"><p>Burada dipnot yok. Bir adamı dipnotla ciddi göstermek, en kolay kostümdür. Ben kostüm giymedim.</p><p>Gördüğümü yazdım. Görmediğimi kapıda bıraktım. Kapı yarın da orada olur. Ben belki başka bir saatte.</p><p>Güngören’e ne oldu, diye soran olursa: duruyor. Ben de duruyorum. İkimiz aynı cümlede değiliz. O kadar.</p></div>
+<div class="samatya-history-dark"><p>Burada dipnot yok. Bir adamı dipnotla ciddi göstermek, en kolay kostümdür. Ben kostüm giymedim.</p><p>Gördüğümü yazdım. Görmediğimi kapıda bıraktım. Kapı yarın da orada olur. Ben belki başka bir saatte.</p><p>Bir gün nereden geldiğimi sorarlarsa, “uzak değil” diyeceğim. Mesafe haritada ölçülüyor. Benim bıraktığım yerin haritası yok.</p></div>
 </section>
 
 <section id="other-stops" class="reveal in" data-stamp="01">
