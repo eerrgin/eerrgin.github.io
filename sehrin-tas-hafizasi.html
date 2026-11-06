@@ -292,6 +292,136 @@ body{background-color:#080809;background-image:radial-gradient(ellipse at 50% 0%
  .full-story-section .archive-heading h2{font-size:clamp(30px,7.5vw,46px);line-height:1.08;letter-spacing:-.02em}
  .full-story-section .archive-stamp{justify-self:end;margin:0 2px 0 0}
 }
+
+/* Gece Vardiyası · ana arşiv için yatay, kenarlıksız atmosfer bandı */
+#other-stops{
+  position:relative;
+  isolation:isolate;
+  padding-top:clamp(154px,18vw,218px);
+  margin-top:clamp(22px,4vw,42px);
+  border-top:1px solid color-mix(in srgb,var(--red) 24%,transparent);
+}
+#other-stops>.story-night-photo{
+  position:absolute;
+  z-index:0;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100vw;
+  height:clamp(300px,37vw,440px);
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  border:0;
+  border-radius:0;
+  background:#080507;
+  box-shadow:none;
+  pointer-events:none;
+}
+#other-stops>.story-night-photo:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(5,4,6,.78),rgba(5,4,6,.24) 48%,rgba(5,4,6,.52)),
+    linear-gradient(0deg,#080809 0%,rgba(8,8,9,.08) 52%,rgba(8,8,9,.18) 100%);
+}
+#other-stops>.story-night-photo img{
+  display:block;
+  width:100%;
+  height:100%;
+  max-height:none;
+  aspect-ratio:auto;
+  object-fit:cover;
+  object-position:center 62%;
+  border:0;
+  border-radius:0;
+  background:#080507;
+  filter:saturate(.82) contrast(1.08) brightness(.72);
+}
+#other-stops>.story-night-photo figcaption{
+  position:absolute;
+  z-index:1;
+  right:max(18px,calc((100vw - 1120px)/2));
+  bottom:20px;
+  padding:0;
+  color:#f2d9d2;
+  font:9px/1.5 var(--mono);
+  letter-spacing:.22em;
+  text-shadow:0 2px 12px #000;
+}
+#other-stops>.story-night-photo figcaption span{color:var(--red);padding:0 5px}
+#other-stops>.archive-heading{
+  position:relative;
+  z-index:1;
+  align-items:end;
+  gap:clamp(12px,3vw,28px);
+  margin-bottom:12px;
+}
+#other-stops>.archive-heading h2{
+  max-width:14ch;
+  font-size:clamp(36px,5.5vw,68px);
+  line-height:1.02;
+  letter-spacing:-.035em;
+  text-shadow:0 3px 24px #000,0 1px 5px #000;
+  text-wrap:balance;
+}
+#other-stops>.archive-heading .kicker{
+  color:#ff5260;
+  text-shadow:0 2px 12px #000;
+}
+#other-stops>.archive-heading .archive-stamp{
+  text-shadow:0 2px 14px #000;
+}
+#other-stops>.archive-lede,
+#other-stops>.archive-signal,
+#other-stops>.grid,
+#other-stops>.archive-endnote{
+  position:relative;
+  z-index:1;
+}
+#other-stops>.archive-lede{
+  max-width:64ch;
+  color:#eadbd7;
+  text-shadow:0 2px 12px #000;
+}
+#other-stops>.archive-signal{
+  border-color:color-mix(in srgb,var(--red) 30%,transparent);
+  text-shadow:0 2px 10px #000;
+}
+@media(max-width:720px){
+  #other-stops{padding-top:142px;margin-top:26px}
+  #other-stops>.story-night-photo{height:300px}
+  #other-stops>.story-night-photo img{object-position:54% 63%}
+  #other-stops>.story-night-photo:after{
+    background:linear-gradient(90deg,rgba(5,4,6,.68),rgba(5,4,6,.18) 65%,rgba(5,4,6,.4)),
+      linear-gradient(0deg,#080809 0%,rgba(8,8,9,.08) 72%,rgba(8,8,9,.18));
+  }
+  #other-stops>.story-night-photo figcaption{
+    right:14px;bottom:14px;font-size:8px;letter-spacing:.15em
+  }
+  #other-stops>.archive-heading{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:end;
+    gap:8px;
+  }
+  #other-stops>.archive-heading h2{font-size:clamp(33px,8.7vw,48px);max-width:12ch}
+  #other-stops>.archive-heading .archive-stamp{margin:0 0 3px;gap:6px}
+  #other-stops>.archive-heading .archive-stamp>span{font-size:44px}
+  #other-stops>.archive-heading .archive-stamp small{font-size:7px}
+  #other-stops>.archive-lede{font-size:14px;line-height:1.75}
+}
+@media(max-width:390px){
+  #other-stops{padding-top:132px}
+  #other-stops>.archive-heading{grid-template-columns:minmax(0,1fr)}
+  #other-stops>.archive-heading .archive-stamp{justify-self:end}
+  #other-stops>.archive-heading h2{font-size:34px}
+}
+@media(prefers-reduced-motion:reduce){
+  #other-stops>.story-night-photo img{transition:none}
+}
+
 </style>
 </head>
 <body>
@@ -483,7 +613,7 @@ body{background-color:#080809;background-image:radial-gradient(ellipse at 50% 0%
 </section>
 
 <section id="other-stops" class="reveal in" data-stamp="01">
-<figure class="story-night-photo"><img src="/photos/gecevardiyasi.jpg" alt="Samatya’da gece: kırmızı neon ışıkları altında tren peronu, rayların yanında siyah bir kedi ve İstanbul silueti." loading="lazy"><figcaption>GECE VARDİYASI · SAMATYA / ERGİN LAB</figcaption></figure>
+<figure class="story-night-photo" aria-label="Gece Vardiyası, Samatya"><img src="/photos/gecevardiyasi.jpg" alt="Samatya’da gece; kırmızı ışıklarla aydınlanan tren peronu, raylar ve siyah bir kedi." loading="eager" fetchpriority="high"><figcaption>GECE VARDİYASI <span>·</span> SAMATYA / ERGİN LAB</figcaption></figure>
       <div class="archive-heading">
         <div>
           <p class="kicker">08 / İSTANBUL’UN DİĞER TAŞ KAYITLARI</p>
