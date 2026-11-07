@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Frekans Defteri — Gece Hattı</title>
-  <meta name="description" content="Gece, insan ve yol. Kısa değil; tam da söylenmeden duran yer.">
+  <meta name="description" content="Gece, hafıza, mesafe ve insan üzerine; söylenenden çok geride kalana kulak veren açık bir kayıt.">
   <meta name="author" content="Ergin Kaplan">
   <meta name="theme-color" content="#070103">
   <meta name="color-scheme" content="dark">
@@ -12,20 +12,27 @@
   <link rel="canonical" href="https://eerrgin.github.io/frekans-defteri/">
   <link rel="stylesheet" href="/style.css">
   <style>
-    .fd { padding: 48px 0 96px; }
-    .fd-back { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
-    .fd h1 { max-width: 14ch; margin-top: 18px; }
-    .fd-flow { max-width: 62ch; margin-top: 28px; }
-    .fd-flow p { font-size: 18.5px; line-height: 1.72; color: var(--bone); margin: 0 0 1.15em; }
-    .fd-flow p.late { color: var(--muted); }
-    .fd-sig { margin-top: 36px; font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--red); }
+    .fd{padding:clamp(38px,7vw,82px) 0 110px}
+    .fd-back{font:10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+    .fd-head{max-width:760px;margin:clamp(46px,8vw,94px) 0 52px}
+    .fd-head .kicker{font:10px var(--mono);letter-spacing:.2em;color:var(--red)}
+    .fd h1{max-width:12ch;margin:18px 0 22px;font-size:clamp(48px,8vw,94px);line-height:.98;letter-spacing:-.065em}
+    .fd h1 em{color:var(--red);font-weight:400}
+    .fd-deck{max-width:52ch;color:var(--muted);font-size:clamp(16px,2vw,20px);line-height:1.7}
+    .fd-rule{width:100%;height:1px;background:linear-gradient(90deg,var(--red),rgba(190,150,115,.18),transparent);margin:0 0 38px}
+    .fd-flow{max-width:66ch;margin-left:clamp(0px,8vw,110px)}
+    .fd-flow p{margin:0 0 1.45em;color:var(--bone);font-size:clamp(17px,1.55vw,19px);line-height:1.9}
+    .fd-flow p:nth-of-type(3n){color:#c9b8a8}
+    .fd-closer{max-width:48ch;margin:54px 0 0 clamp(0px,8vw,110px);padding:20px 0 20px 22px;border-left:1px solid var(--red);color:var(--bone);font:italic clamp(19px,2.2vw,25px)/1.65 Georgia,serif}
+    .fd-sig{margin:58px 0 0 clamp(0px,8vw,110px);font:9px var(--mono);letter-spacing:.19em;text-transform:uppercase;color:var(--dim)}
+    @media(max-width:640px){.fd{padding-top:34px}.fd-head{margin-top:52px;margin-bottom:38px}.fd-flow{margin-left:0}.fd-flow p{font-size:17px;line-height:1.82}.fd-closer,.fd-sig{margin-left:0}}
   </style>
 </head>
 <body>
   <header class="top">
     <div class="rule"></div>
     <div class="wrap bar">
-      <a class="mark" href="/">e.</a>
+      <a class="mark" href="/" aria-label="Gece Hattı ana sayfa">e.</a>
       <div class="brand-block">
         <strong>eerrgin</strong>
         <span class="kicker">gece vardiyası / istanbul</span>
@@ -34,20 +41,30 @@
     </div>
   </header>
   <main class="wrap fd">
-    <a class="fd-back" href="/">← gece hattı</a>
-    <p class="kicker">KAYIT / AÇIK DEFTER · GECE</p>
-    <h1>Frekans <em>defteri.</em></h1>
-    <div class="fd-flow">
-      <p>Gece insana bir şey öğretmez. Sadece gündüzün örttüğü sesi geri verir. O ses bazen bir adım, bazen karşı koltukta sorulmamış bir sorudur. İnsan ilişkiyi konuşarak kurduğunu sanır. Asıl bağ, susulduğu yerde kurulur. İki kişi aynı cümleyi paylaşabilir ve yine de iki ayrı şehirde durabilir.</p>
-      <p>Yolculuk uzaklık değildir. Uzaklık haritanın işidir. Yol, insanın kendi gölgesiyle aynı tempoda yürüyüp yürüyemediğidir. Bazı gidişler kapıyı kapatır, bazıları kapıyı açık unutur. Açık unutulan kapı ihmal değildir. Dönüşün henüz adının konmadığı yerdir. Bekleyen her zaman zayıf değildir. Bazen bekleyen, gidenin cesaret edemediği cümleyi taşır.</p>
-      <p>İnsan ilişkilerinde en uzun mesafe, aynı odada durup başka saatlerde yaşamaktır. Biri dünü anlatır, öteki yarını. Arada bugün kalır, kimse ona oturmaz. Sevgi bazen yaklaşmak değildir. Karşındakinin karanlığını ışıkla zorlamamaktır. Işık her şeyi gösterir diye övülür. Halbuki bazı yüzler gölgede daha doğru durur. Gösterilen yüz, seçilmiş yüzdür. Seçilmemiş olan, asıl olandır.</p>
-      <p>Birine “anladım” demek, onu bitirmek olabilir. Anlamak kapanış değildir. Anlamak, sorunun hâlâ yaşadığını kabul etmektir. Cevap erken gelirse ilişki küçülür. Soru kapıda kalırsa ilişki nefes alır. İnsanlar birbirini tanıdıkça değil, birbirinin bilmediği yere saygı duydukça yan yana durur. Her sırrı açmak yakınlık değildir. Bazı sırlar, iki kişiyi aynı anda ayakta tutan duvardır.</p>
-      <p>Gece yola çıkınca şehir küçülmez, insan küçülür. Küçülmek kaybolmak değildir. Büyük lafların indiği yerdir. Otobüs camında kendi yüzünü gören, arkada bıraktığı semti de görür. Hangisi yansıma, hangisi hatıra, ayırt edilmez. Ayırt edilmemesi iyidir. Ayırt edilen hatıra, çoktan açıklamaya dönmüştür. Açıklama, hissin üstüne örtülen ikinci bir kumaştır.</p>
-      <p>Ergin bazı geceler adını yüksek sesle söylemez. Ad, çağrılınca gelir. Çağrılmayan ad, kıyıda bekler. Beklemek de bir yolculuktur. Aynı peronda, ters istikamete. Biri iner, biri biner. İkisi de haklıdır. Haklılık ilişkiyi kurtarmaz. Kurtaran, aynı ıslak taşta bir an durup “buradan” diyebilmektir. “Buradan” bir adres değildir. İki kişinin aynı karanlığı paylaştığı andır.</p>
-      <p class="late">Sonra ışık yanar, tarifede yoktur, yine de yanar. Kıyı kimseyi ikna etmez. İnsanı da ikna etmez. Sadece kararmamayı seçer. Kararmamak, umut nutku değildir. Birinin hâlâ dönebileceği bir eşik bırakmaktır. Eşik oda sayılır. Oturulmaz. Geçilir, ya da geçilmez. Geçilmeyen eşik de hayatın içindedir. Her buluşma tamamlanmak zorunda değildir. Bazı yolcular gölgede kalır. Işık onları ele verirdi. Işık o gece geç gelir. Geç gelmesi, belki de tek inceliktir.</p>
-      <p class="late">Frekans burada biter gibi durur. Bitmez. Şehrin dış sesi çekilince geriye bu kalır: bir nefes, bir ray, bir söylenmemiş isim. Dinlemek bir karardır. Susturmak da. İkisi de sevginin içinde durabilir. Yeter ki biri, diğerinin kapısını kendi anahtarıyla açmaya kalkmasın.</p>
-    </div>
-    <p class="fd-sig">Gece hattı · açık kayıt · isim kapıda</p>
+    <a class="fd-back" href="/">← gece hattına dön</a>
+    <section class="fd-head" aria-labelledby="fd-title">
+      <p class="kicker">88.8 · GECE BANDI / AÇIK KAYIT</p>
+      <h1 id="fd-title">Frekans <em>defteri.</em></h1>
+      <p class="fd-deck">Her şeyin bir sesi var. Bazıları uzaktan duyulur; bazıları, insan kalabalığın içinden çekilince belirir.</p>
+    </section>
+    <div class="fd-rule" aria-hidden="true"></div>
+    <article class="fd-flow">
+      <p>Gece, şehrin sesini kesmez. Yalnızca hangisinin gerçekten uzaktan geldiğini, hangisinin insanın içinde kaldığını ayırt etmeyi kolaylaştırır. Gündüz aceleyle geçilen bir sokak, gece aynı yerde başka türlü durur. Kepenklerin arasından sızan ışık, kaldırımda biriken yağmur, son otobüsü bekleyen birkaç kişi… Şehir değişmemiştir; ona bakanın dikkati değişmiştir.</p>
+
+      <p>İnsan kendini çoğu zaman büyük kararlarında arar. Oysa bazı şeyler daha küçük yerlerde saklıdır: Bitmiş bir konuşmadan sonra masada bırakılan bardakta, dönüp bir kez daha bakılan pencerede, kimse sormadığı hâlde hatırlanan bir tarihte. Bir hayatı ele veren, anlattıkları kadar dönüp dolaşıp aynı ayrıntıya uğramasıdır.</p>
+
+      <p>Mesafe yalnızca iki noktanın arasındaki yol değildir. Bazen aynı masada oturan iki insanın birbirine söyleyemediği şey kadar yakındır. Yakınlık da her şeyi bilmek anlamına gelmez. Birinin kapalı tuttuğu yere saygı gösterebilmek, kimi zaman uzun bir açıklamadan daha sahici bir tanışıklıktır.</p>
+
+      <p>Hatıralar güvenilir tanıklar değildir; ama bütünüyle susmaları da beklenemez. Bir sokağı olduğundan daha aydınlık, bir sesi olduğundan daha yakın hatırlayabiliriz. Zaman ayrıntıları eksiltirken duygunun şeklini korur. Bu yüzden geçmişe dönüldüğünde aynı manzara bulunmaz. Bulunan şey, o manzaraya bakmış olan eski hâlimizdir.</p>
+
+      <p>Bir yolculuğun en sessiz anı, varış değildir. İnsan bazen ineceği durağı bildiği hâlde yerinden kalkmaz; çünkü camdaki yansıma, dışarıdaki manzarayla kısa bir süreliğine üst üste gelmiştir. O anı uzatmak istemesi kararsızlık sayılmaz. Bazı düşünceler, hareket etmeden tamamlanır.</p>
+
+      <p>İsimler de böyledir. Her isim her yerde söylenmez; kimi bir kapının ardında, kimi eski bir biletin kenarında kalır. Onu saklamak, yok saymak değildir. Her şeyi yüksek sesle dile getirmek zorunda olmadığımızı bilmektir. Bir şeyin değerini korumak için bazen ona dokunmadan yanından geçmek yeter.</p>
+
+      <p>Gece boyunca açık kalan küçük bir dükkânın ışığı, bütün şehri aydınlatmaz. Buna ihtiyacı da yoktur. Önünden geçen birinin yolunu bulmasına yetecek kadar parlar. Belki insanın geride bırakabileceği en iyi iz de budur: herkese görünmeye çalışmayan, ama ihtiyaç duyulduğunda orada bulunan bir ışık.</p>
+    </article>
+    <blockquote class="fd-closer">Bazı sesler kaybolmaz. Yalnızca onları duyduğumuz yer değişir.</blockquote>
+    <p class="fd-sig">88.8 · açık kayıt · geceye bırakıldı</p>
   </main>
 </body>
 </html>
