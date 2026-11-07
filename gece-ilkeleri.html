@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gece İlkeleri — Fatih, eski saat</title>
-  <meta name="description" content="Fatih’in eski saatlerinden, Samatya’dan, Ergin’in kapıda bıraktığı cümleler.">
+  <title>Gece İlkeleri — Gece Hattı</title>
+  <meta name="description" content="Gece Vardiyası'nın şehre, hafızaya, zamana ve insana bakışını belirleyen küçük ilkeler.">
   <meta name="author" content="Ergin Kaplan">
   <meta name="theme-color" content="#070103">
   <meta name="color-scheme" content="dark">
@@ -12,20 +12,28 @@
   <link rel="canonical" href="https://eerrgin.github.io/gece-ilkeleri.html">
   <link rel="stylesheet" href="/style.css">
   <style>
-    .gi { padding: 48px 0 96px; }
-    .gi-back { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
-    .gi h1 { max-width: 16ch; margin-top: 18px; }
-    .gi-flow { max-width: 64ch; margin-top: 26px; }
-    .gi-flow p { font-size: 18.5px; line-height: 1.75; color: var(--bone); margin: 0 0 1.2em; }
-    .gi-flow em { color: var(--red); font-style: italic; }
-    .gi-sig { margin-top: 28px; font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+    .gi{padding:clamp(38px,7vw,82px) 0 110px}
+    .gi-back{font:10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+    .gi-head{max-width:790px;margin:clamp(46px,8vw,94px) 0 58px}
+    .gi-head .kicker{font:10px var(--mono);letter-spacing:.2em;color:var(--red)}
+    .gi h1{max-width:13ch;margin:18px 0 22px;font-size:clamp(48px,8vw,94px);line-height:.98;letter-spacing:-.065em}
+    .gi h1 em{color:var(--red);font-weight:400}
+    .gi-deck{max-width:54ch;color:var(--muted);font-size:clamp(16px,2vw,20px);line-height:1.7}
+    .gi-list{max-width:900px;border-top:1px solid rgba(205,170,135,.2)}
+    .gi-item{display:grid;grid-template-columns:92px minmax(0,1fr);gap:clamp(18px,4vw,48px);padding:30px 0 34px;border-bottom:1px solid rgba(205,170,135,.16)}
+    .gi-no{padding-top:7px;font:10px var(--mono);letter-spacing:.15em;color:var(--red)}
+    .gi-item h2{margin:0 0 12px;font:normal clamp(23px,3vw,31px)/1.2 Georgia,serif;color:var(--bone);letter-spacing:-.025em}
+    .gi-item p{max-width:65ch;margin:0;color:#c5b7aa;font-size:17px;line-height:1.85}
+    .gi-end{max-width:58ch;margin:58px 0 0 auto;padding:22px 0 22px 24px;border-left:1px solid var(--red);font:italic clamp(19px,2.2vw,25px)/1.65 Georgia,serif;color:var(--bone)}
+    .gi-sig{margin:50px 0 0;font:9px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--dim);text-align:right}
+    @media(max-width:640px){.gi{padding-top:34px}.gi-head{margin-top:52px;margin-bottom:40px}.gi-item{grid-template-columns:42px minmax(0,1fr);gap:14px;padding:25px 0 28px}.gi-item p{font-size:16px;line-height:1.8}.gi-end{margin-top:42px}.gi-sig{text-align:left}}
   </style>
 </head>
 <body>
   <header class="top">
     <div class="rule"></div>
     <div class="wrap bar">
-      <a class="mark" href="/">e.</a>
+      <a class="mark" href="/" aria-label="Gece Hattı ana sayfa">e.</a>
       <div class="brand-block">
         <strong>eerrgin</strong>
         <span class="kicker">gece vardiyası / istanbul</span>
@@ -33,21 +41,50 @@
     </div>
   </header>
   <main class="wrap gi">
-    <a class="gi-back" href="/">← gece hattı</a>
-    <p class="kicker">FATİH · ESKİ SAAT · HENÜZ KAPANMAMIŞ</p>
-    <h1>Gece <em>ilkeleri.</em></h1>
-    <div class="gi-flow">
-      <p>Fatih bir semt adı değildir önce. Taşın, suyun ve uykusuzluğun birbirine karıştığı bir saattir. Surun güneyinde deniz daha yakındır, kuzeyde kubbe. İkisi de aynı adama bakar ve başka şey söyler. Biri “kal” der, öteki “geç”. Ergin ikisini de ezberlemedi. Ezberleyen, semti değil kendi acelesini gezer.</p>
-      <p>Samatya’da sabah henüz sökmeden inen, şehri değil kendi çantasını tanır. Anahtar iç cepte, eski kapınınkinden ağır. Ağırlık altın değildir. Bir eşikten diğerine taşınan suskunluktur. Pencere Marmara’ya açılınca insan manzara sahibi olduğunu sanır. Değildir. Deniz, eski kıyıyı üç sokak içeride saklar. Yeni cam, eski iskeleyi yalanlamaz. Sadece başka bir günden bakar.</p>
-      <p>Sümbül Efendi sokağında ağaç konuşmaz, ama kabuğunda iki yürüyüşü tutar. Biri semtin, biri yolun. İkisi de adını yüksek sesle bırakmaz. Ergin oradan geçerken selam vermez. Selam, bazen birini ele verir. Gece, ele vermekten yorulmuştur. Karşı avludaki karaltı lamba da olabilir, biri de. Sokak bu ikisini ayırmaz. Ayırmaması bir ilkedir: görmediğini yazma, gördüğünü de bitirme.</p>
-      <p>Sulu Manastır’a haritayla gidilmez. Adıyla gidilir. Çan saat söylemez, sadece taşın arasından geçer. Ergin bir gece sokağın başında durdu, içeri girmedi. Girdiği şey sesin kesildiği yerdi. Bazı kapılar kapalıyken daha doğrudur. Kapalı kapı reddetmez. “Henüz değil” der. Fatih’te acele, en eski yalancıdır. İkinci bakış selamdır. Birincisi sadece şehirdir.</p>
-      <p>Yedikule’de sur, insanlara sırtını dönmüş gibi durur. Dönmemiştir. Şehri dışarıdan tutar, içeriden de. Kumkapı’da balık ışığı erken söner, konuşma geç biter. Narlıkapı’da rüzgâr tuzludur, tuz eski cümleleri inceltir. Koca Mustafa Paşa’da avlu, adımları sayar. Sayan avluya yalan söylenmez. Ergin bunu kitaptan öğrenmedi. Taş ıslakken öğrendi. Kuru taş sadece iz bırakır. Islak taş, izi cümleye çevirir.</p>
-      <p>Süleymaniye tepesinden Haliç bir nefes gibi durur. O nefes Kanuni’nin değildir artık, caminin de değildir tek başına. Aşağı inen merdivenin, çay bardağının, geç kalan birinin nefesidir. Ayasofya kubbesi cevap vermez. Kubbeler cevap için yapılmamıştır. Soruyu içeride tutmak için yapılmıştır. Ergin orada uzun kalmaz. Uzun kalan, hayranlığa döner. Hayranlık güzeldir, ama semti tanımaz. Tanımak, iki kez bakıp üçüncüde susmaktır.</p>
-      <p>Eminönü’nde martı ekmeği insandan önce görür. Vapur düdüğü, birinin adı değildir. Yine de herkes bir an kendi adını sanır. O yanılma Fatih’in eski saatidir. Herkes bir yerden çağrıldığını zanneder. Çağrı bazen sadece sudur. Sultanahmet akşam olunca süsten arınır, taş eski ağırlığına döner. Turist çekilir, gece kalır. Gece kalan, semtin asıl sakini değildir. Asıl sakin, sabahı orada açan evdir. Ergin’in evi deniz tarafındadır. Deniz tarafı övünç değildir. Bir pencerenin, martıya da adama da aynı camı göstermesidir.</p>
-      <p>Eski zaman Fatih’te dipnotla durmaz. Dipnot, çekingen cümlenin arkasına saklanır. Burada saklanacak yer taşın kendisidir. Bizans bir katmandır, Osmanlı bir katman, bugünkü anahtar üçüncü katman. Katmanlar birbirini silmez. Üst üste durur, ıslanınca birlikte okunur. Ergin çocukluktan bir iz, bugünden bir kapı taşır. İkisi de aynı semte sığar, çünkü semt büyük laflardan değil, tekrarlanan ekmek kokusundan yapılır.</p>
-      <p>Bir ilke varsa şudur ve o da ilke diye bağırmaz: Fatih’te yürürken tabelayı değil eşiği oku. Eşik daha az yalan söyler. İkinci bakılana kadar kalkma. Suya “nereden çekildin” diye sorma. Su, çekilenin kendisi olduğunu sanır. Ve adın sorulursa, Ergin, uzak değil dersin. Mesafe haritada ölçülür. Bırakılan yerin haritası yoktur. O yer hâlâ Fatih’tedir. Başka bir saatte. Kapı aralık. İçeri girilmeyecek. Yarın da orada olacak.</p>
+    <a class="gi-back" href="/">← gece hattına dön</a>
+    <section class="gi-head" aria-labelledby="gi-title">
+      <p class="kicker">GECE VARDİYASI · SAHA NOTLARI / 01—08</p>
+      <h1 id="gi-title">Gece <em>ilkeleri.</em></h1>
+      <p class="gi-deck">Bunlar duvara asılacak kurallar değil. Bir şehri gezerken, bir hatırayı taşırken ve başkasının sessizliğine yaklaşırken akılda tutulacak küçük ölçüler.</p>
+    </section>
+
+    <div class="gi-list">
+      <section class="gi-item">
+        <span class="gi-no">01 / DİNLE</span>
+        <div><h2>Şehirden önce sokağı dinle.</h2><p>Bir yeri tanımak, önemli yapıların adlarını bilmekle başlamaz. Sabah ilk hangi kepengin açıldığını, yağmurun hangi taşta biriktiğini, fırından çıkan kokunun hangi köşeye kadar ulaştığını fark etmekle başlar. Büyük manzara uzaktan da görülür; bir yerin gündelik hayatı ancak yavaşlayınca duyulur.</p></div>
+      </section>
+      <section class="gi-item">
+        <span class="gi-no">02 / IŞIK</span>
+        <div><h2>Her ışığı işaret sanma.</h2><p>Bir pencerenin açık kalması sana gönderilmiş bir mesaj değildir. Sokak lambası da yolunu gösterirken senden bir anlam çıkarmanı beklemez. Gördüğünü olduğu gibi kabul et; gerisini hayal gücüne bırakacaksan, bunun hayal olduğunu unutma.</p></div>
+      </section>
+      <section class="gi-item">
+        <span class="gi-no">03 / HAFIZA</span>
+        <div><h2>Geçmişi düzeltmeye çalışma.</h2><p>Eski bir fotoğrafı, bir evi ya da yarım kalmış konuşmayı bugünün bilgisiyle yeniden kuramazsın. Hatırlamak, olanı değiştirmek değil; bugün ona nereden baktığını anlamaktır. Hafızaya biraz mesafe bırak. Her ayrıntıyı geri getirmek, gerçeğe yaklaşmak anlamına gelmez.</p></div>
+      </section>
+      <section class="gi-item">
+        <span class="gi-no">04 / EŞİK</span>
+        <div><h2>Kapalı kapıya da yer bırak.</h2><p>Merak, her kapıyı açma hakkı vermez. İnsanların anlatmadıkları, şehrin göstermedikleri ve zamanın henüz açmadığı yerler vardır. Bir eşiğin önünde durmak bazen yeterlidir. Saygı, içeri girmekten önce nerede duracağını bilmektir.</p></div>
+      </section>
+      <section class="gi-item">
+        <span class="gi-no">05 / YOL</span>
+        <div><h2>Mesafeyi yalnız kilometreyle ölçme.</h2><p>İki durak arasındaki süre bellidir; iki insanın birbirine ne kadar uzak düştüğünü tarife söylemez. Yine de her uzaklık bir kayıp değildir. Bazen biraz geri çekilmek, bir şeyi daha açık görmenin tek yoludur. Dönüş ihtimalini korumak, mutlaka geri dönmek demek değildir.</p></div>
+      </section>
+      <section class="gi-item">
+        <span class="gi-no">06 / TAŞ</span>
+        <div><h2>Eski olanı süsleyip geçme.</h2><p>Fatih'in arka sokaklarında, Samatya'ya inen yokuşlarda ya da surların dibinde zaman tek bir döneme ait durmaz. Taşın üstünde onarım izi, kapının yanında yeni bir kilit, avluda bugünün sesi vardır. Bir semtin hafızası yalnızca geçmişinden oluşmaz; orada yaşamaya devam edenlerin gündelik emeğiyle tamamlanır. Eskiye bakarken bugünü kadrajın dışında bırakma.</p></div>
+      </section>
+      <section class="gi-item">
+        <span class="gi-no">07 / SESSİZLİK</span>
+        <div><h2>Sessizliği hemen cevap sayma.</h2><p>Birinin susması her zaman bir şey anlatmaz. Yorgunluk olabilir, düşünmek için zamana ihtiyaç olabilir, bazen de söylenecek bir şey yoktur. Boşluğu kendi cümlenle doldurmadan önce bekle. Dinlemek, karşı tarafın yerine konuşmamayı da bilmektir.</p></div>
+      </section>
+      <section class="gi-item">
+        <span class="gi-no">08 / SABAH</span>
+        <div><h2>Geceyi bitirmek için sabahı aceleye getirme.</h2><p>Her hikâye aydınlık bir sonla kapanmaz. Bazı geceler yalnızca biter; geride bir not, yarım kalmış bir kahve ve ertesi gün yapılacak sıradan işler bırakır. Hayatın devam etmesi için büyük bir işarete gerek yoktur. Perdeyi açmak, kapıyı çekmek, yola çıkmak çoğu zaman yeter.</p></div>
+      </section>
     </div>
-    <p class="gi-sig">Samatya · Sümbül Efendi · Sulu Manastır · Yedikule · Süleymaniye · gece vardiyası</p>
+
+    <blockquote class="gi-end">Bir yerin ruhunu anlamak için onu sahiplenmek gerekmez. Bazen yalnızca dikkatle geçmek yeter.</blockquote>
+    <p class="gi-sig">Gece Vardiyası · İstanbul / kayıt açık</p>
   </main>
 </body>
 </html>
