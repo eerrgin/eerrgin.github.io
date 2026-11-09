@@ -42,6 +42,11 @@
     .links{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
     a{color:#f0c77c;text-decoration:none;border:1px solid #53624e;padding:12px 16px;border-radius:4px}
     a:hover{background:#1d2b21}
+    .gateway{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:30px 0 34px;padding:18px 20px;border:1px solid rgba(168,189,158,.38);border-radius:9px;background:linear-gradient(110deg,rgba(37,55,42,.72),rgba(12,16,14,.86));box-shadow:0 12px 34px rgba(0,0,0,.2);transition:border-color .2s,transform .2s}
+    .gateway:hover{border-color:#a8bd9e;transform:translateY(-2px);background:linear-gradient(110deg,rgba(42,63,47,.82),rgba(15,21,17,.94))}
+    .gateway-copy{display:flex;flex-direction:column;gap:6px}.gateway-label{color:#a8bd9e;font:600 10px/1.4 ui-monospace,monospace;letter-spacing:.2em}.gateway-title{color:#f0c77c;font-size:clamp(16px,3vw,20px);letter-spacing:-.02em}.gateway-hint{color:#aeb8aa;font-size:12px;line-height:1.5}.gateway-mark{color:#f0c77c;font-size:25px;flex:0 0 auto}
+    .gateway:focus-visible{outline:2px solid #f0c77c;outline-offset:4px}
+    @media(max-width:430px){.gateway{padding:15px;gap:10px}.gateway-hint{font-size:11px}}
     footer{margin-top:64px;padding-top:18px;border-top:1px solid #344137;color:#89958a;font:11px ui-monospace,monospace}
   </style>
 </head>
@@ -49,6 +54,14 @@
   <main>
     <p class="eyebrow">KİŞİSEL SAYFA / İSTANBUL</p>
     <h1>Ergin Kaplan</h1>
+    <a class="gateway" href="https://eerrgin.github.io/" aria-label="Ana siteye giriş: Bir kapı aralık kaldı, öteki sayfaya geç">
+      <span class="gateway-copy">
+        <span class="gateway-label">SİTEYE GİRİŞ / KAPI</span>
+        <span class="gateway-title">Bir kapı aralık kaldı.</span>
+        <span class="gateway-hint">Öteki sayfaya geç. Hikâyenin devamı orada.</span>
+      </span>
+      <span class="gateway-mark" aria-hidden="true">↗</span>
+    </a>
     <p>Merhaba, ben Ergin Kaplan. Burası kişisel web sayfam. Üzerinde çalıştığım projeleri, yazılım ve web deneylerini, dijital arşivimi ve üretimlerimi burada bir araya getiriyorum.</p>
     <p class="profile-poem">Bazen bir isim bir rüzgârın izinde, unutulmuş bir sayfanın köşesinde, ya da sessiz bir aramanın ışığında; kodların içinde veya dışında, eski bir hikâyede ya da bir masal içinde yeniden keşişen bir cümlede.<br><br>Bazı isimler savrulur, unutulur, tozlanır. Ama bazıları ise bazen bir ayna gibi parlar, bazen de derin bir kuyunun dibinde bekler. Kimisi o mührü kırmaya çalıştı. Kimisi buldum sandı, ama ben anahtarı tuttum.</p>
     <p lang="en">Hello, I’m Ergin Kaplan. This is my personal website, where I bring together my projects, software and web experiments, creative work, and digital archive. Welcome to old friends, new visitors, and everyone who found this page by searching my name.</p>
