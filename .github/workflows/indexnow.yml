@@ -17,60 +17,125 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Submit changed pages to IndexNow
+      - name: Submit changed canonical pages to IndexNow
         env:
           BEFORE_SHA: ${{ github.event.before }}
           AFTER_SHA: ${{ github.sha }}
         run: |
           set -euo pipefail
-          mapfile -t changed < <(git diff --name-only "$BEFORE_SHA" "$AFTER_SHA")
-          urls=()
+          python3 - <<'PY'
+          import json
+          import os
+          import subprocess
+          import sys
+          import time
+          import urllib.parse
+          import urllib.request
+          import xml.etree.ElementTree as ET
+          from html.parser import HTMLParser
 
-          for file in "${changed[@]}"; do
-            case "$file" in
-              index.html)
-                urls+=("https://eerrgin.github.io/")
-                ;;
-              ergin-kaplan/index.html)
-                urls+=("https://eerrgin.github.io/ergin-kaplan/")
-                ;;
-              ergin-kaplan/en/index.html)
-                urls+=("https://eerrgin.github.io/ergin-kaplan/en/")
-                ;;
-              sitemap.xml)
-                urls+=(
-                  "https://eerrgin.github.io/"
-                  "https://eerrgin.github.io/ergin-kaplan/"
-                  "https://eerrgin.github.io/ergin-kaplan/en/"
-                )
-                ;;
-            esac
-          done
+          host = "eerrgin.github.io"
+          base = f"https://{host}"
+          key = "76b2ac5ecb07859dd046f7c13203ac25"
+          before = os.environ["BEFORE_SHA"]
+          after = os.environ["AFTER_SHA"]
 
-          if [ "${#urls[@]}" -eq 0 ]; then
-            echo "No tracked page URL changed; nothing to submit."
-            exit 0
-          fi
+          if before and set(before) == {"0"}:
+              changed = subprocess.check_output(
+                  ["git", "ls-tree", "-r", "--name-only", after], text=True
+              ).splitlines()
+          else:
+              changed = subprocess.check_output(
+                  ["git", "diff", "--name-only", before, after], text=True
+              ).splitlines()
 
-          unique_urls=$(printf '%s\n' "${urls[@]}" | sort -u)
-          url_json=$(printf '%s\n' "$unique_urls" | jq -R . | jq -s .)
-          payload=$(jq -n \
-            --arg host "eerrgin.github.io" \
-            --arg key "76b2ac5ecb07859dd046f7c13203ac25" \
-            --argjson urlList "$url_json" \
-            '{host:$host,key:$key,urlList:$urlList}')
+          class CanonicalParser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.href = None
+              def handle_starttag(self, tag, attrs):
+                  if tag.lower() != "link":
+                      return
+                  attrs = dict(attrs)
+                  rel = attrs.get("rel", "").lower().split()
+                  if "canonical" in rel and attrs.get("href"):
+                      self.href = attrs["href"]
 
-          for attempt in 1 2 3 4 5 6 7 8 9 10; do
-            status=$(curl -sS -o response.json -w '%{http_code}' \
-              -H 'Content-Type: application/json; charset=utf-8' \
-              -d "$payload" https://api.indexnow.org/indexnow || true)
-            echo "IndexNow response: HTTP $status (attempt $attempt)"
-            cat response.json || true
-            if [ "$status" = "200" ] || [ "$status" = "202" ]; then
-              exit 0
-            fi
-            sleep 20
-          done
+          urls = set()
+          for path in changed:
+              if path == "sitemap.xml":
+                  try:
+                      root = ET.parse("sitemap.xml").getroot()
+                      for item in root.findall("{http://www.sitemaps.org/schemas/sitemap/0.9}url"):
+                          loc = item.find("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")
+                          if loc is not None and loc.text:
+                              urls.add(loc.text.strip())
+                  except Exception as exc:
+                      print(f"Could not read sitemap.xml: {exc}")
 
-          echo "IndexNow did not accept the submission after retries."
-          exit 1
+              if path.startswith((".github/", "public/", "gh-pages/", "github-pages/")):
+                  continue
+              if path.startswith(".") or not path.lower().endswith((".html", ".htm")):
+                  continue
+              if not os.path.exists(path):
+                  continue
+
+              with open(path, "r", encoding="utf-8", errors="replace") as handle:
+                  parser = CanonicalParser()
+                  parser.feed(handle.read())
+
+              if parser.href:
+                  candidate = urllib.parse.urljoin(base + "/" + path, parser.href)
+                  parts = urllib.parse.urlsplit(candidate)
+                  if parts.scheme == "https" and parts.netloc == host:
+                      urls.add(urllib.parse.urlunsplit((parts.scheme, parts.netloc, parts.path, parts.query, "")))
+              elif path == "index.html":
+                  urls.add(base + "/")
+              elif path.endswith("/index.html"):
+                  urls.add(base + "/" + path[:-len("index.html")])
+              else:
+                  urls.add(base + "/" + path)
+
+          if not urls:
+              print("No public page URLs changed; nothing to submit.")
+              sys.exit(0)
+
+          ordered = sorted(urls)
+          print(f"Submitting {len(ordered)} URLs to IndexNow.")
+          endpoint = "https://api.indexnow.org/indexnow"
+          chunks = [ordered[i:i + 10000] for i in range(0, len(ordered), 10000)]
+
+          for chunk in chunks:
+              payload = json.dumps({
+                  "host": host,
+                  "key": key,
+                  "keyLocation": f"{base}/{key}.txt",
+                  "urlList": chunk
+              }).encode("utf-8")
+              request = urllib.request.Request(
+                  endpoint,
+                  data=payload,
+                  headers={"Content-Type": "application/json; charset=utf-8"},
+                  method="POST"
+              )
+
+              last_error = None
+              for attempt in range(1, 6):
+                  try:
+                      with urllib.request.urlopen(request, timeout=30) as response:
+                          status = response.status
+                          body = response.read().decode("utf-8", "replace")
+                      print(f"IndexNow response: HTTP {status}; {body[:500]}")
+                      if status in (200, 202):
+                          last_error = None
+                          break
+                      last_error = RuntimeError(f"Unexpected HTTP {status}")
+                  except Exception as exc:
+                      last_error = exc
+                      print(f"IndexNow attempt {attempt} failed: {exc}")
+                  if attempt < 5:
+                      time.sleep(15)
+
+              if last_error:
+                  raise last_error
+          PY

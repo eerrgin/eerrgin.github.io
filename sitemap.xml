@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- IndexNow notifications are automated for changed pages via GitHub Actions. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://eerrgin.github.io/takvim/</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://eerrgin.github.io/</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://eerrgin.github.io/ergin-kaplan/</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://eerrgin.github.io/ergin-kaplan/en/</loc><lastmod>2026-11-09</lastmod></url>
-  <url><loc>https://eerrgin.github.io/samatya-sky/</loc><lastmod>2026-11-05</lastmod></url>
-  <url><loc>https://eerrgin.github.io/samatya-sky/hesaplama-yontemi.html</loc><lastmod>2026-11-05</lastmod></url>
-  <url><loc>https://eerrgin.github.io/kus-hatti/</loc><lastmod>2026-11-05</lastmod></url>
-  <url><loc>https://eerrgin.github.io/ergin-lab/</loc><lastmod>2026-11-05</lastmod></url>
-  <url><loc>https://eerrgin.github.io/mycelforge/</loc><lastmod>2026-11-05</lastmod></url>
-  <url><loc>https://eerrgin.github.io/performance-lab/</loc><lastmod>2026-11-05</lastmod></url>
-  <url><loc>https://eerrgin.github.io/windows-lab/</loc><lastmod>2026-11-05</lastmod></url>
-  <url><loc>https://eerrgin.github.io/sapma-defteri/</loc><lastmod>2026-11-05</lastmod></url>
-  <url><loc>https://eerrgin.github.io/istanbul-cockpit/</loc><lastmod>2026-11-05</lastmod></url>
-  <url><loc>https://eerrgin.github.io/sistem-programlama/</loc><lastmod>2026-11-05</lastmod></url>
-  <url><loc>https://eerrgin.github.io/ergin-kaplan-net/</loc><lastmod>2026-11-05</lastmod></url>
-  <url><loc>https://eerrgin.github.io/sehrin-tas-hafizasi.html</loc><lastmod>2026-11-05</lastmod></url>
-  <url><loc>https://eerrgin.github.io/oku.html</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://eerrgin.github.io/frekans-defteri/</loc></url>
+  <url><loc>https://eerrgin.github.io/gece-ilkeleri.html</loc></url>
+  <url><loc>https://eerrgin.github.io/takvim/</loc></url>
+  <url><loc>https://eerrgin.github.io/samatya-sky/</loc></url>
+  <url><loc>https://eerrgin.github.io/samatya-sky/hesaplama-yontemi.html</loc></url>
+  <url><loc>https://eerrgin.github.io/kus-hatti/</loc></url>
+  <url><loc>https://eerrgin.github.io/ergin-lab/</loc></url>
+  <url><loc>https://eerrgin.github.io/ergin-lab/tempo/</loc></url>
+  <url><loc>https://eerrgin.github.io/ergin-ustalik-rotasi/</loc></url>
+  <url><loc>https://eerrgin.github.io/ergin-ustalik-rotasi/projects/grounded-knowledge-workshop/</loc></url>
+  <url><loc>https://eerrgin.github.io/mycelforge/</loc></url>
+  <url><loc>https://eerrgin.github.io/performance-lab/</loc></url>
+  <url><loc>https://eerrgin.github.io/windows-lab/</loc></url>
+  <url><loc>https://eerrgin.github.io/sapma-defteri/</loc></url>
+  <url><loc>https://eerrgin.github.io/istanbul-cockpit/</loc></url>
+  <url><loc>https://eerrgin.github.io/iz-sur/</loc></url>
+  <url><loc>https://eerrgin.github.io/sistem-programlama/</loc></url>
+  <url><loc>https://eerrgin.github.io/ergin-kaplan-net/</loc></url>
+  <url><loc>https://eerrgin.github.io/sehrin-tas-hafizasi.html</loc></url>
+  <url><loc>https://eerrgin.github.io/oku.html</loc></url>
 </urlset>
