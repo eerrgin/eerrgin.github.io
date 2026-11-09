@@ -37,6 +37,8 @@ const htmlFiles = files.filter((file) => file.endsWith(".html"));
 
 for (const file of htmlFiles) {
   const rel = relative(root, file);
+  // Google Search Console verification files are plain-text tokens, not HTML documents.
+  if (/^google[0-9a-f]+\.html$/i.test(rel)) continue;
   const html = readFileSync(file, "utf8");
   if (!/<!doctype html>/i.test(html)) fail(rel, "DOCTYPE is missing");
   if (!/<html[^>]*\blang=/i.test(html)) fail(rel, "html lang is missing");
