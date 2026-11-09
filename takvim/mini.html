@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090d12"><meta name="color-scheme" content="dark">
+<title>Ergin Kaplan Lab · Bugünün Tarihi</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#090d12;color:#edf3f4;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+body{padding:13px;background:radial-gradient(ellipse at 8% 0,#1b3439 0,transparent 70%),#090d12}
+.widget{min-height:104px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 19px;border:1px solid #30434a;border-radius:13px;background:linear-gradient(115deg,#14232b,#101820);box-shadow:0 10px 28px #0004}
+.label{font:10px ui-monospace,monospace;letter-spacing:.17em;color:#a8d7c3;text-transform:uppercase}
+.weekday{margin-top:7px;font-size:clamp(19px,4vw,25px);font-weight:600;letter-spacing:-.035em}
+.date{font-size:clamp(15px,3vw,19px);color:#d2dedf;margin-top:1px}
+.clock{text-align:right;white-space:nowrap;font:13px ui-monospace,monospace;color:#a8d7c3}
+.zone{display:block;margin-top:5px;font-size:9px;letter-spacing:.12em;color:#80949b}
+@media(max-width:360px){body{padding:9px}.widget{padding:13px;gap:8px}.clock{font-size:11px}}
+</style>
+</head>
+<body>
+<main class="widget" aria-live="off">
+<div><div class="label">ERGİN KAPLAN LAB · BUGÜN</div><div class="weekday" id="weekday">—</div><div class="date" id="date">—</div></div>
+<div class="clock"><span id="clock">--:--:--</span><span class="zone">YEREL SAAT · LOCAL</span></div>
+</main>
+<script>
+(function(){
+"use strict";
+const weekday=new Intl.DateTimeFormat("tr-TR",{weekday:"long"});
+const date=new Intl.DateTimeFormat("tr-TR",{day:"numeric",month:"long",year:"numeric"});
+const pad=n=>String(n).padStart(2,"0");
+let last="";
+function update(){
+const d=new Date();
+const key=d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate();
+if(key!==last){document.getElementById("weekday").textContent=weekday.format(d);document.getElementById("date").textContent=date.format(d);last=key;}
+document.getElementById("clock").textContent=pad(d.getHours())+":"+pad(d.getMinutes())+":"+pad(d.getSeconds());
+}
+update();setInterval(update,1000);
+})();
+</script>
+</body></html>
