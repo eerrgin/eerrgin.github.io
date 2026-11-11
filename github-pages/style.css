@@ -3382,3 +3382,34 @@ body.live #led{box-shadow:0 0 13px var(--red);animation:radio-led-breathe 2.2s e
 .train-source-panel > .kicker { margin: 0 0 10px; }
 .train-source-panel .note { max-width: 70ch; margin: 9px 0 0; }
 .train-source-panel a { color: var(--bone); text-decoration-color: var(--red); text-underline-offset: 3px; }
+
+/* Compact links to the two browser DJ labs. */
+.dj-lab-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-family: var(--mono);
+  font-size: 9px;
+  line-height: 1.4;
+  letter-spacing: .05em;
+}
+.dj-lab-footer-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 0;
+  padding: 3px 7px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  color: var(--dim);
+  text-decoration: none;
+  opacity: .85;
+  transition: color .18s ease, border-color .18s ease, opacity .18s ease;
+}
+.dj-lab-footer-links a:hover,
+.dj-lab-footer-links a:focus-visible {
+  color: var(--bone);
+  border-color: var(--red);
+  opacity: 1;
+}
