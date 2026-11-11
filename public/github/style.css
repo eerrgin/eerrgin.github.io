@@ -1582,3 +1582,33 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .station { transition: none; }
 }
+
+
+/* Small footer links for the two DJ Lab projects. */
+.dj-lab-links {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 7px;
+  font: 9px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: .06em;
+}
+.dj-lab-links a {
+  min-height: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 7px;
+  border: 1px solid var(--line-soft);
+  border-radius: 3px;
+  color: var(--dim);
+  text-decoration: none;
+  opacity: .82;
+  transition: color .18s ease, border-color .18s ease, opacity .18s ease;
+}
+.dj-lab-links a:hover,
+.dj-lab-links a:focus-visible {
+  color: var(--bone);
+  border-color: var(--line);
+  opacity: 1;
+  text-decoration: none;
+}
