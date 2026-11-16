@@ -1,0 +1,14 @@
+/* Ergin Kaplan · quiet portrait film */
+.ergin-film{position:relative;isolation:isolate;overflow:hidden;margin:clamp(1.25rem,3vw,2.5rem) auto clamp(2rem,5vw,4rem);padding:clamp(1rem,2.5vw,2rem);width:100%;border:1px solid rgba(203,178,143,.24);border-radius:22px;background:radial-gradient(ellipse at 12% 0%,rgba(115,78,57,.2),transparent 42%),linear-gradient(145deg,rgba(19,17,18,.97),rgba(7,8,11,.98) 68%);box-shadow:0 24px 80px rgba(0,0,0,.28)}
+.ergin-film:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.025) 50%,transparent 78%)}
+.ergin-film__head{display:flex;align-items:flex-start;justify-content:space-between;gap:1.25rem;margin:0 0 1rem}
+.ergin-film__eyebrow{margin:0 0 .45rem;color:#c7a982;font:600 .68rem/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.19em;text-transform:uppercase}
+.ergin-film__title{margin:0;color:#f4eee6;font:500 clamp(1.35rem,3vw,2.15rem)/1.08 Georgia,"Times New Roman",serif;letter-spacing:-.035em}
+.ergin-film__intro{max-width:42rem;margin:.55rem 0 0;color:#b8b0a8;font-size:.9rem;line-height:1.65}
+.ergin-film__stamp{flex:none;padding:.48rem .68rem;border:1px solid rgba(199,169,130,.3);border-radius:999px;color:#d7c1a7;font:600 .62rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.13em;white-space:nowrap}
+.ergin-film__frame{overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:#030405;box-shadow:0 12px 38px rgba(0,0,0,.35)}
+.ergin-film__video{display:block;width:100%;height:auto;max-height:78vh;margin:auto;object-fit:contain;background:#030405}
+.ergin-film__foot{display:flex;justify-content:space-between;gap:1rem;margin:.8rem .15rem 0;color:#91877d;font:500 .62rem/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.13em;text-transform:uppercase}
+.ergin-film__foot span:last-child{text-align:right}
+@media(max-width:600px){.ergin-film{margin:1rem auto 2rem;padding:.85rem;border-radius:16px}.ergin-film__head{display:block}.ergin-film__stamp{display:inline-flex;margin-top:.85rem}.ergin-film__intro{font-size:.82rem}.ergin-film__frame{border-radius:10px}.ergin-film__video{max-height:72vh}.ergin-film__foot{font-size:.55rem;letter-spacing:.08em}}
+@media(prefers-reduced-motion:reduce){.ergin-film *{scroll-behavior:auto}}
